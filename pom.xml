@@ -9,6 +9,7 @@
 
   <properties>
     <dudu.soa.baoxian.version>1.0-SNAPSHOT</dudu.soa.baoxian.version>
+    <dudu.soa.ahi.version>1.1-SNAPSHOT</dudu.soa.ahi.version>
     <dudu.soa.dududata.version>1.1-SNAPSHOT</dudu.soa.dududata.version>
     <dudu.soa.lianmengka.version>1.1-SNAPSHOT</dudu.soa.lianmengka.version>
     <dudu.soa.lianmengkabasedata.version>1.1-SNAPSHOT</dudu.soa.lianmengkabasedata.version>
@@ -128,10 +129,17 @@
           <artifactId>DuduData-api</artifactId>
           <version>${dudu.soa.dududata.version}</version>
       </dependency>
+
       <dependency>
         <groupId>com.dudu.soa</groupId>
         <artifactId>DuduBaoxian-api</artifactId>
         <version>${dudu.soa.baoxian.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.dudu.soa</groupId>
+        <artifactId>AHI-api</artifactId>
+        <version>${dudu.soa.ahi.version}</version>
       </dependency>
 
     </dependencies>

@@ -40,7 +40,6 @@ public class ABCDceshiAllController {
                              @RequestParam(name = "shopcode",required=false) String shopcode,
                              @RequestParam(name = "flagStr",required=false) String flagStr) {
         System.out.println("菜单进入================================"+flagStr);
-        System.out.println("lianMengJieShao".equals(flagStr));
 
         //判断点击菜单，进入不同页面
         if ("lmkInfo".equals(flagStr)) {
@@ -72,9 +71,10 @@ public class ABCDceshiAllController {
 
             return "/baoxian/cheXianTouBao/cheXianTouBao";//车险投保
         }else {
-            return "/lianMengKa/lianMengCard/homePage";//
+            return "/allController";
+//            return "/lianMengKa/lianMengCard/homePage";//
         }
-        return "../index";
+        return "/allController";
 
     }
 

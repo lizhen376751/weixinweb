@@ -1,25 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
-<%@ page language="java" import="com.weixin.login.autoLogin"%>
-<% 
- 	String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
-	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
-	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
-	
-	System.out.println("=============AHI - AHIxiangqing.jsp=== CarId:|"+CarId+"|");
-	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-		autoLogin autoLogin = new autoLogin();
-		CarId = autoLogin.judgeOpenId(strOpenId, shopcode);
-		session.setAttribute("DUDUCHEWANG_CarId", CarId);
-		System.out.println("=============AHI - AHIxiangqing.jsp=== 自动登陆后  CarId:|"+CarId+"|");
-	}
-	
-	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-		System.out.println("=============AHI - AHIxiangqing.jsp=== 自动登陆后 CarId还是空，则跳转到login.jsp   shopcode:"+shopcode+"|strOpenId:"+strOpenId+"|");
-		response.sendRedirect("../login.jsp?shopcode=" + shopcode + "&strOpenId=" + strOpenId + "");
-	}
- 
-%>
+<%--<%@ page language="java" import="com.weixin.login.autoLogin"%>--%>
+<%--<% --%>
+ 	<%--String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");--%>
+	<%--String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");--%>
+	<%--String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");--%>
+	<%----%>
+	<%--System.out.println("=============AHI - AHIxiangqing.jsp=== CarId:|"+CarId+"|");--%>
+	<%--if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {--%>
+		<%--autoLogin autoLogin = new autoLogin();--%>
+		<%--CarId = autoLogin.judgeOpenId(strOpenId, shopcode);--%>
+		<%--session.setAttribute("DUDUCHEWANG_CarId", CarId);--%>
+		<%--System.out.println("=============AHI - AHIxiangqing.jsp=== 自动登陆后  CarId:|"+CarId+"|");--%>
+	<%--}--%>
+	<%----%>
+	<%--if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {--%>
+		<%--System.out.println("=============AHI - AHIxiangqing.jsp=== 自动登陆后 CarId还是空，则跳转到login.jsp   shopcode:"+shopcode+"|strOpenId:"+strOpenId+"|");--%>
+		<%--response.sendRedirect("../login.jsp?shopcode=" + shopcode + "&strOpenId=" + strOpenId + "");--%>
+	<%--}--%>
+ <%----%>
+<%--%>--%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -56,23 +56,28 @@
 		
 		
 		var plateNumber = '<%=CarId%>';
-		$(document).ready(function(){ 
-			　　$.ajax({
-					type:"post",
-					dataType:"text",
-					url:'checkAction.jsp',
-					data:{'actions':'queryAllPointByPlateNumber','plateNumber':encodeURI(plateNumber)},
-					success:function(data){
-						data = eval('('+data+')');
-						if(data.length>0){
-							/* $("#totalPoint").html(Math.round(data[0].point));
-							$("#plateNumber").val(data[0].plateNumber); */
-							xianshi(data)
-						}else{
-							alert("未查询到车辆 "+plateNumber+" 得分数据！");
-						}
-					}
-			　　});
+		$(document).ready(function(){
+
+                    $.ajax({
+                        type:"post",
+                        dataType:"text",
+                        url:'checkAction.jsp',
+                        data:{ fromflag:'queryAllPointByPlateNumber',
+                            'plateNumber':encodeURI(plateNumber)
+                        },
+                        success:function(data){
+                            data = eval('('+data+')');
+                            if(data.length>0){
+								/* $("#totalPoint").html(Math.round(data[0].point));
+								 $("#plateNumber").val(data[0].plateNumber); */
+                                xianshi(data)
+                            }else{
+                                alert("未查询到车辆 "+plateNumber+" 得分数据！");
+                            }
+                        }
+                    });
+
+			　
 			　　$.ajax({
 				type:"post",
 				dataType:"text",
@@ -131,7 +136,7 @@
 	<body>
 	<input type="hidden" id="plateNumber" value="<%=CarId%>"/>
 		<div class="title">
-			<!-- <a class="title_img" href="#"><img  src="../img/fanhui.png"/></a> -->
+
 			<p class="title_main">车辆健康指数</p>			
 		</div>
 		<div class="center_zhis">
@@ -143,25 +148,7 @@
 		</div>
 		<div style="width:100%">
 			<ul id="subPoint" class="lie_li">
-			 <!--  <li class="burder_li">
-			  	<img class="AHI_biao" src="../img/biazhi.png"/>
-			  	<span class="xitong">形象系统：</span>
-			  	<strong id="" class="xt_zhus">95</strong>
-			  	<a href="#"><span class="miaos">车辆状况良好&nbsp;<img src="../img/miaos.png"/></span></a>
-			  </li>
-			  <hr/>
-			  <li class="burder_li">
-			  	<img class="AHI_biao" src="../img/biazhi.png"/>
-			  	<span class="xitong">形象系统：</span>
-			  	<strong class="xt_zhus">95</strong>
-			  	<span class="miaos">车辆状况良好&nbsp;<img src="../img/miaos.png"/></span>
-			  </li>
-			  <hr/>
-			  <li class="burder_li">
-			  	<img class="AHI_biao" src="../img/biazhi.png"/>
-			  	<span class="xitong">形象系统：</span>
-			  	<strong class="xt_zhus">95</strong>
-			  	<span class="miaos">车辆状况良好&nbsp;<img src="../img/miaos.png"/> -->
+
 				
 			</ul>
 			

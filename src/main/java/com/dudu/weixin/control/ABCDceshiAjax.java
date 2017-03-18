@@ -113,6 +113,22 @@ public class ABCDceshiAjax {
             return chexiantoubaoService.baoXianTypes();
         }
 
+        //AHI
+        if ("baoxianGongSi".equals(fromflag)) {
+            logger.debug("保险公司");
+            return chexiantoubaoService.baoxianGongSi();
+        }
+        //AHI
+        if ("baoXianTypes".equals(fromflag)) {
+            logger.debug("保险类型");
+            return chexiantoubaoService.baoXianTypes();
+        }
+        //AHI
+        if ("baoXianTypes".equals(fromflag)) {
+            logger.debug("保险类型");
+            return chexiantoubaoService.baoXianTypes();
+        }
+
         return obj;
     }
 
