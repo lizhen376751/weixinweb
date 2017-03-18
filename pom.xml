@@ -1,0 +1,141 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.dudu.weixin</groupId>
+  <artifactId>DuduWeiXin</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>DuduWeiXin</name>
+
+  <properties>
+    <dudu.soa.baoxian.version>1.0-SNAPSHOT</dudu.soa.baoxian.version>
+    <dudu.soa.dududata.version>1.1-SNAPSHOT</dudu.soa.dududata.version>
+    <dudu.soa.lianmengka.version>1.1-SNAPSHOT</dudu.soa.lianmengka.version>
+    <dudu.soa.lianmengkabasedata.version>1.1-SNAPSHOT</dudu.soa.lianmengkabasedata.version>
+    <dudu.framework.version>1.1-SNAPSHOT</dudu.framework.version>
+    <spring.version>4.3.6.RELEASE</spring.version>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+  </properties>
+    <dependencies>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>3.8.1</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jsp-api</artifactId>
+        <version>2.0</version>
+      </dependency>
+      <dependency>
+        <groupId>jstl</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.2.22</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jdom</groupId>
+        <artifactId>jdom</artifactId>
+        <version>2.0.2</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.dudu.soa</groupId>
+        <artifactId>LianmengBaseData-api</artifactId>
+        <version>${dudu.soa.lianmengkabasedata.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.dudu.soa</groupId>
+        <artifactId>DuduFramework-core</artifactId>
+        <version>${dudu.framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>2.5.3</version>
+        <exclusions>
+          <exclusion>
+            <artifactId>spring</artifactId>
+            <groupId>org.springframework</groupId>  <!-- 用于排除dubbo引用冲突 -->
+          </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        <version>1.8.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjrt</artifactId>
+        <version>1.8.1</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.sgroschupf</groupId>
+        <artifactId>zkclient</artifactId>
+        <version>0.1</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.zookeeper</groupId>
+        <artifactId>zookeeper</artifactId>
+        <version>3.4.8</version>
+      </dependency>
+      <dependency>
+        <groupId>com.dudu.soa</groupId>
+        <artifactId>Lianmengka-api</artifactId>
+        <version>${dudu.soa.lianmengka.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>com.dudu.soa</groupId>
+          <artifactId>DuduData-api</artifactId>
+          <version>${dudu.soa.dududata.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.dudu.soa</groupId>
+        <artifactId>DuduBaoxian-api</artifactId>
+        <version>${dudu.soa.baoxian.version}</version>
+      </dependency>
+
+    </dependencies>
+
+
+
+</project>

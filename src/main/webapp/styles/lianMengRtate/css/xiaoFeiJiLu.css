@@ -1,0 +1,109 @@
+@charset "utf-8";
+/* CSS Document */
+span{
+	display: inline-block;
+}
+/*详情*/
+.detail_1{
+	margin-top: 10px;
+	width: 100%;
+	/*border-top: 1px #cdcdcd solid;*/
+	border-bottom: 1px #cdcdcd solid;
+}
+.top_1{
+	width: 100%;
+	overflow: hidden;
+	margin-top: 50px;
+	color: #31a3ff;
+}
+.top_1 .left_11{
+	float: left;
+	overflow: hidden;
+	margin-left: 26px;
+}
+.top_1 .right_11{
+	float: right;
+	overflow: hidden;
+	margin-right: 26px;
+}
+
+/*项目*/
+.middle_1{
+	width: 100%;
+	margin: 29px 0px 0px;
+	color: #565656;
+	overflow: hidden;
+}
+.middle_1 .left_1{
+	width: 22.25%;
+	text-indent: 26px;
+	float: left;
+}
+.middle_1 .right_1{
+	width: 75.74%;
+	min-height: 47px;
+	float: left;
+	overflow: hidden;
+}
+.middle_1 .right_1 div{
+	float: left;
+	margin-right: 10px;
+}
+.middle_1 .right_1 span{
+	width: 38px;
+	height: 38px;
+	border: 2px #565656 solid;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 38px;
+	margin-right: 5px;
+	box-sizing: border-box;
+}
+.middle_1 .right_1 p{
+	display: inline-block;
+}
+
+/*付款方式*/
+.bottom_1{
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 33px;
+	color: #565656;
+}
+.bottom_1 div{
+	float: left;
+	margin-top: 29px;
+}
+/*颜色*/
+.red{
+	color: #ff1e2e;
+}
+/*去评价*/
+.pingjia{
+	width: 160px;
+	height: 60px;
+	background: #ff8d12;
+	border-radius: 10px;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 60px;
+	margin: 0px auto;
+	box-sizing: border-box;
+	margin-bottom: 55px;
+}
+/*已评价*/
+.yipingjia{
+	width: 160px;
+	height: 60px;
+	border: 2px #b5b5b5 solid;
+	border-radius: 10px;
+	color: #989898;
+	text-align: center;
+	line-height: 56px;
+	margin: 0px auto;
+	box-sizing: border-box;
+	margin-bottom: 55px;
+}
+
+
+

@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{margin:0px;padding:0px;}
+img{border:0px}
+
+body{width:100%;background:#fff;font-family: "微软雅黑" ;height:auto;overflow:auto;}
+a{text-decoration:none;}
+ul{list-style: none;}
+.font_0{font-size:2rem;} /*32px*/
+.font_1{font-size:2.25rem;} /*36px*/
+.font_2{font-size:2.625rem;} /*42px*/
+.font_3{font-size: 3.375rem;}  /*54px*/
+.font_4{font-size: 2.0625rem;} /*33px*/
+.font_5{font-size: 1.875rem;} /*30px*/
+.font_6{font-size: 1.5rem;} /*24px*/
+.font_7{font-size: 1.75rem;} /*28px*/
+.font_8{font-size: 1.25rem;} /*20px*/
+
+.server_cenulcolor{    color: #7e7e7e;}
+
+
+/*头部样式*/
+.title{height:116px;width:100%;line-height:116px;text-align: center;}
+.title_img{display:inline-block;margin-left:42px;float:left;}
+.title_img img{vertical-align:middle; }
+.title_main{font-size:54px}
