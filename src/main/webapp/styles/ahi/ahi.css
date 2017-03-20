@@ -1,0 +1,154 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+/*健康指数css*/
+.center_zhis{height:823px;width:100%;text-align: center;background:#31a3ff;}
+.biaopan{width:100%;height:686px;}
+.radialIndicatorContext{padding-top:80px;}
+.xiangq{
+
+	width:358px;
+	height:104px;
+	line-height:104px;
+	color:#fff;
+	background:#00dd72;margin:0px auto; 
+    border-radius: 45px;
+     -moz-border-radius: 45px;
+    -webkit-border-radius: 45px;
+    
+    -webkit-box-shadow:5px 5px 5px 2px   rgba(0, 0, 0, 0.1);  
+     -moz-box-shadow:5px 5px 5px 2px  rgba(0, 0, 0, 0.1);     
+     box-shadow:5px 5px 5px 2px  rgba(0, 0, 0, 0.1);   
+  }
+  .juti{
+  	color:#fff;
+  	font-size: 30px;
+    position: relative;
+    top: -180px;
+  }
+.lie_li{padding:0px 24px;}
+.burder_li{
+	height:154px;
+	line-height:154px;
+	width:100%;
+	margin:24px auto 24px auto;
+	background:#fff;
+    border-radius: 45px;
+     -moz-border-radius: 45px;
+    -webkit-border-radius: 45px;
+    border: 1px  solid #9a9a9a;
+	}
+.AHI_biao{vertical-align:middle;margin-left:30px;margin-top:-35px;}
+.xitong{margin-left:24px;margin-top:-10px;width: 144px;}
+.xt_zhus{font-size:56px;color:#ff3a3a; margin-left: 24px;}
+.miaos{color:#7e7e7e;float:right;margin-right:24px;}
+.miaos img{vertical-align:middle}
+
+
+/*健康指数详情页css*/
+.center_1{height:332px;width:100%;text-align: center;background:#31a3ff;}
+.num{height:240px;}
+.num_font{height:166px;line-height:166px;font-size:120px;color:#fff;}
+.numxiangqfont{
+	height:70px;
+	line-height:70px;
+	color:#fff;
+	margin:0px auto; 
+}
+.numxiangq{
+	width:260px;
+	background:#00dd72;
+    border-radius: 45px;
+     -moz-border-radius: 45px;
+    -webkit-border-radius: 45px;
+    
+    -webkit-box-shadow:5px 5px 5px 2px   rgba(0, 0, 0, 0.1);  
+     -moz-box-shadow:5px 5px 5px 2px  rgba(0, 0, 0, 0.1);     
+     box-shadow:5px 5px 5px 2px  rgba(0, 0, 0, 0.1);   
+  }
+  .centerxiangq{
+  	width:220px;
+	background:#f64a88;
+    border-radius: 45px;
+     -moz-border-radius: 45px;
+    -webkit-border-radius: 45px;
+    
+    -webkit-box-shadow:5px 5px 5px 2px   rgba(246, 74, 136, 0.1);  
+     -moz-box-shadow:5px 5px 5px 2px  rgba(246, 74, 136, 0.1);     
+     box-shadow:5px 5px 5px 2px  rgba(246, 74, 136, 0.1); 
+  }
+  .num_leftbut{display:inline-block;float:left;margin-left:24px}
+ .num_rightbut{display:inline-block;float:right;margin-right:24px}
+.jingbao{
+	display:inline-block;
+	text-align:center;
+	width:154px;
+	height:74px;
+	color:#f64a88;
+	line-height:74px;
+	border:1px solid #f64a88;
+	border-radius: 10px;
+     -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+	
+}
+.no_jignbao{display:inline-block;
+	text-align:center;
+	color:#7e7e7e;
+	}
+
+.numlie_li{text-align:center;}
+.numxitong{float:left}
+.subnumlie_li{padding:24px  100px;}
+.subxitong{margin-top:-10px;}
+.submiaos{float:right;margin-right:24px;}
+.sub_solid{border:1px solid #e1e1e1;margin-top: 20px;}
+.lianghao{width:100%;/* height:80px;line-height:80px; */margin-top:30px}
+/*检测样式*/
+.jc_ul{
+    /*width:200px;*/
+
+   /*  position: absolute;
+    left:20%; */
+    margin:40px auto;
+}
+.jc_color{color:#31A3FF;    float: left;height: 45px; width:260px;text-align: right;}
+.jc_ul li{
+    margin: 5px auto;
+    width: 620px
+
+}
+.jc_shop{width: 350px;display: inline-block;text-align: left; height: 45px;color:#7e7e7e}
+
+
+/* 图片展示样式*/
+.zhezhao{
+	display:none;
+	vertical-align: middle;
+	background: url(../img/bg_img.png) repeat;    
+	text-align: center; 
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    /* top: 0px; */
+    z-index: 9999999999;
+    overflow: auto;
+	}
+.zzclose{
+	
+	 color: #ffffff;
+    font-size: 30px;
+    position: relative;
+    float: right;
+    right: 20px;
+}
+ .xq_img{width:100px;height:100px;margin-right:10px;}
+ .zsimg{
+ 	width:95%;
+ 	
+ 	}
+
+.footer{width:100%;text-align:center;color:#31a3ff;}
+

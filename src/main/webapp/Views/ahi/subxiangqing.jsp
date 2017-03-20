@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>AHI</title>
-		<link rel="stylesheet" type="text/css" href="../css/weix.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/ahi.css"/>
-		<script type="text/javascript" src="../js/jquery-1.12.1.min.js"></script>
-		<script src="../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/ahi/ahi.css"/>
+		<script type="text/javascript" src="/scripts/ahi/jquery-1.12.1.min.js"></script>
+		<script src="/scripts/ahi/index.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 		var number = 0;
 		var id = '<%=request.getParameter("id")%>';
@@ -64,7 +64,7 @@
 							$("#subPoint").append("<li class='burder_li numlie_li'>"
 								  	+"<span class='xitong numxitong font_1'>"+sdata[i].name+"</span>"	
 								  	+"<span class='jingbao font_0'>"+sdata[i].resultQuestionDescribeList.length+"条隐患</span>"
-								  	+"<span class='submiaos font_1' onClick='Togglezs(this);' >展开&nbsp;<img src='../img/zk.png' /> </span>"
+								  	+"<span class='submiaos font_1' onClick='Togglezs(this);' >展开&nbsp;<img src='/files/ahi/zk.png' /> </span>"
 								  	+"</li>"
 								  	+"<li id='subnumlie_li_"+sdata[i].id+"' class='subnumlie_li' style='display:none'>"
 								  	+"</li>");
@@ -72,7 +72,7 @@
 							for(var j=0;j<resultQuestionDescribeList.length;j++){
 								$("#subnumlie_li_"+sdata[i].id+"").append("<div class='lianghao'>"
 									  	+"<span class='subxitong font_1'>"+resultQuestionDescribeList[j].name+"</span>"	
-									  	+"<span class='submiaos font_1'><img src='../img/sun_tis_06.png' />得分较低</span>"
+									  	+"<span class='submiaos font_1'><img src='/files/ahi/sun_tis_06.png' />得分较低</span>"
 									  	+"</div>"		  	
 									  	+"<hr class='sub_solid' id='sub_solid_"+resultQuestionDescribeList[j].id+"'/>");
 								var inspectionDetailedDescription = resultQuestionDescribeList[j].inspectionDetailedDescription;
@@ -80,7 +80,7 @@
                                     for (var n = 0; n<inspectionDetailedDescription.length; n++) {
                                         $("#sub_solid_" + resultQuestionDescribeList[j].id + "").after("<div class='lianghao'>"
                                             + "<span class='subxitong font_1'>检测描述：</span>"
-                                            + "<span class='submiaos font_1'><img src='../img/sun_tis_06.png' />" + inspectionDetailedDescription[n].description + "</span>"
+                                            + "<span class='submiaos font_1'><img src='/files/ahi/sun_tis_06.png' />" + inspectionDetailedDescription[n].description + "</span>"
                                             + "</div>"
                                             + "<div class='lianghao'>"
                                             + "<span class='subxitong font_1'>造成危害：</span>"
@@ -106,7 +106,7 @@
 	</head>
 	<body>
 		<div class="title">
-			<a class="title_img" href="JavaScript:history.go(-1);"><img  src="../img/fanhui.png"/></a>
+			<a class="title_img" href="JavaScript:history.go(-1);"><img  src="/files/ahi/fanhui.png"/></a>
 			<p class="title_main" >AHI车辆健康指数</p>			
 		</div>
 		<div class="center_1">
