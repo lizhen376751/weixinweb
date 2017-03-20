@@ -5,8 +5,11 @@ import com.dudu.weixin.service.ShopInfoService;
 import com.dudu.weixin.struct.shop.ShopInfo;
 import com.dudu.weixin.util.Constant;
 import com.dudu.weixin.util.SignUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +25,7 @@ import java.io.IOException;
  * Created by Administrator on 2017/3/17.
  */
 @Controller
-@RequestMapping("/main")
+@RequestMapping("/")
 public class ABCDceshiAllController {
 
     @Autowired
@@ -34,13 +37,15 @@ public class ABCDceshiAllController {
     @Autowired
     private LianmengIntroducedService lianmengIntroducedService;
 
+    private static final Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
+
     //点击菜单后进入-------------------------------------------------------
-    @RequestMapping(value = "/oauthLoginServlet", method = RequestMethod.GET)
+    @RequestMapping(value = "oauthLoginServlet", method = RequestMethod.GET)
     public String oauthLogin(HttpServletRequest request,
-            @RequestParam(name = "code",required=false ) String code,
+                             @RequestParam(name = "code",required=false ) String code,
                              @RequestParam(name = "shopcode",required=false) String shopcode,
-                             @RequestParam(name = "flagStr",required=false) String flagStr) {
-        System.out.println("菜单进入================================"+flagStr);
+                             @RequestParam(name = "flagStr",required=false) String flagStr, Model model) {
+        logger.info("菜单进入================================"+flagStr);
 
         //判断点击菜单，进入不同页面
         if ("lmkInfo".equals(flagStr)) {
@@ -51,11 +56,15 @@ public class ABCDceshiAllController {
             return "/logout";//退出及注销账号
         } else if ("AHIInfo".equals(flagStr)) {
             return "/ahi/AHIxiangqing";//AHI指数
-
         } else if ("AHIInfoxiangqing".equals(flagStr)) {
+            logger.info("ahi详情页面!");
             String plateNumber = request.getParameter("plateNumber");
             String id = request.getParameter("id");
-            return "/ahi/subxiangqing/plateNumber="+plateNumber+"&id="+id;//AHI指数
+            model.addAttribute("plateNumber",plateNumber);
+            model.addAttribute("id",id);
+//            "/plateNumber="+plateNumber+"&id="+id;//AHI指数
+            return "/ahi/subxiangqing";//详情
+
 
         } else if ("xiaoFeiList".equals(flagStr)) {
             return "/xiaoFeiJiLu/xiaoFeiList";//消费记录

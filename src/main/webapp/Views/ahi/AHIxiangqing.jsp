@@ -130,7 +130,7 @@
 			if(null==plateNumber||plateNumber==''){
 				plateNumber = $("#plateNumber").val();
 			}
-			window.location.href='/main/oauthLoginServlet?flagStr=AHIInfoxiangqing;
+			window.location.href='/oauthLoginServlet?flagStr=AHIInfoxiangqing&plateNumber='+plateNumber+'&id='+id;
 		}
        	Date.prototype.format = function(format) {
            var date = {

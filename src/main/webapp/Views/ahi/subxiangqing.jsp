@@ -15,17 +15,17 @@
 		var plateNumber = decodeURI(decodeURI('<%=request.getParameter("plateNumber")%>'));
 		$(document).ready(function(){ 
 			　　$.ajax({
-					type:"post",
-					dataType:"text",
-					url:'checkAction.jsp',
-					data:{'actions':'queryCarPointOne','plateNumber':encodeURI(plateNumber)},
-					success:function(data){
+				  type:"post",
+				  dataType:"text",
+                  url:'/getCommonAjax',
+                  data:{'fromflag':'queryCarPointOne','plateNumber':plateNumber},
+				  success:function(data){
 						data = eval('('+data+')');
 						if(data.length>0){
 							baseDate=data;
 							showDate();
 						}else{
-							alert("未查询到车辆 "+encodeURI(plateNumber)+" 得分数据！");
+							alert("未查询到车辆 "+plateNumber+" 得分数据！");
 						}
 					}
 			　　});
@@ -54,8 +54,8 @@
 			$.ajax({
 				type:"post",
 				dataType:"text",
-				url:'checkAction.jsp',
-				data:{'actions':'queryCarPointTwo','plateNumber':encodeURI(plateNumber),'id':baseDate[number].id,'ratio':'33'},
+				url:'/getCommonAjax',
+				data:{'fromflag':'queryCarPointTwo','plateNumber':plateNumber,'id':baseDate[number].id,'ratio':'33'},
 				success:function(sdata){
 					sdata = eval('('+sdata+')');
 					if(sdata.length>0){
@@ -95,7 +95,7 @@
 							}
 						}
 					}else{
-						alert("未查询到车辆 "+encodeURI(plateNumber)+" 得分数据！");
+						alert("未查询到车辆 "+plateNumber+" 得分数据！");
 					}
 				}
 		　　  	});

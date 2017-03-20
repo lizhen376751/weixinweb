@@ -131,6 +131,13 @@ public class ABCDceshiAjax {
             logger.debug("ahi"+plateNumber);
             return ahiService.queryCarPointOne(plateNumber);
         }
+        //AHI
+        if ("queryCarPointTwo".equals(fromflag)) {
+            logger.debug("ahi"+plateNumber);
+            String ratio = request.getParameter("ratio");
+            String id = request.getParameter("id");
+            return ahiService.queryCarPointTwo( plateNumber,id, ratio);
+        }
 
 
         return obj;

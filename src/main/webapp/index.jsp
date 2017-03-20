@@ -12,20 +12,20 @@
     <script language="JavaScript">
         //表单输入检查
         function lianMengJieShao() {
-            window.location.href = "/main/oauthLoginServlet?flagStr=lianMengJieShao";
+            window.location.href = "/oauthLoginServlet?flagStr=lianMengJieShao";
         }
         function YCInfo() {
-            window.location.href = "/main/oauthLoginServlet?flagStr=YCInfo";
+            window.location.href = "/oauthLoginServlet?flagStr=YCInfo";
         }
         function queryLMActivity() {
-            window.location.href = "/main/oauthLoginServlet?flagStr=lianMengActivity";
+            window.location.href = "/oauthLoginServlet?flagStr=lianMengActivity";
         }
         function cheXianTouBao() {
-            window.location.href = "/main/oauthLoginServlet?flagStr=cheXianTouBao";
+            window.location.href = "/oauthLoginServlet?flagStr=cheXianTouBao";
         }
         //aHi
         function AHIInfo() {
-            window.location.href = "/main/oauthLoginServlet?flagStr=AHIInfo";
+            window.location.href = "/oauthLoginServlet?flagStr=AHIInfo";
         }
     </script>
 </head>
