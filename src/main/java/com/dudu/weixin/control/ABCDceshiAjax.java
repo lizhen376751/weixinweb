@@ -20,6 +20,10 @@ import javax.servlet.http.HttpServletRequest;
 public class ABCDceshiAjax {
     private static final Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
 
+
+
+    
+
     @Autowired
     private LianmengIntroducedService lianmengIntroducedService;
     @Autowired
