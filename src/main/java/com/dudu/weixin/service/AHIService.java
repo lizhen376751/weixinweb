@@ -1,7 +1,6 @@
 package com.dudu.weixin.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.alibaba.fastjson.JSON;
 import com.dudu.soa.ahi.api.ApiAHIPoint;
 import com.dudu.soa.ahi.module.*;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,7 @@ public class AHIService {
 	@Reference(version = "0.0.1" )
 	private ApiAHIPoint apiAHIPoint;
 
-	public String queryAllPointByPlateNumber(String plateNumber) {
+	public List<ResultTotalAHIPoint> queryAllPointByPlateNumber(String plateNumber) {
 			String plateNumbers = "";
 		try {
 			plateNumbers = java.net.URLDecoder.decode(plateNumber, "utf-8");
@@ -32,10 +31,10 @@ public class AHIService {
 		point.setPlateNumber(plateNumbers);
 		point.setRatio("100");
 		List<ResultTotalAHIPoint> list = apiAHIPoint.queryAllPointByPlateNumber(point);
-		return JSON.toJSONString(list);
+		return list;
 	}
 	
-	public String queryCarPointOne(String plateNumber){
+	public List<ResultAHIClassPoint> queryCarPointOne(String plateNumber){
 		String plateNumbers = "";
 		try {
 			plateNumbers = java.net.URLDecoder.decode(plateNumber, "utf-8");
@@ -51,10 +50,10 @@ public class AHIService {
 		
 //		System.out.println("--------------------ahi queryCarPointOne:"+JSON.toJSONString(list));
 		
-		return JSON.toJSONString(list);
+		return list;
 	}
 	
-	public String queryCarPointTwo(String plateNumber,String id,String ratio){
+	public List<ResultAHIChildClassPoint> queryCarPointTwo(String plateNumber,String id,String ratio){
 		String plateNumbers = "";
 		try {
 			plateNumbers = java.net.URLDecoder.decode(plateNumber, "utf-8");
@@ -70,7 +69,7 @@ public class AHIService {
 		
 //		System.out.println("--------------------ahi queryCarPointTwo:"+JSON.toJSONString(list));
 		
-		return JSON.toJSONString(list);
+		return list;
 	}
 	public List<ResultAHISubClassPoint> querySubclassPoint(String plateNumber,String id){
 		AHIPointParam point = new AHIPointParam();

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Administrator on 2017/3/17.
@@ -19,10 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/")
 public class ABCDceshiAjax {
     private static final Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
-
-
-
-    
 
     @Autowired
     private LianmengIntroducedService lianmengIntroducedService;
@@ -34,18 +31,19 @@ public class ABCDceshiAjax {
     private YangCheInfoService yangCheInfoService;
     @Autowired
     private ChexiantoubaoService chexiantoubaoService;
+    @Autowired
+    private AHIService ahiService;
     @ResponseBody
     @RequestMapping(value = "getCommonAjax", method = RequestMethod.POST)
-    public Object commonAjax(
+    public Object commonAjax(HttpServletRequest request,HttpServletResponse response,
             @RequestParam(name = "fromflag",required=false ) String fromflag,
             @RequestParam(name = "shopcode",required=false) String shopcode,
             @RequestParam(name = "CarId",required=false) String CarId,
             @RequestParam(name = "cardNo",required=false) String cardNo,
-            @RequestParam(name = "ids",required=false) String ids,
-            HttpServletRequest request
-            ) {
-        request.getParameter("");
+            @RequestParam(name = "ids",required=false) String ids
+    ) {
         logger.debug("ajax进入==============="+fromflag);
+        response.setCharacterEncoding("UTF-8");
         Object obj = null;
         fromflag = encodingUrl(fromflag);
         shopcode = encodingUrl(shopcode);
@@ -122,20 +120,18 @@ public class ABCDceshiAjax {
         }
 
         //AHI
-        if ("baoxianGongSi".equals(fromflag)) {
-            logger.debug("保险公司");
-            return chexiantoubaoService.baoxianGongSi();
+        String plateNumber = request.getParameter("plateNumber");
+        String strOpenId = request.getParameter("strOpenId");
+        if ("queryAllPointByPlateNumber".equals(fromflag)) {
+            logger.debug("ahi"+plateNumber);
+            return ahiService.queryAllPointByPlateNumber(plateNumber);
         }
         //AHI
-        if ("baoXianTypes".equals(fromflag)) {
-            logger.debug("保险类型");
-            return chexiantoubaoService.baoXianTypes();
+        if ("queryCarPointOne".equals(fromflag)) {
+            logger.debug("ahi"+plateNumber);
+            return ahiService.queryCarPointOne(plateNumber);
         }
-        //AHI
-        if ("baoXianTypes".equals(fromflag)) {
-            logger.debug("保险类型");
-            return chexiantoubaoService.baoXianTypes();
-        }
+
 
         return obj;
     }

@@ -36,7 +36,8 @@ public class ABCDceshiAllController {
 
     //点击菜单后进入-------------------------------------------------------
     @RequestMapping(value = "/oauthLoginServlet", method = RequestMethod.GET)
-    public String oauthLogin(@RequestParam(name = "code",required=false ) String code,
+    public String oauthLogin(HttpServletRequest request,
+            @RequestParam(name = "code",required=false ) String code,
                              @RequestParam(name = "shopcode",required=false) String shopcode,
                              @RequestParam(name = "flagStr",required=false) String flagStr) {
         System.out.println("菜单进入================================"+flagStr);
@@ -50,6 +51,11 @@ public class ABCDceshiAllController {
             return "/logout";//退出及注销账号
         } else if ("AHIInfo".equals(flagStr)) {
             return "/ahi/AHIxiangqing";//AHI指数
+
+        } else if ("AHIInfoxiangqing".equals(flagStr)) {
+            String plateNumber = request.getParameter("plateNumber");
+            String id = request.getParameter("id");
+            return "/ahi/subxiangqing/plateNumber="+plateNumber+"&id="+id;//AHI指数
 
         } else if ("xiaoFeiList".equals(flagStr)) {
             return "/xiaoFeiJiLu/xiaoFeiList";//消费记录
