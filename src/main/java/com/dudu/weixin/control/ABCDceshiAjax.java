@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by Administrator on 2017/3/17.
  */
@@ -35,8 +37,10 @@ public class ABCDceshiAjax {
             @RequestParam(name = "shopcode",required=false) String shopcode,
             @RequestParam(name = "CarId",required=false) String CarId,
             @RequestParam(name = "cardNo",required=false) String cardNo,
-            @RequestParam(name = "ids",required=false) String ids
-    ) {
+            @RequestParam(name = "ids",required=false) String ids,
+            HttpServletRequest request
+            ) {
+        request.getParameter("");
         logger.debug("ajax进入==============="+fromflag);
         Object obj = null;
         fromflag = encodingUrl(fromflag);

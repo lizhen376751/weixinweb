@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="/styles/baoxian/css/mobiscroll_003.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/baoxian/css/cheXianTouBao.css"/>
-		<script src="/scripts/baoxian/js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/baoxian/js/mobiscroll_002.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/baoxian/js/mobiscroll_004.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/baoxian/js/mobiscroll.js" type="text/javascript" charset="utf-8"></script>
@@ -20,7 +20,7 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<form action="">
+			<form action="url">
 				<!--顶部导航-->
 				<div class="nav color_1">
 					<div class="nav_left font_1">
