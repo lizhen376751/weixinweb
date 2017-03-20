@@ -17,9 +17,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link rel="stylesheet" type="text/css" href="/styles/lianMengActivity/css/weix.css"/>
+	<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
 	<link rel="stylesheet" type="text/css" href="/styles/lianMengActivity/css/yangCheXinXi.css"/>
-	<script src="/scripts/lianMengActivity/js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
   </head>
   
   <body>

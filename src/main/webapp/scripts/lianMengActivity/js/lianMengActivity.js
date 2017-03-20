@@ -56,10 +56,10 @@ $(document).ready(function () {
 		success : function(jsonData){
 			var json = JSON.parse(jsonData);
 			var card_name = $(".card_name");
-			if (json.data.length <= 0) {
+			if (json.length<= 0) {
 				card_name.text("当前无联盟活动信息!");
 			} else{	
-				appenging(json.data);
+				appenging(json);
 				tiaoZhuan();
 			}
 		}

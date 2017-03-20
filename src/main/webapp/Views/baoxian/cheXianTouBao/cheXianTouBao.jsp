@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="/styles/baoxian/css/mobiscroll_002.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/baoxian/css/mobiscroll.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/baoxian/css/mobiscroll_003.css"/>
-		<link rel="stylesheet" type="text/css" href="/styles/baoxian/css/weix.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/baoxian/css/cheXianTouBao.css"/>
 		<script src="/scripts/baoxian/js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/baoxian/js/mobiscroll_002.js" type="text/javascript" charset="utf-8"></script>

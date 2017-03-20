@@ -30,7 +30,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/weix.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/lianMengCard.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/lianMengCard.css"/>
-		<script src="/scripts/lianMengKa/js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/lianMengKa/js/JsBarcode.all.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/lianMengKa/js/jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
 	</head>

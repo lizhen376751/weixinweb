@@ -17,9 +17,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 
-		<link rel="stylesheet" type="text/css" href="/styles/lianMengIntroduced/css/weix.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/lianMengIntroduced/css/yangCheXinXi.css"/>
-		<script src="/scripts/lianMengIntroduced/js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 
 
   </head>

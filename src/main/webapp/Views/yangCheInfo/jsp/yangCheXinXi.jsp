@@ -16,9 +16,9 @@ String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link rel="stylesheet" type="text/css" href="/styles/yangCheInfo/css/weix.css"/>
+	<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
 	<link rel="stylesheet" type="text/css" href="/styles/yangCheInfo/css/yangCheXinXi.css"/>
-	<script src="/scripts/yangCheInfo/js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
   </head>
   
   <body>
