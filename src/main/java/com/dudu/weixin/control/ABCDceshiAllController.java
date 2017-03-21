@@ -48,7 +48,9 @@ public class ABCDceshiAllController {
         logger.info("菜单进入================================"+flagStr);
 
         //判断点击菜单，进入不同页面
-        if ("lmkInfo".equals(flagStr)) {
+         if ("login".equals(flagStr)) {
+//            return "/daoHang/daoHangliebiao/service/daohangindex.jsp?shopcode=" + shopcode + "&openid=" + openId + '"';//登录页面
+        } else if ("lmkInfo".equals(flagStr)) {
             return "/lianMengKa/lianMengCard/homePage";//联盟卡包
         } else if ("daoHang".equals(flagStr)) {
 //            return "/daoHang/daoHangliebiao/service/daohangindex.jsp?shopcode=" + shopcode + "&openid=" + openId + '"';//服务导航

@@ -10,17 +10,11 @@
 	String strOpenId = "owQtWt8L6RVxj_cTUaPyH27RWdbA";
 	String CarId = "鲁C996633";
 	System.out.println("=============AHI - AHIxiangqing.jsp=== CarId:|"+CarId+"|");
-//	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-//		autoLogin autoLogin = new autoLogin();
-//		CarId = autoLogin.judgeOpenId(strOpenId, shopcode);
-//		session.setAttribute("DUDUCHEWANG_CarId", CarId);
-//		System.out.println("=============AHI - AHIxiangqing.jsp=== 自动登陆后  CarId:|"+CarId+"|");
-//	}
-//
-//	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-//		System.out.println("=============AHI - AHIxiangqing.jsp=== 自动登陆后 CarId还是空，则跳转到login.jsp   shopcode:"+shopcode+"|strOpenId:"+strOpenId+"|");
-//		response.sendRedirect("../login.jsp?shopcode=" + shopcode + "&strOpenId=" + strOpenId + "");
-//	}
+
+	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
+
+		response.sendRedirect("../login.jsp?shopcode=" + shopcode + "&strOpenId=" + strOpenId + "");
+	}
 
 %>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>

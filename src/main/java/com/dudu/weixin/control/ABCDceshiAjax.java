@@ -27,6 +27,7 @@ public class ABCDceshiAjax {
     private LianMengActivityService lianMengActivityService ;
     @Autowired
     private LianMengKaService lianMengKa;
+
     @Autowired
     private YangCheInfoService yangCheInfoService;
     @Autowired
