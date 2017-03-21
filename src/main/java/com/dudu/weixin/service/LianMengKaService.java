@@ -51,7 +51,9 @@ public class LianMengKaService {
                 LianmengkaXmCustResultModule lianmengkaXmCustResultModule = results.get(i);
                 String cust_code = lianmengkaXmCustResultModule.getCust_code();
                 String cust_shopName = commonTools.getShopName(cust_code);
-                //TODO 后期需要把sell_shopName放入results结果集
+                //单纯的查询,把custcode替换成了cust_shopName
+                lianmengkaXmCustResultModule.setCust_code(cust_shopName);
+
             }
 
         } catch (Exception e) {

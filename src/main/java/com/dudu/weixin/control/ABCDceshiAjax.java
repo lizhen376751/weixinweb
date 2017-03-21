@@ -1,5 +1,7 @@
 package com.dudu.weixin.control;
 
+import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
+import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.weixin.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/3/17.
@@ -22,46 +25,49 @@ public class ABCDceshiAjax {
     private static final Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
 
     @Autowired
-    private LianmengIntroducedService lianmengIntroducedService;
+    private LianmengIntroducedService lianmengIntroducedService;//联盟介绍
     @Autowired
-    private LianMengActivityService lianMengActivityService ;
+    private LianMengActivityService lianMengActivityService;//联盟活动
     @Autowired
-    private LianMengKaService lianMengKa;
+    private LianMengKaService lianMengKa;//联盟卡包
+    @Autowired
+    private YangCheInfoService yangCheInfoService;//养车信息
+    @Autowired
+    private ChexiantoubaoService chexiantoubaoService;//车险投保
+    @Autowired
+    private AHIService ahiService;//ahi
 
-    @Autowired
-    private YangCheInfoService yangCheInfoService;
-    @Autowired
-    private ChexiantoubaoService chexiantoubaoService;
-    @Autowired
-    private AHIService ahiService;
     @ResponseBody
     @RequestMapping(value = "getCommonAjax", method = RequestMethod.POST)
-    public Object commonAjax(HttpServletRequest request,HttpServletResponse response,
-            @RequestParam(name = "fromflag",required=false ) String fromflag,
-            @RequestParam(name = "shopcode",required=false) String shopcode,
-            @RequestParam(name = "CarId",required=false) String CarId,
-            @RequestParam(name = "cardNo",required=false) String cardNo
+    public Object commonAjax(HttpServletRequest request, HttpServletResponse response,
+                             @RequestParam(name = "fromflag", required = false) String fromflag,
+                             @RequestParam(name = "shopcode", required = false) String shopcode,
+                             @RequestParam(name = "CarId", required = false) String CarId,
+                             @RequestParam(name = "cardNo", required = false) String cardNo
     ) {
-        logger.debug("ajax进入==============="+fromflag);
+        logger.debug("ajax进入===============" + fromflag);
         response.setCharacterEncoding("UTF-8");
         Object obj = null;
         fromflag = encodingUrl(fromflag);
         shopcode = encodingUrl(shopcode);
         String carHaoPai = CarId;
         /*
-		 * 联盟卡
+         * 联盟卡
 		 */
 
 
         //联盟卡主页信息列表
         //TODO 后期需要添加判断
         if ("queryLmkInfoList".equals(fromflag)) {
-//            obj = lianMengKa.queryLmkInfo(shopcode, carHaoPai);
+            logger.info("联盟卡主页信息列表"+shopcode+carHaoPai);
+            List<LianmengkaXmLeftResultModule> lianmengkaXmLeftResultModules = lianMengKa.queryLmkInfo(shopcode, carHaoPai);
+            return lianmengkaXmLeftResultModules;
         }
 
         //联盟卡消费明细页面
         if ("queryLmkXiaoFeiMX".equals(fromflag)) {
-//            obj = lianMengKa.queryLmkXiaoFeiMX(shopcode, cardNo, carHaoPai);
+            List<LianmengkaXmCustResultModule> lianmengkaXmCustResultModules = lianMengKa.queryLmkXiaoFeiMX(shopcode, cardNo, carHaoPai);
+            return lianmengkaXmCustResultModules;
         }
 
 
@@ -76,14 +82,14 @@ public class ABCDceshiAjax {
         //获取养车信息列表信息
         if ("queryYangCheInfo".equals(fromflag)) {
             logger.debug("养车信息列表");
-           return  yangCheInfoService.queryInfoList("CS000");
+            return yangCheInfoService.queryInfoList("CS000");
         }
         //养车信息详情
         if ("getYangCheInfo".equals(fromflag)) {
             logger.debug("养车信息");
-            String ids =  request.getParameter("ids");
+            String ids = request.getParameter("ids");
             String id = encodingUrl(ids);
-            return  yangCheInfoService.getInfo(Integer.parseInt(id));
+            return yangCheInfoService.getInfo(Integer.parseInt(id));
         }
 
 		/*
@@ -100,7 +106,7 @@ public class ABCDceshiAjax {
         //单查联盟活动
         if ("getLianMengActivity".equals(fromflag)) {
             logger.debug("单查联盟活动");
-            String ids =  request.getParameter("ids");
+            String ids = request.getParameter("ids");
             String id = encodingUrl(ids);
             return lianMengActivityService.getInfo(Integer.parseInt(id));
         }
@@ -126,20 +132,20 @@ public class ABCDceshiAjax {
         String plateNumber = request.getParameter("plateNumber");
         String strOpenId = request.getParameter("strOpenId");
         if ("queryAllPointByPlateNumber".equals(fromflag)) {
-            logger.debug("ahi"+plateNumber);
+            logger.debug("ahi" + plateNumber);
             return ahiService.queryAllPointByPlateNumber(plateNumber);
         }
         //AHI
         if ("queryCarPointOne".equals(fromflag)) {
-            logger.debug("ahi"+plateNumber);
+            logger.debug("ahi" + plateNumber);
             return ahiService.queryCarPointOne(plateNumber);
         }
         //AHI
         if ("queryCarPointTwo".equals(fromflag)) {
-            logger.debug("ahi"+plateNumber);
+            logger.debug("ahi" + plateNumber);
             String ratio = request.getParameter("ratio");
             String id = request.getParameter("id");
-            return ahiService.queryCarPointTwo( plateNumber,id, ratio);
+            return ahiService.queryCarPointTwo(plateNumber, id, ratio);
         }
 
 

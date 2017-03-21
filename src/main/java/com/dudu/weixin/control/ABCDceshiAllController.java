@@ -1,6 +1,7 @@
 package com.dudu.weixin.control;
 
 import com.dudu.weixin.service.LianmengIntroducedService;
+import com.dudu.weixin.service.LoginActionNewService;
 import com.dudu.weixin.service.ShopInfoService;
 import com.dudu.weixin.struct.shop.ShopInfo;
 import com.dudu.weixin.util.Constant;
@@ -29,6 +30,10 @@ import java.io.IOException;
 public class ABCDceshiAllController {
 
     @Autowired
+
+
+    private static final Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
+    @Autowired
     private Constant constant;
     @Autowired
     private HttpSession httpSession;
@@ -36,23 +41,29 @@ public class ABCDceshiAllController {
     private ShopInfoService shopInfoService;
     @Autowired
     private LianmengIntroducedService lianmengIntroducedService;
-
-    private static final Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
+    @Autowired
+    private LoginActionNewService loginActionNewService;
 
     //点击菜单后进入-------------------------------------------------------
     @RequestMapping(value = "oauthLoginServlet", method = RequestMethod.GET)
     public String oauthLogin(HttpServletRequest request,
-                             @RequestParam(name = "code",required=false ) String code,
-                             @RequestParam(name = "shopcode",required=false) String shopcode,
-                             @RequestParam(name = "flagStr",required=false) String flagStr, Model model) {
-        logger.info("菜单进入================================"+flagStr);
+                             @RequestParam(name = "code", required = false) String code,
+                             @RequestParam(name = "shopcode", required = false) String shopcode,
+                             @RequestParam(name = "flagStr", required = false) String flagStr, Model model) {
+        logger.info("菜单进入================================" + flagStr);
 
         //判断点击菜单，进入不同页面
-         if ("login".equals(flagStr)) {
-//            return "/daoHang/daoHangliebiao/service/daohangindex.jsp?shopcode=" + shopcode + "&openid=" + openId + '"';//登录页面
-        } else if ("lmkInfo".equals(flagStr)) {
+        if ("lmkInfo".equals(flagStr)) {
             return "/lianMengKa/lianMengCard/homePage";//联盟卡包
-        } else if ("daoHang".equals(flagStr)) {
+        } else if ("lianMengDetails".equals(flagStr)) {
+            logger.info("联盟卡详情");
+            String cardName = request.getParameter("cardName");
+            String cardNo = request.getParameter("cardNo");
+            model.addAttribute("cardName",cardName);
+            model.addAttribute("cardNo",cardNo);
+            model.addAttribute("shopcode",shopcode);
+            return "/lianMengKa/lianMengCard/lianMengDetails"; //联盟卡明细
+        }else if ("daoHang".equals(flagStr)) {
 //            return "/daoHang/daoHangliebiao/service/daohangindex.jsp?shopcode=" + shopcode + "&openid=" + openId + '"';//服务导航
         } else if ("logout".equals(flagStr)) {
             return "/logout";//退出及注销账号
@@ -62,8 +73,8 @@ public class ABCDceshiAllController {
             logger.info("ahi详情页面!");
             String plateNumber = request.getParameter("plateNumber");
             String id = request.getParameter("id");
-            model.addAttribute("plateNumber",plateNumber);
-            model.addAttribute("id",id);
+            model.addAttribute("plateNumber", plateNumber);
+            model.addAttribute("id", id);
 //            "/plateNumber="+plateNumber+"&id="+id;//AHI指数
             return "/ahi/subxiangqing";//详情
 
@@ -82,22 +93,22 @@ public class ABCDceshiAllController {
 
         } else if ("getYangChe".equals(flagStr)) {
             String ids = request.getParameter("ids");
-            model.addAttribute("ids",ids);
+            model.addAttribute("ids", ids);
             return "/yangCheInfo/jsp/getYangChe";//养车信息详情
 
         } else if ("lianMengActivity".equals(flagStr)) {
 
             return "/lianMengActivity/jsp/lianMengActivity";//联盟活动
 
-        }else if ("getLianMeng".equals(flagStr)) {
+        } else if ("getLianMeng".equals(flagStr)) {
             String ids = request.getParameter("ids");
-            model.addAttribute("ids",ids);
+            model.addAttribute("ids", ids);
             return "/lianMengActivity/jsp/getLianMeng";//联盟活动详情
 
-        }else if("cheXianTouBao".equals(flagStr)){
+        } else if ("cheXianTouBao".equals(flagStr)) {
 
             return "/baoxian/cheXianTouBao/cheXianTouBao";//车险投保
-        }else {
+        } else {
             return "/allController";
 //            return "/lianMengKa/lianMengCard/homePage";//
         }
@@ -105,6 +116,19 @@ public class ABCDceshiAllController {
 
     }
 
+    //登录页面
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    protected String login(HttpServletRequest request, HttpServletResponse response) {
+        String shopcode = request.getParameter("shopcode");
+        boolean flg = loginActionNewService.login(request);
+        if(flg) {
+            return "/lianMengKa/lianMengCard/homePage?shopcode="+shopcode;
+        }
+        else {
+            return "/login/loginFailInfo?shopcode="+shopcode;
+
+        }
+    }
 
     @ResponseBody
     @RequestMapping(value = "/Notify", method = RequestMethod.GET)

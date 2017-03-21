@@ -48,8 +48,9 @@
 </head>
 <body>
 
+
 <div class="regtitle"><img src="/files/login/reg_title.jpg" alt="" title="" /><h4>³µÖ÷µÇÂ½</h4></div>
-<form name="form1" method="post" action="checkAction.jsp" onSubmit="return checkform();">
+<form name="form1" method="post" action="/oauthLoginServlet?flagStr=login" onSubmit="return checkform();">
 <div class="regform">
  <ul>
   <li><label class="label">³µÅÆºÅÂë</label><input type="text" style="font-size:24px;vertical-align:middle;background-color:#fff; height:40px; width:400px; border:1px solid #ccc;" name="CarId"/></li>

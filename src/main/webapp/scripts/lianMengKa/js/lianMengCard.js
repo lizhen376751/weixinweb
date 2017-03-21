@@ -97,11 +97,11 @@ $(document).ready(function () {
 					obj_append("div16","width_2",$(li[s]),"span",arr[i].leftMx[j].spname);
 					obj_append("div17","width_2 margin_2",$(li[s]),"span",arr[i].leftMx[j].effective_date);
 					obj_append("div18","width_2 margin_2",$(li[s]),"span",arr[i].leftMx[j].current_num);
-					obj_append("div15","width_1 margin_1",$(li[s]),"img","","../img/erweima.png",arr[i].leftMx[j].card_id,arr[i].leftMx[j].item_code,arr[i].leftMx[j].type_flg);
+					obj_append("div15","width_1 margin_1",$(li[s]),"img","","/files/lianMengKa/img/erweima.png",arr[i].leftMx[j].card_id,arr[i].leftMx[j].item_code,arr[i].leftMx[j].type_flg);
 				}
 				//添加明细
 				obj_append("div19","card_detailed font_3",$($(".card_surplus")[i]),"a","明细");
-				$($("a")[i]).attr("href","lianMengDetails.jsp?cardName="+arr[i].card_name+"&cardNo="+arr[i].card_number)
+				$($("a")[i]).attr("href","/oauthLoginServlet?flagStr=lianMengDetails&cardName="+arr[i].card_name+"&cardNo="+arr[i].card_number)
 			}
 		}else{
 			alert("当前车辆无联盟卡信息！");
@@ -133,12 +133,12 @@ $(document).ready(function () {
 	   ,{"card_id":70,"current_num":10.0,"effective_date":1516350499373,"item_code":"CS0001000200030001","spname":"空气锤","type_flg":2}
 	]}]
 	*/
-	var shopcode = encodeURIComponent($("#shopcode").val());
-	var CarId = encodeURIComponent($("#CarId").val());
+	var shopcode = $("#shopcode").val();
+	var CarId =$("#CarId").val();
 	var contextPathStr = $("#contextPathStr").val();
 	$.ajax({ 
 		type    : 'POST',
-		url     : contextPathStr+'/servlet/getCommonAjax', 
+		url     : '/getCommonAjax',
 		data    : {
 			fromflag   : "queryLmkInfoList",
 			shopcode   : shopcode,
@@ -146,7 +146,7 @@ $(document).ready(function () {
 		},
 		success : function(jsonData){
 			var json = JSON.parse(jsonData);
-			appenging(json.data);
+			appenging(json);
 			var imgs = $(".card_surplus ul li img");
 			var zheZhaoCeng = $(".zheZhaoCeng");
 			var erWeiMa = $(".erWeiMa");
@@ -161,7 +161,7 @@ $(document).ready(function () {
 				
 				$.ajax({
 					type:"POST",
-					url:contextPathStr+'/servlet/getCommonAjax',
+					url:'/getCommonAjax',
 					data:{
 						fromflag   : "getXmkQRCode",
 						card_id    :card_ids,

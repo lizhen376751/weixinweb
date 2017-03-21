@@ -27,6 +27,10 @@
         function AHIInfo() {
             window.location.href = "/oauthLoginServlet?flagStr=AHIInfo";
         }
+        //联盟卡包
+        function lmkInfo() {
+            window.location.href = "/oauthLoginServlet?flagStr=lmkInfo";
+        }
     </script>
 </head>
 <body>
@@ -39,6 +43,7 @@
             <li class="btnli"><input type="button" class="regbtn" value="联盟活动" onclick="queryLMActivity()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="保险" onclick="cheXianTouBao()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="Ahi" onclick="AHIInfo()"/></li>
+            <li class="btnli"><input type="button" class="regbtn" value="联盟卡包" onclick="lmkInfo()"/></li>
         </ul>
     </div>
 

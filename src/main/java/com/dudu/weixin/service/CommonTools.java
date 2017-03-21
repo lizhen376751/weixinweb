@@ -8,7 +8,7 @@ public class CommonTools {
 //获取店管家名称
 	public  String getShopName(String shopcode) {
 
-		return null;
+		return "北京经典汽车服务有限公司";
 	}
 	
 	

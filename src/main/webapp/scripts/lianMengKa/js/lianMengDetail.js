@@ -45,14 +45,14 @@ $(document).ready(function () {
     }
    
     
-    var shopcode = encodeURIComponent($("#shopcode").val());
-	var CarId = encodeURIComponent($("#CarId").val());
-	var cardNo = encodeURIComponent($("#cardNo").val());
+    var shopcode = $("#shopcode").val();
+	var CarId = $("#CarId").val();
+	var cardNo = $("#cardNo").val();
 	var contextPathStr = $("#contextPathStr").val();
 	
 	$.ajax({ 
 		type    : 'POST',
-		url     : contextPathStr+'/servlet/getCommonAjax', 
+		url     : '/getCommonAjax',
 		data    : {
 			fromflag   : "queryLmkXiaoFeiMX",
 			shopcode   : shopcode,
@@ -67,7 +67,7 @@ $(document).ready(function () {
 	
 	$.ajax({ 
 		type    : 'POST',
-		url     : contextPathStr+'/servlet/getCommonAjax', 
+		url     : '/getCommonAjax',
 		data    : {
 			fromflag   : "getXmkCardInfo",
 			shopcode   : shopcode,
