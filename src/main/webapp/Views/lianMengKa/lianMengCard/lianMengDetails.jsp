@@ -4,7 +4,7 @@
 // 	String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
 	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
 //	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
-//
+
 	String cardNo=request.getParameter("cardNo");
 	String shopcode="CS000";
 	String CarId = request.getParameter("CarId");
@@ -61,7 +61,7 @@
 				</ul>
 			</div>
 
-			<a class="card_detailed font_3" href="homePage.jsp">
+			<a class="card_detailed font_3" href="/oauthLoginServlet?flagStr=lmkInfo">
 				返回
 			</a>
 		</div>
