@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "/")
 public class Info {
+    
     @Autowired
     private LianmengIntroducedService lianmengIntroducedService;
 
