@@ -2,7 +2,7 @@
 
 <% 
 // 	String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
-//	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
+	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
 //	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
 //
 	String cardNo=request.getParameter("cardNo");
