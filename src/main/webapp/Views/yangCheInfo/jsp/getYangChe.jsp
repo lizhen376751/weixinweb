@@ -16,10 +16,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<script src="../js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
-	<link rel="stylesheet" type="text/css" href="../css/weix.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/yangCheXiangQing.css"/>
-		<script src="../js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/yangCheInfo/css/yangCheXiangQing.css"/>
+		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h2></h2>
     <div class="txt"></div>
   </body>
-  <script src="../js/getYangChe.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/scripts/yangCheInfo/js/getYangChe.js" type="text/javascript" charset="utf-8"></script>
   <input type="hidden" id="shopcode" name="shopcode" value="<%=shopcode %>" >
   <input type="hidden" id="contextPathStr" name="contextPathStr" value="<%=request.getContextPath() %>" >
 </html>

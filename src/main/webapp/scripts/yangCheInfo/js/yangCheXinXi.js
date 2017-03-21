@@ -30,7 +30,7 @@ $(document).ready(function () {
 		for (var i = 0;i < new_box.length;i++) {
 			new_box[i].i = i;
 			new_box[i].onclick = function () {
-				window.location.href="../jsp/getYangChe.jsp?ids="+abc[this.i];
+				window.location.href="/oauthLoginServlet?flagStr=getYangChe&ids="+abc[this.i];
 			}
 		}
 	}

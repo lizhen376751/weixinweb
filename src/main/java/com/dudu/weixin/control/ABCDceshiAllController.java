@@ -78,6 +78,11 @@ public class ABCDceshiAllController {
         } else if ("YCInfo".equals(flagStr)) {
             return "/yangCheInfo/jsp/yangCheXinXi";//养车信息
 
+        } else if ("getYangChe".equals(flagStr)) {
+            String ids = request.getParameter("ids");
+            model.addAttribute("ids",ids);
+            return "/yangCheInfo/jsp/getYangChe";//养车信息详情
+
         } else if ("lianMengActivity".equals(flagStr)) {
 
             return "/lianMengActivity/jsp/lianMengActivity";//联盟活动
@@ -93,52 +98,6 @@ public class ABCDceshiAllController {
 
     }
 
-
-    //-------------------------------------------------------
-//    @RequestMapping(value = "/{parampath}", method = RequestMethod.GET)
-//    public String oauthTH(
-//            @RequestParam(name = "code",required=false ) String code,
-//            @RequestParam(name = "shopcode") String shopcode,
-//            @PathVariable String parampath) {
-//        //TODO 如果不相等后续需要判断OAuthTHServlet   /oauthTHServlet   /preferentialList.jsp
-//        if (!"authdeny".equals(code)) {
-//            String WXAppId = shopInfoService.getShopAppid(shopcode);
-//            String WXAppSecret = shopInfoService.getShopAppSecret(shopcode);
-//
-//            WeixinOauth2Token weixinOauth2Token = AdvancedUtil.getOauth2AccessToken(WXAppId, WXAppSecret, code);
-//            String openId = weixinOauth2Token.getOpenId();
-//
-//            httpSession.setAttribute("DUDUCHEWANG_OpenId", openId);
-//            httpSession.setAttribute("DUDUCHEWANG_shopcode", shopcode);
-//            String url = "http://" + constant.getWeixinBaseUrl() + "/" + constant.getPath();
-//        }
-//        switch (parampath) {
-//            case "oauthTHServlet":
-//                return "/alljsp/preferential";//猜测优惠列表
-//            case "oauthIMServlet":
-//                return "/alljsp/imessage";//我的消息
-//            case "oauthODServlet":
-//                return "/alljsp/evaluateList";//订单列表
-//            case "oauthSCServlet":
-//                return "/alljsp/collectSotrelist";//收藏列表
-//            case "oauthServlet":
-//                return "/alljsp/abstract";//猜测商品列表
-//            case "oauthYHServlet":
-//                return "/alljsp/electroniccoupon";//电子优惠券
-//            case "DaZhuanPanServlet":
-//                return "/alljsp/zhuanpan";//幸运大转盘
-//            case "ShangChengServlet":
-//                return "/alljsp/zy.jsp?shopcode=" + shopcode + "&openid=";//首页
-//            //后面加上+openId;
-//            case "DateDueReminderServlet":
-//                return "/alljsp/reminder";//保养提醒
-//            case "saomaServlet":
-//                return "/alljsp/saoma";//扫一扫
-//
-//        }
-//        return code;
-//
-//    }
 
     @ResponseBody
     @RequestMapping(value = "/Notify", method = RequestMethod.GET)

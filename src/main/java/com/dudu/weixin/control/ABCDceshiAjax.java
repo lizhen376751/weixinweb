@@ -39,8 +39,7 @@ public class ABCDceshiAjax {
             @RequestParam(name = "fromflag",required=false ) String fromflag,
             @RequestParam(name = "shopcode",required=false) String shopcode,
             @RequestParam(name = "CarId",required=false) String CarId,
-            @RequestParam(name = "cardNo",required=false) String cardNo,
-            @RequestParam(name = "ids",required=false) String ids
+            @RequestParam(name = "cardNo",required=false) String cardNo
     ) {
         logger.debug("ajax进入==============="+fromflag);
         response.setCharacterEncoding("UTF-8");
@@ -78,9 +77,10 @@ public class ABCDceshiAjax {
             logger.debug("养车信息列表");
            return  yangCheInfoService.queryInfoList("CS000");
         }
-        //养车信息
+        //养车信息详情
         if ("getYangCheInfo".equals(fromflag)) {
             logger.debug("养车信息");
+            String ids =  request.getParameter("ids");
             String id = encodingUrl(ids);
             return  yangCheInfoService.getInfo(Integer.parseInt(id));
         }
@@ -91,6 +91,7 @@ public class ABCDceshiAjax {
 
         //获取联盟活动信息
         if ("queryLMActivity".equals(fromflag)) {
+
             logger.debug("获取联盟活动信息");
             return lianMengActivityService.queryInfoList("CS000");
         }
@@ -98,6 +99,7 @@ public class ABCDceshiAjax {
         //单查联盟活动
         if ("getLianMengActivity".equals(fromflag)) {
             logger.debug("单查联盟活动");
+            String ids =  request.getParameter("ids");
             String id = encodingUrl(ids);
             return lianMengActivityService.getInfo(Integer.parseInt(id));
         }
