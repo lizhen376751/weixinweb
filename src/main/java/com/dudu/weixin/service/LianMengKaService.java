@@ -65,7 +65,7 @@ public class LianMengKaService {
     public List<LianmengKaResultModule> getXmkCardInfo(String shopcode, String cardNo, String carHaoPai) {
 
         List<LianmengKaResultModule> results = null;
-        try {
+
             LiangmengKaQueryModule queryModule = new LiangmengKaQueryModule();
             queryModule.setProduct_shopcode(shopcode);//联盟总部编码
             queryModule.setCard_number(cardNo);//卡号
@@ -81,15 +81,17 @@ public class LianMengKaService {
 
                     //查询出店铺列表图片
                     String shopListImg = commonTools.getShopListImg(sell_code);
-                    //TODO 后期需要把shopListImg放入results结果集
+                    //TODO 后期需要把shopListImg放入results结果集,暂时存入Customer_mobile里面
+                    lianmengKaResultModule.setCustomer_mobile(shopListImg);
                     //把发卡店铺编码 替换为 店铺名称
                     String sell_shopName = commonTools.getShopName(sell_code);
-                    //TODO 后期需要把sell_shopName放入results结果集
+                    //TODO 后期需要把sell_shopName放入results结果集,暂时存入sell_shopName里面
+                    lianmengKaResultModule.setCar_haopai(sell_shopName);
+                    System.out.println("+============"+sell_code+shopListImg+sell_shopName);
+
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         return results;
     }
 

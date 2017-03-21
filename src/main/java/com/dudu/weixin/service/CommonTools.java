@@ -11,7 +11,7 @@ public class CommonTools {
 		return "北京经典汽车服务有限公司";
 	}
 	
-	
+	//获取图片
 	public  String getShopListImg(String shopcode){
 		return null;
 	}

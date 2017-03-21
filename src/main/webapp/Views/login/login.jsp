@@ -4,6 +4,7 @@
 
     // String strOpenId = request.getParameter("strOpenId");
     // String shopcode = request.getParameter("shopcode");
+    //TODO  strOpenId  shopcode暂时写死
     String strOpenId = "owQtWt8L6RVxj_cTUaPyH27RWdbA";
     String shopcode = "cs000";
 %>

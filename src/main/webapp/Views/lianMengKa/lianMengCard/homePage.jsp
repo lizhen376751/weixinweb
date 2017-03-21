@@ -5,7 +5,7 @@
 	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
 	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
 
-
+	//TODO 登录判断
 //	System.out.println("=============lianMengCard - homePage.jsp=== CarId:|"+CarId+"|");
 //	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
 //		autoLogin autoLogin = new autoLogin();

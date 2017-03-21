@@ -44,6 +44,18 @@ public class ABCDceshiAllController {
     @Autowired
     private LoginActionNewService loginActionNewService;
 
+    //登录页面
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    protected String login(HttpServletRequest request, HttpServletResponse response) {
+        boolean flg = loginActionNewService.login(request);
+        if(flg) {
+            return "/index";
+        }
+        else {
+            return "/login";
+
+        }
+    }
     //点击菜单后进入-------------------------------------------------------
     @RequestMapping(value = "oauthLoginServlet", method = RequestMethod.GET)
     public String oauthLogin(HttpServletRequest request,
@@ -116,19 +128,7 @@ public class ABCDceshiAllController {
 
     }
 
-    //登录页面
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    protected String login(HttpServletRequest request, HttpServletResponse response) {
-        String shopcode = request.getParameter("shopcode");
-        boolean flg = loginActionNewService.login(request);
-        if(flg) {
-            return "/index";
-        }
-        else {
-            return "/login/loginFailInfo?shopcode="+shopcode;
 
-        }
-    }
 
     @ResponseBody
     @RequestMapping(value = "/Notify", method = RequestMethod.GET)

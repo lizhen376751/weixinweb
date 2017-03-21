@@ -3,14 +3,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%--<%@ page language="java" import="com.weixin.login.autoLogin"%>--%>
 <%
-// 	String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
-//	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
-//	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
-	String shopcode = "CS000";
-	String strOpenId = "owQtWt8L6RVxj_cTUaPyH27RWdbA";
-	String CarId = "鲁C996633";
-	System.out.println("=============AHI - AHIxiangqing.jsp=== CarId:|"+CarId+"|");
-
+ 	String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
+	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
+	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
+	//TODO 登录判断
 	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
 
 		response.sendRedirect("../login.jsp?shopcode=" + shopcode + "&strOpenId=" + strOpenId + "");

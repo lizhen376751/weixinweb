@@ -11,6 +11,7 @@
 	
 	
 	System.out.println("=============baoYangList.jsp=== CarId:|"+CarId+"|");
+	//TODO µÇÂ¼ÅÐ¶Ï
 	autoLogin autoLogin = new autoLogin();
 	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
 		CarId = autoLogin.judgeOpenId(strOpenId, shopcode);

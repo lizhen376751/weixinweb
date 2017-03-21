@@ -1,13 +1,13 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <% 
-// 	String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
+ 	String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
 	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
-//	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
+	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
 
 	String cardNo=request.getParameter("cardNo");
-	String shopcode="CS000";
-	String CarId = "鲁C996633";
+//	String shopcode="CS000";
+//	String CarId = "鲁C996633";
 	//TODO 后期封装成接口进行判断
 //	System.out.println("=============lianMengCard - lianMengDetails.jsp=== CarId:|"+CarId+"|cardNo:"+cardNo+"|");
 //	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {

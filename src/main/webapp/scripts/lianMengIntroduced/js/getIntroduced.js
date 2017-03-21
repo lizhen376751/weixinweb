@@ -19,9 +19,9 @@ $(document).ready(function () {
 			shopcode   :  shopcode
 		},
 		success : function(jsonData){
-			alert(jsonData);
+
 			var json = JSON.parse(jsonData);
-			// appenging(json)
+
 			h2.text(json.intro);
 			txt.append(json.content);
 		}

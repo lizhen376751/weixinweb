@@ -1,5 +1,6 @@
 package com.dudu.weixin.control;
 
+import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.weixin.service.*;
@@ -7,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,7 +45,7 @@ public class ABCDceshiAjax {
                              @RequestParam(name = "fromflag", required = false) String fromflag,
                              @RequestParam(name = "shopcode", required = false) String shopcode,
                              @RequestParam(name = "CarId", required = false) String CarId,
-                             @RequestParam(name = "cardNo", required = false) String cardNo
+                             @RequestParam(name = "cardNo", required = false) String cardNo,Model model
     ) {
         logger.debug("ajax进入===============" + fromflag);
         response.setCharacterEncoding("UTF-8");
@@ -73,14 +75,14 @@ public class ABCDceshiAjax {
 
         //获取联盟卡发卡店铺名称
         if ("getXmkCardInfo".equals(fromflag)) {
-//            obj = lianMengKa.getXmkCardInfo(shopcode, cardNo, carHaoPai);
+            List<LianmengKaResultModule> xmkCardInfo = lianMengKa.getXmkCardInfo(shopcode, cardNo, carHaoPai);
+            return xmkCardInfo;
         }
         //获取联盟卡二维码
         if("getXmkQRCode".equals(fromflag)){
             String card_id = encodingUrl(request.getParameter("card_id"));
             String item_code = encodingUrl(request.getParameter("item_code"));
             String type_flg = encodingUrl(request.getParameter("type_flg"));
-            System.out.println("--getXmkQRCode-----card_id:"+card_id+"|--item_code:"+item_code+"|--type_flg:"+type_flg+"|");
             String xmkQRCode = lianMengKa.getXmkQRCode(card_id, item_code, type_flg);
             return xmkQRCode;
         }
@@ -95,7 +97,7 @@ public class ABCDceshiAjax {
         //获取养车信息列表信息
         if ("queryYangCheInfo".equals(fromflag)) {
             logger.debug("养车信息列表");
-            return yangCheInfoService.queryInfoList("CS000");
+            return yangCheInfoService.queryInfoList(shopcode);
         }
         //养车信息详情
         if ("getYangCheInfo".equals(fromflag)) {
@@ -113,7 +115,7 @@ public class ABCDceshiAjax {
         if ("queryLMActivity".equals(fromflag)) {
 
             logger.debug("获取联盟活动信息");
-            return lianMengActivityService.queryInfoList("CS000");
+            return lianMengActivityService.queryInfoList(shopcode);
         }
 
         //单查联盟活动
@@ -127,7 +129,7 @@ public class ABCDceshiAjax {
         //联盟介绍
         if ("getIntroduced".equals(fromflag)) {
             logger.debug("联盟介绍");
-            return lianmengIntroducedService.queryEntry("CS000");
+            return lianmengIntroducedService.queryEntry(shopcode);
         }
         //车险投保(保险公司)
 

@@ -119,56 +119,7 @@
 		</div>
 		<div style="width:100%">
 			<ul id="subPoint" class="lie_li">
-			 <!-- <li class="burder_li numlie_li">
-			  	<span class="xitong numxitong">空调系统</span>	
-			  	<span class="jingbao">2条隐患</span>
-			  	<span class="submiaos" onClick="Togglezs(this);" >展开&nbsp;<img src="../img/zk.png" /> </span>
-			  </li>
-			  <li class="subnumlie_li" style="display:none">
-			  	<div class="lianghao">
-			  		<span class="subxitong ">空调系统</span>	
-			  	    <span class="submiaos"><img src="../img/sun_tis_03.png" />性能良好</span>
-			  	</div>			  	
-			  	<hr class="sub_solid" />
-			  	<div class="lianghao">
-			  		<span class="subxitong ">空调风管</span>	
-			  	    <span class="submiaos"><img src="../img/sun_tis_06.png" />描述</span>
-			  	</div>
-			  	<div class="lianghao">
-			  		<span class="subxitong ">影响：</span>	
-			  	    <span class="submiaos">描述</span>
-			  	</div>
-			  	<div class="lianghao">
-			  		<span class="subxitong ">建议：</span>	
-			  	    <span class="submiaos">建议</span>
-			  	</div>
-			  	<hr class="sub_solid" />
-			  </li>
-			  <li class="burder_li numlie_li">
-			  	<span class="xitong numxitong">空调系统</span>	
-			  	<span class="no_jignbao ">状态良好，无隐患</span>
-			  	<span class="submiaos" onClick="Togglezs(this);">展开&nbsp;<img src="../img/zk.png" /> </span>
-			  </li>
-			  <li class="subnumlie_li" style="display:none">
-			  	<div class="lianghao">
-			  		<span class="subxitong ">空调系统</span>	
-			  	    <span class="submiaos"><img src="../img/sun_tis_03.png" />性能良好</span>
-			  	</div>			  	
-			  	<hr class="sub_solid" />
-			  </li>
-			  <li class="burder_li numlie_li">
-			  	<span class="xitong numxitong">空调系统</span>	
-			  	<span class="no_jignbao">状态良好，无隐患</span>
-			  	<span class="submiaos" onClick="Togglezs(this);">展开&nbsp;<img src="../img/zk.png" /> </span>
-			  </li>
-			  <li class="subnumlie_li" style="display:none">
-			  	<div class="lianghao">
-			  		<span class="subxitong ">空调系统</span>	
-			  	    <span class="submiaos"><img src="../img/sun_tis_03.png" />性能良好</span>
-			  	</div>			  	
-			  	<hr class="sub_solid" />
-			  </li>
-				 -->
+
 			</ul>
 			
 		</div>
