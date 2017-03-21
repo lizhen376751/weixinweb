@@ -70,14 +70,14 @@ public class ABCDceshiAllController {
         } else if ("AHIInfo".equals(flagStr)) {
             return "/ahi/AHIxiangqing";//AHI指数
         } else if ("AHIInfoxiangqing".equals(flagStr)) {
-            logger.info("ahi详情页面!");
+
             String plateNumber = request.getParameter("plateNumber");
             String id = request.getParameter("id");
             model.addAttribute("plateNumber", plateNumber);
             model.addAttribute("id", id);
+            logger.info("ahi详情页面!"+plateNumber+id);
 //            "/plateNumber="+plateNumber+"&id="+id;//AHI指数
             return "/ahi/subxiangqing";//详情
-
 
         } else if ("xiaoFeiList".equals(flagStr)) {
             return "/xiaoFeiJiLu/xiaoFeiList";//消费记录

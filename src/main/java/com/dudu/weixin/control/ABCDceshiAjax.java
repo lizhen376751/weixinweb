@@ -75,6 +75,19 @@ public class ABCDceshiAjax {
         if ("getXmkCardInfo".equals(fromflag)) {
 //            obj = lianMengKa.getXmkCardInfo(shopcode, cardNo, carHaoPai);
         }
+        //获取联盟卡二维码
+        if("getXmkQRCode".equals(fromflag)){
+            String card_id = encodingUrl(request.getParameter("card_id"));
+            String item_code = encodingUrl(request.getParameter("item_code"));
+            String type_flg = encodingUrl(request.getParameter("type_flg"));
+            System.out.println("--getXmkQRCode-----card_id:"+card_id+"|--item_code:"+item_code+"|--type_flg:"+type_flg+"|");
+            String xmkQRCode = lianMengKa.getXmkQRCode(card_id, item_code, type_flg);
+            return xmkQRCode;
+        }
+
+
+
+
 		/*
 		 * 养车信息
 		 */

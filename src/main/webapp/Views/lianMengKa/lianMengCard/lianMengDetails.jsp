@@ -6,7 +6,7 @@
 //	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
 //
 	String cardNo=request.getParameter("cardNo");
-	String shopcode=request.getParameter("shopcode");
+	String shopcode="CS000";
 	String CarId = request.getParameter("CarId");
 	//TODO 后期封装成接口进行判断
 //	System.out.println("=============lianMengCard - lianMengDetails.jsp=== CarId:|"+CarId+"|cardNo:"+cardNo+"|");

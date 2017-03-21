@@ -110,29 +110,7 @@ $(document).ready(function () {
 		
 	}
 		
-		
-	/*
-	var jsonp =[{"car_haopai":"测试车牌"
-	,"card_id":70
-	,"card_name":"2000贵宾卡"
-	,"card_number":"199009"
-	,"customer_mobile":""
-	,"customer_name":"测试名称"
-	,"leftMx":[
-	    {"card_id":70,"current_num":8.0,"effective_date":1516350499373,"item_code":"CSXM0001000100010006","spname":"232","type_flg":1}
-	   ,{"card_id":70,"current_num":10.0,"effective_date":1516350499373,"item_code":"CS0001000200030001","spname":"空气锤","type_flg":2}
-	]},
-	{"car_haopai":"测试车牌"
-	,"card_id":70
-	,"card_name":"2000贵宾卡"
-	,"card_number":"199009"
-	,"customer_mobile":""
-	,"customer_name":"测试名称"
-	,"leftMx":[
-	    {"card_id":70,"current_num":8.0,"effective_date":1516350499373,"item_code":"CSXM0001000100010006","spname":"232","type_flg":1}
-	   ,{"card_id":70,"current_num":10.0,"effective_date":1516350499373,"item_code":"CS0001000200030001","spname":"空气锤","type_flg":2}
-	]}]
-	*/
+
 	var shopcode = $("#shopcode").val();
 	var CarId =$("#CarId").val();
 	var contextPathStr = $("#contextPathStr").val();
@@ -170,7 +148,7 @@ $(document).ready(function () {
 					},
 					success : function(jsonData){
 						var json = JSON.parse(jsonData);
-						erWeiMa.qrcode(json.data);
+						erWeiMa.qrcode(json);
 						erWeiMa.children().css({
 							width:"100%",
 							height:"100%"

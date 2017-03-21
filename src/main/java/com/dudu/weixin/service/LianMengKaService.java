@@ -19,7 +19,7 @@ public class LianMengKaService {
 
     @Reference(version = "0.0.1")
     private ApiLianmengkaOperateIntf apiLianmengkaOperateIntf;
-
+    //	查询联盟卡剩余次数  queryXmkLeftCount   查询联盟卡消费明细 queryXiangmukaCustRecords
     public List<LianmengkaXmLeftResultModule> queryLmkInfo(String shopcode, String carHaoPai) {
         //调用queryLmkInfo接口
         List<LianmengkaXmLeftResultModule> results = null;
