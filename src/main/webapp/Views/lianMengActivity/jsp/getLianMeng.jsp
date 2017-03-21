@@ -19,16 +19,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link rel="stylesheet" type="text/css" href="../css/weix.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/yangCheXiangQing.css"/>
-		<script src="../js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/lianMengActivity/css/yangCheXiangQing.css"/>
+		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
   </head>
   
   <body>
     <h2></h2>
     <div class="txt"></div>
   </body>
-  <script src="../js/getActivity.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/scripts/lianMengActivity/js/getActivity.js" type="text/javascript" charset="utf-8"></script>
   <input type="hidden" id="shopcode" name="shopcode" value="<%=shopcode %>" >
   <input type="hidden" id="contextPathStr" name="contextPathStr" value="<%=request.getContextPath() %>" >
 </html>

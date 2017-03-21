@@ -87,6 +87,11 @@ public class ABCDceshiAllController {
 
             return "/lianMengActivity/jsp/lianMengActivity";//联盟活动
 
+        }else if ("getLianMeng".equals(flagStr)) {
+            String ids = request.getParameter("ids");
+            model.addAttribute("ids",ids);
+            return "/lianMengActivity/jsp/getLianMeng";//联盟活动详情
+
         }else if("cheXianTouBao".equals(flagStr)){
 
             return "/baoxian/cheXianTouBao/cheXianTouBao";//车险投保

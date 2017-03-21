@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	//»ñÈ¡ids
+	//ï¿½ï¿½È¡ids
 	function getvl(name) {
         var reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)", "i");
         if(reg.test(location.href)) return decodeURI(RegExp.$2.replace(/\+/g, " "));
@@ -13,15 +13,15 @@ $(document).ready(function () {
 	
 	$.ajax({ 
 		type    : 'POST',
-		url     : contextPathStr+'/servlet/getCommonAjax', 
+		url     : '/getCommonAjax',
 		data    : {
 			fromflag   : "getLianMengActivity",
 			ids   : ids
 		},
 		success : function(jsonData){
 			var json = JSON.parse(jsonData);
-			h2.text(json.data.title);
-			txt.append(json.data.details)
+			h2.text(json.title);
+			txt.append(json.details)
 		}
 	});
 //	appenging()
