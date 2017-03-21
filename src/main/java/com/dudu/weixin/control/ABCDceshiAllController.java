@@ -117,12 +117,12 @@ public class ABCDceshiAllController {
     }
 
     //登录页面
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     protected String login(HttpServletRequest request, HttpServletResponse response) {
         String shopcode = request.getParameter("shopcode");
         boolean flg = loginActionNewService.login(request);
         if(flg) {
-            return "/lianMengKa/lianMengCard/homePage?shopcode="+shopcode;
+            return "/index";
         }
         else {
             return "/login/loginFailInfo?shopcode="+shopcode;

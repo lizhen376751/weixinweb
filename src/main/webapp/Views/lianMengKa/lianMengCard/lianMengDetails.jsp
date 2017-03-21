@@ -7,7 +7,7 @@
 
 	String cardNo=request.getParameter("cardNo");
 	String shopcode="CS000";
-	String CarId = request.getParameter("CarId");
+	String CarId = "鲁C996633";
 	//TODO 后期封装成接口进行判断
 //	System.out.println("=============lianMengCard - lianMengDetails.jsp=== CarId:|"+CarId+"|cardNo:"+cardNo+"|");
 //	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {

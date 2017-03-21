@@ -1,13 +1,11 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <% 
-// 	String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
-//	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
-//	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
-	//TODO 需封装成接口调用
-	String shopcode = "CS000";
-	String strOpenId = "owQtWt8L6RVxj_cTUaPyH27RWdbA";
-	String CarId = "鲁C996633";
+ 	String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
+	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
+	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
+
+
 //	System.out.println("=============lianMengCard - homePage.jsp=== CarId:|"+CarId+"|");
 //	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
 //		autoLogin autoLogin = new autoLogin();

@@ -1,11 +1,10 @@
 package com.dudu.weixin.service;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.lmk.customer.api.ApiCustomerIntf;
 import com.dudu.soa.lmk.customer.module.QueryCustomerParam;
 import com.dudu.soa.lmk.customer.module.ResultQueryCustomer;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.ContextLoader;
-import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 @Service
 public class LoginActionNewService {
+	@Reference(version = "0.0.1")
+	private ApiCustomerIntf apiCustomerIntf;
 
 	public boolean login(HttpServletRequest request)  {
 		boolean flg = false;
@@ -28,13 +29,11 @@ public class LoginActionNewService {
 //		DBLM dblm = new DBLM();
 
 			System.out.println("-------------登陆车牌：" + CarId + "|Phone:" + Phone + "|");
-			WebApplicationContext classPathXmlApplicationContext = ContextLoader.getCurrentWebApplicationContext();
-			ApiCustomerIntf custService = (ApiCustomerIntf) classPathXmlApplicationContext.getBean("custIntf");
 
 			QueryCustomerParam queryCustomerParam = new QueryCustomerParam();
 			queryCustomerParam.setCarHaopai(CarId);
 
-			List<ResultQueryCustomer> result = custService.queryCustomerStructureClass(queryCustomerParam);
+			List<ResultQueryCustomer> result = apiCustomerIntf.queryCustomerStructureClass(queryCustomerParam);
 			if (result != null && result.size() > 0) {
 				ResultQueryCustomer resultQueryCustomer = result.get(0);
 				String trueMobile = resultQueryCustomer.getCustomerMobile();

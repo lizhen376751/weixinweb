@@ -1,70 +1,72 @@
-       <%@ page contentType="text/html; charset=GBK" language="java"%>
-
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
 <%
 
- String strOpenId = request.getParameter("strOpenId");
- String shopcode = request.getParameter("shopcode");
-
- %>
+    // String strOpenId = request.getParameter("strOpenId");
+    // String shopcode = request.getParameter("shopcode");
+    String strOpenId = "owQtWt8L6RVxj_cTUaPyH27RWdbA";
+    String shopcode = "cs000";
+%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport" />
-    <meta content="yes" name="apple-mobile-web-app-capable" /> 
-    <meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
-    <meta content="telephone=no" name="format-detection" /> 
-    <title>³µÖ÷µÇÂ½</title>
-    <meta name="keywords" content="keyword ..." />
-    <meta name="Description" content="description ..." />
+    <meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <title>è½¦ä¸»ç™»é™†</title>
+    <meta name="keywords" content="keyword ..."/>
+    <meta name="Description" content="description ..."/>
 
-    <link href="/styles/login/global.css" rel="stylesheet" type="text/css" />
+    <link href="/styles/login/global.css" rel="stylesheet" type="text/css"/>
     <script language="JavaScript">
-    //±íµ¥ÊäÈë¼ì²é
-	function login()
-	{
-	if (document.form1.CarId.value=="")
-  	{
-  		alert("ÇëÊäÈë³µÅÆºÅ£¡");
-  		document.form1.CarId.focus();
-  		return false;
-  	}
-  	if (document.form1.Phone.value=="")
-  	{
-  		alert("ÇëÊäÈëÃÜÂë£¡");
-  		document.form1.Phone.focus();
-  		return false;
-  	}
- 	 document.form1.submit();
-	}
+        //è¡¨å•è¾“å…¥æ£€æŸ¥
+        function login() {
+            if (document.form1.CarId.value == "") {
+                alert("è¯·è¾“å…¥è½¦ç‰Œå·ï¼");
+                document.form1.CarId.focus();
+                return false;
+            }
+            if (document.form1.Phone.value == "") {
+                alert("è¯·è¾“å…¥å¯†ç ï¼");
+                document.form1.Phone.focus();
+                return false;
+            }
+            document.form1.submit();
+        }
 
-	function regist(){
-	window.location.href = "regist.jsp?dddopenid=<%=strOpenId%>&shopcode=<%=shopcode%>";
-	}
-	function edit(){
-		window.location.href = "editpassword.jsp?dddopenid=<%=strOpenId%>&shopcode=<%=shopcode%>";
-		}
+        function regist() {
+            window.location.href = "regist.jsp?dddopenid=<%=strOpenId%>&shopcode=<%=shopcode%>";
+        }
+        function edit() {
+            window.location.href = "editpassword.jsp?dddopenid=<%=strOpenId%>&shopcode=<%=shopcode%>";
+        }
     </script>
 </head>
 <body>
 
 
-<div class="regtitle"><img src="/files/login/reg_title.jpg" alt="" title="" /><h4>³µÖ÷µÇÂ½</h4></div>
-<form name="form1" method="post" action="/oauthLoginServlet?flagStr=login" onSubmit="return checkform();">
-<div class="regform">
- <ul>
-  <li><label class="label">³µÅÆºÅÂë</label><input type="text" style="font-size:24px;vertical-align:middle;background-color:#fff; height:40px; width:400px; border:1px solid #ccc;" name="CarId"/></li>
-  <li><label class="label">µÇÂ½ÃÜÂë</label><input type="text" style="font-size:24px;vertical-align:middle;background-color:#fff; height:40px; width:400px; border:1px solid #ccc;" name="Phone" /></li>
-  <li class="btnli"><input type="button" class="regbtn" value="µÇÂ½" onclick="login()"/></li>
-<!--   
-  <li class="btnli"><input type="button" class="regbtn" value="×¢²á" onclick="regist()"/></li>
-  <li class="btnli"><input type="button" class="regbtn" value="ĞŞ¸ÄÃÜÂë" onclick="edit()"/></li> 
--->
- </ul>
-</div>
-<input name="actions" type="hidden" value="login">
-<input name="OpenId" type="hidden" value="<%=strOpenId%>">
-<input name="shopcode" type="hidden" value="<%=shopcode%>">
+<div class="regtitle"><img src="/files/login/reg_title.jpg" alt="" title=""/><h4>è½¦ä¸»ç™»é™†</h4></div>
+<form name="form1" method="post" action="/login" onSubmit="return checkform();">
+    <div class="regform">
+        <ul>
+            <li><label class="label">è½¦ç‰Œå·ç </label><input type="text"
+                                                        style="font-size:24px;vertical-align:middle;background-color:#fff; height:40px; width:400px; border:1px solid #ccc;"
+                                                        name="CarId"/></li>
+            <li><label class="label">ç™»é™†å¯†ç </label><input type="text"
+                                                        style="font-size:24px;vertical-align:middle;background-color:#fff; height:40px; width:400px; border:1px solid #ccc;"
+                                                        name="Phone"/></li>
+            <li class="btnli"><input type="button" class="regbtn" value="ç™»é™†" onclick="login()"/></li>
+            <!--
+              <li class="btnli"><input type="button" class="regbtn" value="æ³¨å†Œ" onclick="regist()"/></li>
+              <li class="btnli"><input type="button" class="regbtn" value="ä¿®æ”¹å¯†ç " onclick="edit()"/></li>
+            -->
+        </ul>
+    </div>
+    <input name="actions" type="hidden" value="login">
+    <input name="OpenId" type="hidden" value="<%=strOpenId%>">
+    <input name="shopcode" type="hidden" value="<%=shopcode%>">
 </form>
 </body>
 </html>
