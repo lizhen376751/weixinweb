@@ -66,60 +66,60 @@
             <ul id="thelist" class="margin_auto"><%
 	}else{ %>
                 <ul id="thelist" class="margin_auto" style="height:100%;">
-                    <% }%>
+                    <%--<% }%>--%>
 
 
-                    <%
-                        if (listDJ.size() > 0) {
-                            for (int j = 0; j < listDJ.size(); j++) {
-                                HashMap hmDJ = (HashMap) listDJ.get(j);
+                    <%--<%--%>
+                        <%--if (listDJ.size() > 0) {--%>
+                            <%--for (int j = 0; j < listDJ.size(); j++) {--%>
+                                <%--HashMap hmDJ = (HashMap) listDJ.get(j);--%>
 
-                                String CustomerDemand_DateBegin = (String) hmDJ.get("CustomerDemand_DateBegin");
-                                String shopcodetr = (String) hmDJ.get("shopcode");
-//                                String shopName = autoLogin.getDuduShopName(shopcodetr);
-                                String shopName = "北京经典";
-                                String CustomerDemand_Memo = (String) hmDJ.get("CustomerDemand_Memo");
+                                <%--String CustomerDemand_DateBegin = (String) hmDJ.get("CustomerDemand_DateBegin");--%>
+                                <%--String shopcodetr = (String) hmDJ.get("shopcode");--%>
+<%--//                                String shopName = autoLogin.getDuduShopName(shopcodetr);--%>
+                                <%--String shopName = "北京经典";--%>
+                                <%--String CustomerDemand_Memo = (String) hmDJ.get("CustomerDemand_Memo");--%>
 
-                                String model_name1 = (String) hmDJ.get("model_name1");
-                                String model_name2 = (String) hmDJ.get("model_name2");
-                                String xqlx = model_name1 + "/" + model_name2;
+                                <%--String model_name1 = (String) hmDJ.get("model_name1");--%>
+                                <%--String model_name2 = (String) hmDJ.get("model_name2");--%>
+                                <%--String xqlx = model_name1 + "/" + model_name2;--%>
 
-                                String CustomerDemand_Level = (String) hmDJ.get("CustomerDemand_Level");
-                                String CustomerDemand_LevelName = "";
-                                if (CustomerDemand_Level.equals("1")) {
-                                    CustomerDemand_LevelName = "<span class='by_bgcolorfjj by_width'>非常紧急</span>";
-                                }
-                                if (CustomerDemand_Level.equals("2")) {
-                                    CustomerDemand_LevelName = "<span class='by_bgcolorjj by_width'>紧急</span>";
-                                }
-                                if (CustomerDemand_Level.equals("3")) {
-                                    CustomerDemand_LevelName = "<span class='by_bgcolorpt by_width'>普通</span>";
-                                }
+                                <%--String CustomerDemand_Level = (String) hmDJ.get("CustomerDemand_Level");--%>
+                                <%--String CustomerDemand_LevelName = "";--%>
+                                <%--if (CustomerDemand_Level.equals("1")) {--%>
+                                    <%--CustomerDemand_LevelName = "<span class='by_bgcolorfjj by_width'>非常紧急</span>";--%>
+                                <%--}--%>
+                                <%--if (CustomerDemand_Level.equals("2")) {--%>
+                                    <%--CustomerDemand_LevelName = "<span class='by_bgcolorjj by_width'>紧急</span>";--%>
+                                <%--}--%>
+                                <%--if (CustomerDemand_Level.equals("3")) {--%>
+                                    <%--CustomerDemand_LevelName = "<span class='by_bgcolorpt by_width'>普通</span>";--%>
+                                <%--}--%>
 
-                    %>
+                    <%--%>--%>
 
 
-                    <li>
-                        <div class="by_center by_top"><span class="by_date font_2"><%=CustomerDemand_DateBegin %></span>
-                            <span class="by_name font_2">&nbsp;&nbsp;<%=shopName%></span></div>
-                        <div class="by_center font_1 by_cenulcolor"> 保养类型：<%=xqlx%>
-                        </div>
-                        <div class="by_center font_1 by_cenulcolor"> 详<i
-                                style="visibility: hidden">保养</i>情：<%=CustomerDemand_Memo%>
-                        </div>
-                        <div class="by_center font_1 by_cenulcolor"> 状<i
-                                style="visibility: hidden">保养</i>态：<%=CustomerDemand_LevelName %>
-                        </div>
-                    </li>
-                    <%
-                        }
-                    } else {
-                    %>
-                    <li>
-                        <div style="width:100%;height:100%;margin-top:6%;" align="center"><font size="6">无保养提醒信息！</font>
-                        </div>
-                    </li>
-                    <% } %>
+                    <%--<li>--%>
+                        <%--<div class="by_center by_top"><span class="by_date font_2"><%=CustomerDemand_DateBegin %></span>--%>
+                            <%--<span class="by_name font_2">&nbsp;&nbsp;<%=shopName%></span></div>--%>
+                        <%--<div class="by_center font_1 by_cenulcolor"> 保养类型：<%=xqlx%>--%>
+                        <%--</div>--%>
+                        <%--<div class="by_center font_1 by_cenulcolor"> 详<i--%>
+                                <%--style="visibility: hidden">保养</i>情：<%=CustomerDemand_Memo%>--%>
+                        <%--</div>--%>
+                        <%--<div class="by_center font_1 by_cenulcolor"> 状<i--%>
+                                <%--style="visibility: hidden">保养</i>态：<%=CustomerDemand_LevelName %>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
+                    <%--<%--%>
+                        <%--}--%>
+                    <%--} else {--%>
+                    <%--%>--%>
+                    <%--<li>--%>
+                        <%--<div style="width:100%;height:100%;margin-top:6%;" align="center"><font size="6">无保养提醒信息！</font>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
+                    <%--<% } %>--%>
                 </ul>
                 <div id="pullUp" style="width:100%;text-align:center;font-size:32px">
                     <span class="pullUpIcon"></span><span class="pullUpLabel">上拉刷新...</span>
