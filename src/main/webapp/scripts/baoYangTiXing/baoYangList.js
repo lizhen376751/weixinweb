@@ -32,7 +32,7 @@ $(document).ready(function(){
                         "</div>"+
                         "<div class='by_center font_1 by_cenulcolor'> 保养类型："+json[ii].model_name1+"/"+json[ii].model_name2+"</div>"+
                         "<div class='by_center font_1 by_cenulcolor'> 详<i style='visibility: hidden'>保养</i>情："+json[ii].customerDemand_Memo +"</div>"+
-                        "<div class='by_center font_1 by_cenulcolor'> 状<i  style='visibility: hidden'>保养</i>态："+flaghtml +" </div>"+
+                         flaghtml +
                         "</li>"
                 }
 
