@@ -19,11 +19,11 @@ $(document).ready(function(){
                 for(var ii=0;ii<json.length;ii++){
                     var flaghtml="";
                     if(json[ii].CustomerDemand_Level==1){
-                        flaghtml+="<div class='by_width font_1 by_bgcolorfjj'> 状<i  style='visibility: hidden'>保养</i>态：非常紧急</div>";
+                        flaghtml+="<span class='by_bgcolorfjj by_width'>非常紧急</span>";
                     }else if(json[ii].CustomerDemand_Level==2){
-                        flaghtml+="<div class='by_width font_1 by_bgcolorjj'> 状<i  style='visibility: hidden'>保养</i>态：紧急</div>";
+                        flaghtml+="<span class='by_bgcolorjj by_width'>紧急</span>";
                     }else{
-                        flaghtml+="<div class='by_width font_1 by_bgcolorpt'> 状<i  style='visibility: hidden'>保养</i>态：普通</div>";
+                        flaghtml+="<span class='by_bgcolorpt by_width'>普通</span>";
                     }
                     html+="<li>"+
                         "<div class='by_center by_top'>"+
@@ -32,7 +32,7 @@ $(document).ready(function(){
                         "</div>"+
                         "<div class='by_center font_1 by_cenulcolor'> 保养类型："+json[ii].model_name1+"/"+json[ii].model_name2+"</div>"+
                         "<div class='by_center font_1 by_cenulcolor'> 详<i style='visibility: hidden'>保养</i>情："+json[ii].customerDemand_Memo +"</div>"+
-                         flaghtml +
+                        "<div class='by_center font_1 by_cenulcolor'> 状<i  style='visibility: hidden'>保养</i>态："+flaghtml +" </div>"+
                         "</li>"
                 }
 
