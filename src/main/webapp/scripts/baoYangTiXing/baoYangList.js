@@ -19,11 +19,11 @@ $(document).ready(function(){
                 for(var ii=0;ii<json.length;ii++){
                     var flaghtml="";
                     if(json[ii].CustomerDemand_Level==1){
-                        flaghtml="非常紧急";
+                        flaghtml+="<div class='by_center font_1 by_bgcolorfjj'> 状<i  style='visibility: hidden'>保养</i>态：非常紧急</div>";
                     }else if(json[ii].CustomerDemand_Level==2){
-                        flaghtml="紧急";
+                        flaghtml+="<div class='by_center font_1 by_bgcolorjj'> 状<i  style='visibility: hidden'>保养</i>态：紧急</div>";
                     }else{
-                        flaghtml="普通";
+                        flaghtml+="<div class='by_center font_1 by_bgcolorpt'> 状<i  style='visibility: hidden'>保养</i>态：普通</div>";
                     }
                     html+="<li>"+
                         "<div class='by_center by_top'>"+
