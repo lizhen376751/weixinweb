@@ -438,5 +438,24 @@
 		</div>
 	</form>
 </div>
+<script type="text/javascript">
+//    function requestJosn(appServer) {
+//        $.ajax({
+//            type:'GET',
+//            data:{},
+//            dataType:'json',
+//            url:appServer,
+//            success:function(data){
+//                Duducreds=data;
+//                alert(Duducreds);
+//            },
+//            error:function (data) {
+//                alert(appServer);
+//            }});
+//    }
+
+
+
+</script>
 </body>
 </html>

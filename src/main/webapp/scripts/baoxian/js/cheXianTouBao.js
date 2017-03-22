@@ -407,17 +407,27 @@ $(document).ready(function(){
     //请求JSON
     function requestJosn(appServer) {
         $.ajax({
-            type:'GET',
-            data:{},
-            dataType:'json',
-            url:appServer,
-            success:function(data){
-                Duducreds=data;
-            }});
+            type    : 'GET',
+            url     : 'http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18',
+            data    : {
+                fromflag   : "baoXianTypes"
+
+            },
+
+            success:function(jsondata){
+                // var json = JSON.parse(jsondata);
+                Duducreds=jsondata;
+                console.log(jsondata);
+
+            },
+            error:function(){
+
+            }
+        });
     }
 
     //判断文件类型  照片大小
-    function getImageSize(obj,srcs,DuduOssCallbackVarData1){
+    function getImageSize(obj){
         //图片预览
         //setImagePreview();
 
@@ -451,7 +461,6 @@ $(document).ready(function(){
             alert("照片最大尺寸为5000KB，请重新上传!");
             return false;
         }
-        uplodlm(srcs,DuduOssCallbackVarData1)
         return true;
     }
 
@@ -460,14 +469,15 @@ $(document).ready(function(){
 
     //oss上传调用
     //obj=document.getElementById('file').files[0];
-    function uplodlm(obj,DuduOssCallbackVarData1) {
-        new applyTokenDoNew(obj,DuduOssCallbackVarData1);
+    function uplodlm(DuduOssCallbackVarData1) {
+        // new applyTokenDoNew(obj,DuduOssCallbackVarData1);
+        applyTokenDo(DuduOssCallbackVarData1);
     }
 
     //上传图片 待优化
-    appServer = "http://192.168.1.107:8080/oss/ossconfig/shopcode/18";
+    // appServer = "http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18";
     //获得请求的json业务 待优化
-    requestJosn(appServer);
+
 
 
 
@@ -484,11 +494,13 @@ $(document).ready(function(){
         }
         return url
     };
-
+    appServer = "http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18";
     $(".filepath").on("change",function() {
 
+        // requestJosn(appServer);
+        // getImageSize(this);
         var i = $(this).index()+1;
-        alert(i)
+        // alert(i)
         var srcs = getObjectURL(this.files[0]);   //获取路径
         //参数一
         var projectId = uuid(16,16);
@@ -498,7 +510,11 @@ $(document).ready(function(){
             "orderCode" : projectId, //uuid唯一标识符
             "imageType" : i  //图片类型 1
         };
-        getImageSize(this,srcs,DuduOssCallbackVarData1);
+        //上传调用 延时2秒执行 待优化
+        // setTimeout(function() {uplodlm(DuduOssCallbackVarData1);},1000);
+        new applyTokenDoNew(srcs,DuduOssCallbackVarData1);
+
+
         // $(this).nextAll(".imgs").children(".img2")[0].src = srcs;
         // $(this).nextAll(".img1").hide();   //this指的是input
         // $(this).nextAll("p").hide();
