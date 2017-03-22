@@ -465,7 +465,7 @@ $(document).ready(function(){
     }
 
     //上传图片 待优化
-    appServer = "http://192.168.1.116:8080/oss/ossconfig/shopcode/18";
+    appServer = "http://192.168.1.107:8080/oss/ossconfig/shopcode/18";
     //获得请求的json业务 待优化
     requestJosn(appServer);
 
