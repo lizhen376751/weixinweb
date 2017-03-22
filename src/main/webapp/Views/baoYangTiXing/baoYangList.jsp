@@ -48,6 +48,7 @@
 
     <link href="/styles/weix.css" rel="stylesheet" type="text/css"/>
     <link href="/styles/baoYangTiXing/baoyanglist.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/scripts/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="/scripts/baoYangTiXing/iscroll.js"></script>
     <script type="text/javascript" src="/scripts/baoYangTiXing/baoYangList.js"></script>
 </head>

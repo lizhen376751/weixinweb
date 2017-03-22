@@ -10,16 +10,19 @@
     <meta name="keywords" content="keyword ..."/>
     <meta name="Description" content="description ..."/>
     <script language="JavaScript">
-        //表单输入检查
+        //联盟介绍
         function lianMengJieShao() {
             window.location.href = "/oauthLoginServlet?flagStr=lianMengJieShao";
         }
+        //养车信息
         function YCInfo() {
             window.location.href = "/oauthLoginServlet?flagStr=YCInfo";
         }
+        //联盟活动
         function queryLMActivity() {
             window.location.href = "/oauthLoginServlet?flagStr=lianMengActivity";
         }
+        //车险投保
         function cheXianTouBao() {
             window.location.href = "/oauthLoginServlet?flagStr=cheXianTouBao";
         }
@@ -32,6 +35,10 @@
             window.location.href = "/oauthLoginServlet?flagStr=lmkInfo";
         }
         //保养提醒
+        function baoYangList() {
+            window.location.href = "/oauthLoginServlet?flagStr=baoYangList";
+        }
+        //服务导航
         function baoYangList() {
             window.location.href = "/oauthLoginServlet?flagStr=baoYangList";
         }
@@ -49,6 +56,7 @@
             <li class="btnli"><input type="button" class="regbtn" value="Ahi" onclick="AHIInfo()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="联盟卡包" onclick="lmkInfo()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="保养提醒" onclick="baoYangList()"/></li>
+            <li class="btnli"><input type="button" class="regbtn" value="服务导航" onclick="baoYangList()"/></li>
         </ul>
     </div>
 

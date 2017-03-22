@@ -53,7 +53,6 @@ public class ABCDceshiAllController {
     @RequestMapping(value = "oauthLoginServlet", method = RequestMethod.GET)
     public String oauthLogin(HttpServletRequest request,
                              @RequestParam(name = "code", required = false) String code,
-
                              @RequestParam(name = "flagStr", required = false) String flagStr, Model model) {
         logger.info("菜单进入================================" + flagStr);
         String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
@@ -71,7 +70,7 @@ public class ABCDceshiAllController {
             model.addAttribute("shopcode", shopcode);
             return "/lianMengKa/lianMengCard/lianMengDetails"; //联盟卡明细
         } else if ("daoHang".equals(flagStr)) {
-//          return "/daoHang/daoHangliebiao/service/daohangindex.jsp?shopcode=" + shopcode + "&openid=" + openId + '"';//服务导航
+          return "/daoHang/daoHangliebiao/service/daohangindex?shopcode=" + shopcode + "&openid=" + openId + '"';//服务导航
         } else if ("logout".equals(flagStr)) {
             return "/logout";//退出及注销账号
         } else if ("AHIInfo".equals(flagStr)) {
@@ -103,11 +102,8 @@ public class ABCDceshiAllController {
             return "/lianMengActivity/jsp/getLianMeng";//联盟活动详情
         } else if ("cheXianTouBao".equals(flagStr)) {
             return "/baoxian/cheXianTouBao/cheXianTouBao";//车险投保
-        } else {
-            return "/index";
         }
         return "/index";
-
     }
 
 

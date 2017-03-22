@@ -179,11 +179,10 @@ public class ABCDceshiAjax {
         //保养提醒
         if("baoYangList".equals(fromflag)){
 //            lmCode,carNo,top
-            ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(null,null,null);
+            ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(null,null,"1");
             return baoYangListByLmcodeAndCarNo;
 
         }
-
 
         return obj;
     }

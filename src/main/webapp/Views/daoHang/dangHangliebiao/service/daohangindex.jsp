@@ -1,8 +1,7 @@
-<%@page import="cn.duduchewang.weixin.common.util.http.HttpRequest"%>
+
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page language="java" import="java.util.ArrayList,java.util.HashMap,javax.servlet.http.HttpSession"%>
 <%@ page language="java" import="cn.duduchewang.weixin.common.GetShopInfo"%> 
-
 
 <%
  String strShopcode = request.getParameter("shopcode");
@@ -28,8 +27,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>服务导航</title>
-		<link rel="stylesheet" type="text/css" href="../css/weix.css"/>
-		<link rel="stylesheet" type="text/css" href="../radialIndicator/radialindicator.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/daoHang/radialIndicator/radialindicator.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/server.css"/>
 		<link rel="stylesheet" type="text/css" href="../radialIndicator/radialindicator.css"/>
 		<script src="../js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
