@@ -141,6 +141,18 @@
         <artifactId>AHI-api</artifactId>
         <version>${dudu.soa.ahi.version}</version>
       </dependency>
+      <!--加入嘟嘟基础数据依赖-->
+      <dependency>
+        <groupId>com.dudu.soa</groupId>
+        <artifactId>DuduBaseData-api</artifactId>
+        <version>1.1-SNAPSHOT</version>
+      </dependency>
+      <!--加入客户中心依赖-->
+      <dependency>
+        <groupId>com.dudu.soa</groupId>
+        <artifactId>CustomerServiceCenter-api</artifactId>
+        <version>1.1-SNAPSHOT</version>
+      </dependency>
 
     </dependencies>
 

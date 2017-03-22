@@ -1,5 +1,9 @@
 package com.dudu.weixin.control;
 
+import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
+import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDanGongSi;
+import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDanXiangQing;
+import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LianmengIntroducedService;
 import com.dudu.weixin.service.LoginActionNewService;
 import com.dudu.weixin.service.ShopInfoService;
@@ -21,6 +25,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/3/17.
@@ -39,6 +45,8 @@ public class ABCDceshiAllController {
     private LianmengIntroducedService lianmengIntroducedService;
     @Autowired
     private LoginActionNewService loginActionNewService;
+    @Autowired
+    private ChexiantoubaoService chexiantoubaoService;//车险投保
     //登录页面
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     protected String login(HttpServletRequest request, HttpServletResponse response) {
@@ -160,6 +168,76 @@ public class ABCDceshiAllController {
     public String post(@RequestParam(name = "shopcode") String shopCode) {
         ShopInfo info = shopInfoService.getShopInfoDetail(shopCode);
         return null;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
+    public String baoXianTiJiao(HttpServletRequest request,BaoXianKaiDan baoXianKaiDan) {
+        //保险开单
+       /* String customerId = request.getParameter("aaaaa");
+        String kaiDanDate = request.getParameter("aaaaa");
+        String assistant = request.getParameter("aaaaa");
+        String shopcode_lm = request.getParameter("unionHeadquarters");
+        String xingShiZhengImg = request.getParameter("aaaaa");
+        String xingShiZhengImg2 = request.getParameter("aaaaa");
+        String shenFenZhengImg = request.getParameter("aaaaa");
+        String shenFenZhengImg2 = request.getParameter("aaaaa");
+        String remarks = request.getParameter("aaaaa");
+        String shopCode = request.getParameter("aaaaa");
+        String totalPrice = request.getParameter("aaaaa");
+        String fuKuanFlag = request.getParameter("aaaaa");
+        String shiShou = request.getParameter("aaaaa");
+        String orderNumb = request.getParameter("aaaaa");*/
+
+
+        //开单详情
+        String[] insurancetypeIds = request.getParameterValues("chexian");
+        List<BaoXianKaiDanXiangQing> baoxiankaidanxiangqing  = new ArrayList<BaoXianKaiDanXiangQing>();
+        if(insurancetypeIds!=null && insurancetypeIds.length>0) {
+            for (int i = 0; i < insurancetypeIds.length; i++) {
+                BaoXianKaiDanXiangQing baoXianKaiDanXiangQing = new BaoXianKaiDanXiangQing();
+                int insurancetypeId = Integer.parseInt(insurancetypeIds[i]);
+                baoXianKaiDanXiangQing.setInsurancetypeId(insurancetypeId);
+                String buJiMianPeiTypes = request.getParameter("bjmp_" + insurancetypeIds[i]);
+                if(null!=buJiMianPeiTypes&& !"".equals(buJiMianPeiTypes) ){
+                    int buJiMianPeiType = Integer.parseInt(buJiMianPeiTypes);
+                    baoXianKaiDanXiangQing.setBuJiMianPeiType(buJiMianPeiType);
+                }
+                String dictionaryIds = request.getParameter("pcxe_" + insurancetypeIds[i]);
+                if(null!=dictionaryIds&& !"".equals(dictionaryIds) ){
+                    int dictionaryId = Integer.parseInt(dictionaryIds);
+                    baoXianKaiDanXiangQing.setBuJiMianPeiType(dictionaryId);
+                }
+                String baoZhangRenShus = request.getParameter("bzrs_" + insurancetypeIds[i]);
+                if(null!=baoZhangRenShus&& !"".equals(baoZhangRenShus) ){
+                    int baoZhangRenShu = Integer.parseInt(baoZhangRenShus);
+                    baoXianKaiDanXiangQing.setBuJiMianPeiType(baoZhangRenShu);
+                }
+
+                //String kaiDanId=request.getParameter("pcxe_3");
+                //String price=request.getParameter("pcxe_3");
+
+                baoxiankaidanxiangqing.add(baoXianKaiDanXiangQing);
+
+            }
+            baoXianKaiDan.setBaoXianKaiDanXiangQing(baoxiankaidanxiangqing);
+        }
+
+        //保险公司
+        String[] insuranceIds =request.getParameterValues("xianzhong");
+        List<BaoXianKaiDanGongSi> baoXianKaiDanGongSi1 = new ArrayList<BaoXianKaiDanGongSi>();
+        if(insuranceIds!=null && insuranceIds.length>0) {
+            for (int i = 0; i < insuranceIds.length; i++) {
+                BaoXianKaiDanGongSi baoXianKaiDanGongSi = new BaoXianKaiDanGongSi();
+                int companyId = Integer.parseInt(insuranceIds[i]);
+                baoXianKaiDanGongSi.setCompanyId(companyId);
+                baoXianKaiDanGongSi1.add(baoXianKaiDanGongSi);
+            }
+            baoXianKaiDan.setBaoXianKaiDanGongSi(baoXianKaiDanGongSi1);
+        }
+
+        chexiantoubaoService.baoXianTiJiao(request,baoXianKaiDan);
+        return "";
     }
 
 

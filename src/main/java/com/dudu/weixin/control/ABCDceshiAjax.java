@@ -1,5 +1,8 @@
 package com.dudu.weixin.control;
 
+import com.dudu.soa.customerCenter.customer.module.CustomerDemandParam;
+import com.dudu.soa.lmbasedata.basedata.shop.module.ShopParam;
+import com.dudu.soa.lmbasedata.basedata.shop.module.ShopQueryFruit;
 import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
@@ -182,6 +185,37 @@ public class ABCDceshiAjax {
             ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(null,null,"1");
             return baoYangListByLmcodeAndCarNo;
 
+        }
+        //添加服务顾问
+        if("fuwuguwen".equals(fromflag)){
+            //String  guwen_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
+            String guwen_shopcode="0533001";
+            logger.debug("服务顾问");
+            return chexiantoubaoService.queryFuWuGuWen(guwen_shopcode);
+        }
+        //联盟总部
+        if("lianmeng".equals(fromflag)){
+            logger.debug("联盟总部");
+            ShopParam shopParam=new ShopParam();
+            shopParam.setType("1");
+            List<ShopQueryFruit> shopQueryFruits = chexiantoubaoService.queryLianMengZB(shopParam);
+            System.out.println(shopQueryFruits);
+            return shopQueryFruits;
+        }
+
+        //车辆信息
+        if("xinxi".equals(fromflag)){
+            String parameter = request.getParameter("car_number");
+            // String  xinxi_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
+            //int carpai = Integer.parseInt(parameter);
+            //CustomerInfoParam customerInfoParam=new CustomerInfoParam();
+            //customerInfoParam.setShopCode("0533001");
+            //customerInfoParam.setCarBrandId(carpai);
+            CustomerDemandParam customerDemandParam=new CustomerDemandParam();
+            customerDemandParam.setPlateNumber(parameter);
+            customerDemandParam.setShopCode("0533001");
+            logger.debug("车辆信息");
+            return chexiantoubaoService.queryCheLiangXinXi(customerDemandParam);
         }
 
         return obj;
