@@ -60,11 +60,11 @@
             <div id="pullDown" style="width:100%;text-align:center;font-size:32px">
                 <span class="pullDownIcon"></span><span class="pullDownLabel">ÏÂÀ­Ë¢ÐÂ...</span>
             </div>
-
+<%--
             <%
                 if (listDJ.size() > 5) { %>
             <ul id="thelist" class="margin_auto"><%
-	}else{ %>
+	}else{ %>--%>
                 <ul id="thelist" class="margin_auto" style="height:100%;">
                     <%--<% }%>--%>
 

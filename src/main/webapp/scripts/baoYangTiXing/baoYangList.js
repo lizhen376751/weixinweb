@@ -13,6 +13,9 @@ $(document).ready(function(){
             var json = JSON.parse(jsondata);
             var html="";
             if(json.length>0){
+                if(json.length>5){
+                      $("#thelist").attr("style","");
+                }
                 for(var ii=0;ii<json.length;ii++){
                     var flaghtml="";
                     if(json[ii].CustomerDemand_Level==1){
