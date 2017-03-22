@@ -1,3 +1,4 @@
+<%@ page import="com.dudu.weixin.service.AutoLoginService" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <% 
@@ -11,7 +12,7 @@
 	//TODO 后期封装成接口进行判断
 //	System.out.println("=============lianMengCard - lianMengDetails.jsp=== CarId:|"+CarId+"|cardNo:"+cardNo+"|");
 //	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-//		autoLogin autoLogin = new autoLogin();
+//		AutoLoginService autoLogin = new AutoLoginService();
 //		CarId = autoLogin.judgeOpenId(strOpenId, shopcode);
 //		session.setAttribute("DUDUCHEWANG_CarId", CarId);
 //		System.out.println("=============lianMengCard - lianMengDetails.jsp=== 自动登陆后  CarId:|"+CarId+"|");

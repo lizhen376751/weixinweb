@@ -28,10 +28,6 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/")
 public class ABCDceshiAllController {
-
-    @Autowired
-
-
     private static final Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
     @Autowired
     private Constant constant;
@@ -43,27 +39,26 @@ public class ABCDceshiAllController {
     private LianmengIntroducedService lianmengIntroducedService;
     @Autowired
     private LoginActionNewService loginActionNewService;
-
     //登录页面
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     protected String login(HttpServletRequest request, HttpServletResponse response) {
         boolean flg = loginActionNewService.login(request);
-        if(flg) {
+        if (flg) {
             return "/index";
-        }
-        else {
-            return "/login";
-
+        } else {
+            return "/login/login";
         }
     }
-    //点击菜单后进入-------------------------------------------------------
+    //点击菜单后进入
     @RequestMapping(value = "oauthLoginServlet", method = RequestMethod.GET)
     public String oauthLogin(HttpServletRequest request,
                              @RequestParam(name = "code", required = false) String code,
-                             @RequestParam(name = "shopcode", required = false) String shopcode,
+
                              @RequestParam(name = "flagStr", required = false) String flagStr, Model model) {
         logger.info("菜单进入================================" + flagStr);
-
+        String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
+        String openId = (String) httpSession.getAttribute("DUDUCHEWANG_OpenId");
+        String shopcode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
         //判断点击菜单，进入不同页面
         if ("lmkInfo".equals(flagStr)) {
             return "/lianMengKa/lianMengCard/homePage";//联盟卡包
@@ -71,69 +66,54 @@ public class ABCDceshiAllController {
             logger.info("联盟卡详情");
             String cardName = request.getParameter("cardName");
             String cardNo = request.getParameter("cardNo");
-            model.addAttribute("cardName",cardName);
-            model.addAttribute("cardNo",cardNo);
-            model.addAttribute("shopcode",shopcode);
+            model.addAttribute("cardName", cardName);
+            model.addAttribute("cardNo", cardNo);
+            model.addAttribute("shopcode", shopcode);
             return "/lianMengKa/lianMengCard/lianMengDetails"; //联盟卡明细
-        }else if ("daoHang".equals(flagStr)) {
-//            return "/daoHang/daoHangliebiao/service/daohangindex.jsp?shopcode=" + shopcode + "&openid=" + openId + '"';//服务导航
+        } else if ("daoHang".equals(flagStr)) {
+//          return "/daoHang/daoHangliebiao/service/daohangindex.jsp?shopcode=" + shopcode + "&openid=" + openId + '"';//服务导航
         } else if ("logout".equals(flagStr)) {
             return "/logout";//退出及注销账号
         } else if ("AHIInfo".equals(flagStr)) {
             return "/ahi/AHIxiangqing";//AHI指数
         } else if ("AHIInfoxiangqing".equals(flagStr)) {
-
             String plateNumber = request.getParameter("plateNumber");
             String id = request.getParameter("id");
             model.addAttribute("plateNumber", plateNumber);
             model.addAttribute("id", id);
-            logger.info("ahi详情页面!"+plateNumber+id);
-//            "/plateNumber="+plateNumber+"&id="+id;//AHI指数
+            logger.info("ahi详情页面!" + plateNumber + id);
             return "/ahi/subxiangqing";//详情
-
         } else if ("xiaoFeiList".equals(flagStr)) {
             return "/xiaoFeiJiLu/xiaoFeiList";//消费记录
-
         } else if ("baoYangList".equals(flagStr)) {
             return "/baoYangTiXing/baoYangList";//保养提醒
-
         } else if ("lianMengJieShao".equals(flagStr)) {
             return "/lianMengIntroduced/jsp/getIntroduced";//联盟介绍
-
         } else if ("YCInfo".equals(flagStr)) {
             return "/yangCheInfo/jsp/yangCheXinXi";//养车信息
-
         } else if ("getYangChe".equals(flagStr)) {
             String ids = request.getParameter("ids");
             model.addAttribute("ids", ids);
             return "/yangCheInfo/jsp/getYangChe";//养车信息详情
-
         } else if ("lianMengActivity".equals(flagStr)) {
-
             return "/lianMengActivity/jsp/lianMengActivity";//联盟活动
-
         } else if ("getLianMeng".equals(flagStr)) {
             String ids = request.getParameter("ids");
             model.addAttribute("ids", ids);
             return "/lianMengActivity/jsp/getLianMeng";//联盟活动详情
-
         } else if ("cheXianTouBao".equals(flagStr)) {
-
             return "/baoxian/cheXianTouBao/cheXianTouBao";//车险投保
         } else {
-            return "/allController";
-//            return "/lianMengKa/lianMengCard/homePage";//
+            return "/index";
         }
-        return "/allController";
+        return "/index";
 
     }
-
 
 
     @ResponseBody
     @RequestMapping(value = "/Notify", method = RequestMethod.GET)
     protected String notify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         //TODO 未做完需要调用接口,数据库因为涉及到sql语句--- Notify   /userServlet/Notify
         return null;
     }
@@ -146,11 +126,8 @@ public class ABCDceshiAllController {
             @RequestParam(name = "curUserID") String curUserID,
             @RequestParam(name = "strOpenId") String strOpenId
     ) {
-
         //TODO 需要调用接口doGet  ----autoZhuanpanJson  /userServlet/autoZhuanpanJson
-
         return null;
-
     }
 
     @ResponseBody
@@ -191,12 +168,6 @@ public class ABCDceshiAllController {
 
 
     private String getTokenByShopCode(String shopCode) {
-
-        try {
-
-        } catch (Exception e) {
-        }
-
         //TODO token需要存储到数据库中
         return "duduchewangcar";
     }

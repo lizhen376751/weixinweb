@@ -3,7 +3,13 @@ package com.dudu.weixin.control;
 import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
-import com.dudu.weixin.service.*;
+import com.dudu.weixin.service.AHIService;
+import com.dudu.weixin.service.BaoYangTiXingService;
+import com.dudu.weixin.service.ChexiantoubaoService;
+import com.dudu.weixin.service.LianMengActivityService;
+import com.dudu.weixin.service.LianMengKaService;
+import com.dudu.weixin.service.LianmengIntroducedService;
+import com.dudu.weixin.service.YangCheInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +33,8 @@ import java.util.List;
 @RequestMapping("/")
 public class ABCDceshiAjax {
     private static final Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
-
+    @Autowired
+    private HttpSession httpSession;
     @Autowired
     private LianmengIntroducedService lianmengIntroducedService;//联盟介绍
     @Autowired
@@ -38,17 +47,22 @@ public class ABCDceshiAjax {
     private ChexiantoubaoService chexiantoubaoService;//车险投保
     @Autowired
     private AHIService ahiService;//ahi
+    @Autowired
+    private BaoYangTiXingService baoYangTiXingService;
 
     @ResponseBody
     @RequestMapping(value = "getCommonAjax", method = RequestMethod.POST)
     public Object commonAjax(HttpServletRequest request, HttpServletResponse response,
                              @RequestParam(name = "fromflag", required = false) String fromflag,
-                             @RequestParam(name = "shopcode", required = false) String shopcode,
+
                              @RequestParam(name = "CarId", required = false) String CarId,
                              @RequestParam(name = "cardNo", required = false) String cardNo,Model model
     ) {
         logger.debug("ajax进入===============" + fromflag);
         response.setCharacterEncoding("UTF-8");
+        String carId = (String)httpSession.getAttribute("DUDUCHEWANG_CarId");
+        String openId = (String)httpSession.getAttribute("DUDUCHEWANG_OpenId");
+        String shopcode = (String)httpSession.getAttribute("DUDUCHEWANG_shopcode");
         Object obj = null;
         fromflag = encodingUrl(fromflag);
         shopcode = encodingUrl(shopcode);
@@ -161,6 +175,13 @@ public class ABCDceshiAjax {
             String ratio = request.getParameter("ratio");
             String id = request.getParameter("id");
             return ahiService.queryCarPointTwo(plateNumber, id, ratio);
+        }
+        //保养提醒
+        if("baoYangList".equals(fromflag)){
+//            lmCode,carNo,top
+            ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(null,null,null);
+            return baoYangListByLmcodeAndCarNo;
+
         }
 
 
