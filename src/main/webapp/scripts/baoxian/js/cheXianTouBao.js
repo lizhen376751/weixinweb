@@ -182,7 +182,7 @@ $(document).ready(function(){
         var baoxian_company = $(".list .two .insurance_company .baoxian")
         var html = "";
         for (var i = 0; i < arr.length;i++) {
-            html += "<div><input type='checkbox' name='xianzhong' id='wang_wang' value='' /><span>"+arr[i].insuranceName+"</span></div>"
+            html += "<div><input type='checkbox' name='xianzhong' id='wang_wang' value='"+arr[i].id+"' /><span>"+arr[i].insuranceName+"</span></div>"
         }
         baoxian_company.append(html);
     }
