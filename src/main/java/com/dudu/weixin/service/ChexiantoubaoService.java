@@ -76,7 +76,8 @@ public class ChexiantoubaoService {
 
         //开单详情
         String[] insurancetypeIds = request.getParameterValues("chexian");
-        List<BaoXianKaiDanXiangQing> baoxiankaidanxiangqing  = new ArrayList<BaoXianKaiDanXiangQing>();
+        //System.out.println("huoqude checian=========="+insurancetypeIds.length);
+        List<BaoXianKaiDanXiangQing> baoXianKaiDanXiangQingList  = new ArrayList<BaoXianKaiDanXiangQing>();
         if(insurancetypeIds!=null && insurancetypeIds.length>0) {
             for (int i = 0; i < insurancetypeIds.length; i++) {
                 BaoXianKaiDanXiangQing baoXianKaiDanXiangQing = new BaoXianKaiDanXiangQing();
@@ -101,10 +102,10 @@ public class ChexiantoubaoService {
                 //String kaiDanId=request.getParameter("pcxe_3");
                 //String price=request.getParameter("pcxe_3");
 
-                baoxiankaidanxiangqing.add(baoXianKaiDanXiangQing);
+                baoXianKaiDanXiangQingList.add(baoXianKaiDanXiangQing);
 
             }
-            baoXianKaiDan.setBaoXianKaiDanXiangQing(baoxiankaidanxiangqing);
+            baoXianKaiDan.setBaoXianKaiDanXiangQing(baoXianKaiDanXiangQingList);
         }
 
         //保险公司
