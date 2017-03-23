@@ -88,12 +88,12 @@ public class ChexiantoubaoService {
                 String dictionaryIds = request.getParameter("pcxe_" + insurancetypeIds[i]);
                 if(null!=dictionaryIds&& !"".equals(dictionaryIds) ){
                     int dictionaryId = Integer.parseInt(dictionaryIds);
-                    baoXianKaiDanXiangQing.setBuJiMianPeiType(dictionaryId);
+                    baoXianKaiDanXiangQing.setDictionaryId(dictionaryId);
                 }
                 String baoZhangRenShus = request.getParameter("bzrs_" + insurancetypeIds[i]);
                 if(null!=baoZhangRenShus&& !"".equals(baoZhangRenShus) ){
                     int baoZhangRenShu = Integer.parseInt(baoZhangRenShus);
-                    baoXianKaiDanXiangQing.setBuJiMianPeiType(baoZhangRenShu);
+                    baoXianKaiDanXiangQing.setBaoZhangRenShu(baoZhangRenShu);
                 }
 
                 //String kaiDanId=request.getParameter("pcxe_3");
