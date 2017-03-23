@@ -39,8 +39,8 @@
             window.location.href = "/oauthLoginServlet?flagStr=baoYangList";
         }
         //服务导航
-        function baoYangList() {
-            window.location.href = "/oauthLoginServlet?flagStr=baoYangList";
+        function daohangindex() {
+            window.location.href = "/oauthLoginServlet?flagStr=daohangindex";
         }
     </script>
 </head>
@@ -56,7 +56,7 @@
             <li class="btnli"><input type="button" class="regbtn" value="Ahi" onclick="AHIInfo()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="联盟卡包" onclick="lmkInfo()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="保养提醒" onclick="baoYangList()"/></li>
-            <li class="btnli"><input type="button" class="regbtn" value="服务导航" onclick="baoYangList()"/></li>
+            <li class="btnli"><input type="button" class="regbtn" value="服务导航" onclick="daohangindex()"/></li>
         </ul>
     </div>
 

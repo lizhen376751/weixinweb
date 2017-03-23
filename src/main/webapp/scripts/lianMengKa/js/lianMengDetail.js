@@ -35,10 +35,7 @@ $(document).ready(function () {
     var shop_name = $(".shop_name");//发卡店铺
     //向html中添加数据
     function appending_shopName (obj) {
-
-        alert(obj.card_number);
         shop_name.text("发售店铺："+obj.car_haopai);//发卡店铺
-
         var shopLogoImg="<img src='/files/lianMengKa/img/nonepic.png' style='width:236px;height:236px;border-radius:50%;' />";
         if(obj.customer_mobile!=null && obj.customer_mobile!=""){
             shopLogoImg="<img src='http://shop.duduchewang.com/upload/"+obj.sell_code+"/shopimg/"+obj.customer_mobile+"' style='width:236px;height:236px;border-radius:50%;' />";
@@ -63,6 +60,7 @@ $(document).ready(function () {
 			cardNo     : cardNo
 		},
 		success : function(jsonData){
+
 			var json = JSON.parse(jsonData);
 			appending(json)
 		}
@@ -78,28 +76,9 @@ $(document).ready(function () {
 			cardNo     : cardNo
 		},
 		success : function(jsonData){
-
 			var json = JSON.parse(jsonData);
-            alert(jsonData);
-			appending_shopName(jsonData)
+			appending_shopName(json);
 		}
 	});
-	
-	
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
-   
 })

@@ -6,13 +6,9 @@
 <%
  String strShopcode = request.getParameter("shopcode");
  String strOpenId = (String)request.getAttribute("openid");
-
  String url="http://shop.duduchewang.com/upload/";
-
-
  String shopType_search = request.getParameter("shopType_search");
  shopType_search = shopType_search==null ? "" : shopType_search;
- 
  String orderType_search = request.getParameter("orderType_search");
  orderType_search = orderType_search==null ? "" : orderType_search;
 
@@ -29,13 +25,10 @@
 		<title>服务导航</title>
 		<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/daoHang/radialIndicator/radialindicator.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/server.css"/>
-		<link rel="stylesheet" type="text/css" href="../radialIndicator/radialindicator.css"/>
-		<script src="../js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../radialIndicator/radialIndicator.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/index.js" type="text/javascript" charset="utf-8"></script>
-		
-		
+		<link rel="stylesheet" type="text/css" href="/styles/daoHang/daoHangliebiao/css/server.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/daoHang/daoHangliebiao/css/radialindicator.css"/>
+		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/scripts/daoHang/daoHangliebiao/js/index.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nOi93QKhPFHG6xfAp94mm1mk"></script>
 		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 		<script type="text/javascript">
@@ -114,7 +107,7 @@
 		
 		//添加预约
 		function advance(shopCode2,shopName){
-			window.location="/daoHang/reserve/service/Advance.jsp?shopcode2="+shopCode2+"&shopName="+encodeURIComponent(encodeURIComponent(shopName));
+			window.location="/daoHang/reserve/service/Advance.jsp?shopcode2="+shopCode2+"&shopName="+shopName;
 		}
 		
 	</script>
@@ -130,9 +123,9 @@
 		</div> -->
 		<div class="server_center">
 			<ul class="server_cenul">
-				<li><img  class="server_click" onclick="countClickedTimes(this);searchByType('xc')" src="../img/daohang_1.png"/><span id="xcSelect" <%if(shopType_search.indexOf("xc")>-1){%>class="xuaze server_cenulimg"<%}else{%>class="xuaze"<%}%> ></span><p class="font_1 server_cenulcolor">洗车</p></li>
-				<li><img  class="server_click" onclick="countClickedTimes(this);searchByType('mr')" src="../img/daohang_2.png"/><span id="mrSelect" <%if(shopType_search.indexOf("mr")>-1){%>class="xuaze server_cenulimg"<%}else{%>class="xuaze"<%}%> ></span><p class="font_1  server_cenulcolor">美容</p></li>
-				<li><img  class="server_click" onclick="countClickedTimes(this);searchByType('by')" src="../img/daohang_3.png"/><span id="bySelect" <%if(shopType_search.indexOf("by")>-1){%>class="xuaze server_cenulimg"<%}else{%>class="xuaze"<%}%> ></span><p class="font_1  server_cenulcolor">保养</p></li>
+				<li><img  class="server_click" onclick="countClickedTimes(this);searchByType('xc')" src="/files/daoHang/daoHangliebiao/img/daohang_1.png"/><span id="xcSelect" <%if(shopType_search.indexOf("xc")>-1){%>class="xuaze server_cenulimg"<%}else{%>class="xuaze"<%}%> ></span><p class="font_1 server_cenulcolor">洗车</p></li>
+				<li><img  class="server_click" onclick="countClickedTimes(this);searchByType('mr')" src="/files/daoHang/daoHangliebiao/img/daohang_2.png"/><span id="mrSelect" <%if(shopType_search.indexOf("mr")>-1){%>class="xuaze server_cenulimg"<%}else{%>class="xuaze"<%}%> ></span><p class="font_1  server_cenulcolor">美容</p></li>
+				<li><img  class="server_click" onclick="countClickedTimes(this);searchByType('by')" src="/files/daoHang/daoHangliebiao/img/daohang_3.png"/><span id="bySelect" <%if(shopType_search.indexOf("by")>-1){%>class="xuaze server_cenulimg"<%}else{%>class="xuaze"<%}%> ></span><p class="font_1  server_cenulcolor">保养</p></li>
 			</ul>
 		</div>
 		<div class="paixu font_0 server_cenulcolor" >

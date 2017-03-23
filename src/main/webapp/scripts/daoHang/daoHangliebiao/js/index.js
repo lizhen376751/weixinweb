@@ -5,7 +5,21 @@ $(document).ready(function () {
     var txt = $(".txt");
     var shopcode = encodeURIComponent($("#shopcode").val());
     var contextPathStr = $("#contextPathStr").val();
-
+    //
+    $.ajax({
+        type    : 'POST',
+        url     : '/getCommonAjax',
+        data    : {
+            fromflag   : "queryShopCodeListByLMCode",
+            shopcode   : shopcode
+        },
+        success : function(jsonData){
+            var json = JSON.parse(jsonData);
+//			appenging(json)
+            h2.text(json.intro);
+            txt.append(json.content);
+        }
+    });
     $.ajax({
         type    : 'POST',
         url     : '/getCommonAjax',

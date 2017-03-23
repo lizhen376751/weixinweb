@@ -2,7 +2,13 @@ package com.dudu.weixin.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.lmk.api.ApiLianmengkaOperateIntf;
-import com.dudu.soa.lmk.operate.module.*;
+import com.dudu.soa.lmk.operate.module.LiangmengKaQueryModule;
+import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
+import com.dudu.soa.lmk.operate.module.LianmengkaXmCustQueryModule;
+import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
+import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftQueryModule;
+import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
+import com.dudu.soa.lmk.operate.module.LmkCardGenParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +20,12 @@ import java.util.List;
  */
 @Service
 public class LianMengKaService {
+
     @Autowired
     private CommonTools commonTools;
-
     @Reference(version = "0.0.1")
     private ApiLianmengkaOperateIntf apiLianmengkaOperateIntf;
+
     //	查询联盟卡剩余次数  queryXmkLeftCount   查询联盟卡消费明细 queryXiangmukaCustRecords
     public List<LianmengkaXmLeftResultModule> queryLmkInfo(String shopcode, String carHaoPai) {
         //调用queryLmkInfo接口
@@ -45,7 +52,6 @@ public class LianMengKaService {
             queryModule.setCard_number(cardNo);
             queryModule.setCar_haopai(carHaoPai);
             results = apiLianmengkaOperateIntf.queryXiangmukaCustRecords(queryModule);
-
             //把消费店铺编码 替换为 店铺名称
             for (int i = 0; i < results.size(); i++) {
                 LianmengkaXmCustResultModule lianmengkaXmCustResultModule = results.get(i);
@@ -63,34 +69,33 @@ public class LianMengKaService {
     }
 
     public List<LianmengKaResultModule> getXmkCardInfo(String shopcode, String cardNo, String carHaoPai) {
-
+        System.out.println(shopcode+","+cardNo+","+carHaoPai);
         List<LianmengKaResultModule> results = null;
+        LiangmengKaQueryModule queryModule = new LiangmengKaQueryModule();
+        queryModule.setProduct_shopcode(shopcode);//联盟总部编码
+        queryModule.setCard_number(cardNo);//卡号
+        queryModule.setCar_haopai(carHaoPai);
+        queryModule.setCard_type("2");//1充值卡，2项目卡
 
-            LiangmengKaQueryModule queryModule = new LiangmengKaQueryModule();
-            queryModule.setProduct_shopcode(shopcode);//联盟总部编码
-            queryModule.setCard_number(cardNo);//卡号
-            queryModule.setCar_haopai(carHaoPai);
-            queryModule.setCard_type("2");//1充值卡，2项目卡
+        results = apiLianmengkaOperateIntf.getLianmengCustomerCardInfos(queryModule);
 
-            results = apiLianmengkaOperateIntf.getLianmengCustomerCardInfos(queryModule);
+        if (results != null && results.size() > 0) {
+            LianmengKaResultModule lianmengKaResultModule = results.get(0);
+            if (lianmengKaResultModule != null) {
+                String sell_code = lianmengKaResultModule.getSell_code().toString();
 
-            if (results != null && results.size() > 0) {
-                LianmengKaResultModule lianmengKaResultModule = results.get(0);
-                if (lianmengKaResultModule != null) {
-                    String sell_code = lianmengKaResultModule.getSell_code().toString();
+                //查询出店铺列表图片
+                String shopListImg = commonTools.getShopListImg(sell_code);
+                //TODO 后期需要把shopListImg放入results结果集,暂时存入Customer_mobile里面
+                lianmengKaResultModule.setCustomer_mobile(shopListImg);
+                //把发卡店铺编码 替换为 店铺名称
+                String sell_shopName = commonTools.getShopName(sell_code);
+                //TODO 后期需要把sell_shopName放入results结果集,暂时存入sell_shopName里面
+                lianmengKaResultModule.setCar_haopai(sell_shopName);
+                System.out.println("+============" + sell_code + shopListImg + sell_shopName);
 
-                    //查询出店铺列表图片
-                    String shopListImg = commonTools.getShopListImg(sell_code);
-                    //TODO 后期需要把shopListImg放入results结果集,暂时存入Customer_mobile里面
-                    lianmengKaResultModule.setCustomer_mobile(shopListImg);
-                    //把发卡店铺编码 替换为 店铺名称
-                    String sell_shopName = commonTools.getShopName(sell_code);
-                    //TODO 后期需要把sell_shopName放入results结果集,暂时存入sell_shopName里面
-                    lianmengKaResultModule.setCar_haopai(sell_shopName);
-                    System.out.println("+============"+sell_code+shopListImg+sell_shopName);
-
-                }
             }
+        }
 
         return results;
     }

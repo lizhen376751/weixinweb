@@ -3,8 +3,12 @@ package com.dudu.weixin.service;
 import com.dudu.weixin.struct.shop.ShopInfo;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created by Administrator on 2017/3/14.
+ * 原GetShopInfo
  */
 @Service
 public class ShopInfoService {
@@ -14,18 +18,42 @@ public class ShopInfoService {
         return null;
     }
 
-    public String getShopName(String shopcode) {
-        //Todo GetShopInfo 的getShopName接口
+    public  String getShopName(String shopcode){
+        String strShopName = "";
+
+        return strShopName;
+    }
+
+    public  String getShopToken(String shopcode){
+        String strShopName = "";
+        return strShopName;
+    }
+
+    public static String getShopAppid(String shopcode) {
+        String strShopName = "";
+        return strShopName;
+    }
+
+    public  String getShopAppSecret(String shopcode) {
+        String strShopName = "";
+        return strShopName;
+    }
+
+    public ArrayList listLianSuo(String shopcode)  {
+        ArrayList list = new ArrayList();
+        return list;
+    }
+
+    public ArrayList<HashMap<String,String>> queryShopCodeListByLmCode(String lmcode, String shopType, String orderType)  {
+        ArrayList list = new ArrayList();
+        return list;
+    }
+
+    public HashMap dispShop(String shopcode)  {
         return null;
     }
 
-    public String getShopAppSecret(String shopcode){
-        //TODO GetShopInfo 的getShopAppSecret接口
-        return null;
-    }
-
-    public String getShopAppid(String shopcode) {
-        //Todo GetShopInfo 的getShopAppid接口
+    public  HashMap dispShopWelcome(String shopcode)  {
         return null;
     }
 }
