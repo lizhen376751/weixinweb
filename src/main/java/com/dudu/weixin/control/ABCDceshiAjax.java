@@ -5,6 +5,7 @@ import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.weixin.service.AHIService;
+import com.dudu.weixin.service.AutoLoginService;
 import com.dudu.weixin.service.BaoYangTiXingService;
 import com.dudu.weixin.service.BuyRecordService;
 import com.dudu.weixin.service.ChexiantoubaoService;
@@ -56,11 +57,12 @@ public class ABCDceshiAjax {
     private ShopInfoService shopInfoService;//服务导航之获取店铺信息
     @Autowired
     private BuyRecordService buyRecordService;//消费记录
+    @Autowired
+    private AutoLoginService autoLoginService;
     @ResponseBody
     @RequestMapping(value = "getCommonAjax", method = RequestMethod.POST)
     public Object commonAjax(HttpServletRequest request, HttpServletResponse response, HttpSession HttpSession,
                              @RequestParam(name = "fromflag", required = false) String fromflag,
-                             @RequestParam(name = "CarId", required = false) String CarId,
                              @RequestParam(name = "cardNo", required = false) String cardNo, Model model
     ) {
         response.setCharacterEncoding("UTF-8");
@@ -70,7 +72,14 @@ public class ABCDceshiAjax {
         Object obj = null;
         fromflag = encodingUrl(fromflag);
         shopcode = encodingUrl(shopcode);
-        String carHaoPai = CarId;
+        String carHaoPai = carId;
+        //登录检查判断
+        if ("queryLmkInfoList".equals(fromflag)) {
+            openId = encodingUrl(request.getParameter("openId"));
+            shopcode = encodingUrl(request.getParameter("shopcode"));
+            carId = autoLoginService.judgeOpenId( openId,shopcode);
+            return carId;
+        }
         //联盟卡主页信息列表
         if ("queryLmkInfoList".equals(fromflag)) {
             List<LianmengkaXmLeftResultModule> lianmengkaXmLeftResultModules = lianMengKa.queryLmkInfo(shopcode, carHaoPai);

@@ -29,5 +29,8 @@
 </script>
 </head>
 <body>
+<input type="hidden" id="shopcode" name="shopcode" value="<%=shopcode %>" >
+<input type="hidden" id="strOpenId" name="strOpenId" value="<%=strOpenId %>" >
+<input type="hidden" id="CarId" name="CarId" value="<%=CarId %>" >
 </body>
 </html>
