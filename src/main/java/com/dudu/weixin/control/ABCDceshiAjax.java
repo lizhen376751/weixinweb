@@ -1,7 +1,5 @@
 package com.dudu.weixin.control;
 
-import com.dudu.soa.customerCenter.customer.module.CustomerDemandParam;
-import com.dudu.soa.lmbasedata.basedata.shop.module.ShopParam;
 import com.dudu.soa.lmbasedata.basedata.shop.module.ShopQueryFruit;
 import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
@@ -12,6 +10,7 @@ import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LianMengActivityService;
 import com.dudu.weixin.service.LianMengKaService;
 import com.dudu.weixin.service.LianmengIntroducedService;
+import com.dudu.weixin.service.ShopInfoService;
 import com.dudu.weixin.service.YangCheInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,120 +50,83 @@ public class ABCDceshiAjax {
     @Autowired
     private AHIService ahiService;//ahi
     @Autowired
-    private BaoYangTiXingService baoYangTiXingService;
+    private BaoYangTiXingService baoYangTiXingService;//保养提醒
+    @Autowired
+    private ShopInfoService shopInfoService;//服务导航之获取店铺信息
 
     @ResponseBody
     @RequestMapping(value = "getCommonAjax", method = RequestMethod.POST)
-    public Object commonAjax(HttpServletRequest request, HttpServletResponse response,HttpSession HttpSession,
+    public Object commonAjax(HttpServletRequest request, HttpServletResponse response, HttpSession HttpSession,
                              @RequestParam(name = "fromflag", required = false) String fromflag,
-
                              @RequestParam(name = "CarId", required = false) String CarId,
-                             @RequestParam(name = "cardNo", required = false) String cardNo,Model model
+                             @RequestParam(name = "cardNo", required = false) String cardNo, Model model
     ) {
-        logger.debug("ajax进入===============" + fromflag);
         response.setCharacterEncoding("UTF-8");
-        String carId = (String)httpSession.getAttribute("DUDUCHEWANG_CarId");
-        String openId = (String)httpSession.getAttribute("DUDUCHEWANG_OpenId");
-        String shopcode = (String)httpSession.getAttribute("DUDUCHEWANG_shopcode");
+        String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
+        String openId = (String) httpSession.getAttribute("DUDUCHEWANG_OpenId");
+        String shopcode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
         Object obj = null;
         fromflag = encodingUrl(fromflag);
         shopcode = encodingUrl(shopcode);
         String carHaoPai = CarId;
-        /*
-         * 联盟卡
-		 */
-
-
         //联盟卡主页信息列表
-        //TODO 后期需要添加判断
         if ("queryLmkInfoList".equals(fromflag)) {
-            logger.info("联盟卡主页信息列表"+shopcode+carHaoPai);
             List<LianmengkaXmLeftResultModule> lianmengkaXmLeftResultModules = lianMengKa.queryLmkInfo(shopcode, carHaoPai);
             return lianmengkaXmLeftResultModules;
         }
-
         //联盟卡消费明细页面
         if ("queryLmkXiaoFeiMX".equals(fromflag)) {
             List<LianmengkaXmCustResultModule> lianmengkaXmCustResultModules = lianMengKa.queryLmkXiaoFeiMX(shopcode, cardNo, carHaoPai);
             return lianmengkaXmCustResultModules;
         }
-
-
         //获取联盟卡发卡店铺名称
         if ("getXmkCardInfo".equals(fromflag)) {
             List<LianmengKaResultModule> xmkCardInfo = lianMengKa.getXmkCardInfo(shopcode, cardNo, carHaoPai);
             return xmkCardInfo;
         }
         //获取联盟卡二维码
-        if("getXmkQRCode".equals(fromflag)){
+        if ("getXmkQRCode".equals(fromflag)) {
             String card_id = encodingUrl(request.getParameter("card_id"));
             String item_code = encodingUrl(request.getParameter("item_code"));
             String type_flg = encodingUrl(request.getParameter("type_flg"));
             String xmkQRCode = lianMengKa.getXmkQRCode(card_id, item_code, type_flg);
             return xmkQRCode;
         }
-
-
-
-
-		/*
-		 * 养车信息
-		 */
-
         //获取养车信息列表信息
         if ("queryYangCheInfo".equals(fromflag)) {
-            logger.debug("养车信息列表");
             return yangCheInfoService.queryInfoList(shopcode);
         }
         //养车信息详情
         if ("getYangCheInfo".equals(fromflag)) {
-            logger.debug("养车信息");
             String ids = request.getParameter("ids");
             String id = encodingUrl(ids);
             return yangCheInfoService.getInfo(Integer.parseInt(id));
         }
-
-		/*
-		 * 联盟活动
-		 */
-
         //获取联盟活动信息
         if ("queryLMActivity".equals(fromflag)) {
-
-            logger.debug("获取联盟活动信息");
             return lianMengActivityService.queryInfoList(shopcode);
         }
-
         //单查联盟活动
         if ("getLianMengActivity".equals(fromflag)) {
-            logger.debug("单查联盟活动");
             String ids = request.getParameter("ids");
             String id = encodingUrl(ids);
             return lianMengActivityService.getInfo(Integer.parseInt(id));
         }
-
         //联盟介绍
         if ("getIntroduced".equals(fromflag)) {
-            logger.debug("联盟介绍");
             return lianmengIntroducedService.queryEntry(shopcode);
         }
         //车险投保(保险公司)
-
         if ("baoxianGongSi".equals(fromflag)) {
-            logger.debug("保险公司");
             return chexiantoubaoService.baoxianGongSi();
         }
         //车险投保()
         if ("baoXianTypes".equals(fromflag)) {
-            logger.debug("保险类型");
             return chexiantoubaoService.baoXianTypes();
         }
-
         //AHI
         String plateNumber = request.getParameter("plateNumber");
-        String strOpenId = request.getParameter("strOpenId");
         if ("queryAllPointByPlateNumber".equals(fromflag)) {
-            logger.debug("ahi" + plateNumber);
             return ahiService.queryAllPointByPlateNumber(plateNumber);
         }
         //AHI
@@ -174,39 +136,37 @@ public class ABCDceshiAjax {
         }
         //AHI
         if ("queryCarPointTwo".equals(fromflag)) {
-            logger.debug("ahi" + plateNumber);
             String ratio = request.getParameter("ratio");
             String id = request.getParameter("id");
             return ahiService.queryCarPointTwo(plateNumber, id, ratio);
         }
         //保养提醒
-        if("baoYangList".equals(fromflag)){
-//            lmCode,carNo,top
-            ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(null,null,"1");
+        if ("baoYangList".equals(fromflag)) {
+            ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(null, null, "1");
             return baoYangListByLmcodeAndCarNo;
 
         }
         //添加服务顾问
-        if("fuwuguwen".equals(fromflag)){
-            //String  guwen_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
-            String guwen_shopcode="0533001";
-            logger.debug("服务顾问");
+        if ("fuwuguwen".equals(fromflag)) {
+            String guwen_shopcode = "0533001";
             return chexiantoubaoService.queryFuWuGuWen(guwen_shopcode);
         }
         //联盟总部
-        if("lianmeng".equals(fromflag)){
-            logger.debug("联盟总部");
+        if ("lianmeng".equals(fromflag)) {
             List<ShopQueryFruit> shopQueryFruits = chexiantoubaoService.queryLianMengZB();
             return shopQueryFruits;
         }
-
         //车辆信息
-        if("xinxi".equals(fromflag)){
+        if ("xinxi".equals(fromflag)) {
             String parameter = request.getParameter("car_number");
-            //String  guwen_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
-            String  xinxi_shopcode ="0533001";
-            logger.debug("车辆信息");
-            return chexiantoubaoService.queryCheLiangXinXi(parameter,xinxi_shopcode);
+            String xinxi_shopcode = "0533001";
+            return chexiantoubaoService.queryCheLiangXinXi(parameter, xinxi_shopcode);
+        }
+        //服务导航
+        if ("queryShopCodeListByLmCode".equals(fromflag)) {
+            String shopType_search = request.getParameter("shopType_search");
+            String orderType_search = request.getParameter("orderType_search");
+            return shopInfoService.queryShopCodeListByLmCode(shopcode,shopType_search,orderType_search);
         }
 
         return obj;

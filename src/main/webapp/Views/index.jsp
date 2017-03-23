@@ -36,11 +36,18 @@
         }
         //保养提醒
         function baoYangList() {
+            //TODO 后期需要调用服务
             window.location.href = "/oauthLoginServlet?flagStr=baoYangList";
         }
         //服务导航
         function daohangindex() {
+            //TODO 暂时未做好...
             window.location.href = "/oauthLoginServlet?flagStr=daohangindex";
+        }
+        //消费记录
+        function xiaoFeiList() {
+            //TODO 暂时未做好...
+            window.location.href = "/oauthLoginServlet?flagStr=xiaoFeiList";
         }
     </script>
 </head>
@@ -57,6 +64,7 @@
             <li class="btnli"><input type="button" class="regbtn" value="联盟卡包" onclick="lmkInfo()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="保养提醒" onclick="baoYangList()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="服务导航" onclick="daohangindex()"/></li>
+            <li class="btnli"><input type="button" class="regbtn" value="消费记录" onclick="xiaoFeiList()"/></li>
         </ul>
     </div>
 

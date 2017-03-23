@@ -7,12 +7,11 @@ import java.util.HashMap;
 
 /**
  * Created by Administrator on 2017/3/14.
+ * 店铺信息
  * 原GetShopInfo
  */
 @Service
 public class ShopInfoService {
-
-
 
     public  String getShopName(String shopcode){
         String strShopName = "";

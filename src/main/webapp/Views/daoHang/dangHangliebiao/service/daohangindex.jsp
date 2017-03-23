@@ -1,7 +1,7 @@
 
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page language="java" import="java.util.ArrayList,java.util.HashMap,javax.servlet.http.HttpSession"%>
-<%@ page language="java" import="cn.duduchewang.weixin.common.GetShopInfo"%> 
+
 
 <%
 	String strShopcode = request.getParameter("shopcode");
@@ -12,8 +12,6 @@
 	String orderType_search = request.getParameter("orderType_search");
 	orderType_search = orderType_search==null ? "" : orderType_search;
 
-	GetShopInfo GetShopInfo = new GetShopInfo();
-	ArrayList<HashMap<String,String>> shopList = GetShopInfo.queryShopCodeListByLmCode(strShopcode,shopType_search,orderType_search);
 
 
 %>
