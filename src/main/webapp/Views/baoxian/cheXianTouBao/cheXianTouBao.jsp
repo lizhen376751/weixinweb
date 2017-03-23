@@ -350,23 +350,23 @@
 							<%--<span class="xian"></span>--%>
 							<%--</li>--%>
 							<!--精神损害抚慰金责任险-->
-							<li>
-								<input type="checkbox" name="chexian_20" id="" value="33" class="chexian"/><span class="font_1 color_4">精神损害抚慰金责任险</span><br>
-								<div class="font_5 color_2" style="margin-bottom: 32px;">
-									<label for="">不计免赔：</label>
-									<input type="radio" name="bjmp_20" value="1"class="fou"/>是
-									<input type="radio" name="bjmp_20" value="0" />否
-									<label for="" style="margin-left: 84px;">赔偿限额：</label>
-									<select name="pcxe_20" disabled="disabled">
-										<option value="21" selected="selected">1万</option>
-										<option value="22">2万</option>
-										<option value="23">3万</option>
-										<option value="24">4万</option>
-										<option value="25">5万</option>
-									</select>
-								</div>
-								<span class="xian"></span>
-							</li>
+							<%--<li>--%>
+								<%--<input type="checkbox" name="chexian_20" id="" value="33" class="chexian"/><span class="font_1 color_4">精神损害抚慰金责任险</span><br>--%>
+								<%--<div class="font_5 color_2" style="margin-bottom: 32px;">--%>
+									<%--<label for="">不计免赔：</label>--%>
+									<%--<input type="radio" name="bjmp_20" value="1"class="fou"/>是--%>
+									<%--<input type="radio" name="bjmp_20" value="0" />否--%>
+									<%--<label for="" style="margin-left: 84px;">赔偿限额：</label>--%>
+									<%--<select name="pcxe_20" disabled="disabled">--%>
+										<%--<option value="21" selected="selected">1万</option>--%>
+										<%--<option value="22">2万</option>--%>
+										<%--<option value="23">3万</option>--%>
+										<%--<option value="24">4万</option>--%>
+										<%--<option value="25">5万</option>--%>
+									<%--</select>--%>
+								<%--</div>--%>
+								<%--<span class="xian"></span>--%>
+							<%--</li>--%>
 						</ul>
 					</div>
 					<!--保险险种的内容-->
