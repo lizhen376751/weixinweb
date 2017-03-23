@@ -203,8 +203,7 @@ public class ABCDceshiAjax {
         //车辆信息
         if("xinxi".equals(fromflag)){
             String parameter = request.getParameter("car_number");
-            //String  xinxi_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
-
+            //String  guwen_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
             String  xinxi_shopcode ="0533001";
             logger.debug("车辆信息");
             return chexiantoubaoService.queryCheLiangXinXi(parameter,xinxi_shopcode);
