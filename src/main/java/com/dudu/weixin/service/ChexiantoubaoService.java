@@ -60,14 +60,30 @@ public class ChexiantoubaoService {
     public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
         //保险开单
         String customerId = request.getParameter("customerId");
+        if(null!=customerId&& !"".equals(customerId) ){
+            int customerId1 = Integer.parseInt(customerId);
+            baoXianKaiDan.setCustomerId(customerId1);
+        }
+
        //获取系统时间
         //String kaiDanDate = request.getParameter("aaaaa");
         String assistant = request.getParameter("serviceConsultant");
+        if(null!=assistant&& !"".equals(assistant) ){
+            baoXianKaiDan.setAssistant(assistant);
+        }
         String shopcode_lm = request.getParameter("unionHeadquarters");
+        if(null!=assistant&& !"".equals(assistant) ){
+            baoXianKaiDan.setShopcode_lm(shopcode_lm);
+        }
         String xingShiZhengImg = request.getParameter("driving_1");
+        baoXianKaiDan.setXingShiZhengImg(xingShiZhengImg);
+        System.out.println("======身份证图片========"+xingShiZhengImg);
         String xingShiZhengImg2 = request.getParameter("driving_2");
+        baoXianKaiDan.setXingShiZhengImg2(xingShiZhengImg2);
         String shenFenZhengImg = request.getParameter("filepath_1");
+        baoXianKaiDan.setShenFenZhengImg(shenFenZhengImg);
         String shenFenZhengImg2 = request.getParameter("filepath_2");
+        baoXianKaiDan.setShenFenZhengImg2(shenFenZhengImg2);
         //String remarks = request.getParameter("aaaaa");
         String shopCode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
         //String totalPrice = request.getParameter("aaaaa");
