@@ -40,7 +40,7 @@ public class ABCDceshiAllController {
     @Autowired
     private ChexiantoubaoService chexiantoubaoService;//车险投保
     //登录页面
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "login", method = RequestMethod.POST)
     protected String login(HttpServletRequest request, HttpServletResponse response) {
         boolean flg = loginActionNewService.login(request);
         if (flg) {

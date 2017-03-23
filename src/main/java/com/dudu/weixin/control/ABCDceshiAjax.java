@@ -74,7 +74,7 @@ public class ABCDceshiAjax {
         shopcode = encodingUrl(shopcode);
         String carHaoPai = carId;
         //登录检查判断
-        if ("queryLmkInfoList".equals(fromflag)) {
+        if ("checkLogin".equals(fromflag)) {
             openId = encodingUrl(request.getParameter("openId"));
             shopcode = encodingUrl(request.getParameter("shopcode"));
             carId = autoLoginService.judgeOpenId( openId,shopcode);
