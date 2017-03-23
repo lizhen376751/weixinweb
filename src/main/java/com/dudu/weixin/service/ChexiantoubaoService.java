@@ -7,6 +7,8 @@ import com.dudu.soa.baoxian.base.module.BaoXianPCZiDian;
 import com.dudu.soa.baoxian.base.module.BaoXianType;
 import com.dudu.soa.baoxian.kaidan.api.APIBaoXainKaiDan;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
+import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDanGongSi;
+import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDanXiangQing;
 import com.dudu.soa.basedata.employee.api.ApiBaseDataEmployee;
 import com.dudu.soa.basedata.employee.module.Employee;
 import com.dudu.soa.basedata.employee.module.ServiceAdvisor;
@@ -20,6 +22,7 @@ import com.dudu.soa.lmbasedata.basedata.shop.module.ShopQueryFruit;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,6 +55,68 @@ public class ChexiantoubaoService {
         return baoXianTypes;
     }
     public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan) {
+        //保险开单
+       /* String customerId = request.getParameter("aaaaa");
+        String kaiDanDate = request.getParameter("aaaaa");
+        String assistant = request.getParameter("aaaaa");
+        String shopcode_lm = request.getParameter("unionHeadquarters");
+        String xingShiZhengImg = request.getParameter("aaaaa");
+        String xingShiZhengImg2 = request.getParameter("aaaaa");
+        String shenFenZhengImg = request.getParameter("aaaaa");
+        String shenFenZhengImg2 = request.getParameter("aaaaa");
+        String remarks = request.getParameter("aaaaa");
+        String shopCode = request.getParameter("aaaaa");
+        String totalPrice = request.getParameter("aaaaa");
+        String fuKuanFlag = request.getParameter("aaaaa");
+        String shiShou = request.getParameter("aaaaa");
+        String orderNumb = request.getParameter("aaaaa");*/
+
+
+        //开单详情
+        String[] insurancetypeIds = request.getParameterValues("chexian");
+        List<BaoXianKaiDanXiangQing> baoxiankaidanxiangqing  = new ArrayList<BaoXianKaiDanXiangQing>();
+        if(insurancetypeIds!=null && insurancetypeIds.length>0) {
+            for (int i = 0; i < insurancetypeIds.length; i++) {
+                BaoXianKaiDanXiangQing baoXianKaiDanXiangQing = new BaoXianKaiDanXiangQing();
+                int insurancetypeId = Integer.parseInt(insurancetypeIds[i]);
+                baoXianKaiDanXiangQing.setInsurancetypeId(insurancetypeId);
+                String buJiMianPeiTypes = request.getParameter("bjmp_" + insurancetypeIds[i]);
+                if(null!=buJiMianPeiTypes&& !"".equals(buJiMianPeiTypes) ){
+                    int buJiMianPeiType = Integer.parseInt(buJiMianPeiTypes);
+                    baoXianKaiDanXiangQing.setBuJiMianPeiType(buJiMianPeiType);
+                }
+                String dictionaryIds = request.getParameter("pcxe_" + insurancetypeIds[i]);
+                if(null!=dictionaryIds&& !"".equals(dictionaryIds) ){
+                    int dictionaryId = Integer.parseInt(dictionaryIds);
+                    baoXianKaiDanXiangQing.setBuJiMianPeiType(dictionaryId);
+                }
+                String baoZhangRenShus = request.getParameter("bzrs_" + insurancetypeIds[i]);
+                if(null!=baoZhangRenShus&& !"".equals(baoZhangRenShus) ){
+                    int baoZhangRenShu = Integer.parseInt(baoZhangRenShus);
+                    baoXianKaiDanXiangQing.setBuJiMianPeiType(baoZhangRenShu);
+                }
+
+                //String kaiDanId=request.getParameter("pcxe_3");
+                //String price=request.getParameter("pcxe_3");
+
+                baoxiankaidanxiangqing.add(baoXianKaiDanXiangQing);
+
+            }
+            baoXianKaiDan.setBaoXianKaiDanXiangQing(baoxiankaidanxiangqing);
+        }
+
+        //保险公司
+        String[] insuranceIds =request.getParameterValues("xianzhong");
+        List<BaoXianKaiDanGongSi> baoXianKaiDanGongSi1 = new ArrayList<BaoXianKaiDanGongSi>();
+        if(insuranceIds!=null && insuranceIds.length>0) {
+            for (int i = 0; i < insuranceIds.length; i++) {
+                BaoXianKaiDanGongSi baoXianKaiDanGongSi = new BaoXianKaiDanGongSi();
+                int companyId = Integer.parseInt(insuranceIds[i]);
+                baoXianKaiDanGongSi.setCompanyId(companyId);
+                baoXianKaiDanGongSi1.add(baoXianKaiDanGongSi);
+            }
+            baoXianKaiDan.setBaoXianKaiDanGongSi(baoXianKaiDanGongSi1);
+        }
         baoXianTypeImpl.BaoXianKaiDan(baoXianKaiDan);
         return null;
     }

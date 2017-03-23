@@ -206,11 +206,6 @@ public class ABCDceshiAjax {
         //车辆信息
         if("xinxi".equals(fromflag)){
             String parameter = request.getParameter("car_number");
-            // String  xinxi_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
-            //int carpai = Integer.parseInt(parameter);
-            //CustomerInfoParam customerInfoParam=new CustomerInfoParam();
-            //customerInfoParam.setShopCode("0533001");
-            //customerInfoParam.setCarBrandId(carpai);
             CustomerDemandParam customerDemandParam=new CustomerDemandParam();
             customerDemandParam.setPlateNumber(parameter);
             customerDemandParam.setShopCode("0533001");
