@@ -25,49 +25,46 @@ var DuduBasePath = "";
 var DuduFileKey = "";
 var DuduParams = "";
 
+//JSON
+var Duducreds = "";
+
 //new
 var applyTokenDoNew = function (fileObj,DuduOssCallbackVarData) {
-    var url = "http://asl.dev.duduchewang.cn/oss/ossconfig/CS00001/18";
-    return urllib.request(url, {
-        method: 'GET'
-    }).then(function (result) {
-        console.log("=========================>>"+result);
-        var creds = JSON.parse(result.data);
-        DuduOssCallback = creds.xOssCallBack;
-        DuduParamsList = creds.paramsList;
-        DuduOrderTag = creds.orderTag;
-        DuduBasePath = creds.basePath;
+    //20170307
+    var creds = Duducreds;
 
-        var client = new OSS({
-            region: creds.region,
-            accessKeyId: creds.accessKeyId,
-            accessKeySecret: creds.accessKeySecret,
-            stsToken: creds.securityToken,
-            bucket: creds.bucketName,
-        });
+    DuduOssCallback = creds.xOssCallBack;
+    DuduParamsList = creds.paramsList;
+    DuduOrderTag = creds.orderTag;
+    DuduBasePath = creds.basePath;
 
-
-        substitutionpara(DuduOssCallbackVarData,fileObj.name);
-        DuduOssCallbackVarData={};
-
-        var file = fileObj;
-        client.multipartUpload(DuduFileKey, file, {
-//			progress: progress,
-            headers: {
-                "x-oss-callback" : DuduOssCallback,
-                "x-oss-callback-var" : DuduOssCallbackVar
-            }
-        }).then(function (res) {
-            console.log('upload success: %j', res);
-//			return retre(res.res.status);
-        })
-            .then(function () {
-                // upcount++;
-//			alert(upcount)
-            })
-        ;
+    var client = new OSS({
+        region: creds.region,
+        accessKeyId: creds.accessKeyId,
+        accessKeySecret: creds.accessKeySecret,
+        stsToken: creds.securityToken,
+        bucket: creds.bucketName
     });
-};
+
+
+    substitutionpara(DuduOssCallbackVarData,fileObj.name);
+    DuduOssCallbackVarData={};
+
+    var file = fileObj;
+    client.multipartUpload(DuduFileKey, file, {
+//			progress: progress,
+        headers: {
+            "x-oss-callback" : DuduOssCallback,
+            "x-oss-callback-var" : DuduOssCallbackVar
+        }
+    }).then(function (res) {
+        console.log('upload success: %j', res);
+    })
+        .then(function () {
+            upcount++;
+        })
+    ;
+}
 
 
 
@@ -246,7 +243,7 @@ function test() {
         api.close();
     }
 }
-// 关闭页面 upcount++
+//关闭页面 upcount++
 function jiaCount() {
     upcount++;
 }

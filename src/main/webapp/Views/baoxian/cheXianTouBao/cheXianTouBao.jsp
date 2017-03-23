@@ -74,22 +74,22 @@
 								<input type="text" name="car_number" id="car_number" value="" />
 								<!--弹出窗-->
 								<div class="tishi">
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
-									<div class="xinxi">鲁Z00000</div>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
+									<%--<div class="xinxi">鲁Z00000</div>--%>
 								</div>
 							</li>
 							<!--您的姓名-->
@@ -376,7 +376,7 @@
 							<li>
 								<p class="font_1 color_3"><span>1</span>行驶证图片：</p>
 								<div class="picture">
-									<input type="file" name="driving" class="filepath"/>
+									<input type="file" name="driving_1" class="filepath"/>
 									<img src="/files/baoxian/img/add_picture.png" class="img1"/>
 									<div class="imgs">
 										<img src="" class="img2 xing_shi"/>
@@ -384,7 +384,7 @@
 									<p class="font_5 color_6" style="width: 100%;text-align: center;margin-top: 57px;">（支持jpg格式，最大限制5M）</p>
 								</div>
 								<div class="picture">
-									<input type="file" name="driving" class="filepath"/>
+									<input type="file" name="driving_2" class="filepath"/>
 									<img src="/files/baoxian/img/add_picture.png" class="img1"/>
 									<div class="imgs">
 										<img src="" class="img2 xing_shi"/>
@@ -396,7 +396,7 @@
 							<li>
 								<p class="font_1 color_3"><span>2</span>身份证图片：</p>
 								<div class="picture">
-									<input type="file" name="filepath" class="filepath" value=""/>
+									<input type="file" name="filepath_1" class="filepath" value=""/>
 									<img src="/files/baoxian/img/add_picture.png" class="img1"/>
 									<div class="imgs">
 										<img src="" class="img2 shen_fen"/>
@@ -404,7 +404,7 @@
 									<p class="font_5 color_6" style="width: 100%;text-align: center;margin-top: 57px;">（支持jpg格式，最大限制5M）</p>
 								</div>
 								<div class="picture">
-									<input type="file" name="filepath" class="filepath" value=""/>
+									<input type="file" name="filepath_2" class="filepath" value=""/>
 									<img src="/files/baoxian/img/add_picture.png" class="img1"/>
 									<div class="imgs">
 										<img src="" class="img2 shen_fen"/>
