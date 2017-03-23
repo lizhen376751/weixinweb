@@ -6,6 +6,7 @@ import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.BaoYangTiXingService;
+import com.dudu.weixin.service.BuyRecordService;
 import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LianMengActivityService;
 import com.dudu.weixin.service.LianMengKaService;
@@ -53,7 +54,8 @@ public class ABCDceshiAjax {
     private BaoYangTiXingService baoYangTiXingService;//保养提醒
     @Autowired
     private ShopInfoService shopInfoService;//服务导航之获取店铺信息
-
+    @Autowired
+    private BuyRecordService buyRecordService;//消费记录
     @ResponseBody
     @RequestMapping(value = "getCommonAjax", method = RequestMethod.POST)
     public Object commonAjax(HttpServletRequest request, HttpServletResponse response, HttpSession HttpSession,
@@ -142,9 +144,16 @@ public class ABCDceshiAjax {
         }
         //保养提醒
         if ("baoYangList".equals(fromflag)) {
-            ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(null, null, "1");
+            String top = request.getParameter("top");
+            ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(shopcode, carId, top);
             return baoYangListByLmcodeAndCarNo;
 
+        }
+        //消费记录
+        if ("baoYangList".equals(fromflag)) {
+            String top = request.getParameter("top");
+            ArrayList serviceListByLmcodeAndCarNo = buyRecordService.getServiceListByLmcodeAndCarNo(shopcode,carId,top);
+            return serviceListByLmcodeAndCarNo;
         }
         //添加服务顾问
         if ("fuwuguwen".equals(fromflag)) {

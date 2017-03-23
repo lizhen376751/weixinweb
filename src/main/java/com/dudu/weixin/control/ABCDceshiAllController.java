@@ -102,6 +102,9 @@ public class ABCDceshiAllController {
             return "/lianMengActivity/jsp/getLianMeng";//联盟活动详情
         } else if ("cheXianTouBao".equals(flagStr)) {
             return "/baoxian/cheXianTouBao/cheXianTouBao";//车险投保
+        }else if ("loginOut".equals(flagStr)) {
+            httpSession.setAttribute("DUDUCHEWANG_CarId",null);
+            return "/login/login";//退出登录
         }
         return "/index";
     }

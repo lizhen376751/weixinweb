@@ -2,11 +2,13 @@
  * Created by Administrator on 2017/3/22.
  */
 $(document).ready(function(){
+    var top = $("#top").val();
     $.ajax({
         type    : 'POST',
         url     : '/getCommonAjax',
         data    : {
-            fromflag   : "baoYangList"
+            fromflag   : "baoYangList",
+            top : top
         },
         success:function(jsondata){
             alert(jsondata);

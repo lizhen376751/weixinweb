@@ -1,7 +1,7 @@
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html; charset=GBK" language="java" %>
-<%@ page language="java" import="cn.duduchewang.weixin.common.GetBuyRecord" %>
-<%@ page language="java"
-         import="com.weixin.login.autoLogin,java.text.DecimalFormat,java.util.ArrayList,java.util.HashMap" %>
+
+<%@ page language="java.text.DecimalFormat,java.util.ArrayList,java.util.HashMap" %>
 <%@ page language="java" %>
 <%
 
@@ -10,18 +10,18 @@
     String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
 
     System.out.println("=============xiaoFeiList.jsp=== CarId:|" + CarId + "|");
-    //TODO 登录判断
-    if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-        autoLogin autoLogin = new autoLogin();
-        CarId = autoLogin.judgeOpenId(strOpenId, shopcode);
-        session.setAttribute("DUDUCHEWANG_CarId", CarId);
-        System.out.println("=============xiaoFeiList.jsp=== 自动登陆后  CarId:|" + CarId + "|");
-    }
-
-    if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-        System.out.println("=============xiaoFeiList.jsp=== 自动登陆后 CarId还是空，则跳转到login.jsp   shopcode:" + shopcode + "|strOpenId:" + strOpenId + "|");
-        response.sendRedirect("../login.jsp?shopcode=" + shopcode + "&strOpenId=" + strOpenId + "");
-    }
+    //TODO 登录判断  总共四块一个商品列表,一个项目列表,即使名字,支付方式后期封装成实体类进行返回,迭代输出到前端页面
+//    if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
+//        autoLogin autoLogin = new autoLogin();
+//        CarId = autoLogin.judgeOpenId(strOpenId, shopcode);
+//        session.setAttribute("DUDUCHEWANG_CarId", CarId);
+//        System.out.println("=============xiaoFeiList.jsp=== 自动登陆后  CarId:|" + CarId + "|");
+//    }
+//
+//    if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
+//        System.out.println("=============xiaoFeiList.jsp=== 自动登陆后 CarId还是空，则跳转到login.jsp   shopcode:" + shopcode + "|strOpenId:" + strOpenId + "|");
+//        response.sendRedirect("../login.jsp?shopcode=" + shopcode + "&strOpenId=" + strOpenId + "");
+//    }
 
 
     String top = (String) request.getParameter("top");
@@ -29,8 +29,9 @@
         top = "1";
     }
 
-    GetBuyRecord GetBuyRecord = new GetBuyRecord();
-    ArrayList listDJ = GetBuyRecord.getServiceListByLmcodeAndCarNo(shopcode, CarId, top);
+
+//     GetBuyRecord = new GetBuyRecord();
+//    ArrayList listDJ = GetBuyRecord.getServiceListByLmcodeAndCarNo(shopcode, CarId, top);
     DecimalFormat form = new DecimalFormat("0.00");
 %>
 <html>
@@ -39,8 +40,8 @@
     <title>消费记录</title>
     <meta name="keywords" content="keyword ..."/>
     <meta name="Description" content="description ..."/>
-    <link rel="stylesheet" type="text/css" href="../css/weix.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/xiaoFeiJiLu.css"/>
+    <link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
+    <link rel="stylesheet" type="text/css" href="//css/xiaoFeiJiLu.css"/>
     <script type="text/javascript" src="../js1/iscroll.js"></script>
 </head>
 <body>
@@ -81,9 +82,6 @@
 
                                 float fshishou = Float.parseFloat(shishou);
                                 float fshishou2 = Float.parseFloat(shishou2);
-		/* String xmInfo = GetBuyRecord.getItemRecord(shopcodeTrue,wxpingzheng);
-		String spInfo = GetBuyRecord.getGoodsRecord(shopcodeTrue,wxpingzheng);
-		String strRecord = xmInfo+spInfo; */
                                 String strZhiFuName = GetBuyRecord.getZhiFuFangShi(zhifufangshi) + "(" + zhifufangshi_jine + ")";
 
                                 ArrayList xmAndSpList = GetBuyRecord.getItemAndSpList(shopcodeTrue, wxpingzheng);
