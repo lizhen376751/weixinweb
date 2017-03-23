@@ -89,17 +89,88 @@ $(document).ready(function(){
     function add_service (arr,big_lable) {
         var html = "";
         for (var i = 0;i < arr.length;i++) {
-            html += '<option value="'+arr[i]+'">'+arr[i]+'</option>';
+            html += '<option value="'+arr[i].code+'">'+arr[i].name+'</option>';
         }
         big_lable.append(html);
     }
+    $.ajax({
+        type    : 'POST',
+        url     : '/getCommonAjax',
+        data    : {
+            fromflag   : "lianmeng"
 
+        },
 
+        success:function(jsondata){
+            var json = JSON.parse(jsondata);
+            // add_insurance (json);
+            // panduan()
+            add_service(json,quarters)
+            console.log(json);
+
+        },
+        error:function(){
+
+        }
+    });
+    $.ajax({
+        type    : 'POST',
+        url     : '/getCommonAjax',
+        data    : {
+            fromflag   : "fuwuguwen"
+
+        },
+
+        success:function(jsondata){
+            var json = JSON.parse(jsondata);
+            // add_insurance (json);
+            // panduan()
+            add_service(json,service)
+            console.log(json);
+
+        },
+        error:function(){
+
+        }
+    });
     //根据车牌号码显示信息
-    var car_number = $("#car_number");
+    var car_number = $("#car_number");//车牌号
+    var tishi = $(".tishi");//模糊搜索出来的车牌号
+    //动态添加车牌信息
+    function add_tishi(arr){
+        var html = "";
+        for(var i = 0;i<arr.length;i++){
+            html += "<div class='xinxi'>"+arr[i].plateNumber+"</div>"
+        }
+        tishi.append(html)
+    }
     car_number.on("keyup",function(){
-        if($(this).val().length >= 3){
-            alert(1111)
+        var val = $(this).val();
+        if(val.length >= 3){
+            alert(1111);
+            $.ajax({
+                type    : 'POST',
+                url     : '/getCommonAjax',
+                data    : {
+                    fromflag   : "xinxi",
+                    car_number: val
+
+                },
+
+                success:function(jsondata){
+                    var json = JSON.parse(jsondata);
+                    // add_insurance (json);
+                    // panduan()
+                    // add_service(json,service)
+                    console.log(json);
+                    tishi.css("display","block");
+                    add_tishi(json)
+
+                },
+                error:function(eee){
+                    alert("失败")
+                }
+            });
         }
     })
 
@@ -496,22 +567,15 @@ $(document).ready(function(){
     };
     appServer = "http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18";
     $(".filepath").on("change",function() {
-
-        // requestJosn(appServer);
-        // getImageSize(this);
+        var shopcode="CS000";
         var i = $(this).index()+1;
-        // alert(i)
         var srcs = getObjectURL(this.files[0]);   //获取路径
-        //参数一
         var projectId = uuid(16,16);
-        //参数总
         var DuduOssCallbackVarData1 = {
-            "shopCode" : "CS000",
-            "orderCode" : projectId, //uuid唯一标识符
-            "imageType" : i  //图片类型 1
-        };
-        //上传调用 延时2秒执行 待优化
-        // setTimeout(function() {uplodlm(DuduOssCallbackVarData1);},1000);
+            "shopCode" :shopcode,
+            "orderCode" : projectId,
+            "imageType" : i
+        }
         new applyTokenDoNew(srcs,DuduOssCallbackVarData1);
 
 

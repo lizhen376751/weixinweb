@@ -27,10 +27,11 @@ var DuduParams = "";
 
 //new
 var applyTokenDoNew = function (fileObj,DuduOssCallbackVarData) {
-    var url = "http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18";
+    var url = "http://asl.dev.duduchewang.cn/oss/ossconfig/CS00001/18";
     return urllib.request(url, {
         method: 'GET'
     }).then(function (result) {
+        console.log("=========================>>"+result);
         var creds = JSON.parse(result.data);
         DuduOssCallback = creds.xOssCallBack;
         DuduParamsList = creds.paramsList;

@@ -140,7 +140,8 @@
 }
 .list .one .car_list li .tishi{
 	width: 40%;
-	height: 300px;
+	height: auto;
+	max-height: 300px;
 	border-radius: 10px;
 	box-sizing: border-box;
 	border: 1px #191d1a solid;
@@ -150,7 +151,7 @@
 	display: none;
 	left: 220px;
 	z-index: 2;
-	overflow: scroll;
+	overflow: auto;
 }
 .list .one .car_list li .tishi .xinxi{
 	text-align: center;

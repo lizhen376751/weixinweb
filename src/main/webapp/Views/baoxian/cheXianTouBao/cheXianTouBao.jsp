@@ -23,7 +23,7 @@
 	<script type="text/javascript" src="/Views/baoxian/cheXianTouBao/oss/base64.js"></script>
 	<script type="text/javascript" src="/Views/baoxian/cheXianTouBao/oss/app.js"></script>
 
-.....
+
 	<script src="/scripts/baoxian/js/cheXianTouBao.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
@@ -36,20 +36,20 @@
 			<div class="nav_left font_1">
 				<label for="">服务顾问：</label>
 				<select name="serviceConsultant">  <!--服务顾问-->
-					<option value="包西福">包西福</option>
-					<option value="付笛生">付笛生</option>
-					<option value="笛卡尔">笛卡尔</option>
-					<option value="小满">小满</option>
-					<option value="小明">小明</option>
+					<%--<option value="包西福">包西福</option>--%>
+					<%--<option value="付笛生">付笛生</option>--%>
+					<%--<option value="笛卡尔">笛卡尔</option>--%>
+					<%--<option value="小满">小满</option>--%>
+					<%--<option value="小明">小明</option>--%>
 				</select>
 			</div>
 			<div class="nav_right font_1">
 				<label for="">联盟总部：</label>
 				<select name="unionHeadquarters">  <!--联盟总部-->
-					<option value="大师全国运营中心">大师全国运营中心</option>
-					<option value="牧宝车居">牧宝车居</option>
-					<option value="易路邦">易路邦</option>
-					<option value="上海追得">上海追得</option>
+					<%--<option value="大师全国运营中心">大师全国运营中心</option>--%>
+					<%--<option value="牧宝车居">牧宝车居</option>--%>
+					<%--<option value="易路邦">易路邦</option>--%>
+					<%--<option value="上海追得">上海追得</option>--%>
 				</select>
 			</div>
 		</div>  <!--导航结束-->
@@ -438,24 +438,6 @@
 		</div>
 	</form>
 </div>
-<script type="text/javascript">
-//    function requestJosn(appServer) {
-//        $.ajax({
-//            type:'GET',
-//            data:{},
-//            dataType:'json',
-//            url:appServer,
-//            success:function(data){
-//                Duducreds=data;
-//                alert(Duducreds);
-//            },
-//            error:function (data) {
-//                alert(appServer);
-//            }});
-//    }
 
-
-
-</script>
 </body>
 </html>
