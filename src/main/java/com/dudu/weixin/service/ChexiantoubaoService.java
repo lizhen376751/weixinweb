@@ -59,21 +59,21 @@ public class ChexiantoubaoService {
     }
     public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
         //保险开单
-       /* String customerId = request.getParameter("aaaaa");
+        String customerId = request.getParameter("customerId");
        //获取系统时间
         //String kaiDanDate = request.getParameter("aaaaa");
         String assistant = request.getParameter("serviceConsultant");
         String shopcode_lm = request.getParameter("unionHeadquarters");
-        String xingShiZhengImg = request.getParameter("aaaaa");
-        String xingShiZhengImg2 = request.getParameter("aaaaa");
-        String shenFenZhengImg = request.getParameter("aaaaa");
-        String shenFenZhengImg2 = request.getParameter("aaaaa");
-        String remarks = request.getParameter("aaaaa");
-        String shopCode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
-        String totalPrice = request.getParameter("aaaaa");
-        String fuKuanFlag = request.getParameter("aaaaa");
-        String shiShou = request.getParameter("aaaaa");
-        //String orderNumb = request.getParameter("aaaaa");*/
+        String xingShiZhengImg = request.getParameter("driving_1");
+        String xingShiZhengImg2 = request.getParameter("driving_2");
+        String shenFenZhengImg = request.getParameter("filepath_1");
+        String shenFenZhengImg2 = request.getParameter("filepath_2");
+        //String remarks = request.getParameter("aaaaa");
+        String shopCode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
+        //String totalPrice = request.getParameter("aaaaa");
+       // String fuKuanFlag = request.getParameter("aaaaa");
+        //String shiShou = request.getParameter("aaaaa");
+        //String orderNumb = request.getParameter("aaaaa");
 
 
         //开单详情

@@ -94,7 +94,7 @@
 								</div>
 							</li>
 							<!--隐藏域-->
-								<input type="hidden" value="" id="hiddens">
+								<input type="hidden" value="" id="hiddens" name="customerId">
 							<!--您的姓名-->
 							<li>
 								<label for="">您的姓名：</label>
