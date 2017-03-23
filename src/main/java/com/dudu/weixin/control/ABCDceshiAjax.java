@@ -148,6 +148,7 @@ public class ABCDceshiAjax {
         }
         //添加服务顾问
         if ("fuwuguwen".equals(fromflag)) {
+            //String  guwen_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
             String guwen_shopcode = "0533001";
             return chexiantoubaoService.queryFuWuGuWen(guwen_shopcode);
         }
@@ -158,6 +159,7 @@ public class ABCDceshiAjax {
         }
         //车辆信息
         if ("xinxi".equals(fromflag)) {
+            //String  xinxi_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
             String parameter = request.getParameter("car_number");
             String xinxi_shopcode = "0533001";
             return chexiantoubaoService.queryCheLiangXinXi(parameter, xinxi_shopcode);

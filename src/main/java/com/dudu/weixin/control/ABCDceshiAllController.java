@@ -164,8 +164,8 @@ public class ABCDceshiAllController {
 
     @ResponseBody
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
-    public String baoXianTiJiao(HttpServletRequest request,BaoXianKaiDan baoXianKaiDan) {
-        chexiantoubaoService.baoXianTiJiao(request,baoXianKaiDan);
+    public String baoXianTiJiao(HttpServletRequest request,BaoXianKaiDan baoXianKaiDan,HttpSession httpSession) {
+        chexiantoubaoService.baoXianTiJiao(request,baoXianKaiDan,httpSession);
         return "";
     }
 

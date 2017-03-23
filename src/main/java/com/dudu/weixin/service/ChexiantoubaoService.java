@@ -22,6 +22,7 @@ import com.dudu.soa.lmbasedata.basedata.shop.module.ShopQueryFruit;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,22 +55,23 @@ public class ChexiantoubaoService {
         List<BaoXianType> baoXianTypes = aPIBaoXianType.selectBaoXianShuJu();
         return baoXianTypes;
     }
-    public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan) {
+    public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
         //保险开单
        /* String customerId = request.getParameter("aaaaa");
-        String kaiDanDate = request.getParameter("aaaaa");
-        String assistant = request.getParameter("aaaaa");
+       //获取系统时间
+        //String kaiDanDate = request.getParameter("aaaaa");
+        String assistant = request.getParameter("serviceConsultant");
         String shopcode_lm = request.getParameter("unionHeadquarters");
         String xingShiZhengImg = request.getParameter("aaaaa");
         String xingShiZhengImg2 = request.getParameter("aaaaa");
         String shenFenZhengImg = request.getParameter("aaaaa");
         String shenFenZhengImg2 = request.getParameter("aaaaa");
         String remarks = request.getParameter("aaaaa");
-        String shopCode = request.getParameter("aaaaa");
+        String shopCode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
         String totalPrice = request.getParameter("aaaaa");
         String fuKuanFlag = request.getParameter("aaaaa");
         String shiShou = request.getParameter("aaaaa");
-        String orderNumb = request.getParameter("aaaaa");*/
+        //String orderNumb = request.getParameter("aaaaa");*/
 
 
         //开单详情
