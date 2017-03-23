@@ -55,7 +55,7 @@ public class ABCDceshiAjax {
 
     @ResponseBody
     @RequestMapping(value = "getCommonAjax", method = RequestMethod.POST)
-    public Object commonAjax(HttpServletRequest request, HttpServletResponse response,
+    public Object commonAjax(HttpServletRequest request, HttpServletResponse response,HttpSession HttpSession,
                              @RequestParam(name = "fromflag", required = false) String fromflag,
 
                              @RequestParam(name = "CarId", required = false) String CarId,
@@ -196,21 +196,18 @@ public class ABCDceshiAjax {
         //联盟总部
         if("lianmeng".equals(fromflag)){
             logger.debug("联盟总部");
-            ShopParam shopParam=new ShopParam();
-            shopParam.setType("1");
-            List<ShopQueryFruit> shopQueryFruits = chexiantoubaoService.queryLianMengZB(shopParam);
-            System.out.println(shopQueryFruits);
+            List<ShopQueryFruit> shopQueryFruits = chexiantoubaoService.queryLianMengZB();
             return shopQueryFruits;
         }
 
         //车辆信息
         if("xinxi".equals(fromflag)){
             String parameter = request.getParameter("car_number");
-            CustomerDemandParam customerDemandParam=new CustomerDemandParam();
-            customerDemandParam.setPlateNumber(parameter);
-            customerDemandParam.setShopCode("0533001");
+            //String  xinxi_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
+
+            String  xinxi_shopcode ="0533001";
             logger.debug("车辆信息");
-            return chexiantoubaoService.queryCheLiangXinXi(customerDemandParam);
+            return chexiantoubaoService.queryCheLiangXinXi(parameter,xinxi_shopcode);
         }
 
         return obj;

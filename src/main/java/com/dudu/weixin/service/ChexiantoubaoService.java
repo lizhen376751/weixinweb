@@ -128,14 +128,18 @@ public class ChexiantoubaoService {
         return list;
     }
 
-    public List<ShopQueryFruit> queryLianMengZB(ShopParam shopParam) {
-
+    public List<ShopQueryFruit> queryLianMengZB() {
+        ShopParam shopParam=new ShopParam();
+        shopParam.setType("1");
         return apiShopIntf.queryShopInfo(shopParam);
     }
 
-    public List<CustomerDemandReturn> queryCheLiangXinXi(CustomerDemandParam customerDemandParam) {
+    public List<CustomerDemandReturn> queryCheLiangXinXi(String parameter,String xinxi_shopcode) {
         //CustomerInfoParam customerInfoParam=new CustomerInfoParam();
         //List<CustomerInfo> customerInfos = apiCustomerInfo.queryCustomerList(customerInfoParam);
+        CustomerDemandParam customerDemandParam=new CustomerDemandParam();
+        customerDemandParam.setPlateNumber(parameter);
+        customerDemandParam.setShopCode(xinxi_shopcode);
         String plateNumber = customerDemandParam.getPlateNumber();
         System.out.println("==========="+plateNumber);
 
