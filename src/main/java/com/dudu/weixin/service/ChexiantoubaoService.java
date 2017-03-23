@@ -16,6 +16,8 @@ import com.dudu.soa.customerCenter.customer.api.ApiCustomerDemand;
 import com.dudu.soa.customerCenter.customer.api.ApiCustomerInfo;
 import com.dudu.soa.customerCenter.customer.module.CustomerDemandParam;
 import com.dudu.soa.customerCenter.customer.module.CustomerDemandReturn;
+import com.dudu.soa.customerCenter.customer.module.CustomerInfo;
+import com.dudu.soa.customerCenter.customer.module.CustomerInfoParam;
 import com.dudu.soa.lmbasedata.basedata.shop.api.ApiShopIntf;
 import com.dudu.soa.lmbasedata.basedata.shop.module.ShopParam;
 import com.dudu.soa.lmbasedata.basedata.shop.module.ShopQueryFruit;
@@ -137,18 +139,12 @@ public class ChexiantoubaoService {
         return apiShopIntf.queryShopInfo(shopParam);
     }
 
-    public List<CustomerDemandReturn> queryCheLiangXinXi(String parameter,String xinxi_shopcode) {
-        //CustomerInfoParam customerInfoParam=new CustomerInfoParam();
-        //List<CustomerInfo> customerInfos = apiCustomerInfo.queryCustomerList(customerInfoParam);
-        CustomerDemandParam customerDemandParam=new CustomerDemandParam();
-        customerDemandParam.setPlateNumber(parameter);
-        customerDemandParam.setShopCode(xinxi_shopcode);
-        String plateNumber = customerDemandParam.getPlateNumber();
-        System.out.println("==========="+plateNumber);
-
-        List<CustomerDemandReturn> customerDemandReturns = apiCustomerDemand.queryDemandList(customerDemandParam);
-        System.out.println("======查询的结果是======"+customerDemandReturns);
-        return customerDemandReturns;
+    public List<CustomerInfo>  queryCheLiangXinXi(String parameter,String xinxi_shopcode) {
+        CustomerInfoParam customerInfoParam=new CustomerInfoParam();
+        customerInfoParam.setPlateNumber(parameter);
+        customerInfoParam.setShopCode(xinxi_shopcode);
+        List<CustomerInfo> customerInfos = apiCustomerInfo.queryCustomerList(customerInfoParam);
+        return customerInfos;
     }
 
 }
