@@ -177,13 +177,7 @@ public class AllControl {
 //        }
 //    }
 //
-//    @ResponseBody
-//    @RequestMapping(value = "coreServlet", method = RequestMethod.POST)
-//    public String post(@RequestParam(name = "shopcode") String shopCode) {
-//        ShopInfo info = shopInfoService.getShopInfoDetail(shopCode);
-//        return null;
-//    }
-//
+
 //
 //    private String getTokenByShopCode(String shopCode) {
 //

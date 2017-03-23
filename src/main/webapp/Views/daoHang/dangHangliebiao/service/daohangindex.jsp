@@ -4,18 +4,18 @@
 <%@ page language="java" import="cn.duduchewang.weixin.common.GetShopInfo"%> 
 
 <%
- String strShopcode = request.getParameter("shopcode");
- String strOpenId = (String)request.getAttribute("openid");
- String url="http://shop.duduchewang.com/upload/";
- String shopType_search = request.getParameter("shopType_search");
- shopType_search = shopType_search==null ? "" : shopType_search;
- String orderType_search = request.getParameter("orderType_search");
- orderType_search = orderType_search==null ? "" : orderType_search;
+	String strShopcode = request.getParameter("shopcode");
+	String strOpenId = (String)request.getAttribute("openid");
+	String url="http://shop.duduchewang.com/upload/";
+	String shopType_search = request.getParameter("shopType_search");
+	shopType_search = shopType_search==null ? "" : shopType_search;
+	String orderType_search = request.getParameter("orderType_search");
+	orderType_search = orderType_search==null ? "" : orderType_search;
 
- GetShopInfo GetShopInfo = new GetShopInfo();
- ArrayList<HashMap<String,String>> shopList = GetShopInfo.queryShopCodeListByLmCode(strShopcode,shopType_search,orderType_search);
- 
- 
+	GetShopInfo GetShopInfo = new GetShopInfo();
+	ArrayList<HashMap<String,String>> shopList = GetShopInfo.queryShopCodeListByLmCode(strShopcode,shopType_search,orderType_search);
+
+
 %>
 
 
@@ -24,10 +24,10 @@
 		<meta charset="UTF-8">
 		<title>服务导航</title>
 		<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
-		<link rel="stylesheet" type="text/css" href="/styles/daoHang/radialIndicator/radialindicator.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/daoHang/daoHangliebiao/css/server.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/daoHang/daoHangliebiao/css/radialindicator.css"/>
 		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/scripts/daoHang/daoHangliebiao/js/daoHangliebiao.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/daoHang/daoHangliebiao/js/index.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nOi93QKhPFHG6xfAp94mm1mk"></script>
 		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
@@ -203,7 +203,7 @@
 		    		  <%
 					  if(ImgListView == null || "".equals(ImgListView) || "null".equals(ImgListView)){
 					  %>
-					    <img src="../../image/nonepic.png" alt="" title="" />
+					    <img src="/files/daoHang/daoHangliebiao/img/nonepic.png" alt="" title="" />
 					  <%}else{
 					   %>
 					  <img src="<%=url%>/<%=shopCode2%>/shopimg/<%=ImgListView%>" alt="" title="" />
@@ -217,25 +217,25 @@
 			    	  			float aa=0;
 			    	  			for(float a=Float.parseFloat(rtatescore);a>0;a--){ 
 			    	  		%>
-			    	  		 	<img src="../img/daohang_16.png"/>
+			    	  		 	<img src="/files/daoHang/daoHangliebiao/img/daohang_16.png"/>
 			    	  		<%  
 			    	  				aa++;
 			    	  			}
 			    	  			
 			    	  			for(float b=0;b<5-aa;b++){
 			    	  		%>
-			    	  			<img src="../img/daohang_18.png"/>
+			    	  			<img src="/files/daoHang/daoHangliebiao/img/daohang_18.png"/>
 			    	  		<% 	} %>
 			    	  		 <span class="font_0 server_font"><!-- 已有000人体验 --></span>
 			    	  	</li>
 			    	  	<li style="padding-top:10px;">
-			    	  		<% if(lebal.indexOf("洗车")>-1){ %><img src="../img/daohang_3_03.png"/><% } %>
-			    	  		<% if(lebal.indexOf("美容")>-1){ %><img src="../img/daohang_3_05.png"/><% } %>
-			    	  		<% if(lebal.indexOf("保养")>-1){ %><img src="../img/daohang_3_06.png"/><% } %>
+			    	  		<% if(lebal.indexOf("洗车")>-1){ %><img src="/files/daoHang/daoHangliebiao/img/daohang_3_03.png"/><% } %>
+			    	  		<% if(lebal.indexOf("美容")>-1){ %><img src="/files/daoHang/daoHangliebiao/img/daohang_3_05.png"/><% } %>
+			    	  		<% if(lebal.indexOf("保养")>-1){ %><img src="/files/daoHang/daoHangliebiao/img/daohang_3_06.png"/><% } %>
 			    	  	</li>
 			    	  	<li style="height:50px;line-height:50px" class="server_addr server_font"><%=Address %> </li>
 			    	  	<li>
-			    	  	   <img src="../img/daohang_23.png"/> 
+			    	  	   <img src="/files/daoHang/daoHangliebiao/img/daohang_23.png"/>
 			    	  	   <span class="server_addr server_font2"><!-- 0.0千米 -->点击自动导航</span>
 			    	  	   <span class="server_addr marg_server  server_font2"><%=kdCount%>已人购买</span>
 			    	  	</li>	    	  	
@@ -243,7 +243,7 @@
 			    	</li>
 			    	<li class=" server_li" style="float:right">
 			    		<% if(Tel!=null && !"".equals(Tel)){ %>
-			    		<a href="tel:<%=Tel%>"><img src="../img/daohang_4.png"/></a>
+			    		<a href="tel:<%=Tel%>"><img src="/files/daoHang/daoHangliebiao/img/daohang_4.png"/></a>
 			    		<div   onclick="advance('<%=shopCode2%>','<%=ShopName %>')" class="yyue font_0">预约</div>
 			    		<% } %>
 			    	</li>

@@ -1,13 +1,9 @@
 package com.dudu.weixin.control;
 
 import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
-import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDanGongSi;
-import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDanXiangQing;
 import com.dudu.weixin.service.ChexiantoubaoService;
-import com.dudu.weixin.service.LianmengIntroducedService;
 import com.dudu.weixin.service.LoginActionNewService;
 import com.dudu.weixin.service.ShopInfoService;
-import com.dudu.weixin.struct.shop.ShopInfo;
 import com.dudu.weixin.util.Constant;
 import com.dudu.weixin.util.SignUtil;
 import org.slf4j.Logger;
@@ -25,8 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Administrator on 2017/3/17.
@@ -42,9 +36,7 @@ public class ABCDceshiAllController {
     @Autowired
     private ShopInfoService shopInfoService;
     @Autowired
-    private LianmengIntroducedService lianmengIntroducedService;
-    @Autowired
-    private LoginActionNewService loginActionNewService;
+    private LoginActionNewService loginActionNewService;//登录服务
     @Autowired
     private ChexiantoubaoService chexiantoubaoService;//车险投保
     //登录页面
@@ -165,9 +157,9 @@ public class ABCDceshiAllController {
 
     @ResponseBody
     @RequestMapping(value = "coreServlet", method = RequestMethod.POST)
-    public String post(@RequestParam(name = "shopcode") String shopCode) {
-        ShopInfo info = shopInfoService.getShopInfoDetail(shopCode);
-        return null;
+    public String post(@RequestParam(name = "shopcode") String shopcode) {
+        String shopName = shopInfoService.getShopName(shopcode);
+        return shopName;
     }
 
     @ResponseBody

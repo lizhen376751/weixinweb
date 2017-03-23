@@ -1,6 +1,5 @@
 package com.dudu.weixin.service;
 
-import com.dudu.weixin.struct.shop.ShopInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,10 +12,7 @@ import java.util.HashMap;
 @Service
 public class ShopInfoService {
 
-    public ShopInfo getShopInfoDetail(String shopCode) {
-        //Todo 需调用CoreService的processRequest接口
-        return null;
-    }
+
 
     public  String getShopName(String shopcode){
         String strShopName = "";
