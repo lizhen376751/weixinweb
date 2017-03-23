@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     var v = 1;
     $('.titles span').click(function() {
@@ -138,6 +139,8 @@ $(document).ready(function(){
     var tishi = $(".tishi");//模糊搜索出来的车牌号
     //动态添加车牌信息
     function add_tishi(arr){
+        var xinxi = $(".xinxi");
+        xinxi.remove()
         var html = "";
         for(var i = 0;i<arr.length;i++){
             html += "<div class='xinxi'>"+arr[i].plateNumber+"</div>"
@@ -147,16 +150,13 @@ $(document).ready(function(){
     car_number.on("keyup",function(){
         var val = $(this).val();
         if(val.length >= 3){
-            alert(1111);
             $.ajax({
                 type    : 'POST',
                 url     : '/getCommonAjax',
                 data    : {
                     fromflag   : "xinxi",
                     car_number: val
-
                 },
-
                 success:function(jsondata){
                     var json = JSON.parse(jsondata);
                     // add_insurance (json);
@@ -164,8 +164,8 @@ $(document).ready(function(){
                     // add_service(json,service)
                     console.log(json);
                     tishi.css("display","block");
-                    add_tishi(json)
-
+                    add_tishi(json);
+                    add_information(json)
                 },
                 error:function(eee){
                     alert("失败")
@@ -173,7 +173,38 @@ $(document).ready(function(){
             });
         }
     })
-
+    function add_information(arr) {
+        var tishi = $(".tishi");
+        //获取隐藏域
+        var hidden = $("#hiddens");
+        //获取车牌信息的弹出框
+        var xinxi = $(".xinxi");
+        //获取车辆信息页中的信息
+        var car_number = $("#car_number");//车牌号
+        var your_name = $("#your_name"); //用户名
+        var sex_nan = $("#nan");//性别男
+        var sex_nv = $("#nv"); // 性别女
+        var phone_number = $("#phone_number");//手机号
+        var daihao = $("#daihao");//车辆代号
+        var engine_number = $("#engine_number");//发动机号码
+        var registration_date = $("#registration_date");//注册日期
+        xinxi.on("click",function(){
+            var i = $(this).index();
+            car_number.val(arr[i].plateNumber);
+            your_name.val(arr[i].customerName);
+            phone_number.val(arr[i].mobilePhone);
+            daihao.val(arr[i].frameNumber);
+            engine_number.val(arr[i].engineNumber);
+            registration_date.val(arr[i].createTime);
+            if(arr[i].sex == 1){
+                sex_nan.attr("checked",true)
+            }else{
+                sex_nv.attr("checked",true)
+            }
+            hidden.val(arr[i].id);
+            tishi.css("display","none")
+        })
+    }
 
     //保险险种部分
     //添加保险公司
@@ -566,30 +597,45 @@ $(document).ready(function(){
         return url
     };
    // appServer = "http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18";
-    var fff = '{"endPoint":"http://oss-cn-shanghai.aliyuncs.com","accessKeyId":"STS.JLhBEn14hohnakmZyiniAhd4m","accessKeySecret":"8A5kNRPPye8GzaiEts81iKpcL74JuW1qYxyjx5aqYwSE","securityToken":"CAIStwN1q6Ft5B2yfSjIq4/dCf/a3OtJ2KqFY03cvnk8YuZth6Gfjzz2IHBPenJpBe4Ztfk3mGBU7/YclqV1VptBA0ffNZMots0PYN9Pwk2C6aKP9rUhpMCPiwHxYkeJza2/SuH9S8ynNZXJQlvYlyh17KLnfDG5JTKMOoGIjpgVCbZyWRKjPwJbGPBcJAZptLU1Vx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDuqXifhVbhmOgOvNazcNr2Y9RgIZZ6Wti4m+dtLvKZiHcX4RFN5KZ/iusGvnW1rLPxL1RX8m/JUY79+cFuKwlUf7UzH7U+wtH3ifx/vJ609eHw0A0fBfxJdC7dSYu8uuqmftmkLdEkb732Fm3Q29SUTPnPvhgjfGgQOXEPGZkoIWQiDgc3GHOIaP2r5VzXYwKqRKXC27puicItlhLi9N2aJlGJBKbbxGFaGOdlMx54aUFMjD2/KPJZLVEUST49WebJF7cURQtFtKblsTfVUiBd1XxNt5X8HaiG4f5EMNmhAckbidZNOM0W7XFZRlD2Wq+ojVwPaGtmTLBZ3a/gI5aj76Wfx+GecXQwxjaTBvYwGoABkHgGtd6ufoEP31sQ0y9pdBHbq0QFDeJjCDLHm6IZ1h2anmxNTGrGs4Ld6RN/T9Am6Rd9Vo1df6tiI7SQs72GTKmsvF7BnUk4zMN8KS2YJRTjtAYBMNEaA2Y3GgYNY88uqwJzx8jH+O7505HHl11UF+kjbDVGu3x3H2K9OEXlMpA=","region":"oss-cn-shanghai","bucketName":"duduimage","xOssCallBack":"eyJjYWxsYmFja1VybCI6Imh0dHA6Ly9hcGkuZ3cuZGV2LmR1ZHVjaGV3YW5nLmNuL2luZm8vdXBsb2FkIiwiY2FsbGJhY2tCb2R5Ijoic2hvcENvZGU9JHt4OnNob3BDb2RlfSZvcmRlckNvZGU9JHt4Om9yZGVyQ29kZX0maW1hZ2VUeXBlPSR7eDppbWFnZVR5cGV9JmJ1Y2tldElkPTEmYnVzaW5lc3NDb25maWdJZD0xOCZmaWxlUmVhbE5hbWU9JHt4OmZpbGVSZWFsTmFtZX0mYnVja2V0PSR7YnVja2V0fSZvYmplY3Q9JHtvYmplY3R9JmV0YWc9JHtldGFnfSZzaXplPSR7c2l6ZX0mbWltZVR5cGU9JHttaW1lVHlwZX0maW1hZ2VJbmZvLmhlaWdodD0ke2ltYWdlSW5mby5oZWlnaHR9JmltYWdlSW5mby53aWR0aD0ke2ltYWdlSW5mby53aWR0aH0maW1hZ2VJbmZvLmZvcm1hdD0ke2ltYWdlSW5mby5mb3JtYXR9In0=","basePath":"cs00001/baoxian/{orderCode}/","orderCodeName":"orderCode","orderTag":"{imageType}/","paramsList":["shopCode","orderCode","imageType"]}'
+    var fff = '{"endPoint":"http://oss-cn-shanghai.aliyuncs.com","accessKeyId":"STS.Bnax4cxsZwJrcXZ6abMTmRKGf","accessKeySecret":"CQ3njVovqfPAjZEYz8HDo28Hiz47nBT6Cf4eYsmrUKim","securityToken":"CAISvQN1q6Ft5B2yfSjIo63UM47Xlax7wIiZYX7r0mE3QdtBvY7shDz2IHBPenJpBe4Ztfk3mGBU7/YclqV1VptBA0ffNZMots0PdeJn3U2C6aKP9rUhpMCP8QLxYkeJyK2/SuH9S8ynNZXJQlvYlyh17KLnfDG5JTKMOoGIjpgVCbZyWRKjPwJbGPBcJAZptLU4Vx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDurHiahVbhmOgOvNazcNr2Y9RgIZZ6Wti4m+dtLvKZiHcX9AgN5a5wg6dE9HCF+ZPvFjs9zxiAIpCbkLlGJxN4Ya4XArNNqOOG+9Rzpu3UkfaQqXNKJvoHaznDY4qizcDYYsfLUOw0brHmIX/A/8mSP53uyWMebGkcKRlBdqh5SDl5Agd+TSrBeO31ugLGfwu+Sq2M36xx2oEtlw2wpJ2VNx+eSrOW2iYVfYx+egRqFWZPgTGxLPBcIl0SKQ44WevNd+gpMkAC85GPlBbJSyhtwktQu/DDfP7MssgdE96vBcwdiNZDO88b6zd6Ew2nFajdg0MVZXFjRq1NzK7uNJmw5bmI2uyPZvTcDfQKqs+svfZFE4nnGoABqK02MMmCkYVUAHbQgRMiybzYIs6wDKdKJxklQOhpqv9cXvXojcxSlpL0aQZUJP/YUvlaLzYpXqO+i/GOqYP7j70QTe7DCLsD3np3Y0sQEGpu7O1THP+LuS5i5ntHajRpIh6QQiXHO78JMpDRFRfNlTUlKvzrg8ADAf5rgZYifqg=","region":"oss-cn-shanghai","bucketName":"duduimage","xOssCallBack":"eyJjYWxsYmFja1VybCI6Imh0dHA6Ly9hcGkuZ3cuZGV2LmR1ZHVjaGV3YW5nLmNuL2luZm8vdXBsb2FkIiwiY2FsbGJhY2tCb2R5Ijoic2hvcENvZGU9JHt4OnNob3BDb2RlfSZvcmRlckNvZGU9JHt4Om9yZGVyQ29kZX0mYnVja2V0SWQ9MSZidXNpbmVzc0NvbmZpZ0lkPTE0JmZpbGVSZWFsTmFtZT0ke3g6ZmlsZVJlYWxOYW1lfSZidWNrZXQ9JHtidWNrZXR9Jm9iamVjdD0ke29iamVjdH0mZXRhZz0ke2V0YWd9JnNpemU9JHtzaXplfSZtaW1lVHlwZT0ke21pbWVUeXBlfSZpbWFnZUluZm8uaGVpZ2h0PSR7aW1hZ2VJbmZvLmhlaWdodH0maW1hZ2VJbmZvLndpZHRoPSR7aW1hZ2VJbmZvLndpZHRofSZpbWFnZUluZm8uZm9ybWF0PSR7aW1hZ2VJbmZvLmZvcm1hdH0ifQ==","basePath":"cs00001/wx/yangche/{orderCode}/","orderCodeName":"orderCode","orderTag":"","paramsList":["shopCode","orderCode"]}'
     var www = JSON.parse(fff)
+
     $(".filepath").on("change",function() {
+
         Duducreds = www;
         var shopcode="CS00001";
         var i = $(this).index()+1;
-        var srcs = getObjectURL(this.files[0]);   //获取路径
+        var srcd =this.files[0];
         var projectId = uuid(16,16);
         var DuduOssCallbackVarData1 = {
             "shopCode" :shopcode,
-            "orderCode" : projectId,
-            "imageType" : i
+            "orderCode" : projectId
         }
-        console.log(srcs)
-        new applyTokenDoNew(srcs,DuduOssCallbackVarData1);
-
-
-        $(this).nextAll(".imgs").children(".img2")[0].src = srcs;
-        $(this).nextAll(".img1").hide();   //this指的是input
-        $(this).nextAll("p").hide();
+        console.log(srcd)
+        new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
+         //setTimeout(function() { new applyTokenDoNew(srcd,DuduOssCallbackVarData1);},2000);
+        // $(this).nextAll(".imgs").children(".img2")[0].src = srcs;
+         $(this).nextAll(".img1").hide();   //this指的是input
+         $(this).nextAll("p").hide();
         $(this).nextAll(".imgs").show();  //fireBUg查看第二次换图片不起做用
-        $(this).nextAll('.close').show();   //this指的是input
-        $(this).nextAll(".imgs").children(".img2").attr("src",srcs);    //this指的是input
-        $(this).val('');    //必须制空
+        // $(this).nextAll('.close').show();   //this指的是input
+        var state = false;
+        var imgage = $(this).nextAll(".imgs").children(".img2");
+        function a(){
+            console.log(srcs)
+            if(srcs == "" && state == false){
+                setTimeout(function() { a();},2000);
+            }else{
+                console.log(srcs)
+                imgage.attr("src",srcs);
+                srcs = ""
+                state = true;
+            }
+        }
+         a();
+
+         $(this).nextAll(".tupian").val(projectId)
+         //$(this).val(projectId);    //必须制空
 //      $(".close").on("click",function() {
 //          $(this).hide();     //this指的是span
 //          $(this).nextAll(".img2").hide();

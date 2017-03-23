@@ -22,6 +22,7 @@
 	<script type="text/javascript" src="/Views/baoxian/cheXianTouBao/oss/aliyun-oss-sdk.js"></script>
 	<script type="text/javascript" src="/Views/baoxian/cheXianTouBao/oss/base64.js"></script>
 	<script type="text/javascript" src="/Views/baoxian/cheXianTouBao/oss/app.js"></script>
+	<%--<link rel="stylesheet" href="/Views/baoxian/cheXianTouBao/oss/bootstrap.min.css" />--%>
 
 
 	<script src="/scripts/baoxian/js/cheXianTouBao.js" type="text/javascript" charset="utf-8"></script>
@@ -92,12 +93,14 @@
 									<%--<div class="xinxi">鲁Z00000</div>--%>
 								</div>
 							</li>
+							<!--隐藏域-->
+								<input type="hidden" value="" id="hiddens">
 							<!--您的姓名-->
 							<li>
 								<label for="">您的姓名：</label>
 								<input type="text" name="your_name" id="your_name" value="" class="your_name"/>
-								<input type="radio" name="sex" value="男"/>男
-								<input type="radio" name="sex" value="女" class="margin_left1"/>女
+								<input type="radio" name="sex" value="1" id="nan"/>男
+								<input type="radio" name="sex" value="0" class="margin_left1" id="nv"/>女
 							</li>
 							<!--手机号码-->
 							<li>
@@ -376,7 +379,8 @@
 							<li>
 								<p class="font_1 color_3"><span>1</span>行驶证图片：</p>
 								<div class="picture">
-									<input type="file" name="driving_1" class="filepath"/>
+									<input type="file" name="" class="filepath" id="file"/>
+									<input type="hidden" name="driving_1" value="" class="tupian">
 									<img src="/files/baoxian/img/add_picture.png" class="img1"/>
 									<div class="imgs">
 										<img src="" class="img2 xing_shi"/>
@@ -384,7 +388,8 @@
 									<p class="font_5 color_6" style="width: 100%;text-align: center;margin-top: 57px;">（支持jpg格式，最大限制5M）</p>
 								</div>
 								<div class="picture">
-									<input type="file" name="driving_2" class="filepath"/>
+									<input type="file" name="" class="filepath"/>
+									<input type="hidden" name="driving_2" value="" class="tupian">
 									<img src="/files/baoxian/img/add_picture.png" class="img1"/>
 									<div class="imgs">
 										<img src="" class="img2 xing_shi"/>
@@ -396,7 +401,8 @@
 							<li>
 								<p class="font_1 color_3"><span>2</span>身份证图片：</p>
 								<div class="picture">
-									<input type="file" name="filepath_1" class="filepath" value=""/>
+									<input type="file" name="" class="filepath" value=""/>
+									<input type="hidden" name="filepath_1" value="" class="tupian">
 									<img src="/files/baoxian/img/add_picture.png" class="img1"/>
 									<div class="imgs">
 										<img src="" class="img2 shen_fen"/>
@@ -404,7 +410,8 @@
 									<p class="font_5 color_6" style="width: 100%;text-align: center;margin-top: 57px;">（支持jpg格式，最大限制5M）</p>
 								</div>
 								<div class="picture">
-									<input type="file" name="filepath_2" class="filepath" value=""/>
+									<input type="file" name="" class="filepath" value=""/>
+									<input type="hidden" name="filepath_2" value="" class="tupian">
 									<img src="/files/baoxian/img/add_picture.png" class="img1"/>
 									<div class="imgs">
 										<img src="" class="img2 shen_fen"/>
