@@ -279,11 +279,11 @@ $(document).ready(function(){
             //是否默认选中
             if (arr[i].typeFlag == 1) {
                 if (arr[i].typeName == "投保交强险" || arr[i].typeName == "代缴车船税") {
-                    typeFlag += "<input type='checkbox' name='chexian_"+arr[i].id+"' id='' value='"+arr[i].id+"' checked='checked'/>"+
+                    typeFlag += "<input type='checkbox' name='chexian' id='' value='"+arr[i].id+"' checked='checked'/>"+
                         "<span class='font_1 color_4'>"+arr[i].typeName+"</span>"+
                         "<span class='font_5 color_3'>（必买险种）</span>"
                 } else{
-                    typeFlag += "<input type='checkbox' name='chexian_"+arr[i].id+"' id='' value='"+arr[i].id+"' checked='checked' class='chexian'/><span class='font_1 color_4'>"+arr[i].typeName+"</span>";
+                    typeFlag += "<input type='checkbox' name='chexian' id='' value='"+arr[i].id+"' checked='checked' class='chexian'/><span class='font_1 color_4'>"+arr[i].typeName+"</span>";
                 }
 
                 //不计免赔拼接
@@ -322,7 +322,7 @@ $(document).ready(function(){
                     }
                 }
             }else{
-                typeFlag += "<input type='checkbox' name='chexian_"+arr[i].id+"' id='' value='"+arr[i].id+"' class='chexian'/><span class='font_1 color_4'>"+arr[i].typeName+"</span>";
+                typeFlag += "<input type='checkbox' name='chexian' id='' value='"+arr[i].id+"' class='chexian'/><span class='font_1 color_4'>"+arr[i].typeName+"</span>";
                 //不计免赔拼接
                 if (arr[i].buJiMianPeiFlag == 1) {
                     buJiMianPeiFlag +=   "<label for=''>不计免赔：</label>"+
