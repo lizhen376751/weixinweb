@@ -86,6 +86,7 @@ public class ChexiantoubaoService {
         baoXianKaiDan.setShenFenZhengImg2(shenFenZhengImg2);
         //String remarks = request.getParameter("aaaaa");
         String shopCode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
+        baoXianKaiDan.setShopCode(shopCode);
         //String totalPrice = request.getParameter("aaaaa");
        // String fuKuanFlag = request.getParameter("aaaaa");
         //String shiShou = request.getParameter("aaaaa");
