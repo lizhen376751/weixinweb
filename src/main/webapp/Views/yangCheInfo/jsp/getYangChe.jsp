@@ -16,7 +16,6 @@
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
-    <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
     <link rel="stylesheet" type="text/css" href="/styles/yangCheInfo/css/yangCheXiangQing.css"/>
     <!--

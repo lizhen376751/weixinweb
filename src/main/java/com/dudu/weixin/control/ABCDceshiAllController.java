@@ -4,7 +4,6 @@ import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
 import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LoginActionNewService;
 import com.dudu.weixin.service.ShopInfoService;
-import com.dudu.weixin.util.Constant;
 import com.dudu.weixin.util.SignUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,8 +28,7 @@ import java.io.IOException;
 @RequestMapping("/")
 public class ABCDceshiAllController {
     private static final Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
-    @Autowired
-    private Constant constant;
+
     @Autowired
     private HttpSession httpSession;
     @Autowired
@@ -44,11 +42,13 @@ public class ABCDceshiAllController {
     protected String login(HttpServletRequest request, HttpServletResponse response) {
         boolean flg = loginActionNewService.login(request);
         if (flg) {
+
             return "/index";
         } else {
             return "/login/login";
         }
     }
+
     //点击菜单后进入
     @RequestMapping(value = "oauthLoginServlet", method = RequestMethod.GET)
     public String oauthLogin(HttpServletRequest request,
@@ -71,8 +71,6 @@ public class ABCDceshiAllController {
             return "/lianMengKa/lianMengCard/lianMengDetails"; //联盟卡明细
         } else if ("daoHang".equals(flagStr)) {
           return "/daoHang/daoHangliebiao/service/daohangindex?shopcode=" + shopcode + "&openid=" + openId + '"';//服务导航
-        } else if ("logout".equals(flagStr)) {
-            return "/logout";//退出及注销账号
         } else if ("AHIInfo".equals(flagStr)) {
             return "/ahi/AHIxiangqing";//AHI指数
         } else if ("AHIInfoxiangqing".equals(flagStr)) {
@@ -102,9 +100,9 @@ public class ABCDceshiAllController {
             return "/lianMengActivity/jsp/getLianMeng";//联盟活动详情
         } else if ("cheXianTouBao".equals(flagStr)) {
             return "/baoxian/cheXianTouBao/cheXianTouBao";//车险投保
-        }else if ("loginOut".equals(flagStr)) {
-            httpSession.setAttribute("DUDUCHEWANG_CarId",null);
-            return "/login/login";//退出登录
+        }else if ("logout".equals(flagStr)) {
+            httpSession.setAttribute("DUDUCHEWANG_CarId", null);
+            return "/login/logout";//退出登录
         }
         return "/index";
     }

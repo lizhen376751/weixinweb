@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 
@@ -7,10 +8,6 @@
 	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
 	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
 	//TODO 登录判断
-	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-
-		response.sendRedirect("../login.jsp?shopcode=" + shopcode + "&strOpenId=" + strOpenId + "");
-	}
 
 %>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
@@ -179,5 +176,8 @@
 				<span class="jc_shop" id="dianpu"></span>
 			</li>
 		</ul>
+	<input type="hidden" id="shopcode" name="shopcode" value="<%=shopcode %>">
+	<input type="hidden" id="strOpenId" name="strOpenId" value="<%=strOpenId %>">
+	<input type="hidden" id="CarId" name="CarId" value="<%=CarId %>">
 	</body>
 </html>

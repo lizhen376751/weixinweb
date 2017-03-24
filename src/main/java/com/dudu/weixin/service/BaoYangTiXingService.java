@@ -23,7 +23,7 @@ public class BaoYangTiXingService {
 	 */
 	public ArrayList getBaoYangListByLmcodeAndCarNo(String lmCode,String carNo,String top)  {
 		ArrayList list = new ArrayList();
-		int num=Integer.valueOf(top)*10;
+		int num=Integer.parseInt(top)*10;
 		ceshi ceshi1 = new ceshi();
 		ceshi1.setCustomerDemand_DateBegin("2017-3-30");
 		ceshi1.setCustomerDemand_Memo("更换刹车片");
@@ -33,6 +33,7 @@ public class BaoYangTiXingService {
 		ceshi1.setShopName("北京经典");
 		list.add(ceshi1);
 		//TODO 后期封装成接口
+		System.out.println("保养提醒进入");
 		return list;
 	}
 	

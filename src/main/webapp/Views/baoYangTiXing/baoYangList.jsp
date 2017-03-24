@@ -131,7 +131,7 @@
 <form name="form1" method="post" action="baoYangList.jsp">
     <input type="hidden" name="shopcode" value="<%=shopcode%>">
     <input type="hidden" name="strOpenId" value="<%=strOpenId%>">
-    <input type="hidden" name="top" id="page1">
+    <input type="hidden" name="top" id="page1" value="<%=top%>>
 </form>
 </body>
 

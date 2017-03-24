@@ -11,6 +11,7 @@ public class AutoLoginService {
         String CarId = "";
         //TODO 后期调用接口
         return CarId;
+
     }
 
     public String getDuduShopName(String code){

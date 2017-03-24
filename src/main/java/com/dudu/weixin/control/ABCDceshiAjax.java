@@ -5,7 +5,6 @@ import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.weixin.service.AHIService;
-import com.dudu.weixin.service.AutoLoginService;
 import com.dudu.weixin.service.BaoYangTiXingService;
 import com.dudu.weixin.service.BuyRecordService;
 import com.dudu.weixin.service.ChexiantoubaoService;
@@ -57,11 +56,10 @@ public class ABCDceshiAjax {
     private ShopInfoService shopInfoService;//服务导航之获取店铺信息
     @Autowired
     private BuyRecordService buyRecordService;//消费记录
-    @Autowired
-    private AutoLoginService autoLoginService;
+
     @ResponseBody
     @RequestMapping(value = "getCommonAjax", method = RequestMethod.POST)
-    public Object commonAjax(HttpServletRequest request, HttpServletResponse response, HttpSession HttpSession,
+    public Object commonAjax(HttpServletRequest request, HttpServletResponse response,
                              @RequestParam(name = "fromflag", required = false) String fromflag,
                              @RequestParam(name = "cardNo", required = false) String cardNo, Model model
     ) {
@@ -73,13 +71,7 @@ public class ABCDceshiAjax {
         fromflag = encodingUrl(fromflag);
         shopcode = encodingUrl(shopcode);
         String carHaoPai = carId;
-        //登录检查判断
-        if ("checkLogin".equals(fromflag)) {
-            openId = encodingUrl(request.getParameter("openId"));
-            shopcode = encodingUrl(request.getParameter("shopcode"));
-            carId = autoLoginService.judgeOpenId( openId,shopcode);
-            return carId;
-        }
+
         //联盟卡主页信息列表
         if ("queryLmkInfoList".equals(fromflag)) {
             List<LianmengkaXmLeftResultModule> lianmengkaXmLeftResultModules = lianMengKa.queryLmkInfo(shopcode, carHaoPai);
@@ -153,9 +145,16 @@ public class ABCDceshiAjax {
         }
         //保养提醒
         if ("baoYangList".equals(fromflag)) {
-            String top = request.getParameter("top");
-            ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(shopcode, carId, top);
-            return baoYangListByLmcodeAndCarNo;
+
+            try{
+                String top = request.getParameter("top");
+                ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(shopcode, carId, top);
+                System.out.println("保养提醒进入======");
+                return baoYangListByLmcodeAndCarNo;
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            return  null;
 
         }
         //消费记录

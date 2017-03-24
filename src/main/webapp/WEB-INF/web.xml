@@ -21,7 +21,7 @@
     </filter-mapping>
 
     <welcome-file-list>
-        <welcome-file>Views/login/login.jsp</welcome-file>
+        <welcome-file>Views/index.jsp</welcome-file>
     </welcome-file-list>
 
     <servlet>
@@ -47,6 +47,8 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:conf/applicationContext.xml</param-value>
   </context-param>
+
+
 
 </web-app>
 

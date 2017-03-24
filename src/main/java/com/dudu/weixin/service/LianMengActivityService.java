@@ -23,11 +23,9 @@ public class LianMengActivityService {
     private ApiDuduFilesIntf apiDuduFilesIntf;
     //对于联盟活动信息的列表查询
     public   List<LMActivity> queryInfoList(String shopcode){
-
         LMActivity lmActivity = new LMActivity();
         lmActivity.setLMCode(shopcode);
         QueryFilesParam queryFilesParam=new QueryFilesParam();
-        System.out.println("对于联盟活动信息的列表查询"+shopcode);
         List<LMActivity> list = apiLMActivityInft.queryList(lmActivity);
         queryFilesParam.setShopCode(shopcode);
         for (int i = 0; i < list.size(); i++) {
@@ -42,7 +40,6 @@ public class LianMengActivityService {
                 }
             }
         }
-
         return list;
     }
     //对于联盟活动信息的单查
