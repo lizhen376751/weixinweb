@@ -38,19 +38,12 @@
 				<label for="">服务顾问：</label>
 				<select name="serviceConsultant">  <!--服务顾问-->
 					<%--<option value="包西福">包西福</option>--%>
-					<%--<option value="付笛生">付笛生</option>--%>
-					<%--<option value="笛卡尔">笛卡尔</option>--%>
-					<%--<option value="小满">小满</option>--%>
-					<%--<option value="小明">小明</option>--%>
 				</select>
 			</div>
 			<div class="nav_right font_1">
 				<label for="">联盟总部：</label>
 				<select name="unionHeadquarters">  <!--联盟总部-->
 					<%--<option value="大师全国运营中心">大师全国运营中心</option>--%>
-					<%--<option value="牧宝车居">牧宝车居</option>--%>
-					<%--<option value="易路邦">易路邦</option>--%>
-					<%--<option value="上海追得">上海追得</option>--%>
 				</select>
 			</div>
 		</div>  <!--导航结束-->
@@ -76,21 +69,7 @@
 								<!--弹出窗-->
 								<div class="tishi">
 									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
-									<%--<div class="xinxi">鲁Z00000</div>--%>
+
 								</div>
 							</li>
 							<!--隐藏域-->
@@ -131,8 +110,20 @@
 							<!--使用性质-->
 							<li>
 								<label for="">使用性质：</label>
-								<input type="radio" name="property" value="非营运" checked="checked" style="margin-left: 260px;">非营运
-								<input type="radio" name="property" value="营运" class="margin_left1"/>营运
+								<select name="property" class="property">
+									<option value="0201">家庭自用-非营运</option>
+									<option value="0202">机关自用-非营运</option>
+									<option value="0203">企业自用-非营运</option>
+									<option value="0209">特殊用途-非营运</option>
+									<option value="0104">出租客运-营运</option>
+									<option value="0105">租赁客运-营运</option>
+									<option value="0106">城市公交-营运</option>
+									<option value="0107">公路客运-营运</option>
+									<option value="0108">营业货运-营运</option>
+									<option value="0109">特殊用途-营运</option>
+								</select>
+								<%--<input type="radio" name="property" value="非营运" checked="checked" style="margin-left: 260px;">非营运--%>
+								<%--<input type="radio" name="property" value="营运" class="margin_left1"/>营运--%>
 							</li>
 						</ul>
 					</div>
@@ -143,12 +134,7 @@
 							<p class="color_3 font_1">保险公司及险种选择：</p>
 							<div class="font_5 color_2 baoxian">
 								<%--<div><input type="checkbox" name="xianzhong" id="wang_wang" value="" /><span>人民保险</span></div>--%>
-								<%--<div><input type="checkbox" name="xianzhong" id="safety" value="" /><span>恒大保险</span></div>--%>
-								<%--<div><input type="checkbox" name="xianzhong" id="pacific_ocean" value="" /><span>歪歪</span></div>--%>
-								<%--<div><input type="checkbox" name="xianzhong" id="life_insurance" value="" /><span>华泰保险</span><br></div>--%>
-								<%--<div><input type="checkbox" name="xianzhong" id="life_insurance" value="" /><span>华夏人保</span></div>--%>
-								<%--<div><input type="checkbox" name="xianzhong" id="life_insurance" value="" /><span>人寿保险</span></div>--%>
-								<%--<div><input type="checkbox" name="xianzhong" id="life_insurance" value="" /><span>测试保险公司</span></div>--%>
+
 							</div>
 							<span class="xian"></span>
 						</div>

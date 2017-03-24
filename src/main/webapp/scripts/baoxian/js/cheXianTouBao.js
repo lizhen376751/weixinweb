@@ -1,51 +1,44 @@
 
 $(document).ready(function(){
-    var v = 1;
+
     $('.titles span').click(function() {
         var i = $(this).index();//下标第一种写法
         //var i = $('tit').index(this);//下标第二种写法
         $(this).addClass('selects').siblings().removeClass('selects');
         $('.list .one,.two,.three').eq(i).show().siblings().hide();
-        //保险险种页面的ajax
-
-        if (i == 1 && v == 1) {
-            $.ajax({
-                type    : 'POST',
-                url     : '/getCommonAjax',
-                data    : {
-                    fromflag   : "baoXianTypes"
-
-                },
-
-                success:function(jsondata){
-                    var json = JSON.parse(jsondata);
-                    add_insurance (json);
-                    panduan()
-                    console.log(json);
-                    v=0;
-                },
-                error:function(){
-
-                }
-            });
-            $.ajax({
-                type    : 'POST',
-                url     : '/getCommonAjax',
-                data    : {
-                    fromflag   : "baoxianGongSi"
-
-                },
-
-                success:function(jsondata){
-                    // alert(jsondata);
-                    var json = JSON.parse(jsondata);
-                    add_company(json)
-                    console.log(json);
-                },
-                error:function(){
-
-                }
-            });
+    });
+    //保险公司页面的ajax
+    $.ajax({
+        type    : 'POST',
+        url     : '/getCommonAjax',
+        data    : {
+            fromflag   : "baoxianGongSi"
+        },
+        success:function(jsondata){
+            var json = JSON.parse(jsondata);
+            add_company(json);
+            company_css();
+            //console.log(json);
+        },
+        error:function(eee){
+            alert("失败")
+        }
+    });
+    //保险险种部分的ajax
+    $.ajax({
+        type    : 'POST',
+        url     : '/getCommonAjax',
+        data    : {
+            fromflag   : "baoXianTypes"
+        },
+        success:function(jsondata){
+            var json = JSON.parse(jsondata);
+            add_insurance (json);
+            panduan();
+            //console.log(json);
+        },
+        error:function(eee){
+            alert("失败")
         }
     });
     //车辆信息部分
@@ -75,14 +68,14 @@ $(document).ready(function(){
     }
     all_day()
     //	初始化当前日期
-//function show(){
-//    var mydate = new Date();
-//    var str = "" + mydate.getFullYear() + "-";
-//    str += (mydate.getMonth()+1) + "-";
-//    str += mydate.getDate() ;
-//    return str;
-//  }
-//  $("#registration_date").val(show());
+    //function show(){
+    //    var mydate = new Date();
+    //    var str = "" + mydate.getFullYear() + "-";
+    //    str += (mydate.getMonth()+1) + "-";
+    //    str += mydate.getDate() ;
+    //    return str;
+    //  }
+    //  $("#registration_date").val(show());
 
     //动态添加服务顾问及联盟总部
     var service = $(".nav .nav_left select");  //服务顾问
@@ -98,20 +91,17 @@ $(document).ready(function(){
         type    : 'POST',
         url     : '/getCommonAjax',
         data    : {
-            fromflag   : "lianmeng"
-
+            fromflag : "lianmeng"
         },
-
         success:function(jsondata){
             var json = JSON.parse(jsondata);
             // add_insurance (json);
             // panduan()
             add_service(json,quarters)
-            console.log(json);
-
+            //console.log(json);
         },
-        error:function(){
-
+        error:function(eee){
+            alert("失败")
         }
     });
     $.ajax({
@@ -119,19 +109,14 @@ $(document).ready(function(){
         url     : '/getCommonAjax',
         data    : {
             fromflag   : "fuwuguwen"
-
         },
-
         success:function(jsondata){
             var json = JSON.parse(jsondata);
-            // add_insurance (json);
-            // panduan()
             add_service(json,service)
-            console.log(json);
-
+            //console.log(json);
         },
-        error:function(){
-
+        error:function(eee){
+            alert("失败")
         }
     });
     //根据车牌号码显示信息
@@ -151,18 +136,15 @@ $(document).ready(function(){
         var val = $(this).val();
         if(val.length >= 3){
             $.ajax({
-                type    : 'POST',
-                url     : '/getCommonAjax',
-                data    : {
-                    fromflag   : "xinxi",
+                type : 'POST',
+                url  : '/getCommonAjax',
+                data : {
+                    fromflag : "xinxi",
                     car_number: val
                 },
                 success:function(jsondata){
                     var json = JSON.parse(jsondata);
-                    // add_insurance (json);
-                    // panduan()
-                    // add_service(json,service)
-                    console.log(json);
+                    //console.log(json);
                     tishi.css("display","block");
                     add_tishi(json);
                     add_information(json)
@@ -173,6 +155,16 @@ $(document).ready(function(){
             });
         }
     })
+    //时间戳转换成日期格式
+    function dateFormat(val) {
+        var now = new Date(val),
+            y = now.getFullYear(),
+            m = now.getMonth() + 1,
+            d = now.getDate();
+        var date=y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+        return date.substr(0, 11);
+    }
+    //根据车牌号自动补全用户信息
     function add_information(arr) {
         var tishi = $(".tishi");
         //获取隐藏域
@@ -188,6 +180,7 @@ $(document).ready(function(){
         var daihao = $("#daihao");//车辆代号
         var engine_number = $("#engine_number");//发动机号码
         var registration_date = $("#registration_date");//注册日期
+        var property = $(".property") //使用性质
         xinxi.on("click",function(){
             var i = $(this).index();
             car_number.val(arr[i].plateNumber);
@@ -195,20 +188,57 @@ $(document).ready(function(){
             phone_number.val(arr[i].mobilePhone);
             daihao.val(arr[i].frameNumber);
             engine_number.val(arr[i].engineNumber);
-            registration_date.val(arr[i].createTime);
+            var date_time = dateFormat(arr[i].createTime)
+            registration_date.val(date_time);
             if(arr[i].sex == 1){
                 sex_nan.attr("checked",true)
             }else{
                 sex_nv.attr("checked",true)
             }
+            if(arr[i].licenseFlag != null && arr[i].licenseFlag != ""){
+                switch (arr[i].licenseFlag)
+                {
+                    case "0201":     //家庭自用-非营运
+                        property.val("0201");
+                        break;
+                    case "0202":     //机关自用-非营运
+                        property.val("0202");
+                        break;
+                    case "0203":     //企业自用-非营运
+                        property.val("0203");
+                        break;
+                    case "0209":     //特殊用途-非营运
+                        property.val("0201");
+                        break;
+                    case "0104":     //出租客运-营运
+                        property.val("0104");
+                        break;
+                    case "0105":     //租赁客运-营运
+                        property.val("0105");
+                        break;
+                    case "0106":    //城市公交-营运
+                        property.val("0106");
+                        break;
+                    case "0107":    //公路客运-营运
+                        property.val("0107");
+                        break;
+                    case "0108":    //营业货运-营运
+                        property.val("0108");
+                        break;
+                    case "0109":    //特殊用途-营运
+                        property.val("0109");
+                        break;
+                }
+            }else{
+                property.val("0201");
+            };
             hidden.val(arr[i].id);
-            tishi.css("display","none")
+            tishi.css("display","none");
         })
     }
 
     //保险险种部分
     //添加保险公司
-//  var ab = [1,2,1,2,2]
     function add_company (arr) {
         var baoxian_company = $(".list .two .insurance_company .baoxian")
         var html = "";
@@ -228,77 +258,10 @@ $(document).ready(function(){
             }
         }
     }
-    company_css()
 
 
-    //布局每一条险种
-    //模拟数据
-    var arr = [{
-        id:0,
-        buJiMianPeiFlag:0,
-        baozhangrenshuFlag:0,
-        peichangeduFlag:0,
-        typeName:"投保交强险",
-        typeFlag:1
-    },{
-        id:1,
-        buJiMianPeiFlag:1,
-        baozhangrenshuFlag:0,
-        peichangeduFlag:0,
-        typeName:"车辆损失险测试",
-        typeFlag:1
-    },{
-        id:2,
-        buJiMianPeiFlag:1,
-        baozhangrenshuFlag:0,
-        peichangeduFlag:0,
-        typeName:"车辆损失险测试",
-        typeFlag:1
-    },{
-        id:3,
-        buJiMianPeiFlag:1,
-        baozhangrenshuFlag:0,
-        peichangeduFlag:0,
-        typeName:"车辆损失险测试",
-        typeFlag:0
-    },{buJiMianPeiFlag:1,
-        dictionary:[{baoxianid:2,id:1,value:"5万",dictionaryDef:1},
-            {baoxianid:2,id:2,value:"10万",dictionaryDef:0},
-            {baoxianid:2,id:3,value:"15万",dictionaryDef:0},
-            {baoxianid:2,id:4,value:"20万",dictionaryDef:0},
-            {baoxianid:2,id:5,value:"30万",dictionaryDef:0},
-            {baoxianid:2,id:6,value:"50万",dictionaryDef:0},
-            {baoxianid:2,id:7,value:"100万",dictionaryDef:0},
-            {baoxianid:2,id:8,value:"150万",dictionaryDef:0},
-            {baoxianid:2,id:9,value:"200万",dictionaryDef:0},
-            {baoxianid:2,id:10,value:"250万",dictionaryDef:0},
-            {baoxianid:2,id:11,value:"300万",dictionaryDef:0}
-        ],
-        baozhangrenshuFlag:0,
-        peichangeduFlag:1,
-        typeName:"第三者责任险00",
-        id:4,
-        typeFlag:1
-    },{buJiMianPeiFlag:1,
-        dictionary:[{baoxianid:2,id:1,value:"5万",dictionaryDef:1},
-            {baoxianid:2,id:2,value:"10万",dictionaryDef:0},
-            {baoxianid:2,id:3,value:"15万",dictionaryDef:0},
-            {baoxianid:2,id:4,value:"20万",dictionaryDef:0},
-            {baoxianid:2,id:5,value:"30万",dictionaryDef:0},
-            {baoxianid:2,id:6,value:"50万",dictionaryDef:0},
-            {baoxianid:2,id:7,value:"100万",dictionaryDef:0},
-            {baoxianid:2,id:8,value:"150万",dictionaryDef:0},
-            {baoxianid:2,id:9,value:"200万",dictionaryDef:0},
-            {baoxianid:2,id:10,value:"250万",dictionaryDef:0},
-            {baoxianid:2,id:11,value:"300万",dictionaryDef:0}
-        ],
-        baozhangrenshuFlag:1,
-        baozhangrenshu:4,
-        peichangeduFlag:1,
-        typeName:"第三者责任险01",
-        id:5,
-        typeFlag:1
-    }];
+
+    //添加及布局每一条险种
     function add_insurance (arr) {
         var ul =  $(".list .two ul");
         for (var i = 0;i < arr.length;i++) {
@@ -390,10 +353,6 @@ $(document).ready(function(){
                     }
                 }
             }
-
-
-
-
             //保障人数的拼接
             if (arr[i].baozhangrenshuFlag == 1) {
                 baozhang_num += "<div>"+
@@ -401,9 +360,6 @@ $(document).ready(function(){
                     "<input type='text' name='bzrs_"+arr[i].id+"' value='"+arr[i].baozhangrenshu+"'/>"+
                     "</div>"
             }
-
-
-
             html += "<li>"+typeFlag+
                 "<div class='font_5 color_2' style='margin-bottom: 32px;'>"+
                 buJiMianPeiFlag+peichangeduFlag+baozhang_num+
@@ -414,7 +370,6 @@ $(document).ready(function(){
 
         }
     }
-    // add_insurance(arr)
 
     //整个判断
     function panduan() {
@@ -471,10 +426,6 @@ $(document).ready(function(){
 
         vall()
     }
-
-
-
-
     //证件信息部分
     //唯一标识符uuid
     function uuid(len, radix) {
@@ -502,10 +453,8 @@ $(document).ready(function(){
                 }
             }
         }
-
         return uuid.join('');
     }
-
     //请求JSON
     function requestJosn(appServer) {
         $.ajax({
@@ -513,14 +462,11 @@ $(document).ready(function(){
             url     : 'http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18',
             data    : {
                 fromflag   : "baoXianTypes"
-
             },
-
             success:function(jsondata){
                 // var json = JSON.parse(jsondata);
                 Duducreds=jsondata;
                 console.log(jsondata);
-
             },
             error:function(){
 
@@ -532,7 +478,6 @@ $(document).ready(function(){
     function getImageSize(obj){
         //图片预览
         //setImagePreview();
-
         if(obj.value==null || obj.value=='' || obj.value==undefined){
             alert("请选择对应的图片！");
             return false;
@@ -565,10 +510,6 @@ $(document).ready(function(){
         }
         return true;
     }
-
-
-
-
     //oss上传调用
     //obj=document.getElementById('file').files[0];
     function uplodlm(DuduOssCallbackVarData1) {
@@ -614,7 +555,7 @@ $(document).ready(function(){
         console.log(srcd)
         new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
          //setTimeout(function() { new applyTokenDoNew(srcd,DuduOssCallbackVarData1);},2000);
-        // $(this).nextAll(".imgs").children(".img2")[0].src = srcs;
+
          $(this).nextAll(".img1").hide();   //this指的是input
          $(this).nextAll("p").hide();
         $(this).nextAll(".imgs").show();  //fireBUg查看第二次换图片不起做用
@@ -635,12 +576,7 @@ $(document).ready(function(){
          a();
 
          $(this).nextAll(".tupian").val(projectId)
-         //$(this).val(projectId);    //必须制空
-//      $(".close").on("click",function() {
-//          $(this).hide();     //this指的是span
-//          $(this).nextAll(".img2").hide();
-//          $(this).nextAll(".img1").show();
-//      })
+
     })
 
     //提交按钮前的判断
@@ -665,8 +601,7 @@ $(document).ready(function(){
 //  	console.log(input_file_driving);
 //  	console.log(input_file_driving_1);
 //  	console.log(input_file_filepath);
-
-
+        //判断是否为空
         // if (car_number != "") {
         // 	if (your_name != "") {
         // 		if (phone_number != "") {
@@ -720,14 +655,4 @@ $(document).ready(function(){
         // 	return false;
         // }
     })
-
-
-
-
-
-
-
-
-
-
-})
+});

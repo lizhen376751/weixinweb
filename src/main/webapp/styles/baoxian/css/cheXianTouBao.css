@@ -171,17 +171,31 @@
 	line-height: 60px;
 }
 .list .one .car_list li #your_name{
-	width: 40%;
+	width: 44%;
 }
 .list .one .car_list li input[type="radio"]{
 	width: 30px;
 	height: 30px;
 	vertical-align: middle;
+
 }
 .list .one .car_list li input[type="checkbox"]{
 	width: 30px;
 	height: 30px;
 	vertical-align: middle;
+}
+.list .one .car_list li .property{
+	width: 255px;
+	height: 60px;
+	outline: none;
+	border-radius: 10px;
+	box-sizing: border-box;
+	border: 1px #e0e0e0 solid;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+	font-size: 30px;
+	float: right;
+	margin-right: 44px;
+	margin-top: 2px;
 }
 /*.list .one .car_list li #phone_number{
 	width: 49%;
