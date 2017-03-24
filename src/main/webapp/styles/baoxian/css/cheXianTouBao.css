@@ -173,6 +173,12 @@
 .list .one .car_list li #your_name{
 	width: 44%;
 }
+.list .one .car_list li .ns{
+	height: 67px;
+	float: right;
+	margin-right: 44px;
+	line-height: 65px;
+}
 .list .one .car_list li input[type="radio"]{
 	width: 30px;
 	height: 30px;

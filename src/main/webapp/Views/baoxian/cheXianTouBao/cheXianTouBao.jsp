@@ -78,8 +78,10 @@
 							<li>
 								<label for="">您的姓名：</label>
 								<input type="text" name="your_name" id="your_name" value="" class="your_name"/>
-								<input type="radio" name="sex" value="1" id="nan"/>男
-								<input type="radio" name="sex" value="0" class="margin_left1" id="nv"/>女
+								<div class="ns">
+									<input type="radio" name="sex" value="1" id="nan"/>男
+									<input type="radio" name="sex" value="0" class="margin_left1" id="nv"/>女
+								</div>
 							</li>
 							<!--手机号码-->
 							<li>
