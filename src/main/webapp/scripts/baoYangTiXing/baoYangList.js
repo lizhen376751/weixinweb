@@ -3,14 +3,15 @@
  */
 $(document).ready(function () {
 
-    var top = $("#top").val();
+    var top = $("#page1").val();
+    console.log(top);
 //TODO top暂时传值为1
     $.ajax({
         type: 'POST',
         url: '/getCommonAjax',
         data: {
             fromflag: "baoYangList",
-            top: 1
+            top: top
         },
         success: function (jsondata) {
             alert(jsondata);
