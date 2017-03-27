@@ -24,7 +24,6 @@
 	<script type="text/javascript" src="/scripts/baoxian/oss/app.js"></script>
 	<%--<link rel="stylesheet" href="/Views/baoxian/cheXianTouBao/oss/bootstrap.min.css" />--%>
 
-
 	<script src="/scripts/baoxian/js/cheXianTouBao.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
@@ -65,7 +64,7 @@
 							<!--车牌号码-->
 							<li>
 								<label for="">车牌号码：</label>
-								<input type="text" name="car_number" id="car_number" value="" />
+								<input type="text" name="car_number" id="car_number" value="" autocomplete="off"/>
 								<!--弹出窗-->
 								<div class="tishi">
 									<%--<div class="xinxi">鲁Z00000</div>--%>

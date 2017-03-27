@@ -557,7 +557,7 @@ $(document).ready(function(){
         var DuduOssCallbackVarData1 = {
             "shopCode" :shopcode,
             "orderCode" : projectId,
-            "imageType" : "i"
+            "imageType" : ""+i+""
         }
         console.log(srcd)
         new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
