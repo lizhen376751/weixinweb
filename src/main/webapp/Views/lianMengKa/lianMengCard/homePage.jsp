@@ -6,19 +6,7 @@
 	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
 	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
 
-	//TODO 登录判断
-//	System.out.println("=============lianMengCard - homePage.jsp=== CarId:|"+CarId+"|");
-//	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-		AutoLoginService autoLogin = new AutoLoginService();
-		CarId = autoLogin.judgeOpenId(strOpenId, shopcode);
-//		session.setAttribute("DUDUCHEWANG_CarId", CarId);
-//		System.out.println("=============lianMengCard - homePage.jsp=== 自动登陆后  CarId:|"+CarId+"|");
-//	}
-//
-//	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-//		System.out.println("=============lianMengCard - homePage.jsp=== 自动登陆后 CarId还是空，则跳转到login.jsp   shopcode:"+shopcode+"|strOpenId:"+strOpenId+"|");
-//		response.sendRedirect("../../login.jsp?shopcode=" + shopcode + "&strOpenId=" + strOpenId + "");
-//	}
+
  
 %>
 <html>

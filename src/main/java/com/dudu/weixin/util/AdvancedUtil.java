@@ -15,7 +15,7 @@ public class AdvancedUtil {
      * @param code
      * @return
      */
-    public static WeixinOauth2Token getOauth2AccessToken(String appId, String appSecret, String code) {
+    public  WeixinOauth2Token getOauth2AccessToken(String appId, String appSecret, String code) {
         WeixinOauth2Token wat = null;
         String requestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
         requestUrl = requestUrl.replace("APPID", appId);

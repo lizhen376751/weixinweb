@@ -22,7 +22,7 @@ import java.util.List;
 public class LianMengKaService {
 
     @Autowired
-    private CommonTools commonTools;
+    private CommonToolsService commonTools;
     @Reference(version = "0.0.1")
     private ApiLianmengkaOperateIntf apiLianmengkaOperateIntf;
 

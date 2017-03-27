@@ -14,7 +14,7 @@ public class AutoLoginService {
         return CarId;
 
     }
-
+    //根据shopcode查询店铺名称
     public String getDuduShopName(String code){
         String rtnStr = "";
         //TODO 后期调用接口

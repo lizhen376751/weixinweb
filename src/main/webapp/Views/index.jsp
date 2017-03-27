@@ -49,7 +49,7 @@
             //TODO 暂时未做好...
             window.location.href = "/oauthLoginServlet?flagStr=xiaoFeiList";
         }
-        //消费记录
+        //注销
         function logout() {
             //TODO 暂时未做好...
             window.location.href = "/oauthLoginServlet?flagStr=logout";

@@ -7,7 +7,6 @@
  	String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
 	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
 	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
-	//TODO 登录判断
 
 %>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
