@@ -7,40 +7,7 @@ $(document).ready(function(){
         $(this).addClass('selects').siblings().removeClass('selects');
         $('.list .one,.two,.three').eq(i).show().siblings().hide();
     });
-    //保险公司页面的ajax
-    $.ajax({
-        type    : 'POST',
-        url     : '/getCommonAjax',
-        data    : {
-            fromflag   : "baoxianGongSi"
-        },
-        success:function(jsondata){
-            var json = JSON.parse(jsondata);
-            add_company(json);
-            company_css();
-            //console.log(json);
-        },
-        error:function(eee){
-            alert("失败")
-        }
-    });
-    //保险险种部分的ajax
-    $.ajax({
-        type    : 'POST',
-        url     : '/getCommonAjax',
-        data    : {
-            fromflag   : "baoXianTypes"
-        },
-        success:function(jsondata){
-            var json = JSON.parse(jsondata);
-            add_insurance (json);
-            panduan();
-            //console.log(json);
-        },
-        error:function(eee){
-            alert("失败")
-        }
-    });
+
     //车辆信息部分
     //日期控件部分
     function all_day () {
@@ -145,15 +112,20 @@ $(document).ready(function(){
                 success:function(jsondata){
                     var json = JSON.parse(jsondata);
                     //console.log(json);
-                    tishi.css("display","block");
-                    add_tishi(json);
-                    add_information(json)
+                    if(json[0]){
+                        tishi.css("display","block");
+                        add_tishi(json);
+                        add_information(json)
+                    }
                 },
                 error:function(eee){
                     alert("失败")
                 }
             });
+        }else{
+            tishi.css("display","none");
         }
+
     })
     //时间戳转换成日期格式
     function dateFormat(val) {
@@ -426,6 +398,40 @@ $(document).ready(function(){
 
         vall()
     }
+    //保险公司页面的ajax
+    $.ajax({
+        type    : 'POST',
+        url     : '/getCommonAjax',
+        data    : {
+            fromflag   : "baoxianGongSi"
+        },
+        success:function(jsondata){
+            var json = JSON.parse(jsondata);
+            add_company(json);
+            company_css();
+            //console.log(json);
+        },
+        error:function(eee){
+            alert("失败")
+        }
+    });
+    //保险险种部分的ajax
+    $.ajax({
+        type    : 'POST',
+        url     : '/getCommonAjax',
+        data    : {
+            fromflag   : "baoXianTypes"
+        },
+        success:function(jsondata){
+            var json = JSON.parse(jsondata);
+            add_insurance (json);
+            panduan();
+            //console.log(json);
+        },
+        error:function(eee){
+            alert("失败")
+        }
+    });
     //证件信息部分
     //唯一标识符uuid
     function uuid(len, radix) {
@@ -538,7 +544,7 @@ $(document).ready(function(){
         return url
     };
    // appServer = "http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18";
-    var fff = '{"endPoint":"http://oss-cn-shanghai.aliyuncs.com","accessKeyId":"STS.Bnax4cxsZwJrcXZ6abMTmRKGf","accessKeySecret":"CQ3njVovqfPAjZEYz8HDo28Hiz47nBT6Cf4eYsmrUKim","securityToken":"CAISvQN1q6Ft5B2yfSjIo63UM47Xlax7wIiZYX7r0mE3QdtBvY7shDz2IHBPenJpBe4Ztfk3mGBU7/YclqV1VptBA0ffNZMots0PdeJn3U2C6aKP9rUhpMCP8QLxYkeJyK2/SuH9S8ynNZXJQlvYlyh17KLnfDG5JTKMOoGIjpgVCbZyWRKjPwJbGPBcJAZptLU4Vx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDurHiahVbhmOgOvNazcNr2Y9RgIZZ6Wti4m+dtLvKZiHcX9AgN5a5wg6dE9HCF+ZPvFjs9zxiAIpCbkLlGJxN4Ya4XArNNqOOG+9Rzpu3UkfaQqXNKJvoHaznDY4qizcDYYsfLUOw0brHmIX/A/8mSP53uyWMebGkcKRlBdqh5SDl5Agd+TSrBeO31ugLGfwu+Sq2M36xx2oEtlw2wpJ2VNx+eSrOW2iYVfYx+egRqFWZPgTGxLPBcIl0SKQ44WevNd+gpMkAC85GPlBbJSyhtwktQu/DDfP7MssgdE96vBcwdiNZDO88b6zd6Ew2nFajdg0MVZXFjRq1NzK7uNJmw5bmI2uyPZvTcDfQKqs+svfZFE4nnGoABqK02MMmCkYVUAHbQgRMiybzYIs6wDKdKJxklQOhpqv9cXvXojcxSlpL0aQZUJP/YUvlaLzYpXqO+i/GOqYP7j70QTe7DCLsD3np3Y0sQEGpu7O1THP+LuS5i5ntHajRpIh6QQiXHO78JMpDRFRfNlTUlKvzrg8ADAf5rgZYifqg=","region":"oss-cn-shanghai","bucketName":"duduimage","xOssCallBack":"eyJjYWxsYmFja1VybCI6Imh0dHA6Ly9hcGkuZ3cuZGV2LmR1ZHVjaGV3YW5nLmNuL2luZm8vdXBsb2FkIiwiY2FsbGJhY2tCb2R5Ijoic2hvcENvZGU9JHt4OnNob3BDb2RlfSZvcmRlckNvZGU9JHt4Om9yZGVyQ29kZX0mYnVja2V0SWQ9MSZidXNpbmVzc0NvbmZpZ0lkPTE0JmZpbGVSZWFsTmFtZT0ke3g6ZmlsZVJlYWxOYW1lfSZidWNrZXQ9JHtidWNrZXR9Jm9iamVjdD0ke29iamVjdH0mZXRhZz0ke2V0YWd9JnNpemU9JHtzaXplfSZtaW1lVHlwZT0ke21pbWVUeXBlfSZpbWFnZUluZm8uaGVpZ2h0PSR7aW1hZ2VJbmZvLmhlaWdodH0maW1hZ2VJbmZvLndpZHRoPSR7aW1hZ2VJbmZvLndpZHRofSZpbWFnZUluZm8uZm9ybWF0PSR7aW1hZ2VJbmZvLmZvcm1hdH0ifQ==","basePath":"cs00001/wx/yangche/{orderCode}/","orderCodeName":"orderCode","orderTag":"","paramsList":["shopCode","orderCode"]}'
+    var fff = '{"endPoint":"http://oss-cn-shanghai.aliyuncs.com","accessKeyId":"STS.NBHExGeG2moYHfnPHVUPgDtxj","accessKeySecret":"mkFdP9zoWNeoGRKLQjewmgjtX4KsvuKgJvtf6UNkyjd","securityToken":"CAISvQN1q6Ft5B2yfSjIr4H9DsLziJgT2q2ySkDftEgDWd9Lq7HTiDz2IHBPenJpBe4Ztfk3mGBU7/YclqV1VptBA0ffNZMots0PYqxU+FKC6aKP9rUhpMCP8QLxYkeJyK2/SuH9S8ynNZXJQlvYlyh17KLnfDG5JTKMOoGIjpgVCbZyWRKjPwJbGPBcJAZptLU4Vx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDurHiahVbhmOgOvNazcNr2Y9RgIZZ6Wti4m+dtLvKZiHcX9AgN5a5wg6dE9HCF+ZPvFjs9zxiAIpCbkLlGJxN4Ya4XArNNqOOG+9Rzpu3UkfaQqXNKJvoHaznDY4qizcDYYsfLUOw0brHmIX/A/8mSP53uyWMebGkcKRlBdqh5SDl5Agd+TSrBeO31ugLGfwu+Sq2M36xx2oEtlw2wpJ2VNx+eSrOW2iYVfYx+egRqFWZPgTGxLPBcIl0SKQ44WevNd+gpMkAC85GPlBbJSyhtwktQu/DDfP7MssgdE96vBcwdiNZDO88b6zd6Ew2nFajdg0MVZXFjRq1NzK7uNJmw5bmI2uyPZvTcDfQKqs+svfZFE4nnGoABaeWeDLZDaMXAV9AK0QRzG2ZY+fAG/FwiNaoqYY3fE1kzUfV5cP9spHnlRQzTiKjNOPU9N0b1uurW0vlEkkiAGloxqZSlQAe7oVqbNshEIv+qvzoW2uflLqKRZjmayvAo6Bdi9Nd11wLlt3askXJMHbqveXLS8flEvNqAyxVPOTc=","region":"oss-cn-shanghai","bucketName":"duduimage","xOssCallBack":"eyJjYWxsYmFja1VybCI6Imh0dHA6Ly9hcGkuZ3cuZGV2LmR1ZHVjaGV3YW5nLmNuL2luZm8vdXBsb2FkIiwiY2FsbGJhY2tCb2R5Ijoic2hvcENvZGU9JHt4OnNob3BDb2RlfSZvcmRlckNvZGU9JHt4Om9yZGVyQ29kZX0mYnVja2V0SWQ9MSZidXNpbmVzc0NvbmZpZ0lkPTE0JmZpbGVSZWFsTmFtZT0ke3g6ZmlsZVJlYWxOYW1lfSZidWNrZXQ9JHtidWNrZXR9Jm9iamVjdD0ke29iamVjdH0mZXRhZz0ke2V0YWd9JnNpemU9JHtzaXplfSZtaW1lVHlwZT0ke21pbWVUeXBlfSZpbWFnZUluZm8uaGVpZ2h0PSR7aW1hZ2VJbmZvLmhlaWdodH0maW1hZ2VJbmZvLndpZHRoPSR7aW1hZ2VJbmZvLndpZHRofSZpbWFnZUluZm8uZm9ybWF0PSR7aW1hZ2VJbmZvLmZvcm1hdH0ifQ==","basePath":"cs00001/wx/yangche/{orderCode}/","orderCodeName":"orderCode","orderTag":"","paramsList":["shopCode","orderCode"]}'
     var www = JSON.parse(fff)
 
     $(".filepath").on("change",function() {
@@ -550,7 +556,8 @@ $(document).ready(function(){
         var projectId = uuid(16,16);
         var DuduOssCallbackVarData1 = {
             "shopCode" :shopcode,
-            "orderCode" : projectId
+            "orderCode" : projectId,
+            "imageType" : "i"
         }
         console.log(srcd)
         new applyTokenDoNew(srcd,DuduOssCallbackVarData1);

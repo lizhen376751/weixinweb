@@ -19,9 +19,9 @@
 
 	<!-- oss -->
 	<script src="https://www.promisejs.org/polyfills/promise-6.1.0.js"></script>
-	<script type="text/javascript" src="/Views/baoxian/cheXianTouBao/oss/aliyun-oss-sdk.js"></script>
-	<script type="text/javascript" src="/Views/baoxian/cheXianTouBao/oss/base64.js"></script>
-	<script type="text/javascript" src="/Views/baoxian/cheXianTouBao/oss/app.js"></script>
+	<script type="text/javascript" src="/scripts/baoxian/oss/aliyun-oss-sdk.js"></script>
+	<script type="text/javascript" src="/scripts/baoxian/oss/base64.js"></script>
+	<script type="text/javascript" src="/scripts/baoxian/oss/app.js"></script>
 	<%--<link rel="stylesheet" href="/Views/baoxian/cheXianTouBao/oss/bootstrap.min.css" />--%>
 
 
