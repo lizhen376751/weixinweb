@@ -24,17 +24,39 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/")
 public class ABCDceshiAllController {
-    private static final Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
-
+    /**
+     * 日志打印
+     */
+    private static  Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
+    /**
+     * session
+     */
     @Autowired
     private HttpSession httpSession;
+    /**
+     *店铺信息
+     */
     @Autowired
     private ShopInfoService shopInfoService;
+    /**
+     *登录服务
+     */
     @Autowired
-    private LoginActionNewService loginActionNewService;//登录服务
+    private LoginActionNewService loginActionNewService;
+    /**
+     *车险投保
+     */
     @Autowired
-    private ChexiantoubaoService chexiantoubaoService;//车险投保
+    private ChexiantoubaoService chexiantoubaoService;
+
     //登录页面
+
+    /**
+     *
+     * @param request 请求
+     * @param response 返回
+     * @return 路径
+     */
     @RequestMapping(value = "login", method = RequestMethod.POST)
     protected String login(HttpServletRequest request, HttpServletResponse response) {
         boolean flg = loginActionNewService.login(request);
@@ -44,7 +66,15 @@ public class ABCDceshiAllController {
             return "/login/login";
         }
     }
-    //点击菜单后进入
+
+    /**
+     * 点击菜单后进入
+     * @param request 请求
+     * @param code shopcode
+     * @param flagStr 路径参数
+     * @param model 返回数据
+     * @return 字符串
+     */
     @RequestMapping(value = "oauthLoginServlet", method = RequestMethod.GET)
     public String oauthLogin(HttpServletRequest request,
                              @RequestParam(name = "code", required = false) String code,
@@ -55,7 +85,7 @@ public class ABCDceshiAllController {
         String shopcode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
         //判断点击菜单，进入不同页面
         if ("lmkInfo".equals(flagStr)) {
-            return "/lianMengKa/lianMengCard/homePage";//联盟卡包
+            return "/lianMengKa/lianMengCard/homePage"; //联盟卡包
         } else if ("lianMengDetails".equals(flagStr)) {
             logger.info("联盟卡详情");
             String cardName = request.getParameter("cardName");
@@ -65,48 +95,54 @@ public class ABCDceshiAllController {
             model.addAttribute("shopcode", shopcode);
             return "/lianMengKa/lianMengCard/lianMengDetails"; //联盟卡明细
         } else if ("daoHang".equals(flagStr)) {
-          return "/daoHang/daoHangliebiao/service/daohangindex?shopcode=" + shopcode + "&openid=" + openId + '"';//服务导航
+          return "/daoHang/daoHangliebiao/service/daohangindex?shopcode=" + shopcode + "&openid=" + openId + '"'; //服务导航
         } else if ("AHIInfo".equals(flagStr)) {
-            return "/ahi/AHIxiangqing";//AHI指数
+            return "/ahi/AHIxiangqing"; //AHI指数
         } else if ("AHIInfoxiangqing".equals(flagStr)) {
             String plateNumber = request.getParameter("plateNumber");
             String id = request.getParameter("id");
             model.addAttribute("plateNumber", plateNumber);
             model.addAttribute("id", id);
             logger.info("ahi详情页面!" + plateNumber + id);
-            return "/ahi/subxiangqing";//详情
+            return "/ahi/subxiangqing"; //ahi详情
         } else if ("xiaoFeiList".equals(flagStr)) {
-            return "/xiaoFeiJiLu/xiaoFeiList";//消费记录
+            return "/xiaoFeiJiLu/xiaoFeiList"; //消费记录
         } else if ("baoYangList".equals(flagStr)) {
-            return "/baoYangTiXing/baoYangList";//保养提醒
+            return "/baoYangTiXing/baoYangList"; //保养提醒
         } else if ("lianMengJieShao".equals(flagStr)) {
-            return "/lianMengIntroduced/jsp/getIntroduced";//联盟介绍
+            return "/lianMengIntroduced/jsp/getIntroduced"; //联盟介绍
         } else if ("YCInfo".equals(flagStr)) {
-            return "/yangCheInfo/jsp/yangCheXinXi";//养车信息
+            return "/yangCheInfo/jsp/yangCheXinXi"; //养车信息
         } else if ("getYangChe".equals(flagStr)) {
             String ids = request.getParameter("ids");
             model.addAttribute("ids", ids);
-            return "/yangCheInfo/jsp/getYangChe";//养车信息详情
+            return "/yangCheInfo/jsp/getYangChe"; //养车信息详情
         } else if ("lianMengActivity".equals(flagStr)) {
-            return "/lianMengActivity/jsp/lianMengActivity";//联盟活动
+            return "/lianMengActivity/jsp/lianMengActivity"; //联盟活动
         } else if ("getLianMeng".equals(flagStr)) {
             String ids = request.getParameter("ids");
             model.addAttribute("ids", ids);
-            return "/lianMengActivity/jsp/getLianMeng";//联盟活动详情
+            return "/lianMengActivity/jsp/getLianMeng"; //联盟活动详情
         } else if ("cheXianTouBao".equals(flagStr)) {
-            return "/baoxian/cheXianTouBao/cheXianTouBao";//车险投保
-        }else if ("logout".equals(flagStr)) {
+            return "/baoxian/cheXianTouBao/cheXianTouBao"; //车险投保
+        } else if ("logout".equals(flagStr)) {
             httpSession.setAttribute("DUDUCHEWANG_CarId", null);
-            return "/login/logout";//退出登录
+            return "/login/logout"; //退出登录
         }
         return "/index";
     }
 
-    //保险开单
+    /**
+     *
+     * @param request 多的
+     * @param baoXianKaiDan 多的
+     * @param httpSession 多的
+     * @return 路径 多的
+     */
     @ResponseBody
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
-    public String baoXianTiJiao(HttpServletRequest request,BaoXianKaiDan baoXianKaiDan,HttpSession httpSession) {
-        chexiantoubaoService.baoXianTiJiao(request,baoXianKaiDan,httpSession);
+    public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
+        chexiantoubaoService.baoXianTiJiao(request, baoXianKaiDan, httpSession);
         return "";
     }
 

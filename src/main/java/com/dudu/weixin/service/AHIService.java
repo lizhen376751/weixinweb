@@ -19,8 +19,17 @@ import java.util.List;
  */
 @Service
 public class AHIService {
+    /**
+     *
+     */
     @Reference(version = "0.0.1")
     private ApiAHIPoint apiAHIPoint;
+
+    /**
+     *
+     * @param plateNumber
+     * @return
+     */
     public List<ResultTotalAHIPoint> queryAllPointByPlateNumber(String plateNumber) {
         String plateNumbers = "";
         try {

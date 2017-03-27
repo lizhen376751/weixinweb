@@ -30,33 +30,75 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/3/17.
+ * 所有的ajax请求
  */
 @Controller
 @RequestMapping("/")
 public class ABCDceshiAjax {
-    private static final Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
+    /**
+     * logprint 日志打印
+     */
+    private static  Logger logprint = LoggerFactory.getLogger(ABCDceshiAjax.class);
+    /**
+     * session
+     */
     @Autowired
     private HttpSession httpSession;
+    /**
+     * 联盟介绍
+     */
     @Autowired
-    private LianmengIntroducedService lianmengIntroducedService;//联盟介绍
+    private LianmengIntroducedService lianmengIntroducedService;
+    /**
+     * 联盟活动
+     */
     @Autowired
-    private LianMengActivityService lianMengActivityService;//联盟活动
+    private LianMengActivityService lianMengActivityService;
+    /**
+     * 联盟卡包
+     */
     @Autowired
-    private LianMengKaService lianMengKa;//联盟卡包
+    private LianMengKaService lianMengKa;
+    /**
+     * 养车信息
+     */
     @Autowired
-    private YangCheInfoService yangCheInfoService;//养车信息
+    private YangCheInfoService yangCheInfoService;
+    /**
+     * 车险投保
+     */
     @Autowired
-    private ChexiantoubaoService chexiantoubaoService;//车险投保
+    private ChexiantoubaoService chexiantoubaoService;
+    /**
+     * ahi
+     */
     @Autowired
-    private AHIService ahiService;//ahi
+    private AHIService ahiService;
+    /**
+     * 保养提醒
+     */
     @Autowired
-    private BaoYangTiXingService baoYangTiXingService;//保养提醒
+    private BaoYangTiXingService baoYangTiXingService;
+    /**
+     * 服务导航之获取店铺信息
+     */
     @Autowired
-    private ShopInfoService shopInfoService;//服务导航之获取店铺信息
+    private ShopInfoService shopInfoService;
+    /**
+     * 消费记录
+     */
     @Autowired
-    private BuyRecordService buyRecordService;//消费记录
+    private BuyRecordService buyRecordService;
 
+    /**
+     *
+     * @param request 请求
+     * @param response 返回
+     * @param fromflag 路径参数
+     * @param cardNo 车牌号
+     * @param model 返回数据
+     * @return Object 返回路径
+     */
     @ResponseBody
     @RequestMapping(value = "getCommonAjax", method = RequestMethod.POST)
     public Object commonAjax(HttpServletRequest request, HttpServletResponse response,
@@ -89,10 +131,11 @@ public class ABCDceshiAjax {
         }
         //获取联盟卡二维码
         if ("getXmkQRCode".equals(fromflag)) {
-            String card_id = encodingUrl(request.getParameter("card_id"));
-            String item_code = encodingUrl(request.getParameter("item_code"));
-            String type_flg = encodingUrl(request.getParameter("type_flg"));
-            String xmkQRCode = lianMengKa.getXmkQRCode(card_id, item_code, type_flg);
+
+            String cardid = encodingUrl(request.getParameter("card_id"));
+            String itemcode = encodingUrl(request.getParameter("item_code"));
+            String typeflg = encodingUrl(request.getParameter("type_flg"));
+            String xmkQRCode = lianMengKa.getXmkQRCode(cardid, itemcode, typeflg);
             return xmkQRCode;
         }
         //获取养车信息列表信息
@@ -134,7 +177,7 @@ public class ABCDceshiAjax {
         }
         //AHI
         if ("queryCarPointOne".equals(fromflag)) {
-            logger.debug("ahi" + plateNumber);
+            logprint.debug("ahi" + plateNumber);
             return ahiService.queryCarPointOne(plateNumber);
         }
         //AHI
@@ -145,29 +188,24 @@ public class ABCDceshiAjax {
         }
         //保养提醒
         if ("baoYangList".equals(fromflag)) {
-
-            try{
                 String top = request.getParameter("top");
                 ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(shopcode, carId, top);
                 System.out.println("保养提醒进入======");
                 return baoYangListByLmcodeAndCarNo;
-            }catch(Exception e){
-                e.printStackTrace();
-            }
             return  null;
 
         }
         //消费记录
         if ("baoYangList".equals(fromflag)) {
             String top = request.getParameter("top");
-            ArrayList serviceListByLmcodeAndCarNo = buyRecordService.getServiceListByLmcodeAndCarNo(shopcode,carId,top);
+            ArrayList serviceListByLmcodeAndCarNo = buyRecordService.getServiceListByLmcodeAndCarNo(shopcode, carId, top);
             return serviceListByLmcodeAndCarNo;
         }
         //添加服务顾问
         if ("fuwuguwen".equals(fromflag)) {
             //String  guwen_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
-            String guwen_shopcode = "0533001";
-            return chexiantoubaoService.queryFuWuGuWen(guwen_shopcode);
+            String guwenshopcode = "0533001";
+            return chexiantoubaoService.queryFuWuGuWen(guwenshopcode);
         }
         //联盟总部
         if ("lianmeng".equals(fromflag)) {
@@ -178,20 +216,24 @@ public class ABCDceshiAjax {
         if ("xinxi".equals(fromflag)) {
             //String  xinxi_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
             String parameter = request.getParameter("car_number");
-            String xinxi_shopcode = "0533001";
-            return chexiantoubaoService.queryCheLiangXinXi(parameter, xinxi_shopcode);
+            String xinxishopcode = "0533001";
+            return chexiantoubaoService.queryCheLiangXinXi(parameter, xinxishopcode);
         }
         //服务导航
         if ("queryShopCodeListByLmCode".equals(fromflag)) {
-            String shopType_search = request.getParameter("shopType_search");
-            String orderType_search = request.getParameter("orderType_search");
-            return shopInfoService.queryShopCodeListByLmCode(shopcode,shopType_search,orderType_search);
+            String shopTypesearch = request.getParameter("shopType_search");
+            String orderTypesearch = request.getParameter("orderType_search");
+            return shopInfoService.queryShopCodeListByLmCode(shopcode, shopTypesearch, orderTypesearch);
         }
 
         return obj;
     }
 
-    //将传过来的参数去除空格,并统一字符集
+    /**
+     *
+     * @param str 传进需要解析的字符串
+     * @return String返回字符串
+     */
     public String encodingUrl(String str) {
         try {
             if (str != null) {
