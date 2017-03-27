@@ -103,6 +103,7 @@ public class ABCDceshiAllController {
     }
 
     //保险开单
+    @ResponseBody
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
     public String baoXianTiJiao(HttpServletRequest request,BaoXianKaiDan baoXianKaiDan,HttpSession httpSession) {
         chexiantoubaoService.baoXianTiJiao(request,baoXianKaiDan,httpSession);
