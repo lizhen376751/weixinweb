@@ -117,7 +117,16 @@ public class ChexiantoubaoService {
                     int baoZhangRenShu = Integer.parseInt(baoZhangRenShus);
                     baoXianKaiDanXiangQing.setBaoZhangRenShu(baoZhangRenShu);
                 }
+                //获取保险公司id
+                String[] insuranceIds =request.getParameterValues("xianzhong");
+                List<BaoXianKaiDanGongSi> baoXianKaiDanGongSi1 = new ArrayList<BaoXianKaiDanGongSi>();
+                if(insuranceIds!=null && insuranceIds.length>0) {
+                    for (int j = 0; j < insuranceIds.length; j++) {
+                        int companyId = Integer.parseInt(insuranceIds[j]);
+                        baoXianKaiDanXiangQing.setCompanyId(companyId);
+                    }
 
+                }
                 //String kaiDanId=request.getParameter("pcxe_3");
                 //String price=request.getParameter("pcxe_3");
 
