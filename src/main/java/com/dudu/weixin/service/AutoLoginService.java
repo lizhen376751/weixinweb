@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AutoLoginService {
+    //根据OpenId和shopcode查询是否有登记的记录
     public String judgeOpenId(String OpenId,String shopcode) {
         String CarId = "";
         //TODO 后期调用接口

@@ -4,7 +4,6 @@ import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
 import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LoginActionNewService;
 import com.dudu.weixin.service.ShopInfoService;
-import com.dudu.weixin.util.SignUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
 /**
  * Created by Administrator on 2017/3/17.
@@ -42,13 +39,11 @@ public class ABCDceshiAllController {
     protected String login(HttpServletRequest request, HttpServletResponse response) {
         boolean flg = loginActionNewService.login(request);
         if (flg) {
-
             return "/index";
         } else {
             return "/login/login";
         }
     }
-
     //点击菜单后进入
     @RequestMapping(value = "oauthLoginServlet", method = RequestMethod.GET)
     public String oauthLogin(HttpServletRequest request,
@@ -108,60 +103,6 @@ public class ABCDceshiAllController {
     }
 
 
-    @ResponseBody
-    @RequestMapping(value = "/Notify", method = RequestMethod.GET)
-    protected String notify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //TODO 未做完需要调用接口,数据库因为涉及到sql语句--- Notify   /userServlet/Notify
-        return null;
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/autoZhuanpanJson")
-    protected String autoZhuanpan(
-            @RequestParam(name = "shopcode") String shopcode,
-            @RequestParam(name = "t") String curtime,
-            @RequestParam(name = "curUserID") String curUserID,
-            @RequestParam(name = "strOpenId") String strOpenId
-    ) {
-        //TODO 需要调用接口doGet  ----autoZhuanpanJson  /userServlet/autoZhuanpanJson
-        return null;
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/tijiaoZhuanpanJson")
-    protected String tijiaoZhuanpan(
-            @RequestParam(name = "shopcode") String shopcode,
-            @RequestParam(name = "t") String curtime,
-            @RequestParam(name = "curUserID") String curUserID,
-            @RequestParam(name = "strOpenId") String strOpenId)
-
-    {
-        //TODO 需要调用接口doGet  ----DaZhuanPanGet/tijiaoZhuanpanJson    /userServlet/tijiaoZhuanpanJson
-        return null;
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "coreServlet", method = RequestMethod.GET)
-    public String get(@RequestParam(name = "signature") String signature,
-                      @RequestParam(name = "timestamp") String timestamp,
-                      @RequestParam(name = "nonce") String nonce,
-                      @RequestParam(name = "echostr") String echostr,
-                      @RequestParam(name = "shopcode") String shopCode) {
-
-        if (SignUtil.checkSignature(this.getTokenByShopCode(shopCode), signature, timestamp, nonce, shopCode)) {
-            return echostr;
-        } else {
-            //TODO 请求校验失败处理结果返回方式
-            return "";
-        }
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "coreServlet", method = RequestMethod.POST)
-    public String post(@RequestParam(name = "shopcode") String shopcode) {
-        String shopName = shopInfoService.getShopName(shopcode);
-        return shopName;
-    }
 
     @ResponseBody
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
@@ -170,10 +111,5 @@ public class ABCDceshiAllController {
         return "";
     }
 
-
-    private String getTokenByShopCode(String shopCode) {
-        //TODO token需要存储到数据库中
-        return "duduchewangcar";
-    }
 
 }

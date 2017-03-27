@@ -2,7 +2,7 @@ package com.dudu.weixin.mould;
 
 /**
  * Created by Administrator on 2017/3/22.
- * 测试制造数据使用
+ * 测试制造数据使用(保养提醒)
  */
 public class ceshi {
     public String CustomerDemand_DateBegin;

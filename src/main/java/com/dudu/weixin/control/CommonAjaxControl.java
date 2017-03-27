@@ -14,7 +14,7 @@ public class CommonAjaxControl {
     /**
      *
      * @Title:        encodingUrl
-     * @Description:  TODO(参数字符转换)
+     * @Description:
      * @param:        @param str
      * @param:        @return
      * @return:       String
