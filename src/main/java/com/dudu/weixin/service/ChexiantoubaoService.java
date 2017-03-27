@@ -26,6 +26,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -59,6 +60,11 @@ public class ChexiantoubaoService {
     }
     public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
         //保险开单
+        //获取车牌号
+        String  carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
+        if(null!=carId&& !"".equals(carId) ){
+            baoXianKaiDan.setCarId(carId);
+        }
         String customerId = request.getParameter("customerId");
         if(null!=customerId&& !"".equals(customerId) ){
             int customerId1 = Integer.parseInt(customerId);
