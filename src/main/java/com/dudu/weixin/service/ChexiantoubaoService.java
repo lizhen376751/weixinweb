@@ -123,9 +123,12 @@ public class ChexiantoubaoService {
                 if(insuranceIds!=null && insuranceIds.length>0) {
                     for (int j = 0; j < insuranceIds.length; j++) {
                         int companyId = Integer.parseInt(insuranceIds[j]);
-                        baoXianKaiDanXiangQing.setCompanyId(companyId);
+                        BaoXianKaiDanGongSi baoXianKaiDanGongSi=new BaoXianKaiDanGongSi();
+                        //baoXianKaiDanXiangQing.setCompanyId(companyId);
+                        baoXianKaiDanGongSi.setCompanyId(companyId);
+                        baoXianKaiDanGongSi1.add(baoXianKaiDanGongSi);
                     }
-
+                    baoXianKaiDanXiangQing.setCompanyIds(baoXianKaiDanGongSi1);
                 }
                 //String kaiDanId=request.getParameter("pcxe_3");
                 //String price=request.getParameter("pcxe_3");
