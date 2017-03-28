@@ -12,13 +12,27 @@ import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+/**
+ *
+ */
 @Service
 public class LoginActionNewService {
+    /**
+     *
+     */
     @Autowired
     private HttpSession session;
+    /**
+     *
+     */
     @Reference(version = "0.0.1")
     private ApiCustomerIntf apiCustomerIntf;
 
+    /**
+     *
+     * @param request
+     * @return
+     */
     public boolean login(HttpServletRequest request) {
         boolean flg = false;
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -59,6 +73,11 @@ public class LoginActionNewService {
 
     }
 
+    /**
+     *
+     * @param request
+     * @return
+     */
     //修改密码
     public int editpasswod(HttpServletRequest request) {
         String CarId1 = request.getParameter("CarId");

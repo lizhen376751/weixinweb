@@ -7,32 +7,34 @@ import org.springframework.stereotype.Service;
  */
 //TODO 需调用CommonTools的接口
 
+
 @Service
 public class CommonToolsService {
+    /**
+     * @param shopcode
+     * @return
+     */
 //获取店管家名称
-	public  String getShopName(String shopcode) {
+    public String getShopName(String shopcode) {
 
-		return "北京经典汽车服务有限公司";
-	}
-	
-	//获取图片
-	public  String getShopListImg(String shopcode){
-		return null;
-	}
+        return "北京经典汽车服务有限公司";
+    }
 
-
+    //获取图片
+    public String getShopListImg(String shopcode) {
+        return null;
+    }
 
 
-	/**
-	 * 获取连锁主店
-	 * @return
-	 * @throws Exception
-	 */
-	public  String getMainShopcode(String shopcode) {
-		return null;
-	}
-	
-	
-	
-	
+    /**
+     * 获取连锁主店
+     *
+     * @return
+     * @throws Exception
+     */
+    public String getMainShopcode(String shopcode) {
+        return null;
+    }
+
+
 }

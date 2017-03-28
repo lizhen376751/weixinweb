@@ -10,10 +10,21 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class LianmengIntroducedService {
-    @Reference(version = "0.0.1",owner = "lizhen")
+    /**
+     *@Autowired lizhen
+     * @Title 联盟介绍
+     */
+    @Reference(version = "0.0.1", owner = "lizhen")
     private  ApiIntroducedIntf apiIntroducedIntf;
-    //联盟介绍
-    public Introduced queryEntry(String shopcode){
+
+    /**
+     * @Title 联盟介绍
+     * @Autowired lizhen
+     * @param shopcode shopcode
+     * @return Introduced 联盟介绍的实体
+     */
+
+    public Introduced queryEntry(String shopcode) {
         Introduced introduced = apiIntroducedIntf.queryEntry(shopcode);
         return introduced;
     }

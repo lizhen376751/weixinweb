@@ -20,12 +20,23 @@ import java.util.List;
  */
 @Service
 public class LianMengKaService {
-
+    /**
+     *
+     */
     @Autowired
     private CommonToolsService commonTools;
+    /**
+     *
+     */
     @Reference(version = "0.0.1")
     private ApiLianmengkaOperateIntf apiLianmengkaOperateIntf;
 
+    /**
+     *
+     * @param shopcode
+     * @param carHaoPai
+     * @return
+     */
     //	查询联盟卡剩余次数  queryXmkLeftCount   查询联盟卡消费明细 queryXiangmukaCustRecords
     public List<LianmengkaXmLeftResultModule> queryLmkInfo(String shopcode, String carHaoPai) {
         //调用queryLmkInfo接口
@@ -43,6 +54,13 @@ public class LianMengKaService {
 
     }
 
+    /**
+     *
+     * @param shopcode
+     * @param cardNo
+     * @param carHaoPai
+     * @return
+     */
     public List<LianmengkaXmCustResultModule> queryLmkXiaoFeiMX(String shopcode, String cardNo, String carHaoPai) {
 
         List<LianmengkaXmCustResultModule> results = null;
@@ -68,6 +86,13 @@ public class LianMengKaService {
         return results;
     }
 
+    /**
+     *
+     * @param shopcode
+     * @param cardNo
+     * @param carHaoPai
+     * @return
+     */
     public List<LianmengKaResultModule> getXmkCardInfo(String shopcode, String cardNo, String carHaoPai) {
         System.out.println(shopcode+","+cardNo+","+carHaoPai);
         List<LianmengKaResultModule> results = null;
