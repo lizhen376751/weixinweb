@@ -2,9 +2,13 @@ package com.dudu.weixin.service;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * 主要用与获取店铺名字/图片/连锁主店铺名字
+ */
 //TODO 需调用CommonTools的接口
+
 @Service
-public class CommonTools {
+public class CommonToolsService {
 //获取店管家名称
 	public  String getShopName(String shopcode) {
 

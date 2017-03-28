@@ -7,9 +7,10 @@ import java.util.HashMap;
 
 /**
  * Created by Administrator on 2017/3/14.
- * 店铺信息
+ * 服务导航信息     店铺信息
  * 原GetShopInfo
  */
+//TODO  后期全部封装接口
 @Service
 public class ShopInfoService {
 

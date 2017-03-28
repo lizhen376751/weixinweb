@@ -10,19 +10,7 @@
     String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
 
     System.out.println("=============xiaoFeiList.jsp=== CarId:|" + CarId + "|");
-    //TODO 登录判断  总共四块一个商品列表,一个项目列表,即使名字,支付方式后期封装成实体类进行返回,迭代输出到前端页面
-//    if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-//        autoLogin autoLogin = new autoLogin();
-//        CarId = autoLogin.judgeOpenId(strOpenId, shopcode);
-//        session.setAttribute("DUDUCHEWANG_CarId", CarId);
-//        System.out.println("=============xiaoFeiList.jsp=== 自动登陆后  CarId:|" + CarId + "|");
-//    }
-//
-//    if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-//        System.out.println("=============xiaoFeiList.jsp=== 自动登陆后 CarId还是空，则跳转到login.jsp   shopcode:" + shopcode + "|strOpenId:" + strOpenId + "|");
-//        response.sendRedirect("../login.jsp?shopcode=" + shopcode + "&strOpenId=" + strOpenId + "");
-//    }
-
+    //TODO  总共四块一个商品列表,一个项目列表,即使名字,支付方式后期封装成实体类进行返回,迭代输出到前端页面
 
     String top = (String) request.getParameter("top");
     if (top == null) {

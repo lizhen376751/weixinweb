@@ -14,11 +14,25 @@ import javax.servlet.http.HttpSession;
  * 登录验证拦截器
  */
 public class LoginInterceptor implements HandlerInterceptor {
+    /**
+     * session
+     */
     @Autowired
     private HttpSession httpSession;
+    /**
+     * 登录保存录入
+     */
     @Autowired
     private AutoLoginService autoLoginService;
 
+    /**
+     *@Autowired lizhen
+     * @param request
+     * @param response
+     * @param arg2
+     * @return
+     * @throws Exception
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
 
@@ -27,8 +41,8 @@ public class LoginInterceptor implements HandlerInterceptor {
         String openId = (String) httpSession.getAttribute("DUDUCHEWANG_OpenId");
         String shopcode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
         //个人中心,联盟卡包,保养提醒,ahi指数,施工进度,消费记录需要进行登录判断
-        if ("lmkInfo".equals(flagStr) || "AHIInfo".equals(flagStr) || "xiaoFeiList".equals(flagStr) ||
-                "baoYangList".equals(flagStr) || "cheXianTouBao".equals(flagStr) || "logout".equals(flagStr)) {
+        if ("lmkInfo".equals(flagStr) || "AHIInfo".equals(flagStr) || "xiaoFeiList".equals(flagStr)
+                || "baoYangList".equals(flagStr) || "cheXianTouBao".equals(flagStr) || "logout".equals(flagStr)) {
             //如果车牌号不为空直接往下执行
             if (carId == null || "null".equals(carId) || "".equals(carId)) {
                 String carhaopai = autoLoginService.judgeOpenId(openId, shopcode);
@@ -43,14 +57,29 @@ public class LoginInterceptor implements HandlerInterceptor {
         return true;
     }
 
+    /**
+     * @Autowired lizhen
+     * @param httpServletRequest
+     * @param httpServletResponse
+     * @param o
+     * @param modelAndView
+     * @throws Exception
+     */
     @Override
-    public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
-
+    public void postHandle(HttpServletRequest httpServletRequest,
+                           HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
     }
 
+    /**
+     * @Autowired lizhen
+     * @param httpServletRequest
+     * @param httpServletResponse
+     * @param o
+     * @param e
+     * @throws Exception
+     */
     @Override
-    public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-
+    public void afterCompletion(HttpServletRequest httpServletRequest,
+                                HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
     }
-
 }

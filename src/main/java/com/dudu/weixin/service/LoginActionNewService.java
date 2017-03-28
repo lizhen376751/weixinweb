@@ -31,12 +31,11 @@ public class LoginActionNewService {
         System.out.println("-------------登陆车牌：" + CarId + "|Phone:" + Phone + "|");
         QueryCustomerParam queryCustomerParam = new QueryCustomerParam();
         queryCustomerParam.setCarHaopai(CarId);
-
+        //根据车牌号查询联盟体系是否有这个用户
         List<ResultQueryCustomer> result = apiCustomerIntf.queryCustomerStructureClass(queryCustomerParam);
         if (result != null && result.size() > 0) {
             ResultQueryCustomer resultQueryCustomer = result.get(0);
             String trueMobile = resultQueryCustomer.getCustomerMobile();
-            System.out.println("-------------登陆验证：" + CarId + "|Phone:" + Phone + "|trueMobile:" + trueMobile + "|");
             if (Phone.equals(trueMobile)) {
                 session.setAttribute("DUDUCHEWANG_CarId", CarId);
                 session.setAttribute("DUDUCHEWANG_OpenId", OpenId);
