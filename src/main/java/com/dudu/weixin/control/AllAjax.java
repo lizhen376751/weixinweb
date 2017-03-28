@@ -34,11 +34,11 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/")
-public class ABCDceshiAjax {
+public class AllAjax {
     /**
      * logprint 日志打印
      */
-    private static  Logger logprint = LoggerFactory.getLogger(ABCDceshiAjax.class);
+    private static  Logger logprint = LoggerFactory.getLogger(AllAjax.class);
     /**
      * session
      */

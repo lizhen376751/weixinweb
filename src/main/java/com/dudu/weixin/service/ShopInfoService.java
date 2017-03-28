@@ -26,84 +26,26 @@ public class ShopInfoService {
     private ApiShopInfo apiShopInfo;
 
     /**
-     * @param shopcode
-     * @return
-     */
-    public static String getShopAppid(String shopcode) {
-        String strShopName = "";
-        return strShopName;
-    }
-
-    /**
-     * @param shopcode shopcode
-     * @return
+     * 根据shopcode查询百度map库shopInfo的信息
+     *
+     * @param shopcode 店铺编码
+     * @return 店铺信息实体
      */
     public ShopInfo getShopInfo(String shopcode) {
         ShopInfo shopInfo = apiShopInfo.getShopInfo(shopcode);
         return shopInfo;
     }
 
-    /**
-     * @param shopcode
-     * @return
-     */
-    public String getShopName(String shopcode) {
-        String strShopName = "";
-
-        return strShopName;
-    }
 
     /**
-     * @param shopcode
-     * @return
-     */
-    public String getShopToken(String shopcode) {
-        String strShopName = "";
-        return strShopName;
-    }
-
-    /**
-     * @param shopcode
-     * @return
-     */
-    public String getShopAppSecret(String shopcode) {
-        String strShopName = "";
-        return strShopName;
-    }
-
-    /**
-     * @param shopcode
-     * @return
-     */
-    public ArrayList listLianSuo(String shopcode) {
-        ArrayList list = new ArrayList();
-        return list;
-    }
-
-    /**
-     * @param lmcode
-     * @param shopType
-     * @param orderType
-     * @return
+     * @param lmcode    联盟code
+     * @param shopType  店铺类型
+     * @param orderType 排序
+     * @return 联盟店铺集合
      */
     public ArrayList<HashMap<String, String>> queryShopCodeListByLmCode(String lmcode, String shopType, String orderType) {
         ArrayList list = new ArrayList();
         return list;
     }
 
-    /**
-     * @param shopcode
-     * @return
-     */
-    public HashMap dispShop(String shopcode) {
-        return null;
-    }
-
-    /**
-     * @param shopcode
-     * @return
-     */
-    public HashMap dispShopWelcome(String shopcode) {
-        return null;
-    }
 }

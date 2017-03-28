@@ -11,16 +11,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommonToolsService {
     /**
-     * @param shopcode
-     * @return
+     * 获取店管家名称
+     * @param shopcode 店铺编码
+     * @return 字符串
      */
-//获取店管家名称
-    public String getShopName(String shopcode) {
 
+    public String getShopName(String shopcode) {
         return "北京经典汽车服务有限公司";
     }
 
-    //获取图片
+
+
+    /**
+     *
+     * @param shopcode 店铺编码
+     * @return 获取图片
+     */
     public String getShopListImg(String shopcode) {
         return null;
     }
@@ -28,9 +34,8 @@ public class CommonToolsService {
 
     /**
      * 获取连锁主店
-     *
-     * @return
-     * @throws Exception
+     *@param  shopcode 店铺代码
+     * @return  主店shopcode
      */
     public String getMainShopcode(String shopcode) {
         return null;

@@ -8,40 +8,79 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class Constant {
-
+    /**
+     *
+     */
     private String weixinBaseUrl = "www.duduchewang.cn";
+    /**
+     *
+     */
     private String path = "weixincore_cn";
-    private Long serialVersionUID = -1847238807216447030L;
-    private String Common_LuJing = "weixincore";
-    private String ELB_URL = "wx.elubon.com";
+    /**
+     *
+     */
+    private final Long serialVersionUID = -1847238807216447030L;
+    /**
+     *
+     */
+    private String commonLuJing = "weixincore";
+    /**
+     *
+     */
+    private String eLBURL = "wx.elubon.com";
+    /**
+     *
+     */
+    private  String cURRENCYFENREGEX = "\\-?[0-9]+";
 
-    public  String CURRENCY_FEN_REGEX = "\\-?[0-9]+";
-
-    public String getCURRENCY_FEN_REGEX() {
-        return CURRENCY_FEN_REGEX;
+    /**
+     *
+     * @return cURRENCYFENREGEX
+     */
+    public String getCURRENCYFENREGEX() {
+        return cURRENCYFENREGEX;
     }
 
+    /**
+     *
+     * @return serialVersionUID
+     */
     public long getSerialVersionUID() {
         return serialVersionUID;
 
     }
 
+    /**
+     *
+     * @return weixinBaseUrl
+     */
     public String getWeixinBaseUrl() {
         return weixinBaseUrl;
     }
 
+    /**
+     *
+     * @return path
+     */
     public String getPath() {
         return path;
     }
 
 
-
-    public String getCommon_LuJing() {
-        return Common_LuJing;
+    /**
+     *
+     * @return commonLuJing
+     */
+    public String getcommonLuJing() {
+        return commonLuJing;
     }
 
-    public String getELB_URL() {
-        return ELB_URL;
+    /**
+     *
+     * @return eLBURL
+     */
+    public String geteLBURL() {
+        return eLBURL;
     }
 
 

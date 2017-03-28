@@ -4,6 +4,9 @@ package com.dudu.weixin.mould;
  * Created by Administrator on 2017/3/15.
  */
 public class WeixinOauth2Token {
+    /**
+     *
+     */
     private String AccessToken;
     private int ExpiresIn;
     private String RefreshToken;

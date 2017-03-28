@@ -32,12 +32,12 @@ public class LianMengKaService {
     private ApiLianmengkaOperateIntf apiLianmengkaOperateIntf;
 
     /**
-     *
-     * @param shopcode
-     * @param carHaoPai
-     * @return
+     *查询联盟卡剩余次数  queryXmkLeftCount   查询联盟卡消费明细 queryXiangmukaCustRecords
+     * @param shopcode shopcode
+     * @param carHaoPai 车牌号码
+     * @return 联盟卡列表
      */
-    //	查询联盟卡剩余次数  queryXmkLeftCount   查询联盟卡消费明细 queryXiangmukaCustRecords
+
     public List<LianmengkaXmLeftResultModule> queryLmkInfo(String shopcode, String carHaoPai) {
         //调用queryLmkInfo接口
         List<LianmengkaXmLeftResultModule> results = null;
@@ -56,10 +56,10 @@ public class LianMengKaService {
 
     /**
      *
-     * @param shopcode
-     * @param cardNo
-     * @param carHaoPai
-     * @return
+     * @param shopcode shopcode
+     * @param cardNo 联盟卡号
+     * @param carHaoPai 车牌号
+     * @return 联盟卡列表
      */
     public List<LianmengkaXmCustResultModule> queryLmkXiaoFeiMX(String shopcode, String cardNo, String carHaoPai) {
 
@@ -73,10 +73,10 @@ public class LianMengKaService {
             //把消费店铺编码 替换为 店铺名称
             for (int i = 0; i < results.size(); i++) {
                 LianmengkaXmCustResultModule lianmengkaXmCustResultModule = results.get(i);
-                String cust_code = lianmengkaXmCustResultModule.getCust_code();
-                String cust_shopName = commonTools.getShopName(cust_code);
+                String custcode = lianmengkaXmCustResultModule.getCust_code();
+                String custshopName = commonTools.getShopName(custcode);
                 //单纯的查询,把custcode替换成了cust_shopName
-                lianmengkaXmCustResultModule.setCust_code(cust_shopName);
+                lianmengkaXmCustResultModule.setCust_code(custshopName);
 
             }
 
@@ -88,36 +88,36 @@ public class LianMengKaService {
 
     /**
      *
-     * @param shopcode
-     * @param cardNo
-     * @param carHaoPai
-     * @return
+     * @param shopcode shopcode
+     * @param cardNo  联盟卡号
+     * @param carHaoPai 车牌号
+     * @return 联盟卡列表
      */
     public List<LianmengKaResultModule> getXmkCardInfo(String shopcode, String cardNo, String carHaoPai) {
-        System.out.println(shopcode+","+cardNo+","+carHaoPai);
+        System.out.println(shopcode + "," + cardNo + "," + carHaoPai);
         List<LianmengKaResultModule> results = null;
         LiangmengKaQueryModule queryModule = new LiangmengKaQueryModule();
-        queryModule.setProduct_shopcode(shopcode);//联盟总部编码
-        queryModule.setCard_number(cardNo);//卡号
+        queryModule.setProduct_shopcode(shopcode); //联盟总部编码
+        queryModule.setCard_number(cardNo); //卡号
         queryModule.setCar_haopai(carHaoPai);
-        queryModule.setCard_type("2");//1充值卡，2项目卡
+        queryModule.setCard_type("2"); //1充值卡，2项目卡
 
         results = apiLianmengkaOperateIntf.getLianmengCustomerCardInfos(queryModule);
 
         if (results != null && results.size() > 0) {
             LianmengKaResultModule lianmengKaResultModule = results.get(0);
             if (lianmengKaResultModule != null) {
-                String sell_code = lianmengKaResultModule.getSell_code().toString();
+                String sellcode = lianmengKaResultModule.getSell_code().toString();
 
                 //查询出店铺列表图片
-                String shopListImg = commonTools.getShopListImg(sell_code);
+                String shopListImg = commonTools.getShopListImg(sellcode);
                 //TODO 后期需要把shopListImg放入results结果集,暂时存入Customer_mobile里面
                 lianmengKaResultModule.setCustomer_mobile(shopListImg);
                 //把发卡店铺编码 替换为 店铺名称
-                String sell_shopName = commonTools.getShopName(sell_code);
+                String sellshopName = commonTools.getShopName(sellcode);
                 //TODO 后期需要把sell_shopName放入results结果集,暂时存入sell_shopName里面
-                lianmengKaResultModule.setCar_haopai(sell_shopName);
-                System.out.println("+============" + sell_code + shopListImg + sell_shopName);
+                lianmengKaResultModule.setCar_haopai(sellshopName);
+                System.out.println("+============" + sellcode + shopListImg + sellshopName);
 
             }
         }
@@ -128,21 +128,21 @@ public class LianMengKaService {
     /**
      * 获取联盟卡二维码
      *
-     * @param card_id
-     * @param item_code
-     * @param type_flg
-     * @return
+     * @param cardid 卡的id
+     * @param itemcode 项目编号
+     * @param typeflg 卡标识 1:项目 2:商品
+     * @return 字符串
      */
-    public String getXmkQRCode(String card_id, String item_code, String type_flg) {
+    public String getXmkQRCode(String cardid, String itemcode, String typeflg) {
 
-        card_id = card_id == null || "null".equals(card_id) || "".equals(card_id) ? "0" : card_id;
-        type_flg = type_flg == null || "null".equals(type_flg) || "".equals(type_flg) ? "0" : type_flg;
+        cardid = cardid == null || "null".equals(cardid) || "".equals(cardid) ? "0" : cardid;
+        typeflg = typeflg == null || "null".equals(typeflg) || "".equals(typeflg) ? "0" : typeflg;
         String result = "";
         try {
             LmkCardGenParam queryModule = new LmkCardGenParam();
-            queryModule.setCardId(Long.parseLong(card_id));
-            queryModule.setItemCode(item_code);
-            queryModule.setTypeFlg(Integer.parseInt(type_flg));
+            queryModule.setCardId(Long.parseLong(cardid));
+            queryModule.setItemCode(itemcode);
+            queryModule.setTypeFlg(Integer.parseInt(typeflg));
             result = apiLianmengkaOperateIntf.getOneCardCode(queryModule);
 
         } catch (Exception e) {

@@ -23,11 +23,11 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 @RequestMapping("/")
-public class ABCDceshiAllController {
+public class AllController {
     /**
      * 日志打印
      */
-    private static  Logger logger = LoggerFactory.getLogger(ABCDceshiAjax.class);
+    private static  Logger logger = LoggerFactory.getLogger(AllAjax.class);
     /**
      * session
      */

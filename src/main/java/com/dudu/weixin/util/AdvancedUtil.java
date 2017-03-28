@@ -10,10 +10,10 @@ public class AdvancedUtil {
 
     /**
      * asdlkjasldkjf
-     * @param appId
-     * @param appSecret
-     * @param code
-     * @return
+     * @param appId 微信appId
+     * @param appSecret 微信appSecret
+     * @param code 微信code
+     * @return  WeixinOauth2Token
      */
     public  WeixinOauth2Token getOauth2AccessToken(String appId, String appSecret, String code) {
         WeixinOauth2Token wat = null;

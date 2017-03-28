@@ -29,41 +29,46 @@ public class LoginActionNewService {
     private ApiCustomerIntf apiCustomerIntf;
 
     /**
-     *
-     * @param request
-     * @return
+     * @param request 请求
+     * @return 开关
      */
     public boolean login(HttpServletRequest request) {
         boolean flg = false;
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String CarId1 = request.getParameter("CarId");
-        String CarId = CarId1.toUpperCase();
-        String Phone = request.getParameter("Phone");
+        String carId1 = request.getParameter("CarId");
+        String carId = carId1.toUpperCase();
+        String phone = request.getParameter("Phone");
         String shopcode = request.getParameter("shopcode");
-        String OpenId = request.getParameter("OpenId");
+        String openId = request.getParameter("OpenId");
 
-        System.out.println("-------------登陆车牌：" + CarId + "|Phone:" + Phone + "|");
+        System.out.println("-------------登陆车牌：" + carId + "|Phone:" + phone + "|");
         QueryCustomerParam queryCustomerParam = new QueryCustomerParam();
-        queryCustomerParam.setCarHaopai(CarId);
-        //根据车牌号查询联盟体系是否有这个用户
+        queryCustomerParam.setCarHaopai(carId);
+//根据车牌号查询联盟体系是否有这个用户
         List<ResultQueryCustomer> result = apiCustomerIntf.queryCustomerStructureClass(queryCustomerParam);
         if (result != null && result.size() > 0) {
             ResultQueryCustomer resultQueryCustomer = result.get(0);
             String trueMobile = resultQueryCustomer.getCustomerMobile();
-            if (Phone.equals(trueMobile)) {
-                session.setAttribute("DUDUCHEWANG_CarId", CarId);
-                session.setAttribute("DUDUCHEWANG_OpenId", OpenId);
+            if (phone.equals(trueMobile)) {
+                session.setAttribute("DUDUCHEWANG_CarId", carId);
+                session.setAttribute("DUDUCHEWANG_OpenId", openId);
                 session.setAttribute("DUDUCHEWANG_shopcode", shopcode);
-                //TODO 后期封装成接口
-                //登陆后记录车辆openId
-//					if (OpenId != null && !"null".equals(OpenId)&& !"".equals(OpenId) && CarId!=null && !"null".equals(CarId) && !"".equals(CarId)) {
-//						ArrayList<HashMap<String, String>> checkOpenList = dblm.query(" select id from DDCW_WX_CustOpenId where lianMengCode='"+shopcode+"' and carNo='"+CarId+"' ");
-//						if(checkOpenList!=null && checkOpenList.size()>0){
-//							dblm.update("update DDCW_WX_CustOpenId set openId='"+OpenId+"',updateTime=getdate() where lianMengCode='"+shopcode+"' and carNo='"+CarId+"'");
-//						}else{
-//							dblm.update("insert into DDCW_WX_CustOpenId(lianMengCode,carNo,openId,firstOpenId)values('"+shopcode+"','"+CarId+"','"+OpenId+"','"+OpenId+"')");
-//						}
-//					}
+//TODO 后期封装成接口
+//登陆后记录车辆openId
+//                if (OpenId != null && !"null".equals(OpenId) && !"".equals(OpenId) &&
+//                        CarId != null && !"null".equals(CarId) && !"".equals(CarId)) {
+//                    ArrayList<HashMap<String, String>> checkOpenList =
+//                            dblm.query(" select id from DDCW_WX_CustOpenId where lianMengCode='" + shopcode + "' and carNo='" + CarId + "' ");
+//                    if (checkOpenList != null && checkOpenList.size() > 0) {
+//                        dblm.update("update DDCW_WX_CustOpenId set openId=
+//                        '"+OpenId+"', updateTime = getdate() where lianMengCode = '"+shopcode+"' and carNo = '"+CarId+"'
+//                        ");
+//                    } else {
+//                        dblm.update("insert into DDCW_WX_CustOpenId
+//                        (lianMengCode, carNo, openId, firstOpenId)
+//                        values('"+shopcode+"', '"+CarId+"', '"+OpenId+"', '"+OpenId+"') ");
+//                    }
+//                }
 
                 flg = true;
             }
@@ -74,19 +79,18 @@ public class LoginActionNewService {
     }
 
     /**
-     *
-     * @param request
-     * @return
+     * @param request 请求
+     * @return 返回0或者1
      */
-    //修改密码
+//修改密码
     public int editpasswod(HttpServletRequest request) {
-        String CarId1 = request.getParameter("CarId");
-        String CarId = CarId1.toUpperCase();
-        String Phone = request.getParameter("Phone");
+        String carId1 = request.getParameter("CarId");
+        String carId = carId1.toUpperCase();
+        String phone = request.getParameter("Phone");
         String shopcode = request.getParameter("shopcode");
         String newPhone = request.getParameter("newPhone");
         int flg = 0;
-        //TODO 封装接口调用服务
+//TODO 封装接口调用服务
         return flg;
     }
 }
