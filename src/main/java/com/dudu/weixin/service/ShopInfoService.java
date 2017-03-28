@@ -1,5 +1,8 @@
 package com.dudu.weixin.service;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.dudu.soa.weixindubbo.api.ApiShopInfo;
+import com.dudu.soa.weixindubbo.module.ShopInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,28 +17,15 @@ import java.util.HashMap;
 @Service
 public class ShopInfoService {
     /**
+     * 引入shopInfo接口
      *
      * @param shopcode
      * @return
      */
-    public  String getShopName(String shopcode){
-        String strShopName = "";
-
-        return strShopName;
-    }
+    @Reference(version = "1.0")
+    private ApiShopInfo apiShopInfo;
 
     /**
-     *
-     * @param shopcode
-     * @return
-     */
-    public  String getShopToken(String shopcode){
-        String strShopName = "";
-        return strShopName;
-    }
-
-    /**
-     *
      * @param shopcode
      * @return
      */
@@ -45,52 +35,75 @@ public class ShopInfoService {
     }
 
     /**
-     *
+     * @param shopcode shopcode
+     * @return
+     */
+    public ShopInfo getShopInfo(String shopcode) {
+        ShopInfo shopInfo = apiShopInfo.getShopInfo(shopcode);
+        return shopInfo;
+    }
+
+    /**
      * @param shopcode
      * @return
      */
-    public  String getShopAppSecret(String shopcode) {
+    public String getShopName(String shopcode) {
+        String strShopName = "";
+
+        return strShopName;
+    }
+
+    /**
+     * @param shopcode
+     * @return
+     */
+    public String getShopToken(String shopcode) {
         String strShopName = "";
         return strShopName;
     }
 
     /**
-     *
      * @param shopcode
      * @return
      */
-    public ArrayList listLianSuo(String shopcode)  {
+    public String getShopAppSecret(String shopcode) {
+        String strShopName = "";
+        return strShopName;
+    }
+
+    /**
+     * @param shopcode
+     * @return
+     */
+    public ArrayList listLianSuo(String shopcode) {
         ArrayList list = new ArrayList();
         return list;
     }
 
     /**
-     *
      * @param lmcode
      * @param shopType
      * @param orderType
      * @return
      */
-    public ArrayList<HashMap<String,String>> queryShopCodeListByLmCode(String lmcode, String shopType, String orderType)  {
+    public ArrayList<HashMap<String, String>> queryShopCodeListByLmCode(String lmcode, String shopType, String orderType) {
         ArrayList list = new ArrayList();
         return list;
     }
 
     /**
-     *
      * @param shopcode
      * @return
      */
-    public HashMap dispShop(String shopcode)  {
+    public HashMap dispShop(String shopcode) {
         return null;
     }
 
     /**
-     *
      * @param shopcode
      * @return
      */
-    public  HashMap dispShopWelcome(String shopcode)  {
+    public HashMap dispShopWelcome(String shopcode) {
         return null;
     }
 }
