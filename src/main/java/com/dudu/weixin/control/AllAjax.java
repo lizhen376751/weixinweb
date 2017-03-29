@@ -192,7 +192,6 @@ public class AllAjax {
                 ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(shopcode, carId, top);
                 System.out.println("保养提醒进入======");
                 return baoYangListByLmcodeAndCarNo;
-            return  null;
 
         }
         //消费记录
