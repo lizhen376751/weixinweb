@@ -134,10 +134,10 @@ public class AllController {
 
     /**
      *
-     * @param request 多的
-     * @param baoXianKaiDan 多的
-     * @param httpSession 多的
-     * @return 路径 多的
+     * @param request 域
+     * @param baoXianKaiDan 保险开单实体类
+     * @param httpSession 域
+     * @return 跳转页面
      */
     @ResponseBody
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)

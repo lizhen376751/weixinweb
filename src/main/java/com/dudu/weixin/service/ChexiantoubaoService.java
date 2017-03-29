@@ -40,8 +40,8 @@ public class ChexiantoubaoService {
     /**
      * 引入保险类型api
      */
-   @Reference(version = "1.0")
-   private APIBaoXianType aPIBaoXianType;
+    @Reference(version = "1.0")
+    private APIBaoXianType aPIBaoXianType;
     /**
      * 获取联盟总部信息
      */
@@ -65,18 +65,20 @@ public class ChexiantoubaoService {
 
     /**
      * 获取保险公司接口
-     * @return
+     *
+     * @return 保险公司列表
      */
-    public  List<BaoXianGongSi>  baoxianGongSi(){
+    public List<BaoXianGongSi> baoxianGongSi() {
         List<BaoXianGongSi> baoXianGongSis = aPIBaoXianType.selectInsuranceCompany();
         return baoXianGongSis;
     }
 
     /**
      * 获取保险类型接口
-     * @return
+     *
+     * @return 保险类型列表
      */
-    public  List<BaoXianType>  baoXianTypes(){
+    public List<BaoXianType> baoXianTypes() {
         BaoXianType baoXianType = new BaoXianType();
         BaoXianPCZiDian baoXianPCZiDian = new BaoXianPCZiDian();
         List<BaoXianType> baoXianTypes = aPIBaoXianType.selectBaoXianShuJu();
@@ -85,33 +87,34 @@ public class ChexiantoubaoService {
 
     /**
      * 保险提交后持久化到数据库
-     * @param request 域
+     *
+     * @param request       域
      * @param baoXianKaiDan 实体类
-     * @param httpSession session域
-     * @return
+     * @param httpSession   session域
+     * @return Boolean类型数据
      */
-    public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
+    public Boolean baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
         //保险开单
         //获取车牌号
-        String  carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
-        if (null != carId && !"".equals(carId) ){
+        String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
+        if (null != carId && !"".equals(carId)) {
             baoXianKaiDan.setCarId(carId);
         }
         String customerId = request.getParameter("customerId");
-        if (null != customerId && !"".equals(customerId) ){
+        if (null != customerId && !"".equals(customerId)) {
             int customerId1 = Integer.parseInt(customerId);
             baoXianKaiDan.setCustomerId(customerId1);
         }
 
-       //获取系统时间
+        //获取系统时间
         //String kaiDanDate = request.getParameter("aaaaa");
         String assistant = request.getParameter("serviceConsultant");
-        if (null != assistant && !"".equals(assistant) ){
+        if (null != assistant && !"".equals(assistant)) {
             baoXianKaiDan.setAssistant(assistant);
         }
-        String shopcode_lm = request.getParameter("unionHeadquarters");
-        if (null != assistant && !"".equals(assistant) ){
-            baoXianKaiDan.setShopcode_lm(shopcode_lm);
+        String shopcodelm = request.getParameter("unionHeadquarters");
+        if (null != assistant && !"".equals(assistant)) {
+            baoXianKaiDan.setShopcode_lm(shopcodelm);
         }
         String xingShiZhengImg = request.getParameter("driving_1");
         baoXianKaiDan.setXingShiZhengImg(xingShiZhengImg);
@@ -126,7 +129,7 @@ public class ChexiantoubaoService {
         String shopCode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
         baoXianKaiDan.setShopCode(shopCode);
         //String totalPrice = request.getParameter("aaaaa");
-       // String fuKuanFlag = request.getParameter("aaaaa");
+        // String fuKuanFlag = request.getParameter("aaaaa");
         //String shiShou = request.getParameter("aaaaa");
         //String orderNumb = request.getParameter("aaaaa");
 
@@ -134,34 +137,34 @@ public class ChexiantoubaoService {
         //开单详情
         String[] insurancetypeIds = request.getParameterValues("chexian");
         //System.out.println("huoqude checian=========="+insurancetypeIds.length);
-        List<BaoXianKaiDanXiangQing> baoXianKaiDanXiangQingList  = new ArrayList<BaoXianKaiDanXiangQing>();
-        if (insurancetypeIds != null && insurancetypeIds.length> 0) {
+        List<BaoXianKaiDanXiangQing> baoXianKaiDanXiangQingList = new ArrayList<BaoXianKaiDanXiangQing>();
+        if (insurancetypeIds != null && insurancetypeIds.length > 0) {
             for (int i = 0; i < insurancetypeIds.length; i++) {
                 BaoXianKaiDanXiangQing baoXianKaiDanXiangQing = new BaoXianKaiDanXiangQing();
                 int insurancetypeId = Integer.parseInt(insurancetypeIds[i]);
                 baoXianKaiDanXiangQing.setInsurancetypeId(insurancetypeId);
                 String buJiMianPeiTypes = request.getParameter("bjmp_" + insurancetypeIds[i]);
-                if (null != buJiMianPeiTypes && !"".equals(buJiMianPeiTypes) ){
+                if (null != buJiMianPeiTypes && !"".equals(buJiMianPeiTypes)) {
                     int buJiMianPeiType = Integer.parseInt(buJiMianPeiTypes);
                     baoXianKaiDanXiangQing.setBuJiMianPeiType(buJiMianPeiType);
                 }
                 String dictionaryIds = request.getParameter("pcxe_" + insurancetypeIds[i]);
-                if (null != dictionaryIds && !"".equals(dictionaryIds) ){
+                if (null != dictionaryIds && !"".equals(dictionaryIds)) {
                     int dictionaryId = Integer.parseInt(dictionaryIds);
                     baoXianKaiDanXiangQing.setDictionaryId(dictionaryId);
                 }
                 String baoZhangRenShus = request.getParameter("bzrs_" + insurancetypeIds[i]);
-                if (null != baoZhangRenShus && !"".equals(baoZhangRenShus) ){
+                if (null != baoZhangRenShus && !"".equals(baoZhangRenShus)) {
                     int baoZhangRenShu = Integer.parseInt(baoZhangRenShus);
                     baoXianKaiDanXiangQing.setBaoZhangRenShu(baoZhangRenShu);
                 }
                 //获取保险公司id
                 String[] insuranceIds = request.getParameterValues("xianzhong");
                 List<BaoXianKaiDanGongSi> baoXianKaiDanGongSi1 = new ArrayList<BaoXianKaiDanGongSi>();
-                if (insuranceIds != null && insuranceIds.length> 0) {
+                if (insuranceIds != null && insuranceIds.length > 0) {
                     for (int j = 0; j < insuranceIds.length; j++) {
                         int companyId = Integer.parseInt(insuranceIds[j]);
-                        BaoXianKaiDanGongSi baoXianKaiDanGongSi= new BaoXianKaiDanGongSi();
+                        BaoXianKaiDanGongSi baoXianKaiDanGongSi = new BaoXianKaiDanGongSi();
                         //baoXianKaiDanXiangQing.setCompanyId(companyId);
                         baoXianKaiDanGongSi.setCompanyId(companyId);
                         baoXianKaiDanGongSi1.add(baoXianKaiDanGongSi);
@@ -180,7 +183,7 @@ public class ChexiantoubaoService {
         //保险公司
         String[] insuranceIds = request.getParameterValues("xianzhong");
         List<BaoXianKaiDanGongSi> baoXianKaiDanGongSi1 = new ArrayList<BaoXianKaiDanGongSi>();
-        if (insuranceIds != null && insuranceIds.length> 0) {
+        if (insuranceIds != null && insuranceIds.length > 0) {
             for (int i = 0; i < insuranceIds.length; i++) {
                 BaoXianKaiDanGongSi baoXianKaiDanGongSi = new BaoXianKaiDanGongSi();
                 int companyId = Integer.parseInt(insuranceIds[i]);
@@ -189,42 +192,44 @@ public class ChexiantoubaoService {
             }
             baoXianKaiDan.setBaoXianKaiDanGongSi(baoXianKaiDanGongSi1);
         }
-        baoXianTypeImpl.BaoXianKaiDan(baoXianKaiDan);
-        return null;
+        Boolean aBoolean = baoXianTypeImpl.BaoXianKaiDan(baoXianKaiDan);
+        return aBoolean;
     }
 
     /**
      * 查询服务顾问
+     *
      * @param shopCode 店铺编码
-     * @return
+     * @return 服务顾问列表
      */
     public List<ServiceAdvisor> queryFuWuGuWen(String shopCode) {
         Employee employee = new Employee();
         employee.setShopCode(shopCode);
-        List<ServiceAdvisor>  list= apiBaseDataEmployee.getServiceAdvisor(employee);
+        List<ServiceAdvisor> list = apiBaseDataEmployee.getServiceAdvisor(employee);
         return list;
     }
 
     /**
      * 查询联盟总部
-     * @return
+     * @return 联盟总部列表
      */
     public List<ShopQueryFruit> queryLianMengZB() {
-        ShopParam shopParam= new ShopParam();
+        ShopParam shopParam = new ShopParam();
         shopParam.setType("1");
         return apiShopIntf.queryShopInfo(shopParam);
     }
 
     /**
      * 查询车辆信息
-     * @param parameter 车牌号
-     * @param xinxi_shopcode 信息的商店编码
-     * @return
+     *
+     * @param parameter     车牌号
+     * @param xinxishopcode 信息的商店编码
+     * @return 用户车辆信息
      */
-    public List<CustomerInfo>  queryCheLiangXinXi(String parameter, String xinxi_shopcode) {
-        CustomerInfoParam customerInfoParam= new CustomerInfoParam();
+    public List<CustomerInfo> queryCheLiangXinXi(String parameter, String xinxishopcode) {
+        CustomerInfoParam customerInfoParam = new CustomerInfoParam();
         customerInfoParam.setPlateNumber(parameter);
-        customerInfoParam.setShopCode(xinxi_shopcode);
+        customerInfoParam.setShopCode(xinxishopcode);
         List<CustomerInfo> customerInfos = apiCustomerInfo.queryCustomerList(customerInfoParam);
         return customerInfos;
     }
