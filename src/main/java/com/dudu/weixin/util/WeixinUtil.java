@@ -18,7 +18,9 @@ import java.net.URL;
  * Created by Administrator on 2017/3/15.
  * 公众平台通用接口工具类
  */
- public class WeixinUtil {
+ public final class WeixinUtil {
+     private WeixinUtil() {
+     };
 
     /**
      * 发起https请求并获取结果
