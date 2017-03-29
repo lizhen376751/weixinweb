@@ -36,7 +36,7 @@ public class ChexiantoubaoService {
      * 引入保险开单api
      */
     @Reference(version = "1.0", owner = "zhangyuanlei")
-    private APIBaoXainKaiDan baoXianTypeImpl;
+    private APIBaoXainKaiDan aPIBaoXainKaiDan;
     /**
      * 引入保险类型api
      */
@@ -192,7 +192,7 @@ public class ChexiantoubaoService {
             }
             baoXianKaiDan.setBaoXianKaiDanGongSi(baoXianKaiDanGongSi1);
         }
-        Integer integer = baoXianTypeImpl.baoXianKaiDan(baoXianKaiDan);
+        Integer integer = aPIBaoXainKaiDan.baoXianKaiDan(baoXianKaiDan);
 
         return integer;
     }
