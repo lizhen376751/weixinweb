@@ -91,9 +91,9 @@ public class ChexiantoubaoService {
      * @param request       域
      * @param baoXianKaiDan 实体类
      * @param httpSession   session域
-     * @return Boolean类型数据
+     * @return Integer
      */
-    public Boolean baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
+    public Integer baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
         //保险开单
         //获取车牌号
         String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
@@ -114,7 +114,7 @@ public class ChexiantoubaoService {
         }
         String shopcodelm = request.getParameter("unionHeadquarters");
         if (null != assistant && !"".equals(assistant)) {
-            baoXianKaiDan.setShopcode_lm(shopcodelm);
+            baoXianKaiDan.setShopcodelm(shopcodelm);
         }
         String xingShiZhengImg = request.getParameter("driving_1");
         baoXianKaiDan.setXingShiZhengImg(xingShiZhengImg);
@@ -192,8 +192,9 @@ public class ChexiantoubaoService {
             }
             baoXianKaiDan.setBaoXianKaiDanGongSi(baoXianKaiDanGongSi1);
         }
-        Boolean aBoolean = baoXianTypeImpl.BaoXianKaiDan(baoXianKaiDan);
-        return aBoolean;
+        Integer integer = baoXianTypeImpl.baoXianKaiDan(baoXianKaiDan);
+
+        return integer;
     }
 
     /**

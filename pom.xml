@@ -162,6 +162,11 @@
         <artifactId>DuduWeixin-dubbo-api</artifactId>
         <version>${dudu.soa.DuduWeixinDubbo.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.dudu.soa</groupId>
+        <artifactId>DuduBaoxian-api</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
 
     </dependencies>
 
