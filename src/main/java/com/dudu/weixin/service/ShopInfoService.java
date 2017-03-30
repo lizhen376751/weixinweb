@@ -1,8 +1,11 @@
 package com.dudu.weixin.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.dudu.soa.weixindubbo.api.ApiShopInfo;
-import com.dudu.soa.weixindubbo.module.ShopInfo;
+
+
+
+import com.dudu.soa.weixindubbo.shopinfo.api.ApiShopInfo;
+import com.dudu.soa.weixindubbo.shopinfo.module.ShopInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
