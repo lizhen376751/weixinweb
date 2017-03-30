@@ -9,6 +9,8 @@ import com.dudu.soa.baoxian.kaidan.api.APIBaoXainKaiDan;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDanGongSi;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDanXiangQing;
+import com.dudu.soa.baoxian.kaidan.module.BaoXianList;
+import com.dudu.soa.baoxian.kaidan.module.InsuranceInfo;
 import com.dudu.soa.basedata.employee.api.ApiBaseDataEmployee;
 import com.dudu.soa.basedata.employee.module.Employee;
 import com.dudu.soa.basedata.employee.module.ServiceAdvisor;
@@ -212,6 +214,7 @@ public class ChexiantoubaoService {
 
     /**
      * 查询联盟总部
+     *
      * @return 联盟总部列表
      */
     public List<ShopQueryFruit> queryLianMengZB() {
@@ -235,4 +238,61 @@ public class ChexiantoubaoService {
         return customerInfos;
     }
 
+    /**
+     * 获取保险公司列表展示
+     *
+     * @param httpSession 域信息
+     * @return 保险公司信息列表
+     */
+    public List<BaoXianList> insuranceCompanyList(HttpSession httpSession) {
+        //获取车牌号信息
+        String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
+        //获取用户信息
+        Integer customerId = (Integer) httpSession.getAttribute("customerId");
+        BaoXianList baoXianList = new BaoXianList();
+        baoXianList.setCarId(carId);
+        baoXianList.setCustomerId(customerId);
+        List<BaoXianList> baoXianLists = aPIBaoXainKaiDan.queryInsuranceList(baoXianList);
+        return baoXianLists;
+    }
+
+    /**
+     * 根据保险公司获取保险信息列表
+     *
+     * @param request 获取域信息
+     * @return 保险信息列表
+     */
+    public List<InsuranceInfo> insuranceInfoByCompany(HttpServletRequest request) {
+        //获取订单编号
+        String orderNumb = request.getParameter("orderNumb");
+        //获取公司id
+        String companyids = request.getParameter("companyid");
+        int companyid = Integer.parseInt(companyids);
+        InsuranceInfo insuranceInfo = new InsuranceInfo();
+        insuranceInfo.setOrderNumb(orderNumb);
+        insuranceInfo.setCompanyid(companyid);
+        List<InsuranceInfo> insuranceInfos = aPIBaoXainKaiDan.queryInsuranceInfoByCompany(insuranceInfo);
+        return insuranceInfos;
+    }
+
+    /**
+     * 获取客户信息
+     * @param httpSession 域数据
+     * @param request     域数据
+     * @return 客户信息
+     */
+    public CustomerInfo customerInfoById(HttpSession httpSession, HttpServletRequest request) {
+        //获取订单编号
+        String orderNumbs = request.getParameter("orderNumb");
+        long orderNumb = Long.parseLong(orderNumbs);
+        //根据订单编号查询customerid
+        BaoXianKaiDan baoXianKaiDan = new BaoXianKaiDan();
+        baoXianKaiDan.setOrderNumb(orderNumb);
+        BaoXianKaiDan baoXianKaiDan1 = aPIBaoXainKaiDan.queryCustomerIdByOrderNumb(baoXianKaiDan);
+        Integer customerId = baoXianKaiDan1.getCustomerId();
+        CustomerInfoParam customerInfoParam = new CustomerInfoParam();
+        customerInfoParam.setId(customerId);
+        CustomerInfo customerById = apiCustomerInfo.getCustomerById(customerInfoParam);
+        return customerById;
+    }
 }
