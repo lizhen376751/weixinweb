@@ -101,7 +101,8 @@ public class ChexiantoubaoService {
         //保险开单
         //获取车牌号
         String guwenshopcode = request.getParameter("mineShopCode");
-        String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
+        //String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
+        String carId = request.getParameter("car_number");
         if (null != carId && !"".equals(carId)) {
             baoXianKaiDan.setCarId(carId);
         }
