@@ -546,45 +546,66 @@ $(document).ready(function(){
         return url
     };
    // appServer = "http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18";
-    var fff = '{"endPoint":"http://oss-cn-shanghai.aliyuncs.com","accessKeyId":"STS.NBHExGeG2moYHfnPHVUPgDtxj","accessKeySecret":"mkFdP9zoWNeoGRKLQjewmgjtX4KsvuKgJvtf6UNkyjd","securityToken":"CAISvQN1q6Ft5B2yfSjIr4H9DsLziJgT2q2ySkDftEgDWd9Lq7HTiDz2IHBPenJpBe4Ztfk3mGBU7/YclqV1VptBA0ffNZMots0PYqxU+FKC6aKP9rUhpMCP8QLxYkeJyK2/SuH9S8ynNZXJQlvYlyh17KLnfDG5JTKMOoGIjpgVCbZyWRKjPwJbGPBcJAZptLU4Vx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDurHiahVbhmOgOvNazcNr2Y9RgIZZ6Wti4m+dtLvKZiHcX9AgN5a5wg6dE9HCF+ZPvFjs9zxiAIpCbkLlGJxN4Ya4XArNNqOOG+9Rzpu3UkfaQqXNKJvoHaznDY4qizcDYYsfLUOw0brHmIX/A/8mSP53uyWMebGkcKRlBdqh5SDl5Agd+TSrBeO31ugLGfwu+Sq2M36xx2oEtlw2wpJ2VNx+eSrOW2iYVfYx+egRqFWZPgTGxLPBcIl0SKQ44WevNd+gpMkAC85GPlBbJSyhtwktQu/DDfP7MssgdE96vBcwdiNZDO88b6zd6Ew2nFajdg0MVZXFjRq1NzK7uNJmw5bmI2uyPZvTcDfQKqs+svfZFE4nnGoABaeWeDLZDaMXAV9AK0QRzG2ZY+fAG/FwiNaoqYY3fE1kzUfV5cP9spHnlRQzTiKjNOPU9N0b1uurW0vlEkkiAGloxqZSlQAe7oVqbNshEIv+qvzoW2uflLqKRZjmayvAo6Bdi9Nd11wLlt3askXJMHbqveXLS8flEvNqAyxVPOTc=","region":"oss-cn-shanghai","bucketName":"duduimage","xOssCallBack":"eyJjYWxsYmFja1VybCI6Imh0dHA6Ly9hcGkuZ3cuZGV2LmR1ZHVjaGV3YW5nLmNuL2luZm8vdXBsb2FkIiwiY2FsbGJhY2tCb2R5Ijoic2hvcENvZGU9JHt4OnNob3BDb2RlfSZvcmRlckNvZGU9JHt4Om9yZGVyQ29kZX0mYnVja2V0SWQ9MSZidXNpbmVzc0NvbmZpZ0lkPTE0JmZpbGVSZWFsTmFtZT0ke3g6ZmlsZVJlYWxOYW1lfSZidWNrZXQ9JHtidWNrZXR9Jm9iamVjdD0ke29iamVjdH0mZXRhZz0ke2V0YWd9JnNpemU9JHtzaXplfSZtaW1lVHlwZT0ke21pbWVUeXBlfSZpbWFnZUluZm8uaGVpZ2h0PSR7aW1hZ2VJbmZvLmhlaWdodH0maW1hZ2VJbmZvLndpZHRoPSR7aW1hZ2VJbmZvLndpZHRofSZpbWFnZUluZm8uZm9ybWF0PSR7aW1hZ2VJbmZvLmZvcm1hdH0ifQ==","basePath":"cs00001/wx/yangche/{orderCode}/","orderCodeName":"orderCode","orderTag":"","paramsList":["shopCode","orderCode"]}'
-    var www = JSON.parse(fff)
+   //  var fff = '{"endPoint":"http://oss-cn-shanghai.aliyuncs.com","accessKeyId":"STS.NBHExGeG2moYHfnPHVUPgDtxj","accessKeySecret":"mkFdP9zoWNeoGRKLQjewmgjtX4KsvuKgJvtf6UNkyjd","securityToken":"CAISvQN1q6Ft5B2yfSjIr4H9DsLziJgT2q2ySkDftEgDWd9Lq7HTiDz2IHBPenJpBe4Ztfk3mGBU7/YclqV1VptBA0ffNZMots0PYqxU+FKC6aKP9rUhpMCP8QLxYkeJyK2/SuH9S8ynNZXJQlvYlyh17KLnfDG5JTKMOoGIjpgVCbZyWRKjPwJbGPBcJAZptLU4Vx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDurHiahVbhmOgOvNazcNr2Y9RgIZZ6Wti4m+dtLvKZiHcX9AgN5a5wg6dE9HCF+ZPvFjs9zxiAIpCbkLlGJxN4Ya4XArNNqOOG+9Rzpu3UkfaQqXNKJvoHaznDY4qizcDYYsfLUOw0brHmIX/A/8mSP53uyWMebGkcKRlBdqh5SDl5Agd+TSrBeO31ugLGfwu+Sq2M36xx2oEtlw2wpJ2VNx+eSrOW2iYVfYx+egRqFWZPgTGxLPBcIl0SKQ44WevNd+gpMkAC85GPlBbJSyhtwktQu/DDfP7MssgdE96vBcwdiNZDO88b6zd6Ew2nFajdg0MVZXFjRq1NzK7uNJmw5bmI2uyPZvTcDfQKqs+svfZFE4nnGoABaeWeDLZDaMXAV9AK0QRzG2ZY+fAG/FwiNaoqYY3fE1kzUfV5cP9spHnlRQzTiKjNOPU9N0b1uurW0vlEkkiAGloxqZSlQAe7oVqbNshEIv+qvzoW2uflLqKRZjmayvAo6Bdi9Nd11wLlt3askXJMHbqveXLS8flEvNqAyxVPOTc=","region":"oss-cn-shanghai","bucketName":"duduimage","xOssCallBack":"eyJjYWxsYmFja1VybCI6Imh0dHA6Ly9hcGkuZ3cuZGV2LmR1ZHVjaGV3YW5nLmNuL2luZm8vdXBsb2FkIiwiY2FsbGJhY2tCb2R5Ijoic2hvcENvZGU9JHt4OnNob3BDb2RlfSZvcmRlckNvZGU9JHt4Om9yZGVyQ29kZX0mYnVja2V0SWQ9MSZidXNpbmVzc0NvbmZpZ0lkPTE0JmZpbGVSZWFsTmFtZT0ke3g6ZmlsZVJlYWxOYW1lfSZidWNrZXQ9JHtidWNrZXR9Jm9iamVjdD0ke29iamVjdH0mZXRhZz0ke2V0YWd9JnNpemU9JHtzaXplfSZtaW1lVHlwZT0ke21pbWVUeXBlfSZpbWFnZUluZm8uaGVpZ2h0PSR7aW1hZ2VJbmZvLmhlaWdodH0maW1hZ2VJbmZvLndpZHRoPSR7aW1hZ2VJbmZvLndpZHRofSZpbWFnZUluZm8uZm9ybWF0PSR7aW1hZ2VJbmZvLmZvcm1hdH0ifQ==","basePath":"cs00001/wx/yangche/{orderCode}/","orderCodeName":"orderCode","orderTag":"","paramsList":["shopCode","orderCode"]}'
+   //  var www = JSON.parse(fff)
 
     $(".filepath").on("change",function() {
-
-        Duducreds = www;
-        var shopcode="CS00001";
-        var i = $(this).index()+1;
-        var srcd =this.files[0];
-        var projectId = uuid(16,16);
-        var DuduOssCallbackVarData1 = {
-            "shopCode" :shopcode,
-            "orderCode" : projectId,
-            "imageType" : ""+i+""
-        }
-        console.log(srcd)
-        new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
-         //setTimeout(function() { new applyTokenDoNew(srcd,DuduOssCallbackVarData1);},2000);
-
-         $(this).nextAll(".img1").hide();   //this指的是input
-         $(this).nextAll("p").hide();
+        //window.network.openPhoto();
+        // $.ajax({
+        //     type    : 'GET',
+        //     url     : 'http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18',
+        //     data    : {
+        //         fromflag   : "baoXianTypes"
+        //     },
+        //     success:function(jsondata){
+        //         // var json = JSON.parse(jsondata);
+        //         Duducreds=jsondata;
+        //         var shopcode="CS00001";
+        //         var i = $(this).index()+1;
+        //         var srcd =this.files[0];
+        //         var projectId = uuid(16,16);
+        //         var DuduOssCallbackVarData1 = {
+        //             "shopCode" :shopcode,
+        //             "orderCode" : projectId,
+        //             "imageType" : ""+i+""
+        //         }
+        //         console.log(srcd)
+        //         new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
+        //         //setTimeout(function() { new applyTokenDoNew(srcd,DuduOssCallbackVarData1);},2000);
+        //
+        //         $(this).nextAll(".img1").hide();   //this指的是input
+        //         $(this).nextAll("p").hide();
+        //         $(this).nextAll(".imgs").show();  //fireBUg查看第二次换图片不起做用
+        //         // $(this).nextAll('.close').show();   //this指的是input
+        //         var state = false;
+        //         var imgage = $(this).nextAll(".imgs").children(".img2");
+        //         function a(){
+        //             console.log(srcs)
+        //             if(srcs == "" && state == false){
+        //                 setTimeout(function() { a();},2000);
+        //             }else{
+        //                 console.log(srcs)
+        //                 imgage.attr("src",srcs);
+        //                 srcs = ""
+        //                 state = true;
+        //             }
+        //         }
+        //         a();
+        //         $(this).nextAll(".tupian").val(projectId)
+        //     },
+        //     error:function(){
+        //
+        //     }
+        // });
+        var srcs = getObjectURL(this.files[0]);   //获取路径
+        console.log(srcs);
+        $(this).nextAll(".imgs").children(".img2")[0].src = srcs;
+        $(this).nextAll(".img1").hide();   //this指的是input
+        $(this).nextAll("p").hide();
         $(this).nextAll(".imgs").show();  //fireBUg查看第二次换图片不起做用
-        // $(this).nextAll('.close').show();   //this指的是input
-        var state = false;
-        var imgage = $(this).nextAll(".imgs").children(".img2");
-        function a(){
-            console.log(srcs)
-            if(srcs == "" && state == false){
-                setTimeout(function() { a();},2000);
-            }else{
-                console.log(srcs)
-                imgage.attr("src",srcs);
-                srcs = ""
-                state = true;
-            }
-        }
-         a();
-
-         $(this).nextAll(".tupian").val(projectId)
+        $(this).nextAll('.close').show();   //this指的是input
+        $(this).nextAll(".imgs").children(".img2").attr("src",srcs);    //this指的是input
+        $(this).val('');    //必须制空
 
     })
 
@@ -621,7 +642,8 @@ $(document).ready(function(){
         // 			    		if (chexian == true) {
         // 			    			if (input_file_driving != "" && input_file_driving_1 != "") {
         // 								if (input_file_filepath != "" && input_file_filepath_1 != "") {
-        //
+        //                                  alert("提交成功！");
+
         //
         // 								} else{
         // 									alert("请上传身份证图片");
