@@ -109,7 +109,8 @@ $(document).ready(function(){
                 url  : '/getCommonAjax',
                 data : {
                     fromflag : "xinxi",
-                    car_number: val
+                    car_number: val,
+                    mineShopCode : mineShopCode
                 },
                 success:function(jsondata){
                     var json = JSON.parse(jsondata);
