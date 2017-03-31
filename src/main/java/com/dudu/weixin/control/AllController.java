@@ -143,9 +143,9 @@ public class AllController {
      */
     @ResponseBody
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
-    public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
-        chexiantoubaoService.baoXianTiJiao(request, baoXianKaiDan, httpSession);
-        return "";
+    public Integer baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
+        Integer integer = chexiantoubaoService.baoXianTiJiao(request, baoXianKaiDan, httpSession);
+        return integer;
     }
 
     /**
