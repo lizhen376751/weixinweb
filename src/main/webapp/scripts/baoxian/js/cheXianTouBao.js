@@ -548,7 +548,7 @@ $(document).ready(function(){
     var www = JSON.parse(fff)
 
     $(".filepath").on("click",function() {
-        window.network.openPhoto();
+        //window.network.openPhoto();
         // $.ajax({
         //     type    : 'GET',
         //     url     : 'http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18',
