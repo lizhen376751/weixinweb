@@ -141,8 +141,6 @@ public class AllController {
     @ResponseBody
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
     public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
-        String companyids = request.getParameter("mineShopCode");
-        baoXianKaiDan.setShopCode(companyids);
         chexiantoubaoService.baoXianTiJiao(request, baoXianKaiDan, httpSession);
         return "";
     }

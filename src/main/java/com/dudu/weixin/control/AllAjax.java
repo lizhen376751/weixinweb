@@ -7,6 +7,7 @@ import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.BaoYangTiXingService;
 import com.dudu.weixin.service.BuyRecordService;
+import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LianMengActivityService;
 import com.dudu.weixin.service.LianMengKaService;
 import com.dudu.weixin.service.LianmengIntroducedService;
@@ -27,8 +28,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.dudu.weixin.service.ChexiantoubaoService;
 
 /**
  * 所有的ajax请求
@@ -204,7 +203,8 @@ public class AllAjax {
         //添加服务顾问
         if ("fuwuguwen".equals(fromflag)) {
             //String  guwen_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
-            String guwenshopcode = "0533001";
+//            String guwenshopcode = "0533001";
+            String guwenshopcode = request.getParameter("mineShopCode");
             return chexiantoubaoService.queryFuWuGuWen(guwenshopcode);
         }
         //联盟总部
@@ -216,7 +216,8 @@ public class AllAjax {
         if ("xinxi".equals(fromflag)) {
             //String  xinxi_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
             String parameter = request.getParameter("car_number");
-            String xinxishopcode = "0533001";
+            String xinxishopcode = request.getParameter("mineShopCode");
+//            String xinxishopcode = "0533001";
             return chexiantoubaoService.queryCheLiangXinXi(parameter, xinxishopcode);
         }
         //服务导航
