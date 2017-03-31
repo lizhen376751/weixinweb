@@ -10,6 +10,7 @@ import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDanGongSi;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDanXiangQing;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianList;
+import com.dudu.soa.baoxian.kaidan.module.BaoXianParamList;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceInfo;
 import com.dudu.soa.basedata.employee.api.ApiBaseDataEmployee;
 import com.dudu.soa.basedata.employee.module.Employee;
@@ -250,10 +251,10 @@ public class ChexiantoubaoService {
         String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
         //获取用户信息
         Integer customerId = (Integer) httpSession.getAttribute("customerId");
-        BaoXianList baoXianList = new BaoXianList();
-        baoXianList.setCarId(carId);
-        baoXianList.setCustomerId(customerId);
-        List<BaoXianList> baoXianLists = aPIBaoXainKaiDan.queryInsuranceList(baoXianList);
+        BaoXianParamList baoXianParamList = new BaoXianParamList();
+        baoXianParamList.setCarId(carId);
+        baoXianParamList.setCustomerId(customerId);
+        List<BaoXianList> baoXianLists = aPIBaoXainKaiDan.queryInsuranceList(baoXianParamList);
         return baoXianLists;
     }
 
