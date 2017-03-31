@@ -1,7 +1,5 @@
 package com.dudu.weixin.control;
 
-import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
-import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LoginActionNewService;
 import com.dudu.weixin.service.ShopInfoService;
 import org.slf4j.Logger;
@@ -12,11 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+//import com.dudu.weixin.service.ChexiantoubaoService;
 
 /**
  * Created by Administrator on 2017/3/17.
@@ -27,7 +26,7 @@ public class AllController {
     /**
      * 日志打印
      */
-    private static Logger logger = LoggerFactory.getLogger(AllAjax.class);
+    private static Logger logger = LoggerFactory.getLogger(AllController.class);
     /**
      * session
      */
@@ -43,11 +42,11 @@ public class AllController {
      */
     @Autowired
     private LoginActionNewService loginActionNewService;
-    /**
-     * 车险投保
-     */
-    @Autowired
-    private ChexiantoubaoService chexiantoubaoService;
+//    /**
+//     * 车险投保
+//     */
+//    @Autowired
+//    private ChexiantoubaoService chexiantoubaoService;
 
     //登录页面
 
@@ -138,12 +137,12 @@ public class AllController {
      * @param httpSession   域
      * @return 跳转页面
      */
-    @ResponseBody
-    @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
-    public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
-        chexiantoubaoService.baoXianTiJiao(request, baoXianKaiDan, httpSession);
-        return "";
-    }
+//    @ResponseBody
+//    @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
+//    public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
+//        chexiantoubaoService.baoXianTiJiao(request, baoXianKaiDan, httpSession);
+//        return "";
+//    }
 
     /**
      * 获取保险公司列表展示
@@ -151,12 +150,12 @@ public class AllController {
      * @param httpSession 域信息
      * @return 跳转页面
      */
-    @ResponseBody
-    @RequestMapping(value = "insuranceCompanyList", method = RequestMethod.POST)
-    public String insuranceCompanyList(HttpSession httpSession) {
-        chexiantoubaoService.insuranceCompanyList(httpSession);
-        return "";
-    }
+//    @ResponseBody
+//    @RequestMapping(value = "insuranceCompanyList", method = RequestMethod.POST)
+//    public String insuranceCompanyList(HttpSession httpSession) {
+//        chexiantoubaoService.insuranceCompanyList(httpSession);
+//        return "";
+//    }
 
     /**
      * 根据保险公司获取保险信息列表
@@ -164,26 +163,26 @@ public class AllController {
      * @param request 域信息
      * @return 跳转页面
      */
-    @ResponseBody
-    @RequestMapping(value = "insuranceInfoByCompany", method = RequestMethod.POST)
-    public String insuranceInfoByCompany(HttpServletRequest request) {
-        chexiantoubaoService.insuranceInfoByCompany(request);
-        return "";
-    }
+//    @ResponseBody
+//    @RequestMapping(value = "insuranceInfoByCompany", method = RequestMethod.POST)
+//    public String insuranceInfoByCompany(HttpServletRequest request) {
+//        chexiantoubaoService.insuranceInfoByCompany(request);
+//        return "";
+//    }
 
-    /**
-     * 获取用户信息
-     *
-     * @param httpSession 域信息
-     * @param request     域信息
-     * @return 跳转页面
-     */
-    @ResponseBody
-    @RequestMapping(value = "insuranceInfoByCompany", method = RequestMethod.POST)
-    public String customerInfoById(HttpSession httpSession, HttpServletRequest request) {
-        chexiantoubaoService.customerInfoById(httpSession, request);
-        return "";
-    }
+//    /**
+//     * 获取用户信息
+//     *
+//     * @param httpSession 域信息
+//     * @param request     域信息
+//     * @return 跳转页面
+//     */
+//    @ResponseBody
+//    @RequestMapping(value = "insuranceInfoByCompany", method = RequestMethod.POST)
+//    public String customerInfoById(HttpSession httpSession, HttpServletRequest request) {
+//        chexiantoubaoService.customerInfoById(httpSession, request);
+//        return "";
+//    }
 
 
 }

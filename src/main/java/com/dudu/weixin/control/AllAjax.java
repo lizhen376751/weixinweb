@@ -1,13 +1,11 @@
 package com.dudu.weixin.control;
 
-import com.dudu.soa.lmbasedata.basedata.shop.module.ShopQueryFruit;
 import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.BaoYangTiXingService;
 import com.dudu.weixin.service.BuyRecordService;
-import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LianMengActivityService;
 import com.dudu.weixin.service.LianMengKaService;
 import com.dudu.weixin.service.LianmengIntroducedService;
@@ -28,6 +26,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+
+//import com.dudu.weixin.service.ChexiantoubaoService;
 
 /**
  * 所有的ajax请求
@@ -67,8 +67,8 @@ public class AllAjax {
     /**
      * 车险投保
      */
-    @Autowired
-    private ChexiantoubaoService chexiantoubaoService;
+//    @Autowired
+//    private ChexiantoubaoService chexiantoubaoService;
     /**
      * ahi
      */
@@ -162,14 +162,14 @@ public class AllAjax {
         if ("getIntroduced".equals(fromflag)) {
             return lianmengIntroducedService.queryEntry(shopcode);
         }
-        //车险投保(保险公司)
-        if ("baoxianGongSi".equals(fromflag)) {
-            return chexiantoubaoService.baoxianGongSi();
-        }
-        //车险投保()
-        if ("baoXianTypes".equals(fromflag)) {
-            return chexiantoubaoService.baoXianTypes();
-        }
+//        //车险投保(保险公司)
+//        if ("baoxianGongSi".equals(fromflag)) {
+//            return chexiantoubaoService.baoxianGongSi();
+//        }
+//        //车险投保()
+//        if ("baoXianTypes".equals(fromflag)) {
+//            return chexiantoubaoService.baoXianTypes();
+//        }
         //AHI
         String plateNumber = request.getParameter("plateNumber");
         if ("queryAllPointByPlateNumber".equals(fromflag)) {
@@ -200,24 +200,24 @@ public class AllAjax {
             ArrayList serviceListByLmcodeAndCarNo = buyRecordService.getServiceListByLmcodeAndCarNo(shopcode, carId, top);
             return serviceListByLmcodeAndCarNo;
         }
-        //添加服务顾问
-        if ("fuwuguwen".equals(fromflag)) {
-            //String  guwen_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
-            String guwenshopcode = "0533001";
-            return chexiantoubaoService.queryFuWuGuWen(guwenshopcode);
-        }
-        //联盟总部
-        if ("lianmeng".equals(fromflag)) {
-            List<ShopQueryFruit> shopQueryFruits = chexiantoubaoService.queryLianMengZB();
-            return shopQueryFruits;
-        }
-        //车辆信息
-        if ("xinxi".equals(fromflag)) {
-            //String  xinxi_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
-            String parameter = request.getParameter("car_number");
-            String xinxishopcode = "0533001";
-            return chexiantoubaoService.queryCheLiangXinXi(parameter, xinxishopcode);
-        }
+//        //添加服务顾问
+//        if ("fuwuguwen".equals(fromflag)) {
+//            //String  guwen_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
+//            String guwenshopcode = "0533001";
+//            return chexiantoubaoService.queryFuWuGuWen(guwenshopcode);
+//        }
+//        //联盟总部
+//        if ("lianmeng".equals(fromflag)) {
+//            List<ShopQueryFruit> shopQueryFruits = chexiantoubaoService.queryLianMengZB();
+//            return shopQueryFruits;
+//        }
+//        //车辆信息
+//        if ("xinxi".equals(fromflag)) {
+//            //String  xinxi_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
+//            String parameter = request.getParameter("car_number");
+//            String xinxishopcode = "0533001";
+//            return chexiantoubaoService.queryCheLiangXinXi(parameter, xinxishopcode);
+//        }
         //服务导航
         if ("queryShopCodeListByLmCode".equals(fromflag)) {
             String shopTypesearch = request.getParameter("shopType_search");
