@@ -1,6 +1,7 @@
 package com.dudu.weixin.control;
 
 import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
+import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LoginActionNewService;
 import com.dudu.weixin.service.ShopInfoService;
 import org.slf4j.Logger;
@@ -11,13 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.dudu.weixin.service.ChexiantoubaoService;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by Administrator on 2017/3/17.
@@ -130,7 +129,7 @@ public class AllController {
             httpSession.setAttribute("DUDUCHEWANG_CarId", null);
             return "/login/logout"; //退出登录
         }
-        return "/index";
+        return "/baoxian/cheXianTouBao/cheXianTouBao";
     }
 
     /**
