@@ -141,11 +141,12 @@ public class AllController {
      * @param httpSession   域
      * @return 跳转页面
      */
-    @ResponseBody
+
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
-    public Integer baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
+    public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
+        System.out.println("提交进入");
         Integer integer = chexiantoubaoService.baoXianTiJiao(request, baoXianKaiDan, httpSession);
-        return integer;
+        return "/baoxian/cheXianTouBao/tiaozhuan";
     }
 
     /**

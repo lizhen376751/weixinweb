@@ -620,7 +620,7 @@ $(document).ready(function(){
 
                 },
             success:function (data) {
-                alert(data);
+                alert("保存成功");
             }
         })
         //获取车辆信息页中的信息
