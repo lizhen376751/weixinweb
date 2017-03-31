@@ -1,4 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+	String mineShopCode = request.getParameter("mineShopCode");//用request得到
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +27,6 @@
 	<script type="text/javascript" src="/scripts/baoxian/oss/base64.js"></script>
 	<script type="text/javascript" src="/scripts/baoxian/oss/app.js"></script>
 	<%--<link rel="stylesheet" href="/Views/baoxian/cheXianTouBao/oss/bootstrap.min.css" />--%>
-
 	<script src="/scripts/baoxian/js/cheXianTouBao.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
@@ -432,6 +435,6 @@
 		</div>
 	</form>
 </div>
-
+<input type="hidden" name="mineShopCode" id="mineShopCode" value="<%=mineShopCode%>" class="phone_number"/>
 </body>
 </html>

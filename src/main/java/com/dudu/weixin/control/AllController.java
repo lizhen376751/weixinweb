@@ -124,6 +124,9 @@ public class AllController {
             model.addAttribute("ids", ids);
             return "/lianMengActivity/jsp/getLianMeng"; //联盟活动详情
         } else if ("cheXianTouBao".equals(flagStr)) {
+            String mineShopCode = request.getParameter("mineShopCode");
+            System.out.println(mineShopCode);
+            model.addAttribute("mineShopCode", mineShopCode);
             return "/baoxian/cheXianTouBao/cheXianTouBao"; //车险投保
         } else if ("logout".equals(flagStr)) {
             httpSession.setAttribute("DUDUCHEWANG_CarId", null);
@@ -140,9 +143,9 @@ public class AllController {
      */
     @ResponseBody
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
-    public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
-        chexiantoubaoService.baoXianTiJiao(request, baoXianKaiDan, httpSession);
-        return "";
+    public Integer baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
+        Integer integer = chexiantoubaoService.baoXianTiJiao(request, baoXianKaiDan, httpSession);
+        return integer;
     }
 
     /**

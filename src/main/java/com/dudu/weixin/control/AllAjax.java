@@ -205,6 +205,7 @@ public class AllAjax {
             //String  guwen_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
 //            String guwenshopcode = "0533001";
             String guwenshopcode = request.getParameter("mineShopCode");
+            System.out.println(guwenshopcode);
             return chexiantoubaoService.queryFuWuGuWen(guwenshopcode);
         }
         //联盟总部

@@ -100,10 +100,13 @@ public class ChexiantoubaoService {
     public Integer baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
         //保险开单
         //获取车牌号
-
+        String guwenshopcode = request.getParameter("mineShopCode");
         String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
         if (null != carId && !"".equals(carId)) {
             baoXianKaiDan.setCarId(carId);
+        }
+        if (null != guwenshopcode && !"".equals(guwenshopcode)) {
+            baoXianKaiDan.setShopCode(guwenshopcode);
         }
         String customerId = request.getParameter("customerId");
         if (null != customerId && !"".equals(customerId)) {
@@ -131,8 +134,8 @@ public class ChexiantoubaoService {
         String shenFenZhengImg2 = request.getParameter("filepath_2");
         baoXianKaiDan.setShenFenZhengImg2(shenFenZhengImg2);
         //String remarks = request.getParameter("aaaaa");
-        String shopCode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
-        baoXianKaiDan.setShopCode(shopCode);
+       /* String shopCode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
+        baoXianKaiDan.setShopCode(shopCode);*/
         //String totalPrice = request.getParameter("aaaaa");
         // String fuKuanFlag = request.getParameter("aaaaa");
         //String shiShou = request.getParameter("aaaaa");
