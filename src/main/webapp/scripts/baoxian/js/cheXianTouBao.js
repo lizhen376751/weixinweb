@@ -71,11 +71,13 @@ $(document).ready(function(){
             alert("失败")
         }
     });
+    var mineShopCode = $("#mineShopCode").val();
     $.ajax({
         type    : 'POST',
         url     : '/getCommonAjax',
         data    : {
-            fromflag   : "fuwuguwen"
+            fromflag   : "fuwuguwen",
+            mineShopCode : mineShopCode
         },
         success:function(jsondata){
             var json = JSON.parse(jsondata);
