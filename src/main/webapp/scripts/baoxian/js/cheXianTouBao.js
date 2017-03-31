@@ -609,7 +609,17 @@ $(document).ready(function(){
 
     //提交按钮前的判断
     $(".tijiao").on("click",function(){
-        $("form").submit()
+        $("form").submit();
+        $.ajax({
+            type    : 'POST',
+            url     : "/baoxiantijiao",
+            data    : {
+
+                },
+            success:function (data) {
+                alert(data);
+            }
+        })
         //获取车辆信息页中的信息
         var car_number = $("#car_number").val();
         var your_name = $("#your_name").val();
