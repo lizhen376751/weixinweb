@@ -6,9 +6,8 @@ import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
 import com.dudu.soa.messagecenter.message.api.ApiSendSms;
 import com.dudu.soa.weixindubbo.loginlog.api.ApiLogInLog;
 import com.dudu.soa.weixindubbo.loginlog.module.LogInLog;
-import com.dudu.soa.weixindubbo.smssend.api.ApiSmsSend;
-import com.dudu.soa.weixindubbo.smssend.module.SmsSend;
 import com.dudu.weixin.util.TestMD5;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,11 +20,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AutoLoginService {
 
-    /**
-     * 引入验证码记录接口
-     */
-    @Reference(version = "1.0")
-    private ApiSmsSend apiSmsSend;
+
     /**
      * 引入登录历史记录接口
      */
@@ -41,6 +36,11 @@ public class AutoLoginService {
      */
     @Reference(version = "1.0")
     private ApiWxCustomer apiWxCustomer;
+    /**
+     * 引入验证码的类
+     */
+    @Autowired
+    private ValidateService validateService;
 
     /**
      * @param openId   微信openId
@@ -130,30 +130,24 @@ public class AutoLoginService {
      * @param openid           微信id
      * @param mobilephone      手机号
      * @param verificationCode 验证码
-     * @return
+     * @return 字符串
      */
     public String register(String platenumber, String lmcode, String password, String openid, String mobilephone, String verificationCode) {
-        //1.首先验证验证码是否正确?
-        SmsSend smsSend = new SmsSend();
-        smsSend.setLmcode(lmcode);
-        smsSend.setMobilePhone(mobilephone);
-        smsSend.setPlateNumber(platenumber);
-        SmsSend smsSend1 = apiSmsSend.getSmsSend(smsSend);
-        //验证是否有发送记录
-        if (null != smsSend1) {
-            //如果有发送记录,获取验证码
-            String identifyingCode = smsSend1.getIdentifyingCode();
-            //如果有验证码,验证验证码是否相同
-            if (null != identifyingCode && !"".equals(identifyingCode)) {
-                //如果验证码相同,则注册成功
-                if (identifyingCode.equals(verificationCode)){
+        Boolean validate = validateService.validate(platenumber, lmcode, mobilephone, verificationCode);
+        //如果验证码正确进行注册
+        if (validate) {
+            //注册之前查询是否有此用户
+            WxCustomer wxCustomer = new WxCustomer();
 
-                }
-            }
+            apiWxCustomer.addWxCustomer(wxCustomer);
         }
+
         return "注册失败";
     }
-//发送验证码之前应该先去检查此用户是否已经注册
+//public Boolean isexist(){
+//    WxCustomer wxCustomer = new WxCustomer();
+//    apiWxCustomer.getWxCustomer();
+//}
 
 
 }
