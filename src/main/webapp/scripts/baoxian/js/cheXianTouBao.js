@@ -537,7 +537,7 @@ $(document).ready(function(){
         if (window.createObjectURL != undefined) {
             url = window.createObjectURL(file)
         } else if (window.URL != undefined) {
-            url = window.URL.createObjectURL(file)
+            // url = window.URL.createObjectURL(file)
         } else if (window.webkitURL != undefined) {
             url = window.webkitURL.createObjectURL(file)
         }
@@ -596,6 +596,7 @@ $(document).ready(function(){
         //     }
         // });
         var srcs = getObjectURL(this.files[0]);   //获取路径
+        console.log(srcs);
         $(this).nextAll(".imgs").children(".img2")[0].src = srcs;
         $(this).nextAll(".img1").hide();   //this指的是input
         $(this).nextAll("p").hide();
