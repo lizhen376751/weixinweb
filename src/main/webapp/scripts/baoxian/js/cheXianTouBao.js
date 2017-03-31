@@ -599,20 +599,22 @@ $(document).ready(function(){
         //     }
         // });
         var srcs = getObjectURL(this.files[0]);   //获取路径
-        console.log(srcs);
-        $(this).nextAll(".imgs").children(".img2")[0].src = srcs;
-        $(this).nextAll(".img1").hide();   //this指的是input
-        $(this).nextAll("p").hide();
-        $(this).nextAll(".imgs").show();  //fireBUg查看第二次换图片不起做用
-        $(this).nextAll('.close').show();   //this指的是input
-        $(this).nextAll(".imgs").children(".img2").attr("src",srcs);    //this指的是input
-        $(this).val('');    //必须制空
+        if(srcs){
+            $(this).nextAll(".imgs").children(".img2")[0].src = srcs;
+            $(this).nextAll(".img1").hide();   //this指的是input
+            $(this).nextAll("p").hide();
+            $(this).nextAll(".imgs").show();  //fireBUg查看第二次换图片不起做用
+            $(this).nextAll('.close').show();   //this指的是input
+            $(this).nextAll(".imgs").children(".img2").attr("src",srcs);    //this指的是input
+            $(this).val('');    //必须制空
+        }
+
 
     })
 
     //提交按钮前的判断
     $(".tijiao").on("click",function(){
-        $("form").submit();
+
         $.ajax({
             type    : 'POST',
             url     : "/baoxiantijiao",
@@ -643,58 +645,58 @@ $(document).ready(function(){
 //  	console.log(input_file_driving_1);
 //  	console.log(input_file_filepath);
         //判断是否为空
-        // if (car_number != "") {
-        // 	if (your_name != "") {
-        // 		if (phone_number != "") {
-        // 			if (daihao != "") {
-        // 				if (engine_number != "") {
-        // 					if (registration_date != "") {
-        // 						if (xianzhong == true) {
-        // 			    		if (chexian == true) {
-        // 			    			if (input_file_driving != "" && input_file_driving_1 != "") {
-        // 								if (input_file_filepath != "" && input_file_filepath_1 != "") {
-        //                                  alert("提交成功！");
+        if (car_number != "") {
+        	if (your_name != "") {
+        		if (phone_number != "") {
+        			if (daihao != "") {
+        				if (engine_number != "") {
+        					if (registration_date != "") {
+        						if (xianzhong == true) {
+        			    		if (chexian == true) {
+        			    			if (input_file_driving != "" && input_file_driving_1 != "") {
+        								if (input_file_filepath != "" && input_file_filepath_1 != "") {
+                                            $("form").submit();
 
-        //
-        // 								} else{
-        // 									alert("请上传身份证图片");
-        // 									return false;
-        // 								}
-        // 							} else{
-        // 								alert("请上传行驶证照片");
-        // 								return false;
-        // 							}
-        // 			    		} else{
-        // 			    			alert("请选险种");
-        // 			    			return false;
-        // 			    		}
-        // 			    	} else{
-        // 			    		alert("请选择保险公司");
-        // 			    		return false;
-        // 			    	}
-        // 					} else{
-        // 						alert("请输入注册日期");
-        // 						return false;
-        // 					}
-        // 				} else{
-        // 					alert("请输入发动机号码");
-        // 					return false;
-        // 				}
-        // 			} else{
-        // 				alert("请填写车辆识别代号");
-        // 				return false;
-        // 			}
-        // 		} else{
-        // 			alert("请填写您的手机号码");
-        // 			return false;
-        // 		}
-        // 	} else{
-        // 		alert("请填写您的姓名");
-        // 		return false;
-        // 	}
-        // } else{
-        // 	alert("请填写车牌号码");
-        // 	return false;
-        // }
+
+        								} else{
+        									alert("请上传身份证图片");
+        									return false;
+        								}
+        							} else{
+        								alert("请上传行驶证照片");
+        								return false;
+        							}
+        			    		} else{
+        			    			alert("请选险种");
+        			    			return false;
+        			    		}
+        			    	} else{
+        			    		alert("请选择保险公司");
+        			    		return false;
+        			    	}
+        					} else{
+        						alert("请输入注册日期");
+        						return false;
+        					}
+        				} else{
+        					alert("请输入发动机号码");
+        					return false;
+        				}
+        			} else{
+        				alert("请填写车辆识别代号");
+        				return false;
+        			}
+        		} else{
+        			alert("请填写您的手机号码");
+        			return false;
+        		}
+        	} else{
+        		alert("请填写您的姓名");
+        		return false;
+        	}
+        } else{
+        	alert("请填写车牌号码");
+        	return false;
+        }
     })
 });
