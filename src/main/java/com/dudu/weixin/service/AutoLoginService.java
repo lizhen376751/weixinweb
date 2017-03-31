@@ -7,7 +7,6 @@ import com.dudu.soa.messagecenter.message.api.ApiSendSms;
 import com.dudu.soa.weixindubbo.loginlog.api.ApiLogInLog;
 import com.dudu.soa.weixindubbo.loginlog.module.LogInLog;
 import com.dudu.weixin.util.TestMD5;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -39,7 +38,6 @@ public class AutoLoginService {
     /**
      * 引入验证码的类
      */
-    @Autowired
     private ValidateService validateService;
 
     /**
