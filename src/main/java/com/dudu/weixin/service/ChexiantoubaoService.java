@@ -100,6 +100,8 @@ public class ChexiantoubaoService {
     public Integer baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
         //保险开单
         //获取车牌号
+        String companyids = request.getParameter("mineShopCode");
+        baoXianKaiDan.setShopCode(companyids);
         String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
         if (null != carId && !"".equals(carId)) {
             baoXianKaiDan.setCarId(carId);
