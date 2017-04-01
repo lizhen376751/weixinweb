@@ -143,10 +143,10 @@ public class AllController {
      */
 
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
-    public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
+    public Integer baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
         System.out.println("提交进入");
         Integer integer = chexiantoubaoService.baoXianTiJiao(request, baoXianKaiDan, httpSession);
-        return "/baoxian/cheXianTouBao/tiaozhuan";
+        return integer;
     }
 
     /**
