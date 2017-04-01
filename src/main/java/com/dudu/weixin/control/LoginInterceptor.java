@@ -1,6 +1,7 @@
 package com.dudu.weixin.control;
 
-import com.dudu.weixin.service.AutoLoginService;
+import com.dudu.soa.weixindubbo.loginlog.module.LogInLog;
+import com.dudu.weixin.service.LogInLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,10 +21,10 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Autowired
     private HttpSession httpSession;
     /**
-     * 登录保存录入
+     * 引入登录历史的服务
      */
     @Autowired
-    private AutoLoginService autoLoginService;
+    private LogInLogService logInLogService;
 
     /**
      *@Autowired lizhen
@@ -45,9 +46,10 @@ public class LoginInterceptor implements HandlerInterceptor {
                 || "baoYangList".equals(flagStr) || "cheXianTouBao".equals(flagStr) || "logout".equals(flagStr)) {
             //如果车牌号不为空直接往下执行
             if (carId == null || "null".equals(carId) || "".equals(carId)) {
-                String carhaopai = autoLoginService.judgeOpenId(openId, shopcode);
+                LogInLog logInLog = logInLogService.getLogInLog(shopcode, openId);
+                String plateNumber = logInLog.getPlateNumber();
                 //根据openId和shopcode查询是否有登录记录,如果有记录则不用登录
-                if (carhaopai == null || "null".equals(carhaopai) || "".equals(carhaopai)) {
+                if (plateNumber == null || "null".equals(plateNumber) || "".equals(plateNumber)) {
                     //如果没有记录跳转至登录页面
                     request.getRequestDispatcher("/Views/login/login.jsp").forward(request, response);
                 }

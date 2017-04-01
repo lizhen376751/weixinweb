@@ -5,6 +5,7 @@ import com.dudu.soa.messagecenter.message.api.ApiSendSms;
 import com.dudu.soa.messagecenter.message.module.ParameterEntry;
 import com.dudu.soa.weixindubbo.smssend.api.ApiSmsSend;
 import com.dudu.soa.weixindubbo.smssend.module.SmsSendLog;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,12 +16,16 @@ import java.util.Random;
  * 主要用于1.记录验证码发送记录,2.验证码的验证
  * Created by lizhen on 2017/3/30.
  */
-
+@Service
 public class ValidateService {
     /**
-     * 常量
+     * 生成4位数
      */
     private static final int NUM = 9999;
+    /**
+     * 生成6位数
+     */
+    private static final int NUM2 = 999999;
     /**
      * 引入验证码记录接口
      */
@@ -65,14 +70,44 @@ public class ValidateService {
     }
 
     /**
-     * 记录验证码的发送记录
+     * 发送密码,重置密码
      *
-     * @param platenumber      车牌号
-     * @param lmcode           lianmengcode
-     * @param mobilephone      手机号
-     * @param verificationCode 验证码
+     * @param platenumber 车牌号
+     * @param lmcode      lianmengcode
+     * @param mobilephone 手机号
      */
-    public void addvalidate(String platenumber, String lmcode, String mobilephone, String verificationCode) {
+    public void addvalidate(String platenumber, String lmcode, String mobilephone) {
+        SmsSendLog smsSend = new SmsSendLog();
+        smsSend.setLmcode(lmcode);
+        smsSend.setMobilePhone(mobilephone);
+        smsSend.setPlateNumber(platenumber);
+        String radomInt = String.valueOf(new Random().nextInt(NUM2));
+        //验证码的发送
+        try {
+            //验证码的记录
+            this.sendvalidate("000000", "重置密码", mobilephone, radomInt);
+            //验证码发送成功后进行记录
+            smsSend.setServiceType("重置密码");
+            smsSend.setIdentifyingCode(radomInt);
+            Date date = new Date();
+            smsSend.setSendTime(date);
+            //先删除之前的短信验证码
+            this.deleteValidate(platenumber, lmcode, mobilephone);
+            //删除之后添加短信验证码的记录
+            apiSmsSend.addSmsSend(smsSend);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 发送验证码并记录
+     *
+     * @param platenumber 车牌号
+     * @param lmcode      lianmengcode
+     * @param mobilephone 手机号
+     */
+    public void sendpassWord(String platenumber, String lmcode, String mobilephone) {
         SmsSendLog smsSend = new SmsSendLog();
         smsSend.setLmcode(lmcode);
         smsSend.setMobilePhone(mobilephone);
@@ -81,18 +116,35 @@ public class ValidateService {
         //验证码的发送
         try {
             //验证码的记录
-            this.sendvalidate(mobilephone, radomInt);
+            this.sendvalidate("000001", "验证码", mobilephone, radomInt);
             //验证码发送成功后进行记录
             smsSend.setServiceType("验证码");
             smsSend.setIdentifyingCode(radomInt);
             Date date = new Date();
             smsSend.setSendTime(date);
+            //先删除之前的短信验证码
+            this.deleteValidate(platenumber, lmcode, mobilephone);
+            //删除之后添加短信验证码的记录
             apiSmsSend.addSmsSend(smsSend);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
-
+    /**
+     * 删除短信验证码的记录
+     *
+     * @param platenumber 车牌号
+     * @param lmcode      lianmengcode
+     * @param mobilephone 手机号
+     */
+    public void deleteValidate(String platenumber, String lmcode, String mobilephone) {
+        SmsSendLog smsSend = new SmsSendLog();
+        smsSend.setLmcode(lmcode);
+        smsSend.setMobilePhone(mobilephone);
+        smsSend.setPlateNumber(platenumber);
+        smsSend.setServiceType("验证码");
+        apiSmsSend.deleteSmsSend(smsSend);
     }
 
     /**
@@ -100,13 +152,12 @@ public class ValidateService {
      *
      * @param mobilephone      手机号
      * @param verificationCode 验证码
+     * @param shopcode         lmcode代码
+     * @param businessType     业务类型
      */
-    public void sendvalidate(String mobilephone, String verificationCode) {
-        //生成随机的四位密码
+    public void sendvalidate(String shopcode, String businessType, String mobilephone, String verificationCode) {
         ParameterEntry parameterEntry = new ParameterEntry();
         parameterEntry.setParameter1(verificationCode);
-        String shopcode = "000001"; //因为用我们自己的阿里账号所以shopcode固定
-        String businessType = "验证码"; //业务类型固定
         List list = new ArrayList();
         list.add(mobilephone);
         apiSendSms.sendSMS(shopcode, businessType, list, parameterEntry);
