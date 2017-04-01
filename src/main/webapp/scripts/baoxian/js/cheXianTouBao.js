@@ -615,16 +615,16 @@ $(document).ready(function(){
     //提交按钮前的判断
     $(".tijiao").on("click",function(){
 
-        $.ajax({
-            type    : 'POST',
-            url     : "/baoxiantijiao",
-            data    : {
-
-                },
-            success:function (data) {
-                alert("保存成功");
-            }
-        })
+        // $.ajax({
+        //     type    : 'POST',
+        //     url     : "/baoxiantijiao",
+        //     data    : {
+        //
+        //         },
+        //     success:function (data) {
+        //         alert("保存成功");
+        //     }
+        // })
         //获取车辆信息页中的信息
         var car_number = $("#car_number").val();
         var your_name = $("#your_name").val();
@@ -655,7 +655,15 @@ $(document).ready(function(){
         			    		if (chexian == true) {
         			    			if (input_file_driving != "" && input_file_driving_1 != "") {
         								if (input_file_filepath != "" && input_file_filepath_1 != "") {
-                                            $("form").submit();
+        								    $("form").submit()
+                                            // $.ajax({
+                                            //     type    : 'POST',
+                                            //         url     : "/baoxiantijiao",
+                                            //         data    : $("form").serialize(),
+                                            //         success:function (data) {
+                                            //             alert(data);
+                                            //         }
+                                            // })
 
 
         								} else{
