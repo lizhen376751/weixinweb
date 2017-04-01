@@ -33,6 +33,7 @@
 <body>
 <div id="wrap">
 	<form action="/baoxiantijiao" method="post" >
+		<input type="hidden" name="mineShopCode" id="mineShopCode" value="<%=mineShopCode%>" class="phone_number"/>
 
 		<!--顶部导航-->
 		<div class="nav color_1">
