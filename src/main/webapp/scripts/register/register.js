@@ -119,8 +119,19 @@ $(document).ready(function () {
     //-------------------------------------------------------------------------点击输入手机号码
     count_phone.on("focus", function () {
         car_judge()
+    });
+    //--------------------------------------------------------------------------输入手机号进行正则判断
+    count_phone.on("keyup",function(){
+        if($(this).val().length >= 11){
+            var regs = /^1(3|4|5|7|8)[0-9]\d{8}$/;
+            if(regs.test($(this).val())){
+                return false;
+            }else{
+                alert("输入手机号码有误，请重新输入！");
+            }
+        }
     })
-    //-------------------------------------------------------------------------点击验证码进行判断
+    //-------------------------------------------------------------------------点击输入验证码进行判断
     verification_code.on("focus", function () {
         car_judge()
     })
@@ -140,7 +151,6 @@ $(document).ready(function () {
             } else {
                 //-----------------------------------------------------请求发送验证码
                 count_down(phone_value);
-
                 $.ajax({
                     type: 'POST',
                     url: '/getCommonAjax',
@@ -151,10 +161,11 @@ $(document).ready(function () {
                         mobilephone :phone_value
                     },
                     success: function (jsonData) {
-                       
+
                     }
 
                 });
+
 
             }
         }
