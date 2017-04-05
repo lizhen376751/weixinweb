@@ -59,6 +59,7 @@ public class ValidateService {
         SmsSendLog smsSend = new SmsSendLog();
         smsSend.setLmcode(lmcode);
         smsSend.setMobilePhone(mobilephone);
+        smsSend.setServiceType("验证码");
         smsSend.setPlateNumber(platenumber);
         SmsSendLog smsSend1 = apiSmsSend.getSmsSend(smsSend);
         //验证是否有发送记录

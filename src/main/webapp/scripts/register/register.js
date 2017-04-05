@@ -42,6 +42,7 @@ $(document).ready(function () {
     })
     //----------------------------------------------------------判断车牌号是否注册函数
     var b = "";
+
     function car_judge() {
         var car_value = car_num.val();
         if (car_value == "") {
@@ -50,7 +51,7 @@ $(document).ready(function () {
 
             $.ajax({
                 type: 'POST',
-                url: '/getCommonAjax',
+                url: '/getCommonAjax2',
                 data: {
                     fromflag: "checkInfo",
                     lmcode: "CS000", //TODO 暂时写死
@@ -64,7 +65,7 @@ $(document).ready(function () {
 
                         $.ajax({
                             type: 'POST',
-                            url: '/getCommonAjax',
+                            url: '/getCommonAjax2',
                             data: {
                                 fromflag: "getmobiePhone",
                                 lmcode: "CS000", //TODO 暂时写死
@@ -91,7 +92,6 @@ $(document).ready(function () {
             });
 
             //------------------------------------------------------------------------手机号字符拼接*号
-
 
 
         }
@@ -121,12 +121,12 @@ $(document).ready(function () {
         car_judge()
     });
     //--------------------------------------------------------------------------输入手机号进行正则判断
-    count_phone.on("keyup",function(){
-        if($(this).val().length >= 11){
+    count_phone.on("keyup", function () {
+        if ($(this).val().length >= 11) {
             var regs = /^1(3|4|5|7|8)[0-9]\d{8}$/;
-            if(regs.test($(this).val())){
+            if (regs.test($(this).val())) {
                 return false;
-            }else{
+            } else {
                 alert("输入手机号码有误，请重新输入！");
             }
         }
@@ -153,12 +153,12 @@ $(document).ready(function () {
                 count_down(phone_value);
                 $.ajax({
                     type: 'POST',
-                    url: '/getCommonAjax',
+                    url: '/getCommonAjax2',
                     data: {
                         fromflag: "addvalidate",
                         lmcode: "CS000", //TODO 暂时写死
                         platenumber: platenumber,
-                        mobilephone :phone_value
+                        mobilephone: phone_value
                     },
                     success: function (jsonData) {
 
@@ -177,6 +177,7 @@ $(document).ready(function () {
         var password_value = count_password.val();
         var phone_value = count_phone.val();
         var verification_value = verification_code.val();
+        var platenumber = car_num.val();
         if (password_value == "") {
             alert("请设置您的账户密码~")
         } else if (phone_value == "") {
@@ -185,11 +186,23 @@ $(document).ready(function () {
             alert("请输入验证码~")
         } else {
             //----------------------------------------------------------------------------ajax提交信息
-//			$.ajax({
-//				type:"get",
-//				url:"",
-//				async:true
-//			});
+            $.ajax({
+                type: 'POST',
+                url: '/getCommonAjax2',
+                data: {
+                    fromflag: "register",
+                    platenumber: platenumber,
+                    lmcode: "CS000", //TODO 暂时写死
+                    password: password_value,
+                    openid: "owQtWt8L6RVxj_cTUaPyH27RWdbA",//TODO 暂时写死
+                    mobilephone: phone_value,
+                    verificationCode: verification_value
+                },
+                success: function (jsonData) {
+
+                }
+
+            });
         }
     })
     //----------------------------------------------------------------------------------遮罩层中红色关闭按钮点击
@@ -203,7 +216,7 @@ $(document).ready(function () {
         tc_ceng.hide();
         l_box.hide();
         b_box.hide()
-		window.location.href = "/oauthLoginServlet?flagStr=suresms&platenumber="+ car_num.val()+"&lmcode=CS000&mobilephone="+b;
+        window.location.href = "/oauthLoginServlet?flagStr=suresms&platenumber=" + car_num.val() + "&lmcode=CS000&mobilephone=" + b;
     })
 
     //------------------------------------------------------------------------------------获取遮罩层中用户注册，且有密码的确定去登陆的点击

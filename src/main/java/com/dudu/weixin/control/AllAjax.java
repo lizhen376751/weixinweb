@@ -110,6 +110,59 @@ public class AllAjax {
     private ValidateService validateService;
 
     /**
+     * 每个方法的行数有限制所以分成2个方法
+     *
+     * @param request  请求
+     * @param response 返回
+     * @param fromflag 路径参数
+     * @param cardNo   车牌号
+     * @param model    返回数据
+     * @return Object 返回路径
+     */
+    @ResponseBody
+    @RequestMapping(value = "getCommonAjax2", method = RequestMethod.POST)
+    public Object commonAjax2(HttpServletRequest request, HttpServletResponse response,
+                              @RequestParam(name = "fromflag", required = false) String fromflag,
+                              @RequestParam(name = "cardNo", required = false) String cardNo, Model model
+    ) {
+        //注册,填写车牌号后发送请求
+        if ("checkInfo".equals(fromflag)) {
+            String platenumber = request.getParameter("platenumber"); //车牌号码
+            String lmcode = request.getParameter("lmcode"); //联盟code
+            System.out.println("注册进入=========" + platenumber + "," + lmcode);
+            String s = autoLoginService.checkInfo(platenumber, lmcode);
+            return s;
+        }
+        //注册,如果已经有该用户,但是没有密码,获取手机号发送密码短信
+        if ("getmobiePhone".equals(fromflag)) {
+            String platenumber = request.getParameter("platenumber"); //车牌号码
+            String lmcode = request.getParameter("lmcode"); //联盟code
+            System.out.println("注册进入=========" + platenumber + "," + lmcode);
+            WxCustomer wxCustomer = wxCustomerService.getWxCustomer(platenumber, lmcode);
+            return wxCustomer.getCustomerMobile();
+        }
+        //用户注册时,进行发送验证码
+        if ("addvalidate".equals(fromflag)) {
+            String platenumber = request.getParameter("platenumber");
+            String lmcode = request.getParameter("lmcode");
+            String mobilephone = request.getParameter("mobilephone");
+            validateService.addvalidate(platenumber, lmcode, mobilephone);
+        }
+        //用户注册时,点击提交
+        if ("register".equals(fromflag)) {
+            String platenumber = request.getParameter("platenumber");
+            String lmcode = request.getParameter("lmcode");
+            String mobilephone = request.getParameter("mobilephone");
+            String password = request.getParameter("password");
+            String openid = request.getParameter("openid");
+            String verificationCode = request.getParameter("verificationCode");
+            String register = autoLoginService.register(platenumber, lmcode, password, openid, mobilephone, verificationCode);
+            return register;
+        }
+        return null;
+    }
+
+    /**
      * @param request  请求
      * @param response 返回
      * @param fromflag 路径参数
@@ -120,8 +173,8 @@ public class AllAjax {
     @ResponseBody
     @RequestMapping(value = "getCommonAjax", method = RequestMethod.POST)
     public Object commonAjax(HttpServletRequest request, HttpServletResponse response,
-                             @RequestParam(name = "fromflag", required = false) String fromflag,
-                             @RequestParam(name = "cardNo", required = false) String cardNo, Model model
+                              @RequestParam(name = "fromflag", required = false) String fromflag,
+                              @RequestParam(name = "cardNo", required = false) String cardNo, Model model
     ) {
         response.setCharacterEncoding("UTF-8");
         String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
@@ -244,29 +297,6 @@ public class AllAjax {
             String shopTypesearch = request.getParameter("shopType_search");
             String orderTypesearch = request.getParameter("orderType_search");
             return shopInfoService.queryShopCodeListByLmCode(shopcode, shopTypesearch, orderTypesearch);
-        }
-        //注册,填写车牌号后发送请求
-        if ("checkInfo".equals(fromflag)) {
-            String platenumber = request.getParameter("platenumber"); //车牌号码
-            String lmcode = request.getParameter("lmcode"); //联盟code
-            System.out.println("注册进入=========" + platenumber + "," + lmcode);
-            String s = autoLoginService.checkInfo(platenumber, lmcode);
-            return s;
-        }
-        //注册,如果已经有该用户,但是没有密码,获取手机号发送密码短信
-        if ("getmobiePhone".equals(fromflag)) {
-            String platenumber = request.getParameter("platenumber"); //车牌号码
-            String lmcode = request.getParameter("lmcode"); //联盟code
-            System.out.println("注册进入=========" + platenumber + "," + lmcode);
-            WxCustomer wxCustomer = wxCustomerService.getWxCustomer(platenumber, lmcode);
-            return wxCustomer.getCustomerMobile();
-        }
-        //用户注册时,进行发送验证码
-        if ("addvalidate".equals(fromflag)) {
-            String platenumber = request.getParameter("platenumber");
-            String lmcode = request.getParameter("lmcode");
-            String mobilephone = request.getParameter("mobilephone");
-            validateService.addvalidate(platenumber, lmcode, mobilephone);
         }
 
         return obj;
