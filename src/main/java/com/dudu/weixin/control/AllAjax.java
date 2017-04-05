@@ -5,6 +5,7 @@ import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.weixin.service.AHIService;
+import com.dudu.weixin.service.AutoLoginService;
 import com.dudu.weixin.service.BaoYangTiXingService;
 import com.dudu.weixin.service.BuyRecordService;
 import com.dudu.weixin.service.ChexiantoubaoService;
@@ -38,7 +39,7 @@ public class AllAjax {
     /**
      * logprint 日志打印
      */
-    private static  Logger logprint = LoggerFactory.getLogger(AllAjax.class);
+    private static Logger logprint = LoggerFactory.getLogger(AllAjax.class);
     /**
      * session
      */
@@ -68,7 +69,7 @@ public class AllAjax {
      * 车险投保
      */
     @Autowired
-   private ChexiantoubaoService chexiantoubaoService;
+    private ChexiantoubaoService chexiantoubaoService;
     /**
      * ahi
      */
@@ -89,14 +90,18 @@ public class AllAjax {
      */
     @Autowired
     private BuyRecordService buyRecordService;
+    /**
+     * 引入注册服务
+     */
+    @Autowired
+    private AutoLoginService autoLoginService;
 
     /**
-     *
-     * @param request 请求
+     * @param request  请求
      * @param response 返回
      * @param fromflag 路径参数
-     * @param cardNo 车牌号
-     * @param model 返回数据
+     * @param cardNo   车牌号
+     * @param model    返回数据
      * @return Object 返回路径
      */
     @ResponseBody
@@ -188,10 +193,10 @@ public class AllAjax {
         }
         //保养提醒
         if ("baoYangList".equals(fromflag)) {
-                String top = request.getParameter("top");
-                ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(shopcode, carId, top);
-                System.out.println("保养提醒进入======");
-                return baoYangListByLmcodeAndCarNo;
+            String top = request.getParameter("top");
+            ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(shopcode, carId, top);
+            System.out.println("保养提醒进入======");
+            return baoYangListByLmcodeAndCarNo;
 
         }
         //消费记录
@@ -227,12 +232,19 @@ public class AllAjax {
             String orderTypesearch = request.getParameter("orderType_search");
             return shopInfoService.queryShopCodeListByLmCode(shopcode, shopTypesearch, orderTypesearch);
         }
+        //注册,填写车牌号后发送请求
+        if ("checkInfo".equals(fromflag)) {
+            String platenumber = request.getParameter("platenumber");//车牌号码
+            String lmcode = request.getParameter("lmcode");//联盟code
+            System.out.println("注册进入=========" + platenumber + "," + lmcode);
+            String s = autoLoginService.checkInfo(platenumber, lmcode);
+            return s;
+        }
 
         return obj;
     }
 
     /**
-     *
      * @param str 传进需要解析的字符串
      * @return String返回字符串
      */

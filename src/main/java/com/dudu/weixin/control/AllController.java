@@ -49,9 +49,10 @@ public class AllController {
     @Autowired
     private ChexiantoubaoService chexiantoubaoService;
 
-    //登录页面
 
     /**
+     * 登录页面
+     *
      * @param request  请求
      * @param response 返回
      * @return 路径
@@ -128,6 +129,10 @@ public class AllController {
             System.out.println(mineShopCode);
             model.addAttribute("mineShopCode", mineShopCode);
             return "/baoxian/cheXianTouBao/cheXianTouBao"; //车险投保
+        } else if ("register".equals(flagStr)) {
+            return "/register/register"; //注册
+        } else if ("personalCenter".equals(flagStr)) {
+            return "/baoxian/cheXianTouBao/cheXianTouBao"; //个人中心
         } else if ("logout".equals(flagStr)) {
             httpSession.setAttribute("DUDUCHEWANG_CarId", null);
             return "/login/logout"; //退出登录
