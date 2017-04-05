@@ -199,7 +199,12 @@ $(document).ready(function () {
                     verificationCode: verification_value
                 },
                 success: function (jsonData) {
-
+                    var backdata = jsonData;
+                    if(backdata == "3"){
+                        window.location.href = "";
+                    }else if(backdata == "4"){
+                        alert("输入验证码有误，请重新输入！")
+                    }
                 }
 
             });
