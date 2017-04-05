@@ -54,6 +54,16 @@
             //TODO 暂时未做好...
             window.location.href = "/oauthLoginServlet?flagStr=logout";
         }
+        //注册
+        function register() {
+
+            window.location.href = "/oauthLoginServlet?flagStr=register";
+        }
+        //个人中心
+        function personalCenter() {
+
+            window.location.href = "/oauthLoginServlet?flagStr=personalCenter";
+        }
     </script>
 </head>
 <body>
@@ -70,6 +80,8 @@
             <li class="btnli"><input type="button" class="regbtn" value="保养提醒" onclick="baoYangList()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="服务导航" onclick="daohangindex()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="消费记录" onclick="xiaoFeiList()"/></li>
+            <li class="btnli"><input type="button" class="regbtn" value="注册" onclick="register()"/></li>
+            <li class="btnli"><input type="button" class="regbtn" value="个人中心" onclick="personalCenter()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="退出登录" onclick="logout()"/></li>
         </ul>
     </div>
