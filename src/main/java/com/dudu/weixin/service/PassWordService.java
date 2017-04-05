@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * 密码修改,密码找回
- * Created by 李振 on 2017/4/1.
+ * Created by lizhen on 2017/4/1.
  */
 @Service
 public class PassWordService {

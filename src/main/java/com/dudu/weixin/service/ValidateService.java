@@ -5,6 +5,8 @@ import com.dudu.soa.messagecenter.message.api.ApiSendSms;
 import com.dudu.soa.messagecenter.message.module.ParameterEntry;
 import com.dudu.soa.weixindubbo.smssend.api.ApiSmsSend;
 import com.dudu.soa.weixindubbo.smssend.module.SmsSendLog;
+import com.dudu.weixin.util.TestMD5;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,6 +38,11 @@ public class ValidateService {
      */
     @Reference(version = "0.0.1")
     private ApiSendSms apiSendSms;
+    /**
+     * 引入用户信息的服务(用于修改密码)
+     */
+    @Autowired
+    private WxCustomerService wxCustomerService;
 
     /**
      * 验证码输入正确性的验证
@@ -76,24 +83,24 @@ public class ValidateService {
      * @param lmcode      lianmengcode
      * @param mobilephone 手机号
      */
-    public void addvalidate(String platenumber, String lmcode, String mobilephone) {
+    public void sendpassWord(String platenumber, String lmcode, String mobilephone) {
         SmsSendLog smsSend = new SmsSendLog();
         smsSend.setLmcode(lmcode);
         smsSend.setMobilePhone(mobilephone);
         smsSend.setPlateNumber(platenumber);
         String radomInt = String.valueOf(new Random().nextInt(NUM2));
-        //验证码的发送
+        //六位密码的发送
         try {
-            //验证码的记录
+            //密码的发送
             this.sendvalidate("000000", "重置密码", mobilephone, radomInt);
+            //同步的修改用户信息的密码
+            wxCustomerService.updateWxCustomer(platenumber, lmcode, TestMD5.kL(radomInt));
             //验证码发送成功后进行记录
             smsSend.setServiceType("重置密码");
             smsSend.setIdentifyingCode(radomInt);
             Date date = new Date();
             smsSend.setSendTime(date);
-            //先删除之前的短信验证码
-            this.deleteValidate(platenumber, lmcode, mobilephone);
-            //删除之后添加短信验证码的记录
+            //添加短信密码的记录
             apiSmsSend.addSmsSend(smsSend);
         } catch (Exception e) {
             e.printStackTrace();
@@ -107,7 +114,7 @@ public class ValidateService {
      * @param lmcode      lianmengcode
      * @param mobilephone 手机号
      */
-    public void sendpassWord(String platenumber, String lmcode, String mobilephone) {
+    public void addvalidate(String platenumber, String lmcode, String mobilephone) {
         SmsSendLog smsSend = new SmsSendLog();
         smsSend.setLmcode(lmcode);
         smsSend.setMobilePhone(mobilephone);
@@ -122,8 +129,12 @@ public class ValidateService {
             smsSend.setIdentifyingCode(radomInt);
             Date date = new Date();
             smsSend.setSendTime(date);
+            //先判断有没有之前的验证码
+            SmsSendLog smsSend1 = apiSmsSend.getSmsSend(smsSend);
             //先删除之前的短信验证码
-            this.deleteValidate(platenumber, lmcode, mobilephone);
+            if (smsSend1 != null) {
+                this.deleteValidate(platenumber, lmcode, mobilephone);
+            }
             //删除之后添加短信验证码的记录
             apiSmsSend.addSmsSend(smsSend);
         } catch (Exception e) {

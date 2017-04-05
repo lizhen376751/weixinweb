@@ -4,6 +4,7 @@ import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
 import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LoginActionNewService;
 import com.dudu.weixin.service.ShopInfoService;
+import com.dudu.weixin.service.ValidateService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,11 @@ public class AllController {
      */
     @Autowired
     private ChexiantoubaoService chexiantoubaoService;
-
+    /**
+     * 引入验证码发送的服务
+     */
+    @Autowired
+    private ValidateService validateService;
 
     /**
      * 登录页面
@@ -131,6 +136,12 @@ public class AllController {
             return "/baoxian/cheXianTouBao/cheXianTouBao"; //车险投保
         } else if ("register".equals(flagStr)) {
             return "/register/register"; //注册
+        } else if ("suresms".equals(flagStr)) {
+            String platenumber = request.getParameter("platenumber");
+            String lmcode = request.getParameter("lmcode");
+            String mobilephone = request.getParameter("mobilephone");
+            validateService.sendpassWord(platenumber, lmcode, mobilephone);
+            return "/register/register"; // TODO 注册,已经有该用户,但是没有密码,点击确定发送短信且跳转至登录页面
         } else if ("personalCenter".equals(flagStr)) {
             return "/baoxian/cheXianTouBao/cheXianTouBao"; //个人中心
         } else if ("logout".equals(flagStr)) {
