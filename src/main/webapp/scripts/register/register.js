@@ -148,16 +148,22 @@ $(document).ready(function(){
 	//----------------------------------------------------------------------------------遮罩层中红色关闭按钮点击
 	close.on("click",function(){
 		tc_ceng.hide();
+        l_box.hide();
+        b_box.hide()
 	})
 	//------------------------------------------------------------------------------------获取遮罩层中用户注册，且没密码的确定按钮的点击
 	determine.on("click",function(){
 		tc_ceng.hide();
+        l_box.hide();
+        b_box.hide()
 //		window.location.href = "";
 	})
 	
 	//------------------------------------------------------------------------------------获取遮罩层中用户注册，且有密码的确定去登陆的点击
 	sign_in.on("click",function(){
 		tc_ceng.hide();
+        l_box.hide();
+        b_box.hide()
 //		window.location.href = "";
 	})
 	
