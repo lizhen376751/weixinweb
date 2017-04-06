@@ -16,7 +16,6 @@ import com.dudu.soa.basedata.employee.api.ApiBaseDataEmployee;
 import com.dudu.soa.basedata.employee.module.Employee;
 import com.dudu.soa.basedata.employee.module.ServiceAdvisor;
 
-import com.dudu.soa.customercenter.customer.api.ApiCustomerDemand;
 import com.dudu.soa.customercenter.customer.api.ApiCustomerInfo;
 import com.dudu.soa.customercenter.customer.module.CustomerInfo;
 import com.dudu.soa.customercenter.customer.module.CustomerInfoParam;
@@ -61,11 +60,7 @@ public class ChexiantoubaoService {
      */
     @Reference(version = "0.0.1")
     private ApiCustomerInfo apiCustomerInfo;
-    /**
-     * 获取客户信息接口
-     */
-    @Reference(version = "0.0.1")
-    private ApiCustomerDemand apiCustomerDemand;
+
 
     /**
      * 获取保险公司接口

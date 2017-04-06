@@ -199,7 +199,7 @@ $(document).ready(function () {
                     verificationCode: verification_value
                 },
                 success: function (jsonData) {
-                    var backdata = jsonData;
+                    var backdata = JSON.parse(jsonData);;
                     if(backdata == "3"){
                         window.location.href = "";
                     }else if(backdata == "4"){
@@ -218,10 +218,26 @@ $(document).ready(function () {
     })
     //------------------------------------------------------------------------------------获取遮罩层中用户注册，且没密码的确定按钮的点击
     determine.on("click", function () {
+        $.ajax({
+            type: 'GET',
+            url: '/oauthLoginServlet',
+            data: {
+                flagStr: "suresms",
+                platenumber:  car_num.val(),
+                lmcode: "CS000", //TODO 暂时写死
+                mobilephone: b
+            },
+            success: function (jsonData) {
+                var backdata = JSON.parse(jsonData);;
+
+            }
+
+        });
         tc_ceng.hide();
         l_box.hide();
-        b_box.hide()
-        window.location.href = "/oauthLoginServlet?flagStr=suresms&platenumber=" + car_num.val() + "&lmcode=CS000&mobilephone=" + b;
+        b_box.hide();
+
+
     })
 
     //------------------------------------------------------------------------------------获取遮罩层中用户注册，且有密码的确定去登陆的点击

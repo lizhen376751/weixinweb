@@ -1,5 +1,9 @@
 package com.dudu.weixin.control;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.dudu.soa.dududata.oss.api.ApiDuduDataOssSecretConfigIntf;
+import com.dudu.soa.dududata.oss.module.OssSecretConfig;
+import com.dudu.soa.dududata.oss.module.param.OssSecretConfigParam;
 import com.dudu.soa.lmbasedata.basedata.shop.module.ShopQueryFruit;
 import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
@@ -22,6 +26,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -108,6 +113,11 @@ public class AllAjax {
      */
     @Autowired
     private ValidateService validateService;
+    /**
+     * 引入图片上传的接口
+     */
+    @Reference(version = "1.0", owner = "miaohao")
+    private ApiDuduDataOssSecretConfigIntf ossSecretConfigIntf;
 
     /**
      * 每个方法的行数有限制所以分成2个方法
@@ -173,8 +183,8 @@ public class AllAjax {
     @ResponseBody
     @RequestMapping(value = "getCommonAjax", method = RequestMethod.POST)
     public Object commonAjax(HttpServletRequest request, HttpServletResponse response,
-                              @RequestParam(name = "fromflag", required = false) String fromflag,
-                              @RequestParam(name = "cardNo", required = false) String cardNo, Model model
+                             @RequestParam(name = "fromflag", required = false) String fromflag,
+                             @RequestParam(name = "cardNo", required = false) String cardNo, Model model
     ) {
         response.setCharacterEncoding("UTF-8");
         String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
@@ -301,6 +311,19 @@ public class AllAjax {
 
         return obj;
     }
+
+    /**
+     * 图片上传
+     * @param businessConfigId 业务id
+     * @param shopCode 店管家代码
+     * @return OssSecretConfig上传权限
+     */
+    @RequestMapping(value = "ossconfig/{shopCode}/{businessConfigId}", method = RequestMethod.GET)
+    @ResponseBody
+    public OssSecretConfig getConfig(@PathVariable("businessConfigId") Integer businessConfigId, @PathVariable("shopCode") String shopCode) {
+        return ossSecretConfigIntf.getOssSecretConfig(new OssSecretConfigParam().setShopCode(shopCode).setBusinessConfigId(businessConfigId));
+    }
+
 
     /**
      * @param str 传进需要解析的字符串
