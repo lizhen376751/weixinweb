@@ -551,63 +551,67 @@ $(document).ready(function(){
    //  var www = JSON.parse(fff)
 
     $(".filepath").on("change",function() {
-        //window.network.openPhoto();
-        // $.ajax({
-        //     type    : 'GET',
-        //     url     : 'http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18',
-        //     data    : {
-        //         fromflag   : "baoXianTypes"
-        //     },
-        //     success:function(jsondata){
-        //         // var json = JSON.parse(jsondata);
-        //         Duducreds=jsondata;
-        //         var shopcode="CS00001";
-        //         var i = $(this).index()+1;
-        //         var srcd =this.files[0];
-        //         var projectId = uuid(16,16);
-        //         var DuduOssCallbackVarData1 = {
-        //             "shopCode" :shopcode,
-        //             "orderCode" : projectId,
-        //             "imageType" : ""+i+""
-        //         }
-        //         console.log(srcd)
-        //         new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
-        //         //setTimeout(function() { new applyTokenDoNew(srcd,DuduOssCallbackVarData1);},2000);
-        //
-        //         $(this).nextAll(".img1").hide();   //this指的是input
-        //         $(this).nextAll("p").hide();
-        //         $(this).nextAll(".imgs").show();  //fireBUg查看第二次换图片不起做用
-        //         // $(this).nextAll('.close').show();   //this指的是input
-        //         var state = false;
-        //         var imgage = $(this).nextAll(".imgs").children(".img2");
-        //         function a(){
-        //             console.log(srcs)
-        //             if(srcs == "" && state == false){
-        //                 setTimeout(function() { a();},2000);
-        //             }else{
-        //                 console.log(srcs)
-        //                 imgage.attr("src",srcs);
-        //                 srcs = ""
-        //                 state = true;
-        //             }
-        //         }
-        //         a();
-        //         $(this).nextAll(".tupian").val(projectId)
-        //     },
-        //     error:function(){
-        //
-        //     }
-        // });
-        var srcs = getObjectURL(this.files[0]);   //获取路径
-        if(srcs){
-            $(this).nextAll(".imgs").children(".img2")[0].src = srcs;
+        if(this.value == ""){
+           return false
+        }else{
+            var shopcode="CS00001";
+            var i = $(this).index()+1;
+            var srcd =this.files[0];
+            var projectId = uuid(16,16);
+            var DuduOssCallbackVarData1 = {
+                "shopCode" :shopcode,
+                "orderCode" : projectId,
+                "imageType" : ""+i+""
+            }
+            console.log(this.files[0]);
+            $.ajax({
+                type    : 'GET',
+                url     : '/ossconfig/cs00001/18',
+                data    : {},
+                success:function(jsondata){
+                    var json = JSON.parse(jsondata);
+                    Duducreds=json;
+                    // console.log(json)
+                    new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
+                },
+                error:function(data){
+                    
+                }
+
+            });
+            // console.log(srcd)
+            //setTimeout(function() { new applyTokenDoNew(srcd,DuduOssCallbackVarData1);},2000);
             $(this).nextAll(".img1").hide();   //this指的是input
             $(this).nextAll("p").hide();
             $(this).nextAll(".imgs").show();  //fireBUg查看第二次换图片不起做用
-            $(this).nextAll('.close').show();   //this指的是input
-            $(this).nextAll(".imgs").children(".img2").attr("src",srcs);    //this指的是input
-            $(this).val('');    //必须制空
+            // $(this).nextAll('.close').show();   //this指的是input
+            var state = false;
+            var imgage = $(this).nextAll(".imgs").children(".img2");
+            function a(){
+                // console.log(srcs)
+                if(srcs == "" && state == false){
+                    setTimeout(function() { a();},2000);
+                }else{
+                    console.log(srcs)
+                    imgage.attr("src",srcs);
+                    srcs = ""
+                    state = true;
+                }
+            }
+            a();
+            $(this).nextAll(".tupian").val(projectId)
         }
+
+        // var srcs = getObjectURL(this.files[0]);   //获取路径
+        // if(srcs){
+        //     $(this).nextAll(".imgs").children(".img2")[0].src = srcs;
+        //     $(this).nextAll(".img1").hide();   //this指的是input
+        //     $(this).nextAll("p").hide();
+        //     $(this).nextAll(".imgs").show();  //fireBUg查看第二次换图片不起做用
+        //     $(this).nextAll('.close').show();   //this指的是input
+        //     $(this).nextAll(".imgs").children(".img2").attr("src",srcs);    //this指的是input
+        //     $(this).val('');    //必须制空
+        // }
 
 
     })
