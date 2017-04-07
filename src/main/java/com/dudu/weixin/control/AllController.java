@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -76,15 +75,17 @@ public class AllController {
      * 点击菜单后进入
      *
      * @param request 请求
-     * @param code    shopcode
-     * @param flagStr 路径参数
      * @param model   返回数据
      * @return 字符串
      */
     @RequestMapping(value = "oauthLoginServlet", method = RequestMethod.GET)
     public String oauthLogin(HttpServletRequest request,
-                             @RequestParam(name = "code", required = false) String code,
-                             @RequestParam(name = "flagStr", required = false) String flagStr, Model model) {
+                             Model model) {
+
+        String strWxShopcode = request.getParameter("lmcode");
+        String flagStr = strWxShopcode.split("_")[1];
+        String lmcode = strWxShopcode.split("_")[0];
+
         logger.info("菜单进入================================" + flagStr);
         String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
         String openId = (String) httpSession.getAttribute("DUDUCHEWANG_OpenId");
@@ -138,12 +139,12 @@ public class AllController {
             return "/register/register"; //注册
         } else if ("suresms".equals(flagStr)) {
             String platenumber = request.getParameter("platenumber");
-            String lmcode = request.getParameter("lmcode");
+            lmcode = request.getParameter("lmcode");
             String mobilephone = request.getParameter("mobilephone");
             validateService.sendpassWord(platenumber, lmcode, mobilephone);
             return "/register/register"; // TODO 注册,已经有该用户,但是没有密码,点击确定发送短信且跳转至登录页面
         } else if ("personalCenter".equals(flagStr)) {
-            return "/baoxian/cheXianTouBao/cheXianTouBao"; //个人中心
+            return "/personCenter/personalCenter"; //个人中心
         } else if ("logout".equals(flagStr)) {
             httpSession.setAttribute("DUDUCHEWANG_CarId", null);
             return "/login/logout"; //退出登录
