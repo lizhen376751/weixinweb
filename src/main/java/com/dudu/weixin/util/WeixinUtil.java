@@ -1,6 +1,9 @@
 package com.dudu.weixin.util;
 
+import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.dudu.weixin.mould.AccessToken;
+import com.dudu.weixin.mould.Menu;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -87,4 +90,70 @@ import java.net.URL;
         }
         return jsonObject;
     }
+
+    /**
+     * TODO 封装成接口 需要将获取到的token放到数据库里面
+     * 获取access_token的接口地址（GET） 限2000（次/天）
+     */
+    public static final  String TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
+
+    /**
+     * 获取access_token
+     *
+     * @param appid 凭证
+     * @param appsecret 密钥
+     * @return AccessToken
+     */
+    public static AccessToken getAccessToken(String appid, String appsecret) {
+        AccessToken accessToken = null;
+
+        String requestUrl = TOKEN_URL.replace("APPID", appid).replace("APPSECRET", appsecret);
+        JSONObject jsonObject = httpRequest(requestUrl, "GET", null);
+        // 如果请求成功
+        if (null != jsonObject) {
+            try {
+                accessToken = new AccessToken();
+                accessToken.setToken(jsonObject.getString("access_token"));
+                accessToken.setExpiresIn(jsonObject.getIntValue("expires_in"));
+            } catch (JSONException e) {
+                accessToken = null;
+                // 获取token失败
+//                log.e("获取token失败 errcode:{} errmsg:{}", jsonObject.getIntValue("errcode"), jsonObject.getString("errmsg"));
+            }
+        }
+        return accessToken;
+    }
+
+    // 菜单创建（POST） 限100（次/天）
+    public static String MENUCREATURL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
+
+    /**
+     * 创建菜单
+     *
+     * @param menu 菜单实例
+     * @param accessToken 有效的access_token
+     * @return 0表示成功，其他值表示失败
+     */
+    public static int createMenu(Menu menu, String accessToken) {
+        int result = 0;
+
+        // 拼装创建菜单的url
+        String url = MENUCREATURL.replace("ACCESS_TOKEN", accessToken);
+        // 将菜单对象转换成json字符串
+
+        String jsonMenu = JSONObject.toJSONString(menu);
+        // 调用接口创建菜单
+        JSONObject jsonObject = httpRequest(url, "POST", jsonMenu);
+
+        if (null != jsonObject) {
+            if (0 != jsonObject.getIntValue("errcode")) {
+                result = jsonObject.getIntValue("errcode");
+//                log.error("创建菜单失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
+            }
+        }
+
+        return result;
+    }
+
+
 }
