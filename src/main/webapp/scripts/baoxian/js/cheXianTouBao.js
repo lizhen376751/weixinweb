@@ -1,6 +1,13 @@
 
 $(document).ready(function(){
-
+    var mineShopCode = $("#mineShopCode").val();
+    console.log(mineShopCode);
+    if(mineShopCode == "null" ){
+        alert(1)
+        $(".nav").hide();
+    }else{
+        alert(2)
+    }
     $('.titles span').click(function() {
         var i = $(this).index();//下标第一种写法
         //var i = $('tit').index(this);//下标第二种写法
@@ -71,7 +78,7 @@ $(document).ready(function(){
             alert("失败")
         }
     });
-    var mineShopCode = $("#mineShopCode").val();
+
     $.ajax({
         type    : 'POST',
         url     : '/getCommonAjax',
@@ -552,6 +559,7 @@ $(document).ready(function(){
         var photoExt=this.value.substr(this.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
         var tp =".jpg,.gif,.bmp,.JPG,.GIF,.BMP,.ico,.png";
         var rs=tp.indexOf(photoExt);
+        var onself = this;
         if(this.value == ""){
            return false
         }else if(rs < 0){            //如果返回的结果大于或等于0，说明包含允许上传的文件类型
@@ -570,7 +578,7 @@ $(document).ready(function(){
             console.log(this.files[0]);
             $.ajax({
                 type    : 'GET',
-                url     : '/ossconfig/cs00001/18',
+                url     : '/ossconfig/'+mineShopCode+'/18',
                 data    : {},
                 success:function(jsondata){
                     var json = JSON.parse(jsondata);
@@ -598,12 +606,13 @@ $(document).ready(function(){
                 }else{
                     console.log(srcs);
                     imgage.attr("src",srcs);
+                    $(onself).nextAll(".tupian").val(srcs);
                     srcs = "";
                     state = true;
                 }
             }
             a();
-            $(this).nextAll(".tupian").val(projectId)
+
         }
 
         // var srcs = getObjectURL(this.files[0]);   //获取路径
