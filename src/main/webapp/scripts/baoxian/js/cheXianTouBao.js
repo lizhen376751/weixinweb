@@ -465,23 +465,23 @@ $(document).ready(function(){
         return uuid.join('');
     }
     //请求JSON
-    function requestJosn(appServer) {
-        $.ajax({
-            type    : 'GET',
-            url     : 'http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18',
-            data    : {
-                fromflag   : "baoXianTypes"
-            },
-            success:function(jsondata){
-                // var json = JSON.parse(jsondata);
-                Duducreds=jsondata;
-                console.log(jsondata);
-            },
-            error:function(){
-
-            }
-        });
-    }
+    // function requestJosn(appServer) {
+    //     $.ajax({
+    //         type    : 'GET',
+    //         url     : 'http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18',
+    //         data    : {
+    //             fromflag   : "baoXianTypes"
+    //         },
+    //         success:function(jsondata){
+    //             // var json = JSON.parse(jsondata);
+    //             Duducreds=jsondata;
+    //             console.log(jsondata);
+    //         },
+    //         error:function(){
+    //
+    //         }
+    //     });
+    // }
 
     //判断文件类型  照片大小
     function getImageSize(obj){
@@ -513,7 +513,7 @@ $(document).ready(function(){
         }
         fileSize=Math.round(fileSize/1024*100)/100; //单位为KB
         if(fileSize>=5000){
-//  if(fileSize>=10){
+    //  if(fileSize>=10){
             alert("照片最大尺寸为5000KB，请重新上传!");
             return false;
         }
@@ -547,12 +547,16 @@ $(document).ready(function(){
         return url
     };
    // appServer = "http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18";
-   //  var fff = '{"endPoint":"http://oss-cn-shanghai.aliyuncs.com","accessKeyId":"STS.NBHExGeG2moYHfnPHVUPgDtxj","accessKeySecret":"mkFdP9zoWNeoGRKLQjewmgjtX4KsvuKgJvtf6UNkyjd","securityToken":"CAISvQN1q6Ft5B2yfSjIr4H9DsLziJgT2q2ySkDftEgDWd9Lq7HTiDz2IHBPenJpBe4Ztfk3mGBU7/YclqV1VptBA0ffNZMots0PYqxU+FKC6aKP9rUhpMCP8QLxYkeJyK2/SuH9S8ynNZXJQlvYlyh17KLnfDG5JTKMOoGIjpgVCbZyWRKjPwJbGPBcJAZptLU4Vx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDurHiahVbhmOgOvNazcNr2Y9RgIZZ6Wti4m+dtLvKZiHcX9AgN5a5wg6dE9HCF+ZPvFjs9zxiAIpCbkLlGJxN4Ya4XArNNqOOG+9Rzpu3UkfaQqXNKJvoHaznDY4qizcDYYsfLUOw0brHmIX/A/8mSP53uyWMebGkcKRlBdqh5SDl5Agd+TSrBeO31ugLGfwu+Sq2M36xx2oEtlw2wpJ2VNx+eSrOW2iYVfYx+egRqFWZPgTGxLPBcIl0SKQ44WevNd+gpMkAC85GPlBbJSyhtwktQu/DDfP7MssgdE96vBcwdiNZDO88b6zd6Ew2nFajdg0MVZXFjRq1NzK7uNJmw5bmI2uyPZvTcDfQKqs+svfZFE4nnGoABaeWeDLZDaMXAV9AK0QRzG2ZY+fAG/FwiNaoqYY3fE1kzUfV5cP9spHnlRQzTiKjNOPU9N0b1uurW0vlEkkiAGloxqZSlQAe7oVqbNshEIv+qvzoW2uflLqKRZjmayvAo6Bdi9Nd11wLlt3askXJMHbqveXLS8flEvNqAyxVPOTc=","region":"oss-cn-shanghai","bucketName":"duduimage","xOssCallBack":"eyJjYWxsYmFja1VybCI6Imh0dHA6Ly9hcGkuZ3cuZGV2LmR1ZHVjaGV3YW5nLmNuL2luZm8vdXBsb2FkIiwiY2FsbGJhY2tCb2R5Ijoic2hvcENvZGU9JHt4OnNob3BDb2RlfSZvcmRlckNvZGU9JHt4Om9yZGVyQ29kZX0mYnVja2V0SWQ9MSZidXNpbmVzc0NvbmZpZ0lkPTE0JmZpbGVSZWFsTmFtZT0ke3g6ZmlsZVJlYWxOYW1lfSZidWNrZXQ9JHtidWNrZXR9Jm9iamVjdD0ke29iamVjdH0mZXRhZz0ke2V0YWd9JnNpemU9JHtzaXplfSZtaW1lVHlwZT0ke21pbWVUeXBlfSZpbWFnZUluZm8uaGVpZ2h0PSR7aW1hZ2VJbmZvLmhlaWdodH0maW1hZ2VJbmZvLndpZHRoPSR7aW1hZ2VJbmZvLndpZHRofSZpbWFnZUluZm8uZm9ybWF0PSR7aW1hZ2VJbmZvLmZvcm1hdH0ifQ==","basePath":"cs00001/wx/yangche/{orderCode}/","orderCodeName":"orderCode","orderTag":"","paramsList":["shopCode","orderCode"]}'
-   //  var www = JSON.parse(fff)
 
     $(".filepath").on("change",function() {
+        var photoExt=this.value.substr(this.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
+        var tp =".jpg,.gif,.bmp,.JPG,.GIF,.BMP,.ico,.png";
+        var rs=tp.indexOf(photoExt);
         if(this.value == ""){
            return false
+        }else if(rs < 0){            //如果返回的结果大于或等于0，说明包含允许上传的文件类型
+            alert("您选择的上传文件不是有效的图片文件！");
+            return false;
         }else{
             var shopcode="CS00001";
             var i = $(this).index()+1;
@@ -575,7 +579,7 @@ $(document).ready(function(){
                     new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
                 },
                 error:function(data){
-                    
+
                 }
 
             });
@@ -592,9 +596,9 @@ $(document).ready(function(){
                 if(srcs == "" && state == false){
                     setTimeout(function() { a();},2000);
                 }else{
-                    console.log(srcs)
+                    console.log(srcs);
                     imgage.attr("src",srcs);
-                    srcs = ""
+                    srcs = "";
                     state = true;
                 }
             }

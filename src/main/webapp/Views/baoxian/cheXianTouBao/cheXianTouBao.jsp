@@ -33,18 +33,20 @@
 <body>
 <div id="wrap">
 	<form action="/baoxiantijiao" method="post" >
+		<%--mineShopCode隐藏域--%>
 		<input type="hidden" name="mineShopCode" id="mineShopCode" value="<%=mineShopCode%>" class="phone_number"/>
-
+		<%--shopCode隐藏域--%>
+		<input type="hidden" name="shopCode">
 		<!--顶部导航-->
 		<div class="nav color_1">
 			<div class="nav_left font_1">
-				<label for="">服务顾问：</label>
+				<label>服务顾问：</label>
 				<select name="serviceConsultant">  <!--服务顾问-->
 					<%--<option value="包西福">包西福</option>--%>
 				</select>
 			</div>
 			<div class="nav_right font_1">
-				<label for="">联盟总部：</label>
+				<label>联盟总部：</label>
 				<select name="unionHeadquarters">  <!--联盟总部-->
 					<%--<option value="大师全国运营中心">大师全国运营中心</option>--%>
 				</select>
@@ -67,19 +69,18 @@
 						<ul class="car_list font_1 color_2">
 							<!--车牌号码-->
 							<li>
-								<label for="">车牌号码：</label>
+								<label>车牌号码：</label>
 								<input type="text" name="car_number" id="car_number" value="" autocomplete="off"/>
 								<!--弹出窗-->
 								<div class="tishi">
 									<%--<div class="xinxi">鲁Z00000</div>--%>
-
 								</div>
 							</li>
 							<!--隐藏域-->
 								<input type="hidden" value="" id="hiddens" name="customerId">
 							<!--您的姓名-->
 							<li>
-								<label for="">您的姓名：</label>
+								<label>您的姓名：</label>
 								<input type="text" name="your_name" id="your_name" value="" class="your_name"/>
 								<div class="ns">
 									<input type="radio" name="sex" value="1" id="nan"/>男
@@ -88,17 +89,17 @@
 							</li>
 							<!--手机号码-->
 							<li>
-								<label for="">手机号码：</label>
+								<label>手机号码：</label>
 								<input type="text" name="phone_number" id="phone_number" value="" class="phone_number"/>
 							</li>
 							<!--车辆识别代号-->
 							<li>
-								<label for="">车辆识别代号：</label>
+								<label>车辆识别代号：</label>
 								<input type="text" name="car_model" value="" id="daihao"style="width: 65%;"/>
 							</li>
 							<!--发动机号-->
 							<li>
-								<label for="">发动机号码：</label>
+								<label>发动机号码：</label>
 								<input type="text" name="engine_number" id="engine_number"value="" style="width: 65%;"/>
 							</li>
 							<!--车架号-->
@@ -108,13 +109,13 @@
                             </li>-->
 							<!--登记日期-->
 							<li style="position: relative;">
-								<label for="">注册日期：</label>
+								<label>注册日期：</label>
 								<input type="text" name="registration_date" class="registration_date" id="registration_date"value=""/>
 								<label for="registration_date"><img src="/files/baoxian/img/calendar.png" style="position: absolute;top:13px;right: 44px;" class="calendar"/></label>
 							</li>
 							<!--使用性质-->
 							<li>
-								<label for="">使用性质：</label>
+								<label>使用性质：</label>
 								<select name="property" class="property">
 									<option value="0201">家庭自用-非营运</option>
 									<option value="0202">机关自用-非营运</option>
