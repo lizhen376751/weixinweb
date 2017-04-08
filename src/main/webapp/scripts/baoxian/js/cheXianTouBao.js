@@ -3,10 +3,8 @@ $(document).ready(function(){
     var mineShopCode = $("#mineShopCode").val();
     console.log(mineShopCode);
     if(mineShopCode == "null" ){
-        alert(1)
         $(".nav").hide();
     }else{
-        alert(2)
     }
     $('.titles span').click(function() {
         var i = $(this).index();//下标第一种写法
