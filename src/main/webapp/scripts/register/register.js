@@ -139,18 +139,19 @@ $(document).ready(function () {
     var yzm_start = true;  //------------------------------------------------------定义当前点击状态是否可以点击
     yzm.on("click", function () {
         if (yzm_start == true) {
-            yzm_start = false;
+
             car_judge();
             var password_value = count_password.val();
             var phone_value = count_phone.val();
             var platenumber = car_num.val();
             if (password_value == "") {
                 alert("请设置您的账户密码~")
-            } else if (phone_value == "") {
-                alert("请输入您的手机号码~")
+            } else if (phone_value == "" || phone_value.length < 11) {
+                alert("您输入的手机号码有误，请重新输入~")
             } else {
                 //-----------------------------------------------------请求发送验证码
                 count_down(phone_value);
+                yzm_start = false;
                 $.ajax({
                     type: 'POST',
                     url: '/getCommonAjax2',
