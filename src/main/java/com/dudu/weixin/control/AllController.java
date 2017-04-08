@@ -153,6 +153,35 @@ public class AllController {
     }
 
     /**
+     * 仅用于app端页面跳转
+     *
+     * @param request 请求
+     * @param model   绑定数据
+     * @return
+     */
+    @RequestMapping(value = "/cheXianTouBao", method = RequestMethod.GET)
+    public String cheXianTouBao(HttpServletRequest request, Model model) {
+        String mineShopCode = request.getParameter("mineShopCode");
+        System.out.println(mineShopCode);
+        model.addAttribute("mineShopCode", mineShopCode);
+        return "/baoxian/cheXianTouBao/cheXianTouBao"; //车险投保
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * 1
+     *
      * @param request       域
      * @param baoXianKaiDan 保险开单实体类
      * @param httpSession   域
@@ -167,6 +196,7 @@ public class AllController {
     }
 
     /**
+     * 2
      * 获取保险公司列表展示
      *
      * @param httpSession 域信息
@@ -180,6 +210,7 @@ public class AllController {
     }
 
     /**
+     * 3
      * 根据保险公司获取保险信息列表
      *
      * @param request 域信息
@@ -193,6 +224,7 @@ public class AllController {
     }
 
     /**
+     * 4
      * 获取用户信息
      *
      * @param httpSession 域信息

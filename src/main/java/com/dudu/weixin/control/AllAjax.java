@@ -318,8 +318,8 @@ public class AllAjax {
      * @param shopCode 店管家代码
      * @return OssSecretConfig上传权限
      */
-    @RequestMapping(value = "ossconfig/{shopCode}/{businessConfigId}", method = RequestMethod.GET)
     @ResponseBody
+    @RequestMapping(value = "ossconfig/{shopCode}/{businessConfigId}", method = RequestMethod.GET)
     public OssSecretConfig getConfig(@PathVariable("businessConfigId") Integer businessConfigId, @PathVariable("shopCode") String shopCode) {
         return ossSecretConfigIntf.getOssSecretConfig(new OssSecretConfigParam().setShopCode(shopCode).setBusinessConfigId(businessConfigId));
     }

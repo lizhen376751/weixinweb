@@ -24,7 +24,7 @@
         }
         //车险投保
         function cheXianTouBao() {
-            window.location.href = "/oauthLoginServlet?flagStr=cheXianTouBao";
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_cheXianTouBao";
         }
         //aHi
         function AHIInfo() {

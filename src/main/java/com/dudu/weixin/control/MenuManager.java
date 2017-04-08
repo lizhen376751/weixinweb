@@ -17,7 +17,7 @@ public class MenuManager {
     public static final String lmcode = "CS000";
     public static final String appid = "wxd4e76e01e4a6e3b7";
     public static final String appSecret = "dd1e044b9208d43a5a31238e5ee053c7";
-    public static final String url = "e6968225.ngrok.io";
+    public static final String url = "dcdd5836.ngrok.io";
     public static final String lujing = "oauthLoginServlet";
     private static Logger log = LoggerFactory.getLogger(MenuManager.class);
 
