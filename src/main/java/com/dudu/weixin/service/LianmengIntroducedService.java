@@ -6,7 +6,8 @@ import com.dudu.soa.lmbasedata.basedata.introduted.module.Introduced;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by Administrator on 2017/3/15.
+ * 联盟介绍
+ * Created by lizhen on 2017/3/15.
  */
 @Service
 public class LianmengIntroducedService {

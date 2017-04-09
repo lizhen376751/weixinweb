@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
+ * 联盟活动
  * Created by Administrator on 2017/3/15.
  * 原 LianMengActivityService
  */
