@@ -12,15 +12,15 @@
     <script language="JavaScript">
         //联盟介绍
         function lianMengJieShao() {
-            window.location.href = "/oauthLoginServlet?flagStr=lianMengJieShao";
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_lianMengJieShao";
         }
         //养车信息
         function YCInfo() {
-            window.location.href = "/oauthLoginServlet?flagStr=YCInfo";
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_YCInfo";
         }
         //联盟活动
         function queryLMActivity() {
-            window.location.href = "/oauthLoginServlet?flagStr=lianMengActivity";
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_lianMengActivity";
         }
         //车险投保
         function cheXianTouBao() {
@@ -28,41 +28,41 @@
         }
         //aHi
         function AHIInfo() {
-            window.location.href = "/oauthLoginServlet?flagStr=AHIInfo";
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_AHIInfo";
         }
         //联盟卡包
         function lmkInfo() {
-            window.location.href = "/oauthLoginServlet?flagStr=lmkInfo";
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_lmkInfo";
         }
         //保养提醒
         function baoYangList() {
             //TODO 后期需要调用服务
-            window.location.href = "/oauthLoginServlet?flagStr=baoYangList";
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_baoYangList";
         }
         //服务导航
         function daohangindex() {
             //TODO 暂时未做好...
-            window.location.href = "/oauthLoginServlet?flagStr=daohangindex";
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_daohangindex";
         }
         //消费记录
         function xiaoFeiList() {
             //TODO 暂时未做好...
-            window.location.href = "/oauthLoginServlet?flagStr=xiaoFeiList";
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_xiaoFeiList";
         }
         //注销
         function logout() {
             //TODO 暂时未做好...
-            window.location.href = "/oauthLoginServlet?flagStr=logout";
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_logout";
         }
         //注册
         function register() {
 
-            window.location.href = "/oauthLoginServlet?flagStr=register";
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_register";
         }
         //个人中心
         function personalCenter() {
 
-            window.location.href = "/oauthLoginServlet?flagStr=personalCenter";
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_personalCenter";
         }
     </script>
 </head>

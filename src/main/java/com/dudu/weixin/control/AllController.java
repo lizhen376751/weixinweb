@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -168,20 +167,7 @@ public class AllController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     /**
-     * 1
-     *
      * @param request       域
      * @param baoXianKaiDan 保险开单实体类
      * @param httpSession   域
@@ -192,50 +178,7 @@ public class AllController {
     public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
         System.out.println("提交进入");
         Integer integer = chexiantoubaoService.baoXianTiJiao(request, baoXianKaiDan, httpSession);
-        return "/baoxian/cheXianTouBao/success";
-    }
-
-    /**
-     * 2
-     * 获取保险公司列表展示
-     *
-     * @param httpSession 域信息
-     * @return 跳转页面
-     */
-    @ResponseBody
-    @RequestMapping(value = "insuranceCompanyList", method = RequestMethod.POST)
-    public String insuranceCompanyList(HttpSession httpSession) {
-        chexiantoubaoService.insuranceCompanyList(httpSession);
-        return "";
-    }
-
-    /**
-     * 3
-     * 根据保险公司获取保险信息列表
-     *
-     * @param request 域信息
-     * @return 跳转页面
-     */
-    @ResponseBody
-    @RequestMapping(value = "insuranceInfoByCompany", method = RequestMethod.POST)
-    public String insuranceInfoByCompany(HttpServletRequest request) {
-        chexiantoubaoService.insuranceInfoByCompany(request);
-        return "";
-    }
-
-    /**
-     * 4
-     * 获取用户信息
-     *
-     * @param httpSession 域信息
-     * @param request     域信息
-     * @return 跳转页面
-     */
-    @ResponseBody
-    @RequestMapping(value = "customerInfoById", method = RequestMethod.POST)
-    public String customerInfoById(HttpSession httpSession, HttpServletRequest request) {
-        chexiantoubaoService.customerInfoById(httpSession, request);
-        return "";
+        return "/baoxian/cheXianTouBao/success"; //提交之后提示成功页面
     }
 
 

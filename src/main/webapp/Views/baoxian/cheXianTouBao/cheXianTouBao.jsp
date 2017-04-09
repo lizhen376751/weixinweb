@@ -437,6 +437,6 @@
 		</div>
 	</form>
 </div>
-<input type="hidden" name="mineShopCode" id="mineShopCode" value="<%=mineShopCode%>" class="phone_number"/>
+
 </body>
 </html>

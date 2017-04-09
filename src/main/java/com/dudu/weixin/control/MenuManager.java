@@ -127,7 +127,7 @@ public class MenuManager {
         mainBtn1.setSub_button(new CommonButton[]{btn11, btn12, btn13, btn14, btn15});
 
         ComplexButton mainBtn2 = new ComplexButton();
-        mainBtn2.setName("联盟");
+        mainBtn2.setName("服务");
         mainBtn2.setSub_button(new CommonButton[]{btn21, btn22, btn23, btn24});
 
         ComplexButton mainBtn3 = new ComplexButton();
