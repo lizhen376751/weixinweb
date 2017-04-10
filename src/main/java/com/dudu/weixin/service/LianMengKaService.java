@@ -70,7 +70,7 @@ public class LianMengKaService {
                 return "1";
             } else {
                 //没有激活,修改为激活状态
-                noActive.setIsactive("true");
+                noActive.setIsactive("1");
                 //查询联盟用户id
                 WxCustomer wxCustomer = wxCustomerService.getWxCustomer(platenumber, lmcode);
                 apiNoActive.updateNOActive(noActive);
@@ -82,6 +82,8 @@ public class LianMengKaService {
                 saveModule.setProduct_code(noActive1.getCardcode());
                 saveModule.setProduct_shopcode(lmcode);
                 apiLianmengkaOperateIntf.addLianmengKa(saveModule);
+                //激活成功
+                return "2";
             }
         }
         return "0";

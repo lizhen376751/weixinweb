@@ -141,7 +141,6 @@ public class AllAjax {
             String activecode = request.getParameter("activecode"); //激活码
             String platenumber = request.getParameter("platenumber"); //车牌号码
             String lmcode = request.getParameter("lmcode"); //联盟code
-            System.out.println("注册进入=========" + platenumber + "," + lmcode);
             String active = lianMengKa.active(lmcode, cardnum, activecode, platenumber);
             return active;
         }
