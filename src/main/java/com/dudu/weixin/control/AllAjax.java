@@ -135,6 +135,16 @@ public class AllAjax {
                               @RequestParam(name = "fromflag", required = false) String fromflag,
                               @RequestParam(name = "cardNo", required = false) String cardNo, Model model
     ) {
+        //联盟卡激活
+        if ("lianMengCardActivate".equals(fromflag)) {
+            String cardnum = request.getParameter("cardnum"); //卡号
+            String activecode = request.getParameter("activecode"); //激活码
+            String platenumber = request.getParameter("platenumber"); //车牌号码
+            String lmcode = request.getParameter("lmcode"); //联盟code
+            System.out.println("注册进入=========" + platenumber + "," + lmcode);
+            String active = lianMengKa.active(lmcode, cardnum, activecode, platenumber);
+            return active;
+        }
         //注册,填写车牌号后发送请求
         if ("checkInfo".equals(fromflag)) {
             String platenumber = request.getParameter("platenumber"); //车牌号码
@@ -314,8 +324,9 @@ public class AllAjax {
 
     /**
      * 图片上传
+     *
      * @param businessConfigId 业务id
-     * @param shopCode 店管家代码
+     * @param shopCode         店管家代码
      * @return OssSecretConfig上传权限
      */
     @ResponseBody

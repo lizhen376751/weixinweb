@@ -44,7 +44,7 @@
 .box li .text_1{
 	width: 3.38rem;
 	height: 0.64rem;
-	background: url(../img/personalCenter/underline.png) no-repeat bottom;
+	background: url(/files/personCenter/underline.png) no-repeat bottom;
 	background-size: 3.38rem;
 	margin: 0.24rem auto 0.64rem;
 	text-align: center;

@@ -109,6 +109,9 @@ public class AllController {
             model.addAttribute("cardNo", cardNo);
             model.addAttribute("shopcode", shopcode);
             return "/lianMengKa/lianMengCard/lianMengDetails"; //联盟卡明细
+        } else if ("lianMengCardActivate".equals(flagStr)) {
+            logger.info("联盟卡激活");
+            return "/lianMengCardActivate/lianMengCardActivate"; //联盟卡激活
         } else if ("daoHang".equals(flagStr)) {
             return "/daoHang/daoHangliebiao/service/daohangindex?shopcode=" + shopcode + "&openid=" + openId + '"'; //服务导航
         } else if ("AHIInfo".equals(flagStr)) {

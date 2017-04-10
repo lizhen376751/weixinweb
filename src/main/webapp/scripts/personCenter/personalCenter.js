@@ -150,7 +150,10 @@ $(document).ready(function(){
 			"border":"1px #B3B3B3 solid"
 		})
 	})
-	
+//	--------------------------------------------------------------------------------卡激活跳转
+	$(".kjh").on("click",function () {
+        window.location.href ="/oauthLoginServlet?lmcode=CS000_lianMengCardActivate"
+    })
 	
 	
 	

@@ -54,6 +54,7 @@
             //TODO 暂时未做好...
             window.location.href = "/oauthLoginServlet?lmcode=CS000_logout";
         }
+
         //注册
         function register() {
 
@@ -64,6 +65,7 @@
 
             window.location.href = "/oauthLoginServlet?lmcode=CS000_personalCenter";
         }
+
     </script>
 </head>
 <body>
