@@ -170,15 +170,15 @@ public class AllController {
      * @return 页面跳转至车险投保页面
      */
     @RequestMapping(value = "/cheXianTouBao", method = RequestMethod.GET)
-    public String cheXianTouBao(HttpServletRequest request, Model model, @RequestHeader(value = "token") String tokenStr) {
-//        String mineShopCode = request.getParameter("mineShopCode");
-
-        tokenStr = "AQAAAITdno+PtJqG3cXdzt3T3ZyNmp6LmquWkprdxc/T3ZqHj42WjJqrlpKa3cXP092SnpaRrJeQj7yQm5rdxd3PyszMz8/" +
+    public String cheXianTouBao(HttpServletRequest request, Model model, @RequestHeader(value = "token", required = false) String tokenStr) {
+        //如果不为空,传进来的就是token,如果为空的话就是写死的token
+        tokenStr = tokenStr != null ? tokenStr : "AQAAAITdno+PtJqG3cXdzt3T3ZyNmp6LmquWkprdxc/T3ZqHj42WjJqrlpKa3cXP092SnpaRrJeQj7yQm5rdxd3PyszMz8/" +
                 "O3dPdkZaclLGekprdxd0ZYnEZSlYYa2Dd092NkJOatpvdxc3O092Ml5CPvJCbmt3F3c/KzMzPz87d092KjJqNs5Cem7aRtpvdxd3PyszMz8/" +
                 "Oz87d092Jmo2MlpCR3cXOgg==";
         DuduToken token = duduOauthService.getDuduToken(tokenStr);
         String mineShopCode = token.getMainShopCode();
-        System.out.println(mineShopCode);
+        System.out.println("=========" + mineShopCode);
+        request.setAttribute("mineShopCode", mineShopCode);
         model.addAttribute("mineShopCode", mineShopCode);
         return "/baoxian/cheXianTouBao/cheXianTouBao"; //车险投保
     }
