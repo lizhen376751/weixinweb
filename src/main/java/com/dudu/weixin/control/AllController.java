@@ -1,6 +1,8 @@
 package com.dudu.weixin.control;
 
 import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
+import com.dudu.soa.framework.commons.oauth.module.DuduToken;
+import com.dudu.soa.framework.oauth.DuduOauthService;
 import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LoginActionNewService;
 import com.dudu.weixin.service.ShopInfoService;
@@ -52,7 +54,11 @@ public class AllController {
      */
     @Autowired
     private ValidateService validateService;
-
+    /**
+     * 引入token服务
+     */
+    @Autowired
+    private DuduOauthService duduOauthService;
     /**
      * 登录页面
      *
@@ -151,17 +157,24 @@ public class AllController {
         return "/baoxian/cheXianTouBao/cheXianTouBao";
     }
 
+
+
+
     /**
      * 仅用于app端页面跳转
      *
      * @param request 请求
      * @param model   绑定数据
-     * @return
+     * @return 页面跳转至车险投保页面
      */
     @RequestMapping(value = "/cheXianTouBao", method = RequestMethod.GET)
     public String cheXianTouBao(HttpServletRequest request, Model model) {
-        String mineShopCode = request.getParameter("mineShopCode");
-        System.out.println(mineShopCode);
+//        String mineShopCode = request.getParameter("mineShopCode");
+
+        String tokenStr = "";
+        DuduToken token = duduOauthService.getDuduToken(tokenStr);
+        String mineShopCode = token.getMainShopCode();
+
         model.addAttribute("mineShopCode", mineShopCode);
         return "/baoxian/cheXianTouBao/cheXianTouBao"; //车险投保
     }
