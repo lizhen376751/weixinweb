@@ -21,7 +21,7 @@
         <property name="fileEncoding" value="UTF-8"/>
     </bean>
 
-    <dubbo:annotation package="com.dudu.weixin" />
+    <dubbo:annotation package="com.dudu" />
     <dubbo:application name = "${dubbo.application.name}" />
     <dubbo:protocol name="dubbo" port="${dubbo.application.port}"   host = "${dubbo.application.host}" />
     <dubbo:registry address="${dubbo.registry.address}" />

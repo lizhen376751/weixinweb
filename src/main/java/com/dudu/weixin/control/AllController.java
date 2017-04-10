@@ -12,9 +12,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -57,8 +59,9 @@ public class AllController {
     /**
      * 引入token服务
      */
-    @Autowired
+    @Resource
     private DuduOauthService duduOauthService;
+
     /**
      * 登录页面
      *
@@ -86,7 +89,7 @@ public class AllController {
     @RequestMapping(value = "oauthLoginServlet", method = RequestMethod.GET)
     public String oauthLogin(HttpServletRequest request,
                              Model model) {
-
+        System.out.println("页面进入=============================");
         String strWxShopcode = request.getParameter("lmcode");
         String flagStr = strWxShopcode.split("_")[1];
         String lmcode = strWxShopcode.split("_")[0];
@@ -158,20 +161,21 @@ public class AllController {
     }
 
 
-
-
     /**
      * 仅用于app端页面跳转
      *
-     * @param request 请求
-     * @param model   绑定数据
+     * @param request  请求
+     * @param model    绑定数据
+     * @param tokenStr token字符串
      * @return 页面跳转至车险投保页面
      */
     @RequestMapping(value = "/cheXianTouBao", method = RequestMethod.GET)
-    public String cheXianTouBao(HttpServletRequest request, Model model) {
+    public String cheXianTouBao(HttpServletRequest request, Model model, @RequestHeader(value = "token") String tokenStr) {
 //        String mineShopCode = request.getParameter("mineShopCode");
 
-        String tokenStr = "";
+        tokenStr = "AQAAAITdno+PtJqG3cXdzt3T3ZyNmp6LmquWkprdxc/T3ZqHj42WjJqrlpKa3cXP092SnpaRrJeQj7yQm5rdxd3PyszMz8/" +
+                "O3dPdkZaclLGekprdxd0ZYnEZSlYYa2Dd092NkJOatpvdxc3O092Ml5CPvJCbmt3F3c/KzMzPz87d092KjJqNs5Cem7aRtpvdxd3PyszMz8/" +
+                "Oz87d092Jmo2MlpCR3cXOgg==";
         DuduToken token = duduOauthService.getDuduToken(tokenStr);
         String mineShopCode = token.getMainShopCode();
         System.out.println(mineShopCode);
