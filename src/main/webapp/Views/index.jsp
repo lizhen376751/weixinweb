@@ -65,6 +65,12 @@
 
             window.location.href = "/oauthLoginServlet?lmcode=CS000_personalCenter";
         }
+        //登录
+        function login() {
+
+            window.location.href = "/oauthLoginServlet?lmcode=CS000_login";
+        }
+
 
     </script>
 </head>
@@ -85,6 +91,7 @@
             <li class="btnli"><input type="button" class="regbtn" value="注册" onclick="register()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="个人中心" onclick="personalCenter()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="退出登录" onclick="logout()"/></li>
+            <li class="btnli"><input type="button" class="regbtn" value="登录" onclick="login()"/></li>
         </ul>
     </div>
 

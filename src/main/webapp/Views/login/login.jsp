@@ -1,73 +1,64 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ page language="java" pageEncoding="UTF-8" %>
-<%
-
-    // String strOpenId = request.getParameter("strOpenId");
-    // String shopcode = request.getParameter("shopcode");
-    //TODO  strOpenId  shopcode暂时写死
-    String strOpenId = "owQtWt8L6RVxj_cTUaPyH27RWdbA";
-    String shopcode = "cs000";
-%>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page language="java" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport"/>
-    <meta content="yes" name="apple-mobile-web-app-capable"/>
-    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
-    <meta content="telephone=no" name="format-detection"/>
-    <title>车主登陆</title>
-    <meta name="keywords" content="keyword ..."/>
-    <meta name="Description" content="description ..."/>
-
-    <link href="/styles/login/global.css" rel="stylesheet" type="text/css"/>
-    <script language="JavaScript">
-        //表单输入检查
-        function login() {
-            if (document.form1.CarId.value == "") {
-                alert("请输入车牌号！");
-                document.form1.CarId.focus();
-                return false;
-            }
-            if (document.form1.Phone.value == "") {
-                alert("请输入密码！");
-                document.form1.Phone.focus();
-                return false;
-            }
-            document.form1.submit();
-        }
-
-        function regist() {
-            window.location.href = "regist.jsp?dddopenid=<%=strOpenId%>&shopcode=<%=shopcode%>";
-        }
-        function edit() {
-            window.location.href = "editpassword.jsp?dddopenid=<%=strOpenId%>&shopcode=<%=shopcode%>";
-        }
-    </script>
-</head>
-<body>
-
-
-<div class="regtitle"><img src="/files/login/reg_title.jpg" alt="" title=""/><h4>车主登陆</h4></div>
-<form name="form1" method="post" action="/login" onSubmit="return checkform();">
-    <div class="regform">
-        <ul>
-            <li><label class="label">车牌号码</label><input type="text"
-                                                        style="font-size:24px;vertical-align:middle;background-color:#fff; height:40px; width:400px; border:1px solid #ccc;"
-                                                        name="CarId"/></li>
-            <li><label class="label">登陆密码</label><input type="text"
-                                                        style="font-size:24px;vertical-align:middle;background-color:#fff; height:40px; width:400px; border:1px solid #ccc;"
-                                                        name="Phone"/></li>
-            <li class="btnli"><input type="button" class="regbtn" value="登陆" onclick="login()"/></li>
-            <!--
-              <li class="btnli"><input type="button" class="regbtn" value="注册" onclick="regist()"/></li>
-              <li class="btnli"><input type="button" class="regbtn" value="修改密码" onclick="edit()"/></li>
-            -->
-        </ul>
-    </div>
-    <input name="actions" type="hidden" value="login">
-    <input name="OpenId" type="hidden" value="<%=strOpenId%>">
-    <input name="shopcode" type="hidden" value="<%=shopcode%>">
-</form>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="/styles/login/css/wxlm.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/login/css/login.css"/>
+		
+		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/scripts/login/js/login.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!---------------------------------------------------------------------------------头部logo-->
+		<div class="logo">
+			<img src="/files/login/img/login/logo.png"/>
+		</div>
+		<!---------------------------------------------------------------------------------用户输入部分-->
+		<div class="main_txt">
+			<!-----------------------------------------------------------------------------车牌号-->
+			<input type="text" placeholder="请输入您的车牌号" class="car_num font_3 input_bg"/>
+			<!-----------------------------------------------------------------------------账号密码-->
+			<input type="password" placeholder="请输入您的账号密码" class="password_num margin_top_1 font_3 input_bg"/>
+			<!-----------------------------------------------------------------------------忘记密码-->
+			<a href="#" class="forget_psw font_4">忘记密码</a>
+		</div>
+		<!--------------------------------------------------------------------------------登录和注册按钮-->
+		<div class="bottom_button font_5">
+			<div class="button_left">
+				<div class="login">登录</div>
+			</div>
+			<div class="button_right">
+				<div class="register">注册</div>
+			</div>
+		</div>
+		<!-------------------------------------------------------------------------------弹出层-->
+		<div class="tcc">
+			<!-------------------------------------------------------------------------  用户已注册，且没有密码-->
+			<div class="l_box">
+				<img src="/files/login/img/login/error.png" class="close"/>
+				<!--<span class="l_tt font_3">该车牌号已注册</span>-->
+				<div class="l_dd font_1 color_6">
+					<p class="l_p">我们将发送您的账户密码到</p>
+					<p class="mobile_num">156****1885</p>
+					<p>您注册账户的手机上</p>
+					<p class="color_7 l_bt">请点击确定按钮</p>
+					<p class="font_4 l_qx color_8">取消请关闭窗口</p>
+				</div>
+				<!-------------------------------------------------------------------------------确定按钮-->
+				<div class="l_qdan font_1 color_3">确定</div>
+			</div>
+			
+			<!----------------------------------------------------------------------------用户已注册，有密码-->
+			<div class="b_box">
+				<img src="/files/login/img/login/error.png" class="close"/>
+				<span class="l_tt font_3">该车牌号未注册</span>
+				<span class="l_tj font_3">请注册</span>
+				<span class="l_tq font_1 color_8">取消请关闭窗口</span>
+				<div class="l_qdl font_1 color_3">去注册</div>
+			</div>
+		</div>
+	</body>
 </html>

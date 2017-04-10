@@ -90,11 +90,11 @@ public class AllController {
     public String oauthLogin(HttpServletRequest request,
                              Model model) {
         System.out.println("页面进入=============================");
+        //获取参数,并将其分解
         String strWxShopcode = request.getParameter("lmcode");
-        String flagStr = strWxShopcode.split("_")[1];
-        String lmcode = strWxShopcode.split("_")[0];
+        String flagStr = strWxShopcode.split("_")[1]; //页面跳转判断
+        String lmcode = strWxShopcode.split("_")[0]; //联盟code
 
-        logger.info("菜单进入================================" + flagStr);
         String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
         String openId = (String) httpSession.getAttribute("DUDUCHEWANG_OpenId");
         String shopcode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
@@ -153,12 +153,14 @@ public class AllController {
             lmcode = request.getParameter("lmcode");
             String mobilephone = request.getParameter("mobilephone");
             validateService.sendpassWord(platenumber, lmcode, mobilephone);
-            return "/register/register"; // TODO 注册,已经有该用户,但是没有密码,点击确定发送短信且跳转至登录页面
+            return "/login/login"; // TODO 注册,已经有该用户,但是没有密码,点击确定发送短信且跳转至登录页面
         } else if ("personalCenter".equals(flagStr)) {
             return "/personCenter/personalCenter"; //个人中心
         } else if ("logout".equals(flagStr)) {
             httpSession.setAttribute("DUDUCHEWANG_CarId", null);
             return "/login/logout"; //退出登录
+        } else if ("login".equals(flagStr)) {
+            return "/login/login"; //登录页面 // TODO 登录一会去掉
         }
         return "/baoxian/cheXianTouBao/cheXianTouBao";
     }
@@ -175,9 +177,9 @@ public class AllController {
     @RequestMapping(value = "/cheXianTouBao", method = RequestMethod.GET)
     public String cheXianTouBao(HttpServletRequest request, Model model, @RequestHeader(value = "token", required = false) String tokenStr) {
         //如果不为空,传进来的就是token,如果为空的话就是写死的token
-        tokenStr = tokenStr != null ? tokenStr : "AQAAAITdno+PtJqG3cXdzt3T3ZyNmp6LmquWkprdxc/T3ZqHj42WjJqrlpKa3cXP092SnpaRrJeQj7yQm5rdxd3PyszMz8/" +
-                "O3dPdkZaclLGekprdxd0ZYnEZSlYYa2Dd092NkJOatpvdxc3O092Ml5CPvJCbmt3F3c/KzMzPz87d092KjJqNs5Cem7aRtpvdxd3PyszMz8/" +
-                "Oz87d092Jmo2MlpCR3cXOgg==";
+        tokenStr = tokenStr != null ? tokenStr : "AQAAAITdno+PtJqG3cXdzt3T3ZyNmp6LmquWkprdxc/T3ZqHj42WjJqrlpKa3cXP092SnpaRrJeQj7yQm5rdxd3PyszMz8/"
+                + "O3dPdkZaclLGekprdxd0ZYnEZSlYYa2Dd092NkJOatpvdxc3O092Ml5CPvJCbmt3F3c/KzMzPz87d092KjJqNs5Cem7aRtpvdxd3PyszMz8/"
+                + "Oz87d092Jmo2MlpCR3cXOgg==";
         DuduToken token = duduOauthService.getDuduToken(tokenStr);
         String mineShopCode = token.getMainShopCode();
         System.out.println("=========" + mineShopCode);
