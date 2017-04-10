@@ -95,9 +95,9 @@ public class AllController {
         String flagStr = strWxShopcode.split("_")[1]; //页面跳转判断
         String lmcode = strWxShopcode.split("_")[0]; //联盟code
 
-        String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
-        String openId = (String) httpSession.getAttribute("DUDUCHEWANG_OpenId");
-        String shopcode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
+        String carHaopai = (String) httpSession.getAttribute("carHaopai");
+        String openId = (String) httpSession.getAttribute("openId");
+        String shopcode = ""; //TODO 暂时为空
         //判断点击菜单，进入不同页面
         if ("lmkInfo".equals(flagStr)) {
             return "/lianMengKa/lianMengCard/homePage"; //联盟卡包

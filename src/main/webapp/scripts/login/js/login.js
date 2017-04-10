@@ -65,11 +65,44 @@ $(document).ready(function(){
 			var those = document.getElementsByClassName("car_num")[0];
 			those.select()
 		} else{
-//			$.ajax({
-//				type:"get",
-//				url:"",
-//				async:true
-//			});
+			$.ajax({
+                type: 'POST',
+                url: '/getCommonAjax2',
+                data: {
+                    fromflag: "checkInfo",
+                    platenumber: car_value
+                },
+                success: function (jsonData) {
+                    var jsonData = JSON.parse(jsonData);
+                    if (jsonData == "0") {
+                        return false;//TODO 提示注册
+                    } else if (jsonData == "1") {             //----------------------------------------------------------没密码
+                        $.ajax({
+                            type: 'POST',
+                            url: '/getCommonAjax2',
+                            data: {
+                                fromflag: "getmobiePhone",
+                                lmcode: "CS000",
+                                platenumber: car_value
+                            },
+                            success: function (jsonData) {
+                                b = JSON.parse(jsonData);
+                                var reg = b.substr(3, 4);
+                                var c = b.replace(reg, "****");
+                                moblie_num.text(c);
+                                tc_ceng.show();
+                                l_box.show()
+                            }
+
+                        });
+
+
+                    } else if (jsonData == "2") {             //-----------------------------------------------------------有密码
+                        tc_ceng.show();
+                        b_box.show()
+                    }
+                }
+			});
 			var a = 0;
 			if (a == 0) {            //----------------------------------------------------------------去注册
 				tc_ceng.show();
