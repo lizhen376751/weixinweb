@@ -174,7 +174,7 @@ public class AllController {
         String tokenStr = "";
         DuduToken token = duduOauthService.getDuduToken(tokenStr);
         String mineShopCode = token.getMainShopCode();
-
+        System.out.println(mineShopCode);
         model.addAttribute("mineShopCode", mineShopCode);
         return "/baoxian/cheXianTouBao/cheXianTouBao"; //车险投保
     }
