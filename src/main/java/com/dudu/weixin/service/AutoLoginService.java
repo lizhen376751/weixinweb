@@ -87,7 +87,7 @@ public class AutoLoginService {
                     //1.记录登录记录
                     logInLogService.addLogInLog(platenumber, lmcode, openid);
                     //TODO 2.另外将车牌号,openid,lmcode存如到session里面
-                    return "4!";
+                    return "4";
                 }
             }
             return "0";
@@ -123,7 +123,7 @@ public class AutoLoginService {
             wxCustomerService.addWxCustomer(wxCustomer);
             //先根据openid判断之前有没有登录的信息
             logInLogService.addLogInLog(platenumber, lmcode, openid);
-            //TODO 2.另外将车牌号,openid,lmcode存如到session里面
+
             //返回3注册成功
             return "3";
         } else {

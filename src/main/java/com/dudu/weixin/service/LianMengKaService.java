@@ -65,7 +65,7 @@ public class LianMengKaService {
         //判断卡号和激活码是存在,不存在提示输入错误
         if (noActive1 != null) {
             //判断该卡是否已经激活
-            if (noActive1.getIsactive().equals("true") || noActive1.getIsactive() == "true") {
+            if (noActive1.getIsactive().equals("1") || noActive1.getIsactive() == "1") {
                 //已经激活
                 return "1";
             } else {

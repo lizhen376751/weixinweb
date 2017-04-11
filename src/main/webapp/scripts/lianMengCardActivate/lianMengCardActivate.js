@@ -70,30 +70,30 @@ $(document).ready(function () {
                 url: '/getCommonAjax2',
                 data: {
                     fromflag: "lianMengCardActivate",
-                    platenumber: "鲁A00001",
-                    lmcode: "CS000",
                     cardnum: card_value,
                     activecode: activate_value
                 },
                 success: function (jsondata) {
-                    alert(jsondata);
+                    console.log(jsondata);
+                    var backdata = JSON.parse(jsondata);
+                    if (backdata=="0"){
+                        tc_ceng.show();
+                        l_box.show();
+                        setTimeout(function () {
+                            tc_ceng.hide();
+                            l_box.hide();
+                            b_box.hide();
+                            card_num.val("");
+                            activate_num.val("")
+                        }, 3000);
+                    }else if (backdata=="1"){
+                        alert("该卡号已经激活!");
+                    }else if(backdata=="2"){
+                        tc_ceng.show();
+                        b_box.show();
+                    }
                 }
             });
-            var a = "1";  //----------------------------------------------------------------------1，成功；0，失败
-            if (a == "0") {
-                tc_ceng.show();
-                l_box.show();
-                setTimeout(function () {
-                    tc_ceng.hide();
-                    l_box.hide();
-                    b_box.hide();
-                    card_num.val("");
-                    activate_num.val("")
-                }, 3000)
-            } else if (a == "1") {
-                tc_ceng.show();
-                b_box.show();
-            }
         }
 
     })
@@ -118,7 +118,7 @@ $(document).ready(function () {
         l_box.hide();
         b_box.hide();
         //----------------------------------------------------------------------------------激活成功后跳转的页面
-        window.location.href = "";
+        window.location.href = "/oauthLoginServlet?flagStr=personalCenter";
     })
 
 
