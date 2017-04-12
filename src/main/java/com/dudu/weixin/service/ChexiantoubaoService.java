@@ -10,14 +10,14 @@ import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianList;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianParamList;
 import com.dudu.soa.baoxian.kaidan.module.CustomerModel;
+import com.dudu.soa.baoxian.kaidan.module.InsuranceBill;
+import com.dudu.soa.baoxian.kaidan.module.InsuranceCompany;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceInfo;
-import com.dudu.soa.baoxian.kaidan.module1.InsuranceBill;
-import com.dudu.soa.baoxian.kaidan.module1.InsuranceCompany;
-import com.dudu.soa.baoxian.kaidan.module1.InsuranceType;
+
+import com.dudu.soa.baoxian.kaidan.module.InsuranceType;
 import com.dudu.soa.basedata.employee.api.ApiBaseDataEmployee;
 import com.dudu.soa.basedata.employee.module.Employee;
 import com.dudu.soa.basedata.employee.module.ServiceAdvisor;
-
 import com.dudu.soa.customercenter.customer.api.ApiCustomerInfo;
 import com.dudu.soa.customercenter.customer.module.CustomerInfo;
 import com.dudu.soa.customercenter.customer.module.CustomerInfoParam;
