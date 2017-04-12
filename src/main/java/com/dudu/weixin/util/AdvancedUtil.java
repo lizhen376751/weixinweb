@@ -2,10 +2,13 @@ package com.dudu.weixin.util;
 
 import com.alibaba.fastjson.JSONObject;
 import com.dudu.weixin.mould.WeixinOauth2Token;
+import org.springframework.stereotype.Service;
 
 /**
- * Created by Administrator on 2017/3/15.
+ * 获取网页授权的access_token
+ * Created by lizhen on 2017/3/15.
  */
+@Service
 public class AdvancedUtil {
 
     /**

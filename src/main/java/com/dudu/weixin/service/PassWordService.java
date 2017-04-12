@@ -2,7 +2,7 @@ package com.dudu.weixin.service;
 
 
 import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
-import com.dudu.weixin.util.TestMD5;
+import com.dudu.weixin.util.TestMD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,14 +40,14 @@ public class PassWordService {
             //有用户信息的情况,判断是否有密码
             String password = wxCustomer1.getPassword();
             if (null != password && !"".equals(password)) {
-                if (!password.equals(TestMD5.kL(oldpassword))) {
+                if (!password.equals(TestMD5Util.kL(oldpassword))) {
                     //密码输入错误
                     return "0";
                 } else {
                     //密码匹配成功,修改密码
                     WxCustomer wxCustomer = new WxCustomer();
                     wxCustomer.setCarHaopai(platenumber);
-                    wxCustomer.setPassword(TestMD5.kL(newpassword));
+                    wxCustomer.setPassword(TestMD5Util.kL(newpassword));
                     wxCustomer.setBrandCode(lmcode);
                     wxCustomerService.updateCustomer(wxCustomer);
                     //密码输入正确

@@ -23,7 +23,7 @@ import java.net.URL;
  */
  public final class WeixinUtil {
      private WeixinUtil() {
-     };
+     }
 
     /**
      * 发起https请求并获取结果

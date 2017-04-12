@@ -1,7 +1,7 @@
 package com.dudu.weixin.service;
 
 import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
-import com.dudu.weixin.util.TestMD5;
+import com.dudu.weixin.util.TestMD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -81,7 +81,7 @@ public class AutoLoginService {
                     return "1";
                 }
                 //如果输入的密码不一致提示密码错误,反之登录成功
-                if (!password1.equals(TestMD5.kL(password))) {
+                if (!password1.equals(TestMD5Util.kL(password))) {
                     return "3";
                 } else {
                     //1.记录登录记录
@@ -119,7 +119,7 @@ public class AutoLoginService {
             wxCustomer.setBrandCode(lmcode);
             wxCustomer.setCarHaopai(platenumber);
             wxCustomer.setCustomerMobile(mobilephone);
-            wxCustomer.setPassword(TestMD5.kL(password));
+            wxCustomer.setPassword(TestMD5Util.kL(password));
             wxCustomerService.addWxCustomer(wxCustomer);
             //先根据openid判断之前有没有登录的信息
             logInLogService.addLogInLog(platenumber, lmcode, openid);

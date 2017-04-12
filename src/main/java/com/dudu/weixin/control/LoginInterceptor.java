@@ -1,9 +1,10 @@
 package com.dudu.weixin.control;
 
-import com.alibaba.dubbo.config.annotation.Reference;
+
 import com.dudu.soa.weixindubbo.loginlog.module.LogInLog;
-import com.dudu.soa.weixindubbo.weixin.api.ApiWeiXindUtil;
+import com.dudu.weixin.mould.WeixinOauth2Token;
 import com.dudu.weixin.service.LogInLogService;
+import com.dudu.weixin.util.AdvancedUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,10 +29,10 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Autowired
     private LogInLogService logInLogService;
     /**
-     * 引入获取openid的接口
+     * 获取网页授权的access_token
      */
-    @Reference(version = "1.0", owner = "lizhen")
-    private ApiWeiXindUtil apiWeiXindUtil;
+    @Autowired
+    private AdvancedUtil advancedUtil;
 
     /**
      * @param request
@@ -64,14 +65,13 @@ public class LoginInterceptor implements HandlerInterceptor {
         String openId = (String) httpSession.getAttribute("openId");
         //判断session里面有没有openId
         if (null == openId || openId.equals("")) {
-            //TODO 暂时写死
-            openId = "gggsdsaokkllmsds";
+
             //TODO 暂时注释掉 获取用户的openid
-//            String code = request.getParameter("code");
-//            String appId = "";
-//            String appSecret = "";
-//            WeixinOauth2Token oauth2AccessToken = apiWeiXindUtil.getOauth2AccessToken(appId, appSecret, code);
-//            openId = oauth2AccessToken.getOpenId();
+            String code = request.getParameter("code");
+            String appId = "wxd4e76e01e4a6e3b7";
+            String appSecret = "dd1e044b9208d43a5a31238e5ee053c7";
+            WeixinOauth2Token oauth2AccessToken = advancedUtil.getOauth2AccessToken(appId, appSecret, code);
+            openId = oauth2AccessToken.getOpenId();
             httpSession.setAttribute("openId", openId);
         }
 

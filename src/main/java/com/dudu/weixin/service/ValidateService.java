@@ -5,7 +5,7 @@ import com.dudu.soa.messagecenter.message.api.ApiSendSms;
 import com.dudu.soa.messagecenter.message.module.ParameterEntry;
 import com.dudu.soa.weixindubbo.smssend.api.ApiSmsSend;
 import com.dudu.soa.weixindubbo.smssend.module.SmsSendLog;
-import com.dudu.weixin.util.TestMD5;
+import com.dudu.weixin.util.TestMD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -95,7 +95,7 @@ public class ValidateService {
             //密码的发送
             this.sendvalidate("000000", "重置密码", mobilephone, radomInt);
             //同步的修改用户信息的密码
-            wxCustomerService.updateWxCustomer(platenumber, lmcode, TestMD5.kL(radomInt));
+            wxCustomerService.updateWxCustomer(platenumber, lmcode, TestMD5Util.kL(radomInt));
             //验证码发送成功后进行记录
             smsSend.setServiceType("重置密码");
             smsSend.setIdentifyingCode(radomInt);

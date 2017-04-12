@@ -14,7 +14,7 @@ public final class SignUtil {
     private static final String TOKEN = "duduchewang";
 
     private SignUtil() {
-    };
+    }
 
     /**
      * 将token、timestamp、nonce三个参数进行字典序排序

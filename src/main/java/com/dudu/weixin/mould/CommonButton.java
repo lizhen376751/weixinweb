@@ -2,10 +2,7 @@ package com.dudu.weixin.mould;
 
 
 
-/**
- * ��ͨ��ť���Ӱ�ť��
- * 
- */
+
 public class CommonButton extends Button {
 	private String type;
 	private String key;
