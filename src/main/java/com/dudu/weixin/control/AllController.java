@@ -231,10 +231,10 @@ public class AllController {
         List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
         ModelAndView m = new ModelAndView();
         m.addObject("list", baoXianLists);
-        m.setViewName("");
+        m.setViewName("/cheXianList/cheXianList"); //展示车险列表的页面
         return m;
     }
-    
+
 
 
 }
