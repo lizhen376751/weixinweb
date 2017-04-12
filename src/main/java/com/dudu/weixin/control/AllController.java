@@ -1,5 +1,6 @@
 package com.dudu.weixin.control;
 
+import com.alibaba.fastjson.JSONObject;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianList;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianParamList;
 import com.dudu.soa.framework.commons.oauth.module.DuduToken;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -202,13 +204,14 @@ public class AllController {
      * @return String
      * @throws ParseException 异常抛出
      */
+    @ResponseBody
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
     public String baoXianTiJiao(HttpServletRequest request) throws ParseException {
         Integer integer = chexiantoubaoService.baoXianTiJiao(request);
-        if (integer > 0){
-            return "1";
+        if (integer > 0) {
+            return JSONObject.toJSONString("1");
         } else {
-          return "0";
+          return JSONObject.toJSONString("0");
         }
 
     }
