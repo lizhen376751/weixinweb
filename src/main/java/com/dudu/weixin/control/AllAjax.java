@@ -337,7 +337,6 @@ public class AllAjax {
         return ossSecretConfigIntf.getOssSecretConfig(new OssSecretConfigParam().setShopCode(shopCode).setBusinessConfigId(businessConfigId));
     }
 
-
     /**
      * @param str 传进需要解析的字符串
      * @return String返回字符串
