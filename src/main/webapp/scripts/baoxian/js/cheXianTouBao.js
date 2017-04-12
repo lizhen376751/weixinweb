@@ -658,15 +658,24 @@ $(document).ready(function(){
                         if (chexian == true) {
                             if (input_file_driving != "" && input_file_driving_1 != "") {
                                 if (input_file_filepath != "" && input_file_filepath_1 != "") {
-                                    // $("form").submit()
-                                    // $.ajax({
-                                    //     type:'POST',
-                                    //         url:"/baoxiantijiao",
-                                    //         data:$("form").serialize(),
-                                    //         success:function (data) {
-                                    //             console.log(data);
-                                    //         }
-                                    // })
+                                    // $("form").submit();
+                                    var abc = $("form").serialize();
+                                    $.ajax({
+                                        type:'POST',
+                                            url:"/baoxiantijiao",
+                                            data:abc,
+                                            success:function (data) {
+                                                var json = JSON.parse(data);
+                                                if(json == '"1"'){
+                                                    window.location.href = "/oauthLoginServlet?flagStr=baoxianlist";
+                                                }else{
+                                                    alert("提交失败，请重新提交！")
+                                                }
+                                            },
+                                            error:function(data){
+                                                alert(data)
+                                            }
+                                    })
                                 } else{
                                     alert("请上传身份证图片");
                                     return false;

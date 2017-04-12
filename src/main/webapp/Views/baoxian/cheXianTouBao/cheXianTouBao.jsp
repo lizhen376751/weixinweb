@@ -32,7 +32,7 @@
 </head>
 <body>
 <div id="wrap">
-    <form>
+    <form target="_blank">
         <%--mineShopCode隐藏域--%>
         <input type="hidden" name="mineShopCode" id="mineShopCode" value="<%=mineShopCode%>" class="phone_number"/>
         <%--shopCode隐藏域--%>

@@ -170,6 +170,8 @@ public class AllController {
             return "/login/logout.jsp"; //退出登录
         } else if ("login".equals(flagStr)) {
             return "/login/login.jsp"; //登录页面 (注册时提示已注册,提供跳转至登录的入口)
+        } else if ("baoxianlist".equals(flagStr)) {
+            return "/cheXianList/cheXianList.jsp"; //车险报价
         }
         return "/baoxian/cheXianTouBao/cheXianTouBao.jsp";
     }
