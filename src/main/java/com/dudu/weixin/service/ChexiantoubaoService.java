@@ -28,6 +28,8 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -86,12 +88,14 @@ public class ChexiantoubaoService {
         List<BaoXianType> baoXianTypes = aPIBaoXianType.selectBaoXianShuJu();
         return baoXianTypes;
     }
+
     /**
-     * 提交保险开单
-     * @param request 获取参数
+     *
+     * @param request 获取值
      * @return Integer
+     * @throws ParseException 异常
      */
-    public Integer baoXianTiJiao(HttpServletRequest request) {
+    public Integer baoXianTiJiao(HttpServletRequest request) throws ParseException {
         InsuranceBill insuranceBill = new InsuranceBill();
         //获取店铺编码
         String shopCode = request.getParameter("mineShopCode");
@@ -157,8 +161,9 @@ public class ChexiantoubaoService {
         //获取注册日期
         String registrationDate = request.getParameter("registration_date");
         if (null != registrationDate && !"".equals(registrationDate)) {
-            Date createTime = new Date(registrationDate);
-            cm.setCreateTime(createTime);
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date parse = simpleDateFormat.parse(registrationDate);
+            cm.setCreateTime(parse);
         }
         //设置客户的联盟编码
         if (null != shopCodeLm && !"".equals(shopCodeLm)) {

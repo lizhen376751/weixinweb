@@ -22,6 +22,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -202,16 +203,18 @@ public class AllController {
 
 
     /**
-     * @param request 作用域获取参数
+     * 提交保险
+     * @param request 获取参数
      * @return String
+     * @throws ParseException 异常抛出
      */
-
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
-    public String baoXianTiJiao(HttpServletRequest request) {
+    public String baoXianTiJiao(HttpServletRequest request) throws ParseException {
         System.out.println("提交进入");
         Integer integer = chexiantoubaoService.baoXianTiJiao(request);
         return "/baoxian/cheXianTouBao/success"; //提交之后提示成功页面
     }
+
 
     /**
      *
@@ -220,7 +223,7 @@ public class AllController {
      * @return 页面跳转至车险列表展示页面
      */
     @RequestMapping(value = "queryBaoXian", method = RequestMethod.GET)
-    public String queryInsurance(HttpServletRequest request,Model model) {
+    public String queryInsurance(HttpServletRequest request, Model model) {
         BaoXianParamList baoXianParamList = new BaoXianParamList();
         String  lmcode = (String) request.getSession().getAttribute("lmcode");
         String plateNumber = (String) request.getSession().getAttribute("plateNumber");
@@ -234,6 +237,7 @@ public class AllController {
         model.addAttribute("list", baoXianLists);
         return "/cheXianList/cheXianList"; //展示车险列表的页面
     }
+
     /**
      * 仅用于app端页面跳转
      *
