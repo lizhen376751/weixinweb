@@ -210,7 +210,7 @@ public class AllController {
         System.out.println("=========" + mineShopCode);
         request.setAttribute("mineShopCode", mineShopCode);
         model.addAttribute("mineShopCode", mineShopCode);
-        return "/baoxian/cheXianTouBao/cheXianTouBao"; //车险投保
+        return "/baoxian/cheXianTouBao/cheXianTouBao.jsp"; //车险投保
     }
 
 
@@ -225,7 +225,7 @@ public class AllController {
     public String baoXianTiJiao(HttpServletRequest request) throws ParseException {
         System.out.println("提交进入");
         Integer integer = chexiantoubaoService.baoXianTiJiao(request);
-        return "/baoxian/cheXianTouBao/success"; //提交之后提示成功页面
+        return "/baoxian/cheXianTouBao/success.jsp"; //提交之后提示成功页面
     }
 
 
@@ -247,7 +247,7 @@ public class AllController {
         }
         List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
         model.addAttribute("list", baoXianLists);
-        return "/cheXianList/cheXianList"; //展示车险列表的页面
+        return "/cheXianList/cheXianList.jsp"; //展示车险列表的页面
     }
 
     /**
@@ -274,7 +274,7 @@ public class AllController {
         }
         List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
         model.addAttribute("list", baoXianLists);
-        return "/cheXianList/cheXianList"; //展示车险列表的页面
+        return "/cheXianList/cheXianList.jsp"; //展示车险列表的页面
 
 
     }
