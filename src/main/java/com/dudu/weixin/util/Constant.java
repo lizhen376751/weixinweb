@@ -1,87 +1,41 @@
 package com.dudu.weixin.util;
 
-import org.springframework.stereotype.Service;
-
 /**
- * 常量类
- * Created by Administrator on 2017/3/15.
+ * 常量类,所有的常量均存放于此
+ * Created by lizhen on 2017/3/15.
  */
-@Service
-public class Constant {
+public final class Constant {
     /**
-     *
+     * 构造器
      */
-    private String weixinBaseUrl = "www.duduchewang.cn";
-    /**
-     *
-     */
-    private String path = "weixincore_cn";
-    /**
-     *
-     */
-    private final Long serialVersionUID = -1847238807216447030L;
-    /**
-     *
-     */
-    private String commonLuJing = "weixincore";
-    /**
-     *
-     */
-    private String eLBURL = "wx.elubon.com";
-    /**
-     *
-     */
-    private  String cURRENCYFENREGEX = "\\-?[0-9]+";
-
-    /**
-     *
-     * @return cURRENCYFENREGEX
-     */
-    public String getCURRENCYFENREGEX() {
-        return cURRENCYFENREGEX;
+    private Constant() {
     }
-
     /**
-     *
-     * @return serialVersionUID
+     * 微信开发者的appid
      */
-    public long getSerialVersionUID() {
-        return serialVersionUID;
-
-    }
-
+    public static final String APPID = "wxd4e76e01e4a6e3b7";
     /**
-     *
-     * @return weixinBaseUrl
+     * 微信开发者的appSecret
      */
-    public String getWeixinBaseUrl() {
-        return weixinBaseUrl;
-    }
-
+    public static final String APPSERECT = "dd1e044b9208d43a5a31238e5ee053c7";
     /**
-     *
-     * @return path
+     * 微信的url
      */
-    public String getPath() {
-        return path;
-    }
-
-
+    public static final String URL = "83d94aa0.ngrok.io";
     /**
-     *
-     * @return commonLuJing
+     * 主路径
      */
-    public String getcommonLuJing() {
-        return commonLuJing;
-    }
-
+    public static final String LUJING = "oauthLoginServlet";
     /**
-     *
-     * @return eLBURL
+     * 联盟code
      */
-    public String geteLBURL() {
-        return eLBURL;
-    }
+    public static final String LMCODE = "CS000";
+    /**
+     * 开头路径
+     */
+    public static final String COMMONURL = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
+            + APPID + "&redirect_uri=http%3A%2F%2F" + URL + "%2F" + LUJING + "?lmcode=" + LMCODE;
+
 
 
 }
