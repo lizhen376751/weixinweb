@@ -629,24 +629,15 @@ $(document).ready(function(){
 
     //提交按钮前的判断
     $(".tijiao").on("click",function(){
-
-        // $.ajax({
-        //     type    : 'POST',
-        //     url     : "/baoxiantijiao",
-        //     data    : {
-        //
-        //         },
-        //     success:function (data) {
-        //         alert("保存成功");
-        //     }
-        // })
+        var abc = $("form").serialize();
+        console.log(abc);
         //获取车辆信息页中的信息
         var car_number = $("#car_number").val();
         var your_name = $("#your_name").val();
         var phone_number = $("#phone_number").val();
-        var daihao = $("#daihao").val();
-        var engine_number = $("#engine_number").val();
-        var registration_date = $("#registration_date").val();
+        // var daihao = $("#daihao").val();            //-------------车辆识别代号
+        // var engine_number = $("#engine_number").val();   //-------------------发动机号
+        // var registration_date = $("#registration_date").val(); //----------------------注册日期
         //获取保险信息页中的信息
         var xianzhong = $('.list .two .insurance_company .baoxian input[name="xianzhong"]').is(":checked");
         var chexian = $('.list .two input[name="chexian"]').is(":checked");
@@ -663,52 +654,35 @@ $(document).ready(function(){
         if (car_number != "") {
         	if (your_name != "") {
         		if (phone_number != "") {
-        			if (daihao != "") {
-        				if (engine_number != "") {
-        					if (registration_date != "") {
-        						if (xianzhong == true) {
-        			    		if (chexian == true) {
-        			    			if (input_file_driving != "" && input_file_driving_1 != "") {
-        								if (input_file_filepath != "" && input_file_filepath_1 != "") {
-        								    $("form").submit()
-                                            // $.ajax({
-                                            //     type    : 'POST',
-                                            //         url     : "/baoxiantijiao",
-                                            //         data    : $("form").serialize(),
-                                            //         success:function (data) {
-                                            //             alert(data);
-                                            //         }
-                                            // })
-
-
-        								} else{
-        									alert("请上传身份证图片");
-        									return false;
-        								}
-        							} else{
-        								alert("请上传行驶证照片");
-        								return false;
-        							}
-        			    		} else{
-        			    			alert("请选险种");
-        			    			return false;
-        			    		}
-        			    	} else{
-        			    		alert("请选择保险公司");
-        			    		return false;
-        			    	}
-        					} else{
-        						alert("请输入注册日期");
-        						return false;
-        					}
-        				} else{
-        					alert("请输入发动机号码");
-        					return false;
-        				}
-        			} else{
-        				alert("请填写车辆识别代号");
-        				return false;
-        			}
+                    if (xianzhong == true) {
+                        if (chexian == true) {
+                            if (input_file_driving != "" && input_file_driving_1 != "") {
+                                if (input_file_filepath != "" && input_file_filepath_1 != "") {
+                                    // $("form").submit()
+                                    // $.ajax({
+                                    //     type:'POST',
+                                    //         url:"/baoxiantijiao",
+                                    //         data:$("form").serialize(),
+                                    //         success:function (data) {
+                                    //             console.log(data);
+                                    //         }
+                                    // })
+                                } else{
+                                    alert("请上传身份证图片");
+                                    return false;
+                                }
+                            } else{
+                                alert("请上传行驶证照片");
+                                return false;
+                            }
+                        } else{
+                            alert("请选险种");
+                            return false;
+                        }
+                    } else{
+                        alert("请选择保险公司");
+                        return false;
+                    }
         		} else{
         			alert("请填写您的手机号码");
         			return false;
