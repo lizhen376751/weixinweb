@@ -96,9 +96,18 @@ public class AllController {
         System.out.println("页面进入=============================");
         //获取参数,并将其分解
         String strWxShopcode = request.getParameter("lmcode");
-        String flagStr = strWxShopcode.split("_")[1]; //页面跳转判断
-        String lmcode = strWxShopcode.split("_")[0]; //联盟code
+        String flagStr = "";
+        String lmcode = "";
+        if (strWxShopcode == null || "" == strWxShopcode || "".equals(strWxShopcode)) {
+            flagStr = request.getParameter("flagStr");
+        } else {
+            flagStr = strWxShopcode.split("_")[1]; //页面跳转判断
+            lmcode = strWxShopcode.split("_")[0]; //联盟code
 
+        }
+        if (null == lmcode || "".equals(lmcode)) {
+            lmcode = (String) httpSession.getAttribute("lmcode");
+        }
         String carHaopai = (String) httpSession.getAttribute("carHaopai");
         String openId = (String) httpSession.getAttribute("openId");
         String shopcode = ""; //TODO 暂时为空
@@ -154,17 +163,16 @@ public class AllController {
             return "/register/register"; //注册
         } else if ("suresms".equals(flagStr)) {
             String platenumber = request.getParameter("platenumber");
-            lmcode = request.getParameter("lmcode");
             String mobilephone = request.getParameter("mobilephone");
             validateService.sendpassWord(platenumber, lmcode, mobilephone);
-            return "/login/login"; // TODO 注册,已经有该用户,但是没有密码,点击确定发送短信且跳转至登录页面
+            return "/login/login"; //已经有该用户,但是没有密码,点击确定发送短信且跳转至登录页面
         } else if ("personalCenter".equals(flagStr)) {
             return "/personCenter/personalCenter"; //个人中心
         } else if ("logout".equals(flagStr)) {
             httpSession.setAttribute("DUDUCHEWANG_CarId", null);
             return "/login/logout"; //退出登录
         } else if ("login".equals(flagStr)) {
-            return "/login/login"; //登录页面 // TODO 登录一会去掉
+            return "/login/login"; //登录页面 (注册时提示已注册,提供跳转至登录的入口)
         }
         return "/baoxian/cheXianTouBao/cheXianTouBao";
     }

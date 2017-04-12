@@ -54,7 +54,6 @@ $(document).ready(function () {
                 url: '/getCommonAjax2',
                 data: {
                     fromflag: "checkInfo",
-                    lmcode: "CS000", //TODO 暂时写死
                     platenumber: car_value
                 },
                 success: function (jsonData) {
@@ -68,7 +67,6 @@ $(document).ready(function () {
                             url: '/getCommonAjax2',
                             data: {
                                 fromflag: "getmobiePhone",
-                                lmcode: "CS000", //TODO 暂时写死
                                 platenumber: car_value
                             },
                             success: function (jsonData) {
@@ -157,7 +155,6 @@ $(document).ready(function () {
                     url: '/getCommonAjax2',
                     data: {
                         fromflag: "addvalidate",
-                        lmcode: "CS000", //TODO 暂时写死
                         platenumber: platenumber,
                         mobilephone: phone_value
                     },
@@ -193,16 +190,14 @@ $(document).ready(function () {
                 data: {
                     fromflag: "register",
                     platenumber: platenumber,
-                    lmcode: "CS000", //TODO 暂时写死
                     password: password_value,
-                    openid: "owQtWt8L6RVxj_cTUaPyH27RWdbA",//TODO 暂时写死
                     mobilephone: phone_value,
                     verificationCode: verification_value
                 },
                 success: function (jsonData) {
-                    var backdata = JSON.parse(jsonData);;
+                    var backdata = JSON.parse(jsonData);
                     if(backdata == "3"){
-                        window.location.href = "";
+                        window.location.href = "/oauthLoginServlet?flagStr=personalCenter";
                     }else if(backdata == "4"){
                         alert("输入验证码有误，请重新输入！")
                     }
@@ -225,7 +220,6 @@ $(document).ready(function () {
             data: {
                 flagStr: "suresms",
                 platenumber:  car_num.val(),
-                lmcode: "CS000", //TODO 暂时写死
                 mobilephone: b
             },
             success: function (jsonData) {
@@ -246,7 +240,7 @@ $(document).ready(function () {
         tc_ceng.hide();
         l_box.hide();
         b_box.hide()
-//		window.location.href = "";
+		window.location.href = "oauthLoginServlet?flagStr=login";
     })
 
 
