@@ -5,6 +5,8 @@ import com.dudu.weixin.util.TestMD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by Administrator on 2017/3/22.
  * 登录.注册
@@ -27,7 +29,11 @@ public class AutoLoginService {
      */
     @Autowired
     private LogInLogService logInLogService;
-
+    /**
+     * session
+     */
+    @Autowired
+    private HttpSession httpSession;
 
     /**
      * 注册和登录:车牌号输入之后发送请求
@@ -86,7 +92,10 @@ public class AutoLoginService {
                 } else {
                     //1.记录登录记录
                     logInLogService.addLogInLog(platenumber, lmcode, openid);
-                    //TODO 2.另外将车牌号,openid,lmcode存如到session里面
+                    //另外将车牌号,openid,lmcode存如到session里面
+                    httpSession.setAttribute("plateNumber", platenumber);
+                    httpSession.setAttribute("openId", openid);
+                    httpSession.setAttribute("lmcode", lmcode);
                     return "4";
                 }
             }
@@ -123,7 +132,10 @@ public class AutoLoginService {
             wxCustomerService.addWxCustomer(wxCustomer);
             //先根据openid判断之前有没有登录的信息
             logInLogService.addLogInLog(platenumber, lmcode, openid);
-
+            //另外将车牌号,openid,lmcode存如到session里面
+            httpSession.setAttribute("plateNumber", platenumber);
+            httpSession.setAttribute("openId", openid);
+            httpSession.setAttribute("lmcode", lmcode);
             //返回3注册成功
             return "3";
         } else {

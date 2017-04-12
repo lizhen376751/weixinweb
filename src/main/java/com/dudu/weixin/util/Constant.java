@@ -25,7 +25,7 @@ public final class Constant {
     /**
      * 微信的url
      */
-    public static final String URL = "83d94aa0.ngrok.io";
+    public static final String URL = "lm.wx.dev.duduchewang.cn";
     /**
      * 主路径
      */

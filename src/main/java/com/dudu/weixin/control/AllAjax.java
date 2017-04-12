@@ -125,7 +125,7 @@ public class AllAjax {
      * @param request  请求
      * @param response 返回
      * @param fromflag 路径参数
-     * @param cardNo   车牌号
+     * @param cardNo   联盟卡号
      * @param model    返回数据
      * @return Object 返回路径
      */
@@ -135,6 +135,7 @@ public class AllAjax {
                               @RequestParam(name = "fromflag", required = false) String fromflag,
                               @RequestParam(name = "cardNo", required = false) String cardNo, Model model
     ) {
+
         String platenumber = (String) httpSession.getAttribute("plateNumber"); //车牌号码
         String openId = (String) httpSession.getAttribute("openId"); //openid
         String lmcode = (String) httpSession.getAttribute("lmcode"); //联盟code
@@ -199,27 +200,27 @@ public class AllAjax {
                              @RequestParam(name = "cardNo", required = false) String cardNo, Model model
     ) {
         response.setCharacterEncoding("UTF-8");
-        String carId = (String) httpSession.getAttribute("DUDUCHEWANG_CarId");
-        String openId = (String) httpSession.getAttribute("DUDUCHEWANG_OpenId");
-        String shopcode = (String) httpSession.getAttribute("DUDUCHEWANG_shopcode");
+        String platenumber = (String) httpSession.getAttribute("platenumber"); //车牌号
+        String openId = (String) httpSession.getAttribute("openid"); //微信的openid
+        String lmcode = (String) httpSession.getAttribute("lmcode"); //联盟code
         Object obj = null;
         fromflag = encodingUrl(fromflag);
-        shopcode = encodingUrl(shopcode);
-        String carHaoPai = carId;
+
+
 
         //联盟卡主页信息列表
         if ("queryLmkInfoList".equals(fromflag)) {
-            List<LianmengkaXmLeftResultModule> lianmengkaXmLeftResultModules = lianMengKa.queryLmkInfo(shopcode, carHaoPai);
+            List<LianmengkaXmLeftResultModule> lianmengkaXmLeftResultModules = lianMengKa.queryLmkInfo(lmcode, platenumber);
             return lianmengkaXmLeftResultModules;
         }
         //联盟卡消费明细页面
         if ("queryLmkXiaoFeiMX".equals(fromflag)) {
-            List<LianmengkaXmCustResultModule> lianmengkaXmCustResultModules = lianMengKa.queryLmkXiaoFeiMX(shopcode, cardNo, carHaoPai);
+            List<LianmengkaXmCustResultModule> lianmengkaXmCustResultModules = lianMengKa.queryLmkXiaoFeiMX(lmcode, cardNo, platenumber);
             return lianmengkaXmCustResultModules;
         }
         //获取联盟卡发卡店铺名称
         if ("getXmkCardInfo".equals(fromflag)) {
-            List<LianmengKaResultModule> xmkCardInfo = lianMengKa.getXmkCardInfo(shopcode, cardNo, carHaoPai);
+            List<LianmengKaResultModule> xmkCardInfo = lianMengKa.getXmkCardInfo(lmcode, cardNo, platenumber);
             return xmkCardInfo;
         }
         //获取联盟卡二维码
@@ -233,7 +234,7 @@ public class AllAjax {
         }
         //获取养车信息列表信息
         if ("queryYangCheInfo".equals(fromflag)) {
-            return yangCheInfoService.queryInfoList(shopcode);
+            return yangCheInfoService.queryInfoList(lmcode);
         }
         //养车信息详情
         if ("getYangCheInfo".equals(fromflag)) {
@@ -243,7 +244,7 @@ public class AllAjax {
         }
         //获取联盟活动信息
         if ("queryLMActivity".equals(fromflag)) {
-            return lianMengActivityService.queryInfoList(shopcode);
+            return lianMengActivityService.queryInfoList(lmcode);
         }
         //单查联盟活动
         if ("getLianMengActivity".equals(fromflag)) {
@@ -253,7 +254,7 @@ public class AllAjax {
         }
         //联盟介绍
         if ("getIntroduced".equals(fromflag)) {
-            return lianmengIntroducedService.queryEntry(shopcode);
+            return lianmengIntroducedService.queryEntry(lmcode);
         }
         //车险投保(保险公司)
         if ("baoxianGongSi".equals(fromflag)) {
@@ -282,7 +283,7 @@ public class AllAjax {
         //保养提醒
         if ("baoYangList".equals(fromflag)) {
             String top = request.getParameter("top");
-            ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(shopcode, carId, top);
+            ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(lmcode, platenumber, top);
             System.out.println("保养提醒进入======");
             return baoYangListByLmcodeAndCarNo;
 
@@ -290,15 +291,12 @@ public class AllAjax {
         //消费记录
         if ("baoYangList".equals(fromflag)) {
             String top = request.getParameter("top");
-            ArrayList serviceListByLmcodeAndCarNo = buyRecordService.getServiceListByLmcodeAndCarNo(shopcode, carId, top);
+            ArrayList serviceListByLmcodeAndCarNo = buyRecordService.getServiceListByLmcodeAndCarNo(lmcode, platenumber, top);
             return serviceListByLmcodeAndCarNo;
         }
         //添加服务顾问
         if ("fuwuguwen".equals(fromflag)) {
-            //String  guwen_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
-//            String guwenshopcode = "0533001";
             String guwenshopcode = request.getParameter("mineShopCode");
-            System.out.println(guwenshopcode);
             return chexiantoubaoService.queryFuWuGuWen(guwenshopcode);
         }
         //联盟总部
@@ -308,17 +306,15 @@ public class AllAjax {
         }
         //车辆信息
         if ("xinxi".equals(fromflag)) {
-            //String  xinxi_shopcode = (String) HttpSession.getAttribute("DUDUCHEWANG_shopcode");
             String parameter = request.getParameter("car_number");
             String xinxishopcode = request.getParameter("mineShopCode");
-//            String xinxishopcode = "0533001";
             return chexiantoubaoService.queryCheLiangXinXi(parameter, xinxishopcode);
         }
         //服务导航
         if ("queryShopCodeListByLmCode".equals(fromflag)) {
             String shopTypesearch = request.getParameter("shopType_search");
             String orderTypesearch = request.getParameter("orderType_search");
-            return shopInfoService.queryShopCodeListByLmCode(shopcode, shopTypesearch, orderTypesearch);
+            return shopInfoService.queryShopCodeListByLmCode(lmcode, shopTypesearch, orderTypesearch);
         }
 
         return obj;

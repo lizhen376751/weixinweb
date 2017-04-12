@@ -73,8 +73,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         //车牌号
         String platenumber = (String) httpSession.getAttribute("platenumber");
-
-
         //个人中心,联盟卡包,保养提醒,ahi指数,施工进度,消费记录需要进行登录判断
         if ("lmkInfo".equals(flagStr) || "AHIInfo".equals(flagStr) || "xiaoFeiList".equals(flagStr) || "personalCenter".equals(flagStr)
                 || "baoYangList".equals(flagStr) || "cheXianTouBao".equals(flagStr) || "logout".equals(flagStr)) {

@@ -6,7 +6,7 @@ String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
 <html>
   <head>
     
-    <title>养车信息</title>
+    <title>养车百科</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
