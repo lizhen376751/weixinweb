@@ -223,6 +223,7 @@ public class ChexiantoubaoService {
      */
     public List<BaoXianList> queryInsurance(BaoXianParamList baoXianParamList) {
         List<BaoXianList> baoXianLists = aPIBaoXainKaiDan.queryInsuranceList(baoXianParamList);
+
         return  baoXianLists;
     }
 
