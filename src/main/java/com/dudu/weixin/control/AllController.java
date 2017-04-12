@@ -16,7 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -68,6 +67,19 @@ public class AllController {
     private DuduOauthService duduOauthService;
 
     /**
+     * 网页授权回调页面
+     *
+     * @param request  请求
+     * @param response 返回
+     * @return 路径
+     */
+    @RequestMapping(value = "MP_verify_xtfw75328NsMZ6bb.txt", method = RequestMethod.GET)
+    public String wxconfig(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("txt测试");
+        return "/MP_verify_xtfw75328NsMZ6bb.txt";
+    }
+
+    /**
      * 登录页面
      *
      * @param request  请求
@@ -114,7 +126,7 @@ public class AllController {
         String shopcode = ""; //TODO 暂时为空
         //判断点击菜单，进入不同页面
         if ("lmkInfo".equals(flagStr)) {
-            return "/lianMengKa/lianMengCard/homePage"; //联盟卡包
+            return "/lianMengKa/lianMengCard/homePage.jsp"; //联盟卡包
         } else if ("lianMengDetails".equals(flagStr)) {
             logger.info("联盟卡详情");
             String cardName = request.getParameter("cardName");
@@ -122,60 +134,60 @@ public class AllController {
             model.addAttribute("cardName", cardName);
             model.addAttribute("cardNo", cardNo);
             model.addAttribute("shopcode", shopcode);
-            return "/lianMengKa/lianMengCard/lianMengDetails"; //联盟卡明细
+            return "/lianMengKa/lianMengCard/lianMengDetails.jsp"; //联盟卡明细
         } else if ("lianMengCardActivate".equals(flagStr)) {
             logger.info("联盟卡激活");
-            return "/lianMengCardActivate/lianMengCardActivate"; //联盟卡激活
+            return "/lianMengCardActivate/lianMengCardActivate.jsp"; //联盟卡激活
         } else if ("daoHang".equals(flagStr)) {
-            return "/daoHang/daoHangliebiao/service/daohangindex?shopcode=" + shopcode + "&openid=" + openId + '"'; //服务导航
+            return "/daoHang/daoHangliebiao/service/daohangindex.jsp?shopcode=" + shopcode + "&openid=" + openId + '"'; //服务导航
         } else if ("AHIInfo".equals(flagStr)) {
-            return "/ahi/AHIxiangqing"; //AHI指数
+            return "/ahi/AHIxiangqing.jsp"; //AHI指数
         } else if ("AHIInfoxiangqing".equals(flagStr)) {
             String plateNumber = request.getParameter("plateNumber");
             String id = request.getParameter("id");
             model.addAttribute("plateNumber", plateNumber);
             model.addAttribute("id", id);
             logger.info("ahi详情页面!" + plateNumber + id);
-            return "/ahi/subxiangqing"; //ahi详情
+            return "/ahi/subxiangqing.jsp"; //ahi详情
         } else if ("xiaoFeiList".equals(flagStr)) {
-            return "/xiaoFeiJiLu/xiaoFeiList"; //消费记录
+            return "/xiaoFeiJiLu/xiaoFeiList.jsp"; //消费记录
         } else if ("baoYangList".equals(flagStr)) {
-            return "/baoYangTiXing/baoYangList"; //保养提醒
+            return "/baoYangTiXing/baoYangList.jsp"; //保养提醒
         } else if ("lianMengJieShao".equals(flagStr)) {
-            return "/lianMengIntroduced/jsp/getIntroduced"; //联盟介绍
+            return "/lianMengIntroduced/jsp/getIntroduced.jsp"; //联盟介绍
         } else if ("YCInfo".equals(flagStr)) {
-            return "/yangCheInfo/jsp/yangCheXinXi"; //养车信息
+            return "/yangCheInfo/jsp/yangCheXinXi.jsp"; //养车信息
         } else if ("getYangChe".equals(flagStr)) {
             String ids = request.getParameter("ids");
             model.addAttribute("ids", ids);
-            return "/yangCheInfo/jsp/getYangChe"; //养车信息详情
+            return "/yangCheInfo/jsp/getYangChe.jsp"; //养车信息详情
         } else if ("lianMengActivity".equals(flagStr)) {
-            return "/lianMengActivity/jsp/lianMengActivity"; //联盟活动
+            return "/lianMengActivity/jsp/lianMengActivity.jsp"; //联盟活动
         } else if ("getLianMeng".equals(flagStr)) {
             String ids = request.getParameter("ids");
             model.addAttribute("ids", ids);
-            return "/lianMengActivity/jsp/getLianMeng"; //联盟活动详情
+            return "/lianMengActivity/jsp/getLianMeng.jsp"; //联盟活动详情
         } else if ("cheXianTouBao".equals(flagStr)) {
             String mineShopCode = request.getParameter("mineShopCode");
             System.out.println(mineShopCode);
             model.addAttribute("mineShopCode", mineShopCode);
-            return "/baoxian/cheXianTouBao/cheXianTouBao"; //车险投保
+            return "/baoxian/cheXianTouBao/cheXianTouBao.jsp"; //车险投保
         } else if ("register".equals(flagStr)) {
-            return "/register/register"; //注册
+            return "/register/register.jsp"; //注册
         } else if ("suresms".equals(flagStr)) {
             String platenumber = request.getParameter("platenumber");
             String mobilephone = request.getParameter("mobilephone");
             validateService.sendpassWord(platenumber, lmcode, mobilephone);
-            return "/login/login"; //已经有该用户,但是没有密码,点击确定发送短信且跳转至登录页面
+            return "/login/login.jsp"; //已经有该用户,但是没有密码,点击确定发送短信且跳转至登录页面
         } else if ("personalCenter".equals(flagStr)) {
-            return "/personCenter/personalCenter"; //个人中心
+            return "/personCenter/personalCenter.jsp"; //个人中心
         } else if ("logout".equals(flagStr)) {
             httpSession.setAttribute("DUDUCHEWANG_CarId", null);
-            return "/login/logout"; //退出登录
+            return "/login/logout.jsp"; //退出登录
         } else if ("login".equals(flagStr)) {
-            return "/login/login"; //登录页面 (注册时提示已注册,提供跳转至登录的入口)
+            return "/login/login.jsp"; //登录页面 (注册时提示已注册,提供跳转至登录的入口)
         }
-        return "/baoxian/cheXianTouBao/cheXianTouBao";
+        return "/baoxian/cheXianTouBao/cheXianTouBao.jsp";
     }
 
 
@@ -204,6 +216,7 @@ public class AllController {
 
     /**
      * 提交保险
+     *
      * @param request 获取参数
      * @return String
      * @throws ParseException 异常抛出
@@ -217,15 +230,14 @@ public class AllController {
 
 
     /**
-     *
      * @param request 请求
-     * @param model 绑定参数
+     * @param model   绑定参数
      * @return 页面跳转至车险列表展示页面
      */
     @RequestMapping(value = "queryBaoXian", method = RequestMethod.GET)
     public String queryInsurance(HttpServletRequest request, Model model) {
         BaoXianParamList baoXianParamList = new BaoXianParamList();
-        String  lmcode = (String) request.getSession().getAttribute("lmcode");
+        String lmcode = (String) request.getSession().getAttribute("lmcode");
         String plateNumber = (String) request.getSession().getAttribute("plateNumber");
         if (null != lmcode && !"".equals(lmcode)) {
             baoXianParamList.setShopcodelm(lmcode);
@@ -266,7 +278,6 @@ public class AllController {
 
 
     }
-
 
 
 }
