@@ -1,6 +1,8 @@
 package com.dudu.weixin.control;
 
 import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
+import com.dudu.soa.baoxian.kaidan.module.BaoXianList;
+import com.dudu.soa.baoxian.kaidan.module.BaoXianParamList;
 import com.dudu.soa.framework.commons.oauth.module.DuduToken;
 import com.dudu.soa.framework.oauth.DuduOauthService;
 import com.dudu.weixin.service.ChexiantoubaoService;
@@ -15,11 +17,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/3/17.
@@ -190,18 +194,33 @@ public class AllController {
 
 
     /**
-     * @param request       域
-     * @param baoXianKaiDan 保险开单实体类
-     * @param httpSession   域
-     * @return 跳转页面
+     *
+     * @param request 作用域获取参数
+     * @return String
      */
 
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
-    public String baoXianTiJiao(HttpServletRequest request, BaoXianKaiDan baoXianKaiDan, HttpSession httpSession) {
+    public String baoXianTiJiao(HttpServletRequest request) {
         System.out.println("提交进入");
-        Integer integer = chexiantoubaoService.baoXianTiJiao(request, baoXianKaiDan, httpSession);
+        Integer integer = chexiantoubaoService.baoXianTiJiao(request);
         return "/baoxian/cheXianTouBao/success"; //提交之后提示成功页面
     }
+
+    /**
+     * 查询保险
+     * @param baoXianParamList 查询条件
+     * @return String
+     */
+    @RequestMapping(value = "queryBaoXian", method = RequestMethod.GET)
+    public ModelAndView queryInsurance(BaoXianParamList baoXianParamList){
+        List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
+        ModelAndView m = new ModelAndView();
+        m.addObject("list", baoXianLists);
+        m.setViewName("");
+        return m;
+    }
+
+
 
 
 }
