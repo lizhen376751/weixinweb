@@ -205,7 +205,12 @@ public class AllController {
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
     public String baoXianTiJiao(HttpServletRequest request) throws ParseException {
         Integer integer = chexiantoubaoService.baoXianTiJiao(request);
-        return "/baoxian/cheXianTouBao/success.jsp"; //提交之后提示成功页面
+        if (integer > 0){
+            return "1";
+        } else {
+          return "0";
+        }
+
     }
 
 
