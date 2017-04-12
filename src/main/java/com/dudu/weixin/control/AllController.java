@@ -22,6 +22,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -213,12 +214,13 @@ public class AllController {
     }
 
     /**
-     * 查询保险
-     * @param request 获取作用域里的值
-     * @return  ModelAndView
+     *
+     * @param request 请求
+     * @param model 绑定参数
+     * @return 页面跳转至车险列表展示页面
      */
     @RequestMapping(value = "queryBaoXian", method = RequestMethod.GET)
-    public ModelAndView queryInsurance(HttpServletRequest request) {
+    public String queryInsurance(HttpServletRequest request,Model model) {
         BaoXianParamList baoXianParamList = new BaoXianParamList();
         String  lmcode = (String) request.getSession().getAttribute("lmcode");
         String plateNumber = (String) request.getSession().getAttribute("plateNumber");
@@ -229,10 +231,36 @@ public class AllController {
             baoXianParamList.setCarId(plateNumber);
         }
         List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
-        ModelAndView m = new ModelAndView();
-        m.addObject("list", baoXianLists);
-        m.setViewName("/cheXianList/cheXianList"); //展示车险列表的页面
-        return m;
+        model.addAttribute("list", baoXianLists);
+        return "/cheXianList/cheXianList"; //展示车险列表的页面
+    }
+    /**
+     * 仅用于app端页面跳转
+     *
+     * @param request  请求
+     * @param model    绑定数据
+     * @param tokenStr token字符串
+     * @return 页面跳转至车险列表展示页面
+     */
+    @RequestMapping(value = "/queryInsurance", method = RequestMethod.GET)
+    public String queryCarInsurance(HttpServletRequest request, Model model, @RequestHeader(value = "token", required = false) String tokenStr) {
+        //如果不为空,传进来的就是token,如果为空的话就是写死的token
+        tokenStr = tokenStr != null ? tokenStr : "AQAAAITdno+PtJqG3cXdzt3T3ZyNmp6LmquWkprdxc/T3ZqHj42WjJqrlpKa3cXP092SnpaRrJeQj7yQm5rdxd3PyszMz8/"
+                + "O3dPdkZaclLGekprdxd0ZYnEZSlYYa2Dd092NkJOatpvdxc3O092Ml5CPvJCbmt3F3c/KzMzPz87d092KjJqNs5Cem7aRtpvdxd3PyszMz8/"
+                + "Oz87d092Jmo2MlpCR3cXOgg==";
+        DuduToken token = duduOauthService.getDuduToken(tokenStr);
+        String shopCode = token.getShopCode();
+        BaoXianParamList baoXianParamList = new BaoXianParamList();
+        if (null != shopCode && !"".equals(shopCode)) {
+            List<String> list = new ArrayList<>();
+            list.add(shopCode);
+            baoXianParamList.setShopCode(list);
+        }
+        List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
+        model.addAttribute("list", baoXianLists);
+        return "/cheXianList/cheXianList"; //展示车险列表的页面
+
+
     }
 
 
