@@ -19,6 +19,10 @@ public final class Constant {
      */
     public static final String APPSERECT = "dd1e044b9208d43a5a31238e5ee053c7";
     /**
+     * 微信开发者的token
+     */
+    public static final String TOKEN = "duduchewang";
+    /**
      * 微信的url
      */
     public static final String URL = "83d94aa0.ngrok.io";

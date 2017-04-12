@@ -8,10 +8,7 @@ import java.util.Arrays;
  * 微信加密/校验流程
  */
 public final class SignUtil {
-    /**
-     * 微信token
-     */
-    private static final String TOKEN = "duduchewang";
+
 
     private SignUtil() {
     }
@@ -26,7 +23,7 @@ public final class SignUtil {
      */
     public static boolean checkSignature(String signature, String timestamp, String nonce) {
         //将token、timestamp、nonce三个参数进行字典序排序
-        String[] arr = new String[]{TOKEN, timestamp, nonce};
+        String[] arr = new String[]{Constant.TOKEN, timestamp, nonce};
         Arrays.sort(arr);
         StringBuilder content = new StringBuilder();
         for (int i = 0; i < arr.length; i++) {
