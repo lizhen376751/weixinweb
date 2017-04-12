@@ -200,8 +200,8 @@ public class AllAjax {
                              @RequestParam(name = "cardNo", required = false) String cardNo, Model model
     ) {
         response.setCharacterEncoding("UTF-8");
-        String platenumber = (String) httpSession.getAttribute("platenumber"); //车牌号
-        String openId = (String) httpSession.getAttribute("openid"); //微信的openid
+        String platenumber = (String) httpSession.getAttribute("plateNumber"); //车牌号
+        String openId = (String) httpSession.getAttribute("openId"); //微信的openid
         String lmcode = (String) httpSession.getAttribute("lmcode"); //联盟code
         Object obj = null;
         fromflag = encodingUrl(fromflag);
@@ -332,6 +332,8 @@ public class AllAjax {
     public OssSecretConfig getConfig(@PathVariable("businessConfigId") Integer businessConfigId, @PathVariable("shopCode") String shopCode) {
         return ossSecretConfigIntf.getOssSecretConfig(new OssSecretConfigParam().setShopCode(shopCode).setBusinessConfigId(businessConfigId));
     }
+    @ResponseBody
+    @RequestMapping(value = "findInsurance/{shopCode}", method = RequestMethod.GET)
 
     /**
      * @param str 传进需要解析的字符串
