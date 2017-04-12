@@ -1,14 +1,5 @@
-<%@ page import="com.dudu.weixin.service.AutoLoginService" %>
+
 <%@ page language="java" pageEncoding="UTF-8"%>
-
-<% 
- 	String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
-	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
-	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
-
-
- 
-%>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -33,9 +24,6 @@
 		</div>
 	</body>
 	<script src="/scripts/lianMengKa/js/lianMengCard.js" type="text/javascript" charset="utf-8"></script>
-	<input type="hidden" id="shopcode" name="shopcode" value="<%=shopcode %>" >
-	<input type="hidden" id="strOpenId" name="strOpenId" value="<%=strOpenId %>" >
-	<input type="hidden" id="CarId" name="CarId" value="<%=CarId %>" >
 	<input type="hidden" id="contextPathStr" name="contextPathStr" value="<%=request.getContextPath() %>" >
 	
 </html>
