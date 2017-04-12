@@ -1,6 +1,8 @@
 package com.dudu.weixin.control;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.dudu.soa.baoxian.kaidan.module.BaoXianList;
+import com.dudu.soa.baoxian.kaidan.module.BaoXianParamList;
 import com.dudu.soa.dududata.oss.api.ApiDuduDataOssSecretConfigIntf;
 import com.dudu.soa.dududata.oss.module.OssSecretConfig;
 import com.dudu.soa.dududata.oss.module.param.OssSecretConfigParam;
@@ -332,8 +334,24 @@ public class AllAjax {
     public OssSecretConfig getConfig(@PathVariable("businessConfigId") Integer businessConfigId, @PathVariable("shopCode") String shopCode) {
         return ossSecretConfigIntf.getOssSecretConfig(new OssSecretConfigParam().setShopCode(shopCode).setBusinessConfigId(businessConfigId));
     }
+
+    /**
+     * 获取保险列表
+     * @param shopCode 店铺编码
+     * @return List<BaoXianList>
+     */
     @ResponseBody
     @RequestMapping(value = "findInsurance/{shopCode}", method = RequestMethod.GET)
+    public List<BaoXianList> queryInsurance(@PathVariable("shopCode") String shopCode) {
+        BaoXianParamList baoXianParamList = new BaoXianParamList();
+        if (null != shopCode && !"".equals(shopCode)) {
+            List<String> list = new ArrayList<>();
+            list.add(shopCode);
+            baoXianParamList.setShopCode(list);
+        }
+        List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
+        return baoXianLists;
+    }
 
     /**
      * @param str 传进需要解析的字符串

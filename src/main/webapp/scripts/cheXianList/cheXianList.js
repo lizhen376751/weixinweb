@@ -62,7 +62,7 @@ $(document).ready(function(){
     var shopCode = $("#shopCode").val();
     $.ajax({
         type    : 'post',
-        url     : '/queryInsurance',
+        url     : '/findInsurance',
         data :{
             shopCode :shopCode
         },
