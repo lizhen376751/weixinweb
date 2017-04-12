@@ -22,23 +22,35 @@ $(document).ready(function(){
     function addBills (arr){
         var html = "";
         for (var i = 0;i < arr.length;i++) {
+            var dates = dateFormat(arr[i].kaiDanDate);
             var lis = "";
-            for (j = 0;j < arr[i].a.length;j++) {
-                lis += '<li>'+
-                    '<span class="color_9">人民保险：</span>'+
-                    '<span class="price">¥5083.00</span>'+
-                    '<span class="quote color_10">已报价</span>'+
-                    '<span class="detail color_3">详情</span>'+
-                    '</li>'
+            var num = 0;
+            for (j = 0;j < arr[i].list.length;j++) {
+                if (arr[i].list[j].baoJiaState != 0) {
+                    lis += '<li>'+
+                        '<span class="color_9">'+arr[i].list[j].insurancename+'：</span>'+
+                        '<span class="price">¥'+arr[i].list[j].totalPrices+'</span>'+
+                        '<span class="quote color_10">已报价</span>'+
+                        '<span class="detail color_3">详情</span>'+
+                        '</li>';
+                    num += 1;
+                }else{
+                    lis += '<li>'+
+                        '<span class="color_9">'+arr[i].list[j].insurancename+'：</span>'+
+                        '<span class="price">¥0.0</span>'+
+                        '<span class="quote color_10">报价中</span>'+
+                        '<span class="detail color_3">详情</span>'+
+                        '</li>';
+                }
             }
             html += '<div class="bills">'+
                 '<div class="bills_header">'+
                 '<div class="header_main font_1">'+
                 '<ul>'+
-                '<li class="width_1"><span class="car_num">车牌号：</span><span>鲁A00001</span></li>'+
-                '<li class="width_2"><span>订单日期：</span><span>2017-01-22</span></li>'+
-                '<li class="width_1"><span>订单编号：</span><span class="order_num">KNVB515631854156</span></li>'+
-                '<li class="width_2 color_10"><span>共5家保险公司完成报价</span></li>'+
+                '<li class="width_1"><span class="car_num">车牌号：</span><span>'+arr[i].carId+'</span></li>'+
+                '<li class="width_2"><span>订单日期：</span><span>'+dates+'</span></li>'+
+                '<li class="width_1"><span>订单编号：</span><span class="order_num">'+arr[i].orderNumb+'</span></li>'+
+                '<li class="width_2 color_10"><span>共'+num+'家保险公司完成报价</span></li>'+
                 '</ul>'+
                 '</div>'+
                 '</div>'+
@@ -50,25 +62,29 @@ $(document).ready(function(){
         }
         body.append(html);
     }
-    var arr = [{
-        a:[1,2,3]
-    },{
-        a:[1,2,3]
-    }]
-    addBills(arr);
 
 
+    //时间戳转换成日期格式
+    function dateFormat(val) {
+        var now = new Date(val),
+            y = now.getFullYear(),
+            m = now.getMonth() + 1,
+            d = now.getDate();
+        var date=y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+        return date.substr(0, 11);
+    }
     //------------------------------------------------------------------ajax请求数据
     var shopCode = $("#shopCode").val();
     $.ajax({
-        type    : 'post',
-        url     : '/findInsurance',
-        data :{
-            shopCode :shopCode
-        },
+        type    : 'get',
+        url     : '/findInsurance/0533001',
+        // data :{
+        //     shopCode :shopCode
+        // },
         success:function(jsondata){
             var json = JSON.parse(jsondata);
             // add_service(json,quarters);
+            addBills(json);
             console.log(json);
         },
         error:function(eee){
