@@ -1,4 +1,7 @@
 <%@ page language="java" pageEncoding="utf-8" %>
+<%
+	String shopCode = (String) request.getAttribute("shopCode");//用request得到
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,6 +15,7 @@
 		<script src="/scripts/cheXianList/cheXianList.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
+	<input type="hidden" name="shopCode" id="shopCode" value="<%=shopCode%>" />
 		<!--------------------------------------------------------------------------------每一条单据-->
 		<div class="bills">
 			<!----------------------------------------------------------------------------每一条单据的标头，包括车牌号，单据编号-->

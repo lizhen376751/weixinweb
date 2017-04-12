@@ -246,6 +246,8 @@ public class AllController {
                 + "Oz87d092Jmo2MlpCR3cXOgg==";
         DuduToken token = duduOauthService.getDuduToken(tokenStr);
         String shopCode = token.getShopCode();
+        model.addAttribute("shopCode", shopCode);
+        //++++++++++++++++++++++++++++++++++++++++
         BaoXianParamList baoXianParamList = new BaoXianParamList();
         if (null != shopCode && !"".equals(shopCode)) {
             List<String> list = new ArrayList<>();

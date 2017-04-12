@@ -59,18 +59,22 @@ $(document).ready(function(){
 
 
     //------------------------------------------------------------------ajax请求数据
-    // $.ajax({
-    //     type    : 'post',
-    //     url     : '/queryInsurance',
-    //     success:function(jsondata){
-    //         var json = JSON.parse(jsondata);
-    //         // add_service(json,quarters);
-    //         console.log(json);
-    //     },
-    //     error:function(eee){
-    //         alert("失败");
-    //     }
-    // });
+    var shopCode = $("#shopCode").val();
+    $.ajax({
+        type    : 'post',
+        url     : '/queryInsurance',
+        data :{
+            shopCode :shopCode
+        },
+        success:function(jsondata){
+            var json = JSON.parse(jsondata);
+            // add_service(json,quarters);
+            console.log(json);
+        },
+        error:function(eee){
+            alert("失败");
+        }
+    });
 
 
 
