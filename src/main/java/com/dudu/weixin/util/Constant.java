@@ -13,11 +13,11 @@ public final class Constant {
     /**
      * 微信开发者的appid
      */
-    public static final String APPID = "wxd4e76e01e4a6e3b7";
+    public static final String APPID = "wxf0af72edbe855d28";
     /**
      * 微信开发者的appSecret
      */
-    public static final String APPSERECT = "dd1e044b9208d43a5a31238e5ee053c7";
+    public static final String APPSERECT = "fa12f20abeabc7c8ca3ebe777ceb2229";
     /**
      * 微信开发者的token
      */
