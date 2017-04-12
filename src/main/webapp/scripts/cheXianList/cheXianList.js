@@ -77,7 +77,7 @@ $(document).ready(function(){
     var shopCode = $("#shopCode").val();
     $.ajax({
         type    : 'get',
-        url     : '/findInsurance/0533001',
+        url     : '/findInsurance/'+shopCode,
         // data :{
         //     shopCode :shopCode
         // },
@@ -87,6 +87,11 @@ $(document).ready(function(){
             addBills(json);
             // console.log(json);
             var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
+            //--------------------------------------------------------------------------------------点击详情按钮跳转
+            detail.on("click",function(){
+                alert("该功能暂未开通~");
+                // window.location.href = "cheXianDetail.html"
+            });
         },
         error:function(eee){
             alert("失败");
@@ -106,11 +111,7 @@ $(document).ready(function(){
 
 
 
-    //--------------------------------------------------------------------------------------点击详情按钮跳转
-    detail.on("click",function(){
-        alert("该功能暂未开通~")
-        // window.location.href = "cheXianDetail.html"
-    })
+
 
 })
 
