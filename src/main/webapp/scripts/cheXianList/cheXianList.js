@@ -14,7 +14,7 @@
 
 $(document).ready(function(){
     var body = $("body")   //---------------------------------------------------------------获取body元素
-    var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
+
 
 
 
@@ -85,7 +85,8 @@ $(document).ready(function(){
             var json = JSON.parse(jsondata);
             // add_service(json,quarters);
             addBills(json);
-            console.log(json);
+            // console.log(json);
+            var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
         },
         error:function(eee){
             alert("失败");
