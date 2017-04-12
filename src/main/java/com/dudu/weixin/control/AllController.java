@@ -214,18 +214,27 @@ public class AllController {
 
     /**
      * 查询保险
-     *
-     * @param baoXianParamList 查询条件
-     * @return String
+     * @param request 获取作用域里的值
+     * @return  ModelAndView
      */
     @RequestMapping(value = "queryBaoXian", method = RequestMethod.GET)
-    public ModelAndView queryInsurance(BaoXianParamList baoXianParamList) {
+    public ModelAndView queryInsurance(HttpServletRequest request) {
+        BaoXianParamList baoXianParamList = new BaoXianParamList();
+        String  lmcode = (String) request.getSession().getAttribute("lmcode");
+        String plateNumber = (String) request.getSession().getAttribute("plateNumber");
+        if (null != lmcode && !"".equals(lmcode)) {
+            baoXianParamList.setShopcodelm(lmcode);
+        }
+        if (null != plateNumber && !"".equals(plateNumber)) {
+            baoXianParamList.setCarId(plateNumber);
+        }
         List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
         ModelAndView m = new ModelAndView();
         m.addObject("list", baoXianLists);
         m.setViewName("");
         return m;
     }
+    
 
 
 }
