@@ -1,6 +1,5 @@
 package com.dudu.weixin.control;
 
-import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianList;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianParamList;
 import com.dudu.soa.framework.commons.oauth.module.DuduToken;
@@ -202,7 +201,6 @@ public class AllController {
 
 
     /**
-     *
      * @param request 作用域获取参数
      * @return String
      */
@@ -216,19 +214,18 @@ public class AllController {
 
     /**
      * 查询保险
+     *
      * @param baoXianParamList 查询条件
      * @return String
      */
     @RequestMapping(value = "queryBaoXian", method = RequestMethod.GET)
-    public ModelAndView queryInsurance(BaoXianParamList baoXianParamList){
+    public ModelAndView queryInsurance(BaoXianParamList baoXianParamList) {
         List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
         ModelAndView m = new ModelAndView();
         m.addObject("list", baoXianLists);
         m.setViewName("");
         return m;
     }
-
-
 
 
 }

@@ -23,7 +23,7 @@ public final class MenuManagerUtil {
     /**
      * 微信的url
      */
-    public static final String URL = "3c1912d9.ngrok.io";
+    public static final String URL = "83d94aa0.ngrok.io";
     /**
      * 主路径
      */
