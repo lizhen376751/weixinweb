@@ -216,7 +216,7 @@ public class ChexiantoubaoService {
      * @param baoXianParamList 查询条件
      * @return List<BaoXianList>
      */
-    public List<BaoXianList> queryInsurance(BaoXianParamList baoXianParamList){
+    public List<BaoXianList> queryInsurance(BaoXianParamList baoXianParamList) {
         List<BaoXianList> baoXianLists = aPIBaoXainKaiDan.queryInsuranceList(baoXianParamList);
         return  baoXianLists;
     }

@@ -1,0 +1,138 @@
+body{
+	background: #f4f4f4;
+}
+.width_1{
+	width: 61%;
+}
+.width_2{
+	width: 39%;
+}
+/*-----------------------------------------------------------------------------------------每一条单据*/
+.bills{
+	width: 100%;
+	padding-top: 0.32rem;
+	background: #fff;
+}
+/*-----------------------------------------------------------------------------------------每一条单据的标头，包括车牌号，单据编号*/
+.bills .bills_header{
+	width: 100%;
+	border-bottom: 0.03px #cfcfcf dashed;
+}
+.header_main{
+	width: 94%;
+	margin: 0 auto;
+}
+.header_main ul{
+	width: 100%;
+	overflow: hidden;
+}
+.header_main ul li{
+	float: left;
+	margin-bottom: 0.32rem;
+	overflow: hidden;
+}
+.header_main ul li span{
+	float: left;
+}
+.header_main ul li .car_num{
+	letter-spacing: 0.11rem;
+}
+/*---------------------------------------------------------------------------------------订单编号*/
+.order_num{
+	width: 64%;
+	/*background: red;*/
+	overflow: hidden;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/*-------------------------------------------------------------------------------------保险公司*/
+.bills_company{
+	width: 100%;
+	margin-top: 0.32rem;
+}
+.bills_company ul{
+	width: 94%;
+	margin: 0 auto;
+	padding-bottom: 0.001rem;
+}
+.bills_company ul li{
+	width: 100%;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	margin-bottom: 0.32rem;
+	position: relative;
+}
+.bills_company ul li span{
+	height: 0.8rem;
+	position: absolute;
+	top: 0;
+}
+.bills_company ul li .price{
+	color: #ff8d12;
+	left: 2.58rem;
+}
+.bills_company ul li .quote{
+	left: 5.28rem;
+}
+.bills_company ul li .detail{
+	width: 2.2rem;
+	text-align: center;
+	background: url(/files/cheXianList/detail_bg.png) no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	right: 0;
+}
+
+.isolation{
+	width: 100%;
+	height: 0.32rem;
+	background: #F4F4F4;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------------------------------------------超过1080px时调用*/
+@media only screen and (min-width: 1080px){
+	.bills .bills_header{
+		width: 100%;
+		margin-top: 32px;
+	}
+	.header_main ul li{
+		margin-top: 32px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
