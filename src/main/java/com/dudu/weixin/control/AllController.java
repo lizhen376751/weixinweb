@@ -75,26 +75,9 @@ public class AllController {
      */
     @RequestMapping(value = "MP_verify_xtfw75328NsMZ6bb.txt", method = RequestMethod.GET)
     public String wxconfig(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("txt测试");
         return "/MP_verify_xtfw75328NsMZ6bb.txt";
     }
 
-    /**
-     * 登录页面
-     *
-     * @param request  请求
-     * @param response 返回
-     * @return 路径
-     */
-    @RequestMapping(value = "login", method = RequestMethod.POST)
-    protected String login(HttpServletRequest request, HttpServletResponse response) {
-        boolean flg = loginActionNewService.login(request);
-        if (flg) {
-            return "/index";
-        } else {
-            return "/login/login";
-        }
-    }
 
     /**
      * 点击菜单后进入
@@ -169,7 +152,6 @@ public class AllController {
             return "/lianMengActivity/jsp/getLianMeng.jsp"; //联盟活动详情
         } else if ("cheXianTouBao".equals(flagStr)) {
             String mineShopCode = request.getParameter("mineShopCode");
-            System.out.println(mineShopCode);
             model.addAttribute("mineShopCode", mineShopCode);
             return "/baoxian/cheXianTouBao/cheXianTouBao.jsp"; //车险投保
         } else if ("register".equals(flagStr)) {
@@ -207,7 +189,6 @@ public class AllController {
                 + "Oz87d092Jmo2MlpCR3cXOgg==";
         DuduToken token = duduOauthService.getDuduToken(tokenStr);
         String mineShopCode = token.getMainShopCode();
-        System.out.println("=========" + mineShopCode);
         request.setAttribute("mineShopCode", mineShopCode);
         model.addAttribute("mineShopCode", mineShopCode);
         return "/baoxian/cheXianTouBao/cheXianTouBao.jsp"; //车险投保
@@ -223,7 +204,6 @@ public class AllController {
      */
     @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
     public String baoXianTiJiao(HttpServletRequest request) throws ParseException {
-        System.out.println("提交进入");
         Integer integer = chexiantoubaoService.baoXianTiJiao(request);
         return "/baoxian/cheXianTouBao/success.jsp"; //提交之后提示成功页面
     }
@@ -275,7 +255,6 @@ public class AllController {
         List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
         model.addAttribute("list", baoXianLists);
         return "/cheXianList/cheXianList.jsp"; //展示车险列表的页面
-
 
     }
 

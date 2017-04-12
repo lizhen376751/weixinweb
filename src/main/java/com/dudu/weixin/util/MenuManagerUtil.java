@@ -17,6 +17,7 @@ public final class MenuManagerUtil {
      * 日志打印的工具
      */
     private static Logger log = LoggerFactory.getLogger(MenuManagerUtil.class);
+
     /**
      * 构造方法
      */
@@ -124,23 +125,18 @@ public final class MenuManagerUtil {
         btn34.setType("view");
         btn34.setUrl(Constant.COMMONURL + "_logout" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
-        CommonButton btn35 = new CommonButton();
-        btn35.setName("注册");
-        btn35.setType("view");
-        btn35.setUrl(Constant.COMMONURL + "_register" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
-        mainBtn1.setSub_button(new CommonButton[]{btn11, btn12, btn13, btn14, btn15});
+        mainBtn1.setSub_button(new CommonButton[]{btn11, btn12, btn15});
 
         ComplexButton mainBtn2 = new ComplexButton();
         mainBtn2.setName("服务");
-        mainBtn2.setSub_button(new CommonButton[]{btn21, btn22, btn23, btn24});
+        mainBtn2.setSub_button(new CommonButton[]{btn21, btn24});
 
         ComplexButton mainBtn3 = new ComplexButton();
         mainBtn3.setName("活动");
-        mainBtn3.setSub_button(new CommonButton[]{btn31, btn32, btn33, btn34, btn35});
+        mainBtn3.setSub_button(new CommonButton[]{btn31, btn32});
 
         /**
          * 这是公众号xiaoqrobot目前的菜单结构，每个一级菜单都有二级菜单项<br>

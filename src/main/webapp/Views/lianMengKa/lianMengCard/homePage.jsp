@@ -24,6 +24,5 @@
 		</div>
 	</body>
 	<script src="/scripts/lianMengKa/js/lianMengCard.js" type="text/javascript" charset="utf-8"></script>
-	<input type="hidden" id="contextPathStr" name="contextPathStr" value="<%=request.getContextPath() %>" >
-	
+
 </html>
