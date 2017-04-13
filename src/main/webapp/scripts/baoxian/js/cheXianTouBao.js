@@ -668,7 +668,7 @@ $(document).ready(function(){
                                                 var json = JSON.parse(data);
                                                 if(json == '"1"'){
                                                     if(mineShopCode != "null" ){
-                                                        window.location.href = "/appbaoxianlist?mineShopCode"+mineShopCode; //app页面跳转
+                                                        window.location.href = "/appbaoxianlist?mineShopCode="+mineShopCode; //app页面跳转
                                                     }else{
                                                         window.location.href = "/queryBaoXian";//微信页面
                                                     }

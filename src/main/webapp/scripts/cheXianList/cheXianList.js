@@ -13,6 +13,7 @@
 
 
 $(document).ready(function(){
+    var shopCode = $("#shopCode").val();
     var body = $("body")   //---------------------------------------------------------------获取body元素
 
 
@@ -74,7 +75,7 @@ $(document).ready(function(){
         return date.substr(0, 11);
     }
     //------------------------------------------------------------------ajax请求数据
-    var shopCode = $("#shopCode").val();
+
     $.ajax({
         type    : 'get',
         url     : '/findInsurance/'+shopCode,

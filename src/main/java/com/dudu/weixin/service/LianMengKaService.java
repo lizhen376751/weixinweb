@@ -41,7 +41,7 @@ public class LianMengKaService {
     @Autowired
     private CommonToolsService commonTools;
     /**
-     *引入联盟卡信息接口
+     * 引入联盟卡信息接口
      */
     @Reference(version = "0.0.1")
     private ApiLianmengkaOperateIntf apiLianmengkaOperateIntf;
@@ -49,6 +49,7 @@ public class LianMengKaService {
 
     /**
      * 联盟卡的激活
+     *
      * @param lmcode      联盟code
      * @param cardnum     卡号
      * @param activecode  激活码
@@ -88,9 +89,11 @@ public class LianMengKaService {
         }
         return "0";
     }
+
     /**
-     *查询联盟卡剩余次数  queryXmkLeftCount   查询联盟卡消费明细 queryXiangmukaCustRecords
-     * @param shopcode shopcode
+     * 查询联盟卡剩余次数  queryXmkLeftCount   查询联盟卡消费明细 queryXiangmukaCustRecords
+     *
+     * @param shopcode  shopcode
      * @param carHaoPai 车牌号码
      * @return 联盟卡列表
      */
@@ -112,9 +115,8 @@ public class LianMengKaService {
     }
 
     /**
-     *
-     * @param shopcode shopcode
-     * @param cardNo 联盟卡号
+     * @param shopcode  shopcode
+     * @param cardNo    联盟卡号
      * @param carHaoPai 车牌号
      * @return 联盟卡列表
      */
@@ -127,15 +129,20 @@ public class LianMengKaService {
             queryModule.setCard_number(cardNo);
             queryModule.setCar_haopai(carHaoPai);
             results = apiLianmengkaOperateIntf.queryXiangmukaCustRecords(queryModule);
-            //把消费店铺编码 替换为 店铺名称
-            for (int i = 0; i < results.size(); i++) {
-                LianmengkaXmCustResultModule lianmengkaXmCustResultModule = results.get(i);
-                String custcode = lianmengkaXmCustResultModule.getCust_code();
-                String custshopName = commonTools.getShopName(custcode);
-                //单纯的查询,把custcode替换成了cust_shopName
-                lianmengkaXmCustResultModule.setCust_code(custshopName);
+            if (results == null || results.size() == 0) {
+                return null;
+            } else {
+                //把消费店铺编码 替换为 店铺名称
+                for (int i = 0; i < results.size(); i++) {
+                    LianmengkaXmCustResultModule lianmengkaXmCustResultModule = results.get(i);
+                    String custcode = lianmengkaXmCustResultModule.getCust_code();
+                    String custshopName = commonTools.getShopName(custcode);
+                    //单纯的查询,把custcode替换成了cust_shopName
+                    lianmengkaXmCustResultModule.setCust_code(custshopName);
 
+                }
             }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -144,9 +151,8 @@ public class LianMengKaService {
     }
 
     /**
-     *
-     * @param shopcode shopcode
-     * @param cardNo  联盟卡号
+     * @param shopcode  shopcode
+     * @param cardNo    联盟卡号
      * @param carHaoPai 车牌号
      * @return 联盟卡列表
      */
@@ -185,9 +191,9 @@ public class LianMengKaService {
     /**
      * 获取联盟卡二维码
      *
-     * @param cardid 卡的id
+     * @param cardid   卡的id
      * @param itemcode 项目编号
-     * @param typeflg 卡标识 1:项目 2:商品
+     * @param typeflg  卡标识 1:项目 2:商品
      * @return 字符串
      */
     public String getXmkQRCode(String cardid, String itemcode, String typeflg) {

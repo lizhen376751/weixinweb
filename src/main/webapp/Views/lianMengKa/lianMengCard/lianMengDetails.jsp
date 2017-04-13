@@ -1,28 +1,8 @@
-<%@ page import="com.dudu.weixin.service.AutoLoginService" %>
+
 <%@ page language="java" pageEncoding="UTF-8"%>
 
-<% 
- 	String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
-	String strOpenId = (String) session.getAttribute("DUDUCHEWANG_OpenId");
-	String CarId = (String) session.getAttribute("DUDUCHEWANG_CarId");
-
+<%
 	String cardNo=request.getParameter("cardNo");
-//	String shopcode="CS000";
-//	String CarId = "鲁C996633";
-	//TODO 后期封装成接口进行判断
-//	System.out.println("=============lianMengCard - lianMengDetails.jsp=== CarId:|"+CarId+"|cardNo:"+cardNo+"|");
-//	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-//		AutoLoginService autoLogin = new AutoLoginService();
-//		CarId = autoLogin.judgeOpenId(strOpenId, shopcode);
-//		session.setAttribute("DUDUCHEWANG_CarId", CarId);
-//		System.out.println("=============lianMengCard - lianMengDetails.jsp=== 自动登陆后  CarId:|"+CarId+"|");
-//	}
-//
-//	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-//		System.out.println("=============lianMengCard - lianMengDetails.jsp=== 自动登陆后 CarId还是空，则跳转到login.jsp   shopcode:"+shopcode+"|strOpenId:"+strOpenId+"|");
-//		response.sendRedirect("../../login.jsp?shopcode=" + shopcode + "&strOpenId=" + strOpenId + "");
-//	}
- 
 %>
 
 <html>
@@ -61,16 +41,11 @@
 
 				</ul>
 			</div>
-
 			<a class="card_detailed font_3" href="/oauthLoginServlet?flagStr=lmkInfo">
 				返回
 			</a>
 		</div>
 	</body>
-	<input type="hidden" id="shopcode" name="shopcode" value="<%=shopcode %>" >
-	<input type="hidden" id="strOpenId" name="strOpenId" value="<%=strOpenId %>" >
-	<input type="hidden" id="CarId" name="CarId" value="<%=CarId %>" >
 	<input type="hidden" id="cardNo" name="cardNo" value="<%=cardNo %>" >
-	<input type="hidden" id="contextPathStr" name="contextPathStr" value="<%=request.getContextPath() %>" >
 	<script src="/scripts/lianMengKa/js/lianMengDetail.js" type="text/javascript" charset="utf-8"></script>
 </html>
