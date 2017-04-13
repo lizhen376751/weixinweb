@@ -115,21 +115,24 @@ $(document).ready(function () {
     close.on("click", function () {
         tc_ceng.hide();
         l_box.hide();
-        b_box.hide()
+        b_box.hide();
+        ty.hide();
     })
     //------------------------------------------------------------------------------------联盟卡激活失败后的确定按钮
     determine.on("click", function () {
         tc_ceng.hide();
         l_box.hide();
         b_box.hide();
-        card_num.val("");
-        activate_num.val("")
+        ty.hide();
+        // card_num.val("");
+        // activate_num.val("")
     })
     //------------------------------------------------------------------------------------联盟卡激活成功后的确定按钮
     sign_in.on("click", function () {
         tc_ceng.hide();
         l_box.hide();
         b_box.hide();
+        ty.hide();
         //----------------------------------------------------------------------------------激活成功后跳转的页面
         window.location.href = "/oauthLoginServlet?flagStr=personalCenter";
     })
