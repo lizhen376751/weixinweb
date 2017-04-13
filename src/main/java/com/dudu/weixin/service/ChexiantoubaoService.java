@@ -250,6 +250,7 @@ public class ChexiantoubaoService {
         return apiShopIntf.queryShopInfo(shopParam);
     }
 
+    
     /**
      * 查询车辆信息
      *
