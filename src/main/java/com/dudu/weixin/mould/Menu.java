@@ -3,11 +3,11 @@ package com.dudu.weixin.mould;
 
 /**
  * 菜单类
- * 一级按钮类
+ *
  */
 public class Menu {
     /**
-     *按钮
+     *一级按钮类
      */
     private Button[] button;
 

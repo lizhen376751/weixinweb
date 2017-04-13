@@ -3,6 +3,7 @@ package com.dudu.weixin.mould;
 
 /**
  *菜单类
+ * 二级按钮
  */
 public class CommonButton extends Button {
     /**

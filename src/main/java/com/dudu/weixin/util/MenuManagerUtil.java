@@ -34,7 +34,7 @@ public final class MenuManagerUtil {
 
         // 调用接口获取access_token
         AccessToken at = WeixinUtil.getAccessToken(Constant.APPID, Constant.APPSERECT);
-        //System.out.println(at.getToken());
+        System.out.println(at.getToken());
         if (null != at) {
             // 调用接口创建菜单
             int result = WeixinUtil.createMenu(getMenu(), at.getToken());
@@ -67,15 +67,15 @@ public final class MenuManagerUtil {
         btn12.setType("view");
         btn12.setUrl(Constant.COMMONURL + "_AHIInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
-        CommonButton btn13 = new CommonButton();
-        btn13.setName("车辆保养");
-        btn13.setType("view");
-        btn13.setUrl(Constant.COMMONURL + "_baoYangList" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn14 = new CommonButton();
-        btn14.setName("消费记录");
-        btn14.setType("view");
-        btn14.setUrl(Constant.COMMONURL + "_xiaoFeiList" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+//        CommonButton btn13 = new CommonButton();
+//        btn13.setName("车辆保养");
+//        btn13.setType("view");
+//        btn13.setUrl(Constant.COMMONURL + "_baoYangList" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+//
+//        CommonButton btn14 = new CommonButton();
+//        btn14.setName("消费记录");
+//        btn14.setType("view");
+//        btn14.setUrl(Constant.COMMONURL + "_xiaoFeiList" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn15 = new CommonButton();
         btn15.setName("个人中心");
@@ -87,16 +87,16 @@ public final class MenuManagerUtil {
         btn21.setName("联盟介绍");
         btn21.setType("view");
         btn21.setUrl(Constant.COMMONURL + "_lianMengJieShao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn22 = new CommonButton();
-        btn22.setName("服务导航");
-        btn22.setType("view");
-        btn22.setUrl(Constant.COMMONURL + "_daoHang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn23 = new CommonButton();
-        btn23.setName("我的预约");
-        btn23.setType("view");
-        btn23.setUrl(Constant.COMMONURL + "_daoHang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+//
+//        CommonButton btn22 = new CommonButton();
+//        btn22.setName("服务导航");
+//        btn22.setType("view");
+//        btn22.setUrl(Constant.COMMONURL + "_daoHang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+//
+//        CommonButton btn23 = new CommonButton();
+//        btn23.setName("我的预约");
+//        btn23.setType("view");
+//        btn23.setUrl(Constant.COMMONURL + "_daoHang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn24 = new CommonButton();
         btn24.setName("车险投保");
@@ -114,16 +114,16 @@ public final class MenuManagerUtil {
         btn32.setType("view");
         btn32.setUrl(Constant.COMMONURL + "_lianMengActivity" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
-        CommonButton btn33 = new CommonButton();
-        btn33.setName("车友会");
-        btn33.setType("view");
-        btn33.setUrl(Constant.COMMONURL + "_lianMengActivity" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-
-        CommonButton btn34 = new CommonButton();
-        btn34.setName("退出账号");
-        btn34.setType("view");
-        btn34.setUrl(Constant.COMMONURL + "_logout" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+//        CommonButton btn33 = new CommonButton();
+//        btn33.setName("车友会");
+//        btn33.setType("view");
+//        btn33.setUrl(Constant.COMMONURL + "_lianMengActivity" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+//
+//
+//        CommonButton btn34 = new CommonButton();
+//        btn34.setName("退出账号");
+//        btn34.setType("view");
+//        btn34.setUrl(Constant.COMMONURL + "_logout" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
 
         ComplexButton mainBtn1 = new ComplexButton();

@@ -2,6 +2,7 @@ package com.dudu.weixin.mould;
 
 /**
  * 按钮类
+ *
  */
 public class Button {
     /**

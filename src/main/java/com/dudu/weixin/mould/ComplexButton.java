@@ -2,8 +2,8 @@ package com.dudu.weixin.mould;
 
 
 /**
- * 菜单按钮
- * 二级菜单
+ * 菜单的一级按钮
+ *
  */
 public class ComplexButton extends Button {
     /**
