@@ -665,15 +665,11 @@ $(document).ready(function(){
                                             url:"/baoxiantijiao",
                                             data:abc,
                                             success:function (data) {
-                                                alert(1);
                                                 var json = JSON.parse(data);
                                                 if(json == '"1"'){
-                                                    alert(2);
                                                     if(mineShopCode != "null" ){
-                                                        alert(3);
-                                                        window.location.href = "/appbaoxianlist？mineShopCode"+mineShopCode; //app页面跳转
+                                                        window.location.href = "/appbaoxianlist?mineShopCode"+mineShopCode; //app页面跳转
                                                     }else{
-                                                        alert(4);
                                                         window.location.href = "/queryBaoXian";//微信页面
                                                     }
 
