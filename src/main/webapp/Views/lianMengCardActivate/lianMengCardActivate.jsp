@@ -52,6 +52,16 @@
 				<!--<span class="l_tq font_1 color_8">取消请关闭窗口</span>-->
 				<div class="l_qdl font_1 color_3">确定</div>
 			</div>
+
+
+			<!----------------------------------------------------------------------------统一提示框-->
+			<div class="ty">
+				<img src="/files/lianMengCardActivate/error.png" class="close"/>
+				<span class="l_tt font_5"></span>
+				<!--<span class="l_tj font_3">请注册</span>-->
+				<!--<span class="l_tq font_1 color_8">取消请关闭窗口</span>-->
+				<div class="tyt font_1 color_3">确定</div>
+			</div>
 		</div>
 	</body>
 </html>

@@ -194,6 +194,67 @@
 	bottom: 0.48rem;
 }
 
+/*--------------------------------------------------------------------------------已注册，有密码*/
+.tcc .ty{
+	width: 6.72rem;
+	height: 5.5rem;
+	border-radius: 0.4rem;
+	background: #fff;
+	margin: 4.04rem auto 0;
+	box-shadow: 0px 0px 20px rgba(0,0,0,0.4);
+	position: relative;
+	display: none;
+}
+.tcc .ty .close{
+	width: 0.7rem;
+	position: absolute;
+	top: -0.2rem;
+	right: -0.2rem;
+}
+/*--------------------------------------------------------------------------车牌号已注册*/
+.tcc .ty .l_tt{
+	display: block;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top: 1.54rem;
+	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(62, 216, 255, 1)), to(rgba(88, 150, 255, 1)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+}
+/*--------------------------------------------------------------------直接登录*/
+.tcc .ty .l_tj{
+	display: block;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top: 2.24rem;
+	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(62, 216, 255, 1)), to(rgba(88, 150, 255, 1)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+}
+/*---------------------------------------------------------------------取消关闭窗口*/
+.tcc .ty .l_tq{
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top: 3.5rem;
+}
+/*--------------------------------------------------------------------去登录*/
+.tcc .ty .tyt{
+	width: 6rem;
+	height: 0.98rem;
+	border-radius: 0.2rem;
+	background: #58b5ff;
+	text-align: center;
+	line-height: 0.98rem;
+	position: absolute;
+	left: 50%;
+	margin-left: -3rem;
+	bottom: 0.48rem;
+}
 
 
 
