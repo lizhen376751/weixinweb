@@ -262,6 +262,9 @@ public class ChexiantoubaoService {
         customerInfoParam.setPlateNumber(parameter);
         customerInfoParam.setShopCode(xinxishopcode);
         List<CustomerInfo> customerInfos = apiCustomerInfo.queryCustomerList(customerInfoParam);
+        if (customerInfos == null || customerInfos.size() == 0){
+            return null;
+        }
         return customerInfos;
     }
 
