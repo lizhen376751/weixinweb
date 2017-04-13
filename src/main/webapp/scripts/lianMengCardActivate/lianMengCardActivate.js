@@ -22,7 +22,7 @@ $(document).ready(function () {
     var close = $(".close"); //---------------------------------------------------获取遮罩层中红色关闭按钮
     var determine = $(".l_qdan") //----------------------------------------------获取遮罩层中卡激活，没有激活的确定按钮
     var sign_in = $(".l_qdl");  //-----------------------------------------------获取遮罩层中卡激活，且有密码的去登陆按钮
-
+    var l_tt = $("b_box .l_tt"); //----------------------------------------------获取弹出层中提示内容
 
     //------------------------------------------------------------------------JS控制的css样式
     card_num.on("focus", function () {
@@ -61,9 +61,15 @@ $(document).ready(function () {
         var card_value = card_num.val();
         var activate_value = activate_num.val();
         if (card_value == "" || card_value.length > 20) {
-            alert("联盟卡号有误，请重新输入~")
+            tc_ceng.show();
+            b_box.show();
+            l_tt.text("联盟卡号有误，请重新输入");
+            // alert("联盟卡号有误，请重新输入~")
         } else if (activate_value == "" || activate_value.length > 10) {
-            alert("输入激活码有误，请重新输入~")
+            tc_ceng.show();
+            b_box.show();
+            l_tt.text("输入激活码有误，请重新输入");
+            // alert("输入激活码有误，请重新输入~")
         } else {
             $.ajax({
                 type: 'POST',
@@ -87,10 +93,14 @@ $(document).ready(function () {
                         //     activate_num.val("")
                         // }, 3000);
                     }else if (backdata=="1"){
-                        alert("该卡号已经激活!");
+                        tc_ceng.show();
+                        b_box.show();
+                        l_tt.text("该卡号已经激活!");
+                        // alert("该卡号已经激活!");
                     }else if(backdata=="2"){
                         tc_ceng.show();
                         b_box.show();
+                        l_tt.text("联盟卡激活成功!")
                     }
                 }
             });
@@ -109,8 +119,8 @@ $(document).ready(function () {
         tc_ceng.hide();
         l_box.hide();
         b_box.hide();
-        card_num.val("");
-        activate_num.val("")
+        // card_num.val("");
+        // activate_num.val("")
     })
     //------------------------------------------------------------------------------------联盟卡激活成功后的确定按钮
     sign_in.on("click", function () {

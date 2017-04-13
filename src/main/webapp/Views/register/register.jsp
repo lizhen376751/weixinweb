@@ -28,7 +28,7 @@
 				</li>
 				<!---------------------------------------------------------------------------账户密码-->
 				<li class="margin_top_1">
-					<img src="/files/register/phone.png" class="logo"/>
+					<img src="/files/register/password.png" class="logo"/>
 					<input type="password" placeholder="请设置您的账户密码" class="input_css_1 font_1 count_password"/>
 					<img src="/files/register/big_line.png" alt="" class="big_line"/>
 					<img src="/files/register/gbmm.png" class="eye"/>
