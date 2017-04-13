@@ -13,7 +13,6 @@ import com.dudu.soa.baoxian.kaidan.module.CustomerModel;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceBill;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceCompany;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceInfo;
-
 import com.dudu.soa.baoxian.kaidan.module.InsuranceType;
 import com.dudu.soa.basedata.employee.api.ApiBaseDataEmployee;
 import com.dudu.soa.basedata.employee.module.Employee;
@@ -63,7 +62,7 @@ public class ChexiantoubaoService {
     /**
      * 获取客户信息
      */
-    @Reference(version = "0.0.1")
+    @Reference(version = "0.0.1", timeout = 3000)
     private ApiCustomerInfo apiCustomerInfo;
 
 
@@ -90,7 +89,6 @@ public class ChexiantoubaoService {
     }
 
     /**
-     *
      * @param request 获取值
      * @return Integer
      * @throws ParseException 异常
@@ -218,13 +216,14 @@ public class ChexiantoubaoService {
 
     /**
      * 查询保险
+     *
      * @param baoXianParamList 查询条件
      * @return List<BaoXianList>
      */
     public List<BaoXianList> queryInsurance(BaoXianParamList baoXianParamList) {
         List<BaoXianList> baoXianLists = aPIBaoXainKaiDan.queryInsuranceList(baoXianParamList);
 
-        return  baoXianLists;
+        return baoXianLists;
     }
 
     /**
@@ -305,6 +304,7 @@ public class ChexiantoubaoService {
 
     /**
      * 获取客户信息
+     *
      * @param httpSession 域数据
      * @param request     域数据
      * @return 客户信息
