@@ -564,12 +564,12 @@ $(document).ready(function(){
             alert("您选择的上传文件不是有效的图片文件！");
             return false;
         }else{
-            var shopcode="CS00001";
+            var shopcode=mineShopCode;
             var i = $(this).index()+1;
             var srcd =this.files[0];
             var projectId = uuid(16,16);
             var DuduOssCallbackVarData1 = {
-                "shopCode" :shopcode,
+                "shopCode" :mineShopCode,
                 "orderCode" : projectId,
                 "imageType" : ""+i+""
             }
@@ -667,7 +667,12 @@ $(document).ready(function(){
                                             success:function (data) {
                                                 var json = JSON.parse(data);
                                                 if(json == '"1"'){
-                                                    window.location.href = "/oauthLoginServlet?flagStr=baoxianlist";
+                                                    if(mineShopCode != "null" ){
+                                                        window.location.href = "/appbaoxianlist？mineShopCode"+mineShopCode; //app页面跳转
+                                                    }else{
+                                                        window.location.href = "/queryBaoXian";//微信页面
+                                                    }
+
                                                 }else{
                                                     alert("提交失败，请重新提交！")
                                                 }

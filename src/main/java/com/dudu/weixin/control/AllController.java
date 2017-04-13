@@ -178,7 +178,7 @@ public class AllController {
 
 
     /**
-     * 仅用于app端页面跳转
+     * 仅用于app端页面车险投保
      *
      * @param request  请求
      * @param model    绑定数据
@@ -241,7 +241,7 @@ public class AllController {
     }
 
     /**
-     * 仅用于app端页面跳转
+     * 仅用于app端保险列表页面的按钮进入
      *
      * @param request  请求
      * @param model    绑定数据
@@ -269,6 +269,18 @@ public class AllController {
         return "/cheXianList/cheXianList.jsp"; //展示车险列表的页面
 
     }
+    /**
+     * 仅用于app端保险提交之后跳转至列表页面
+     *
+     * @param request  请求
+     * @return 页面跳转至车险列表展示页面
+     */
+    @RequestMapping(value = "/appbaoxianlist", method = RequestMethod.GET)
+    public String appbaoxianlist(HttpServletRequest request, Model model) {
+        String mineShopCode = request.getParameter("mineShopCode");
+        model.addAttribute("shopCode", mineShopCode);
+        return "/cheXianList/cheXianList.jsp"; //展示车险列表的页面
 
+    }
 
 }
