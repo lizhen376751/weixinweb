@@ -73,7 +73,7 @@ $(document).ready(function(){
             //console.log(json);
         },
         error:function(eee){
-            // alert("失败")
+            // alert("失败");
         }
     });
 
@@ -90,7 +90,7 @@ $(document).ready(function(){
             //console.log(json);
         },
         error:function(eee){
-            // alert("失败")
+            // alert("失败");
         }
     });
     //根据车牌号码显示信息
@@ -106,34 +106,43 @@ $(document).ready(function(){
         }
         tishi.append(html)
     }
+    var state = true;
     car_number.on("keyup",function(){
         var val = $(this).val();
         if(val.length >= 3){
-            $.ajax({
-                type : 'POST',
-                url  : '/getCommonAjax',
-                data : {
-                    fromflag : "xinxi",
-                    car_number: val,
-                    mineShopCode : mineShopCode
-                },
-                success:function(jsondata){
-                    var json = JSON.parse(jsondata);
-                    //console.log(json);
-                    if(json[0]){
-                        tishi.css("display","block");
-                        add_tishi(json);
-                        add_information(json)
+            if(state){
+                state = false;
+                $.ajax({
+                    type : 'POST',
+                    url  : '/getCommonAjax',
+                    data : {
+                        fromflag : "xinxi",
+                        car_number: val,
+                        mineShopCode : mineShopCode
+                    },
+                    success:function(jsondata){
+                        state = true;
+                        var json = JSON.parse(jsondata);
+                        //console.log(json);
+                        if(json[0]){
+                            tishi.css("display","block");
+                            add_tishi(json);
+                            add_information(json)
+                        }
+                    },
+                    error:function(eee){
+                        // alert("失败");
                     }
-                },
-                error:function(eee){
-                    // alert("失败")
-                }
-            });
+                });
+            }
+
         }else{
             tishi.css("display","none");
         }
 
+    })
+    $("body").on("click",function(){
+        tishi.css("display","none");
     })
     //时间戳转换成日期格式
     function dateFormat(val) {
