@@ -213,7 +213,7 @@ public class AllController {
         if (integer > 0) {
             return JSONObject.toJSONString("1");
         } else {
-          return JSONObject.toJSONString("0");
+            return JSONObject.toJSONString("0");
         }
 
     }
@@ -269,10 +269,12 @@ public class AllController {
         return "/cheXianList/cheXianList.jsp"; //展示车险列表的页面
 
     }
+
     /**
      * 仅用于app端保险提交之后跳转至列表页面
      *
-     * @param request  请求
+     * @param request 请求
+     * @param  model 返回数据
      * @return 页面跳转至车险列表展示页面
      */
     @RequestMapping(value = "/appbaoxianlist", method = RequestMethod.GET)

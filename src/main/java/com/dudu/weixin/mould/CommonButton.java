@@ -1,34 +1,62 @@
 package com.dudu.weixin.mould;
 
 
-
-
+/**
+ *菜单类
+ */
 public class CommonButton extends Button {
-	private String type;
-	private String key;
-	private String url;
+    /**
+     *类型
+     */
+    private String type;
+    /**
+     *按钮
+     */
+    private String key;
+    /**
+     *路径
+     */
+    private String url;
 
-	public String getUrl() {
-		return url;
-	}
+    /**
+     * @return url
+     */
+    public String getUrl() {
+        return url;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    /**
+     * @param url url
+     */
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-	public String getType() {
-		return type;
-	}
+    /**
+     * @return type
+     */
+    public String getType() {
+        return type;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    /**
+     * @param type type
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public String getKey() {
-		return key;
-	}
+    /**
+     * @return key
+     */
+    public String getKey() {
+        return key;
+    }
 
-	public void setKey(String key) {
-		this.key = key;
-	}
+    /**
+     * @param key key
+     */
+    public void setKey(String key) {
+        this.key = key;
+    }
 }

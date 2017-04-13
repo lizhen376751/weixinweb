@@ -36,7 +36,7 @@ public class BuyRecordService {
 
     /**
      * @param strId 不知道
-     * @return
+     * @return strName
      * @throws Exception
      */
     public String getZhiFuFangShi(String strId) {
@@ -48,7 +48,7 @@ public class BuyRecordService {
     /**
      * @param shopcode    店铺代码
      * @param wxpingzheng wx凭证
-     * @return
+     * @return list
      * @Title 获取项目列表
      */
 
@@ -98,12 +98,12 @@ public class BuyRecordService {
 
     /**
      *
-     * @param shopcode
-     * @param CarHaoPai
-     * @param top
-     * @return
+     * @param shopcode 店铺编码
+     * @param carHaoPai 车牌号
+     * @param top 分页
+     * @return ArrayList
      */
-    public ArrayList listRecord(String shopcode, String CarHaoPai, String top) {
+    public ArrayList listRecord(String shopcode, String carHaoPai, String top) {
         ArrayList list = new ArrayList();
         int num = Integer.valueOf(top) * 10;
         System.out.println("下拉==" + top);
@@ -112,10 +112,9 @@ public class BuyRecordService {
     }
     /**
      *
-     * @param shopcode
-     * @param CarHaoPai
-     * @param top
-     * @return
+     * @param shopcode 店铺编码
+     * @param wxpingzheng 微信凭证
+     * @return 字符串
      */
     public String getItemRecord(String shopcode, String wxpingzheng) {
         String strRecord = "";
@@ -125,10 +124,9 @@ public class BuyRecordService {
     }
     /**
      *
-     * @param shopcode
-     * @param CarHaoPai
-     * @param top
-     * @return
+     * @param shopcode 店铺代码
+     * @param wxpingzheng 微信凭证
+     * @return 字符串
      */
     public String getGoodsRecord(String shopcode, String wxpingzheng) {
         String strRecord = "";
@@ -140,7 +138,7 @@ public class BuyRecordService {
     /**
      *
      * @param shopcode shopcode
-     * @return
+     * @return 字符串
      */
     public String getShopMoneyFlg(String shopcode)  {
         String strFlg = "";
@@ -154,7 +152,7 @@ public class BuyRecordService {
      *
      * @param shopcode shopcode
      * @param wxpingzheng 微信凭证
-     * @return
+     * @return 字符串
      */
     public String getWeiXiuYuanCodesStr(String shopcode, String wxpingzheng) {
         String rtnStr = "";

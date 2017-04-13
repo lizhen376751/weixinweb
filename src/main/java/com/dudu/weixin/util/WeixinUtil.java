@@ -124,8 +124,11 @@ import java.net.URL;
         return accessToken;
     }
 
-    // 菜单创建（POST） 限100（次/天）
-    public static String MENUCREATURL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
+
+    /**
+     * 创建菜单时候的请求微信接口
+     */
+    private static String mENUCREATURL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
 
     /**
      * 创建菜单
@@ -138,7 +141,7 @@ import java.net.URL;
         int result = 0;
 
         // 拼装创建菜单的url
-        String url = MENUCREATURL.replace("ACCESS_TOKEN", accessToken);
+        String url = mENUCREATURL.replace("ACCESS_TOKEN", accessToken);
         // 将菜单对象转换成json字符串
 
         String jsonMenu = JSONObject.toJSONString(menu);

@@ -5,50 +5,112 @@ package com.dudu.weixin.mould;
  */
 public class WeixinOauth2Token {
     /**
-     *
+     * 网页授权的accessToken
      */
-    private String AccessToken;
-    private int ExpiresIn;
-    private String RefreshToken;
-    private String OpenId;
-    private String Scope;
-    private String Nickname;
+    private String accessToken;
+    /**
+     * 有效时间
+     */
+    private int expiresIn;
+    /**
+     * 刷新的
+     */
+    private String refreshToken;
+    /**
+     * 客户id
+     */
+    private String openId;
+    /**
+     * 作用域
+     */
+    private String scope;
+    /**
+     * 不知道
+     */
+    private String nickname;
+
+    /**
+     * @return accessToken
+     */
     public String getAccessToken() {
-        return AccessToken;
-    }
-    public void setAccessToken(String accessToken) {
-        AccessToken = accessToken;
-    }
-    public int getExpiresIn() {
-        return ExpiresIn;
-    }
-    public void setExpiresIn(int expiresIn) {
-        ExpiresIn = expiresIn;
-    }
-    public String getRefreshToken() {
-        return RefreshToken;
-    }
-    public void setRefreshToken(String refreshToken) {
-        RefreshToken = refreshToken;
-    }
-    public String getOpenId() {
-        return OpenId;
-    }
-    public void setOpenId(String openId) {
-        OpenId = openId;
-    }
-    public String getScope() {
-        return Scope;
-    }
-    public void setScope(String scope) {
-        Scope = scope;
+        return accessToken;
     }
 
-    public String getNickname() {
-        return Nickname;
+    /**
+     * @param accessToken accessToken
+     */
+    public void setAccessToken(String accessToken) {
+        accessToken = accessToken;
     }
+
+    /**
+     * @return expiresIn
+     */
+    public int getExpiresIn() {
+        return expiresIn;
+    }
+
+    /**
+     * @param expiresIn expiresIn
+     */
+    public void setExpiresIn(int expiresIn) {
+        expiresIn = expiresIn;
+    }
+
+    /**
+     * @return refreshToken
+     */
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    /**
+     * @param refreshToken refreshToken
+     */
+    public void setRefreshToken(String refreshToken) {
+        refreshToken = refreshToken;
+    }
+
+    /**
+     * @return openId
+     */
+    public String getOpenId() {
+        return openId;
+    }
+
+    /**
+     * @param openId openId
+     */
+    public void setOpenId(String openId) {
+        openId = openId;
+    }
+
+    /**
+     * @return scope
+     */
+    public String getScope() {
+        return scope;
+    }
+
+    /**
+     * @param scope scope
+     */
+    public void setScope(String scope) {
+        scope = scope;
+    }
+
+    /**
+     * @return nickname
+     */
+    public String getNickname() {
+        return nickname;
+    }
+
+    /**
+     * @param nickname nickname
+     */
     public void setNickname(String nickname) {
-        Nickname = nickname;
+        nickname = nickname;
     }
 
 

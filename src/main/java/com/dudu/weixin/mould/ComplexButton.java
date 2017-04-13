@@ -1,18 +1,27 @@
 package com.dudu.weixin.mould;
 
 
-
 /**
- * ���Ӱ�ť������ť��
- * 
+ * 菜单按钮
+ * 二级菜单
  */
 public class ComplexButton extends Button {
-	private Button[] sub_button;
-	public Button[] getSub_button() {
-		return sub_button;
-	}
+    /**
+     * 二级按钮
+     */
+    private Button[] subbutton;
 
-	public void setSub_button(Button[] sub_button) {
-		this.sub_button = sub_button;
-	}
+    /**
+     * @return subbutton
+     */
+    public Button[] getSubbutton() {
+        return subbutton;
+    }
+
+    /**
+     * @param subbutton subbutton
+     */
+    public void setSubbutton(Button[] subbutton) {
+        this.subbutton = subbutton;
+    }
 }

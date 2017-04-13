@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 /**
+ * 微信配置url和签名时,提交进行验证
  * 微信加密/校验流程
  */
 public final class SignUtil {

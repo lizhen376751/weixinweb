@@ -2,16 +2,24 @@ package com.dudu.weixin.mould;
 
 /**
  * 按钮类
- * 
  */
 public class Button {
-	private String name;
+    /**
+     * 按钮的名称
+     */
+    private String name;
 
-	public String getName() {
-		return name;
-	}
+    /**
+     * @return 名称
+     */
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * @param name 名称
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 }

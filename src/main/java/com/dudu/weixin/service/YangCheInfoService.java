@@ -45,7 +45,7 @@ public class YangCheInfoService {
         queryFilesParam.setShopCode(shopcode);
         for (int i = 0; i < list.size(); i++) {
             if (null == list.get(i).getImgURL() || "".equals(list.get(i).getImgURL())) {
-                list.get(i).setImgURL("../img/weijiazai.png");
+                list.get(i).setImgURL("/files/yangCheInfo/img/weijiazai.png");
             } else {
                 queryFilesParam.setBusinessConfigId(num);
                 queryFilesParam.setOrderCode(list.get(i).getImgURL());

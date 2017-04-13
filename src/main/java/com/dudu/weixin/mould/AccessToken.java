@@ -1,7 +1,8 @@
 package com.dudu.weixin.mould;
 
 /**
- * Created by Administrator on 2017/4/7.
+ * 开发者的AccessToken的实体类
+ * Created by lizhen on 2017/4/7.
  */
 
 public class AccessToken {
@@ -14,18 +15,34 @@ public class AccessToken {
      */
     private int expiresIn;
 
+    /**
+     *
+     * @return token
+     */
     public String getToken() {
         return token;
     }
 
+    /**
+     *
+     * @param token token
+     */
     public void setToken(String token) {
         this.token = token;
     }
 
+    /**
+     *
+     * @return expiresIn
+     */
     public int getExpiresIn() {
         return expiresIn;
     }
 
+    /**
+     *
+     * @param expiresIn expiresIn
+     */
     public void setExpiresIn(int expiresIn) {
         this.expiresIn = expiresIn;
     }

@@ -78,7 +78,6 @@ public class CoreController extends HttpServlet {
 //response.setCharacterEncoding("UTF-8");
 ////code
 //// ���ú���ҵ���������Ϣ��������Ϣ
-//String respMessage = CoreService.processRequest(request);
 //
 //// ��Ӧ��Ϣ
 //PrintWriter out = response.getWriter();

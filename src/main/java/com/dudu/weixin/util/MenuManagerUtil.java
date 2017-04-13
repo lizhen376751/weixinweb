@@ -128,15 +128,15 @@ public final class MenuManagerUtil {
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
-        mainBtn1.setSub_button(new CommonButton[]{btn11, btn12, btn15});
+        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn15});
 
         ComplexButton mainBtn2 = new ComplexButton();
         mainBtn2.setName("服务");
-        mainBtn2.setSub_button(new CommonButton[]{btn21, btn24});
+        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn24});
 
         ComplexButton mainBtn3 = new ComplexButton();
         mainBtn3.setName("活动");
-        mainBtn3.setSub_button(new CommonButton[]{btn31, btn32});
+        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32});
 
         /**
          * 这是公众号xiaoqrobot目前的菜单结构，每个一级菜单都有二级菜单项<br>
