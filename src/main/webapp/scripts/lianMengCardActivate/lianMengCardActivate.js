@@ -79,13 +79,13 @@ $(document).ready(function () {
                     if (backdata=="0"){
                         tc_ceng.show();
                         l_box.show();
-                        setTimeout(function () {
-                            tc_ceng.hide();
-                            l_box.hide();
-                            b_box.hide();
-                            card_num.val("");
-                            activate_num.val("")
-                        }, 3000);
+                        // setTimeout(function () {
+                        //     tc_ceng.hide();
+                        //     l_box.hide();
+                        //     b_box.hide();
+                        //     card_num.val("");
+                        //     activate_num.val("")
+                        // }, 3000);
                     }else if (backdata=="1"){
                         alert("该卡号已经激活!");
                     }else if(backdata=="2"){
