@@ -33,14 +33,12 @@ public class CheXianService {
         }
         List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
         List<Insurance> list = new ArrayList<>();
-        String orderNun = "";
         for (int i = 0; i < baoXianLists.size(); i++) {
             if (i == 0) {
                 BaoXianList bs = baoXianLists.get(0);
                 Insurance is = new Insurance();
                 is.setShopCode(bs.getShopCode());
                 is.setOrderNumb(bs.getOrderNumb());
-                orderNun = bs.getOrderNumb();
                 is.setKaiDanDate(bs.getKaiDanDate());
                 is.setFuKuanFlag(bs.getFuKuanFlag());
                 is.setAssistant(bs.getAssistant());
@@ -57,7 +55,7 @@ public class CheXianService {
                 is.setList(list1);
                 list.add(is);
             } else {
-                if (baoXianLists.get(i).getOrderNumb().equals(list.get(list.size() - 1))) {
+                if (baoXianLists.get(i).getOrderNumb().equals(list.get(list.size() - 1).getOrderNumb())) {
                     InsuranceCompanyDetails is = new InsuranceCompanyDetails();
                     is.setCompanyid(baoXianLists.get(i).getCompanyid());
                     is.setBaoJiaState(baoXianLists.get(i).getBaoJiaState());
@@ -86,6 +84,7 @@ public class CheXianService {
                 }
             }
         }
+        System.out.println(baoXianLists.size() + "===============================================================");
         System.out.println(list.size() + "***************************************************************************");
         return list;
     }
