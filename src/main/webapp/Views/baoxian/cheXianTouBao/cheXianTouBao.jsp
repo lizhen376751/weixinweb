@@ -32,7 +32,7 @@
 </head>
 <body>
 <div id="wrap">
-    <form target="_blank">
+    <form target="id_iframe">
         <%--mineShopCode隐藏域--%>
         <input type="hidden" name="mineShopCode" id="mineShopCode" value="<%=mineShopCode%>" class="phone_number"/>
         <%--shopCode隐藏域--%>
@@ -445,6 +445,6 @@
         </div>
     </form>
 </div>
-
+<iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
 </body>
 </html>
