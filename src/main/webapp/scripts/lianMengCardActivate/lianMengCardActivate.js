@@ -28,32 +28,32 @@ $(document).ready(function () {
     //------------------------------------------------------------------------JS控制的css样式
     card_num.on("focus", function () {
         $(this).css({
-            "border": "3px #6cd2fd solid",
-            "boxShadow": "none",
+            "border": "0.03rem #6cd2fd solid",
             "lineHeight": "1.05rem",
         })
+        $(this).toggleClass("input_bg")
     })
     card_num.on("blur", function () {
         $(this).css({
-            "border": "1px rgba(255,255,255,0.35) solid",
-            "boxShadow": "0px 0px 3px rgba(0,0,0,0.35) inset",
+            "border": "none",
             "lineHeight": "1.1rem",
-        })
+        });
+        $(this).toggleClass("input_bg")
     })
 
     activate_num.on("focus", function () {
         $(this).css({
-            "border": "3px #6cd2fd solid",
-            "boxShadow": "none",
+            "border": "0.03rem #6cd2fd solid",
             "lineHeight": "1.05rem",
         })
+        $(this).toggleClass("input_bg")
     })
     activate_num.on("blur", function () {
         $(this).css({
-            "border": "1px rgba(255,255,255,0.35) solid",
-            "boxShadow": "0px 0px 3px rgba(0,0,0,0.35) inset",
+            "border": "none",
             "lineHeight": "1.1rem",
-        })
+        });
+        $(this).toggleClass("input_bg")
     })
 
 

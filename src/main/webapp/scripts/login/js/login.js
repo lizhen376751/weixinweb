@@ -29,7 +29,7 @@ $(document).ready(function () {
     //------------------------------------------------------------------------JS控制的css样式
     car_num.on("focus", function () {
         $(this).css({
-            "border": "3px #6cd2fd solid",
+            "border": "0.03rem #6cd2fd solid",
             "lineHeight": "1.05rem",
         })
         $(this).toggleClass("input_bg")
@@ -44,7 +44,7 @@ $(document).ready(function () {
 
     password_num.on("focus", function () {
         $(this).css({
-            "border": "3px #6cd2fd solid",
+            "border": "0.03rem #6cd2fd solid",
             "lineHeight": "1.05rem",
         })
         $(this).toggleClass("input_bg")

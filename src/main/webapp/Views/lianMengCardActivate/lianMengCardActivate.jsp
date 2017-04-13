@@ -19,9 +19,9 @@
 		<!---------------------------------------------------------------------------------用户输入部分-->
 		<div class="main_txt">
 			<!-----------------------------------------------------------------------------车牌号-->
-			<input type="text" placeholder="请输入您的联盟卡号" class="car_num font_3"/>
+			<input type="text" placeholder="请输入您的联盟卡号" class="car_num font_3 input_bg"/>
 			<!-----------------------------------------------------------------------------账号密码-->
-			<input type="text" placeholder="请输联盟卡的激活码" class="password_num margin_top_1 font_3"/>
+			<input type="text" placeholder="请输联盟卡的激活码" class="password_num margin_top_1 font_3 input_bg"/>
 		</div>
 		<!--------------------------------------------------------------------------------激活按钮-->
 		<div class="bottom_button font_5">
