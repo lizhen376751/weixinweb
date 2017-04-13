@@ -73,7 +73,7 @@ $(document).ready(function(){
             //console.log(json);
         },
         error:function(eee){
-            alert("失败")
+            // alert("失败")
         }
     });
 
@@ -90,7 +90,7 @@ $(document).ready(function(){
             //console.log(json);
         },
         error:function(eee){
-            alert("失败")
+            // alert("失败")
         }
     });
     //根据车牌号码显示信息
@@ -127,7 +127,7 @@ $(document).ready(function(){
                     }
                 },
                 error:function(eee){
-                    alert("失败")
+                    // alert("失败")
                 }
             });
         }else{
@@ -420,7 +420,7 @@ $(document).ready(function(){
             //console.log(json);
         },
         error:function(eee){
-            alert("失败")
+            // alert("失败")
         }
     });
     //保险险种部分的ajax
@@ -437,7 +437,7 @@ $(document).ready(function(){
             //console.log(json);
         },
         error:function(eee){
-            alert("失败")
+            // alert("失败")
         }
     });
     //证件信息部分
