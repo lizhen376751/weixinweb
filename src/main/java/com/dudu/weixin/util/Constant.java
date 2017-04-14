@@ -8,8 +8,8 @@ public final class Constant {
     /**
      * 微信开发者的appid
      */
-//    public static final String APPID = "wxf0af72edbe855d28"; //嘟嘟车网测试平台的
-    public static final String APPID = "wxd4e76e01e4a6e3b7"; //个人测试使用的
+    public static final String APPID = "wxf0af72edbe855d28"; //嘟嘟车网测试平台的
+//    public static final String APPID = "wxd4e76e01e4a6e3b7"; //个人测试使用的
     /**
      * 微信开发者的appSecret
      */
