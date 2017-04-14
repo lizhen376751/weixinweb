@@ -150,7 +150,7 @@ $(document).ready(function () {
         var car_value = car_num.val();
         var see = tc_ceng.css("display");
 //		console.log(see)
-        if (see == "none") {
+        if (car_value != "" && see == "none") {
             var password_value = password_num.val();
             if (password_value == "") {
                 tc_ceng.show();
