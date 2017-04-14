@@ -61,7 +61,7 @@
 			</div>
 			<!----------------------------------------------------------------------------统一提示框-->
 			<div class="ty">
-				<img src="../img/lianMengCardActivate/error.png" class="close"/>
+				<img src="/files/login/img/login/error.png" class="close"/>
 				<span class="l_tt font_3"></span>
 				<!--<span class="l_tj font_3">请注册</span>-->
 				<!--<span class="l_tq font_1 color_8">取消请关闭窗口</span>-->
