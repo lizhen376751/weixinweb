@@ -51,6 +51,7 @@ $(document).ready(function () {
             tc_ceng.show();
             ty.show();
             tyt.show();
+
             llt.text("请输入车牌号~");
             // alert("请输入车牌号~")
         } else {
@@ -81,7 +82,9 @@ $(document).ready(function () {
                                 var c = b.replace(reg, "****");
                                 moblie_num.text(c);
                                 tc_ceng.show();
-                                l_box.show()
+                                l_box.show();
+                                b_box.hide();
+                                ty.hide()
                             }
 
                         });
@@ -89,7 +92,9 @@ $(document).ready(function () {
 
                     } else if (jsonData == "2") {             //-----------------------------------------------------------有密码
                         tc_ceng.show();
-                        b_box.show()
+                        b_box.show();
+                        l_box.hide();
+                        ty.hide();
                     }
                 }
 
@@ -147,7 +152,9 @@ $(document).ready(function () {
             } else {
                 tc_ceng.show();
                 ty.show();
-                tyt.show();
+                // tyt.show();
+                l_box.hide();
+                b_box.hide();
                 llt.text("输入手机号码有误，请重新输入~");
                 // alert("输入手机号码有误，请重新输入！");
             }
@@ -171,13 +178,17 @@ $(document).ready(function () {
                 if (password_value == "") {
                     tc_ceng.show();
                     ty.show();
-                    tyt.show();
+                    // tyt.show();
+                    l_box.hide();
+                    b_box.hide();
                     llt.text("请设置您的账户密码~");
                     // alert("请设置您的账户密码~")
                 } else if (phone_value == "" || phone_value.length < 11) {
                     tc_ceng.show();
                     ty.show();
-                    tyt.show();
+                    // tyt.show();
+                    l_box.hide();
+                    b_box.hide();
                     llt.text("您输入的手机号码有误，请重新输入~");
                     // alert("您输入的手机号码有误，请重新输入~")
                 } else {
@@ -214,19 +225,25 @@ $(document).ready(function () {
             if (password_value == "") {
                 tc_ceng.show();
                 ty.show();
-                tyt.show();
+                // tyt.show();
+                l_box.hide();
+                b_box.hide();
                 llt.text("请设置您的账户密码~");
                 // alert("请设置您的账户密码~")
             } else if (phone_value == "") {
                 tc_ceng.show();
                 ty.show();
-                tyt.show();
+                // tyt.show();
+                l_box.hide();
+                b_box.hide();
                 llt.text("请输入您的手机号码~");
                 // alert("请输入您的手机号码~")
             } else if (verification_value == "") {
                 tc_ceng.show();
                 ty.show();
-                tyt.show();
+                // tyt.show();
+                l_box.hide();
+                b_box.hide();
                 llt.text("请输入验证码~");
                 // alert("请输入验证码~")
             } else {
@@ -248,7 +265,9 @@ $(document).ready(function () {
                         }else if(backdata == "4"){
                             tc_ceng.show();
                             ty.show();
-                            tyt.show();
+                            // tyt.show();
+                            l_box.hide();
+                            b_box.hide();
                             llt.text("输入验证码有误，请重新输入！");
                             // alert("输入验证码有误，请重新输入！")
                         }
@@ -296,7 +315,13 @@ $(document).ready(function () {
         ty.hide();
 		window.location.href = "oauthLoginServlet?flagStr=login";
     })
-
+    tyt.on("click",function () {
+        tc_ceng.hide();
+        l_box.hide();
+        b_box.hide();
+        ty.hide();
+        window.location.href = "oauthLoginServlet?flagStr=login";
+    })
 
 })
 
