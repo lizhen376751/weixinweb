@@ -25,7 +25,9 @@ $(document).ready(function () {
     var determine = $(".l_qdan") //----------------------------------------------获取遮罩层中用户注册，且没密码的确定按钮
     var sign_in = $(".l_qdl");  //-----------------------------------------------获取遮罩层中用户注册，且有密码的去注册按钮
     var b = ""; //-----------------------------------------------没有密码的情况下获取的手机号码
-
+    var ty = $(".ty"); //---------------------------------------------------------------------获取统一弹出层
+    var tyt = $(".tyt") //--------------------------------------------------------------------获取统一弹出层的确定
+    var llt = $(".ty .l_tt") //---------------------------------------------------------------获取修改提示内容框
     //------------------------------------------------------------------------JS控制的css样式
     car_num.on("focus", function () {
         $(this).css({
@@ -61,7 +63,11 @@ $(document).ready(function () {
     function car_judge() {
         var car_value = car_num.val();
         if (car_value == "") {
-            alert("请输入车牌号~");
+            tc_ceng.show();
+            ty.show();
+            tyt.show();
+            llt.text("请输入车牌号~");
+            // alert("请输入车牌号~");
             var those = document.getElementsByClassName("car_num")[0];
             those.select()
         } else {
@@ -133,7 +139,8 @@ $(document).ready(function () {
     close.on("click", function () {
         tc_ceng.hide();
         l_box.hide();
-        b_box.hide()
+        b_box.hide();
+        ty.hide();
     })
 
 
@@ -146,7 +153,11 @@ $(document).ready(function () {
         if (see == "none") {
             var password_value = password_num.val();
             if (password_value == "") {
-                alert("请设置您的账户密码~")
+                tc_ceng.show();
+                ty.show();
+                tyt.show();
+                llt.text("请输入您的账户密码~");
+                // alert("请输入您的账户密码~");
             } else {
                 //------------------------------------------------------------------------------ajax登录判断
                 $.ajax({
@@ -160,7 +171,11 @@ $(document).ready(function () {
                     success: function (jsonData) {
                         var jsonData = JSON.parse(jsonData);
                         if (jsonData == "3") {
-                            alert("车牌号或密码输入错误,请重新输入!");
+                            tc_ceng.show();
+                            ty.show();
+                            tyt.show();
+                            llt.text("车牌号或密码输入错误,请重新输入!");
+                            // alert("车牌号或密码输入错误,请重新输入!");
                         }else if (jsonData == "4"){
                             window.location.href = "/oauthLoginServlet?flagStr=personalCenter";
                         }
@@ -181,7 +196,8 @@ $(document).ready(function () {
     determine.on("click", function (e) {
         tc_ceng.hide();
         l_box.hide();
-        b_box.hide()
+        b_box.hide();
+        ty.hide();
         $.ajax({                //---------------------------------------------------------------ajax确定发送短息
             type: 'GET',
             url: '/oauthLoginServlet',
@@ -202,7 +218,15 @@ $(document).ready(function () {
     sign_in.on("click", function () {
         tc_ceng.hide();
         l_box.hide();
-        b_box.hide()
+        b_box.hide();
+        ty.hide();
 		window.location.href = "/oauthLoginServlet?flagStr=register";
+    });
+    //--------------------------------------------------------------------------------------统一弹出层
+    tyt.on("click",function () {
+        tc_ceng.hide();
+        l_box.hide();
+        b_box.hide();
+        ty.hide();
     })
 })
