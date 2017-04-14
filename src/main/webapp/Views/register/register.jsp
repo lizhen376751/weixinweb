@@ -29,6 +29,7 @@
 				<!---------------------------------------------------------------------------账户密码-->
 				<li class="margin_top_1">
 					<img src="/files/register/password.png" class="logo"/>
+					<span class="tsk font_4">密码不能包含空格~</span>
 					<input type="password" placeholder="请设置您的账户密码" class="input_css_1 font_1 count_password"/>
 					<img src="/files/register/big_line.png" alt="" class="big_line"/>
 					<img src="/files/register/gbmm.png" class="eye"/>
@@ -76,6 +77,14 @@
 				<span class="l_tj font_3">请直接登录</span>
 				<span class="l_tq font_1 color_8">取消请关闭窗口</span>
 				<div class="l_qdl font_1 color_3">去登录</div>
+			</div>
+			<!----------------------------------------------------------------------------统一提示框-->
+			<div class="ty">
+				<img src="../img/lianMengCardActivate/error.png" class="close"/>
+				<span class="l_tt font_3"></span>
+				<!--<span class="l_tj font_3">请注册</span>-->
+				<!--<span class="l_tq font_1 color_8">取消请关闭窗口</span>-->
+				<div class="tyt font_1 color_3">确定</div>
 			</div>
 		</div>
 	</body>

@@ -26,7 +26,9 @@ $(document).ready(function () {
     var moblie_num = $(".mobile_num"); //-----------------------------------------获取遮罩层中用户注册，且没密码的手机号码标签
     var determine = $(".l_qdan") //----------------------------------------------获取遮罩层中用户注册，且没密码的确定按钮
     var sign_in = $(".l_qdl");  //-----------------------------------------------获取遮罩层中用户注册，且有密码的去登陆按钮
-
+    var ty = $(".ty"); //---------------------------------------------------------------------获取统一弹出层
+    var tyt = $(".tyt") //--------------------------------------------------------------------获取统一弹出层的确定
+    var llt = $(".ty .l_tt") //---------------------------------------------------------------获取修改提示内容框
     //----------------------------密码改为明文或暗文
     var eye_state = true;  //---------------------------记录眼睛的开关状态
     eye.on("click", function () {
@@ -46,7 +48,11 @@ $(document).ready(function () {
     function car_judge() {
         var car_value = car_num.val();
         if (car_value == "") {
-            alert("请输入车牌号~")
+            tc_ceng.show();
+            ty.show();
+            tyt.show();
+            llt.text("请输入车牌号~");
+            // alert("请输入车牌号~")
         } else {
 
             $.ajax({
@@ -112,7 +118,21 @@ $(document).ready(function () {
 
     //--------------------------------------------------------------------------点击账户密码进行判断
     count_password.on("focus", function () {
-        car_judge()
+        car_judge();
+        var reg = /\s/;
+        var values = "";
+        $(this).on("keyup",function(){
+            var value = $(this).val();
+            var states = reg.test(value);
+            if(states){
+                tsk.show();
+                $(this).val(values);
+            }else{
+                tsk.hide();
+                values = value;
+                $(this).val(values);
+            }
+        });
     })
     //-------------------------------------------------------------------------点击输入手机号码
     count_phone.on("focus", function () {
@@ -125,10 +145,14 @@ $(document).ready(function () {
             if (regs.test($(this).val())) {
                 return false;
             } else {
-                alert("输入手机号码有误，请重新输入！");
+                tc_ceng.show();
+                ty.show();
+                tyt.show();
+                llt.text("输入手机号码有误，请重新输入~");
+                // alert("输入手机号码有误，请重新输入！");
             }
         }
-    })
+    });
     //-------------------------------------------------------------------------点击输入验证码进行判断
     verification_code.on("focus", function () {
         car_judge()
@@ -137,34 +161,42 @@ $(document).ready(function () {
     var yzm_start = true;  //------------------------------------------------------定义当前点击状态是否可以点击
     yzm.on("click", function () {
         if (yzm_start == true) {
-
             car_judge();
+            var car_value = car_num.val();
             var password_value = count_password.val();
             var phone_value = count_phone.val();
             var platenumber = car_num.val();
-            if (password_value == "") {
-                alert("请设置您的账户密码~")
-            } else if (phone_value == "" || phone_value.length < 11) {
-                alert("您输入的手机号码有误，请重新输入~")
-            } else {
-                //-----------------------------------------------------请求发送验证码
-                count_down(phone_value);
-                yzm_start = false;
-                $.ajax({
-                    type: 'POST',
-                    url: '/getCommonAjax2',
-                    data: {
-                        fromflag: "addvalidate",
-                        platenumber: platenumber,
-                        mobilephone: phone_value
-                    },
-                    success: function (jsonData) {
+            var see = tc_ceng.css("display");
+            if(car_value != "" && see == "none"){
+                if (password_value == "") {
+                    tc_ceng.show();
+                    ty.show();
+                    tyt.show();
+                    llt.text("请设置您的账户密码~");
+                    // alert("请设置您的账户密码~")
+                } else if (phone_value == "" || phone_value.length < 11) {
+                    tc_ceng.show();
+                    ty.show();
+                    tyt.show();
+                    llt.text("您输入的手机号码有误，请重新输入~");
+                    // alert("您输入的手机号码有误，请重新输入~")
+                } else {
+                    //-----------------------------------------------------请求发送验证码
+                    count_down(phone_value);
+                    yzm_start = false;
+                    $.ajax({
+                        type: 'POST',
+                        url: '/getCommonAjax2',
+                        data: {
+                            fromflag: "addvalidate",
+                            platenumber: platenumber,
+                            mobilephone: phone_value
+                        },
+                        success: function (jsonData) {
 
-                    }
-
-                });
-
-
+                        }
+                    });
+                }
             }
         }
 
@@ -172,45 +204,66 @@ $(document).ready(function () {
     //------------------------------------------------------------------------------------提交信息的判断
     tjxx.on("click", function () {
         car_judge();
+        var car_value = car_num.val();
         var password_value = count_password.val();
         var phone_value = count_phone.val();
         var verification_value = verification_code.val();
         var platenumber = car_num.val();
-        if (password_value == "") {
-            alert("请设置您的账户密码~")
-        } else if (phone_value == "") {
-            alert("请输入您的手机号码~")
-        } else if (verification_value == "") {
-            alert("请输入验证码~")
-        } else {
-            //----------------------------------------------------------------------------ajax提交信息
-            $.ajax({
-                type: 'POST',
-                url: '/getCommonAjax2',
-                data: {
-                    fromflag: "register",
-                    platenumber: platenumber,
-                    password: password_value,
-                    mobilephone: phone_value,
-                    verificationCode: verification_value
-                },
-                success: function (jsonData) {
-                    var backdata = JSON.parse(jsonData);
-                    if(backdata == "3"){
-                        window.location.href = "/oauthLoginServlet?flagStr=personalCenter";
-                    }else if(backdata == "4"){
-                        alert("输入验证码有误，请重新输入！")
+        var see = tc_ceng.css("display");
+        if(car_value != "" && see == "none"){
+            if (password_value == "") {
+                tc_ceng.show();
+                ty.show();
+                tyt.show();
+                llt.text("请设置您的账户密码~");
+                // alert("请设置您的账户密码~")
+            } else if (phone_value == "") {
+                tc_ceng.show();
+                ty.show();
+                tyt.show();
+                llt.text("请输入您的手机号码~");
+                // alert("请输入您的手机号码~")
+            } else if (verification_value == "") {
+                tc_ceng.show();
+                ty.show();
+                tyt.show();
+                llt.text("请输入验证码~");
+                // alert("请输入验证码~")
+            } else {
+                //----------------------------------------------------------------------------ajax提交信息
+                $.ajax({
+                    type: 'POST',
+                    url: '/getCommonAjax2',
+                    data: {
+                        fromflag: "register",
+                        platenumber: platenumber,
+                        password: password_value,
+                        mobilephone: phone_value,
+                        verificationCode: verification_value
+                    },
+                    success: function (jsonData) {
+                        var backdata = JSON.parse(jsonData);
+                        if(backdata == "3"){
+                            window.location.href = "/oauthLoginServlet?flagStr=personalCenter";
+                        }else if(backdata == "4"){
+                            tc_ceng.show();
+                            ty.show();
+                            tyt.show();
+                            llt.text("输入验证码有误，请重新输入！");
+                            // alert("输入验证码有误，请重新输入！")
+                        }
                     }
-                }
 
-            });
+                });
+            }
         }
-    })
+    });
     //----------------------------------------------------------------------------------遮罩层中红色关闭按钮点击
     close.on("click", function () {
         tc_ceng.hide();
         l_box.hide();
-        b_box.hide()
+        b_box.hide();
+        ty.hide();
     })
     //------------------------------------------------------------------------------------获取遮罩层中用户注册，且没密码的确定按钮的点击
     determine.on("click", function () {
@@ -231,7 +284,7 @@ $(document).ready(function () {
         tc_ceng.hide();
         l_box.hide();
         b_box.hide();
-
+        ty.hide();
 
     })
 
@@ -239,7 +292,8 @@ $(document).ready(function () {
     sign_in.on("click", function () {
         tc_ceng.hide();
         l_box.hide();
-        b_box.hide()
+        b_box.hide();
+        ty.hide();
 		window.location.href = "oauthLoginServlet?flagStr=login";
     })
 
