@@ -50,12 +50,12 @@ $(document).ready(function () {
         if (car_value == "") {
             tc_ceng.show();
             ty.show();
-            tyt.show();
-
+            // tyt.show();
+            l_box.hide();
+            b_box.hide();
             llt.text("请输入车牌号~");
             // alert("请输入车牌号~")
         } else {
-
             $.ajax({
                 type: 'POST',
                 url: '/getCommonAjax2',
