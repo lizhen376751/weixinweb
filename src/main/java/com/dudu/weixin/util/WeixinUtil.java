@@ -21,9 +21,19 @@ import java.net.URL;
  * Created by Administrator on 2017/3/15.
  * 公众平台通用接口工具类
  */
- public final class WeixinUtil {
-     private WeixinUtil() {
-     }
+public final class WeixinUtil {
+    /**
+     * TODO 封装成接口 需要将获取到的token放到数据库里面
+     * 获取access_token的接口地址（GET） 限2000（次/天）
+     */
+    public static final String TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
+    /**
+     * 创建菜单时候的请求微信接口
+     */
+    private static String mENUCREATURL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
+
+    private WeixinUtil() {
+    }
 
     /**
      * 发起https请求并获取结果
@@ -44,7 +54,6 @@ import java.net.URL;
             sslContext.init(null, tm, new java.security.SecureRandom());
             // 从上述SSLContext对象中得到SSLSocketFactory对象
             SSLSocketFactory ssf = sslContext.getSocketFactory();
-
             URL url = new URL(requestUrl);
             HttpsURLConnection httpUrlConn = (HttpsURLConnection) url.openConnection();
             httpUrlConn.setSSLSocketFactory(ssf);
@@ -92,15 +101,9 @@ import java.net.URL;
     }
 
     /**
-     * TODO 封装成接口 需要将获取到的token放到数据库里面
-     * 获取access_token的接口地址（GET） 限2000（次/天）
-     */
-    public static final  String TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
-
-    /**
      * 获取access_token
      *
-     * @param appid 凭证
+     * @param appid     凭证
      * @param appsecret 密钥
      * @return AccessToken
      */
@@ -124,16 +127,10 @@ import java.net.URL;
         return accessToken;
     }
 
-
-    /**
-     * 创建菜单时候的请求微信接口
-     */
-    private static String mENUCREATURL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
-
     /**
      * 创建菜单
      *
-     * @param menu 菜单实例
+     * @param menu        菜单实例
      * @param accessToken 有效的access_token
      * @return 0表示成功，其他值表示失败
      */
@@ -145,12 +142,14 @@ import java.net.URL;
         // 将菜单对象转换成json字符串
 
         String jsonMenu = JSONObject.toJSONString(menu);
+        System.out.println(jsonMenu);
         // 调用接口创建菜单
         JSONObject jsonObject = httpRequest(url, "POST", jsonMenu);
-
+        System.out.println(jsonObject);
         if (null != jsonObject) {
             if (0 != jsonObject.getIntValue("errcode")) {
                 result = jsonObject.getIntValue("errcode");
+
 //                log.error("创建菜单失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
             }
         }

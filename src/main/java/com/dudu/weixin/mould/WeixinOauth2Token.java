@@ -1,7 +1,8 @@
 package com.dudu.weixin.mould;
 
-/**
- * Created by Administrator on 2017/3/15.
+/**\
+ *
+ * Created by lizhen on 2017/3/15.
  */
 public class WeixinOauth2Token {
     /**
@@ -40,7 +41,7 @@ public class WeixinOauth2Token {
      * @param accessToken accessToken
      */
     public void setAccessToken(String accessToken) {
-        accessToken = accessToken;
+        this.accessToken = accessToken;
     }
 
     /**
@@ -54,7 +55,7 @@ public class WeixinOauth2Token {
      * @param expiresIn expiresIn
      */
     public void setExpiresIn(int expiresIn) {
-        expiresIn = expiresIn;
+        this.expiresIn = expiresIn;
     }
 
     /**
@@ -68,7 +69,7 @@ public class WeixinOauth2Token {
      * @param refreshToken refreshToken
      */
     public void setRefreshToken(String refreshToken) {
-        refreshToken = refreshToken;
+        this.refreshToken = refreshToken;
     }
 
     /**
@@ -82,7 +83,7 @@ public class WeixinOauth2Token {
      * @param openId openId
      */
     public void setOpenId(String openId) {
-        openId = openId;
+        this.openId = openId;
     }
 
     /**
@@ -96,7 +97,7 @@ public class WeixinOauth2Token {
      * @param scope scope
      */
     public void setScope(String scope) {
-        scope = scope;
+        this.scope = scope;
     }
 
     /**
@@ -110,7 +111,7 @@ public class WeixinOauth2Token {
      * @param nickname nickname
      */
     public void setNickname(String nickname) {
-        nickname = nickname;
+        this.nickname = nickname;
     }
 
 

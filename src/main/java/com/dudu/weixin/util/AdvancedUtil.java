@@ -13,12 +13,13 @@ public class AdvancedUtil {
 
     /**
      * asdlkjasldkjf
-     * @param appId 微信appId
+     *
+     * @param appId     微信appId
      * @param appSecret 微信appSecret
-     * @param code 微信code
-     * @return  WeixinOauth2Token
+     * @param code      微信code
+     * @return WeixinOauth2Token
      */
-    public  WeixinOauth2Token getOauth2AccessToken(String appId, String appSecret, String code) {
+    public WeixinOauth2Token getOauth2AccessToken(String appId, String appSecret, String code) {
         WeixinOauth2Token wat = null;
         String requestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
         requestUrl = requestUrl.replace("APPID", appId);
@@ -33,7 +34,6 @@ public class AdvancedUtil {
                 wat.setExpiresIn(jsonObject.getIntValue("expires_in"));
                 wat.setRefreshToken(jsonObject.getString("refresh_token"));
                 wat.setOpenId(jsonObject.getString("openid"));
-                //System.out.println(jsonObject.getString("openid"));
                 wat.setScope(jsonObject.getString("scope"));
             } catch (Exception e) {
                 wat = null;

@@ -119,11 +119,11 @@ public final class MenuManagerUtil {
 //        btn33.setType("view");
 //        btn33.setUrl(Constant.COMMONURL + "_lianMengActivity" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 //
-//
-//        CommonButton btn34 = new CommonButton();
-//        btn34.setName("退出账号");
-//        btn34.setType("view");
-//        btn34.setUrl(Constant.COMMONURL + "_logout" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+        CommonButton btn34 = new CommonButton();
+        btn34.setName("退出账号");
+        btn34.setType("view");
+        btn34.setUrl(Constant.COMMONURL + "_logout" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
 
         ComplexButton mainBtn1 = new ComplexButton();
@@ -136,7 +136,7 @@ public final class MenuManagerUtil {
 
         ComplexButton mainBtn3 = new ComplexButton();
         mainBtn3.setName("活动");
-        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32});
+        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn34});
 
         /**
          * 这是公众号xiaoqrobot目前的菜单结构，每个一级菜单都有二级菜单项<br>
@@ -147,7 +147,8 @@ public final class MenuManagerUtil {
          */
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});
-
+        System.out.println(menu.toString());
         return menu;
+
     }
 }
