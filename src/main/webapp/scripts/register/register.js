@@ -320,7 +320,6 @@ $(document).ready(function () {
         l_box.hide();
         b_box.hide();
         ty.hide();
-        window.location.href = "oauthLoginServlet?flagStr=login";
     })
 
 })
