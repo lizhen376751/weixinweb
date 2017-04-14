@@ -68,8 +68,8 @@ $(document).ready(function () {
             tyt.show();
             llt.text("请输入车牌号~");
             // alert("请输入车牌号~");
-            var those = document.getElementsByClassName("car_num")[0];
-            those.select()
+            // var those = document.getElementsByClassName("car_num")[0];
+            // those.select()
         } else {
             $.ajax({
                 type: 'POST',
