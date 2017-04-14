@@ -91,10 +91,12 @@ img{
 	text-overflow: ellipsis;
 }
 .card_surplus ul li img{
-	display: inline-block;
+	display: block;
 	width: 43px;
 	height: 43px;
-	margin-bottom: 16px;
+	float: right;
+	margin-top: 15px;
+	margin-right: 50px;
 }
 /*宽高度样式*/
 .height{
