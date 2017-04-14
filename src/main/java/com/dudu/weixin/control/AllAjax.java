@@ -162,14 +162,12 @@ public class AllAjax {
         }
         //登录,注册,填写车牌号后发送请求
         if ("checkInfo".equals(fromflag)) {
-            System.out.println("注册进入=========" + platenumber + "," + lmcode);
             platenumber = request.getParameter("platenumber"); //车牌号
             String s = autoLoginService.checkInfo(platenumber, lmcode);
             return s;
         }
         //注册,如果已经有该用户,但是没有密码,获取手机号发送密码短信
         if ("getmobiePhone".equals(fromflag)) {
-            System.out.println("注册进入=========" + platenumber + "," + lmcode);
             platenumber = request.getParameter("platenumber");
             WxCustomer wxCustomer = wxCustomerService.getWxCustomer(platenumber, lmcode);
             return wxCustomer.getCustomerMobile();
@@ -290,7 +288,6 @@ public class AllAjax {
         if ("baoYangList".equals(fromflag)) {
             String top = request.getParameter("top");
             ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(lmcode, platenumber, top);
-            System.out.println("保养提醒进入======");
             return baoYangListByLmcodeAndCarNo;
 
         }

@@ -91,7 +91,7 @@ public class AllController {
     @RequestMapping(value = "oauthLoginServlet", method = RequestMethod.GET)
     public String oauthLogin(HttpServletRequest request,
                              Model model) {
-        System.out.println("页面进入=============================");
+
         //获取参数,并将其分解
         String strWxShopcode = request.getParameter("lmcode");
         String flagStr = "";
