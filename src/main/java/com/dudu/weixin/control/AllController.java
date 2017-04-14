@@ -6,7 +6,7 @@ import com.dudu.soa.baoxian.kaidan.module.BaoXianParamList;
 import com.dudu.soa.framework.commons.oauth.module.DuduToken;
 import com.dudu.soa.framework.oauth.DuduOauthService;
 import com.dudu.weixin.service.ChexiantoubaoService;
-import com.dudu.weixin.service.LoginActionNewService;
+import com.dudu.weixin.service.LogInLogService;
 import com.dudu.weixin.service.ShopInfoService;
 import com.dudu.weixin.service.ValidateService;
 import org.slf4j.Logger;
@@ -51,7 +51,7 @@ public class AllController {
      * 登录服务
      */
     @Autowired
-    private LoginActionNewService loginActionNewService;
+    private LogInLogService logInLogService;
     /**
      * 车险投保
      */
@@ -106,7 +106,7 @@ public class AllController {
         if (null == lmcode || "".equals(lmcode)) {
             lmcode = (String) httpSession.getAttribute("lmcode");
         }
-        String carHaopai = (String) httpSession.getAttribute("carHaopai");
+        String carHaopai = (String) httpSession.getAttribute("plateNumber");
         String openId = (String) httpSession.getAttribute("openId");
         String shopcode = ""; //TODO 暂时为空
         //判断点击菜单，进入不同页面
@@ -166,8 +166,9 @@ public class AllController {
         } else if ("personalCenter".equals(flagStr)) {
             return "/personCenter/personalCenter.jsp"; //个人中心
         } else if ("logout".equals(flagStr)) {
-            httpSession.setAttribute("DUDUCHEWANG_CarId", null);
-            return "/login/logout.jsp"; //退出登录
+            logInLogService.deleLogInLog(openId);
+            httpSession.setAttribute("plateNumber", null);
+            return "/login/login.jsp"; //退出登录
         } else if ("login".equals(flagStr)) {
             return "/login/login.jsp"; //登录页面 (注册时提示已注册,提供跳转至登录的入口)
         } else if ("baoxianlist".equals(flagStr)) {
