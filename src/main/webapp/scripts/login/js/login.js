@@ -165,7 +165,7 @@ $(document).ready(function () {
     login.on("click", function () {
         car_judge();
         var car_value = car_num.val();
-        var see = tc_ceng.css("display");
+        var see = car_tsk.css("display");
 //		console.log(see)
         if (car_value != "" && see == "none") {
             var password_value = password_num.val();
