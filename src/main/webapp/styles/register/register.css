@@ -114,9 +114,8 @@
 /*-------------------------------------------------------------------------底部提交按钮*/
 .footer_button{
 	width: 100%;
-	position: fixed;
-	left: 0;
-	bottom: 0;
+	position: relative;
+	top: 2.6rem;
 	background: #fff;
 }
 .footer_button .tjxx{
