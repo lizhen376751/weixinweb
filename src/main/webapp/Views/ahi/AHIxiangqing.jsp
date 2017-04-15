@@ -14,104 +14,116 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
-		<title>AHI</title>
+		<title>车辆健康指数</title>
 		<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
-		<link rel="stylesheet" type="text/css" href="/styles/ahi/radialindicator.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/ahi/ahi.css"/>
 		<script type="text/javascript" src="/scripts/ahi/jquery-1.12.1.min.js"></script>
-		<script type="text/javascript" src="/scripts/ahi/radialIndicator.js"></script>
-		
+		<script type="text/javascript" src="/scripts/ahi/chart.meter.js"></script>
+		<script type="text/javascript" src="/scripts/ahi/chart.radar.js"></script>
+
 		<script type="text/javascript">
-		
-	   function radialIndicatorfun(aa){
-			$("#radialIndicatorContext").radialIndicator({
-				barWidth : 10,
-				roundCorner: true,
-				percentage: false ,   //指示器不显示百分号
-				radius: 260,    //指示器内部圆的半径
-				initValue: aa,	//指示器赤初始值
-				barBgColor : "#5ab5ff",
-				fontWeight: "100", 
-				animate: aa,  
-				barColor: "#ffffff" //指示器剩余刻度条的背景颜色
-		  })
-	   }
-	   function xianshi (arr) {
-	   		for (var i = 0;i<arr.length;i++) {
-			   	radialIndicatorfun(Math.round(arr[i].point))
-				$("#juti").text(arr[i].name)
-		   }
-	   }
-			
-		
-		
+
+            function xianshi (arr) {
+                for (var i = 0;i < arr.length;i++) {
+                    //	指示盘插件函数
+                    var ctx = document.getElementById('meter').getContext('2d');
+                    ctx.fillStyle = "rgba(255,165,0,1)";
+                    Meter.setOptions({
+                        element: 'meter',
+                        centerPoint: {
+                            x: 262,
+                            y: 262
+                        },
+                        radius: 262,
+                        data: {
+                            value: Math.round(arr[i].point),
+                            //title: '职场竞争力{t}',
+                            //subTitle: '评估时间：2015.07.28',
+                            subTitle: '',
+                            title: arr[i].name,
+                            area: [{
+                                min: 0, max: 20, text: '10'
+                            },{
+                                min: 20, max: 40, text: '30'
+                            },{
+                                min: 40, max: 60, text: '50'
+                            },{
+                                min: 60, max: 80, text: '70'
+                            },{
+                                min: 80, max: 100, text: '90'
+                            }]
+                        }
+                    }).init();
+                    //	指示盘插件函数结束
+
+                    var newDate = new Date();
+                    newDate.setTime(arr[i].date);
+                    var yxrqStr = newDate.format('yyyy-MM-dd');
+                    $("#shijian").html(yxrqStr);
+                    $("#renyuan").html(arr[i].staff);
+                    $("#dianpu").html(arr[i].shopName);
+                }
+            }
+
+
+
 		var plateNumber ='<%=CarId%>';
 		$(document).ready(function(){
-//		    //一开始获取carID
-//            $.ajax({
-//                type:"post",
-//                dataType:"text",
-//                url:'checkAction.jsp',
-//                data:{ fromflag:'queryAllPointByPlateNumber',
-//                    'plateNumber':encodeURI(plateNumber)
-//                },
-//                success:function(data){
-//                    data = eval('('+data+')');
-//                    if(data.length>0){
-//						/* $("#totalPoint").html(Math.round(data[0].point));
-//						 $("#plateNumber").val(data[0].plateNumber); */
-//                        xianshi(data)
-//                    }else{
-//                        alert("未查询到车辆 "+plateNumber+" 得分数据！");
-//                    }
-//                }
-//            });
-                    $.ajax({
-                        type:"post",
-                        dataType:"text",
-                        url:'/getCommonAjax',
-                        data:{ 'fromflag':'queryAllPointByPlateNumber',
-                            'plateNumber':encodeURI(plateNumber)
-                        },
-                        success:function(data){
-                            data = eval('('+data+')');
-                            if(data.length>0){
-								/* $("#totalPoint").html(Math.round(data[0].point));
-								 $("#plateNumber").val(data[0].plateNumber); */
-                                xianshi(data)
-                            }else{
-                                alert("未查询到车辆 "+plateNumber+" 得分数据！");
-                            }
-                        }
-                    });
+				$.ajax({
+					type:"post",
+					dataType:"text",
+					url:'checkAction.jsp',
+					data:{'actions':'queryAllPointByPlateNumber','plateNumber':encodeURI(plateNumber)},
+					success:function(data){
+						data = eval('('+data+')');
+						if(data.length>0){
+							/* $("#totalPoint").html(Math.round(data[0].point));
+							 $("#plateNumber").val(data[0].plateNumber); */
+							xianshi(data)
+						}else{
+							alert("未查询到车辆 "+plateNumber+" 得分数据！");
+						}
+					}
+				});
 
 			　
 			　　$.ajax({
-				type:"post",
-				dataType:"text",
-				url:'/getCommonAjax',
-				data:{'fromflag':'queryCarPointOne','plateNumber':encodeURI(plateNumber)},
-				success:function(data){
+                  type:"post",
+                  dataType:"text",
+                  url:'checkAction.jsp',
+                  data:{'actions':'queryCarPointOne','plateNumber':encodeURI(plateNumber)},
+                  success:function(data){
 					data = eval('('+data+')');
 					if(data.length>0){
-                        var newDate = new Date();
-                        newDate.setTime(data[0].date);
-                        var yxrqStr = newDate.format('yyyy-MM-dd');
-                        $("#shijian").html(yxrqStr);
-                        $("#renyuan").html(data[0].staff);
-                        $("#dianpu").html(data[0].shopName);
+//                        var newDate = new Date();
+//                        newDate.setTime(data[0].date);
+//                        var yxrqStr = newDate.format('yyyy-MM-dd');
+//                        $("#shijian").html(yxrqStr);
+//                        $("#renyuan").html(data[0].staff);
+//                        $("#dianpu").html(data[0].shopName);
                         for(var i=0;i<data.length;i++){
+                            var jc_html="";
+                            var jc=data[i].point;
+                            if(jc==0){       //判断是否检测
+                                jc_html+= "<span class='jc_time xt_zhus font_3' style='font-size:42px' >未检测</span>";
+                            }else{
+                                jc_html+= "<span class='jc_time xt_zhus font_3'>"+data[i].point+"</span>";
+                            }
                             $("#subPoint").append("<li class='burder_li'>"
-                                +"<img class='AHI_biao' src='/files/ahi/biazhi.png'/>"
-                                +"<span class='xitong font_2'>"+data[i].name+"：</span>"
-                                +"<strong class='xt_zhus'>"+data[i].point+"</strong>"
-                                +"<a href='#' onclick=toSubxiangqing('"+data[i].id+"','"+data[i].plateNumber+"')><span class='miaos font_1'>&nbsp;<img src='/files/ahi/miaos.png'/></span></a>"
+                                +"<a href='#' onclick=toSubxiangqing('"+data[i].id+"','"+data[i].plateNumber+"')>"
+                                +"<div class='burder_li_div'>"
+                                +"<span class='jc_time left font_2'>"+data[i].name+"</span>"
+                                +"<span class='jc_time '><img  class='zhishu_img' src='"+(data[i].logoPath?data[i].logoPath+"?x-oss-process=image/resize,m_fixed,h_125,w_109":"/files/ahi/icon/icon_4.png")+"'/></span>"
+                                +"<span class='jc_time right'>"+jc_html
+                                +"<img class='back_img' src='/files/ahi/back.png'/></span>"
+                                +"</div>"
+                                +"</a>"
                                 +"</li>");
                         }
 					}
 				}
 		　　});
-		}); 
+		});
 		function toSubxiangqing(id,plateNumber){
 			if(null==plateNumber||plateNumber==''){
 				plateNumber = $("#plateNumber").val();
@@ -142,39 +154,51 @@
 		</script>
 	</head>
 	<body>
-	<input type="hidden" id="plateNumber" value="<%=CarId%>"/>
-		<div class="title">
-
-			<p class="title_main">车辆健康指数</p>			
-		</div>
+	    <input type="hidden" id="plateNumber" value="<%=CarId%>"/>
 		<div class="center_zhis">
-			<div id="totalPoint" class="biaopan">
-				<div id="radialIndicatorContext" class="radialIndicatorContext"></div>
-				<span id="juti" class="juti" style="color:#fff;font-size: 30px;position: relative; top: -180px;"></span>
-			</div>
-			<a style="display:inline-block" href="#" onclick="toSubxiangqing()"><div class="xiangq font_2">详情</div></a>
-		</div>
-		<div style="width:100%">
-			<ul id="subPoint" class="lie_li">
+			<div class="biaopan" >
+				<div class="ahicanvar">
+					<canvas id="meter"   width="524" height="524" class="radialIndicatorContext"></canvas> <!-- 仪表盘层-->
+				</div>
+				<div class="zahi">
+					<div class="zahiimg">
+						<img src="/files/ahi/AHI1.png"/>
+					</div>
+				</div>
 
-				
-			</ul>
-			
+				<!--<span class="juti" id="juti"></span>-->
+			</div>
+			<div class="upjc font_12">
+				<span class="jc_time left">
+					<ul>
+						<li class="show_img">上次检测时间</li>
+						<li class="show_cur"><span></span></li>
+						<li class="show_list" id="shijian"></li>
+					</ul>
+				</span>
+				<span class="jc_time ">
+					<ul>
+						<li class="show_shop ">上次检测店铺</li>
+						<li class="show_cur"><span></span></li>
+						<li class="" id="dianpu"></li>
+					</ul>
+
+				</span>
+				<span class="jc_time right">
+					<ul>
+						<li class="show_img">上次检测人员</li>
+						<li class="show_cur"><span></span></li>
+						<li class="show_list" id="renyuan"></li>
+					</ul>
+				</span>
+			</div>
+
 		</div>
-		<ul class="jc_ul font_0">
-			<li>
-				<span class="jc_color">上次检测时间：</span>
-				<span class="jc_shop" id="shijian"></span>
-			</li>
-			<li>
-				<span class="jc_color">上次检测人员：</span>
-				<span class="jc_shop" id="renyuan"></span>
-			</li>
-			<li>
-				<span class="jc_color">上次检测店铺：</span>
-				<span class="jc_shop" id="dianpu"></span>
-			</li>
-		</ul>
+		<div class="conter_main">
+			<ul class="lie_li" id="subPoint">
+
+			</ul>
+		</div>
 	<input type="hidden" id="shopcode" name="shopcode" value="<%=shopcode %>">
 	<input type="hidden" id="strOpenId" name="strOpenId" value="<%=strOpenId %>">
 	<input type="hidden" id="CarId" name="CarId" value="<%=CarId %>">

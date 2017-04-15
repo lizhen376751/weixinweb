@@ -2,16 +2,26 @@
 /* CSS Document */
 
 *{margin:0px;padding:0px;}
-body{width:100%;background:#fff;font-family: "微软雅黑" ;height:auto;overflow:auto;}
+body{width:100%;background:#fff;font-family: "微软雅黑" ;height:auto;overflow:auto;font-size: 16px;font-size: 100%;}
 a{text-decoration:none;}
+a:{text-decoration:none;}
 ul{list-style: none;}
-.font_0{font-size:2em;}
-.font_1{font-size:2.25em;}
-.font_2{font-size:2.625em;}
-.font_3{font-size: 3.375em;}
-.font_4{font-size: 2.0625em;}
-.font_5{font-size: 1.875rem;} /*30px*/
-.font_6{font-size: 1.5rem;} /*24px*/
-.font_7{font-size: 1.75rem;} /*28px*/
-.font_8{font-size: 1.25rem;} /*20px*/
+
+
+.font_0{font-size:2rem;} /*32px*/
+.font_1{font-size:2.25rem;} /*36px*/
+.font_2{font-size:2.625rem;} /*42px*/
+.font_3{font-size: 3.375rem;}  /*54px*/
+.font_4{font-size: 2.0625rem;} /*33px*/
+.font_12{font-size:1.5rem;} /*24px*/
+
+
+.server_cenulcolor{    color: #7e7e7e;}
 hr{border:2px dashed #f4f4f4;}
+
+/*头部样式*/
+.goback{padding-left:56px;}
+.title{height:116px;width:100%;line-height:116px;text-align: center;}
+.title_img{display:inline-block;margin-left:42px;float:left;}
+.title_img img{vertical-align:middle; }
+.title_main{font-size:54px}
