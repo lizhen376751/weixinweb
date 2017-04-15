@@ -42,6 +42,7 @@ $(document).ready(function () {
             count_password.attr("type", "password")
             eye_state = true
         }
+        return false;
     })
     //----------------------------------------------------------判断车牌号是否注册函数
     var b = "";
@@ -123,7 +124,7 @@ $(document).ready(function () {
     }
 
     //--------------------------------------------------------------------------点击账户密码进行判断
-    count_password.on("focus", function () {
+    count_password.on("click", function () {
         car_judge();
         var reg = /\s/;
         var values = "";
