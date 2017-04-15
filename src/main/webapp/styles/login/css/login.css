@@ -34,6 +34,32 @@
 	background: url(/files/login/img/login/input_bg.png) no-repeat;
 	background-size: 100% 100%;
 }
+.main_txt .car_tsk{
+	width: 7.3rem;
+	position: absolute;
+	top: 0.7rem;
+	z-index: 222;
+	left: 50%;
+	margin-left: -3.65rem;
+	text-align: center;
+	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(62, 216, 255, 1)), to(rgba(88, 150, 255, 1)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	display: none;
+}
+.main_txt .pasword_tsk{
+	width: 7.3rem;
+	position: absolute;
+	top: 2.5rem;
+	z-index: 222;
+	left: 50%;
+	margin-left: -3.65rem;
+	text-align: center;
+	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(62, 216, 255, 1)), to(rgba(88, 150, 255, 1)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	display: none;
+}
 /*------------------------------------------------------------------------------------------忘记密码*/
 .forget_psw{
 	width: 1.4rem;

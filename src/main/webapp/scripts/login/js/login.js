@@ -28,6 +28,8 @@ $(document).ready(function () {
     var ty = $(".ty"); //---------------------------------------------------------------------获取统一弹出层
     var tyt = $(".tyt") //--------------------------------------------------------------------获取统一弹出层的确定
     var llt = $(".ty .l_tt") //---------------------------------------------------------------获取修改提示内容框
+    var car_tsk = $(".car_tsk") //------------------------------------------------------------获取车牌号提示框
+    var password_tsk = $(".pasword_tsk") //-----------------------------------------------------获取密码提示框
     //------------------------------------------------------------------------JS控制的css样式
     car_num.on("focus", function () {
         $(this).css({
@@ -63,10 +65,12 @@ $(document).ready(function () {
     function car_judge() {
         var car_value = car_num.val();
         if (car_value == "") {
-            tc_ceng.show();
-            ty.show();
-            tyt.show();
-            llt.text("请输入车牌号~");
+            car_tsk.show();
+            car_tsk.text("请重新输入您的车牌号");
+            // tc_ceng.show();
+            // ty.show();
+            // tyt.show();
+            // llt.text("请输入车牌号~");
             // alert("请输入车牌号~");
             // var those = document.getElementsByClassName("car_num")[0];
             // those.select()
@@ -128,7 +132,18 @@ $(document).ready(function () {
         }
     }
 
-
+    car_num.on("keyup",function(){
+        var values = $(this).val()
+        if(values != ""){
+            car_tsk.hide()
+        }
+    });
+    password_num.on("keyup",function(){
+        var values = $(this).val()
+        if(values != ""){
+            password_tsk.hide();
+        }
+    });
     //--------------------------------------------------------------------------点击账户密码进行判断
     password_num.on("focus", function () {
         car_judge();
@@ -153,10 +168,12 @@ $(document).ready(function () {
         if (car_value != "" && see == "none") {
             var password_value = password_num.val();
             if (password_value == "") {
-                tc_ceng.show();
-                ty.show();
-                tyt.show();
-                llt.text("请输入您的账户密码~");
+                password_tsk.show();
+                password_tsk.text("请重新输入您的密码");
+                // tc_ceng.show();
+                // ty.show();
+                // tyt.show();
+                // llt.text("请输入您的账户密码~");
                 // alert("请输入您的账户密码~");
             } else {
                 //------------------------------------------------------------------------------ajax登录判断
