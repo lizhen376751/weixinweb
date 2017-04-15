@@ -67,7 +67,7 @@ $(document).ready(function () {
         var car_value = car_num.val();
         if (car_value == "") {
             car_tsk.show();
-            car_tsk.text("请重新输入您的车牌号");
+            car_tsk.text("请输入您的车牌号");
             // tc_ceng.show();
             // ty.show();
             // tyt.show();
