@@ -43,9 +43,10 @@
 	left: 50%;
 	margin-left: -3.65rem;
 	text-align: center;
-	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(62, 216, 255, 1)), to(rgba(88, 150, 255, 1)));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	/*background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(62, 216, 255, 1)), to(rgba(88, 150, 255, 1)));*/
+	/*-webkit-background-clip: text;*/
+	/*-webkit-text-fill-color: transparent;*/
+	color: red;
 	display: none;
 }
 .main_txt .pasword_tsk{
@@ -56,9 +57,10 @@
 	left: 50%;
 	margin-left: -3.65rem;
 	text-align: center;
-	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(62, 216, 255, 1)), to(rgba(88, 150, 255, 1)));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	/*background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(62, 216, 255, 1)), to(rgba(88, 150, 255, 1)));*/
+	/*-webkit-background-clip: text;*/
+	/*-webkit-text-fill-color: transparent;*/
+	color: red;
 	display: none;
 }
 /*------------------------------------------------------------------------------------------忘记密码*/
