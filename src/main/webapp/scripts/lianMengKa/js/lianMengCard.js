@@ -23,6 +23,15 @@ Date.prototype.format = function(format) {
 
 
 $(document).ready(function () {
+    //时间戳转换成日期格式
+    function dateFormat(val) {
+        var now = new Date(val),
+            y = now.getFullYear(),
+            m = now.getMonth() + 1,
+            d = now.getDate();
+        var date=y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+        return date.substr(0, 11);
+    }
 	//条形码的样式
 	var options = {
         format:"CODE128",
@@ -93,9 +102,11 @@ $(document).ready(function () {
 					var yxrqStr = newDate.format('yyyy-MM-dd');
 					
 					obj_append("div14","border_2",$($("ul")[i]),"li","");
-					var li = $($("ul")[i]).find("li")
+					var li = $($("ul")[i]).find("li");
 					obj_append("div16","width_2",$(li[s]),"span",arr[i].leftMx[j].spname);
-					obj_append("div17","width_2 margin_2",$(li[s]),"span",arr[i].leftMx[j].effective_date);
+                    var dates = dateFormat(arr[i].leftMx[j].effective_date);
+					obj_append("div17","width_2 margin_2",$(li[s]),"span",dates);
+
 					obj_append("div18","width_2 margin_2",$(li[s]),"span",arr[i].leftMx[j].current_num);
 					obj_append("div15","width_1 margin_1",$(li[s]),"img","","/files/lianMengKa/img/erweima.png",arr[i].leftMx[j].card_id,arr[i].leftMx[j].item_code,arr[i].leftMx[j].type_flg);
 				}
