@@ -222,8 +222,9 @@ $(document).ready(function () {
         var verification_value = verification_code.val();
         var platenumber = car_num.val();
         var see = tc_ceng.css("display");
+        var sees = tsk.css("display");
         if(car_value != "" && see == "none"){
-            if (password_value == "") {
+            if (password_value == "" || sees == "block" || password_value.length < 6 || password_value.length > 10) {
                 tc_ceng.show();
                 ty.show();
                 // tyt.show();
