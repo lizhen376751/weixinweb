@@ -122,24 +122,23 @@ $(document).ready(function () {
             }
         }, 1000)
     }
-
+    var regss = /\s/;
+    var values = "";
+    count_password.on("keyup",function () {
+        var value = $(this).val();
+        var states = regss.test(value);
+        if(states){
+            tsk.show();
+            $(this).val(values);
+        }else{
+            tsk.hide();
+            values = value;
+            $(this).val(values);
+        }
+    })
     //--------------------------------------------------------------------------点击账户密码进行判断
-    count_password.on("click", function () {
+    count_password.on("focus", function () {
         car_judge();
-        var reg = /\s/;
-        var values = "";
-        $(this).on("keyup",function(){
-            var value = $(this).val();
-            var states = reg.test(value);
-            if(states){
-                tsk.show();
-                $(this).val(values);
-            }else{
-                tsk.hide();
-                values = value;
-                $(this).val(values);
-            }
-        });
     })
     //-------------------------------------------------------------------------点击输入手机号码
     count_phone.on("focus", function () {
