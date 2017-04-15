@@ -196,7 +196,7 @@ $(document).ready(function () {
                             tc_ceng.show();
                             ty.show();
                             tyt.show();
-                            llt.text("车牌号或密码输入错误,请重新输入!");
+                            // llt.text("车牌号或密码输入错误,请重新输入!");
                             // alert("车牌号或密码输入错误,请重新输入!");
                         }else if (jsonData == "4"){
                             window.location.href = "/oauthLoginServlet?flagStr=personalCenter";

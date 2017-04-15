@@ -270,6 +270,17 @@
 	-webkit-text-fill-color: transparent;
 
 }
+.tcc .ty .l_tts{
+	display: block;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top: 2.54rem;
+	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(62, 216, 255, 1)), to(rgba(88, 150, 255, 1)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+}
 /*--------------------------------------------------------------------直接登录*/
 .tcc .ty .l_tj{
 	display: block;

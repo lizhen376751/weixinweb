@@ -65,8 +65,9 @@
 			</div>
 			<!----------------------------------------------------------------------------统一提示框-->
 			<div class="ty">
-				<img src="/files/login/img/login/error.png" class="close"/>
-				<span class="l_tt font_3"></span>
+				<%--<img src="/files/login/img/login/error.png" class="close"/>--%>
+				<span class="l_tt font_3">车牌号或密码输入错误</span>
+				<span class="l_tts font_3">请重新输入!</span>
 				<!--<span class="l_tj font_3">请注册</span>-->
 				<!--<span class="l_tq font_1 color_8">取消请关闭窗口</span>-->
 				<div class="tyt font_1 color_3">确定</div>
