@@ -85,8 +85,10 @@ $(document).ready(function () {
                 success: function (jsonData) {
                     var jsonData = JSON.parse(jsonData);
                     if (jsonData == "0") {
-                        tc_ceng.show();
-                        b_box.show();
+                        // tc_ceng.show();
+                        // b_box.show();
+                        car_tsk.show();
+                        car_tsk.text("该车牌号未注册，请去注册");
                         return false;//TODO 提示注册
                     } else if (jsonData == "1") {             //----------------------------------------------------------没密码
                         $.ajax({
