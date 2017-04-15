@@ -26,7 +26,7 @@ public class WeixinOauth2Token {
      */
     private String scope;
     /**
-     * 不知道
+     * 名称
      */
     private String nickname;
 

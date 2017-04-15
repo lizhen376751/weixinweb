@@ -1,10 +1,4 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" 
-		import="com.lianmeng.wx.service.AHIService,
-		com.weixin.action.UserReg,
-		com.weixin.login.loginActionNew,
-		com.weixin.login.loginOut,
-		cn.duduchewang.weixin.common.GetShopInfo"%>
-<%@ page errorPage="./error2.jsp"%>
 
 <%
 String actions = request.getParameter("actions");

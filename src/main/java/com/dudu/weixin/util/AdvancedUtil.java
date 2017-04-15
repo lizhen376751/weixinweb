@@ -36,7 +36,7 @@ public class AdvancedUtil {
                 wat.setRefreshToken(jsonObject.getString("refresh_token"));
                 wat.setOpenId(jsonObject.getString("openid"));
                 wat.setScope(jsonObject.getString("scope"));
-
+                System.out.println("wat===========+" + wat.getOpenId() + "+======================" + wat.toString());
             } catch (Exception e) {
                 wat = null;
                 int errorCode = jsonObject.getIntValue("errcode");

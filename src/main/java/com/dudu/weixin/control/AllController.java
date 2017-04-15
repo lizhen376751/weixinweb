@@ -128,12 +128,13 @@ public class AllController {
         } else if ("AHIInfo".equals(flagStr)) {
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
         } else if ("AHIInfoxiangqing".equals(flagStr)) {
-            String plateNumber = request.getParameter("plateNumber");
             String id = request.getParameter("id");
-            model.addAttribute("plateNumber", plateNumber);
             model.addAttribute("id", id);
-            logger.info("ahi详情页面!" + plateNumber + id);
             return "/ahi/subxiangqing.jsp"; //ahi详情
+        } else if ("AHIInfoxiangqing".equals(flagStr)) {
+            String inspectionDetailedDescription = request.getParameter("inspectionDetailedDescription");
+            model.addAttribute("inspectionDetailedDescription", inspectionDetailedDescription);
+            return "/ahi/thirlyIndex.jsp"; //ahi三级页面
         } else if ("xiaoFeiList".equals(flagStr)) {
             return "/xiaoFeiJiLu/xiaoFeiList.jsp"; //消费记录
         } else if ("baoYangList".equals(flagStr)) {
@@ -285,5 +286,31 @@ public class AllController {
         return "/cheXianList/cheXianList.jsp"; //展示车险列表的页面
 
     }
+//-----------------------------------------------------------------------ahi
+    /**
+     * 仅用于ahi测试作用
+     *
+     * @param request 请求
+     * @param  model 返回数据
+     * @return 页面跳转至车险列表展示页面
+     */
+    @RequestMapping(value = "ahi", method = RequestMethod.GET)
+    public String ahi(HttpServletRequest request, Model model) {
+        return "/ahi/AHIxiangqing.jsp"; //AHI指数
+
+    }
+    /**
+     * 仅用于ahi测试作用
+     *
+     * @param request 请求
+     * @param  model 返回数据
+     * @return 页面跳转至车险列表展示页面
+     */
+    @RequestMapping(value = "AHIInfoxiangqing", method = RequestMethod.GET)
+    public String aHIInfoxiangqing(HttpServletRequest request, Model model) {
+        return "/ahi/subxiangqing.jsp"; //ahi详情
+
+    }
+    //-----------------------------------------------------------------------ahi
 
 }

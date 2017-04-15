@@ -86,10 +86,7 @@
         function cheXianTouBao() {
             window.location.href = "/oauthLoginServlet?flagStr=cheXianTouBao";
         }
-        //aHi
-        function AHIInfo() {
-            window.location.href = "/oauthLoginServlet?flagStr=AHIInfo";
-        }
+
         //联盟卡包
         function lmkInfo() {
             window.location.href = "/oauthLoginServlet?flagStr=lmkInfo";
@@ -130,7 +127,14 @@
 
             window.location.href = "/oauthLoginServlet?flagStr=login";
         }
-
+        //aHi
+        function AHIInfo() {
+            window.location.href = "/ahi";
+        }
+        //ahi详情
+        function AHIxiangqing() {
+            window.location.href = "/AHIInfoxiangqing";
+        }
     </script>
 </head>
 <body>
@@ -143,6 +147,7 @@
             <li class="btnli"><input type="button" class="regbtn" value="联盟活动" onclick="queryLMActivity()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="保险" onclick="cheXianTouBao()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="Ahi" onclick="AHIInfo()"/></li>
+            <li class="btnli"><input type="button" class="regbtn" value="Ahi" onclick="AHIxiangqing()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="联盟卡包" onclick="lmkInfo()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="保养提醒" onclick="baoYangList()"/></li>
             <li class="btnli"><input type="button" class="regbtn" value="服务导航" onclick="daohangindex()"/></li>

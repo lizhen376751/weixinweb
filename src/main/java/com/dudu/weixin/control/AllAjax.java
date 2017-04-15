@@ -162,7 +162,9 @@ public class AllAjax {
         }
         //登录,注册,填写车牌号后发送请求
         if ("checkInfo".equals(fromflag)) {
-            platenumber = request.getParameter("platenumber"); //车牌号
+            if (platenumber == null || ("").equals(platenumber)) {
+                platenumber = request.getParameter("platenumber"); //车牌号
+            }
             String s = autoLoginService.checkInfo(platenumber, lmcode);
             return s;
         }
@@ -268,21 +270,19 @@ public class AllAjax {
         if ("baoXianTypes".equals(fromflag)) {
             return chexiantoubaoService.baoXianTypes();
         }
-        //AHI
-        String plateNumber = request.getParameter("plateNumber");
+        //AHI列表
         if ("queryAllPointByPlateNumber".equals(fromflag)) {
-            return ahiService.queryAllPointByPlateNumber(plateNumber);
+            return ahiService.queryAllPointByPlateNumber(platenumber);
         }
-        //AHI
+        //AHI详情
         if ("queryCarPointOne".equals(fromflag)) {
-            logprint.debug("ahi" + plateNumber);
-            return ahiService.queryCarPointOne(plateNumber);
+            return ahiService.queryCarPointOne(platenumber);
         }
         //AHI
         if ("queryCarPointTwo".equals(fromflag)) {
             String ratio = request.getParameter("ratio");
             String id = request.getParameter("id");
-            return ahiService.queryCarPointTwo(plateNumber, id, ratio);
+            return ahiService.queryCarPointTwo(platenumber, id, ratio);
         }
         //保养提醒
         if ("baoYangList".equals(fromflag)) {
