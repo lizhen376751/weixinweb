@@ -23,7 +23,7 @@ $(document).ready(function () {
     var tsk = $(".tsk") //--------------------------------------------------------获取密码提示框
     var car_tsk = $(".car_tsk") //--------------------------------------------------------获取车牌号提示框
     var phone_tsk = $(".phone_tsk") // ---------------------------------------------------获取手机号码提示框
-    var yzm_tsk = $("。yzm_tsk") //--------------------------------------------------------获取验证码提示框
+    var yzm_tsk = $(".yzm_tsk") //--------------------------------------------------------获取验证码提示框
     var l_box = $(".l_box"); //-------------------------------------------------获取已注册，没有密码框
     var b_box = $(".b_box");  //------------------------------------------------获取已注册，有密码框
     var close = $(".close"); //---------------------------------------------------获取遮罩层中红色关闭按钮
@@ -109,7 +109,12 @@ $(document).ready(function () {
 
         }
     }
-
+    car_num.on("keyup",function () {
+        var val = $(this).val();
+        if(val.length > 0){
+            car_tsk.hide();
+        }
+    })
     //------------------------------------------------------------------------------------点击验证码进行倒计时函数
     function count_down(values) {
         var s = 60;
@@ -148,7 +153,7 @@ $(document).ready(function () {
     });
     //--------------------------------------------------------------------------输入手机号进行正则判断
     count_phone.on("keyup", function () {
-        if ($(this).val().length >= 11) {
+        if ($(this).val().length == 11) {
             var regs = /^1(3|4|5|7|8)[0-9]\d{8}$/;
             if (regs.test($(this).val())) {
                 return false;
@@ -166,6 +171,9 @@ $(document).ready(function () {
         }else if($(this).val().length <= 0){
             phone_tsk.show();
             phone_tsk.text("请输入您的手机号码")
+        }else if(isNaN($(this).val())){
+            phone_tsk.show();
+            phone_tsk.text("输入手机号码有误，请重新输入")
         }else{
             phone_tsk.hide();
         }
