@@ -95,7 +95,6 @@ $(document).ready(function () {
 				obj_append("div18","width_2 margin_2 border_1 height",$($(".biaoTou")[i]),"span","次数");
 				for (var j = 0;j < arr[i].leftMx.length;j++) {
 					var s = j + 1;
-					
 					var yxrqDateTime = arr[i].leftMx[j].effective_date;
 					var newDate = new Date();
 					newDate.setTime(yxrqDateTime);
@@ -158,6 +157,7 @@ $(document).ready(function () {
 						type_flg   :type_flgs
 					},
 					success : function(jsonData){
+                        erWeiMa.children().remove();
 						var json = JSON.parse(jsonData);
 						erWeiMa.qrcode(json);
 						erWeiMa.children().css({
