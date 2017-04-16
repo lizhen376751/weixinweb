@@ -44,7 +44,7 @@
 					<div class="text_2 font_2 color_2">62</div>
 					<img src="/files/personCenter/back.png" class="arrow"/><!--蓝色箭头-->
 					<!-----------------------------------------------------蓝色分割线-->
-					<span class="line"></span>   
+					<%--<span class="line"></span>   --%>
 				</li>
 				<!--保养提醒-->
 				<li>
