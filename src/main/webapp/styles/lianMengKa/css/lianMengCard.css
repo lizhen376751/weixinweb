@@ -20,7 +20,7 @@ img{
 	text-align: center;
 	/*font-size: 3.375em;*/
 	color: #505050;
-	
+
 }
 /*卡的详情*/
 .card_content{
@@ -37,7 +37,7 @@ img{
 	width: 646px;
 	height: 159px;
 	margin: auto;
-	padding-top: 23px;	
+	padding-top: 23px;
 }
 /*卡号*/
 .card_number{
@@ -97,6 +97,9 @@ img{
 	float: right;
 	margin-top: 15px;
 	margin-right: 50px;
+	/*margin-bottom: 16px;*/
+	/*position: relative;
+	bottom: 14px;*/
 }
 /*宽高度样式*/
 .height{
@@ -140,9 +143,9 @@ img{
 	text-align: center;
 	line-height: 98px;
 	border-radius: 49px;
-	-webkit-box-shadow:5px 5px 5px 2px   rgba(0, 0, 0, 0.1);  
-    -moz-box-shadow:5px 5px 5px 2px  rgba(0, 0, 0, 0.1);     
-    box-shadow:5px 5px 5px 2px  rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow:5px 5px 5px 2px   rgba(0, 0, 0, 0.1);
+	-moz-box-shadow:5px 5px 5px 2px  rgba(0, 0, 0, 0.1);
+	box-shadow:5px 5px 5px 2px  rgba(0, 0, 0, 0.1);
 }
 
 /*遮罩层*/
