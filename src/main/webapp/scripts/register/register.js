@@ -136,6 +136,7 @@ $(document).ready(function () {
         var states = regss.test(value);
         if(states){
             tsk.show();
+            tsk.text("密码不能包含空格")
             $(this).val(values);
         }else{
             tsk.hide();
