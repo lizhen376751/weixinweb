@@ -23,6 +23,7 @@
 				<!---------------------------------------------------------------------------车牌号信息-->
 				<li>
 					<img src="/files/register/car_num.png" class="logo"/>
+					<span class="car_tsk font_4">请输入您的车牌号</span>
 					<input type="text" placeholder="请输入您的车牌号" class="input_css_1 car_num font_1"/>
 					<img src="/files/register/big_line.png" alt="" class="big_line"/>
 				</li>
@@ -37,12 +38,14 @@
 				<!---------------------------------------------------------------------------手机号-->
 				<li class="margin_top_1">
 					<img src="/files/register/phone.png" class="logo"/>
+					<span class="phone_tsk font_4">请输入您的手机号码</span>
 					<input type="text" placeholder="请输入您的手机号码" class="input_css_1 font_1 count_phone"/>
 					<img src="/files/register/big_line.png" alt="" class="big_line"/>
 				</li>
 				<!-----------------------------------------------------------------------------验证码-->
 				<li class="margin_top_1">
 					<img src="/files/register/yzm.png" class="logo"/>
+					<span class="yzm_tsk font_4">请输入验证码</span>
 					<input type="text" placeholder="请输入验证码" class="input_css_2 font_1 verification_code" />
 					<img src="/files/register/little_line.png" alt="" class="little_line"/>
 					<span class="yzm font_1 color_3">发送验证码</span>

@@ -61,6 +61,60 @@
 	z-index: 1;
 	display: none;
 }
+.main ul li .car_tsk{
+	width: 5.54rem;
+	height: 0.4rem;
+	/*background: #58b5ff;*/
+	border-radius: 0.3rem;
+	text-align: center;
+	position: absolute;
+	top: -0.4rem;
+	left: 50%;
+	margin-left: -2.77rem;
+	text-align: center;
+	line-height: 1.5em;
+	color: red;
+	outline: none;
+	border: none;
+	z-index: 1;
+	display: none;
+}
+.main ul li .phone_tsk{
+	width: 5.54rem;
+	height: 0.4rem;
+	/*background: #58b5ff;*/
+	border-radius: 0.3rem;
+	text-align: center;
+	position: absolute;
+	top: -0.4rem;
+	left: 50%;
+	margin-left: -2.77rem;
+	text-align: center;
+	line-height: 1.5em;
+	color: red;
+	outline: none;
+	border: none;
+	z-index: 1;
+	display: none;
+}
+.main ul li .yzm_tsk{
+	width: 3.2rem;
+	height: 0.4rem;
+	/*background: #58b5ff;*/
+	border-radius: 0.3rem;
+	text-align: center;
+	position: absolute;
+	top: -0.4rem;
+	left: 50%;
+	margin-left: -2.75rem;
+	text-align: center;
+	line-height: 1.5em;
+	color: red;
+	outline: none;
+	border: none;
+	z-index: 1;
+	display: none;
+}
 .main ul li .eye{
 	width: 0.59rem;
 	position: absolute;

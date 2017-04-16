@@ -21,6 +21,9 @@ $(document).ready(function () {
     var tjxx = $(".tjxx") //----------------------------------------------------------获取提交信息按钮
     var tc_ceng = $(".tcc");  //-------------------------------------------------获取弹出层
     var tsk = $(".tsk") //--------------------------------------------------------获取密码提示框
+    var car_tsk = $(".car_tsk") //--------------------------------------------------------获取车牌号提示框
+    var phone_tsk = $(".phone_tsk") // ---------------------------------------------------获取手机号码提示框
+    var yzm_tsk = $("。yzm_tsk") //--------------------------------------------------------获取验证码提示框
     var l_box = $(".l_box"); //-------------------------------------------------获取已注册，没有密码框
     var b_box = $(".b_box");  //------------------------------------------------获取已注册，有密码框
     var close = $(".close"); //---------------------------------------------------获取遮罩层中红色关闭按钮
@@ -50,12 +53,14 @@ $(document).ready(function () {
     function car_judge() {
         var car_value = car_num.val();
         if (car_value == "") {
-            tc_ceng.show();
-            ty.show();
-            // tyt.show();
-            l_box.hide();
-            b_box.hide();
-            llt.text("请输入车牌号~");
+            car_tsk.show();
+            car_tsk.text("请输入车牌号")
+            // tc_ceng.show();
+            // ty.show();
+            // // tyt.show();
+            // l_box.hide();
+            // b_box.hide();
+            // llt.text("请输入车牌号~");
             // alert("请输入车牌号~")
         } else {
             $.ajax({
@@ -88,10 +93,7 @@ $(document).ready(function () {
                                 b_box.hide();
                                 ty.hide()
                             }
-
                         });
-
-
                     } else if (jsonData == "2") {             //-----------------------------------------------------------有密码
                         tc_ceng.show();
                         b_box.show();
@@ -151,14 +153,21 @@ $(document).ready(function () {
             if (regs.test($(this).val())) {
                 return false;
             } else {
-                tc_ceng.show();
-                ty.show();
-                // tyt.show();
-                l_box.hide();
-                b_box.hide();
-                llt.text("输入手机号码有误，请重新输入~");
+                phone_tsk.show();
+                phone_tsk.text("输入手机号码有误，请重新输入");
+                // tc_ceng.show();
+                // ty.show();
+                // // tyt.show();
+                // l_box.hide();
+                // b_box.hide();
+                // llt.text("输入手机号码有误，请重新输入~");
                 // alert("输入手机号码有误，请重新输入！");
             }
+        }else if($(this).val().length <= 0){
+            phone_tsk.show();
+            phone_tsk.text("请输入您的手机号码")
+        }else{
+            phone_tsk.hide();
         }
     });
     //-------------------------------------------------------------------------点击输入验证码进行判断
@@ -177,20 +186,24 @@ $(document).ready(function () {
             var see = tc_ceng.css("display");
             if(car_value != "" && see == "none"){
                 if (password_value == "") {
-                    tc_ceng.show();
-                    ty.show();
-                    // tyt.show();
-                    l_box.hide();
-                    b_box.hide();
-                    llt.text("请设置您的账户密码~");
+                    tsk.show();
+                    tsk.text("请设置您的账户密码");
+                    // tc_ceng.show();
+                    // ty.show();
+                    // // tyt.show();
+                    // l_box.hide();
+                    // b_box.hide();
+                    // llt.text("请设置您的账户密码~");
                     // alert("请设置您的账户密码~")
                 } else if (phone_value == "" || phone_value.length < 11) {
-                    tc_ceng.show();
-                    ty.show();
-                    // tyt.show();
-                    l_box.hide();
-                    b_box.hide();
-                    llt.text("您输入的手机号码有误，请重新输入~");
+                    phone_tsk.show();
+                    phone_tsk.text("输入手机号码有误，请重新输入")
+                    // tc_ceng.show();
+                    // ty.show();
+                    // // tyt.show();
+                    // l_box.hide();
+                    // b_box.hide();
+                    // llt.text("您输入的手机号码有误，请重新输入~");
                     // alert("您输入的手机号码有误，请重新输入~")
                 } else {
                     //-----------------------------------------------------请求发送验证码
@@ -225,28 +238,34 @@ $(document).ready(function () {
         var sees = tsk.css("display");
         if(car_value != "" && see == "none"){
             if (password_value == "" || sees == "block" || password_value.length < 6 || password_value.length > 10) {
-                tc_ceng.show();
-                ty.show();
-                // tyt.show();
-                l_box.hide();
-                b_box.hide();
-                llt.text("请设置您的账户密码~");
+                tsk.show();
+                tsk.text("请设置您的账户密码");
+                // tc_ceng.show();
+                // ty.show();
+                // // tyt.show();
+                // l_box.hide();
+                // b_box.hide();
+                // llt.text("请设置您的账户密码~");
                 // alert("请设置您的账户密码~")
             } else if (phone_value == "") {
-                tc_ceng.show();
-                ty.show();
-                // tyt.show();
-                l_box.hide();
-                b_box.hide();
-                llt.text("请输入您的手机号码~");
+                phone_tsk.show();
+                phone_tsk.text("请输入您的手机号码");
+                // tc_ceng.show();
+                // ty.show();
+                // // tyt.show();
+                // l_box.hide();
+                // b_box.hide();
+                // llt.text("请输入您的手机号码~");
                 // alert("请输入您的手机号码~")
             } else if (verification_value == "") {
-                tc_ceng.show();
-                ty.show();
-                // tyt.show();
-                l_box.hide();
-                b_box.hide();
-                llt.text("请输入验证码~");
+                yzm_tsk.show();
+                yzm_tsk.text("请输入验证码")
+                // tc_ceng.show();
+                // ty.show();
+                // // tyt.show();
+                // l_box.hide();
+                // b_box.hide();
+                // llt.text("请输入验证码~");
                 // alert("请输入验证码~")
             } else {
                 //----------------------------------------------------------------------------ajax提交信息
@@ -265,12 +284,14 @@ $(document).ready(function () {
                         if(backdata == "3"){
                             window.location.href = "/oauthLoginServlet?flagStr=personalCenter";
                         }else if(backdata == "4"){
-                            tc_ceng.show();
-                            ty.show();
-                            // tyt.show();
-                            l_box.hide();
-                            b_box.hide();
-                            llt.text("输入验证码有误，请重新输入！");
+                            yzm_tsk.show();
+                            yzm_tsk.text("验证码错误")
+                            // tc_ceng.show();
+                            // ty.show();
+                            // // tyt.show();
+                            // l_box.hide();
+                            // b_box.hide();
+                            // llt.text("输入验证码有误，请重新输入！");
                             // alert("输入验证码有误，请重新输入！")
                         }
                     }
