@@ -46,7 +46,7 @@
 .main ul li .tsk{
 	width: 3.04rem;
 	height: 0.4rem;
-	background: #58b5ff;
+	/*background: #58b5ff;*/
 	border-radius: 0.3rem;
 	text-align: center;
 	position: absolute;
@@ -55,7 +55,7 @@
 	margin-left: -1.52rem;
 	text-align: center;
 	line-height: 1.5em;
-	color: #fff;
+	color: red;
 	outline: none;
 	border: none;
 	z-index: 1;
