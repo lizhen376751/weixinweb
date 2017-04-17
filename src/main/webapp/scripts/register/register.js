@@ -131,48 +131,47 @@ $(document).ready(function () {
     }
     var regss = /\s/;
     var values = "";
+    var tof = true;
     count_password.on("keyup",function () {
         var value = $(this).val();
-        var states = regss.test(value);
-        if(states){
+        var states = reg.test(value);
+        if(states && tof){
             tsk.show();
-            tsk.text("密码不能包含空格")
+            tsk.text("密码不能包含空格");
             $(this).val(values);
-        }else{
+        }else if(tof){
             tsk.hide();
             values = value;
             $(this).val(values);
         }
-    })
+        if(value.length > 10){
+            tof = false;
+            tsk.show();
+            tsk.text("密码不能超过10位");
+            $(this).val(values);
+        }else if(!states){
+            tof = true;
+            tsk.text("")
+        }
+    });
     //--------------------------------------------------------------------------点击账户密码进行判断
     count_password.on("focus", function () {
         car_judge();
     })
     //-------------------------------------------------------------------------点击输入手机号码
     count_phone.on("focus", function () {
-        car_judge()
+        car_judge();
+        if(count_password.val().length < 6){
+            tsk.show();
+            tsk.text("请设置6-10位账户密码");
+        };
     });
     //--------------------------------------------------------------------------输入手机号进行正则判断
     count_phone.on("keyup", function () {
-        if ($(this).val().length == 11) {
-            var regs = /^1(3|4|5|7|8)[0-9]\d{8}$/;
-            if (regs.test($(this).val())) {
-                return false;
-            } else {
-                phone_tsk.show();
-                phone_tsk.text("输入手机号码有误，请重新输入");
-                // tc_ceng.show();
-                // ty.show();
-                // // tyt.show();
-                // l_box.hide();
-                // b_box.hide();
-                // llt.text("输入手机号码有误，请重新输入~");
-                // alert("输入手机号码有误，请重新输入！");
-            }
-        }else if($(this).val().length <= 0){
+        if($(this).val().length <= 0){
             phone_tsk.show();
             phone_tsk.text("请输入您的手机号码")
-        }else if(isNaN($(this).val())){
+        } else if(isNaN($(this).val())){
             phone_tsk.show();
             phone_tsk.text("输入手机号码有误，请重新输入")
         }else{
@@ -182,7 +181,12 @@ $(document).ready(function () {
     //-------------------------------------------------------------------------点击输入验证码进行判断
     verification_code.on("focus", function () {
         car_judge()
-    })
+    });
+    verification_code.on("keyup",function(){
+        if($(this).val().length != 0){
+            yzm_tsk.hide();
+        }
+    });
     //-------------------------------------------------------------------------点击发送验证码进行判断
     var yzm_start = true;  //------------------------------------------------------定义当前点击状态是否可以点击
     yzm.on("click", function () {
@@ -193,6 +197,8 @@ $(document).ready(function () {
             var phone_value = count_phone.val();
             var platenumber = car_num.val();
             var see = tc_ceng.css("display");
+            var regs = /^1(3|4|5|7|8)[0-9]\d{8}$/;
+            var aa = regs.test(phone_value);
             if(car_value != "" && see == "none"){
                 if (password_value == "") {
                     tsk.show();
@@ -204,9 +210,9 @@ $(document).ready(function () {
                     // b_box.hide();
                     // llt.text("请设置您的账户密码~");
                     // alert("请设置您的账户密码~")
-                } else if (phone_value == "" || phone_value.length < 11) {
+                } else if (phone_value == "") {
                     phone_tsk.show();
-                    phone_tsk.text("输入手机号码有误，请重新输入")
+                    phone_tsk.text("请输入您的手机号码")
                     // tc_ceng.show();
                     // ty.show();
                     // // tyt.show();
@@ -214,7 +220,10 @@ $(document).ready(function () {
                     // b_box.hide();
                     // llt.text("您输入的手机号码有误，请重新输入~");
                     // alert("您输入的手机号码有误，请重新输入~")
-                } else {
+                } else if(!aa){
+                    phone_tsk.show();
+                    phone_tsk.text("输入手机号码有误，请重新输入");
+                }else {
                     //-----------------------------------------------------请求发送验证码
                     count_down(phone_value);
                     yzm_start = false;
@@ -354,7 +363,7 @@ $(document).ready(function () {
         ty.hide();
     })
 
-})
+});
 
 
 
