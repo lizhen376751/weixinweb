@@ -84,6 +84,7 @@ $(document).ready(function () {
                                 fromflag: "getmobiePhone",
                                 platenumber: car_value
                             },
+                            async: false,
                             success: function (jsonData) {
                                 b = JSON.parse(jsonData);
                                 var reg = b.substr(3, 4);
