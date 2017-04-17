@@ -70,6 +70,7 @@ $(document).ready(function () {
                     fromflag: "checkInfo",
                     platenumber: car_value
                 },
+                async: false,
                 success: function (jsonData) {
                     var jsonData = JSON.parse(jsonData);
                     if (jsonData == "0") {
@@ -161,7 +162,8 @@ $(document).ready(function () {
     //-------------------------------------------------------------------------点击输入手机号码
     count_phone.on("focus", function () {
         car_judge();
-        if(count_password.val().length < 6){
+        var see = tc_ceng.css("display");
+        if(count_password.val().length < 6 && see == "none"){
             tsk.show();
             tsk.text("请输入6-10位密码");
         };
