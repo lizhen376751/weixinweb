@@ -174,7 +174,7 @@ $(document).ready(function () {
             var password_value = password_num.val();
             if (password_value == "") {
                 password_tsk.show();
-                password_tsk.text("请输入密码");
+                password_tsk.text("请输入您的密码");
                 // tc_ceng.show();
                 // ty.show();
                 // tyt.show();
