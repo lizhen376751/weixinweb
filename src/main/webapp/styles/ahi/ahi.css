@@ -1,10 +1,19 @@
 @charset "utf-8";
 /* CSS Document */
 
-a:link {color: #000}		/* 未访问的链接 */
-a:visited {color: #000}	/* 已访问的链接 */
-a:hover {color: #000}	/* 鼠标移动到链接上 */
-a:active {color: #000}	/* 选定的链接 */
+a:link {color: #000;
+    background: none;
+}		/* 未访问的链接 */
+a:visited {
+    color: #000;
+    background: none;
+}	/* 已访问的链接 */
+a:hover {color: #000;
+         background: none;
+        }	/* 鼠标移动到链接上 */
+a:active {color: #000;
+    background: none;
+}	/* 选定的链接 */
 
 /*健康指数css*/
 
@@ -273,6 +282,14 @@ a:active {color: #000}	/* 选定的链接 */
 }
 
 .title_color{ color: #7b7b7b;}
+.a_hover:hover{
+    height: 93px;
+    line-height: 93px;
+    /* padding: 0px 35px; */
+    text-align: center;
+    background:#eee;
+    opacity:0.8;
+}
 
 /* 三级页面样式*/
 .radiusblue{

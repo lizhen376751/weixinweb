@@ -82,8 +82,8 @@
                             } else if (subDescribeList[bb].point < 34) {
                            // <a href='thirlyIndex.jsp?inspectionDetailedDescription=" + encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription))) + "'>" +
 
-                                html_2 += "<a href='/oauthLoginServlet?flagStr=thirlyIndex&inspectionDetailedDescription=" +  encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription)))+ "'>" +
-                                    "<div class='lianghao'>" +
+                                html_2 += "<a  href='/oauthLoginServlet?flagStr=thirlyIndex&inspectionDetailedDescription=" +  encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription)))+ "'>" +
+                                    "<div class='lianghao a_hover'>" +
                                     "<span class='subxitong title_color font_1'>" + subDescribeList[bb].name + "</span>" +
                                     "<span class='radius radiuscoloe_2'></span>" +
                                     "<span class='subright title_color font_1 '><div class='bgjc'>较差</div></a></span>" +
