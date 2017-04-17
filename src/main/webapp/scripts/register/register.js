@@ -133,6 +133,7 @@ $(document).ready(function () {
     var values = "";
     var tof = true;
     count_password.on("keyup",function () {
+        alert(111)
         var value = $(this).val();
         var states = reg.test(value);
         if(states && tof){
