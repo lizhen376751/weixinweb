@@ -70,6 +70,7 @@ $(document).ready(function () {
                     fromflag: "checkInfo",
                     platenumber: car_value
                 },
+                async: false,
                 success: function (jsonData) {
                     var jsonData = JSON.parse(jsonData);
                     if (jsonData == "0") {
@@ -134,7 +135,7 @@ $(document).ready(function () {
     var tof = true;
     count_password.on("keyup",function () {
         var value = $(this).val();
-        var states = reg.test(value);
+        var states = regss.test(value);
         if(states && tof){
             tsk.show();
             tsk.text("密码不能包含空格");
@@ -161,9 +162,10 @@ $(document).ready(function () {
     //-------------------------------------------------------------------------点击输入手机号码
     count_phone.on("focus", function () {
         car_judge();
-        if(count_password.val().length < 6){
+        var see = tc_ceng.css("display");
+        if(count_password.val().length < 6 && see == "none"){
             tsk.show();
-            tsk.text("请输入6-10位账户密码");
+            tsk.text("请输入6-10位密码");
         };
     });
     //--------------------------------------------------------------------------输入手机号进行正则判断
@@ -202,7 +204,7 @@ $(document).ready(function () {
             if(car_value != "" && see == "none"){
                 if (password_value == "") {
                     tsk.show();
-                    tsk.text("请输入您的密码");
+                    tsk.text("请输入6-10位密码");
                     // tc_ceng.show();
                     // ty.show();
                     // // tyt.show();
@@ -257,7 +259,7 @@ $(document).ready(function () {
         if(car_value != "" && see == "none"){
             if (password_value == "" || sees == "block" || password_value.length < 6 || password_value.length > 10) {
                 tsk.show();
-                tsk.text("请输入您的密码");
+                tsk.text("请输入6-10位密码");
                 // tc_ceng.show();
                 // ty.show();
                 // // tyt.show();

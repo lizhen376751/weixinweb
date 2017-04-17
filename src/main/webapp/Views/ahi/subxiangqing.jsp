@@ -82,14 +82,37 @@
                             } else if (subDescribeList[bb].point < 34) {
 //                            <a href='thirlyIndex.jsp?inspectionDetailedDescription=" + encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription))) + "'>" +
 
-                                html_2 += "<a href='/oauthLoginServlet?flagStr_thirlyIndex&inspectionDetailedDescription=" + JSON.stringify(inspectionDetailedDescription) + "'>" +
-                                    "<div class='lianghao'>" +
-                                    "<span class='subxitong title_color font_1'>" + subDescribeList[bb].name + "</span>" +
-                                    "<span class='radius radiuscoloe_2'></span>" +
-                                    "<span class='subright title_color font_1 '><div class='bgjc'>较差</div></a></span>" +
-                                    "</div>" +
-                                    "</a>" +
-                                    "<hr class='sub_solid' />";  //
+//                                html_2 += "<a href='/oauthLoginServlet?flagStr_thirlyIndex&inspectionDetailedDescription=" + JSON.stringify(inspectionDetailedDescription) + "'>" +
+//                                    "<div class='lianghao'>" +
+//                                    "<span class='subxitong title_color font_1'>" + subDescribeList[bb].name + "</span>" +
+//                                    "<span class='radius radiuscoloe_2'></span>" +
+//                                    "<span class='subright title_color font_1 '><div class='bgjc'>较差</div></a></span>" +
+//                                    "</div>" +
+//                                    "</a>" +
+//                                    "<hr class='sub_solid' />";  //
+                                html_2 += "<a href='#' onclick='tothirlyindex()'>" +
+                                           "<div class='lianghao'>" +
+                                              "<span class='subxitong title_color font_1'>" + subDescribeList[bb].name + "</span>" +
+                                              "<span class='radius radiuscoloe_2'></span>" +
+                                              "<span class='subright title_color font_1 '><div class='bgjc'>较差</div></a></span>" +
+                                          "</div>" +
+                                         "</a>" +
+                                         "<hr class='sub_solid' />";  //
+                           function tothirlyindex(){
+                               $.ajax({
+                                   type: 'POST',
+                                   url: '/oauthLoginServlet',
+                                   data: {
+                                       flagStr_thirlyIndex: "checkInfo",
+                                       inspectionDetailedDescription: JSON.stringify(inspectionDetailedDescription)
+                                   },
+                                   success:function(jsonData){
+                                       window.location.href = '/thirlyIndex.jsp';
+                                   }
+                               })
+                           }
+
+
                                 <!--虚线-->
                             } else {
                                 html_2 += "<div class='lianghao'>" +
@@ -163,6 +186,7 @@
                 var z = /^[0-9]*$/;   //判断是否包含数字
                 if (t.indexOf(z)) {
                     $(this).parent().next().show();   //若是有隐患  默认为展开
+                    $(this).parent().find(".submiaos").html("收起<img class='zk_img' src='/files/ahi/ss.png' />");
                 }
                 ;
 
