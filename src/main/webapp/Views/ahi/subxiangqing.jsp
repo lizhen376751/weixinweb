@@ -115,13 +115,21 @@
                         ;
 
                         //添加隐患；
+//                        var html_1 = "";
+//                        if (sumq == 0) {
+//                            html_1 += "<span class='liangh font_0'>状态良好</span>";
+//                        } else {
+//                            html_1 += "<span class='jingbao font_0'>" + sumq + "条隐患</span>";
+//
+//                        }
                         var html_1 = "";
-                        if (sumq == 0) {
-                            html_1 += "<span class='liangh font_0'>状态良好</span>";
-                        } else {
+                        if (translate[aa].point == 0) {
+                            html_1 += "<span class='liangh font_0'>未检测</span>";
+                        } else  if (translate[aa].point < 34 && translate[aa].point >0 ){
                             html_1 += "<span class='jingbao font_0'>" + sumq + "条隐患</span>";
-                            // $("#jsubnumlie_li"+translate[aa].id+"").show();   //若是有隐患  默认为展开
 
+                        }else{
+                            html_1 += "<span class='liangh font_0'>状态良好</span>";
                         }
 
                         subhtml += "<li class='xqburder_li numlie_li' onClick='Togglezs(this);'>" +
