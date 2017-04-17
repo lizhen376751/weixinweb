@@ -62,7 +62,7 @@ $(document).ready(function () {
     })
 
     //----------------------------------------------------------判断车牌号是否注册函数
-    var back = "false";  //--------------------------------------记录状态值
+    // var back = "false";  //--------------------------------------记录状态值
     function car_judge() {
         var car_value = car_num.val();
         if (car_value == "") {
@@ -83,8 +83,9 @@ $(document).ready(function () {
                     fromflag: "checkInfo",
                     platenumber: car_value
                 },
+                async: false,
                 success: function (jsonData) {
-                    back = "true";
+                    // back = "true";
                     var jsonData = JSON.parse(jsonData);
                     if (jsonData == "0") {
                         // tc_ceng.show();
@@ -100,6 +101,7 @@ $(document).ready(function () {
                                 fromflag: "getmobiePhone",
                                 platenumber: car_value
                             },
+                            async: false,
                             success: function (jsonData) {
                                 b = JSON.parse(jsonData);
                                 var reg = b.substr(3, 4);
@@ -169,8 +171,8 @@ $(document).ready(function () {
         var car_value = car_num.val();
         var see = car_tsk.css("display");
 //		console.log(see)
-        if (car_value != "" && see == "none" && back == "true") {
-            back = "false";
+        if (car_value != "" && see == "none") {
+            // back = "false";
             var password_value = password_num.val();
             if (password_value == "") {
                 password_tsk.show();
