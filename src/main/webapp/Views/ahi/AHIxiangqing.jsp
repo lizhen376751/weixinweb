@@ -71,6 +71,36 @@
                         xianshi(data)
                     } else {
                         alert("未查询到车辆得分数据！");
+                        //	指示盘插件函数
+                        var ctx = document.getElementById('meter').getContext('2d');
+                        ctx.fillStyle = "rgba(255,165,0,1)";
+                        Meter.setOptions({
+                            element: 'meter',
+                            centerPoint: {
+                                x: 262,
+                                y: 262
+                            },
+                            radius: 262,
+                            data: {
+                                value: 0,
+                                //title: '职场竞争力{t}',
+                                //subTitle: '评估时间：2015.07.28',
+                                subTitle: '',
+                                title: '未检测',
+                                area: [{
+                                    min: 0, max: 20, text: '10'
+                                }, {
+                                    min: 20, max: 40, text: '30'
+                                }, {
+                                    min: 40, max: 60, text: '50'
+                                }, {
+                                    min: 60, max: 80, text: '70'
+                                }, {
+                                    min: 80, max: 100, text: '90'
+                                }]
+                            }
+                        }).init();
+                        //	指示盘插件函数结束
                     }
                 }
             });
