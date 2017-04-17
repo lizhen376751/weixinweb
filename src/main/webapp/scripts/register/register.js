@@ -133,9 +133,8 @@ $(document).ready(function () {
     var values = "";
     var tof = true;
     count_password.on("keyup",function () {
-        alert(111)
         var value = $(this).val();
-        var states = reg.test(value);
+        var states = regss.test(value);
         if(states && tof){
             tsk.show();
             tsk.text("密码不能包含空格");
