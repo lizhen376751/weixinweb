@@ -130,6 +130,8 @@
 
                         }else{
                             html_1 += "<span class='liangh font_0'>状态良好</span>";
+
+                            
                         }
 
                         subhtml += "<li class='xqburder_li numlie_li' onClick='Togglezs(this);'>" +
