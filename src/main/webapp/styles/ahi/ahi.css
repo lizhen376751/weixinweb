@@ -317,8 +317,8 @@ a:active {color: #000;
 }
 .mstop{margin-top:30px;}
 .Thirly_li{
-    margin-right:110px;
-    margin-left:110px;
+    margin-right:24px;
+    margin-left:24px;
     margin-bottom:50px;
 
 }
@@ -355,7 +355,7 @@ a:active {color: #000;
     float: right;
     right: 20px;
 }
-.xq_img{width:100px;height:100px;margin-right:10px;}
+.xq_img{width:230px;height:230px;margin-right:10px;}
 /*.zsimg{
     width:890px;
     margin-top:30px;
