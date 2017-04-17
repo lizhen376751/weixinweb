@@ -284,6 +284,12 @@ public class AllAjax {
             String id = request.getParameter("id");
             return ahiService.queryCarPointTwo(platenumber, id, ratio);
         }
+        //AHI请求三级页面将数据穿过去
+        if ("queryCarPointTwo".equals(fromflag)) {
+            String ratio = request.getParameter("ratio");
+            String id = request.getParameter("id");
+            return ahiService.queryCarPointTwo(platenumber, id, ratio);
+        }
         //保养提醒
         if ("baoYangList".equals(fromflag)) {
             String top = request.getParameter("top");
