@@ -21,14 +21,6 @@ import java.util.Random;
 @Service
 public class ValidateService {
     /**
-     * 生成4位数
-     */
-    private static final int NUM = 9999;
-    /**
-     * 生成6位数
-     */
-    private static final int NUM2 = 999999;
-    /**
      * 引入验证码记录接口
      */
     @Reference(version = "1.0")
@@ -89,7 +81,7 @@ public class ValidateService {
         smsSend.setLmcode(lmcode);
         smsSend.setMobilePhone(mobilephone);
         smsSend.setPlateNumber(platenumber);
-        String radomInt = String.valueOf(new Random().nextInt(NUM2));
+        String radomInt = String.valueOf((new Random().nextInt(999999 - 100000 + 1) + 100000));
         //六位密码的发送
         try {
             //密码的发送
@@ -120,7 +112,7 @@ public class ValidateService {
         smsSend.setLmcode(lmcode);
         smsSend.setMobilePhone(mobilephone);
         smsSend.setPlateNumber(platenumber);
-        String radomInt = String.valueOf(new Random().nextInt(NUM));
+        String radomInt = String.valueOf(new Random().nextInt(9999 - 1000 + 1) + 1000);
         //验证码的发送
         try {
             //验证码的记录
