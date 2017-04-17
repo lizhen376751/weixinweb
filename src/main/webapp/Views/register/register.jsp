@@ -31,7 +31,7 @@
 				<li class="margin_top_1">
 					<img src="/files/register/password.png" class="logo"/>
 					<span class="tsk font_4">密码不能包含空格</span>
-					<input type="password" placeholder="请设置6-10的密码" class="input_css_1 font_1 count_password"/>
+					<input type="password" placeholder="请输入6-10的密码" class="input_css_1 font_1 count_password"/>
 					<img src="/files/register/big_line.png" alt="" class="big_line"/>
 					<img src="/files/register/gbmm.png" class="eye"/>
 				</li>
