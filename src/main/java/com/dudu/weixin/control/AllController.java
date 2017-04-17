@@ -69,17 +69,27 @@ public class AllController {
     private DuduOauthService duduOauthService;
 
     /**
-     * 网页授权回调页面
+     * 嘟嘟车网测试平台网页授权回调页面
      *
      * @param request  请求
      * @param response 返回
      * @return 路径
      */
     @RequestMapping(value = "MP_verify_xtfw75328NsMZ6bb.txt", method = RequestMethod.GET)
-    public String wxconfig(HttpServletRequest request, HttpServletResponse response) {
+    public String duduchewangceshipingtai(HttpServletRequest request, HttpServletResponse response) {
         return "/MP_verify_xtfw75328NsMZ6bb.txt";
     }
-
+    /**
+     * 一路帮网页授权回调页面
+     *
+     * @param request  请求
+     * @param response 返回
+     * @return 路径
+     */
+    @RequestMapping(value = "MP_verify_LfkUMEM3uc7s4hpv.txt", method = RequestMethod.GET)
+    public String yilubang(HttpServletRequest request, HttpServletResponse response) {
+        return "/MP_verify_LfkUMEM3uc7s4hpv.txt";
+    }
 
     /**
      * 点击菜单后进入
