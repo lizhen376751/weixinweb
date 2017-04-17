@@ -163,7 +163,7 @@ $(document).ready(function () {
         car_judge();
         if(count_password.val().length < 6){
             tsk.show();
-            tsk.text("请设置6-10位账户密码");
+            tsk.text("请输入6-10位账户密码");
         };
     });
     //--------------------------------------------------------------------------输入手机号进行正则判断
@@ -202,7 +202,7 @@ $(document).ready(function () {
             if(car_value != "" && see == "none"){
                 if (password_value == "") {
                     tsk.show();
-                    tsk.text("请设置您的账户密码");
+                    tsk.text("请输入您的密码");
                     // tc_ceng.show();
                     // ty.show();
                     // // tyt.show();
@@ -257,7 +257,7 @@ $(document).ready(function () {
         if(car_value != "" && see == "none"){
             if (password_value == "" || sees == "block" || password_value.length < 6 || password_value.length > 10) {
                 tsk.show();
-                tsk.text("请设置您的账户密码");
+                tsk.text("请输入您的密码");
                 // tc_ceng.show();
                 // ty.show();
                 // // tyt.show();
