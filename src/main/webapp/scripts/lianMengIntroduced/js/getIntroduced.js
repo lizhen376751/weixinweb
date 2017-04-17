@@ -8,15 +8,13 @@ $(document).ready(function () {
 //	}
 	var h2 = $("h2");
 	var txt = $(".txt");
-	var shopcode = encodeURIComponent($("#shopcode").val());
 	var contextPathStr = $("#contextPathStr").val();
 
 	$.ajax({
 		type    : 'POST',
 		url     : '/getCommonAjax',
 		data    : {
-			fromflag   : "lianMengJieShao",
-			shopcode   : shopcode
+			fromflag   : "getIntroduced"
 		},
 		success : function(jsonData){
 			var json = JSON.parse(jsonData);

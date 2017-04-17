@@ -1,7 +1,4 @@
 <%@ page language="java" pageEncoding="utf-8" %>
-<%
-    String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
-%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -16,7 +13,12 @@
     <meta http-equiv="description" content="This is my page">
 
     <link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
-    <link rel="stylesheet" type="text/css" href="/styles/lianMengIntroduced/css/yangCheXinXi.css"/>
+    <style type="text/css">
+        h2{
+            text-align: center;
+        }
+    </style>
+    <%--<link rel="stylesheet" type="text/css" href="/styles/lianMengIntroduced/css/yangCheXinXi.css"/>--%>
     <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 
 
@@ -24,9 +26,10 @@
 
 <body>
 <h2></h2>
-<div class="txt"></div>
+<div class="txt">
+
+</div>
 </body>
 <script src="/scripts/lianMengIntroduced/js/getIntroduced.js" type="text/javascript" charset="utf-8"></script>
-<input type="hidden" id="shopcode" name="shopcode" value="<%=shopcode %>">
 <input type="hidden" id="contextPathStr" name="contextPathStr" value="<%=request.getContextPath() %>">
 </html>
