@@ -80,38 +80,16 @@
                                     "<hr class='sub_solid' />";  //
                                 <!--虚线-->
                             } else if (subDescribeList[bb].point < 34) {
-//                            <a href='thirlyIndex.jsp?inspectionDetailedDescription=" + encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription))) + "'>" +
+                           // <a href='thirlyIndex.jsp?inspectionDetailedDescription=" + encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription))) + "'>" +
 
-//                                html_2 += "<a href='/oauthLoginServlet?flagStr_thirlyIndex&inspectionDetailedDescription=" + JSON.stringify(inspectionDetailedDescription) + "'>" +
-//                                    "<div class='lianghao'>" +
-//                                    "<span class='subxitong title_color font_1'>" + subDescribeList[bb].name + "</span>" +
-//                                    "<span class='radius radiuscoloe_2'></span>" +
-//                                    "<span class='subright title_color font_1 '><div class='bgjc'>较差</div></a></span>" +
-//                                    "</div>" +
-//                                    "</a>" +
-//                                    "<hr class='sub_solid' />";  //
-                                html_2 += "<a href='#' onclick='tothirlyindex()'>" +
-                                           "<div class='lianghao'>" +
-                                              "<span class='subxitong title_color font_1'>" + subDescribeList[bb].name + "</span>" +
-                                              "<span class='radius radiuscoloe_2'></span>" +
-                                              "<span class='subright title_color font_1 '><div class='bgjc'>较差</div></a></span>" +
-                                          "</div>" +
-                                         "</a>" +
-                                         "<hr class='sub_solid' />";  //
-                           function tothirlyindex(){
-                               $.ajax({
-                                   type: 'POST',
-                                   url: '/oauthLoginServlet',
-                                   data: {
-                                       flagStr_thirlyIndex: "checkInfo",
-                                       inspectionDetailedDescription: JSON.stringify(inspectionDetailedDescription)
-                                   },
-                                   success:function(jsonData){
-                                       window.location.href = '/thirlyIndex.jsp';
-                                   }
-                               })
-                           }
-
+                                html_2 += "<a href='/oauthLoginServlet?flagStr=thirlyIndex&inspectionDetailedDescription=" +  encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription)))+ "'>" +
+                                    "<div class='lianghao'>" +
+                                    "<span class='subxitong title_color font_1'>" + subDescribeList[bb].name + "</span>" +
+                                    "<span class='radius radiuscoloe_2'></span>" +
+                                    "<span class='subright title_color font_1 '><div class='bgjc'>较差</div></a></span>" +
+                                    "</div>" +
+                                    "</a>" +
+                                    "<hr class='sub_solid' />";  //
 
                                 <!--虚线-->
                             } else {
