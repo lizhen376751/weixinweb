@@ -141,7 +141,7 @@ public class AllController {
             String id = request.getParameter("id");
             model.addAttribute("id", id);
             return "/ahi/subxiangqing.jsp"; //ahi详情
-        } else if ("AHIInfoxiangqing".equals(flagStr)) {
+        } else if ("thirlyIndex".equals(flagStr)) {
             String inspectionDetailedDescription = request.getParameter("inspectionDetailedDescription");
             model.addAttribute("inspectionDetailedDescription", inspectionDetailedDescription);
             return "/ahi/thirlyIndex.jsp"; //ahi三级页面
