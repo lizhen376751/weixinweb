@@ -139,13 +139,16 @@ $(document).ready(function () {
     }
 
     car_num.on("keyup",function(){
-        var values = $(this).val()
+        var values = $(this).val();
+        var car_see = car_tsk.css("display");
         if(values != ""){
-            car_tsk.hide()
+            car_tsk.hide();
+        }else if(car_see == "block"){
+            car_tsk.hide();
         }
     });
     password_num.on("keyup",function(){
-        var values = $(this).val()
+        var values = $(this).val();
         if(values != ""){
             password_tsk.hide();
         }
