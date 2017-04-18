@@ -165,7 +165,7 @@ a:active {color: #000;
 
 }
 
-.sub_solid{ border: 1px  dashed #e5e5e5;}
+.sub_solid{ border-bottom: 2px  dashed #dbd9da;}
 .lianghao{
     height: 93px;
     line-height: 93px;
