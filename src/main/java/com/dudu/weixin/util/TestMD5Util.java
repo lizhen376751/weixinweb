@@ -24,7 +24,7 @@ public final class TestMD5Util {
             "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
             "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5",
             "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I",
-            "J", "K", "L", "M", "N",  "P", "Q", "R", "S", "T", "U", "V",
+            "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V",
             "W", "X", "Y", "Z"};
 
     private TestMD5Util() {
@@ -85,6 +85,7 @@ public final class TestMD5Util {
         /**
          * 以下是生成六位或者八位唯一的编码
          */
+
         StringBuffer shortBuffer = new StringBuffer();
         String uuid = UUID.randomUUID().toString().replace("-", "");
         for (int i = 0; i < 8; i++) {

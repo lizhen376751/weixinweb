@@ -12,6 +12,28 @@
 })(document,window);
 
 $(document).ready(function(){
+	(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/getCommonAjax2',
+            data: {
+                fromflag: "getmobiePhone",
+                platenumber: car_value
+            },
+            async: false,
+            success: function (jsonData) {
+                b = JSON.parse(jsonData);
+                var reg = b.substr(3, 4);
+                var c = b.replace(reg, "****");
+                moblie_num.text(c);
+                tc_ceng.show();
+                l_box.show()
+            }
+
+        });
+    })()
+
+	var ljxq = $(".ljxq");//--------------------------------------------------------------------获取了解详情按钮
 	//条形码的样式
 	var options = {
         format:"CODE128",
@@ -152,9 +174,11 @@ $(document).ready(function(){
 	})
 //	--------------------------------------------------------------------------------卡激活跳转
 	$(".kjh").on("click",function () {
-        window.location.href ="/oauthLoginServlet?lmcode=CS000_lianMengCardActivate"
+        window.location.href ="/oauthLoginServlet?flagStr=lianMengCardActivate"
     })
-	
-	
+
+    ljxq.on("click",function () {
+		window.location.href = "/oauthLoginServlet?flagStr=lmkInfo"
+    })
 	
 })

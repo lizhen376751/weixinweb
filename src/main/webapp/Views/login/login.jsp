@@ -1,4 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%
+	String lmcode = request.getParameter("lmcode");
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,6 +15,7 @@
 		<script src="/scripts/login/js/login.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
+	<input name="lmcode" type="hidden" value="<%=lmcode%>">
 		<!---------------------------------------------------------------------------------头部logo-->
 		<div class="logo">
 			<img src="/files/login/img/login/logo.png"/>
@@ -73,5 +77,6 @@
 				<div class="tyt font_1 color_3">确定</div>
 			</div>
 		</div>
+
 	</body>
 </html>

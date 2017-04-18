@@ -13,6 +13,7 @@
 
 
 $(document).ready(function () {
+    var lmcode = $("#lmcode").val(); //-------------------------------------------------------------获取lmcode
     var car_num = $(".car_num");  //-------------------------------------------------------------获取用户输入的车牌号
     var password_num = $(".password_num");   //---------------------------------------------------获取用户输入的账号密码
     var login = $(".login"); //------------------------------------------------------------------获取登录按钮
@@ -81,6 +82,7 @@ $(document).ready(function () {
                 url: '/getCommonAjax2',
                 data: {
                     fromflag: "checkInfo",
+                    lmcode :lmcode,
                     platenumber: car_value
                 },
                 async: false,

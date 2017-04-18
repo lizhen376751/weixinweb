@@ -79,6 +79,7 @@ public class AllController {
     public String duduchewangceshipingtai(HttpServletRequest request, HttpServletResponse response) {
         return "/MP_verify_xtfw75328NsMZ6bb.txt";
     }
+
     /**
      * 一路帮网页授权回调页面
      *
@@ -175,17 +176,19 @@ public class AllController {
             validateService.sendpassWord(platenumber, lmcode, mobilephone);
             return "/login/login.jsp"; //已经有该用户,但是没有密码,点击确定发送短信且跳转至登录页面
         } else if ("personalCenter".equals(flagStr)) {
+            model.addAttribute("carHaopai", carHaopai);
+            model.addAttribute("lmcode", lmcode);
             return "/personCenter/personalCenter.jsp"; //个人中心
         } else if ("logout".equals(flagStr)) {
             logInLogService.deleLogInLog(openId);
             httpSession.setAttribute("plateNumber", null);
-            return "/login/login.jsp"; //退出登录
+            return "/login/login.jsp?lmcode=" + lmcode; //退出登录
         } else if ("login".equals(flagStr)) {
-            return "/login/login.jsp"; //登录页面 (注册时提示已注册,提供跳转至登录的入口)
+            return "/login/login.jsp?lmcode=" + lmcode; //登录页面 (注册时提示已注册,提供跳转至登录的入口)
         } else if ("baoxianlist".equals(flagStr)) {
             return "/cheXianList/cheXianList.jsp"; //车险报价
         }
-        return "/baoxian/cheXianTouBao/cheXianTouBao.jsp";
+        return "/login/login.jsp?lmcode=" + lmcode;
     }
 
 
@@ -286,7 +289,7 @@ public class AllController {
      * 仅用于app端保险提交之后跳转至列表页面
      *
      * @param request 请求
-     * @param  model 返回数据
+     * @param model   返回数据
      * @return 页面跳转至车险列表展示页面
      */
     @RequestMapping(value = "/appbaoxianlist", method = RequestMethod.GET)
@@ -297,11 +300,12 @@ public class AllController {
 
     }
 //-----------------------------------------------------------------------ahi
+
     /**
      * 仅用于ahi测试作用
      *
      * @param request 请求
-     * @param  model 返回数据
+     * @param model   返回数据
      * @return 页面跳转至车险列表展示页面
      */
     @RequestMapping(value = "ahi", method = RequestMethod.GET)
@@ -309,11 +313,12 @@ public class AllController {
         return "/ahi/AHIxiangqing.jsp"; //AHI指数
 
     }
+
     /**
      * 仅用于ahi测试作用
      *
      * @param request 请求
-     * @param  model 返回数据
+     * @param model   返回数据
      * @return 页面跳转至车险列表展示页面
      */
     @RequestMapping(value = "AHIInfoxiangqing", method = RequestMethod.GET)

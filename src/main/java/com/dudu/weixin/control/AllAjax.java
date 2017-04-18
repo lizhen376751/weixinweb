@@ -157,6 +157,10 @@ public class AllAjax {
         if ("checklogin".equals(fromflag)) {
             String password = request.getParameter("password"); //密码
             platenumber = request.getParameter("platenumber"); //车牌号
+            if (lmcode == null || ("").equals(lmcode)) {
+                lmcode = request.getParameter("lmcode"); //联盟code
+                httpSession.setAttribute("lmcode", lmcode); //没有的话将session存入
+            }
             String login = autoLoginService.login(platenumber, lmcode, password, openId);
             return login;
         }
@@ -164,6 +168,11 @@ public class AllAjax {
         if ("checkInfo".equals(fromflag)) {
             if (platenumber == null || ("").equals(platenumber)) {
                 platenumber = request.getParameter("platenumber"); //车牌号
+                httpSession.setAttribute("platenumber", platenumber); //没有的话将session存入
+            }
+            if (lmcode == null || ("").equals(lmcode)) {
+                lmcode = request.getParameter("lmcode"); //联盟code
+                httpSession.setAttribute("lmcode", lmcode); //没有的话将session存入
             }
             String s = autoLoginService.checkInfo(platenumber, lmcode);
             return s;

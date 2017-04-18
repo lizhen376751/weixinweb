@@ -1,4 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%
+	HttpSession Session = request.getSession();
+	String plateNumber = (String)Session.getAttribute("plateNumber");
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -20,7 +24,7 @@
 			<img src="/files/personCenter/top_bg.png" class="top_bg"/>
 			<div class="car_name">
 				<img src="/files/personCenter/cp.png" class="car_bg"/>
-				<span class="car_num">鲁C88888</span>
+				<span class="car_num"><%=plateNumber%></span>
 			</div>
 		</div>
 		<!-----------------------------------------------------车主主要信息-->

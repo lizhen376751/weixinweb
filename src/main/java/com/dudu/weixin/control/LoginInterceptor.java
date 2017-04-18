@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Enumeration;
 
 /**
  * Created by Administrator on 2017/3/24.
@@ -45,9 +46,14 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
-
+        Enumeration a = request.getHeaderNames();
+        while (a.hasMoreElements()) {
+            System.out.println("head为:============================" + a.nextElement());
+        }
         //无论点击那个页面都要进行拦截
-        String lmcode = (String) httpSession.getAttribute("lmcode");
+//        String lmcode = (String) httpSession.getAttribute("lmcode");
+        String lmcode = request.getHeader("lmcode");
+
         //获取参数,并将其分解
         String strWxShopcode = request.getParameter("lmcode");
         String flagStr = "";
@@ -59,6 +65,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             flagStr = strWxShopcode.split("_")[1]; //页面跳转判断
             lmcode = strWxShopcode.split("_")[0]; //联盟code
             httpSession.setAttribute("lmcode", lmcode);
+            response.setHeader("lmcode", lmcode);
             //微信的openid
             openId = (String) httpSession.getAttribute("openId");
             //判断session里面有没有openId
@@ -82,7 +89,7 @@ public class LoginInterceptor implements HandlerInterceptor {
                 LogInLog logInLog = logInLogService.getLogInLog(lmcode, openId);
                 if (logInLog == null) {
                     //如果没有记录跳转至登录页面
-                    request.getRequestDispatcher("/Views/login/login.jsp").forward(request, response);
+                    request.getRequestDispatcher("/Views/login/login.jsp?lmcode=" + lmcode).forward(request, response);
                 } else {
                     //获取车牌号
                     String plateNumber = logInLog.getPlateNumber();
