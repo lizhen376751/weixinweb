@@ -165,7 +165,7 @@ a:active {color: #000;
 
 }
 
-.sub_solid{ border-bottom: 2px  dashed #dbd9da;}
+.sub_solid{ border-bottom: 2px  dashed #ccc;}
 .lianghao{
     height: 93px;
     line-height: 93px;
@@ -181,6 +181,7 @@ a:active {color: #000;
     -webkit-border-radius: 50%;
     display: inline-block;
     margin-left: -90px;
+    margin-top:30px;
 }
 .radiuscoloe_1{
     background: #d8d8d8;
@@ -282,7 +283,15 @@ a:active {color: #000;
 }
 
 .title_color{ color: #7b7b7b;}
+.a_hover{
+    display:block;
+    height: 93px;
+    line-height: 93px;
+    /* padding: 0px 35px; */
+    text-align: center;
+}
 .a_hover:hover{
+    display:block;
     height: 93px;
     line-height: 93px;
     /* padding: 0px 35px; */
