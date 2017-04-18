@@ -10,11 +10,11 @@ import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
-import com.dudu.weixin.mould.PesrsonCenter;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.AutoLoginService;
 import com.dudu.weixin.service.BaoYangTiXingService;
 import com.dudu.weixin.service.BuyRecordService;
+import com.dudu.weixin.service.CarTypeService;
 import com.dudu.weixin.service.CheXianService;
 import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LianMengActivityService;
@@ -132,6 +132,11 @@ public class AllAjax {
      */
     @Reference(version = "1.0", owner = "miaohao")
     private ApiDuduDataOssSecretConfigIntf ossSecretConfigIntf;
+    /**
+     * 引入车辆品牌车系型号的服务
+     */
+    @Autowired
+    private CarTypeService carTypeService;
 
     /**
      * 每个方法的行数有限制所以分成2个方法
@@ -155,9 +160,37 @@ public class AllAjax {
         String lmcode = (String) httpSession.getAttribute("lmcode"); //联盟code
         //个人中心
         if ("personcenter".equals(fromflag)) {
-            PesrsonCenter personCenter = personcenterService.getPersonCenter(platenumber, lmcode);
-            return personCenter;
+            String businessType = request.getParameter("businessType");
+            //TODO 以下的进行封装
+            switch (businessType) {
+                //查询个人中心的主页面
+                case "personcenter":
+                    return personcenterService.getPersonCenter(platenumber, lmcode);
+                //查询车辆品牌车型车系
+                case "carType":
+                    return carTypeService.queryAllCar(request.getParameter("type"), Integer.parseInt(request.getParameter("num")));
+                //修改车辆品牌车型车系
+                case "updateCarType":
+                    wxCustomerService.updateCustomer(
+                            new WxCustomer()
+                                    .setBrandCode(lmcode)
+                                    .setCarHaopai(platenumber)
+                                    .setCarModel(Integer.parseInt(request.getParameter("CarModel")))
+                                    .setCarBrand(Integer.parseInt(request.getParameter("CarBrand")))
+                                    .setCarSeries(Integer.parseInt(request.getParameter("CarSeries"))));
+                    //修改当前里程
+                case "currentmileage":
+                    wxCustomerService.updateCustomer(
+                            new WxCustomer()
+                                    .setBrandCode(lmcode)
+                                    .setCarHaopai(platenumber)
+                                    .setCurrentmileage(request.getParameter("Currentmileage")));
+                default:
+                    return null;
+            }
+
         }
+
         //联盟卡激活
         if ("lianMengCardActivate".equals(fromflag)) {
             String cardnum = request.getParameter("cardnum"); //卡号

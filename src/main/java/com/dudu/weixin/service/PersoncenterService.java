@@ -35,7 +35,7 @@ public class PersoncenterService {
      *获取个人中心页面数据
      * @param platenumber 车牌号
      * @param lmcode 联盟编码
-     * @return
+     * @return 个人中心的整体页面数据
      */
     public PesrsonCenter getPersonCenter(String platenumber, String lmcode) {
         PesrsonCenter pesrsonCenter = new PesrsonCenter();
