@@ -86,7 +86,7 @@
                                     "<div class='lianghao '>" +
                                     "<span class='subxitong title_color font_1'>" + subDescribeList[bb].name + "</span>" +
                                     "<span class='radius radiuscoloe_2'></span>" +
-                                    "<span class='subright title_color font_1 '><div class='bgjc'>较差</div></a></span>" +
+                                    "<span class='subright title_color font_1 '><div class='bgjc'>较差</div></span>" +
                                     "</div>" +
                                     "</a>" +
                                     "<hr class='sub_solid' />";  //

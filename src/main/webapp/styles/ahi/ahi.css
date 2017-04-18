@@ -180,7 +180,7 @@ a:active {color: #000;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     display: inline-block;
-    margin-left: -90px;
+    margin-left: -120px;
     margin-top:30px;
 }
 .radiuscoloe_1{
@@ -262,7 +262,7 @@ a:active {color: #000;
 .subnumlie_li{padding:0px  135px;}
 
 .submiaos{
-    width:158px;
+    width:33%;
     float:right;
     margin-right:56px;
     color:#d2d2d2;
