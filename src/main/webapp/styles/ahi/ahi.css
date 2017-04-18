@@ -137,7 +137,7 @@ a:active {color: #000;
     /* border-top: 1px  dashed #e5e5e5; */
 }
 .bor_div{
-    border-bottom: 2px  dashed #ccc;
+    border-top: 2px dashed #ccc;
 }
 .xitong{margin-left:56px;}
 .subicon_img{vertical-align: middle;    margin-top: -10px;}
