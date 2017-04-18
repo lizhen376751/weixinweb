@@ -365,9 +365,9 @@ a:active {color: #000;
     right: 20px;
 }
 .xq_img{width:230px;height:230px;margin-right:10px;}
-/*.zsimg{
-    width:890px;
-    margin-top:30px;
-    }*/
+.zsimg{
+    width:100%;
+    /*margin-top:30px;*/
+    }
  
 
