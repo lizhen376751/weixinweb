@@ -40,7 +40,7 @@ public class YangCheInfoService {
 
         YangCheInfo yangCheInfo = new YangCheInfo();
         QueryFilesParam queryFilesParam = new QueryFilesParam();
-        yangCheInfo.setLMCode(shopcode);
+        yangCheInfo.setLmCode(shopcode);
         List<YangCheInfo> list = apiYangCheInfoIntf.queryList(yangCheInfo);
         queryFilesParam.setShopCode(shopcode);
         for (int i = 0; i < list.size(); i++) {

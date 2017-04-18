@@ -17,17 +17,11 @@ $(document).ready(function(){
             type: 'POST',
             url: '/getCommonAjax2',
             data: {
-                fromflag: "getmobiePhone",
-                platenumber: car_value
+                fromflag: "personcenter"
             },
             async: false,
             success: function (jsonData) {
-                b = JSON.parse(jsonData);
-                var reg = b.substr(3, 4);
-                var c = b.replace(reg, "****");
-                moblie_num.text(c);
-                tc_ceng.show();
-                l_box.show()
+                b = JSON.parse(jsonData)
             }
 
         });

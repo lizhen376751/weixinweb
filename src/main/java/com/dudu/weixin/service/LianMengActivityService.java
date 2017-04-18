@@ -41,7 +41,7 @@ public class LianMengActivityService {
 
     public List<LMActivity> queryInfoList(String shopcode) {
         LMActivity lmActivity = new LMActivity();
-        lmActivity.setLMCode(shopcode);
+        lmActivity.setLmCode(shopcode);
         QueryFilesParam queryFilesParam = new QueryFilesParam();
         List<LMActivity> list = apiLMActivityInft.queryList(lmActivity);
         queryFilesParam.setShopCode(shopcode);

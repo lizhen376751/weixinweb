@@ -10,6 +10,7 @@ import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
+import com.dudu.weixin.mould.PesrsonCenter;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.AutoLoginService;
 import com.dudu.weixin.service.BaoYangTiXingService;
@@ -19,6 +20,7 @@ import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LianMengActivityService;
 import com.dudu.weixin.service.LianMengKaService;
 import com.dudu.weixin.service.LianmengIntroducedService;
+import com.dudu.weixin.service.PersoncenterService;
 import com.dudu.weixin.service.ShopInfoService;
 import com.dudu.weixin.service.ValidateService;
 import com.dudu.weixin.service.WxCustomerService;
@@ -121,6 +123,11 @@ public class AllAjax {
     @Autowired
     private ValidateService validateService;
     /**
+     * 引入个人中心的服务
+     */
+    @Autowired
+    private PersoncenterService personcenterService;
+    /**
      * 引入图片上传的接口
      */
     @Reference(version = "1.0", owner = "miaohao")
@@ -146,6 +153,11 @@ public class AllAjax {
         String platenumber = (String) httpSession.getAttribute("plateNumber"); //车牌号码
         String openId = (String) httpSession.getAttribute("openId"); //openid
         String lmcode = (String) httpSession.getAttribute("lmcode"); //联盟code
+        //个人中心
+        if ("personcenter".equals(fromflag)) {
+            PesrsonCenter personCenter = personcenterService.getPersonCenter(platenumber, lmcode);
+            return personCenter;
+        }
         //联盟卡激活
         if ("lianMengCardActivate".equals(fromflag)) {
             String cardnum = request.getParameter("cardnum"); //卡号
