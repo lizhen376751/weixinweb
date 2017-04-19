@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Enumeration;
 
 /**
  * Created by Administrator on 2017/3/24.
@@ -46,13 +45,14 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
-        Enumeration a = request.getHeaderNames();
-        while (a.hasMoreElements()) {
-            System.out.println("head为:============================" + a.nextElement());
-        }
+//        Enumeration a = request.getHeaderNames();
+//        while (a.hasMoreElements()) {
+//            System.out.println("head为:============================" + a.nextElement());
+//        }
+        //        String lmcode = request.getHeader("lmcode");
+//            response.setHeader("lmcode", lmcode);
         //无论点击那个页面都要进行拦截
-//        String lmcode = (String) httpSession.getAttribute("lmcode");
-        String lmcode = request.getHeader("lmcode");
+        String lmcode = (String) httpSession.getAttribute("lmcode");
 
         //获取参数,并将其分解
         String strWxShopcode = request.getParameter("lmcode");
@@ -65,7 +65,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             flagStr = strWxShopcode.split("_")[1]; //页面跳转判断
             lmcode = strWxShopcode.split("_")[0]; //联盟code
             httpSession.setAttribute("lmcode", lmcode);
-            response.setHeader("lmcode", lmcode);
+
             //微信的openid
             openId = (String) httpSession.getAttribute("openId");
             //判断session里面有没有openId

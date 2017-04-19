@@ -24,7 +24,7 @@ public class CarTypeService {
      *
      * @param type 查询什么?类型
      * @param num  品牌或者车系的id
-     * @return
+     * @return 车的集合
      */
     public List<Car> queryAllCar(String type, Integer num) {
         switch (type) {
@@ -37,8 +37,10 @@ public class CarTypeService {
             //根据车系查询车辆型号
             case "CarModel":
                 return apiCusCar.queryCarModel(num);
+            default:
+                return null;
         }
-        return null;
+
     }
 
     /**
@@ -117,13 +119,16 @@ public class CarTypeService {
      * @return 中文名字
      */
     public String getName(List<Car> cars, Integer num) {
-        if (cars != null && cars.size() > 0) {
-            for (Car car : cars) {
-                int carId = car.getCarId();
-                if (num == carId) {
-                    return car.getCarName();
+        if (num != null) {
+            if (cars != null && cars.size() > 0) {
+                for (Car car : cars) {
+                    int carId = car.getCarId();
+                    if (num == carId) {
+                        return car.getCarName();
+                    }
                 }
             }
+
         }
         return null;
     }
