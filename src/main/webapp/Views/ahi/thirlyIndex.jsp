@@ -11,7 +11,7 @@
 </head>
 
 <script>
-    var ids = <%=request.getParameter("id")%>;
+    var ids = <%=request.getParameter("id")%>; 
     $(function () {
         var jsonp = eval('('+decodeURI(decodeURI('<%=request.getParameter("inspectionDetailedDescription")%>'))+')');
 
