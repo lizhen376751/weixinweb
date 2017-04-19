@@ -22,15 +22,15 @@ public class PesrsonCenter implements Serializable {
     /**
      * 车辆品牌
      */
-    private Integer carBrand;
+    private String carBrand;
     /**
      * 车系
      */
-    private Integer carSeries;
+    private String carSeries;
     /**
      * 车辆型号
      */
-    private Integer carModel;
+    private String carModel;
     /**
      * 当前里程
      */
@@ -99,7 +99,7 @@ public class PesrsonCenter implements Serializable {
      * 获取 车辆品牌
      * @return carBrand 车辆品牌
      */
-    public Integer getCarBrand() {
+    public String getCarBrand() {
         return this.carBrand;
     }
 
@@ -108,7 +108,7 @@ public class PesrsonCenter implements Serializable {
      * @param carBrand 车辆品牌
      * @return 返回 PesrsonCenter(个人中心实体类)
      */
-    public PesrsonCenter setCarBrand(Integer carBrand) {
+    public PesrsonCenter setCarBrand(String carBrand) {
         this.carBrand = carBrand;
         return this;
     }
@@ -117,7 +117,7 @@ public class PesrsonCenter implements Serializable {
      * 获取 车系
      * @return carSeries 车系
      */
-    public Integer getCarSeries() {
+    public String getCarSeries() {
         return this.carSeries;
     }
 
@@ -126,7 +126,7 @@ public class PesrsonCenter implements Serializable {
      * @param carSeries 车系
      * @return 返回 PesrsonCenter(个人中心实体类)
      */
-    public PesrsonCenter setCarSeries(Integer carSeries) {
+    public PesrsonCenter setCarSeries(String carSeries) {
         this.carSeries = carSeries;
         return this;
     }
@@ -135,7 +135,7 @@ public class PesrsonCenter implements Serializable {
      * 获取 车辆型号
      * @return carModel 车辆型号
      */
-    public Integer getCarModel() {
+    public String getCarModel() {
         return this.carModel;
     }
 
@@ -144,7 +144,7 @@ public class PesrsonCenter implements Serializable {
      * @param carModel 车辆型号
      * @return 返回 PesrsonCenter(个人中心实体类)
      */
-    public PesrsonCenter setCarModel(Integer carModel) {
+    public PesrsonCenter setCarModel(String carModel) {
         this.carModel = carModel;
         return this;
     }
