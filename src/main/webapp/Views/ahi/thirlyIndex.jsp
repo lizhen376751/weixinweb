@@ -45,7 +45,7 @@
 
     });
     function  goback(){
-        window.location.href = "subxiangqing.jsp?ids="+ids;
+        window.location.href = "/oauthLoginServlet?flagStr=AHIInfoxiangqing;
 
     }
 </script>
