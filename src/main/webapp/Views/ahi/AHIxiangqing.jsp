@@ -15,9 +15,11 @@
 
     <script type="text/javascript">
             $(window).load(function(){
-                $("#loading").hide();
-                $(".center_zhis ").show();
-                $(".conter_main").show()
+                setTimeout(function () {
+                    $("#loading").hide();
+                    $(".center_zhis ").show();
+                    $(".conter_main").show()
+                }, 3000);
             });
 
         function xianshi(arr) {
