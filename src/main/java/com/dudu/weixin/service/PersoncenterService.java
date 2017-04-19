@@ -49,10 +49,10 @@ public class PersoncenterService {
         //查询联盟客户信息
         WxCustomer wxCustomer = wxCustomerService.getWxCustomer(platenumber, lmcode);
         pesrsonCenter.setId(wxCustomer.getId());
-        pesrsonCenter.setCarBrand(wxCustomer.getCarBrand());
+        pesrsonCenter.setCarBrand(wxCustomer.getCarBrand().toString());
         pesrsonCenter.setCarHaopai(wxCustomer.getCarHaopai());
-        pesrsonCenter.setCarModel(wxCustomer.getCarModel());
-        pesrsonCenter.setCarSeries(wxCustomer.getCarSeries());
+        pesrsonCenter.setCarModel(wxCustomer.getCarModel().toString());
+        pesrsonCenter.setCarSeries(wxCustomer.getCarSeries().toString());
         pesrsonCenter.setCurrentmileage(wxCustomer.getCurrentmileage());
 
         //查询联盟卡列表
@@ -67,6 +67,14 @@ public class PersoncenterService {
         return pesrsonCenter;
     }
 
+    /**
+     *
+     * @param request 请求数据
+     * @param businessType 业务类型
+     * @param platenumber 车牌号
+     * @param lmcode 联盟code
+     * @return 对象
+     */
     public Object personcenter(HttpServletRequest request, String businessType, String platenumber, String lmcode) {
         switch (businessType) {
             //查询个人中心的主页面
