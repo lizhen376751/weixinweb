@@ -16,7 +16,7 @@
         $(window).load(function(){
             setTimeout(function () {
                 $("#loading").hide();
-                $(".swiper-container ").show();
+
             }, 1000);
         });
         $(document).ready(function () {
@@ -231,7 +231,7 @@
 <div id="loading">
     <img src="/files/loading.gif"  alt="loading.." />
 </div>
-<div class="swiper-container" style="display: none">
+<div class="swiper-container" >
     <div class="swiper-button-next"></div>  <!--下一页按钮-->
     <div class="swiper-button-prev"></div>  <!--上一页按钮-->
     <div class="swiper-wrapper">
