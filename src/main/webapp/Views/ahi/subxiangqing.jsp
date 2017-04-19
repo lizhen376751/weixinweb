@@ -13,6 +13,12 @@
     <script type="text/javascript">
 
         var ids = <%=request.getParameter("id")%>;
+        $(window).load(function(){
+            setTimeout(function () {
+                $("#loading").hide();
+                $(".swiper-container ").show();
+            }, 1000);
+        });
         $(document).ready(function () {
             $.ajax({
                 type: "post",
@@ -221,7 +227,11 @@
 
 <!--<p class="goback" onclick="javascript:history.back(-1);"><img src="../img/fanhui.png"></p>-->
 <!-- Swiper -->
-<div class="swiper-container">
+<%--网页加载效果--%>
+<div id="loading">
+    <img src="/files/loading.gif"  alt="loading.." />
+</div>
+<div class="swiper-container" style="display: none">
     <div class="swiper-button-next"></div>  <!--下一页按钮-->
     <div class="swiper-button-prev"></div>  <!--上一页按钮-->
     <div class="swiper-wrapper">

@@ -19,7 +19,7 @@
                     $("#loading").hide();
                     $(".center_zhis ").show();
                     $(".conter_main").show()
-                }, 3000);
+                }, 1000);
             });
 
         function xianshi(arr) {

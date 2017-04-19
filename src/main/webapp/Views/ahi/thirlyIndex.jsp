@@ -11,7 +11,13 @@
 </head>
 
 <script>
-    var ids = <%=request.getParameter("id")%>; 
+    var ids = <%=request.getParameter("id")%>;
+    $(window).load(function(){
+        setTimeout(function () {
+            $("#loading").hide();
+            $(".contermain ").show();
+        }, 1000);
+    });
     $(function () {
         var jsonp = eval('('+decodeURI(decodeURI('<%=request.getParameter("inspectionDetailedDescription")%>'))+')');
 
@@ -51,26 +57,29 @@
 </script>
 
 <body>
-    <p class="goback" onclick="goback()"><img src="/files/fanhui.png"></p>
-    <div class="zhezhao">
-        <img class="zsimg" src=""/>
-    </div>
-
-    <header>
-        <div class="radiusblue" id="radiusblue">
+<%--ÍøÒ³¼ÓÔØÐ§¹û--%>
+  <div id="loading">
+        <img src="/files/loading.gif"  alt="loading.." />
+  </div>
+  <div class="contermain" style="display: none">
+        <p class="goback" onclick="goback()"><img src="/files/fanhui.png"></p>
+        <div class="zhezhao">
+            <img class="zsimg" src=""/>
         </div>
-    </header>
 
-    <ul id="subPoint">
-    </ul>
+        <header>
+            <div class="radiusblue" id="radiusblue">
+            </div>
+        </header>
 
-    <div class="Thirly_li" style="margin-top:50px;">
-        <span class="subxitong_1 font_1"><img class="Thirly_liimg" src="/files/ahi/7.png"/></span>
-        <span class="submiaos_1 font_1" id="photoimg">
-        </span>
-    </div>
+        <ul id="subPoint">
+        </ul>
 
-
-    </div>
+        <div class="Thirly_li" style="margin-top:50px;">
+            <span class="subxitong_1 font_1"><img class="Thirly_liimg" src="/files/ahi/7.png"/></span>
+            <span class="submiaos_1 font_1" id="photoimg">
+            </span>
+        </div>
+   </div>
 </body>
 </html>
