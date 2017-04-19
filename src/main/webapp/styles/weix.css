@@ -20,7 +20,9 @@ ul{list-style: none;}
 hr{border:2px dashed #f4f4f4;}
 
 /*头部样式*/
-.goback{padding-left:56px;}
+.goback{
+    padding-left: 24px;
+    margin-top: 20px;}
 .title{height:116px;width:100%;line-height:116px;text-align: center;}
 .title_img{display:inline-block;margin-left:42px;float:left;}
 .title_img img{vertical-align:middle; }

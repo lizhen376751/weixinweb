@@ -57,6 +57,7 @@
                     //检测系统
                     var subhtml = "";
                     var translate = jsonp[i].result;
+                    var translate_id=jsonp[i].id;
 
                     for (var aa = 0; aa < translate.length; aa++) {
                         var sumq = 0;  //记录隐患数
@@ -82,7 +83,7 @@
                             } else if (subDescribeList[bb].point < 34) {
                            // <a href='thirlyIndex.jsp?inspectionDetailedDescription=" + encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription))) + "'>" +
 
-                                html_2 += "<a  class='a_hover' href='/oauthLoginServlet?flagStr=thirlyIndex&inspectionDetailedDescription=" +  encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription)))+ "'>" +
+                                html_2 += "<a  class='a_hover' href='/oauthLoginServlet?flagStr=thirlyIndex&ids=" +translate_id+"&inspectionDetailedDescription=" +  encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription)))+ "'>" +
                                     "<div class='lianghao '>" +
                                     "<span class='subxitong title_color font_1'>" + subDescribeList[bb].name + "</span>" +
                                     "<span class='radius radiuscoloe_2'></span>" +
@@ -186,11 +187,16 @@
                 pagination: '.swiper-pagination',
                 nextButton: '.swiper-button-next',
                 prevButton: '.swiper-button-prev',
-                slidesPerView: 1,
+                slidesPerView: index,//设定初始化时slide的索引
                 paginationClickable: true,
                 spaceBetween: 30,
                 loop: true
             });
+            //点击页面链接跳转前保存导航当前的index值
+            $("a").bind("click",function(){
+                var i= $(".swiper-slide-active").index();
+                sessionStorage.setItem("index",i);
+            })
 
             //设置swiper默认显示第几页函数
             if (jsonp.length > 0) {
