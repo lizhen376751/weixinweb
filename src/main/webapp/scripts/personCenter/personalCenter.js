@@ -29,7 +29,7 @@ $(document).ready(function(){
     var car_brand = $(".car_brand"); //----------------------------------------------------车系品牌遮罩层
     var item_container_li = $("#item-container ul li") //--------------------------------- 获取每一个车牌号
 
-
+    //----------------------------------------------------------------------------------------------------------页面加载的请求
     $.ajax({
         type: 'POST',
         url: '/getCommonAjax2',
@@ -82,12 +82,29 @@ $(document).ready(function(){
         }
 
     });
-	//条形码的样式
+	//--------------------------------------------------------------------------------------------------------------------------车型车系的请求
+    $.ajax({
+        type: 'POST',
+        url: '/getCommonAjax2',
+        data: {
+            fromflag: "personcenter",
+            businessType :"carType" ,
+            type:"CarBrand",
+            num : 0
+        },
+        success: function (jsonData) {
+            json = JSON.parse(jsonData);
+            console.log(json);
+
+
+    }
+    });
 
 
 	// JsBarcode(".bar_code","0562589464631",options);
 
     function add_lmCards(arr) {
+        //条形码的样式
         var options = {
             format:"CODE128",
             displayValue:false,
