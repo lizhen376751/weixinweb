@@ -49,8 +49,7 @@ $(document).ready(function () {
 		type    : 'POST',
 		url     : '/getCommonAjax',
 		data    : {
-			fromflag   : "queryYangCheInfo",
-			shopcode   : shopcode
+			fromflag   : "queryYangCheInfo"
 		},
 		success : function(jsonData){
 			var json = JSON.parse(jsonData);

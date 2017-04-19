@@ -1,9 +1,4 @@
 <%@ page language="java" pageEncoding="utf-8" %>
-<%
-    String path = request.getContextPath();
-    String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -29,6 +24,4 @@
 <div class="txt"></div>
 </body>
 <script src="/scripts/yangCheInfo/js/getYangChe.js" type="text/javascript" charset="utf-8"></script>
-<input type="hidden" id="shopcode" name="shopcode" value="<%=shopcode %>">
-<input type="hidden" id="contextPathStr" name="contextPathStr" value="<%=request.getContextPath() %>">
 </html>

@@ -121,7 +121,6 @@ $(document).ready(function () {
 	}
 		
 
-	var shopcode = $("#shopcode").val();
 	var CarId =$("#CarId").val();
 	var contextPathStr = $("#contextPathStr").val();
 	$.ajax({ 
@@ -129,7 +128,6 @@ $(document).ready(function () {
 		url     : '/getCommonAjax',
 		data    : {
 			fromflag   : "queryLmkInfoList",
-			shopcode   : shopcode,
 			CarId      : CarId
 		},
 		success : function(jsonData){

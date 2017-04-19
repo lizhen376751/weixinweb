@@ -119,7 +119,6 @@ public class AllController {
         }
         String carHaopai = (String) httpSession.getAttribute("plateNumber");
         String openId = (String) httpSession.getAttribute("openId");
-        String shopcode = ""; //TODO 暂时为空
         //判断点击菜单，进入不同页面
         if ("lmkInfo".equals(flagStr)) {
             return "/lianMengKa/lianMengCard/homePage.jsp"; //联盟卡包
@@ -129,13 +128,12 @@ public class AllController {
             String cardNo = request.getParameter("cardNo");
             model.addAttribute("cardName", cardName);
             model.addAttribute("cardNo", cardNo);
-            model.addAttribute("shopcode", shopcode);
             return "/lianMengKa/lianMengCard/lianMengDetails.jsp"; //联盟卡明细
         } else if ("lianMengCardActivate".equals(flagStr)) {
             logger.info("联盟卡激活");
             return "/lianMengCardActivate/lianMengCardActivate.jsp"; //联盟卡激活
         } else if ("daoHang".equals(flagStr)) {
-            return "/daoHang/daoHangliebiao/service/daohangindex.jsp?shopcode=" + shopcode + "&openid=" + openId + '"'; //服务导航
+            return "/daoHang/daoHangliebiao/service/daohangindex.jsp?shopcode=" + lmcode + "&openid=" + openId + '"'; //服务导航
         } else if ("AHIInfo".equals(flagStr)) {
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
         } else if ("AHIInfoxiangqing".equals(flagStr)) {
