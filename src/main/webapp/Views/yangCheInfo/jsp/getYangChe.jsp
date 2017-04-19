@@ -13,6 +13,7 @@
     <meta http-equiv="description" content="This is my page">
     <link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
     <link rel="stylesheet" type="text/css" href="/styles/yangCheInfo/css/yangCheXiangQing.css"/>
+    <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
     <!--
     <link rel="stylesheet" type="text/css" href="styles.css">
     -->
