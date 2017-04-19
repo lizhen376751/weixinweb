@@ -20,19 +20,19 @@ ul{list-style: none;}
 hr{border:2px dashed #f4f4f4;}
 /* 缓冲图片*/
 #loading{
-    position: absolute;
+    position: relative;
     /* width: 400px; */
     /* height: 300px; */
-    left: 45%;
+    /* left: 30%; */
     /* margin-left: -150px; */
-    /* text-align: center; */
+    text-align: center;
     /* padding: 7px 0 0 0; */
     font: bold 11px Arial, Helvetica, sans-serif;
     /* margin: 0px auto; */
-    top: 40%;
+    margin-top: 50%;
 }
-#loading{
-    width:180px;
+#loading img{
+    width:580px;
 }
 /*头部样式*/
 .goback{
