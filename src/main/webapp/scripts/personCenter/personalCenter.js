@@ -12,6 +12,7 @@
 })(document,window);
 
 $(document).ready(function(){
+    var clpp = $(".clpp")  //------------------------------------------------------------------车辆品牌
 	var car_num = $(".car_num"); //-------------------------------------------------------------获取车牌号信息框
 	var clpp_txt = $(".clpp_txt"); //----------------------------------------------------------获取车辆品牌的信息框
 	var lcs_num = $(".lcs_num"); //-------------------------------------------------------------获取里程数信息框
@@ -19,35 +20,101 @@ $(document).ready(function(){
 	var jkzs = $(".jkzs"); //--------------------------------------------------------------------获取健康指数整个框
     var bytx_txt = $(".bytx_txt"); // ------------------------------------------------------------------获取保养提醒提示数字-1000km
     var bytx = $(".bytx"); //--------------------------------------------------------------------获取保养提醒整个框
+	var uls = $(".cards ul");//--------------------------------------------------------------------------------------------获取联盟卡的ul
+	var no_card = $(".no_card");//---------------------------------------------------------------------------------当没有联盟卡时 联盟卡部分的显示
+
+
     var ljxq = $(".ljxq");//--------------------------------------------------------------------获取了解详情按钮
 
+    var car_brand = $(".car_brand"); //----------------------------------------------------车系品牌遮罩层
+    var item_container_li = $("#item-container ul li") //--------------------------------- 获取每一个车牌号
 
-	(function () {
-        $.ajax({
-            type: 'POST',
-            url: '/getCommonAjax2',
-            data: {
-                fromflag: "personcenter"
-            },
-            async: false,
-            success: function (jsonData) {
-                json = JSON.parse(jsonData);
-                console.log(json);
+
+    $.ajax({
+        type: 'POST',
+        url: '/getCommonAjax2',
+        data: {
+            fromflag: "personcenter",
+            businessType :"personcenter"            },
+        async: false,
+        success: function (jsonData) {
+            json = JSON.parse(jsonData);
+            console.log(json);
+            car_num.text(json.carHaopai);    //-------------------------------------------------------------动态添加车牌号码
+
+            //------------------------------------------------------------------------------------------------车系品牌添加
+            if(json.carBrand != null || json.carModel != null || json.carSeries != null){
+                var cltxt = json.carBrand + json.carModel + json.carSeries;
+                clpp_txt.text(cltxt);
+                clpp_txt.css({
+                    color:"#6c6c6c"
+                });
             }
+            //-----------------------------------------------------------------------------------------------当前里程(保养提醒)判断
+            if(json.currentmileage != null && json.currentmileage != ""){
+                lcs_num.text(json.currentmileage);
+                lcs_num.css({
+                    color:"#6c6c6c"
+                });
+                lcs_num.removeClass("font_4").addClass("font_1")
+                bytx_txt.text(json.currentmileage);
+                bytx_txt.css({
+                    color:"#6c6c6c"
+                })
+            };
+            if(json.point != null && json.point != ""){
+                jkzs_txt.text(json.point);//---------------------------------------------------------------------------------健康指数动态添加
+                jkzs_txt.css({
+                    color:"#f64a88",
+                })
+                jkzs_txt.removeClass("font_4").addClass("font_2")
+			};
+            //----------------------------------------------------------------------------------------------------------判断是否有联盟卡
+			if(json.lianmengkaXmLeftResultModules && json.lianmengkaXmLeftResultModules.length != 0){
+                add_lmCards(json.lianmengkaXmLeftResultModules);
+			}else{
+				no_card.show();
+                uls.hide();
+			}
 
-        });
-    })();
+
+
+        }
+
+    });
 	//条形码的样式
-	var options = {
-        format:"CODE128",
-        displayValue:false,
-        height:100,
-        background:"#fff", 
-		lineColor:"#4c4c4c"//条形码颜色
-   };
 
-	JsBarcode(".bar_code","0562589464631",options);
-	
+
+	// JsBarcode(".bar_code","0562589464631",options);
+
+    function add_lmCards(arr) {
+        var options = {
+            format:"CODE128",
+            displayValue:false,
+            height:100,
+            background:"#fff",
+            lineColor:"#4c4c4c"//条形码颜色
+        };
+		for(var i = 0; i < arr.length;i++){
+			var htmls = '';
+			htmls += '<li>'+
+                '<img class="bar_code bar_code'+i+'"/>'+
+                '<div class="bar_num font_1 color_4">'+arr[i].card_number+'</div>'+
+                '<div class="cards_name font_3 color_3">'+arr[i].card_name+'</div>'+
+            '</li>';
+            uls.append(htmls);
+            JsBarcode(".bar_code"+i,arr[i].card_number,options);
+		}
+    }
+
+
+
+
+
+
+
+
+
 	//----------------------------------------------------------------获取车辆品牌部分元素
 	app.ItemList = function (data) {
 		var list = [];
@@ -92,10 +159,7 @@ $(document).ready(function(){
 		
 	}
 	app.main()
-	var clpp = $(".clpp")  //------------------------------------------------------------------车辆品牌
-	var clpp_txt = $(".clpp_txt"); //-----------------------------------------------------------奥迪A6
-	var car_brand = $(".car_brand"); //----------------------------------------------------遮罩层
-	var item_container_li = $("#item-container ul li") //--------------------------------- 获取每一个车牌号
+
 	
 	$(".index-sidebar-container").css("display","none")//------------------------------默认隐藏
 	clpp.on("click",function(){

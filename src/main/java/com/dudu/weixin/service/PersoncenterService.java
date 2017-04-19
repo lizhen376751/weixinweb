@@ -7,6 +7,7 @@ import com.dudu.weixin.mould.PesrsonCenter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -30,11 +31,17 @@ public class PersoncenterService {
      */
     @Autowired
     private AHIService ahiService;
+    /**
+     * 引入车辆品牌车系型号的服务
+     */
+    @Autowired
+    private CarTypeService carTypeService;
 
     /**
-     *获取个人中心页面数据
+     * 获取个人中心页面数据
+     *
      * @param platenumber 车牌号
-     * @param lmcode 联盟编码
+     * @param lmcode      联盟编码
      * @return 个人中心的整体页面数据
      */
     public PesrsonCenter getPersonCenter(String platenumber, String lmcode) {
@@ -58,6 +65,35 @@ public class PersoncenterService {
 
         }
         return pesrsonCenter;
+    }
+
+    public Object personcenter(HttpServletRequest request, String businessType, String platenumber, String lmcode) {
+        switch (businessType) {
+            //查询个人中心的主页面
+            case "personcenter":
+                return this.getPersonCenter(platenumber, lmcode);
+            //查询车辆品牌车型车系
+            case "carType":
+                return carTypeService.queryAllCar(request.getParameter("type"), Integer.parseInt(request.getParameter("num")));
+            //修改车辆品牌车型车系
+            case "updateCarType":
+                wxCustomerService.updateCustomer(
+                        new WxCustomer()
+                                .setBrandCode(lmcode)
+                                .setCarHaopai(platenumber)
+                                .setCarModel(Integer.parseInt(request.getParameter("CarModel")))
+                                .setCarBrand(Integer.parseInt(request.getParameter("CarBrand")))
+                                .setCarSeries(Integer.parseInt(request.getParameter("CarSeries"))));
+                //修改当前里程
+            case "currentmileage":
+                wxCustomerService.updateCustomer(
+                        new WxCustomer()
+                                .setBrandCode(lmcode)
+                                .setCarHaopai(platenumber)
+                                .setCurrentmileage(request.getParameter("Currentmileage")));
+            default:
+                return null;
+        }
     }
 
 }

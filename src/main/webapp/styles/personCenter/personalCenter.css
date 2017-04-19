@@ -53,6 +53,15 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
+.clpp_txt{
+	color:#bababa;
+}
+.lcs_num{
+	color:#bababa;
+}
+.jkzs_txt{
+	color:#bababa;
+}
 /*-----------------------------------------------------------------------------灰色分割线*/
 .box .split_bar{
 	width: 100%;
@@ -65,6 +74,7 @@
 	margin: 0.4rem auto;
 	text-align: center;
 	position: relative;
+	line-height: 0.75rem;
 }
 .box li .text_2 span{
 	width: 100%;

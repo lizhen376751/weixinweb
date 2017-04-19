@@ -83,7 +83,7 @@
                             } else if (subDescribeList[bb].point < 34) {
                            // <a href='thirlyIndex.jsp?inspectionDetailedDescription=" + encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription))) + "'>" +
 
-                                html_2 += "<a  class='a_hover' href='/oauthLoginServlet?flagStr=thirlyIndex&ids=" +translate_id+"&inspectionDetailedDescription=" +  encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription)))+ "'>" +
+                                html_2 += "<a  class='a_hover' href='/oauthLoginServlet?flagStr=thirlyIndex&id=" +translate_id+"&inspectionDetailedDescription=" +  encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription)))+ "'>" +
                                     "<div class='lianghao '>" +
                                     "<span class='subxitong title_color font_1'>" + subDescribeList[bb].name + "</span>" +
                                     "<span class='radius radiuscoloe_2'></span>" +
@@ -187,7 +187,7 @@
                 pagination: '.swiper-pagination',
                 nextButton: '.swiper-button-next',
                 prevButton: '.swiper-button-prev',
-                slidesPerView: index,//设定初始化时slide的索引
+                slidesPerView: 1,//设定初始化时slide的索引
                 paginationClickable: true,
                 spaceBetween: 30,
                 loop: true
