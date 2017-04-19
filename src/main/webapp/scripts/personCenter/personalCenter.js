@@ -29,10 +29,20 @@ $(document).ready(function () {
     var uls = $(".cards ul");//--------------------------------------------------------------------------------------------获取联盟卡的ul
     var no_card = $(".no_card");//---------------------------------------------------------------------------------当没有联盟卡时 联盟卡部分的显示
     var ljxq = $(".ljxq");//--------------------------------------------------------------------获取了解详情按钮
+    var second_carList = $(".second_carList");//---------------------------------------------------------------------------------车系页面
+    var second_cpxx = $(".second_cpxx"); //-----------------------------------------------------------------------------------------车系页面的车牌提示
+    var second_lis = $(".second_carList ul");//---------------------------------------------------------------------------------车系页面的每一条数据
+    var second_back = $(".second_back"); //---------------------------------------------------------------------------------------车系页面的返回按钮
+
+    var third_carList = $(".third_carList");//---------------------------------------------------------------------------------车系页面
+    var third_cpxx = $(".third_cpxx"); //-----------------------------------------------------------------------------------------车系页面的车牌提示
+    var third_lis = $(".third_carList ul");//---------------------------------------------------------------------------------车系页面的每一条数据
+    var third_back = $(".third_back"); //---------------------------------------------------------------------------------------车系页面的返回按钮
 
 
     var car_1 = ""; //----------------------------------------------------------------------------------------------------记录车牌类型第一次数据
     var car_2 = ""; //------------------------------------------------------------------------------------------------------记录车牌类型第二次数据
+    var car_3 = ""; //------------------------------------------------------------------------------------------------------记录车牌类型第三次数据
     //----------------------------------------------------------------------------------------------------------页面加载需求的数据的请求:车牌/里程数/AHI
     $.ajax({
         type: 'POST',
@@ -57,15 +67,16 @@ $(document).ready(function () {
             }
             //-----------------------------------------------------------------------------------------------当前里程(保养提醒)判断
             if (json.currentmileage != null && json.currentmileage != "") {
-                lcs_num.text(json.currentmileage);
+                lcs_num.text(json.currentmileage+"km");
                 lcs_num.css({
                     color: "#6c6c6c"
                 });
                 lcs_num.removeClass("font_4").addClass("font_1")
-                bytx_txt.text(json.currentmileage);
+                bytx_txt.text(json.currentmileage+"km");
                 bytx_txt.css({
                     color: "#6c6c6c"
-                })
+                });
+                bytx_txt.removeClass("font_4").addClass("font_1")
             }
             ;
             if (json.point != null && json.point != "") {
@@ -122,12 +133,13 @@ $(document).ready(function () {
                 car_1 = $(this).text();
                 var car_id = $(this).attr("ids");
                 console.log(car_id);
-                car_brand.hide();
+                // car_brand.hide();
                 $(".index-sidebar-container").css("display", "none");
-                clpp_txt.text(car_1);
-                clpp_txt.css({
-                    color: "#6c6c6c"
-                });
+
+                // clpp_txt.text(car_1);
+                // clpp_txt.css({
+                //     color: "#6c6c6c"
+                // });
                 //--------------------------------------------------------------------------------------------二级车系信息的数据请求
                 $.ajax({
                     type: 'POST',
@@ -141,8 +153,75 @@ $(document).ready(function () {
                     success: function (jsonData) {
                         json = JSON.parse(jsonData);
                         console.log(json);
+                        second_carList.show();
+                        second_cpxx.text(car_1);
+                        second_lis.children().remove();
+                        for(var i = 0;i < json.length;i++){
+                            var lis = '<li carId="'+json[i].carId+'">'+json[i].carName+'</li>';
+                            second_lis.append(lis);
+                        }
+                        var second_ul_li = $(".second_carList ul li");
+                        second_ul_li.on("click",function () {
+                            car_2 = "";
+                            car_2 = $(this).text();
+                            // second_carList.hide();
+                            var carId = $(this).attr("carId");//获取车系的编码
+                            //---------------------------------------------------------------------------------------------------------------------------三级车辆型号数据请求
+                            $.ajax({
+                                type: 'POST',
+                                url: '/getCommonAjax2',
+                                data: {
+                                    fromflag: "personcenter",
+                                    businessType: "carType",
+                                    type: "CarModel",
+                                    num: carId //车系编码
+                                },
+                                success: function (jsonData) {
+                                    json = JSON.parse(jsonData);
+                                    console.log(json);
+                                    third_carList.show();
+                                    third_cpxx.text(car_2);
+                                    third_lis.children().remove();
+                                    for(var i = 0;i < json.length;i++){
+                                        var lis = '<li carId="'+json[i].carId+'">'+json[i].carName+'</li>';
+                                        third_lis.append(lis);
+                                    }
+                                    var third_ul_li = $(".third_carList ul li");
+                                    third_ul_li.on("click",function () {
+                                        car_3 = "";
+                                        car_3 = $(this).text();
+                                        var carIds = $(this).attr("carId");
+                                        //------------------------------------------------------------------------------------------------------------------车辆信息全部数据上传
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '/getCommonAjax2',
+                                            data: {
+                                                fromflag: "personcenter",
+                                                businessType: "updateCarType",
+                                                CarModel: carIds, //车型编码
+                                                CarSeries: carId,//车系编码
+                                                CarBrand: car_id//品牌编码
+                                            },
+                                            async: false,
+                                            success: function (jsonData) {
+                                                car_brand.hide();
+                                                second_carList.hide();
+                                                third_carList.hide();
+                                                $("body").scrollTop(0)
+                                                var clpp_txts = car_1 + car_2 + car_3;
+                                                clpp_txt.text(clpp_txts);
+                                                clpp_txt.css({
+                                                    color: "#6c6c6c"
+                                                });
 
+                                            }
+                                        });
 
+                                    })
+                                }
+                            });
+
+                        })
                     }
                 });
             });
@@ -256,6 +335,10 @@ $(document).ready(function () {
                 success: function (jsonData) {
                     var txt = gls_val + "km";
                     lcs_num.text(txt);
+                    lcs_num.css({
+                        color: "#6c6c6c"
+                    });
+                    lcs_num.removeClass("font_4").addClass("font_1");
                     mileage.hide()
                 }
             });  //-------------------------------------------上传结束
@@ -288,43 +371,21 @@ $(document).ready(function () {
     //---------------------------------------------------------------------------------------------------------------点击了解详情跳转到联盟卡包
     ljxq.on("click", function () {
         window.location.href = "/oauthLoginServlet?flagStr=lmkInfo"
-    })
-    //---------------------------------------------------------------------------------------------------------------------------三级车辆型号数据请求
-    $.ajax({
-        type: 'POST',
-        url: '/getCommonAjax2',
-        data: {
-            fromflag: "personcenter",
-            businessType: "carType",
-            type: "CarModel",
-            num: 189 //车系编码
-        },
-        success: function (jsonData) {
-            json = JSON.parse(jsonData);
-            console.log(json);
-
-
-        }
     });
-    //------------------------------------------------------------------------------------------------------------------车辆信息全部数据上传
-    // $.ajax({
-    //     type: 'POST',
-    //     url: '/getCommonAjax2',
-    //     data: {
-    //         fromflag: "personcenter",
-    //         businessType: "updateCarType",
-    //         CarModel: 2150, //车型编码
-    //         CarSeries: 186,//车系编码
-    //         CarBrand: 3//品牌编码
-    //     },
-    //     async: false,
-    //     success: function (jsonData) {
-    //         json = JSON.parse(jsonData);
-    //         console.log(json);
-    //
-    //
-    //     }
-    // });
-
-
+    //---------------------------------------------------------------------------------------------------------------车系二级页面的返回按钮
+    second_back.on("click",function () {
+        second_carList.hide();
+    });
+    second_carList.on("touchmove",function(e){
+        e.preventDefault(); //遮罩层出现后禁止body滑动
+        return false
+    });
+    //---------------------------------------------------------------------------------------------------------------车系三级页面的返回按钮
+    third_back.on("click",function () {
+        third_carList.hide();
+    });
+    third_carList.on("touchmove",function(e){
+        e.preventDefault(); //遮罩层出现后禁止body滑动
+        return false
+    });
 })
