@@ -23,13 +23,16 @@ hr{border:2px dashed #f4f4f4;}
     position: absolute;
     /* width: 400px; */
     /* height: 300px; */
-    left: 30%;
+    left: 45%;
     /* margin-left: -150px; */
     /* text-align: center; */
     /* padding: 7px 0 0 0; */
     font: bold 11px Arial, Helvetica, sans-serif;
     /* margin: 0px auto; */
     top: 40%;
+}
+#loading{
+    width:180px;
 }
 /*头部样式*/
 .goback{
