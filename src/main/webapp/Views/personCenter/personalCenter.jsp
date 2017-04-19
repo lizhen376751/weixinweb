@@ -1,8 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%
-	HttpSession Session = request.getSession();
-	String plateNumber = (String)Session.getAttribute("plateNumber");
-%>
+<%--<%--%>
+	<%--HttpSession Session = request.getSession();--%>
+	<%--String plateNumber = (String)Session.getAttribute("plateNumber");--%>
+<%--%>--%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,7 +24,7 @@
 			<img src="/files/personCenter/top_bg.png" class="top_bg"/>
 			<div class="car_name">
 				<img src="/files/personCenter/cp.png" class="car_bg"/>
-				<span class="car_num"><%=plateNumber%></span>
+				<span class="car_num"></span>
 			</div>
 		</div>
 		<!-----------------------------------------------------车主主要信息-->
@@ -43,17 +43,17 @@
 				<!----------------------------------------------------------------------分割条-->
 				<div class="split_bar"></div>
 				<!--健康指数-->
-				<li>
+				<li class="jkzs">
 					<img src="/files/personCenter/jkzs.png" class="title_img"/>
-					<div class="text_2 font_2 color_2">62</div>
+					<div class="text_2 font_2 color_2 jkzs_txt">62</div>
 					<img src="/files/personCenter/back.png" class="arrow"/><!--蓝色箭头-->
 					<!-----------------------------------------------------蓝色分割线-->
 					<%--<span class="line"></span>   --%>
 				</li>
 				<!--保养提醒-->
-				<li>
+				<li class="bytx">
 					<img src="/files/personCenter/bytx.png" class="title_img"/>
-					<div class="text_2 font_1 color_1"><span>1000km</span></div>
+					<div class="text_2 font_1 color_1 bytx_txt"><span>1000km</span></div>
 					<img src="/files/personCenter/back.png" class="arrow"/><!--蓝色箭头-->
 				</li>
 				<!----------------------------------------------------------------------分割条-->
