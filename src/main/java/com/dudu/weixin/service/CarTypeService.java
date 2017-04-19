@@ -51,6 +51,18 @@ public class CarTypeService {
     }
 
     /**
+     * 根据品牌的id查询品牌名称
+     *
+     * @param carBrand 品牌的id
+     * @return 中文的品牌名称
+     */
+    public String getCarBrandName(Integer carBrand) {
+        List<Car> carBrandList = this.queryCarBrand();
+        return this.getName(carBrandList, carBrand);
+    }
+
+
+    /**
      * 查询车系
      *
      * @param num 根据品牌查询车系
@@ -62,6 +74,18 @@ public class CarTypeService {
     }
 
     /**
+     * 根据车系id查询车系名称
+     *
+     * @param carBrand  车辆品牌
+     * @param carSeries 车系
+     * @return 车系名称
+     */
+    public String getCarSeriesName(Integer carBrand, Integer carSeries) {
+        List<Car> cars = this.queryCarSeries(carBrand);
+        return this.getName(cars, carSeries);
+    }
+
+    /**
      * 查询车辆型号
      *
      * @param num 车辆类别
@@ -70,5 +94,37 @@ public class CarTypeService {
     public List<Car> queryCarModel(Integer num) {
         List<Car> cars = apiCusCar.queryCarModel(num);
         return cars;
+    }
+
+    /**
+     * 根据车系，查询对应的中文名称
+     *
+     * @param carSeries 车型
+     * @param carModel  车系id
+     * @return 车型名称
+     */
+    public String getCarModelName(Integer carSeries, Integer carModel) {
+        List<Car> cars = this.queryCarModel(carSeries);
+        String name = this.getName(cars, carModel);
+        return name;
+    }
+
+    /**
+     * 查询中文名字
+     *
+     * @param cars 列表集合
+     * @param num  传入要查找的id
+     * @return 中文名字
+     */
+    public String getName(List<Car> cars, Integer num) {
+        if (cars != null && cars.size() > 0) {
+            for (Car car : cars) {
+                int carId = car.getCarId();
+                if (num == carId) {
+                    return car.getCarName();
+                }
+            }
+        }
+        return null;
     }
 }
