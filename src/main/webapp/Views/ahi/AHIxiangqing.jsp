@@ -14,7 +14,10 @@
     <script type="text/javascript" src="/scripts/ahi/chart.radar.js"></script>
 
     <script type="text/javascript">
-
+        $(window).load(function(){
+            $("#loading").hide();
+            $(".center_zhis ,.conter_main").show()
+        })
         function xianshi(arr) {
             for (var i = 0; i < arr.length; i++) {
                 //	指示盘插件函数
@@ -170,6 +173,10 @@
     </script>
 </head>
 <body>
+<%--网页加载效果--%>
+<div id="loading">
+    <img src="/files/loading.gif"  alt="loading.." />
+</div>
 <div class="center_zhis">
     <div class="biaopan">
         <div class="ahicanvar">
@@ -209,7 +216,7 @@
     </div>
 
 </div>
-<div class="conter_main">
+<div class="conter_main" style="display: none;">
     <ul class="lie_li" id="subPoint">
 
     </ul>
