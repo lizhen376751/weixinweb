@@ -1,9 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+
 
 <html>
   <head>
@@ -31,6 +27,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
   </body>
   <script src="/scripts/lianMengActivity/js/lianMengActivity.js" type="text/javascript" charset="utf-8"></script>
-  <input type="hidden" id="shopcode" name="shopcode" value="<%=shopcode %>" >
-  <input type="hidden" id="contextPathStr" name="contextPathStr" value="<%=request.getContextPath() %>" >
+
 </html>

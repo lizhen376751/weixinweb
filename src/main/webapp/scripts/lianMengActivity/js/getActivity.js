@@ -8,8 +8,6 @@ $(document).ready(function () {
 	var ids = getvl("ids")	
 	var h2 = $("h2");
 	var txt = $(".txt");
-	var shopcode = encodeURIComponent($("#shopcode").val());
-	var contextPathStr = $("#contextPathStr").val();
 	
 	$.ajax({ 
 		type    : 'POST',

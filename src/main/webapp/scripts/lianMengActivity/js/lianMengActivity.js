@@ -43,15 +43,12 @@ $(document).ready(function () {
 //			}
 //		}
 //	}
-	var shopcode = encodeURIComponent($("#shopcode").val());
-	var contextPathStr = $("#contextPathStr").val();
 	
 	$.ajax({ 
 		type    : 'POST',
 		url     : '/getCommonAjax',
 		data    : {
-			fromflag   : "queryLMActivity",
-			shopcode   : shopcode
+			fromflag   : "queryLMActivity"
 		},
 		success : function(jsonData){
 			var json = JSON.parse(jsonData);
