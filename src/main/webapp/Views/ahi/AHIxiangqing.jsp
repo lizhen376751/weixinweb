@@ -14,10 +14,14 @@
     <script type="text/javascript" src="/scripts/ahi/chart.radar.js"></script>
 
     <script type="text/javascript">
-        $(window).load(function(){
-            $("#loading").hide();
-            $(".center_zhis ,.conter_main").show()
-        })
+        setTimeout(function () {
+            $(window).load(function(){
+                $("#loading").hide();
+                $(".center_zhis ").show();
+                $(".conter_main").show()
+            })
+        }, 6000);
+
         function xianshi(arr) {
             for (var i = 0; i < arr.length; i++) {
                 //	指示盘插件函数
