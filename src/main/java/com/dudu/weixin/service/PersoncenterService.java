@@ -49,11 +49,12 @@ public class PersoncenterService {
         //查询联盟客户信息
         WxCustomer wxCustomer = wxCustomerService.getWxCustomer(platenumber, lmcode);
         pesrsonCenter.setId(wxCustomer.getId())
+                .setCurrentmileage(wxCustomer.getCurrentmileage())
+                .setCarHaopai(wxCustomer.getCarHaopai())
                 .setCarBrand(carTypeService.getCarBrandName(wxCustomer.getCarBrand()))
-                .setCarHaopai(wxCustomer.getCarHaopai());
-        pesrsonCenter.setCarModel(carTypeService.getCarSeriesName(wxCustomer.getCarBrand(), wxCustomer.getCarModel()));
-        pesrsonCenter.setCarSeries(carTypeService.getCarModelName(wxCustomer.getCarSeries(), wxCustomer.getCarBrand()));
-        pesrsonCenter.setCurrentmileage(wxCustomer.getCurrentmileage());
+                .setCarSeries(carTypeService.getCarSeriesName(wxCustomer.getCarBrand(), wxCustomer.getCarSeries()))
+                .setCarModel(carTypeService.getCarModelName(wxCustomer.getCarSeries(), wxCustomer.getCarModel()));
+
 
         //查询联盟卡列表
         List<LianmengkaXmLeftResultModule> lianmengkaXmLeftResultModules = lianMengKa.queryLmkInfo(lmcode, platenumber);

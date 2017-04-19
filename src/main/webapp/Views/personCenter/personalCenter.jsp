@@ -15,7 +15,7 @@
 		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/personCenter/JsBarcode.all.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/personCenter/car-brand.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/scripts/personCenter/data.js" type="text/javascript" charset="utf-8"></script>
+		<%--<script src="/scripts/personCenter/data.js" type="text/javascript" charset="utf-8"></script>--%>
 		<script src="/scripts/personCenter/personalCenter.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
@@ -108,6 +108,11 @@
 				<div class="qx font_2 color_3">取消</div>   <!----------------------------------------------取消按钮-->
 				<div class="qd font_2 color_3">确定</div>   <!----------------------------------------------确定按钮-->
 			</div>
+		</div>
+		<!-------------------------------------------------------------------------------------------------------二层车系信息------>
+		<div class="second_carList">
+			<!--------------------------------------------------------------------------------------------------------提示车牌信息-->
+			<div class="second_cpxx">阿斯顿</div>
 		</div>
 	</body>
 </html>
