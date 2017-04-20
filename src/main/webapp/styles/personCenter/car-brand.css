@@ -32,7 +32,7 @@
 	-webkit-user-select: none;
 	user-select: none;
 	cursor: default;
-	display: none;
+	/*display: none;*/
 }
 .index-sidebar-container ul {
 	padding: 0 5px;

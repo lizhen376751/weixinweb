@@ -288,7 +288,7 @@ $(document).ready(function () {
         return {
             gotoChar: function (ch) {
                 if (ch === '*') {
-                    console.log(elItemList.scrollTop)
+                    console.log(elItemList.scrollTop);
                     a.scrollTop = 0;
                 } else if (ch === '#') {
                     a.scrollTop = elItemList.scrollHeight;
@@ -300,12 +300,12 @@ $(document).ready(function () {
                 }
             }
         }
-    }
+    };
     app.main = function () {
         var itemList = app.ItemList(app.data);
         new IndexSidebar().on('charChange', itemList.gotoChar);
 
-    }
+    };
     // app.main();
 
 
@@ -314,7 +314,7 @@ $(document).ready(function () {
 
     jkzs.on("click", function () {
         window.location.href = "/oauthLoginServlet?flagStr=AHIInfo";
-    })
+    });
 
 
     //-----------------------------当前里程用户修改输入事件
@@ -322,12 +322,12 @@ $(document).ready(function () {
         mileage.show();
         mileage_num.val("");
         e.preventDefault();
-    })
+    });
     //----------------------------------------------------------------------取消点击-里程数
     qx.on("click", function () {
         mileage.hide();
         mileage_num.val("")
-    })
+    });
     //----------------------------------------------------------------------确定点击-里程数
     qd.on("click", function () {
         var reg = /^[1-9]\d*$|^0$/; // 判断是否为数字的正则
