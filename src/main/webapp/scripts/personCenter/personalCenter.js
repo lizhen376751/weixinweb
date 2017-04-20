@@ -56,15 +56,25 @@ $(document).ready(function () {
             json = JSON.parse(jsonData);
             console.log(json);
             car_num.text(json.carHaopai);    //-------------------------------------------------------------动态添加车牌号码
-
+            var cltxt = "";//---------------------------------------------------------------定义车牌信息添加的字符串
             //------------------------------------------------------------------------------------------------车系品牌添加
             if (json.carBrand != null || json.carModel != null || json.carSeries != null) {
+                if(json.carBrand == null){
+                    json.carBrand = "";
+                }
+                if(json.carModel == null){
+                    json.carModel = "";
+                }
+                if(json.carSeries == null){
+                    json.carSeries = "";
+                }
                 var cltxt = json.carBrand + json.carSeries + json.carModel;
                 clpp_txt.text(cltxt);
                 clpp_txt.css({
                     color: "#6c6c6c"
                 });
             }
+
             //-----------------------------------------------------------------------------------------------当前里程(保养提醒)判断
             if (json.currentmileage != null && json.currentmileage != "") {
                 lcs_num.text(json.currentmileage+"km");
