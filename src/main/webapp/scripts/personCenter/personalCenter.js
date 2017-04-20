@@ -385,6 +385,7 @@ $(document).ready(function () {
     //---------------------------------------------------------------------------------------------------------------车系二级页面的返回按钮
     second_back.on("click",function () {
         second_carList.hide();
+        $(".index-sidebar-container").css("display","block")
     });
     // second_carList.on("touchmove",function(e){
     //     e.preventDefault(); //遮罩层出现后禁止body滑动
