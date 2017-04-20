@@ -130,6 +130,7 @@ $(document).ready(function () {
             }
             console.log(app.data);
             app.main();
+            $(".index-sidebar-container").css("display","none")
             var car_brand = $(".car_brand"); //----------------------------------------------------车系品牌遮罩层
             var item_container_li = $("#item-container ul li") //--------------------------------- 获取每一个车牌号:奥迪
             //---------------------------------------------------------------------------------------点击出现车辆品牌分类
