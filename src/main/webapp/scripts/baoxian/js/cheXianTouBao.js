@@ -1,5 +1,14 @@
 
 $(document).ready(function(){
+    var kf_logo = $(".kf"); //-----------------------------------------获取客服logo
+    kf_logo.on("click",function () {
+        window.location.href = ""
+    })
+
+
+
+
+
     var mineShopCode = $("#mineShopCode").val();
     console.log(mineShopCode);
     if(mineShopCode == "null" ){

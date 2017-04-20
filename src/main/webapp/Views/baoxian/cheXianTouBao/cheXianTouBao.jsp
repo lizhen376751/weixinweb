@@ -31,6 +31,7 @@
 
 </head>
 <body>
+<img src="/files/baoxian/img/kf.png" alt="" class="kf">
 <div id="wrap">
     <form target="id_iframe">
         <%--mineShopCode隐藏域--%>
