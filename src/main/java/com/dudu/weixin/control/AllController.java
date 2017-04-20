@@ -166,6 +166,8 @@ public class AllController {
             String mineShopCode = request.getParameter("mineShopCode");
             model.addAttribute("mineShopCode", mineShopCode);
             return "/baoxian/cheXianTouBao/cheXianTouBao.jsp"; //车险投保
+        }  else if ("cheXianOnline".equals(flagStr)) {
+            return "redirect:http://kefu6.kuaishang.cn/bs/im.htm?cas=56463___619761&fi=58696&from=9"; //车险投保易璐邦的在线咨询
         } else if ("register".equals(flagStr)) {
             return "/register/register.jsp"; //注册
         } else if ("suresms".equals(flagStr)) {

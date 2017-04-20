@@ -2,7 +2,7 @@
 $(document).ready(function(){
     var kf_logo = $(".kf"); //-----------------------------------------huoqu
     kf_logo.on("click",function () {
-        window.location.href = "";
+        window.location.href = "/oauthLoginServlet?flagStr=cheXianOnline";
     })
 
 
@@ -20,10 +20,10 @@ $(document).ready(function(){
         $(this).addClass('selects').siblings().removeClass('selects');
         $('.list .one,.two,.three').eq(i).show().siblings().hide();
     });
-    var ylb = mineShopCode.substring(0,2);
-    if(ylb != "YLB"){
-        kf_logo.hide();
-    }
+    var ylb = mineShopCode.substring(0,3);
+    // if(ylb != "YLB"){
+    //     kf_logo.hide();
+    // }
     //车辆信息部分
     //日期控件部分
     function all_day () {
