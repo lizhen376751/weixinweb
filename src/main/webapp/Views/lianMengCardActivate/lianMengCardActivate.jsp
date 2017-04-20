@@ -36,11 +36,12 @@
 			<!-------------------------------------------------------------------------  用户已注册，且没有密码-->
 			<div class="l_box">
 				<%--<img src="/files/lianMengCardActivate/error.png" class="close"/>--%>
-				<!--<span class="l_tt font_3">您输入的联盟卡号或激活码有误，请重新输入~</span>-->
+				<span class="l_tt font_3">联盟卡或激活码错误</span>
+				<span class="l_tj font_3">请重新输入</span>
 				<div class="l_dd font_1 color_6">
-					<p class="l_p">联盟卡或激活码错误</p>
+					<%--<p class="l_p">联盟卡或激活码错误</p>--%>
 					<!--<p class="mobile_num">156****1885</p>-->
-					<p>请重新输入~</p>
+					<%--<p>请重新输入~</p>--%>
 					<p class="color_7 l_bt">请点击确定按钮</p>
 					<%--<p class="font_4 l_qx color_8">取消请关闭窗口</p>--%>
 				</div>
