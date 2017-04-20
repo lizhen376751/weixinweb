@@ -4,7 +4,6 @@
 *{margin:0px;padding:0px;}
 body{width:100%;background:#f6f6f6;font-family: "微软雅黑" ;height:auto;overflow:auto;font-size: 16px;font-size: 100%;}
 a{text-decoration:none;}
-a:{text-decoration:none;}
 ul{list-style: none;}
 
 
@@ -13,6 +12,10 @@ ul{list-style: none;}
 .font_2{font-size:2.625rem;} /*42px*/
 .font_3{font-size: 3.375rem;}  /*54px*/
 .font_4{font-size: 2.0625rem;} /*33px*/
+.font_5{font-size: 1.875rem;} /*30px*/
+.font_6{font-size: 1.5rem;} /*24px*/
+.font_7{font-size: 1.75rem;} /*28px*/
+.font_8{font-size: 1.25rem;} /*20px*/
 .font_12{font-size:1.5rem;} /*24px*/
 
 
