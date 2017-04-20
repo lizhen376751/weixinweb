@@ -20,15 +20,15 @@
 				洗车卡
 			</div>
 
-			<div class="logo">
-				<div class="circle">
+			<%--<div class="logo">--%>
+				<%--<div class="circle">--%>
 
-				</div>
-			</div>
+				<%--</div>--%>
+			<%--</div>--%>
 			<!--店铺名称-->
-			<div class="shop_name font_2">
-				发售店铺：
-			</div>
+			<%--<div class="shop_name font_2">--%>
+				<%--发售店铺：--%>
+			<%--</div>--%>
 			<!--消费详情-->
 			<div class="cost">
 				<ul class="font_1">

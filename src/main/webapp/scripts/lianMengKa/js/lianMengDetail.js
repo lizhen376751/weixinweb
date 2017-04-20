@@ -77,7 +77,7 @@ $(document).ready(function () {
 		},
 		success : function(jsonData){
 			var json = JSON.parse(jsonData);
-			appending_shopName(json);
+			// appending_shopName(json);
 		}
 	});
 
