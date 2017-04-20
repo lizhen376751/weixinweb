@@ -376,16 +376,16 @@ $(document).ready(function () {
     second_back.on("click",function () {
         second_carList.hide();
     });
-    second_carList.on("touchmove",function(e){
-        e.preventDefault(); //遮罩层出现后禁止body滑动
-        return false
-    });
+    // second_carList.on("touchmove",function(e){
+    //     e.preventDefault(); //遮罩层出现后禁止body滑动
+    //     return false
+    // });
     //---------------------------------------------------------------------------------------------------------------车系三级页面的返回按钮
     third_back.on("click",function () {
         third_carList.hide();
     });
-    third_carList.on("touchmove",function(e){
-        e.preventDefault(); //遮罩层出现后禁止body滑动
-        return false
-    });
+    // third_carList.on("touchmove",function(e){
+    //     e.preventDefault(); //遮罩层出现后禁止body滑动
+    //     return false
+    // });
 })
