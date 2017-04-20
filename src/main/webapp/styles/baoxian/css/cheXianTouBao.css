@@ -87,6 +87,7 @@
 	border:1px #e0e0e0 solid;
 	border-radius: 20px;
 	box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+	background: #fff;
 }
 .content .nav_list{
 	width: 95.6%;
