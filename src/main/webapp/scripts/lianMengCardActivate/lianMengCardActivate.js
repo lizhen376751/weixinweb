@@ -13,8 +13,8 @@
 
 
 $(document).ready(function () {
-    var card_num = $(".car_num");  //-------------------------------------------------------------获取用户输入的车牌号
-    var activate_num = $(".password_num");   //---------------------------------------------------获取用户输入的账号密码
+    var card_num = $(".car_num");  //-------------------------------------------------------------获取用户输入的联盟卡号
+    var activate_num = $(".password_num");   //---------------------------------------------------获取用户输入的激活码
     var activate = $(".activate")  //-------------------------------------------------------------获取激活按钮
     var tc_ceng = $(".tcc");  //-------------------------------------------------获取弹出层
     var l_box = $(".l_box"); //-------------------------------------------------获取已注册，没有密码框
@@ -25,6 +25,8 @@ $(document).ready(function () {
     var ty = $(".ty"); //---------------------------------------------------------------------获取统一弹出层
     var tyt = $(".tyt") //--------------------------------------------------------------------获取统一弹出层的确定
     var llt = $(".ty .l_tt") //---------------------------------------------------------------获取修改提示内容框
+    var car_tsk = $(".car_tsk") //------------------------------------------------------------获取联盟卡号提示框
+    var password_tsk = $(".pasword_tsk") //-----------------------------------------------------获取激活码提示框
     //------------------------------------------------------------------------JS控制的css样式
     card_num.on("focus", function () {
         $(this).css({
@@ -55,23 +57,42 @@ $(document).ready(function () {
         });
         $(this).toggleClass("input_bg")
     })
-
+    card_num.on("keyup",function () {
+        if($(this).val().length != 0){
+            car_tsk.hide();
+        }
+    });
+    activate_num.on("keyup",function () {
+        if($(this).val().length != 0){
+            password_tsk.hide();
+        }
+    })
 
     //----------------------------------------------------------------------------激活按钮点击判断
     activate.on("click", function () {
         var card_value = card_num.val();
         var activate_value = activate_num.val();
-        if (card_value == "" || card_value.length > 20) {
-            tc_ceng.show();
-            ty.show();
-            tyt.show();
-            llt.text("联盟卡号有误，请重新输入~");
+        if (card_value == "") {
+            car_tsk.show();
+            car_tsk.text("请输入联盟卡号");
+            // tc_ceng.show();
+            // ty.show();
+            // tyt.show();
+            // llt.text("联盟卡号有误，请重新输入~");
             // alert("联盟卡号有误，请重新输入~")
-        } else if (activate_value == "" || activate_value.length > 10) {
+        } else if(activate_value == ""){
+            password_tsk.show();
+            password_tsk.text("请输入激活码");
+        }else if(card_value.length > 20){
             tc_ceng.show();
-            ty.show();
-            tyt.show();
-            llt.text("输入激活码有误，请重新输入~");
+            l_box.show();
+        }else if (activate_value.length > 10) {
+            tc_ceng.show();
+            l_box.show();
+            // tc_ceng.show();
+            // ty.show();
+            // tyt.show();
+            // llt.text("输入激活码有误，请重新输入~");
             // alert("输入激活码有误，请重新输入~")
         } else {
             $.ajax({
