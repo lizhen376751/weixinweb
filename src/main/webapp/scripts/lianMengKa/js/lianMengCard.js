@@ -94,21 +94,23 @@ $(document).ready(function () {
 				obj_append("div17","width_2 margin_2 border_1 height",$($(".biaoTou")[i]),"span","有效期");
 				obj_append("div18","width_2 margin_2 border_1 height",$($(".biaoTou")[i]),"span","次数");
 				for (var j = 0;j < arr[i].leftMx.length;j++) {
-					var s = j + 1;
-					// var yxrqDateTime = arr[i].leftMx[j].effective_date;
-					// var newDate = new Date();
-					// newDate.setTime(yxrqDateTime);
-					// var yxrqStr = newDate.format('yyyy-MM-dd');
-					if(arr[i].leftMx[j].current_num != 0){
-
+					var s = 0;
+					var yxrqDateTime = arr[i].leftMx[j].effective_date;
+                    var dates = dateFormat(yxrqDateTime);
+					var newDate = new Date();
+                    var oldDate = new Date(dates);
+					if(arr[i].leftMx[j].current_num != 0 && arr[i].leftMx[j].current_num != ""){
+                        if(oldDate >= newDate){
+                            obj_append("div14","border_2",$($("ul")[i]),"li","");
+                            s++;
+                            var li = $($("ul")[i]).find("li")
+			//				obj_append("div15","width_1",$(li[s]),"span",s);
+                            obj_append("div16","width_2",$(li[s]),"span",arr[i].leftMx[j].spname);
+                            obj_append("div17","width_2 margin_2",$(li[s]),"span",dates);
+                            obj_append("div18","width_2 margin_2",$(li[s]),"span",arr[i].leftMx[j].current_num);
+                            obj_append("div15","width_1 margin_1",$(li[s]),"img","","../img/erweima.png",arr[i].leftMx[j].card_id,arr[i].leftMx[j].item_code,arr[i].leftMx[j].type_flg);
+                        }
 					}
-					obj_append("div14","border_2",$($("ul")[i]),"li","");
-					var li = $($("ul")[i]).find("li");
-					obj_append("div16","width_2",$(li[s]),"span",arr[i].leftMx[j].spname);
-                    var dates = dateFormat(arr[i].leftMx[j].effective_date);
-					obj_append("div17","width_2 margin_2",$(li[s]),"span",dates);
-					obj_append("div18","width_2 margin_2",$(li[s]),"span",arr[i].leftMx[j].current_num);
-					obj_append("div15","width_1 margin_1",$(li[s]),"img","","/files/lianMengKa/img/erweima.png",arr[i].leftMx[j].card_id,arr[i].leftMx[j].item_code,arr[i].leftMx[j].type_flg);
 				}
 				//添加明细
 				obj_append("div19","card_detailed font_3",$($(".card_surplus")[i]),"a","明细");
