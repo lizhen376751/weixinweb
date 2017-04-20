@@ -8,9 +8,8 @@ $(document).ready(function(){
 
 
 
-
     var mineShopCode = $("#mineShopCode").val();
-    console.log(mineShopCode);
+    // console.log(mineShopCode);
     if(mineShopCode == "null" ){
         $(".nav").hide();
     }else{
@@ -21,6 +20,14 @@ $(document).ready(function(){
         $(this).addClass('selects').siblings().removeClass('selects');
         $('.list .one,.two,.three').eq(i).show().siblings().hide();
     });
+    //-------------------------------------------------------------------------------------------判断是否是易路邦
+    var ylb = mineShopCode.Substring(0,2);
+    if(ylb == "YLB"){
+        kf_logo.css("display","none");
+    }
+
+
+
 
     //车辆信息部分
     //日期控件部分
