@@ -103,12 +103,12 @@ $(document).ready(function () {
                         if(oldDate >= newDate){
                             obj_append("div14","border_2",$($("ul")[i]),"li","");
                             s++;
-                            var li = $($("ul")[i]).find("li")
-			//				obj_append("div15","width_1",$(li[s]),"span",s);
+                            var li = $($("ul")[i]).find("li");
+                            //				obj_append("div15","width_1",$(li[s]),"span",s);
                             obj_append("div16","width_2",$(li[s]),"span",arr[i].leftMx[j].spname);
                             obj_append("div17","width_2 margin_2",$(li[s]),"span",dates);
                             obj_append("div18","width_2 margin_2",$(li[s]),"span",arr[i].leftMx[j].current_num);
-                            obj_append("div15","width_1 margin_1",$(li[s]),"img","","../img/erweima.png",arr[i].leftMx[j].card_id,arr[i].leftMx[j].item_code,arr[i].leftMx[j].type_flg);
+                            obj_append("div15","width_1 margin_1",$(li[s]),"img","","/files/lianMengKa/img/erweima.png",arr[i].leftMx[j].card_id,arr[i].leftMx[j].item_code,arr[i].leftMx[j].type_flg);
                         }
 					}
 				}
