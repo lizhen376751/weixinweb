@@ -112,6 +112,11 @@ $(document).ready(function () {
                         }
 					}
 				}
+                //------------------------------------------------------------------------判断当前联盟卡里是否还有项目
+                var cars_lis = $(".card_surplus ul li");
+                if(cars_lis.length == 1){
+                    cars_lis.parents(".lianMeng").hide();
+                }
 				//添加明细
 				obj_append("div19","card_detailed font_3",$($(".card_surplus")[i]),"a","明细");
 				$($("a")[i]).attr("href","/oauthLoginServlet?flagStr=lianMengDetails&cardName="+arr[i].card_name+"&cardNo="+arr[i].card_number)
