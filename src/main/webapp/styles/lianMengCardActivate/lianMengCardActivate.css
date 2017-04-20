@@ -14,6 +14,7 @@
 	width: 100%;
 	margin-top: 1.32rem;
 	overflow: hidden;
+	position: relative;
 }
 .main_txt input{
 	width: 7.3rem;
