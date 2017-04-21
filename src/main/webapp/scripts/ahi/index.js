@@ -24,7 +24,7 @@ function countClickedTimes(obj){
 //点击图片放大按钮
 function fangda(img_src){
     $(".zhezhao").css("display","block");
-    //	$(".zhezhao").siblings().css("display","none");
+    $(".goback").hide();
 
     $("body").css("overflow","hidden");
 
@@ -41,6 +41,7 @@ $(function(){
     $(".zsimg ,.zhezhao").click(function(){
         // $(".zhezhao").siblings().css("display","block");
         $(".zhezhao").css("display","none");
+        $(".goback").show();
         $("body").css("overflow","auto");
     });
 });
