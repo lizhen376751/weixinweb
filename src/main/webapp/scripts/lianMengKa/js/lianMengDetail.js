@@ -1,3 +1,12 @@
+$(window).load(function(){
+    setTimeout(function () {
+        $("#loading").hide();
+        // $(".center_zhis ").show();
+        // $(".conter_main").show()
+    }, 1000);
+});
+
+
 $(document).ready(function () {
 	//元素添加函数
     function obj_append (name,class_one,obj_big,label,txt) {

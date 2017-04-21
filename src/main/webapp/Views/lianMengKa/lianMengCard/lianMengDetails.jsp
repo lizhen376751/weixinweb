@@ -14,6 +14,10 @@
 		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
+		<%--网页加载效果--%>
+		<div id="loading">
+			<img src="/files/loading.gif"  alt="loading.." />
+		</div>
 		<div class="box">
 
 			<div class="card_name font_3">
