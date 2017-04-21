@@ -27,10 +27,15 @@
     <script type="text/javascript" src="/scripts/baoxian/oss/base64.js"></script>
     <script type="text/javascript" src="/scripts/baoxian/oss/app.js"></script>
     <%--<link rel="stylesheet" href="/Views/baoxian/cheXianTouBao/oss/bootstrap.min.css" />--%>
+    <script src="/scripts/main.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/baoxian/js/cheXianTouBao.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 <body>
+<%--网页加载效果--%>
+<div id="loading">
+    <img src="/files/loading.gif"  alt="loading.." />
+</div>
 <img src="/files/baoxian/img/kf.png" alt="" class="kf">
 <div id="wrap">
     <form target="id_iframe">
