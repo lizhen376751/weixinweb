@@ -100,8 +100,8 @@ $(document).ready(function () {
 				obj_append("div16","width_2 border_1 height",$($(".biaoTou")[i]),"span","项目");
 				obj_append("div17","width_2 margin_2 border_1 height",$($(".biaoTou")[i]),"span","有效期");
 				obj_append("div18","width_2 margin_2 border_1 height",$($(".biaoTou")[i]),"span","次数");
+                var s = 0;
 				for (var j = 0;j < arr[i].leftMx.length;j++) {
-					var s = 0;
 					var yxrqDateTime = arr[i].leftMx[j].effective_date;
                     var dates = dateFormat(yxrqDateTime);
 					var newDate = new Date();
@@ -120,7 +120,7 @@ $(document).ready(function () {
 					}
 				}
                 //------------------------------------------------------------------------判断当前联盟卡里是否还有项目
-                var cars_lis = $(".card_surplus ul li");
+                var cars_lis = $($("ul")[i]).find("li");
                 if(cars_lis.length == 1){
                     cars_lis.parents(".lianMeng").hide();
                 }
