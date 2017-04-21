@@ -51,10 +51,14 @@
     <script type="text/javascript" src="/scripts/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="/scripts/baoYangTiXing/iscroll.js"></script>
     <script type="text/javascript" src="/scripts/baoYangTiXing/baoYangList.js"></script>
+    <script  type="text/javascript"  href="/scripts/main.js"></script>
 </head>
 <body>
 
-
+<%--ÍøÒ³¼ÓÔØÐ§¹û--%>
+<div id="loading">
+    <img src="/files/loading.gif"  alt="loading.." />
+</div>
 <div class="secretarylist1">
     <div id="wrapper" style="height:100%; overflow:auto; ">
         <div id="scroller">

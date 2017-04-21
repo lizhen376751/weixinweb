@@ -16,9 +16,13 @@
 	<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
 	<link rel="stylesheet" type="text/css" href="/styles/lianMengActivity/css/yangCheXinXi.css"/>
 	<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+	  <script  type="text/javascript"  href="/scripts/main.js"></script>
   </head>
-  
   <body>
+  <%--网页加载效果--%>
+   <div id="loading">
+		  <img src="/files/loading.gif"  alt="loading.." />
+   </div>
 	<div class="box">
 			<!--养车信息-->
 			<div class="card_name font_3">

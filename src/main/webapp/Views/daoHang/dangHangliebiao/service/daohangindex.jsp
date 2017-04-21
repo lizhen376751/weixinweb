@@ -29,6 +29,7 @@
 		<script src="/scripts/daoHang/daoHangliebiao/js/index.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nOi93QKhPFHG6xfAp94mm1mk"></script>
 		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+		<script  type="text/javascript"  href="/scripts/main.js"></script>
 		<script type="text/javascript">
 	
 		var nowLoationsd;
@@ -114,6 +115,10 @@
 	</head>
 	
 	<body>
+	<%--网页加载效果--%>
+	<div id="loading">
+		<img src="/files/loading.gif"  alt="loading.." />
+	</div>
 	<form action="daohangindex.jsp" method="post" name="billInput" id="billInput" >
 		<!-- <div class="title">
 			

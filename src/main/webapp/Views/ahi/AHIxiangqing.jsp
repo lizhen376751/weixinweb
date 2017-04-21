@@ -12,15 +12,9 @@
     <script type="text/javascript" src="/scripts/ahi/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="/scripts/ahi/chart.meter.js"></script>
     <script type="text/javascript" src="/scripts/ahi/chart.radar.js"></script>
+    <script  type="text/javascript"  href="/scripts/main.js"></script>
 
     <script type="text/javascript">
-            $(window).load(function(){
-                setTimeout(function () {
-                    $("#loading").hide();
-                    $(".center_zhis ").show();
-                    $(".conter_main").show()
-                }, 1000);
-            });
 
         function xianshi(arr) {
             for (var i = 0; i < arr.length; i++) {
@@ -181,7 +175,7 @@
 <div id="loading">
     <img src="/files/loading.gif"  alt="loading.." />
 </div>
-<div class="center_zhis" style="display: none">
+<div class="center_zhis" >
     <div class="biaopan">
         <div class="ahicanvar">
             <canvas id="meter" width="524" height="524" class="radialIndicatorContext"></canvas> <!-- 仪表盘层-->
@@ -220,7 +214,7 @@
     </div>
 
 </div>
-<div class="conter_main" style="display: none;">
+<div class="conter_main" >
     <ul class="lie_li" id="subPoint">
 
     </ul>

@@ -8,16 +8,11 @@
     <link rel="stylesheet" type="text/css" href="/styles/ahi/ahi.css"/>
     <script type="text/javascript" src="/scripts/ahi/jquery-1.12.1.min.js"></script>
     <script src="/scripts/ahi/index.js" type="text/javascript" charset="utf-8"></script>
+    <script  type="text/javascript"  href="/scripts/main.js"></script>
 </head>
 
 <script>
     var ids = <%=request.getParameter("id")%>;
-    $(window).load(function(){
-        setTimeout(function () {
-            $("#loading").hide();
-            $(".contermain ").show();
-        }, 1000);
-    });
     $(function () {
         var jsonp = eval('('+decodeURI(decodeURI('<%=request.getParameter("inspectionDetailedDescription")%>'))+')');
 
@@ -61,7 +56,7 @@
   <div id="loading">
         <img src="/files/loading.gif"  alt="loading.." />
   </div>
-  <div class="contermain" style="display: none">
+  <div class="contermain" >
         <p class="goback" onclick="goback()"><img src="/files/fanhui.png"></p>
         <div class="zhezhao">
             <img class="zsimg" src=""/>

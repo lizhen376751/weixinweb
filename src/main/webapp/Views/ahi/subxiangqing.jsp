@@ -10,15 +10,10 @@
     <script type="text/javascript" src="/scripts/ahi/jquery-1.12.1.min.js"></script>
     <script src="/scripts/ahi/swiper.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/ahi/index.js" type="text/javascript" charset="utf-8"></script>
+    <script  type="text/javascript"  href="/scripts/main.js"></script>
     <script type="text/javascript">
 
         var ids = <%=request.getParameter("id")%>;
-        $(window).load(function(){
-            setTimeout(function () {
-                $("#loading").hide();
-
-            }, 1000);
-        });
         $(document).ready(function () {
             $.ajax({
                 type: "post",

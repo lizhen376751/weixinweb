@@ -15,14 +15,19 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
-		<link rel="stylesheet" type="text/css" href="/styles/lianMengActivity/css/yangCheXiangQing.css"/>
-		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+	   <link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
+       <link rel="stylesheet" type="text/css" href="/styles/lianMengActivity/css/yangCheXiangQing.css"/>
+       <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+       <script  type="text/javascript"  href="/scripts/main.js"></script>
   </head>
-  
+
   <body>
-    <h2></h2>
-    <div class="txt"></div>
+      <%--网页加载效果--%>
+      <div id="loading">
+          <img src="/files/loading.gif"  alt="loading.." />
+      </div>
+      <h2></h2>
+      <div class="txt"></div>
   </body>
   <script src="/scripts/lianMengActivity/js/getActivity.js" type="text/javascript" charset="utf-8"></script>
 
