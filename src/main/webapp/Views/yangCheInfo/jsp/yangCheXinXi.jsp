@@ -22,6 +22,10 @@ String shopcode = (String) session.getAttribute("DUDUCHEWANG_shopcode");
   </head>
   
   <body>
+  <%--网页加载效果--%>
+  <div id="loading">
+	  <img src="/files/loading.gif"  alt="loading.." />
+  </div>
 	<div class="box">
 			<!--养车信息-->
 			<div class="card_name font_3">

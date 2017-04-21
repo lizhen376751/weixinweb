@@ -21,6 +21,9 @@
 </head>
 
 <body>
+<div id="loading">
+    <img src="/files/loading.gif"  alt="loading.." />
+</div>
 <h2></h2>
 <div class="txt"></div>
 </body>

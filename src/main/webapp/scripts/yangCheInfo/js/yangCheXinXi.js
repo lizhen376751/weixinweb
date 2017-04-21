@@ -1,3 +1,13 @@
+
+$(window).load(function(){
+    setTimeout(function () {
+        $("#loading").hide();
+        // $(".center_zhis ").show();
+        // $(".conter_main").show()
+    }, 1000);
+});
+
+
 $(document).ready(function () {
 	var abc = [];
 	function appenging (arr) {
