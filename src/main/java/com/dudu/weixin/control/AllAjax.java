@@ -396,6 +396,21 @@ public class AllAjax {
                                                       @PathVariable("companyId") Integer companyId, @PathVariable("orderNumb") String orderNumb,
                                                       @PathVariable("plateNumber") String plateNumber) {
         ClientInsuranceTypeParam  ctp = new ClientInsuranceTypeParam();
+        if (companyId != null) {
+            ctp.setCompanyId(companyId);
+        }
+        if (shopCodeLm != null && !shopCodeLm.equals("")) {
+            ctp.setShopCodeLm(shopCodeLm);
+        }
+        if (shopCode != null && !shopCode.equals("")) {
+            ctp.setShopCode(shopCode);
+        }
+        if (orderNumb != null && !orderNumb.equals("")) {
+            ctp.setOrderNumb(orderNumb);
+        }
+        if (plateNumber != null && !plateNumber.equals("")) {
+            ctp.setPlateNumber(plateNumber);
+        }
         ClientInsuranceResult clientInsurance = chexiantoubaoService.getClientInsurance(ctp);
         if (clientInsurance != null) {
             return clientInsurance;
