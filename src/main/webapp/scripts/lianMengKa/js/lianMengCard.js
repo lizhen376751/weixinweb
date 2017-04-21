@@ -111,7 +111,7 @@ $(document).ready(function () {
                             obj_append("div14","border_2",$($("ul")[i]),"li","");
                             s++;
                             var li = $($("ul")[i]).find("li");
-                            //				obj_append("div15","width_1",$(li[s]),"span",s);
+                            //obj_append("div15","width_1",$(li[s]),"span",s);
                             obj_append("div16","width_2",$(li[s]),"span",arr[i].leftMx[j].spname);
                             obj_append("div17","width_2 margin_2",$(li[s]),"span",dates);
                             obj_append("div18","width_2 margin_2",$(li[s]),"span",arr[i].leftMx[j].current_num);
