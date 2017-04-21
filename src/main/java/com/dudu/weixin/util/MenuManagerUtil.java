@@ -1,5 +1,8 @@
 package com.dudu.weixin.util;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.dudu.soa.weixindubbo.weixin.weixinconfig.api.ApiWeiXinConfig;
+import com.dudu.soa.weixindubbo.weixin.weixinconfig.module.WeiXinConfig;
 import com.dudu.weixin.mould.AccessToken;
 import com.dudu.weixin.mould.Button;
 import com.dudu.weixin.mould.CommonButton;

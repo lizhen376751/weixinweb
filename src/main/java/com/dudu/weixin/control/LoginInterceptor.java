@@ -1,11 +1,13 @@
 package com.dudu.weixin.control;
 
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.weixindubbo.loginlog.module.LogInLog;
+import com.dudu.soa.weixindubbo.weixin.weixinconfig.api.ApiWeiXinConfig;
+import com.dudu.soa.weixindubbo.weixin.weixinconfig.module.WeiXinConfig;
 import com.dudu.weixin.mould.WeixinOauth2Token;
 import com.dudu.weixin.service.LogInLogService;
 import com.dudu.weixin.util.AdvancedUtil;
-import com.dudu.weixin.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,6 +36,11 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Autowired
     private AdvancedUtil advancedUtil;
+    /**
+     * 引入获取appid和sercert的方法
+     */
+    @Reference(version = "1.0", owner = "lizhen")
+    private ApiWeiXinConfig apiWeiXinConfig;
 
     /**
      * @param request
@@ -72,7 +79,8 @@ public class LoginInterceptor implements HandlerInterceptor {
             if (null == openId || openId.equals("")) {
                 //TODO 暂时注释掉 获取用户的openid
                 String code = request.getParameter("code");
-                WeixinOauth2Token oauth2AccessToken = advancedUtil.getOauth2AccessToken(Constant.APPID, Constant.APPSERECT, code);
+                WeiXinConfig weiXinConfig = apiWeiXinConfig.getWeiXinConfig(lmcode);
+                WeixinOauth2Token oauth2AccessToken = advancedUtil.getOauth2AccessToken(weiXinConfig.getAppid(), weiXinConfig.getAppserect(), code);
                 openId = oauth2AccessToken.getOpenId();
                 httpSession.setAttribute("openId", openId);
             }

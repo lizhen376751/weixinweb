@@ -24,6 +24,7 @@ public class ValidateService {
      * 引入验证码记录接口
      */
     @Reference(version = "1.0")
+
     private ApiSmsSend apiSmsSend;
     /**
      * 引入短信发送接口
@@ -85,7 +86,7 @@ public class ValidateService {
         //六位密码的发送
         try {
             //密码的发送
-            this.sendvalidate("000000", "重置密码", mobilephone, radomInt);
+            this.sendvalidate(lmcode, "重置密码", mobilephone, radomInt);
             //同步的修改用户信息的密码
             wxCustomerService.updateWxCustomer(platenumber, lmcode, TestMD5Util.kL(radomInt));
             //验证码发送成功后进行记录
@@ -116,7 +117,7 @@ public class ValidateService {
         //验证码的发送
         try {
             //验证码的记录
-            this.sendvalidate("000001", "验证码", mobilephone, radomInt);
+            this.sendvalidate(lmcode, "验证码", mobilephone, radomInt);
             //验证码发送成功后进行记录
             smsSend.setServiceType("验证码");
             smsSend.setIdentifyingCode(radomInt);
@@ -156,15 +157,15 @@ public class ValidateService {
      *
      * @param mobilephone      手机号
      * @param verificationCode 验证码
-     * @param shopcode         lmcode代码
+     * @param lmcode         lmcode代码
      * @param businessType     业务类型
      */
-    public void sendvalidate(String shopcode, String businessType, String mobilephone, String verificationCode) {
+    public void sendvalidate(String lmcode, String businessType, String mobilephone, String verificationCode) {
         ParameterEntry parameterEntry = new ParameterEntry();
         parameterEntry.setParameter1(verificationCode);
         List list = new ArrayList();
         list.add(mobilephone);
-        apiSendSms.sendSMS(shopcode, businessType, list, parameterEntry);
+        apiSendSms.sendSMS(lmcode, businessType, list, parameterEntry);
     }
 
 }
