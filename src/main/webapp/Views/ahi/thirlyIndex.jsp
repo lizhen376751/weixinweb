@@ -57,7 +57,7 @@
         <img src="/files/loading.gif"  alt="loading.." />
   </div>
   <div class="contermain" >
-        <p class="goback" onclick="goback()"><img src="/files/fanhui.png"></p>
+        <p class="goback" onclick="goback()"><img src="/files/fanhui.png"><span>·µ»Ø</span></p>
         <div class="zhezhao">
             <img class="zsimg" src=""/>
         </div>
