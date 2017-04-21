@@ -555,8 +555,20 @@ $(document).ready(function(){
     // appServer = "http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18";
     //获得请求的json业务 待优化
 
+    //------------------------------------------------------------------------------------------------base64转换
+    function convertBase64UrlToBlob(urlData){
 
+        var bytes=window.atob(urlData.split(',')[1]);        //去掉url的头，并转换为byte
 
+        //处理异常,将ascii码小于0的转换为大于0
+        var ab = new ArrayBuffer(bytes.length);
+        var ia = new Uint8Array(ab);
+        for (var i = 0; i < bytes.length; i++) {
+            ia[i] = bytes.charCodeAt(i);
+        }
+
+        return new Blob( [ab] , {type : 'image/png'});
+    }
 
 
     //点击图片上传并预览
@@ -574,6 +586,7 @@ $(document).ready(function(){
    // appServer = "http://asl.dev.duduchewang.cn/oss/ossconfig/cs00001/18";
 
     $(".filepath").on("change",function() {
+        var that = this;
         var photoExt=this.value.substr(this.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
         var tp =".jpg,.gif,.bmp,.JPG,.GIF,.BMP,.ico,.png";
         var rs=tp.indexOf(photoExt);
@@ -602,7 +615,14 @@ $(document).ready(function(){
                     var json = JSON.parse(jsondata);
                     Duducreds=json;
                     // console.log(json)
-                    new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
+                    lrz(that.files[0], {
+                        width: 800
+                    }).then(function (rst) {
+                        console.log(rst.file);
+                        var filesss = rst.file;
+                        new applyTokenDoNew(filesss,DuduOssCallbackVarData1);
+                    });
+
                 },
                 error:function(data){
 

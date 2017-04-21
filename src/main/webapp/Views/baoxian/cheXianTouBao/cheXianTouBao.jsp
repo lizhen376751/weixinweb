@@ -20,7 +20,7 @@
     <script src="/scripts/baoxian/js/mobiscroll.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/baoxian/js/mobiscroll_003.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/baoxian/js/mobiscroll_005.js" type="text/javascript" charset="utf-8"></script>
-
+    <script src="/scripts/baoxian/js/lrz.bundle.js" type="text/javascript" charset="utf-8"></script>
     <!-- oss -->
     <script src="https://www.promisejs.org/polyfills/promise-6.1.0.js"></script>
     <script type="text/javascript" src="/scripts/baoxian/oss/aliyun-oss-sdk.js"></script>
