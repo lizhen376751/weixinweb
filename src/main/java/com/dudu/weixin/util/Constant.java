@@ -18,7 +18,7 @@ public final class Constant {
     /**
      * 微信的url
      */
-    public static final String URL = "lm.wx.dev.duduchewang.cn"; //嘟嘟车网测试平台的
+    public static final String URL = "wx.pre.dev.duduchewang.cn"; //嘟嘟车网测试平台的
 //    public static final String URL = "lizhen12.tunnel.2bdata.com"; //个人测试使用的
     /**
      * 微信开发者的token

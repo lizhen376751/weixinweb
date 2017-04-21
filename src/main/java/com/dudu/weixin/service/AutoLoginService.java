@@ -129,6 +129,7 @@ public class AutoLoginService {
             wxCustomer.setCarHaopai(platenumber);
             wxCustomer.setCustomerMobile(mobilephone);
             wxCustomer.setPassword(TestMD5Util.kL(password));
+            wxCustomer.setCustomerName(platenumber);
             wxCustomerService.addWxCustomer(wxCustomer);
             //先根据openid判断之前有没有登录的信息
             logInLogService.addLogInLog(platenumber, lmcode, openid);
