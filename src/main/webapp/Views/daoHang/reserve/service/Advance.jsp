@@ -40,7 +40,7 @@
 	    <script src="../js/Mobiscroll/js/mobiscroll_004.js"></script>
 	    <script src="../js/Mobiscroll/js/mobiscroll_005.js"></script>
 	    <script src="../js/Mobiscroll/js/mobiscroll.js"></script>
-		<script  type="text/javascript"  href="/scripts/main.js"></script>
+		<script  type="text/javascript"  src="/scripts/main.js"></script>
 	</head>
 	<body>
 		<%--网页加载效果--%>
