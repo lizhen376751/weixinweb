@@ -16,9 +16,14 @@
 		<script src="/scripts/personCenter/JsBarcode.all.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/personCenter/car-brand.js" type="text/javascript" charset="utf-8"></script>
 		<%--<script src="/scripts/personCenter/data.js" type="text/javascript" charset="utf-8"></script>--%>
+		<script  type="text/javascript"  href="/scripts/main.js"></script>
 		<script src="/scripts/personCenter/personalCenter.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
+		<%--网页加载效果--%>
+		<div id="loading">
+			<img src="/files/loading.gif"  alt="loading.." />
+		</div>
 		<!--top-------------------------------------------------车牌号-->
 		<div class="top_header">
 			<img src="/files/personCenter/top_bg.png" class="top_bg"/>

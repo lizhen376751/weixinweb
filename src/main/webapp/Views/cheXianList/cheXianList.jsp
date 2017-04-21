@@ -12,9 +12,14 @@
 		<link rel="stylesheet" type="text/css" href="/styles/cheXianList/cheXianList.css"/>
 		
 		<script src="/scripts/cheXianList/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script  type="text/javascript"  href="/scripts/main.js"></script>
 		<script src="/scripts/cheXianList/cheXianList.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
+	<%--网页加载效果--%>
+	<div id="loading">
+		<img src="/files/loading.gif"  alt="loading.." />
+	</div>
 	<input type="hidden" name="shopCode" id="shopCode" value="<%=shopCode%>" />
 		<!--------------------------------------------------------------------------------每一条单据-->
 		<%--<div class="bills">--%>

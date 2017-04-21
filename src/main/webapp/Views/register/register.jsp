@@ -10,8 +10,13 @@
 	<link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
 	<link rel="stylesheet" type="text/css" href="/styles/register/register.css"/>
 	<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script  type="text/javascript"  href="/scripts/main.js"></script>
 	<script src="/scripts/register/register.js" type="text/javascript" charset="utf-8"></script>
 	<body>
+		<%--网页加载效果--%>
+		<div id="loading">
+			<img src="/files/loading.gif"  alt="loading.." />
+		</div>
 		<!-----------------------------------------------------------------------顶部图片-->
 		<div class="top_img">
 			<img src="/files/register/hyzc.png" class="hyzc"/>

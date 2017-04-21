@@ -11,9 +11,14 @@
 
     <script src="/scripts/baoxianDetail/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/baoxianDetail/swiper-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script  type="text/javascript"  href="/scripts/main.js"></script>
     <script src="/scripts/baoxianDetail/cheXianDetail.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
+<%--网页加载效果--%>
+<div id="loading">
+    <img src="/files/loading.gif"  alt="loading.." />
+</div>
 <div class="wrap">
     <!-----------------------------------------------------------------------------------头部信息，包括是否报价-->
     <div class="header_main font_3">
