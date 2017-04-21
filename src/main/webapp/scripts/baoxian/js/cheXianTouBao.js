@@ -620,7 +620,7 @@ $(document).ready(function(){
                     }).then(function (rst) {
                         console.log(rst.file);
                         var filesss = rst.file;
-                        new applyTokenDoNew(filesss,DuduOssCallbackVarData1);
+                        new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
                     });
 
                 },
