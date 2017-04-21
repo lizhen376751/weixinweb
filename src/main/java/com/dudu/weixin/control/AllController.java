@@ -299,6 +299,39 @@ public class AllController {
         return "/cheXianList/cheXianList.jsp"; //展示车险列表的页面
 
     }
+
+    /**
+     * 跳转至保险详情页面
+     * @param request 请求
+     * @param model 返回数据
+     * @return 保险详情页面
+     */
+    @RequestMapping(value = "baoXianDetails", method = RequestMethod.GET)
+    public String toInsuranceDetails(HttpServletRequest request, Model model) {
+        String companyid = request.getParameter("companyid");
+        Integer companyId = Integer.parseInt(companyid);
+        if (companyId != null) {
+            model.addAttribute("companyId", companyId);
+        }
+        String shopcodelm = request.getParameter("shopcodelm");
+        if (shopcodelm != null && !shopcodelm.equals("")) {
+            model.addAttribute("shopCodeLm", shopcodelm);
+        }
+        String orderNumb = request.getParameter("orderNumb");
+        if (orderNumb != null && !orderNumb.equals("")) {
+            model.addAttribute("orderNumb", orderNumb);
+        }
+        String shopCode = request.getParameter("shopCode");
+        if (shopCode != null && !shopCode.equals("")) {
+            model.addAttribute("shopCode", shopCode);
+        }
+        String carId = request.getParameter("carId");
+        if (carId != null && !carId.equals("")) {
+            model.addAttribute("plateNumber", carId);
+        }
+        return "/baoxianDetail/cheXianDetail.jsp"; //车险详情展示页面
+    }
+
 //-----------------------------------------------------------------------ahi
 
     /**

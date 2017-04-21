@@ -9,6 +9,8 @@ import com.dudu.soa.baoxian.kaidan.api.APIBaoXainKaiDan;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianKaiDan;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianList;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianParamList;
+import com.dudu.soa.baoxian.kaidan.module.ClientInsuranceResult;
+import com.dudu.soa.baoxian.kaidan.module.ClientInsuranceTypeParam;
 import com.dudu.soa.baoxian.kaidan.module.CustomerModel;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceBill;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceCompany;
@@ -326,5 +328,18 @@ public class ChexiantoubaoService {
         customerInfoParam.setId(customerId);
         CustomerInfo customerById = apiCustomerInfo.getCustomerById(customerInfoParam);
         return customerById;
+    }
+
+    /**
+     * 获取客户端保险详情
+     * @param clientInsuranceTypeParam 查询参数
+     * @return  ClientInsuranceResult  查询结果返回
+     */
+    public ClientInsuranceResult getClientInsurance(ClientInsuranceTypeParam clientInsuranceTypeParam) {
+        ClientInsuranceResult clientInsuranceResult = aPIBaoXainKaiDan.queryClientInsurace(clientInsuranceTypeParam);
+        if (clientInsuranceResult != null) {
+            return clientInsuranceResult;
+        }
+        return null;
     }
 }
