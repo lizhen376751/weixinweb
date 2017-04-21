@@ -7,22 +7,39 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <!-- 自动加载配置文件 -->
-    <bean id="DuduFrameworkConfigurer"
-          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name = "systemPropertiesMode" value = "2" />
-        <property name="ignoreUnresolvablePlaceholders" value="true" />
+    <!-- 使用disconf必须添加以下配置 -->
+    <bean id="disconfMgrBean" class="com.baidu.disconf.client.DisconfMgrBean"
+          destroy-method="destroy">
+        <property name="scanPackage" value="com.baidu"/>
+    </bean>
+
+    <bean id="disconfMgrBean2" class="com.baidu.disconf.client.DisconfMgrBeanSecond"
+          init-method="init" destroy-method="destroy">
+    </bean>
+
+    <!-- 使用托管方式的disconf配置(无代码侵入, 配置更改不会自动reload)-->
+    <bean id="configproperties_no_reloadable_disconf"
+          class="com.baidu.disconf.client.addons.properties.ReloadablePropertiesFactoryBean">
         <property name="locations">
             <list>
-                <value>classpath*:META-INF/app.properties</value>
-                <value>classpath*:*.properties</value>
+                <value>classpath:dubbo.properties</value>
             </list>
         </property>
-        <property name="fileEncoding" value="UTF-8"/>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="systemPropertiesMode" value="2"/>
+        <property name="propertiesArray">
+            <list>
+                <ref bean="configproperties_no_reloadable_disconf"/>
+            </list>
+        </property>
     </bean>
 
     <dubbo:annotation package="com.dudu" />
-    <dubbo:application name = "${dubbo.application.name}" />
+    <dubbo:application name = "DuduWeixin" />
     <dubbo:protocol name="dubbo" port="${dubbo.application.port}"   host = "${dubbo.application.host}" />
     <dubbo:registry address="${dubbo.registry.address}" />
     <dubbo:monitor protocol="registry" />
