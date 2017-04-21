@@ -306,11 +306,11 @@ public class AllController {
      * @param model 返回数据
      * @return 保险详情页面
      */
-    @RequestMapping(value = "baoXianDetails", method = RequestMethod.GET)
+    @RequestMapping(value = "baoXianDetails")
     public String toInsuranceDetails(HttpServletRequest request, Model model) {
         String companyid = request.getParameter("companyid");
-        Integer companyId = Integer.parseInt(companyid);
-        if (companyId != null) {
+        if (companyid != null) {
+            Integer companyId = Integer.parseInt(companyid);
             model.addAttribute("companyId", companyId);
         }
         String shopcodelm = request.getParameter("shopcodelm");
