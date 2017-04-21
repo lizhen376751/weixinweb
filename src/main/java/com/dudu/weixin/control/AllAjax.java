@@ -391,7 +391,7 @@ public class AllAjax {
      * @return ClientInsuranceResult 结果返回
      */
     @ResponseBody
-    @RequestMapping(value = "findClientInsurance/{shopCode}/{shopCodeLm}/{companyId}/{orderNumb}/{plateNumber}", method = RequestMethod.POST)
+    @RequestMapping(value = "findClientInsurance/{shopCode}/{shopCodeLm}/{companyId}/{orderNumb}/{plateNumber}", method = RequestMethod.GET)
     public ClientInsuranceResult queryClientInsurance(@PathVariable("shopCode") String shopCode, @PathVariable("shopCodeLm") String shopCodeLm,
                                                       @PathVariable("companyId") Integer companyId, @PathVariable("orderNumb") String orderNumb,
                                                       @PathVariable("plateNumber") String plateNumber) {
