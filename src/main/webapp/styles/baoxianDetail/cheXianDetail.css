@@ -1,0 +1,110 @@
+/*-----------------------------------------------------------------------------------公共样式*/
+body{
+	background: #F4F4F4;
+}
+
+/*-----------------------------------------------------------------------------------整个框架*/
+.wrap{
+	width: 100%;
+	
+}
+.header_main{
+	width: 100%;
+	background: #fff;
+}
+.header_main ul{
+	width: 94%;
+	margin: 0 auto;
+	padding-top: 0.32rem;
+}
+.header_main ul li{
+	width: 100%;
+	overflow: hidden;
+	padding-bottom: 0.32rem;
+}
+.header_main ul li span:nth-child(1){
+	float: left;
+}
+.header_main ul li span:nth-child(2){
+	float: left;
+}
+.header_main ul li span:nth-child(3){
+	float: right;
+}
+/*-----------------------------------------------------------------------------------基本信息和险种信息*/
+.infor{
+	width: 100%;
+	background: #fff;
+	margin-top: 0.32rem;
+}
+.infor .infor_til{
+	width: 94%;
+	overflow: hidden;
+	position: relative;
+}
+.infor .infor_til div{
+	width: 50%;
+	float: left;
+	text-align: center;
+	margin: 0.4rem 0;
+}
+.infor .infor_til img{
+	width: 0.12rem;
+	position: absolute;
+	top: 0.48rem;
+	left: 50%;
+	margin-left: -0.06rem;
+}
+/*--------------------------------------------------------------------------------轮播部分*/
+.swiper-container{
+	width: 94%;
+	margin-top: 0;
+}
+/*-------------------------------------------------------------------------------基本信息*/
+/*.basic_infor{
+	display: none;
+}*/
+.basic_infor ul{
+	width: 100%;
+}
+.basic_infor ul li{
+	overflow: hidden;
+	padding-bottom: 0.32rem;
+}
+.basic_infor ul li span{
+	float: left;
+}
+
+/*----------------------------------------------------------------------------------险种信息*/
+.coverage_infor ul li{
+	width: 100%;
+	overflow: hidden;
+	padding-bottom: 0.32rem;
+}
+.bxlx{
+	width: 32%;
+	text-align: center;
+	float: left;
+}
+.xz{
+	width: 50%;
+	float: left;
+}
+.coverage_infor ul li div{
+	width: 50%;
+	float: right;
+}
+.coverage_infor ul li div span{
+	width: 24%;
+	float: left;
+	text-align: center;
+}
+.be,.mp{
+	margin-right: 12%;
+}
+@media only screen and (min-width: 1080px){
+	.wrap{
+		margin-top: 32px;
+	}
+}
+
