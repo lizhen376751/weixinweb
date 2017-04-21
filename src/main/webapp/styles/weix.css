@@ -38,6 +38,7 @@ hr{border:2px dashed #f4f4f4;}
 }
 #loading img{
     width:620px;
+    margin: 0 auto;
 }
 /*头部样式*/
 .goback{
@@ -47,6 +48,16 @@ hr{border:2px dashed #f4f4f4;}
     height: 65px;
     line-height: 65px;
     vertical-align: middle;}
+.goback img{
+    width:30px;
+}
+.goback span{
+    font-size: 3rem;
+    display: block;
+    margin-top: -88px;
+    margin-left: 45px;
+    color: #5cb8ff;
+}
 .title{height:116px;width:100%;line-height:116px;text-align: center;}
 .title_img{display:inline-block;margin-left:42px;float:left;}
 .title_img img{vertical-align:middle; }
