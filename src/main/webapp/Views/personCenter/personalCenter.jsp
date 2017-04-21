@@ -9,7 +9,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
 		<title>个人中心</title>
-		<link rel="stylesheet" type="text/css" href="/styles/personCenter/wxlm.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/personCenter/car-brand.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/personCenter/personalCenter.css"/>
 		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>

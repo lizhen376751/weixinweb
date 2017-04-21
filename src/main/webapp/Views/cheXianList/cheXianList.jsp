@@ -8,7 +8,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>订单列表</title>
-		<link rel="stylesheet" type="text/css" href="/styles/cheXianList/wxlm.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/cheXianList/cheXianList.css"/>
 		
 		<script src="/scripts/cheXianList/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>

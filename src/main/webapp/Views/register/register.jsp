@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>注册</title>
 	</head>
-	<link rel="stylesheet" type="text/css" href="/styles/register/wxlm.css"/>
+	<link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
 	<link rel="stylesheet" type="text/css" href="/styles/register/register.css"/>
 	<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/scripts/register/register.js" type="text/javascript" charset="utf-8"></script>

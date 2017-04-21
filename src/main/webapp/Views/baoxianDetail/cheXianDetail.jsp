@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>投保详情</title>
-    <link rel="stylesheet" type="text/css" href="/styles/baoxianDetail/wxlm.css"/>
+    <link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
     <link rel="stylesheet" type="text/css" href="/styles/baoxianDetail/swiper-3.3.1.min.css"/>
     <link rel="stylesheet" type="text/css" href="/styles/baoxianDetail/cheXianDetail.css"/>
 
