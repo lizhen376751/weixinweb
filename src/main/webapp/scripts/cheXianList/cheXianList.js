@@ -32,7 +32,7 @@ $(document).ready(function(){
                         '<span class="color_9">'+arr[i].list[j].insurancename+'：</span>'+
                         '<span class="price">¥'+arr[i].list[j].totalPrices+'</span>'+
                         '<span class="quote color_10">已报价</span>'+
-                        '<span class="detail color_3">详情</span>'+
+                        '<span class="detail color_3" ddbh="'+arr[i].orderNumb+'" bxgs="'+arr[i].list[j].companyid+'" carId="'+arr[i].carId+'" shopCode="'+arr[i].shopCode+'" shopLm="'+arr[i].shopcodelm+'">详情</span>'+
                         '</li>';
                     num += 1;
                 }else{
@@ -96,6 +96,8 @@ $(document).ready(function(){
                 var carId = $(this).attr("carId");
                 var shopCode = $(this).attr("shopCode");
                 var shopLm = $(this).attr("shopLm");
+                // console.log(ddxq);
+                // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
                 window.location.href = "/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs;
             });
         },

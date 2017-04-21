@@ -26,23 +26,23 @@
             <!----------------------------------------------------------------------------保险公司-->
             <li>
                 <span class="color_11">保险公司：</span>
-                <span class="color_9">人民保险</span>
+                <span class="color_9 bxgs">人民保险</span>
                 <span class="color_7 quote">报价成功</span>
             </li>
             <!----------------------------------------------------------------------------保费合计-->
             <li>
                 <span class="color_11">保费合计：</span>
-                <span class="color_12">¥5083.4</span>
+                <span class="color_12 bfhj">¥5083.4</span>
             </li>
             <!-----------------------------------------------------------------------------商业险生效日期-->
             <li>
                 <span class="color_11">商业险生效日期：</span>
-                <span class="color_9">2017-03-25至2018-03-25</span>
+                <span class="color_9 syx"></span>
             </li>
             <!-----------------------------------------------------------------------------交强险生效日期-->
             <li>
                 <span class="color_11">交强险生效日期：</span>
-                <span class="color_9">2017-03-25至2018-03-25</span>
+                <span class="color_9 jqx"></span>
             </li>
         </ul>
     </div>     <!----------------------------------------------------------------------------头部信息结束-->
@@ -62,37 +62,37 @@
                         <!-----------------姓名-->
                         <li>
                             <span class="color_11">姓名：</span>
-                            <span class="color_9">张三</span>
+                            <span class="color_9 xm">张三</span>
                         </li>
                         <!-----------------车牌号-->
                         <li>
                             <span class="color_11">车牌号：</span>
-                            <span class="color_9">鲁A00000</span>
+                            <span class="color_9 cph">鲁A00000</span>
                         </li>
                         <!-----------------手机号码-->
                         <li>
                             <span class="color_11">手机号码：</span>
-                            <span class="color_9">15236987562</span>
+                            <span class="color_9 sjh">15236987562</span>
                         </li>
                         <!-----------------车辆识别码-->
                         <li>
                             <span class="color_11">车辆识别码：</span>
-                            <span class="color_9">jfasnlkfcnlknvfcslfasklnkxczlnv</span>
+                            <span class="color_9 clsbdm"></span>
                         </li>
                         <!-----------------发动机型号-->
                         <li>
                             <span class="color_11">发动机型号：</span>
-                            <span class="color_9">12456465668544</span>
+                            <span class="color_9 fdjxh"></span>
                         </li>
                         <!-----------------使用性质-->
                         <li>
                             <span class="color_11">使用性质：</span>
-                            <span class="color_9">家用-非营运</span>
+                            <span class="color_9 syxz"></span>
                         </li>
                         <!-----------------注册日期-->
                         <li>
                             <span class="color_11">注册日期：</span>
-                            <span class="color_9">2017-03-25</span>
+                            <span class="color_9 zcrq">2017-03-25</span>
                         </li>
 
                     </ul>
@@ -110,32 +110,32 @@
                             </div>
                         </li>
                         <!--------------------------------------------------------------内容-->
-                        <li class="color_9">
-                            <span class="xz">车辆损失险</span>
-                            <div>
-                                <span class="be">325万</span>
-                                <span class="mp">是</span>
-                                <span>325万</span>
-                            </div>
-                        </li>
+                        <%--<li class="color_9">--%>
+                            <%--<span class="xz">车辆损失险</span>--%>
+                            <%--<div>--%>
+                                <%--<span class="be">325万</span>--%>
+                                <%--<span class="mp">是</span>--%>
+                                <%--<span>325万</span>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
 
-                        <li class="color_9">
-                            <span class="xz">第三者责任险</span>
-                            <div>
-                                <span class="be">325万</span>
-                                <span class="mp">无</span>
-                                <span>325万</span>
-                            </div>
-                        </li>
+                        <%--<li class="color_9">--%>
+                            <%--<span class="xz">第三者责任险</span>--%>
+                            <%--<div>--%>
+                                <%--<span class="be">325万</span>--%>
+                                <%--<span class="mp">无</span>--%>
+                                <%--<span>325万</span>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
 
-                        <li class="color_9">
-                            <span class="xz">车上责任险（司机）</span>
-                            <div>
-                                <span class="be">325万</span>
-                                <span class="mp">否</span>
-                                <span>325万</span>
-                            </div>
-                        </li>
+                        <%--<li class="color_9">--%>
+                            <%--<span class="xz">车上责任险（司机）</span>--%>
+                            <%--<div>--%>
+                                <%--<span class="be">325万</span>--%>
+                                <%--<span class="mp">否</span>--%>
+                                <%--<span>325万</span>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
                     </ul>
                 </div>
             </div>
