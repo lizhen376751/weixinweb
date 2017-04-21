@@ -28,6 +28,9 @@ span{
 .font_5{
 	font-size: 0.54rem;
 }
+.font_6{
+	font-size: 0.48rem;
+}
 /*-------------------------------------------------颜色*/
 .color_1{
 	color: #6c6c6c;
@@ -58,6 +61,12 @@ span{
 }
 .color_10{
 	color: #31a3ff;
+}
+.color_11{
+	color: #838383;
+}
+.color_12{
+	color: #ff8d12;
 }
 /* 缓冲图片*/
 #loading{
