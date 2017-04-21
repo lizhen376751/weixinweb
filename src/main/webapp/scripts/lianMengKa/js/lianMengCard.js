@@ -104,8 +104,9 @@ $(document).ready(function () {
 				for (var j = 0;j < arr[i].leftMx.length;j++) {
 					var yxrqDateTime = arr[i].leftMx[j].effective_date;
                     var dates = dateFormat(yxrqDateTime);
+                    var cc = dates.replace(/-/ig,"/");
 					var newDate = new Date();
-                    var oldDate = new Date(dates);
+                    var oldDate = new Date(cc);
 					if(arr[i].leftMx[j].current_num != 0 && arr[i].leftMx[j].current_num != ""){
                         if(oldDate >= newDate){
                             obj_append("div14","border_2",$($("ul")[i]),"li","");
