@@ -1,6 +1,8 @@
 package com.dudu.weixin.control;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.dudu.soa.baoxian.kaidan.module.ClientInsuranceResult;
+import com.dudu.soa.baoxian.kaidan.module.ClientInsuranceTypeParam;
 import com.dudu.soa.baoxian.kaidan.module.Insurance;
 import com.dudu.soa.dududata.oss.api.ApiDuduDataOssSecretConfigIntf;
 import com.dudu.soa.dududata.oss.module.OssSecretConfig;
@@ -378,6 +380,29 @@ public class AllAjax {
         List<Insurance> list = cheXianService.queryBaoXianList(shopCode);
         return list;
     }
+
+    /**
+     *
+     * @param shopCode 店铺编码
+     * @param shopCodeLm 联盟编码
+     * @param companyId 保险公司ID
+     * @param orderNumb 订单单号
+     * @param plateNumber 车牌号
+     * @return ClientInsuranceResult 结果返回
+     */
+    @ResponseBody
+    @RequestMapping(value = "findClientInsurance/{shopCode}/{shopCodeLm}/{companyId}/{orderNumb}/{plateNumber}", method = RequestMethod.POST)
+    public ClientInsuranceResult queryClientInsurance(@PathVariable("shopCode") String shopCode, @PathVariable("shopCodeLm") String shopCodeLm,
+                                                      @PathVariable("companyId") Integer companyId, @PathVariable("orderNumb") String orderNumb,
+                                                      @PathVariable("plateNumber") String plateNumber) {
+        ClientInsuranceTypeParam  ctp = new ClientInsuranceTypeParam();
+        ClientInsuranceResult clientInsurance = chexiantoubaoService.getClientInsurance(ctp);
+        if (clientInsurance != null) {
+            return clientInsurance;
+        }
+        return null;
+    }
+
 
     /**
      * @param str 传进需要解析的字符串
