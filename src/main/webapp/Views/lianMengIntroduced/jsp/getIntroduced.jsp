@@ -20,11 +20,16 @@
     </style>
     <%--<link rel="stylesheet" type="text/css" href="/styles/lianMengIntroduced/css/yangCheXinXi.css"/>--%>
     <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/main.js" type="text/javascript" charset="utf-8"></script>
 
 
 </head>
 
 <body>
+<%--网页加载效果--%>
+<div id="loading">
+    <img src="/files/loading.gif"  alt="loading.." />
+</div>
 <h2></h2>
 <div class="txt">
 
