@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="/styles/login/css/login.css"/>
 		
 		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
-		<script  type="text/javascript"  href="/scripts/main.js"></script>
+		<script  type="text/javascript"  src="/scripts/main.js"></script>
 		<script src="/scripts/login/js/login.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
