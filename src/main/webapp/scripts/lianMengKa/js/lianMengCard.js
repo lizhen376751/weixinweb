@@ -18,7 +18,14 @@ Date.prototype.format = function(format) {
               }
        }
        return format;
-}
+};
+$(window).load(function(){
+    setTimeout(function () {
+        $("#loading").hide();
+        // $(".center_zhis ").show();
+        // $(".conter_main").show()
+    }, 1000);
+});
 
 
 

@@ -15,6 +15,10 @@
 		<script src="/scripts/lianMengKa/js/jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
+		<%--网页加载效果--%>
+		<div id="loading">
+			<img src="/files/loading.gif"  alt="loading.." />
+		</div>
 		<div class="zheZhaoCeng">
 			<div class="bianKuang">
 				<div class="erWeiMa">
