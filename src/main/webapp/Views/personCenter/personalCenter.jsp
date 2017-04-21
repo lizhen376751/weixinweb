@@ -16,7 +16,7 @@
 		<script src="/scripts/personCenter/JsBarcode.all.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/personCenter/car-brand.js" type="text/javascript" charset="utf-8"></script>
 		<%--<script src="/scripts/personCenter/data.js" type="text/javascript" charset="utf-8"></script>--%>
-		<script  type="text/javascript"  src="/scripts/main.js"></script>
+		<%--<script  type="text/javascript" src="/scripts/main.js"></script>--%>
 		<script src="/scripts/personCenter/personalCenter.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>

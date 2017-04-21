@@ -40,7 +40,7 @@ $(document).ready(function(){
                         '<span class="color_9">'+arr[i].list[j].insurancename+'：</span>'+
                         '<span class="price">¥0.0</span>'+
                         '<span class="quote color_10">报价中</span>'+
-                        '<span class="detail color_3" ddbh="'+arr[i].orderNumb+'" bxgs="'+arr[i].list[j].companyId+'">详情</span>'+
+                        '<span class="detail color_3" ddbh="'+arr[i].orderNumb+'" bxgs="'+arr[i].list[j].companyid+'" carId="'+arr[i].carId+'" shopCode="'+arr[i].shopCode+'" shopLm="'+arr[i].shopcodelm+'">详情</span>'+
                         '</li>';
                 }
             }
@@ -91,8 +91,12 @@ $(document).ready(function(){
             //--------------------------------------------------------------------------------------点击详情按钮跳转
             detail.on("click",function(){
                 // alert("该功能暂未开通~");
-                // var ddxq = $(this)
-                // window.location.href = "cheXianDetail.html"
+                var ddxq = $(this).attr("ddbh");
+                var bxgs = $(this).attr("bxgs");
+                var carId = $(this).attr("carId");
+                var shopCode = $(this).attr("shopCode");
+                var shopLm = $(this).attr("shopLm");
+                window.location.href = "/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs;
             });
         },
         error:function(eee){

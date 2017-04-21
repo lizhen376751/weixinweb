@@ -38,6 +38,7 @@ hr{border:2px dashed #f4f4f4;}
 }
 #loading img{
     width:620px;
+    margin: 0 auto;
 }
 /*头部样式*/
 .goback{

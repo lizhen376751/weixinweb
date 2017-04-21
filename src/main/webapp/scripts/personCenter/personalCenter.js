@@ -10,7 +10,11 @@
     win.addEventListener(resizeEvt, recalc, false);
     doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document, window);
-
+$(window).load(function(){
+    setTimeout(function () {
+        $("#loading").hide();
+    }, 1000);
+});
 $(document).ready(function () {
     var clpp = $(".clpp")  //------------------------------------------------------------------车辆品牌
     var car_num = $(".car_num"); //-------------------------------------------------------------获取车牌号信息框
