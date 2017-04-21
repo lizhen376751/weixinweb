@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/ahi/ahi.css"/>
     <script type="text/javascript" src="/scripts/ahi/jquery-1.12.1.min.js"></script>
     <script src="/scripts/ahi/index.js" type="text/javascript" charset="utf-8"></script>
-    <script  type="text/javascript"  href="/scripts/main.js"></script>
+    <script  type="text/javascript"  src="/scripts/main.js"></script>
 </head>
 
 <script>

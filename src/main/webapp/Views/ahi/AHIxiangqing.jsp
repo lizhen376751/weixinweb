@@ -12,7 +12,7 @@
     <script type="text/javascript" src="/scripts/ahi/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="/scripts/ahi/chart.meter.js"></script>
     <script type="text/javascript" src="/scripts/ahi/chart.radar.js"></script>
-    <script  type="text/javascript"  href="/scripts/main.js"></script>
+    <script  type="text/javascript"  src="/scripts/main.js"></script>
 
     <script type="text/javascript">
 
