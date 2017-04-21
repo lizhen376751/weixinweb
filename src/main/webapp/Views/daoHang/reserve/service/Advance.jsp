@@ -40,8 +40,13 @@
 	    <script src="../js/Mobiscroll/js/mobiscroll_004.js"></script>
 	    <script src="../js/Mobiscroll/js/mobiscroll_005.js"></script>
 	    <script src="../js/Mobiscroll/js/mobiscroll.js"></script>
+		<script  type="text/javascript"  href="/scripts/main.js"></script>
 	</head>
 	<body>
+		<%--网页加载效果--%>
+		<div id="loading">
+			<img src="/files/loading.gif"  alt="loading.." />
+		</div>
 		<div  class="Advance_conter">
 			<ul class="Advance_conter_list font_2">
 				<li >店铺名称：<%=shopName %></li>
