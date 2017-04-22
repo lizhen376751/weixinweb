@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------头部logo*/
 .logo{
-	width: 4.68rem;
-	max-width: 468px;
+	width: 7.95rem;
+	max-width: 795px;
 	height: 3rem;
 	max-height: 300px;
-	margin: 1.32rem auto 0;
+	margin: 1.32rem 0 0 0.9rem;
 }
 .logo img{
 	width: 100%;
