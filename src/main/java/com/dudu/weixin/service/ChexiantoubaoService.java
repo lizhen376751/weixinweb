@@ -22,6 +22,9 @@ import com.dudu.soa.basedata.employee.module.ServiceAdvisor;
 import com.dudu.soa.customercenter.customer.api.ApiCustomerInfo;
 import com.dudu.soa.customercenter.customer.module.CustomerInfo;
 import com.dudu.soa.customercenter.customer.module.CustomerInfoParam;
+import com.dudu.soa.lmbasedata.basedata.relation.api.ApiRelationIntf;
+import com.dudu.soa.lmbasedata.basedata.relation.module.ShopSearchStructureParam;
+import com.dudu.soa.lmbasedata.basedata.relation.module.ShopStructureParam;
 import com.dudu.soa.lmbasedata.basedata.shop.api.ApiShopIntf;
 import com.dudu.soa.lmbasedata.basedata.shop.module.ShopParam;
 import com.dudu.soa.lmbasedata.basedata.shop.module.ShopQueryFruit;
@@ -49,7 +52,7 @@ public class ChexiantoubaoService {
     /**
      * 引入保险类型api
      */
-    @Reference(version = "1.0")
+    @Reference(version = "1.0", timeout = 1200000)
     private APIBaoXianType aPIBaoXianType;
     /**
      * 获取联盟总部信息
@@ -66,6 +69,11 @@ public class ChexiantoubaoService {
      */
     @Reference(version = "0.0.1", timeout = 3000)
     private ApiCustomerInfo apiCustomerInfo;
+    /**
+     * 根据店铺查询相关联盟
+     */
+    @Reference(version = "0.0.1")
+    private ApiRelationIntf apiRelationIntf;
 
 
     /**
@@ -242,14 +250,32 @@ public class ChexiantoubaoService {
     }
 
     /**
-     * 查询联盟总部
-     *
-     * @return 联盟总部列表
+     * 查询店铺相关联盟
+     * @param shopCode 店铺编码
+     * @return List<ShopQueryFruit> 返回的联盟
      */
-    public List<ShopQueryFruit> queryLianMengZB() {
-        ShopParam shopParam = new ShopParam();
-        shopParam.setType("1");
-        return apiShopIntf.queryShopInfo(shopParam);
+    public List<ShopQueryFruit> queryLianMengZB(String shopCode) {
+       /* ShopParam shopParam = new ShopParam();
+        shopParam.setType("1";
+
+        return apiShopIntf.queryShopInfo(shopParam);*/
+       List<ShopQueryFruit> list = new ArrayList<>();
+        ShopSearchStructureParam ssp = new ShopSearchStructureParam();
+        ssp.setCode(shopCode);
+        List<ShopStructureParam> shopStructureParams = apiRelationIntf.queryShopRelation(ssp);
+        if (shopStructureParams != null && shopStructureParams.size() > 0) {
+            for (ShopStructureParam sp: shopStructureParams) {
+                String brandcode = sp.getBrandcode();
+                ShopParam shopParam = new ShopParam();
+                shopParam.setCode(brandcode);
+                ShopQueryFruit shopInfo = apiShopIntf.getShopInfo(shopParam);
+                list.add(shopInfo);
+            }
+        }
+        if (list != null && list.size() > 0) {
+            return list;
+        }
+        return null;
     }
 
 

@@ -336,7 +336,8 @@ public class AllAjax {
         }
         //联盟总部
         if ("lianmeng".equals(fromflag)) {
-            List<ShopQueryFruit> shopQueryFruits = chexiantoubaoService.queryLianMengZB();
+            String shopCode = request.getParameter("mineShopCode");
+            List<ShopQueryFruit> shopQueryFruits = chexiantoubaoService.queryLianMengZB(shopCode);
             return shopQueryFruits;
         }
         //车辆信息

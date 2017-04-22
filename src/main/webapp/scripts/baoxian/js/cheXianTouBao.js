@@ -74,7 +74,8 @@ $(document).ready(function(){
         type    : 'POST',
         url     : '/getCommonAjax',
         data    : {
-            fromflag : "lianmeng"
+            fromflag : "lianmeng",
+            mineShopCode : mineShopCode
         },
         success:function(jsondata){
             var json = JSON.parse(jsondata);
