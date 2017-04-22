@@ -157,7 +157,7 @@ public class LianMengKaService {
      * @return 联盟卡列表
      */
     public List<LianmengKaResultModule> getXmkCardInfo(String shopcode, String cardNo, String carHaoPai) {
-        System.out.println(shopcode + "," + cardNo + "," + carHaoPai);
+//        System.out.println(shopcode + "," + cardNo + "," + carHaoPai);
         List<LianmengKaResultModule> results = null;
         LiangmengKaQueryModule queryModule = new LiangmengKaQueryModule();
         queryModule.setProduct_shopcode(shopcode); //联盟总部编码
@@ -180,7 +180,7 @@ public class LianMengKaService {
                 String sellshopName = commonTools.getShopName(sellcode);
                 //TODO 后期需要把sell_shopName放入results结果集,暂时存入sell_shopName里面
                 lianmengKaResultModule.setCar_haopai(sellshopName);
-                System.out.println("+============" + sellcode + shopListImg + sellshopName);
+//                System.out.println("+============" + sellcode + shopListImg + sellshopName);
 
             }
         }

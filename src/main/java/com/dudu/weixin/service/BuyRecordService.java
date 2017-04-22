@@ -29,7 +29,7 @@ public class BuyRecordService {
     public ArrayList getServiceListByLmcodeAndCarNo(String lmCode, String carNo, String top) {
         ArrayList list = new ArrayList();
         int num = Integer.valueOf(top) * num2;
-        System.out.println(" getServiceListByLmcodeAndCarNo 下拉==top:" + top + "|");
+//        System.out.println(" getServiceListByLmcodeAndCarNo 下拉==top:" + top + "|");
         //TODO 后期调用接口
         return list;
     }
@@ -106,7 +106,7 @@ public class BuyRecordService {
     public ArrayList listRecord(String shopcode, String carHaoPai, String top) {
         ArrayList list = new ArrayList();
         int num = Integer.valueOf(top) * 10;
-        System.out.println("下拉==" + top);
+//        System.out.println("下拉==" + top);
         //TODO 调用接口
         return list;
     }

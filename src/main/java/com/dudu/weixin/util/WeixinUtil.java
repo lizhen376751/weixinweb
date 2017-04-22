@@ -142,10 +142,10 @@ public final class WeixinUtil {
         // 将菜单对象转换成json字符串
 
         String jsonMenu = JSONObject.toJSONString(menu);
-        System.out.println(jsonMenu);
+//        System.out.println(jsonMenu);
         // 调用接口创建菜单
         JSONObject jsonObject = httpRequest(url, "POST", jsonMenu);
-        System.out.println(jsonObject);
+//        System.out.println(jsonObject);
         if (null != jsonObject) {
             if (0 != jsonObject.getIntValue("errcode")) {
                 result = jsonObject.getIntValue("errcode");

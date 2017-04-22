@@ -41,7 +41,7 @@ public class LoginActionNewService {
         String shopcode = request.getParameter("shopcode");
         String openId = request.getParameter("OpenId");
 
-        System.out.println("-------------登陆车牌：" + carId + "|Phone:" + phone + "|");
+//        System.out.println("-------------登陆车牌：" + carId + "|Phone:" + phone + "|");
         QueryCustomerParam queryCustomerParam = new QueryCustomerParam();
         queryCustomerParam.setCarHaopai(carId);
 //根据车牌号查询联盟体系是否有这个用户

@@ -36,7 +36,7 @@ public class YangCheInfoService {
      */
 
     public List<YangCheInfo> queryInfoList(String shopcode) {
-        System.out.println("shopcode:" + shopcode);
+//        System.out.println("shopcode:" + shopcode);
 
         YangCheInfo yangCheInfo = new YangCheInfo();
         QueryFilesParam queryFilesParam = new QueryFilesParam();

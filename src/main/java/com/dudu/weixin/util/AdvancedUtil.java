@@ -27,7 +27,7 @@ public class AdvancedUtil {
         requestUrl = requestUrl.replace("CODE", code);
 
         JSONObject jsonObject = WeixinUtil.httpRequest(requestUrl, "GET", null);
-        System.out.println("获取用户的openid=================================" + jsonObject.toString());
+//        System.out.println("获取用户的openid=================================" + jsonObject.toString());
         if (null != jsonObject) {
             try {
                 wat = new WeixinOauth2Token();
@@ -36,12 +36,12 @@ public class AdvancedUtil {
                 wat.setRefreshToken(jsonObject.getString("refresh_token"));
                 wat.setOpenId(jsonObject.getString("openid"));
                 wat.setScope(jsonObject.getString("scope"));
-                System.out.println("wat===========+" + wat.getOpenId() + "+======================" + wat.toString());
+//                System.out.println("wat===========+" + wat.getOpenId() + "+======================" + wat.toString());
             } catch (Exception e) {
                 wat = null;
                 int errorCode = jsonObject.getIntValue("errcode");
                 String errorMsg = jsonObject.getString("errmsg");
-                System.out.println("实体类为:123456=========================" + errorCode + "," + errorMsg);
+//                System.out.println("实体类为:123456=========================" + errorCode + "," + errorMsg);
 //                log.error("��ȡ��ҳ��Ȩƾ֤ʧ�� errcode:{} errmsg:{}", errorCode, errorMsg);
             }
         }

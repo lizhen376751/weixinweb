@@ -77,6 +77,7 @@ public class AutoLoginService {
          * 根据车牌号和联盟code查询联盟用户表是否有数据
          */
         try {
+
             WxCustomer wxCustomer1 = wxCustomerService.getWxCustomer(platenumber, lmcode);
             //如果查询到此用户数据,进行判断,否则提示登录
             if (null != wxCustomer1) {

@@ -84,8 +84,7 @@ public class CheXianService {
                 }
             }
         }
-        System.out.println(baoXianLists.size() + "===============================================================");
-        System.out.println(list.size() + "***************************************************************************");
+
         return list;
     }
 

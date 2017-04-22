@@ -30,11 +30,12 @@ public final class MenuManagerUtil {
      * @param args 主方法
      */
     public static void main(String[] args) {
-        System.out.println("菜单创建开始");
+        log.info("菜单创建开始");
 
         // 调用接口获取access_token
         AccessToken at = WeixinUtil.getAccessToken(Constant.APPID, Constant.APPSERECT);
-        System.out.println(at.getToken());
+        log.info(at.getToken());
+//        System.out.println(at.getToken());
         if (null != at) {
             // 调用接口创建菜单
             int result = WeixinUtil.createMenu(getMenu(), at.getToken());
@@ -42,10 +43,9 @@ public final class MenuManagerUtil {
             // 判断菜单创建结果
             if (0 == result) {
                 log.info("菜单创建成功！");
-                System.out.println("菜单创建成功");
             } else {
                 log.info("菜单创建失败，错误码：" + result);
-                System.out.println("菜单创建失败" + result);
+
             }
         }
     }
@@ -147,7 +147,7 @@ public final class MenuManagerUtil {
          */
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});
-        System.out.println(menu.toString());
+//        System.out.println(menu.toString());
         return menu;
 
     }

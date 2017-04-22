@@ -28,7 +28,7 @@ public class CoreController extends HttpServlet {
      */
     @RequestMapping(value = "/urlconfig", method = RequestMethod.GET)
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("===========进入===============");
+
 /**
  *微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数。
  */
@@ -66,24 +66,5 @@ public class CoreController extends HttpServlet {
 
     }
 
-/**
- * @param request  请求
- * @param response 返回数据
- * @throws ServletException 异常
- * @throws IOException  io异常
- */
-//public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//// ��������Ӧ�ı��������ΪUTF-8����ֹ�������룩
-//request.setCharacterEncoding("UTF-8");
-//response.setCharacterEncoding("UTF-8");
-////code
-//// ���ú���ҵ���������Ϣ��������Ϣ
-//
-//// ��Ӧ��Ϣ
-//PrintWriter out = response.getWriter();
-//
-//out.print(respMessage);
-//out.close();
-//}
 
 }

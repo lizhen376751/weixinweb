@@ -41,7 +41,7 @@ public final class TestMD5Util {
         try {
             md5 = MessageDigest.getInstance("MD5");
         } catch (Exception e) {
-            System.out.println(e.toString());
+//            System.out.println(e.toString());
             e.printStackTrace();
             return "";
         }
@@ -95,9 +95,9 @@ public final class TestMD5Util {
         }
         System.out.println(shortBuffer.toString());
         String s = new String("123456");
-        System.out.println("原始：" + s);
-        System.out.println("MD5加密后：" + kL(s));
-        System.out.println("解密为MD5后的：" + jM(jM(kL(s))));
+//        System.out.println("原始：" + s);
+//        System.out.println("MD5加密后：" + kL(s));
+//        System.out.println("解密为MD5后的：" + jM(jM(kL(s))));
     }
 
 
