@@ -52,15 +52,10 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
-//        Enumeration a = request.getHeaderNames();
-//        while (a.hasMoreElements()) {
-//            System.out.println("head为:============================" + a.nextElement());
-//        }
-        //        String lmcode = request.getHeader("lmcode");
-//            response.setHeader("lmcode", lmcode);
         //无论点击那个页面都要进行拦截
         String lmcode = (String) httpSession.getAttribute("lmcode");
-
+        //防止同一部手机,更换公众号session缓存的问题
+        String lmcode2 = "";
         //获取参数,并将其分解
         String strWxShopcode = request.getParameter("lmcode");
         String flagStr = "";
@@ -70,7 +65,15 @@ public class LoginInterceptor implements HandlerInterceptor {
             flagStr = request.getParameter("flagStr");
         } else {
             flagStr = strWxShopcode.split("_")[1]; //页面跳转判断
-            lmcode = strWxShopcode.split("_")[0]; //联盟code
+            lmcode2 = strWxShopcode.split("_")[0]; //联盟code
+            if (lmcode != null) {
+                if (!lmcode.equals(lmcode2)) {
+                    //判断session里面的联盟code和页面登录进来的联盟code是否相同,如果不相同说明同一个手机关注了两个联盟
+                    request.getRequestDispatcher("/Views/login/login.jsp?lmcode=" + lmcode2).forward(request, response);
+                }
+            }
+
+            lmcode = lmcode2;
             httpSession.setAttribute("lmcode", lmcode);
 
             //微信的openid
