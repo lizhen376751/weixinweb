@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 
 /**
  * 配置微信的url点击提交之后,与服务器的交互
+ * 后期微信所有的接受消息,都会进入这个路径
  * lizhen
  */
 @Controller
@@ -66,5 +68,26 @@ public class CoreController extends HttpServlet {
 
     }
 
+    /**
+     * post方法用于接收微信服务端消息
+     *
+     * @param request  请求
+     * @param response 回应请求
+     */
+    @RequestMapping(value = "/urlconfig", method = RequestMethod.POST)
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("这是post方法！");
+        try {
+            InputStream inputStream = request.getInputStream();
+            //TODO 调用微信消息处理的接口
+//            if(MessageUtil.REQ_MESSAGE_TYPE_EVENT.equals(msgtype)){
+//                EventDispatcher.processEvent(map); //进入事件处理
+//            }else{
+//                MsgDispatcher.processMessage(map); //进入消息处理
+//            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+    }
 }
