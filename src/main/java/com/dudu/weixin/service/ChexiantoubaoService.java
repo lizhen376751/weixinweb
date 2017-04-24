@@ -75,14 +75,13 @@ public class ChexiantoubaoService {
     @Reference(version = "0.0.1")
     private ApiRelationIntf apiRelationIntf;
 
-
     /**
      * 获取保险公司接口
-     *
-     * @return 保险公司列表
+     * @param shopCodeLm 联盟编码
+     * @return List<BaoXianGongSi> 联盟相关的保险公司
      */
-    public List<BaoXianGongSi> baoxianGongSi() {
-        List<BaoXianGongSi> baoXianGongSis = aPIBaoXianType.selectInsuranceCompany();
+    public List<BaoXianGongSi> baoxianGongSi(String shopCodeLm) {
+        List<BaoXianGongSi> baoXianGongSis = aPIBaoXianType.selectInsuranceCompany(shopCodeLm);
         return baoXianGongSis;
     }
 

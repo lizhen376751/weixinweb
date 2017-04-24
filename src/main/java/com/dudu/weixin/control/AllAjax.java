@@ -290,7 +290,8 @@ public class AllAjax {
         }
         //车险投保(保险公司)
         if ("baoxianGongSi".equals(fromflag)) {
-            return chexiantoubaoService.baoxianGongSi();
+            String shopCodeLm = request.getParameter("shopCodeLm");
+            return chexiantoubaoService.baoxianGongSi(shopCodeLm);
         }
         //车险投保()
         if ("baoXianTypes".equals(fromflag)) {
