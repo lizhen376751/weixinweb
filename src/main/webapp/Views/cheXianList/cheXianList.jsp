@@ -20,6 +20,7 @@
 	<div id="loading">
 		<img src="/files/loading.gif"  alt="loading.." />
 	</div>
+	<img src="/files/cheXianList/kf.png" alt="" class="kf"/>
 	<input type="hidden" name="shopCode" id="shopCode" value="<%=shopCode%>" />
 		<!--------------------------------------------------------------------------------每一条单据-->
 		<%--<div class="bills">--%>

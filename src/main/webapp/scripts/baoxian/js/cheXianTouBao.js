@@ -1,8 +1,9 @@
 
 $(document).ready(function(){
     var kf_logo = $(".kf"); //-----------------------------------------huoqu
-    kf_logo.on("click",function () {
+    kf_logo.on("click",function (e) {
         window.location.href = "/oauthLoginServlet?flagStr=cheXianOnline";
+        e.stopPropagation();
     })
 
 
