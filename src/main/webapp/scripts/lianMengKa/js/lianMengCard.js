@@ -105,7 +105,13 @@ $(document).ready(function () {
 					var yxrqDateTime = arr[i].leftMx[j].effective_date;
                     var dates = dateFormat(yxrqDateTime);
                     var cc = dates.replace(/-/ig,"/");
-					var newDate = new Date();
+					var news = new Date();
+                    var e = news.getFullYear();
+                    var f = news.getMonth()+1;
+                    var g = news.getDate();
+                    var h = e + "/" + f + "/" +g;
+                    // console.log(h);
+                    var newDate = new Date(h);
                     var oldDate = new Date(cc);
 					if(arr[i].leftMx[j].current_num != 0 && arr[i].leftMx[j].current_num != ""){
                         if(oldDate >= newDate){
