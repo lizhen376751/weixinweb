@@ -30,12 +30,16 @@
 	margin-left: -2.5%;
 }
 /*---------------------------------------------------------------------------------------------客服logo*/
-.kf{
+.kfk{
+	width: 1.4rem;
 	position: fixed;
 	top: 50%;
 	right: 0;
-	margin-top: -70px;
-	z-index: 33;
+	margin-top: -0.7rem;
+	z-index: 333333;
+}
+.kf{
+	width: 1.4rem;
 }
 /*主体内容样式*/
 #wrap{
