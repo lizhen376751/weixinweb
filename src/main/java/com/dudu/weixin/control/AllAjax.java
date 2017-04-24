@@ -12,6 +12,9 @@ import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
+import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
+import com.dudu.soa.weixindubbo.weixin.weixinconfig.api.ApiWeiXinConfig;
+import com.dudu.soa.weixindubbo.weixin.weixinconfig.module.WeiXinConfig;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.AutoLoginService;
 import com.dudu.weixin.service.BaoYangTiXingService;
@@ -41,6 +44,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -133,7 +137,16 @@ public class AllAjax {
      */
     @Reference(version = "1.0", owner = "miaohao")
     private ApiDuduDataOssSecretConfigIntf ossSecretConfigIntf;
-
+    /**
+     * 引入微信通讯相关的接口
+     */
+    @Reference(version = "1.0")
+    private ApiAllWeiXiRequest apiAllWeiXiRequest;
+    /**
+     * 引入微信配置的相关接口
+     */
+    @Reference(version = "1.0")
+    private ApiWeiXinConfig weiXinConfig;
 
     /**
      * 每个方法的行数有限制所以分成2个方法
@@ -155,6 +168,16 @@ public class AllAjax {
         String platenumber = (String) httpSession.getAttribute("plateNumber"); //车牌号码
         String openId = (String) httpSession.getAttribute("openId"); //openid
         String lmcode = (String) httpSession.getAttribute("lmcode"); //联盟code
+        //前端js获取签名
+        if ("jssdk".equals(fromflag)) {
+            //从参数中获取前端传过来的url
+            String url = request.getParameter("url");
+            //获取appid和app
+            WeiXinConfig config = weiXinConfig.getWeiXinConfig(lmcode);
+            //获取签名
+            HashMap<String, String> stringStringHashMap = apiAllWeiXiRequest.jsSDKSign(config.getAppid(), config.getAppserect(), url);
+            return stringStringHashMap;
+        }
         //个人中心
         if ("personcenter".equals(fromflag)) {
             String businessType = request.getParameter("businessType");
@@ -384,11 +407,10 @@ public class AllAjax {
     }
 
     /**
-     *
-     * @param shopCode 店铺编码
-     * @param shopCodeLm 联盟编码
-     * @param companyId 保险公司ID
-     * @param orderNumb 订单单号
+     * @param shopCode    店铺编码
+     * @param shopCodeLm  联盟编码
+     * @param companyId   保险公司ID
+     * @param orderNumb   订单单号
      * @param plateNumber 车牌号
      * @return ClientInsuranceResult 结果返回
      */
@@ -398,7 +420,7 @@ public class AllAjax {
     public ClientInsuranceResult queryClientInsurance(@PathVariable("shopCode") String shopCode, @PathVariable("shopCodeLm") String shopCodeLm,
                                                       @PathVariable("companyId") Integer companyId, @PathVariable("orderNumb") String orderNumb,
                                                       @PathVariable("plateNumber") String plateNumber) {
-        ClientInsuranceTypeParam  ctp = new ClientInsuranceTypeParam();
+        ClientInsuranceTypeParam ctp = new ClientInsuranceTypeParam();
         if (companyId != null) {
             ctp.setCompanyId(companyId);
         }
