@@ -3,11 +3,14 @@ package com.dudu.weixin.control;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.weixindubbo.loginlog.module.LogInLog;
+import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
+import com.dudu.soa.weixindubbo.weixin.http.module.parammodule.WeiXinUserInfo;
 import com.dudu.soa.weixindubbo.weixin.weixinconfig.api.ApiWeiXinConfig;
 import com.dudu.soa.weixindubbo.weixin.weixinconfig.module.WeiXinConfig;
-import com.dudu.weixin.mould.WeixinOauth2Token;
 import com.dudu.weixin.service.LogInLogService;
 import com.dudu.weixin.util.AdvancedUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +24,11 @@ import javax.servlet.http.HttpSession;
  * 登录验证拦截器(如果有登录历史则不用登录)
  */
 public class LoginInterceptor implements HandlerInterceptor {
+    /**
+     * 日志打印
+     */
+    private static Logger log = LoggerFactory.getLogger(LoginInterceptor.class);
+
     /**
      * session
      */
@@ -41,14 +49,18 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Reference(version = "1.0", owner = "lizhen")
     private ApiWeiXinConfig apiWeiXinConfig;
+    /**
+     * 引入微信通讯相关接口
+     */
+    @Reference(version = "1.0")
+    private ApiAllWeiXiRequest apiAllWeiXiRequest;
 
     /**
-     * @param request
-     * @param response
-     * @param arg2
-     * @return
-     * @throws Exception
-     * @Autowired lizhen
+     * @param request 请求
+     * @param response 返回数据
+     * @param arg2 对象
+     * @return true或者false
+     * @throws Exception 异常
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
@@ -83,9 +95,15 @@ public class LoginInterceptor implements HandlerInterceptor {
                 //TODO 暂时注释掉 获取用户的openid
                 String code = request.getParameter("code");
                 WeiXinConfig weiXinConfig = apiWeiXinConfig.getWeiXinConfig(lmcode);
-                WeixinOauth2Token oauth2AccessToken = advancedUtil.getOauth2AccessToken(weiXinConfig.getAppid(), weiXinConfig.getAppserect(), code);
-                openId = oauth2AccessToken.getOpenId();
+                 //获取微信用户的基本信息
+                WeiXinUserInfo weiXinUserInfo = apiAllWeiXiRequest.getWeiXinUserInfo(code, weiXinConfig.getAppid(), weiXinConfig.getAppserect());
+                log.info("获取微信用户信息=====================" + weiXinUserInfo.toString());
+//                WeixinOauth2Token oauth2AccessToken = advancedUtil.getOauth2AccessToken(weiXinConfig.getAppid(), weiXinConfig.getAppserect(), code);
+                openId = weiXinUserInfo.getOpenid();
+                //获取微信用户的别名
+                String nickname = weiXinUserInfo.getNickname();
                 httpSession.setAttribute("openId", openId);
+                httpSession.setAttribute("nickname", nickname);
             }
         }
 

@@ -1,6 +1,8 @@
 package com.dudu.weixin.control;
 
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.weixin.util.SignUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,11 @@ import java.io.PrintWriter;
  */
 @Controller
 public class CoreController extends HttpServlet {
+    /**
+     * 引入消息处理接口
+     */
+    @Reference(version = "1.0")
+    private ApiAllWeiXiRequest apiAllWeiXiRequest;
 
     /**
      * @param request  请求
@@ -69,7 +76,7 @@ public class CoreController extends HttpServlet {
     }
 
     /**
-     * post方法用于接收微信服务端消息
+     * post方法用于接收微信服务端消息,并进行回复消息
      *
      * @param request  请求
      * @param response 回应请求
@@ -80,11 +87,7 @@ public class CoreController extends HttpServlet {
         try {
             InputStream inputStream = request.getInputStream();
             //TODO 调用微信消息处理的接口
-//            if(MessageUtil.REQ_MESSAGE_TYPE_EVENT.equals(msgtype)){
-//                EventDispatcher.processEvent(map); //进入事件处理
-//            }else{
-//                MsgDispatcher.processMessage(map); //进入消息处理
-//            }
+            apiAllWeiXiRequest.receivemessage(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
