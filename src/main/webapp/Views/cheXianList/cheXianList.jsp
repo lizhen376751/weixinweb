@@ -21,7 +21,7 @@
 		<img src="/files/loading.gif"  alt="loading.." />
 	</div>
 	<div class="kfk">
-		<img src="../img/cheXianList/kf.png" alt="" class="kf"/>
+		<img src="/files/cheXianList/kf.png" alt="" class="kf"/>
 	</div>
 	<input type="hidden" name="shopCode" id="shopCode" value="<%=shopCode%>" />
 		<!--------------------------------------------------------------------------------每一条单据-->

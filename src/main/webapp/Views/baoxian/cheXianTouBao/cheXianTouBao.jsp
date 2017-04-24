@@ -37,7 +37,7 @@
     <img src="/files/loading.gif"  alt="loading.." />
 </div>
 <div class="kfk">
-    <img src="../img/cheXianList/kf.png" alt="" class="kf"/>
+    <img src="/files/baoxian/img/kf.png" alt="" class="kf"/>
 </div>
 <div id="wrap">
     <form target="id_iframe">
