@@ -78,6 +78,7 @@ $(document).ready(function(){
             fromflag : "lianmeng",
             mineShopCode : mineShopCode
         },
+        async: false,
         success:function(jsondata){
             var json = JSON.parse(jsondata);
             // add_insurance (json);
@@ -89,7 +90,28 @@ $(document).ready(function(){
             // alert("失败");
         }
     });
-
+    //---------------------------------------------------------------------------------------联盟总部改变，保险公司对应改变
+    $(".lmzb").on("change",function () {
+        var values = $(this).val();
+        console.log(values)
+        $.ajax({
+            type    : 'POST',
+            url     : '/getCommonAjax',
+            data    : {
+                fromflag   : "baoxianGongSi",
+                shopCodeLm : values
+            },
+            success:function(jsondata){
+                var json = JSON.parse(jsondata);
+                add_company(json);
+                company_css();
+                //console.log(json);
+            },
+            error:function(eee){
+                // alert("失败")
+            }
+        });
+    });
     $.ajax({
         type    : 'POST',
         url     : '/getCommonAjax',
@@ -242,7 +264,8 @@ $(document).ready(function(){
     //保险险种部分
     //添加保险公司
     function add_company (arr) {
-        var baoxian_company = $(".list .two .insurance_company .baoxian")
+        var baoxian_company = $(".list .two .insurance_company .baoxian");
+        baoxian_company.children().remove();
         var html = "";
         for (var i = 0; i < arr.length;i++) {
             html += "<div><input type='checkbox' name='xianzhong' id='wang_wang' value='"+arr[i].id+"' /><span>"+arr[i].insuranceName+"</span></div>"
@@ -424,16 +447,18 @@ $(document).ready(function(){
                     $(this).nextAll("div").children("input[type='text']").attr("disabled","disabled");
                 }
             })
-        })
+        });
 
         vall()
     }
     //保险公司页面的ajax
+    console.log($(".lmzb").val())
     $.ajax({
         type    : 'POST',
         url     : '/getCommonAjax',
         data    : {
-            fromflag   : "baoxianGongSi"
+            fromflag   : "baoxianGongSi",
+            shopCodeLm : $(".lmzb").val()
         },
         success:function(jsondata){
             var json = JSON.parse(jsondata);

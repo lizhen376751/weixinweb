@@ -53,7 +53,7 @@
             </div>
             <div class="nav_right font_1">
                 <label>联盟总部：</label>
-                <select name="unionHeadquarters">  <!--联盟总部-->
+                <select name="unionHeadquarters" class="lmzb">  <!--联盟总部-->
                     <%--<option value="大师全国运营中心">大师全国运营中心</option>--%>
                 </select>
             </div>
