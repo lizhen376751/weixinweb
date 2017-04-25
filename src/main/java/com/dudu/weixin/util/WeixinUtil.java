@@ -3,7 +3,6 @@ package com.dudu.weixin.util;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.dudu.weixin.mould.AccessToken;
-import com.dudu.weixin.mould.Menu;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -125,36 +124,6 @@ public final class WeixinUtil {
             }
         }
         return accessToken;
-    }
-
-    /**
-     * 创建菜单
-     *
-     * @param menu        菜单实例
-     * @param accessToken 有效的access_token
-     * @return 0表示成功，其他值表示失败
-     */
-    public static int createMenu(Menu menu, String accessToken) {
-        int result = 0;
-
-        // 拼装创建菜单的url
-        String url = mENUCREATURL.replace("ACCESS_TOKEN", accessToken);
-        // 将菜单对象转换成json字符串
-
-        String jsonMenu = JSONObject.toJSONString(menu);
-//        System.out.println(jsonMenu);
-        // 调用接口创建菜单
-        JSONObject jsonObject = httpRequest(url, "POST", jsonMenu);
-//        System.out.println(jsonObject);
-        if (null != jsonObject) {
-            if (0 != jsonObject.getIntValue("errcode")) {
-                result = jsonObject.getIntValue("errcode");
-
-//                log.error("创建菜单失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
-            }
-        }
-
-        return result;
     }
 
 

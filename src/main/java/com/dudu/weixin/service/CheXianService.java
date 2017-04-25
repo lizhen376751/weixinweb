@@ -20,11 +20,12 @@ public class CheXianService {
      */
     @Autowired
     private ChexiantoubaoService chexiantoubaoService;
+
     /**
-     *
      * @param shopCode 店铺编码
+     * @return 集合
      */
-    public List<Insurance> queryBaoXianList(String shopCode){
+    public List<Insurance> queryBaoXianList(String shopCode) {
         BaoXianParamList baoXianParamList = new BaoXianParamList();
         if (null != shopCode && !"".equals(shopCode)) {
             List<String> list = new ArrayList<>();
