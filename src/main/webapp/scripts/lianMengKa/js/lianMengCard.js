@@ -44,8 +44,8 @@ $(document).ready(function () {
         format:"CODE128",
         displayValue:false,
         height:100,
-        background:"#31a3ff", 
-		lineColor:"#ffffff"//条形码颜色
+        // background:"#31a3ff",
+		lineColor:"#000"//条形码颜色
    };
     //元素添加函数
 	function obj_append (name,class_one,obj_big,label,txt,src,attr1,attr2,attr3) {
@@ -134,6 +134,8 @@ $(document).ready(function () {
 				//添加明细
 				obj_append("div19","card_detailed font_3",$($(".card_surplus")[i]),"a","明细");
 				$($("a")[i]).attr("href","/oauthLoginServlet?flagStr=lianMengDetails&cardName="+arr[i].card_name+"&cardNo="+arr[i].card_number)
+                //添加每一张卡与卡之间的分界条
+                obj_append("div20","fjt",$($(".lianMeng")[i]),"span");
 			}
 		}else{
 			alert("当前车辆无联盟卡信息！");
