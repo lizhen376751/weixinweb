@@ -16,6 +16,18 @@
 	overflow: hidden;
 	position: relative;
 }
+.main_txt .sys_1{
+	width: 0.67rem;
+	position: absolute;
+	top: 0.22rem;
+	right: 1.18rem;
+}
+.main_txt .sys_2{
+	width: 0.67rem;
+	position: absolute;
+	top: 1.9rem;
+	right: 1.18rem;
+}
 .main_txt input{
 	width: 7.3rem;
 	max-width: 730px;

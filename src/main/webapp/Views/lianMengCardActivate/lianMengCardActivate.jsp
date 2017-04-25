@@ -9,6 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="/styles/lianMengCardActivate/lianMengCardActivate.css"/>
 		
 		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/scripts/lianMengCardActivate/wx_sys.js" type="text/javascript" charset="utf-8"></script>
 		<script  type="text/javascript"  src="/scripts/main.js"></script>
 		<script src="/scripts/lianMengCardActivate/lianMengCardActivate.js" type="text/javascript" charset="utf-8"></script>
 	</head>
@@ -25,10 +26,14 @@
 		<div class="main_txt">
 			<!-------------------------------------------------------------------------------联盟卡号提示框-->
 			<span class="car_tsk font_4"></span>
+			<%---------------------------------------------------------------------------------------扫一扫图片--%>
+			<img src="/files/lianMengCardActivate/sys.png" class="sys_1"/>
 			<!-----------------------------------------------------------------------------车牌号-->
 			<input type="text" placeholder="请输入您的联盟卡号" class="car_num font_3 input_bg"/>
 			<!---------------------------------------------------------------------------------激活码提示框-->
 			<span class="pasword_tsk font_4"></span>
+			<%---------------------------------------------------------------------------------------扫一扫图片--%>
+			<img src="/files/lianMengCardActivate/sys.png" class="sys_2"/>
 			<!-----------------------------------------------------------------------------账号密码-->
 			<input type="text" placeholder="请输联盟卡的激活码" class="password_num margin_top_1 font_3 input_bg"/>
 		</div>

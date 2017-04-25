@@ -27,6 +27,71 @@ $(document).ready(function () {
     var llt = $(".ty .l_tt") //---------------------------------------------------------------获取修改提示内容框
     var car_tsk = $(".car_tsk") //------------------------------------------------------------获取联盟卡号提示框
     var password_tsk = $(".pasword_tsk") //-----------------------------------------------------获取激活码提示框
+    var sys_1 = $(".sys_1"); //------------------------------------------------------------------获取联盟卡号的扫一扫
+    var sys_2 = $(".sys_2");//-------------------------------------------------------------------获取激活码的扫一扫
+
+    sys_1.on("click",function () {
+        wx_sys(card_num);
+    });
+    sys_2.on("click",function () {
+        wx_sys(activate_num);
+    })
+
+
+
+
+
+
+
+
+
+    //-------------------------------------------------------------------------------------------------扫一扫功能函数，扫出的结果放到该形参中
+    function wx_sys(label) {
+        var g_timestamp="";//
+        var g_nonceStr="";//
+        var url = location.href.split('#')[0];
+        //---------------------------------------------------------------------------------获取授权参数
+        $.ajax({
+            url: "",
+            type:'POST',
+            data:{url:url},
+            success:function(data){
+                console.log(data);
+                var errcode = data.errcode;
+                var sign = data.data;
+                if(errcode == 0){//Ã»ÓÐ´íÎó
+                    g_timestamp=sign.timestamp;
+                    g_nonceStr=sign.nonceStr;
+                    wx.config({
+                        debug: false,//true为开启调试模式，数据会alert出来，false为关闭调试模式
+                        appId: sign.appId, //公众号的唯一标示，必填
+                        timestamp: sign.timestamp, //生成签名的时间戳，必填
+                        nonceStr: sign.nonceStr,   //生成签名的随机串，必填
+                        signature: sign.signature,  // 签名，必填
+                        jsApiList: ['scanQRCode']    //--------------------------------- // 所有要调用的 API 都要加到这个列表中
+                    });
+                }
+            } ,
+            dataType:'json',
+            async : false
+        });
+    //    ----------------------------------------------------------------------------------------------------扫一扫接口调用
+        wx.scanQRCode({
+            needResult : 1, //-------------------------默认为0，扫描结果由微信处理，1则是自己处理结果
+            desc : 'scanQRCode desc',
+            success : function(res) {
+                var url = res.resultStr;
+                if(url.indexOf(",")>=0){
+                    var tempArray = url.split(',');
+                    var tempNum = tempArray[1];
+                    label.val(tempNum);
+                }else{
+                    label.val(url);
+                }
+            }
+        });
+    }
+
     //------------------------------------------------------------------------JS控制的css样式
     card_num.on("focus", function () {
         $(this).css({
