@@ -30,12 +30,14 @@ $(document).ready(function () {
     var sys_1 = $(".sys_1"); //------------------------------------------------------------------获取联盟卡号的扫一扫
     var sys_2 = $(".sys_2");//-------------------------------------------------------------------获取激活码的扫一扫
 
-    sys_1.on("click", function () {
+    sys_1.on("click", function (e) {
         wx_sys(card_num);
+        e.stopPropagation();
     });
-    sys_2.on("click", function () {
+    sys_2.on("click", function (e) {
         wx_sys(activate_num);
-    })
+        e.stopPropagation();
+    });
 
 
     //-------------------------------------------------------------------------------------------------扫一扫功能函数，扫出的结果放到该形参中
