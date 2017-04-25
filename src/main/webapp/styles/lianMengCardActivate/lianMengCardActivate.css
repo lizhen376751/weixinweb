@@ -19,14 +19,16 @@
 .main_txt .sys_1{
 	width: 0.67rem;
 	position: absolute;
-	top: 1.55rem;
-	right: 2.05rem;
+	top: 1.3rem;
+	right: 1.78rem;
+	padding: 0.3rem;
 }
 .main_txt .sys_2{
 	width: 0.67rem;
 	position: absolute;
-	top: 3.45rem;
-	right: 2.05rem;
+	top: 3.15rem;
+	right: 1.78rem;
+	padding: 0.3rem;
 }
 .main_txt input{
 	width: 7.3rem;

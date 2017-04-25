@@ -29,14 +29,23 @@ $(document).ready(function () {
     var password_tsk = $(".pasword_tsk") //-----------------------------------------------------获取激活码提示框
     var sys_1 = $(".sys_1"); //------------------------------------------------------------------获取联盟卡号的扫一扫
     var sys_2 = $(".sys_2");//-------------------------------------------------------------------获取激活码的扫一扫
-
+    //-------------------------------------------------------------------------------------------------定义扫一扫状态值
+    var flag = true;
     sys_1.on("click", function (e) {
-        wx_sys(card_num);
+        if(flag){
+            flag = false;
+            wx_sys(card_num);
+        }
         e.stopPropagation();
+        return false;
     });
     sys_2.on("click", function (e) {
-        wx_sys(activate_num);
+        if(flag){
+            flag = false;
+            wx_sys(activate_num);
+        }
         e.stopPropagation();
+        return false;
     });
 
 
@@ -81,6 +90,7 @@ $(document).ready(function () {
                 } else {
                     label.val(url);
                 }
+                flag = true;
             }
         });
     }
