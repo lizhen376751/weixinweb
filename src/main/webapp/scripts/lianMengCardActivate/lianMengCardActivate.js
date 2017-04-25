@@ -32,10 +32,11 @@ $(document).ready(function () {
     //-------------------------------------------------------------------------------------------------定义扫一扫状态值
     var flag = true;
     sys_1.on("click", function (e) {
-        if(flag){
-            flag = false;
-            wx_sys(card_num);
-        }
+        // if(flag){
+        //     flag = false;
+        //     wx_sys(card_num);
+        // }
+        wx_sys(card_num);
         e.stopPropagation();
         return false;
     });
