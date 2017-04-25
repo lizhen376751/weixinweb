@@ -23,7 +23,7 @@ $(document).ready(function(){
     });
     var ylb = mineShopCode.substring(0,3);
     if(ylb != "YLB"){
-        kf_logo.hide();
+        // kf_logo.hide();
     }
     //车辆信息部分
     //日期控件部分
