@@ -4,6 +4,8 @@ package com.dudu.weixin.control;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.weixin.util.SignUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +25,10 @@ import java.io.PrintWriter;
  */
 @Controller
 public class CoreController extends HttpServlet {
+    /**
+     * 日志打印
+     */
+    private static Logger log = LoggerFactory.getLogger(CoreController.class);
     /**
      * 引入消息处理接口
      */
@@ -87,6 +93,7 @@ public class CoreController extends HttpServlet {
         try {
             InputStream inputStream = request.getInputStream();
             //TODO 调用微信消息处理的接口
+            log.info("request中的inputStream==========================" + inputStream);
             apiAllWeiXiRequest.receivemessage(inputStream);
         } catch (IOException e) {
             e.printStackTrace();

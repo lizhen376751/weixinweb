@@ -30,63 +30,53 @@ $(document).ready(function () {
     var sys_1 = $(".sys_1"); //------------------------------------------------------------------获取联盟卡号的扫一扫
     var sys_2 = $(".sys_2");//-------------------------------------------------------------------获取激活码的扫一扫
 
-    sys_1.on("click",function () {
+    sys_1.on("click", function () {
         wx_sys(card_num);
     });
-    sys_2.on("click",function () {
+    sys_2.on("click", function () {
         wx_sys(activate_num);
     })
 
 
-
-
-
-
-
-
-
     //-------------------------------------------------------------------------------------------------扫一扫功能函数，扫出的结果放到该形参中
     function wx_sys(label) {
-        var g_timestamp="";//
-        var g_nonceStr="";//
+        var g_timestamp = "";//
+        var g_nonceStr = "";//
         var url = location.href.split('#')[0];
         //---------------------------------------------------------------------------------获取授权参数
         $.ajax({
-            url: "",
-            type:'POST',
-            data:{url:url},
-            success:function(data){
+            url: "/getCommonAjax2",
+            type: 'POST',
+            data: {
+                url: url,
+                fromflag: "jssdk"
+            },
+            success: function (data) {
                 console.log(data);
-                var errcode = data.errcode;
-                var sign = data.data;
-                if(errcode == 0){//Ã»ÓÐ´íÎó
-                    g_timestamp=sign.timestamp;
-                    g_nonceStr=sign.nonceStr;
-                    wx.config({
-                        debug: false,//true为开启调试模式，数据会alert出来，false为关闭调试模式
-                        appId: sign.appId, //公众号的唯一标示，必填
-                        timestamp: sign.timestamp, //生成签名的时间戳，必填
-                        nonceStr: sign.nonceStr,   //生成签名的随机串，必填
-                        signature: sign.signature,  // 签名，必填
-                        jsApiList: ['scanQRCode']    //--------------------------------- // 所有要调用的 API 都要加到这个列表中
-                    });
-                }
-            } ,
-            dataType:'json',
-            async : false
+                wx.config({
+                    debug: false,//true为开启调试模式，数据会alert出来，false为关闭调试模式
+                    appId: data.appId, //公众号的唯一标示，必填
+                    timestamp: data.timestamp, //生成签名的时间戳，必填
+                    nonceStr: data.nonceStr,   //生成签名的随机串，必填
+                    signature: data.signature,  // 签名，必填
+                    jsApiList: ['scanQRCode']    //--------------------------------- // 所有要调用的 API 都要加到这个列表中
+                });
+            },
+            dataType: 'json',
+            async: false
         });
-    //    ----------------------------------------------------------------------------------------------------扫一扫接口调用
+        //    ----------------------------------------------------------------------------------------------------扫一扫接口调用
         wx.scanQRCode({
-            needResult : 1, //-------------------------默认为0，扫描结果由微信处理，1则是自己处理结果
-            desc : 'scanQRCode desc',
-            success : function(res) {
+            needResult: 1, //-------------------------默认为0，扫描结果由微信处理，1则是自己处理结果
+            desc: 'scanQRCode desc',
+            success: function (res) {
                 console.log(res);
                 var url = res.resultStr;
-                if(url.indexOf(",")>=0){
+                if (url.indexOf(",") >= 0) {
                     var tempArray = url.split(',');
                     var tempNum = tempArray[1];
                     label.val(tempNum);
-                }else{
+                } else {
                     label.val(url);
                 }
             }
@@ -123,13 +113,13 @@ $(document).ready(function () {
         });
         $(this).toggleClass("input_bg")
     })
-    card_num.on("keyup",function () {
-        if($(this).val().length != 0){
+    card_num.on("keyup", function () {
+        if ($(this).val().length != 0) {
             car_tsk.hide();
         }
     });
-    activate_num.on("keyup",function () {
-        if($(this).val().length != 0){
+    activate_num.on("keyup", function () {
+        if ($(this).val().length != 0) {
             password_tsk.hide();
         }
     })
@@ -146,13 +136,13 @@ $(document).ready(function () {
             // tyt.show();
             // llt.text("联盟卡号有误，请重新输入~");
             // alert("联盟卡号有误，请重新输入~")
-        } else if(activate_value == ""){
+        } else if (activate_value == "") {
             password_tsk.show();
             password_tsk.text("请输入激活码");
-        }else if(card_value.length > 20){
+        } else if (card_value.length > 20) {
             tc_ceng.show();
             l_box.show();
-        }else if (activate_value.length > 10) {
+        } else if (activate_value.length > 10) {
             tc_ceng.show();
             l_box.show();
             // tc_ceng.show();
@@ -172,7 +162,7 @@ $(document).ready(function () {
                 success: function (jsondata) {
                     console.log(jsondata);
                     var backdata = JSON.parse(jsondata);
-                    if (backdata=="0"){
+                    if (backdata == "0") {
                         tc_ceng.show();
                         l_box.show();
                         // setTimeout(function () {
@@ -182,13 +172,13 @@ $(document).ready(function () {
                         //     card_num.val("");
                         //     activate_num.val("")
                         // }, 3000);
-                    }else if (backdata=="1"){
+                    } else if (backdata == "1") {
                         tc_ceng.show();
                         ty.show();
                         tyt.show();
                         llt.text("该卡号已经激活!");
                         // alert("该卡号已经激活!");
-                    }else if(backdata=="2"){
+                    } else if (backdata == "2") {
                         tc_ceng.show();
                         b_box.show();
                     }
@@ -223,7 +213,7 @@ $(document).ready(function () {
         //----------------------------------------------------------------------------------激活成功后跳转的页面
         window.location.href = "/oauthLoginServlet?flagStr=personalCenter";
     })
-    tyt.on("click",function () {
+    tyt.on("click", function () {
         tc_ceng.hide();
         l_box.hide();
         b_box.hide();
