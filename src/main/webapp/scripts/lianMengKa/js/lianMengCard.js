@@ -84,7 +84,7 @@ $(document).ready(function () {
 				obj_append("div5","card_barcode",$($(".card_content")[i]),"div","");
 				obj_append("div6","barcode_img",$($(".card_barcode")[i]),"img","");
 				//生成条形码
-				$('.card_content .card_barcode .barcode_img').JsBarcode(arr[i].card_number,options);//jQuery
+                $($('.card_content .card_barcode .barcode_img')[i]).JsBarcode(arr[i].card_number,options);//jQuery
 				//卡号
 				obj_append("div7","card_number font_4",$($(".card_content")[i]),"div","");
 				obj_append("div8","",$($(".card_number")[i]),"p","您的卡号为：");
