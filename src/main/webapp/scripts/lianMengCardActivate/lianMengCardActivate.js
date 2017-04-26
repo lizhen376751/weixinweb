@@ -81,6 +81,7 @@ $(document).ready(function () {
             needResult: 1, //-------------------------默认为0，扫描结果由微信处理，1则是自己处理结果
             desc: 'scanQRCode desc',
             success: function (res) {
+                flag = true;
                 console.log(res);
                 var url = res.resultStr;
                 if (url.indexOf(",") >= 0) {
@@ -90,7 +91,6 @@ $(document).ready(function () {
                 } else {
                     label.val(url);
                 }
-                flag = true;
             }
         });
     }
