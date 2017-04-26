@@ -242,10 +242,19 @@ $(document).ready(function () {
             });
         }
     });
-
+    $(document).ready(function () {
+    //时间戳转换成日期格式
+    function dateFormat(val) {
+        var now = new Date(val),
+            y = now.getFullYear(),
+            m = now.getMonth() + 1,
+            d = now.getDate();
+        var date=y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+        return date.substr(0, 11);
+    }
 
     // JsBarcode(".bar_code","0562589464631",options);
-
+    //----------------------------------------------------------------------------------------动态添加联盟卡的方法
     function add_lmCards(arr) {
         //条形码的样式
         var options = {
@@ -256,14 +265,31 @@ $(document).ready(function () {
             lineColor: "#4c4c4c"//条形码颜色
         };
         for (var i = 0; i < arr.length; i++) {
-            var htmls = '';
-            htmls += '<li>' +
-                '<img class="bar_code bar_code' + i + '"/>' +
-                '<div class="bar_num font_1 color_4">' + arr[i].card_number + '</div>' +
-                '<div class="cards_name font_3 color_3">' + arr[i].card_name + '</div>' +
-                '</li>';
-            uls.append(htmls);
-            JsBarcode(".bar_code" + i, arr[i].card_number, options);
+            for (var j = 0;j < arr[i].leftMx.length;j++){
+                var yxrqDateTime = arr[i].leftMx[j].effective_date;
+                var dates = dateFormat(yxrqDateTime);
+                var cc = dates.replace(/-/ig,"/");
+                var news = new Date();
+                var e = news.getFullYear();
+                var f = news.getMonth()+1;
+                var g = news.getDate();
+                var h = e + "/" + f + "/" +g;
+                // console.log(h);
+                var newDate = new Date(h);
+                var oldDate = new Date(cc);
+                if(arr[i].leftMx[j].current_num != 0 && arr[i].leftMx[j].current_num != ""){
+                    if(oldDate >= newDate){
+                        var htmls = '';
+                        htmls += '<li>' +
+                            '<img class="bar_code bar_code' + i + '"/>' +
+                            '<div class="bar_num font_1 color_4">' + arr[i].card_number + '</div>' +
+                            '<div class="cards_name font_3 color_3">' + arr[i].card_name + '</div>' +
+                            '</li>';
+                        uls.append(htmls);
+                        JsBarcode(".bar_code" + i, arr[i].card_number, options);
+                    }
+                }
+            }
         }
     }
 
