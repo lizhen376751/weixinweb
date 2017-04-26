@@ -265,31 +265,14 @@ $(document).ready(function () {
             lineColor: "#4c4c4c"//条形码颜色
         };
         for (var i = 0; i < arr.length; i++) {
-            for (var j = 0;j < arr[i].leftMx.length;j++){
-                var yxrqDateTime = arr[i].leftMx[j].effective_date;
-                var dates = dateFormat(yxrqDateTime);
-                var cc = dates.replace(/-/ig,"/");
-                var news = new Date();
-                var e = news.getFullYear();
-                var f = news.getMonth()+1;
-                var g = news.getDate();
-                var h = e + "/" + f + "/" +g;
-                // console.log(h);
-                var newDate = new Date(h);
-                var oldDate = new Date(cc);
-                if(arr[i].leftMx[j].current_num != 0 && arr[i].leftMx[j].current_num != ""){
-                    if(oldDate >= newDate){
-                        var htmls = '';
-                        htmls += '<li>' +
-                            '<img class="bar_code bar_code' + i + '"/>' +
-                            '<div class="bar_num font_1 color_4">' + arr[i].card_number + '</div>' +
-                            '<div class="cards_name font_3 color_3">' + arr[i].card_name + '</div>' +
-                            '</li>';
-                        uls.append(htmls);
-                        JsBarcode(".bar_code" + i, arr[i].card_number, options);
-                    }
-                }
-            }
+            var htmls = '';
+            htmls += '<li>' +
+                '<img class="bar_code bar_code' + i + '"/>' +
+                '<div class="bar_num font_1 color_4">' + arr[i].card_number + '</div>' +
+                '<div class="cards_name font_3 color_3">' + arr[i].card_name + '</div>' +
+                '</li>';
+            uls.append(htmls);
+            JsBarcode(".bar_code" + i, arr[i].card_number, options);
         }
     }
 
