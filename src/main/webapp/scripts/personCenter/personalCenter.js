@@ -242,7 +242,6 @@ $(document).ready(function () {
             });
         }
     });
-    $(document).ready(function () {
     //时间戳转换成日期格式
     function dateFormat(val) {
         var now = new Date(val),
