@@ -31,12 +31,36 @@ $(document).ready(function () {
     var sys_2 = $(".sys_2");//-------------------------------------------------------------------获取激活码的扫一扫
 
     var flag = true; //-------------------------------------------------------------------------定义扫一扫状态值
+    //-------------------------------------------------------------提前获取参数
+    var url = location.href.split('#')[0];
+    //---------------------------------------------------------------------------------获取授权参数
+    $.ajax({
+        url: "/getCommonAjax2",
+        type: 'POST',
+        data: {
+            url: url,
+            fromflag: "jssdk"
+        },
+        success: function (data) {
+            console.log(data);
+            wx.config({
+                debug: false,//true为开启调试模式，数据会alert出来，false为关闭调试模式
+                appId: data.appId, //公众号的唯一标示，必填
+                timestamp: data.timestamp, //生成签名的时间戳，必填
+                nonceStr: data.nonceStr,   //生成签名的随机串，必填
+                signature: data.signature,  // 签名，必填
+                jsApiList: ['scanQRCode']    //--------------------------------- // 所有要调用的 API 都要加到这个列表中
+            });
+        },
+        dataType: 'json',
+        async: false
+    });
     sys_1.on("click", function (e) {
-        // if(flag){
-        //     flag = false;
-        //     wx_sys(card_num);
-        // }
-        wx_sys(card_num);
+        if(flag){
+            flag = false;
+            wx_sys(card_num);
+        }
+        // wx_sys(card_num);
         e.stopPropagation();
         // return false;
     });
@@ -52,29 +76,6 @@ $(document).ready(function () {
 
     //-------------------------------------------------------------------------------------------------扫一扫功能函数，扫出的结果放到该形参中
     function wx_sys(label) {
-        var url = location.href.split('#')[0];
-        //---------------------------------------------------------------------------------获取授权参数
-        $.ajax({
-            url: "/getCommonAjax2",
-            type: 'POST',
-            data: {
-                url: url,
-                fromflag: "jssdk"
-            },
-            success: function (data) {
-                console.log(data);
-                wx.config({
-                    debug: false,//true为开启调试模式，数据会alert出来，false为关闭调试模式
-                    appId: data.appId, //公众号的唯一标示，必填
-                    timestamp: data.timestamp, //生成签名的时间戳，必填
-                    nonceStr: data.nonceStr,   //生成签名的随机串，必填
-                    signature: data.signature,  // 签名，必填
-                    jsApiList: ['scanQRCode']    //--------------------------------- // 所有要调用的 API 都要加到这个列表中
-                });
-            },
-            dataType: 'json',
-            async: false
-        });
         //    ----------------------------------------------------------------------------------------------------扫一扫接口调用
         wx.scanQRCode({
             needResult: 1, //-------------------------默认为0，扫描结果由微信处理，1则是自己处理结果
