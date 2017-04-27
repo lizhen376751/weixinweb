@@ -201,16 +201,13 @@ public class LianMengKaService {
         cardid = cardid == null || "null".equals(cardid) || "".equals(cardid) ? "0" : cardid;
         typeflg = typeflg == null || "null".equals(typeflg) || "".equals(typeflg) ? "0" : typeflg;
         String result = "";
-        try {
-            LmkCardGenParam queryModule = new LmkCardGenParam();
-            queryModule.setCardId(Long.parseLong(cardid));
-            queryModule.setItemCode(itemcode);
-            queryModule.setTypeFlg(Integer.parseInt(typeflg));
-            result = apiLianmengkaOperateIntf.getOneCardCode(queryModule);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LmkCardGenParam queryModule = new LmkCardGenParam();
+        queryModule.setCardId(Long.parseLong(cardid));
+        queryModule.setItemCode(itemcode);
+        queryModule.setTypeFlg(Integer.parseInt(typeflg));
+        result = apiLianmengkaOperateIntf.getOneCardCode(queryModule);
+
         return result;
     }
 
