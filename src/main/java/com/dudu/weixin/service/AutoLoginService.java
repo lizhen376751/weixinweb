@@ -76,35 +76,31 @@ public class AutoLoginService {
         /**
          * 根据车牌号和联盟code查询联盟用户表是否有数据
          */
-        try {
 
-            WxCustomer wxCustomer1 = wxCustomerService.getWxCustomer(platenumber, lmcode);
-            //如果查询到此用户数据,进行判断,否则提示登录
-            if (null != wxCustomer1) {
-                //获取数据的加密密码
-                String password1 = wxCustomer1.getPassword();
-                //如果密码为空,提示注册
-                if (null == password1 || "".equals(password1)) {
-                    return "1";
-                }
-                //如果输入的密码不一致提示密码错误,反之登录成功
-                if (!password1.equals(TestMD5Util.kL(password))) {
-                    return "3";
-                } else {
-                    //1.记录登录记录
-                    logInLogService.addLogInLog(platenumber, lmcode, openid);
-                    //另外将车牌号,openid,lmcode存如到session里面
-                    httpSession.setAttribute("plateNumber", platenumber);
-                    httpSession.setAttribute("openId", openid);
-                    httpSession.setAttribute("lmcode", lmcode);
-                    return "4";
-                }
+        WxCustomer wxCustomer1 = wxCustomerService.getWxCustomer(platenumber, lmcode);
+        //如果查询到此用户数据,进行判断,否则提示登录
+        if (null != wxCustomer1) {
+            //获取数据的加密密码
+            String password1 = wxCustomer1.getPassword();
+            //如果密码为空,提示注册
+            if (null == password1 || "".equals(password1)) {
+                return "1";
             }
-            return "0";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "5";
+            //如果输入的密码不一致提示密码错误,反之登录成功
+            if (!password1.equals(TestMD5Util.kL(password))) {
+                return "3";
+            } else {
+                //1.记录登录记录
+                logInLogService.addLogInLog(platenumber, lmcode, openid);
+                //另外将车牌号,openid,lmcode存如到session里面
+                httpSession.setAttribute("plateNumber", platenumber);
+                httpSession.setAttribute("openId", openid);
+                httpSession.setAttribute("lmcode", lmcode);
+                return "4";
+            }
         }
+        return "0";
+
     }
 
 
@@ -145,7 +141,6 @@ public class AutoLoginService {
             return "4";
         }
     }
-
 
 
 }

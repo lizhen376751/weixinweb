@@ -123,30 +123,27 @@ public class LianMengKaService {
     public List<LianmengkaXmCustResultModule> queryLmkXiaoFeiMX(String shopcode, String cardNo, String carHaoPai) {
 
         List<LianmengkaXmCustResultModule> results = null;
-        try {
-            LianmengkaXmCustQueryModule queryModule = new LianmengkaXmCustQueryModule();
-            queryModule.setBrand_code(shopcode);
-            queryModule.setCard_number(cardNo);
-            queryModule.setCar_haopai(carHaoPai);
-            results = apiLianmengkaOperateIntf.queryXiangmukaCustRecords(queryModule);
-            if (results == null || results.size() == 0) {
-                return null;
-            } else {
-                //把消费店铺编码 替换为 店铺名称
-                for (int i = 0; i < results.size(); i++) {
-                    LianmengkaXmCustResultModule lianmengkaXmCustResultModule = results.get(i);
-                    String custcode = lianmengkaXmCustResultModule.getCust_code();
-                    String custshopName = commonTools.getShopName(custcode);
-                    //单纯的查询,把custcode替换成了cust_shopName
-                    lianmengkaXmCustResultModule.setCust_code(custshopName);
 
-                }
+        LianmengkaXmCustQueryModule queryModule = new LianmengkaXmCustQueryModule();
+        queryModule.setBrand_code(shopcode);
+        queryModule.setCard_number(cardNo);
+        queryModule.setCar_haopai(carHaoPai);
+        results = apiLianmengkaOperateIntf.queryXiangmukaCustRecords(queryModule);
+        if (results == null || results.size() == 0) {
+            return null;
+        } else {
+            //把消费店铺编码 替换为 店铺名称
+            for (int i = 0; i < results.size(); i++) {
+                LianmengkaXmCustResultModule lianmengkaXmCustResultModule = results.get(i);
+                String custcode = lianmengkaXmCustResultModule.getCust_code();
+                String custshopName = commonTools.getShopName(custcode);
+                //单纯的查询,把custcode替换成了cust_shopName
+                lianmengkaXmCustResultModule.setCust_code(custshopName);
+
             }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+
+
         return results;
     }
 

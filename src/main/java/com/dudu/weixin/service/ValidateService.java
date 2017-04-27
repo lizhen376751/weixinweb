@@ -84,21 +84,19 @@ public class ValidateService {
         smsSend.setPlateNumber(platenumber);
         String radomInt = String.valueOf((new Random().nextInt(999999 - 100000 + 1) + 100000));
         //六位密码的发送
-        try {
-            //密码的发送
-            this.sendvalidate(lmcode, "重置密码", mobilephone, radomInt);
-            //同步的修改用户信息的密码
-            wxCustomerService.updateWxCustomer(platenumber, lmcode, TestMD5Util.kL(radomInt));
-            //验证码发送成功后进行记录
-            smsSend.setServiceType("重置密码");
-            smsSend.setIdentifyingCode(radomInt);
-            Date date = new Date();
-            smsSend.setSendTime(date);
-            //添加短信密码的记录
-            apiSmsSend.addSmsSend(smsSend);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        //密码的发送
+        this.sendvalidate(lmcode, "重置密码", mobilephone, radomInt);
+        //同步的修改用户信息的密码
+        wxCustomerService.updateWxCustomer(platenumber, lmcode, TestMD5Util.kL(radomInt));
+        //验证码发送成功后进行记录
+        smsSend.setServiceType("重置密码");
+        smsSend.setIdentifyingCode(radomInt);
+        Date date = new Date();
+        smsSend.setSendTime(date);
+        //添加短信密码的记录
+        apiSmsSend.addSmsSend(smsSend);
+
     }
 
     /**
@@ -115,25 +113,23 @@ public class ValidateService {
         smsSend.setPlateNumber(platenumber);
         String radomInt = String.valueOf(new Random().nextInt(9999 - 1000 + 1) + 1000);
         //验证码的发送
-        try {
-            //验证码的记录
-            this.sendvalidate(lmcode, "验证码", mobilephone, radomInt);
-            //验证码发送成功后进行记录
-            smsSend.setServiceType("验证码");
-            smsSend.setIdentifyingCode(radomInt);
-            Date date = new Date();
-            smsSend.setSendTime(date);
-            //先判断有没有之前的验证码
-            SmsSendLog smsSend1 = apiSmsSend.getSmsSend(smsSend);
-            //先删除之前的短信验证码
-            if (smsSend1 != null) {
-                this.deleteValidate(platenumber, lmcode, mobilephone);
-            }
-            //删除之后添加短信验证码的记录
-            apiSmsSend.addSmsSend(smsSend);
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        //验证码的记录
+        this.sendvalidate(lmcode, "验证码", mobilephone, radomInt);
+        //验证码发送成功后进行记录
+        smsSend.setServiceType("验证码");
+        smsSend.setIdentifyingCode(radomInt);
+        Date date = new Date();
+        smsSend.setSendTime(date);
+        //先判断有没有之前的验证码
+        SmsSendLog smsSend1 = apiSmsSend.getSmsSend(smsSend);
+        //先删除之前的短信验证码
+        if (smsSend1 != null) {
+            this.deleteValidate(platenumber, lmcode, mobilephone);
         }
+        //删除之后添加短信验证码的记录
+        apiSmsSend.addSmsSend(smsSend);
+
     }
 
     /**
@@ -157,7 +153,7 @@ public class ValidateService {
      *
      * @param mobilephone      手机号
      * @param verificationCode 验证码
-     * @param lmcode         lmcode代码
+     * @param lmcode           lmcode代码
      * @param businessType     业务类型
      */
     public void sendvalidate(String lmcode, String businessType, String mobilephone, String verificationCode) {
