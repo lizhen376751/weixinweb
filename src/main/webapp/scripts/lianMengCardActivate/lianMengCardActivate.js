@@ -76,12 +76,12 @@ $(document).ready(function () {
 
     //-------------------------------------------------------------------------------------------------扫一扫功能函数，扫出的结果放到该形参中
     function wx_sys(label) {
+        flag = true;
         //    ----------------------------------------------------------------------------------------------------扫一扫接口调用
         wx.scanQRCode({
             needResult: 1, //-------------------------默认为0，扫描结果由微信处理，1则是自己处理结果
             desc: 'scanQRCode desc',
             success: function (res) {
-                flag = true;
                 console.log(res);
                 var url = res.resultStr;
                 if (url.indexOf(",") >= 0) {
