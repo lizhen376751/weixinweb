@@ -12,17 +12,7 @@
     //TODO 登录判断
 
 
-//    AutoLoginService autoLogin = new AutoLoginService();
-//	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-//    CarId = autoLogin.judgeOpenId(strOpenId, shopcode);
-//		session.setAttribute("DUDUCHEWANG_CarId", CarId);
-//		System.out.println("=============baoYangList.jsp=== 自动登陆后  CarId:|"+CarId+"|");
-//	}
-//
-//	if (CarId == null || "null".equals(CarId) || "".equals(CarId)) {
-//		System.out.println("=============baoYangList.jsp=== 自动登陆后 CarId还是空，则跳转到login.jsp   shopcode:"+shopcode+"|strOpenId:"+strOpenId+"|");
-//		response.sendRedirect("../login.jsp?shopcode=" + shopcode + "&strOpenId=" + strOpenId + "");
-//	}
+
 
 
     String top = (String) request.getParameter("top");

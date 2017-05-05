@@ -23,16 +23,19 @@ public class LogInLogService {
      * @param plateNumber 车牌号
      * @param lmcode      联盟code
      * @param openid      微信openid
+     * @param nickname    微信昵称
      */
-    public void addLogInLog(String plateNumber, String lmcode, String openid) {
+    public Integer addLogInLog(String plateNumber, String lmcode, String openid, String nickname) {
         LogInLog logInLog = new LogInLog();
         logInLog.setOpenid(openid);
         //先将之前的openid登录记录删除,保证一个openid同一时间只能登录一个账号
         apiLogInLog.deleLogInLog(logInLog);
         logInLog.setPlateNumber(plateNumber);
         logInLog.setLmcode(lmcode);
+        logInLog.setNickname(nickname);
         //之后新增登录信息
-        apiLogInLog.addLogInLog(logInLog);
+        Integer integer = apiLogInLog.addLogInLog(logInLog);
+        return integer;
     }
 
     /**

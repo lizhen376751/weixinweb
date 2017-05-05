@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by Administrator on 2017/3/24.
+ * Created by lizhen on 2017/3/24.
  * 登录验证拦截器(如果有登录历史则不用登录)
  */
 public class LoginInterceptor implements HandlerInterceptor {
@@ -56,9 +56,9 @@ public class LoginInterceptor implements HandlerInterceptor {
     private ApiAllWeiXiRequest apiAllWeiXiRequest;
 
     /**
-     * @param request 请求
+     * @param request  请求
      * @param response 返回数据
-     * @param arg2 对象
+     * @param arg2     对象
      * @return true或者false
      * @throws Exception 异常
      */
@@ -84,29 +84,25 @@ public class LoginInterceptor implements HandlerInterceptor {
                     request.getRequestDispatcher("/Views/login/login.jsp?lmcode=" + lmcode2).forward(request, response);
                 }
             }
-
             lmcode = lmcode2;
             httpSession.setAttribute("lmcode", lmcode);
-
-            //微信的openid
-            openId = (String) httpSession.getAttribute("openId");
-            //判断session里面有没有openId
-            if (null == openId || openId.equals("")) {
-                //TODO 暂时注释掉 获取用户的openid
-                String code = request.getParameter("code");
-                WeiXinConfig weiXinConfig = apiWeiXinConfig.getWeiXinConfig(lmcode);
-                 //获取微信用户的基本信息
-                WeiXinUserInfo weiXinUserInfo = apiAllWeiXiRequest.getWeiXinUserInfo(code, weiXinConfig.getAppid(), weiXinConfig.getAppserect());
-                log.info("获取微信用户信息=====================" + weiXinUserInfo.toString());
-//                WeixinOauth2Token oauth2AccessToken = advancedUtil.getOauth2AccessToken(weiXinConfig.getAppid(), weiXinConfig.getAppserect(), code);
-                openId = weiXinUserInfo.getOpenid();
-                //获取微信用户的别名
-                String nickname = weiXinUserInfo.getNickname();
-                httpSession.setAttribute("openId", openId);
-                httpSession.setAttribute("nickname", nickname);
-            }
         }
-
+        //微信的openid
+        openId = (String) httpSession.getAttribute("openId");
+        //判断session里面有没有openId
+        if (null == openId || openId.equals("")) {
+            //TODO 暂时注释掉 获取用户的openid
+            String code = request.getParameter("code");
+            WeiXinConfig weiXinConfig = apiWeiXinConfig.getWeiXinConfig(lmcode);
+            //获取微信用户的基本信息
+            WeiXinUserInfo weiXinUserInfo = apiAllWeiXiRequest.getWeiXinUserInfo(code, weiXinConfig.getAppid(), weiXinConfig.getAppserect());
+            log.info("获取微信用户信息=====================" + weiXinUserInfo.toString());
+            openId = weiXinUserInfo.getOpenid();
+            //获取微信用户的别名
+            String nickname = weiXinUserInfo.getNickname();
+            httpSession.setAttribute("openId", openId);
+            httpSession.setAttribute("nickname", nickname);
+        }
         //车牌号
         String platenumber = (String) httpSession.getAttribute("plateNumber");
         //个人中心,联盟卡包,保养提醒,ahi指数,施工进度,消费记录需要进行登录判断

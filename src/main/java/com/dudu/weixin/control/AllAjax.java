@@ -168,6 +168,7 @@ public class AllAjax {
         String platenumber = (String) httpSession.getAttribute("plateNumber"); //车牌号码
         String openId = (String) httpSession.getAttribute("openId"); //openid
         String lmcode = (String) httpSession.getAttribute("lmcode"); //联盟code
+        String nickname = (String) httpSession.getAttribute("nickname"); //微信昵称
         //前端js获取签名
         if ("jssdk".equals(fromflag)) {
             //从参数中获取前端传过来的url
@@ -201,7 +202,7 @@ public class AllAjax {
                 lmcode = request.getParameter("lmcode"); //联盟code
                 httpSession.setAttribute("lmcode", lmcode); //没有的话将session存入
             }
-            String login = autoLoginService.login(platenumber, lmcode, password, openId);
+            String login = autoLoginService.login(platenumber, lmcode, password, openId, nickname);
             return login;
         }
         //登录,注册,填写车牌号后发送请求
@@ -235,7 +236,7 @@ public class AllAjax {
             String mobilephone = request.getParameter("mobilephone");
             String password = request.getParameter("password");
             String verificationCode = request.getParameter("verificationCode");
-            String register = autoLoginService.register(platenumber, lmcode, password, openId, mobilephone, verificationCode);
+            String register = autoLoginService.register(platenumber, lmcode, password, openId, mobilephone, verificationCode, nickname);
             return register;
         }
         return null;

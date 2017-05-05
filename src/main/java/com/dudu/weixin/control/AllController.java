@@ -332,33 +332,4 @@ public class AllController {
         return "/baoxianDetail/cheXianDetail.jsp"; //车险详情展示页面
     }
 
-//-----------------------------------------------------------------------ahi
-
-    /**
-     * 仅用于ahi测试作用
-     *
-     * @param request 请求
-     * @param model   返回数据
-     * @return 页面跳转至车险列表展示页面
-     */
-    @RequestMapping(value = "ahi", method = RequestMethod.GET)
-    public String ahi(HttpServletRequest request, Model model) {
-        return "/ahi/AHIxiangqing.jsp"; //AHI指数
-
-    }
-
-    /**
-     * 仅用于ahi测试作用
-     *
-     * @param request 请求
-     * @param model   返回数据
-     * @return 页面跳转至车险列表展示页面
-     */
-    @RequestMapping(value = "AHIInfoxiangqing", method = RequestMethod.GET)
-    public String aHIInfoxiangqing(HttpServletRequest request, Model model) {
-        return "/ahi/subxiangqing.jsp"; //ahi详情
-
-    }
-    //-----------------------------------------------------------------------ahi
-
 }

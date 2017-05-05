@@ -3,7 +3,7 @@ package com.dudu.weixin.control;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
-import com.dudu.weixin.util.SignUtil;
+import com.dudu.weixin.util.Constant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -43,42 +43,35 @@ public class CoreController extends HttpServlet {
      */
     @RequestMapping(value = "/urlconfig", method = RequestMethod.GET)
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-/**
- *微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数。
- */
+        /**
+         *微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数。
+         */
         String signature = request.getParameter("signature");
-/**
- *时间戳
- */
+        /**
+         *时间戳
+         */
         String timestamp = request.getParameter("timestamp");
-/**
- *随机数
- */
+        /**
+         *随机数
+         */
         String nonce = request.getParameter("nonce");
-/**
- *随机字符串
- */
+        /**
+         *随机字符串
+         */
         String echostr = request.getParameter("echostr");
-/**
- *店铺代码
- */
-        String lmcode = request.getParameter("lmcode");
 
         PrintWriter out = response.getWriter();
-/**
- *通过检验signature对请求进行校验。若确认此次GET请求来自微信服务器，请原样返回echostr参数内容，则接入生效，成为开发者成功，否则接入失败。
- */
-        try {
-            if (SignUtil.checkSignature(signature, timestamp, nonce)) {
-                out.print(echostr);
-            }
-            out.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        /**
+         *通过检验signature对请求进行校验。若确认此次GET请求来自微信服务器，
+         * 请原样返回echostr参数内容，则接入生效，成为开发者成功，否则接入失败。
+         *
+         */
+        boolean b = apiAllWeiXiRequest.checkSignature(signature, timestamp, nonce, Constant.TOKEN);
+        if (b) {
+            out.print(echostr);
+            log.info("配置验证=================================" + b);
         }
-
-
+        out.close();
     }
 
     /**

@@ -26,6 +26,7 @@ public class AHIService {
     private ApiAHIPoint apiAHIPoint;
 
     /**
+     * 获取ahi列表主页面
      *
      * @param plateNumber 车牌号码
      * @return ahi列表
@@ -46,8 +47,9 @@ public class AHIService {
     }
 
     /**
+     * 获取ahi详情
      *
-     * @param plateNumber  车牌号码
+     * @param plateNumber 车牌号码
      * @return ahi列表
      */
     public List<ResultAHIClassPoint> queryCarPointOne(String plateNumber) {
@@ -67,10 +69,9 @@ public class AHIService {
     }
 
     /**
-     *
      * @param plateNumber 车牌号码
-     * @param id id
-     * @param ratio 系数
+     * @param id          id
+     * @param ratio       系数
      * @return ahi指数
      */
     public List<ResultAHIChildClassPoint> queryCarPointTwo(String plateNumber, String id, String ratio) {
@@ -89,9 +90,8 @@ public class AHIService {
     }
 
     /**
-     *
-     * @param plateNumber  车牌号码
-     * @param id id
+     * @param plateNumber 车牌号码
+     * @param id          id
      * @return ahi指数
      */
     public List<ResultAHISubClassPoint> querySubclassPoint(String plateNumber, String id) {

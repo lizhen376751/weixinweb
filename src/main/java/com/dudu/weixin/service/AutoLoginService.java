@@ -70,9 +70,10 @@ public class AutoLoginService {
      * @param lmcode      联盟code
      * @param password    密码
      * @param openid      微信id
+     * @param nickname    微信昵称
      * @return 是否正确
      */
-    public String login(String platenumber, String lmcode, String password, String openid) {
+    public String login(String platenumber, String lmcode, String password, String openid, String nickname) {
         /**
          * 根据车牌号和联盟code查询联盟用户表是否有数据
          */
@@ -91,7 +92,7 @@ public class AutoLoginService {
                 return "3";
             } else {
                 //1.记录登录记录
-                logInLogService.addLogInLog(platenumber, lmcode, openid);
+                logInLogService.addLogInLog(platenumber, lmcode, openid, nickname);
                 //另外将车牌号,openid,lmcode存如到session里面
                 httpSession.setAttribute("plateNumber", platenumber);
                 httpSession.setAttribute("openId", openid);
@@ -113,9 +114,10 @@ public class AutoLoginService {
      * @param openid           微信id
      * @param mobilephone      手机号
      * @param verificationCode 验证码
+     * @param nickname         微信昵称
      * @return 字符串
      */
-    public String register(String platenumber, String lmcode, String password, String openid, String mobilephone, String verificationCode) {
+    public String register(String platenumber, String lmcode, String password, String openid, String mobilephone, String verificationCode, String nickname) {
         //首先验证验证码是否输入正确
         Boolean validate = validateService.validate(platenumber, lmcode, mobilephone, verificationCode);
         //如果验证码正确进行注册
@@ -129,7 +131,7 @@ public class AutoLoginService {
             wxCustomer.setCustomerName(platenumber);
             wxCustomerService.addWxCustomer(wxCustomer);
             //先根据openid判断之前有没有登录的信息
-            logInLogService.addLogInLog(platenumber, lmcode, openid);
+            logInLogService.addLogInLog(platenumber, lmcode, openid, nickname);
             //另外将车牌号,openid,lmcode存如到session里面
             httpSession.setAttribute("plateNumber", platenumber);
             httpSession.setAttribute("openId", openid);
