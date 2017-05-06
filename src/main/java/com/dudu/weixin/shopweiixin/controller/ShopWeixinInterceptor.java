@@ -1,6 +1,7 @@
 package com.dudu.weixin.shopweiixin.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.dudu.soa.weixindubbo.loginlog.module.LogInLog;
 import com.dudu.soa.weixindubbo.shopinfo.api.ApiShopInfo;
 import com.dudu.soa.weixindubbo.shopinfo.module.ShopInfo;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
@@ -28,11 +29,7 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
      */
     private static Logger log = LoggerFactory.getLogger(LoginInterceptor.class);
 
-    /**
-     * session
-     */
-    @Autowired
-    private HttpSession httpSession;
+
     /**
      * 引入登录历史的服务
      */
@@ -59,10 +56,22 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
         HttpSession session = request.getSession();
+        String shopcode = (String) session.getAttribute("shopcode");
+
         //参数中获取shopcode
         String strWxShopcode = request.getParameter("shopcode");
         String flagStr = strWxShopcode.split("_")[1]; //页面跳转判断
-        String shopcode = strWxShopcode.split("_")[0]; //店铺code
+        String shopcode1 = strWxShopcode.split("_")[0]; //店铺code
+        //判断session的shopcode是否为空
+        if (null != shopcode && !"".equals(shopcode)) {
+            //判断session里面的shopcode与菜单按钮带过来的shopcode是否一致
+            if (!shopcode1.equals(shopcode)) {
+                //如果不一致,跳转至登录页面
+                request.getRequestDispatcher("/Views/shoplogin/shoplogin.jsp?shopcode=" + shopcode).forward(request, response);
+            }
+        }
+        //如果为空的话讲shopcode存入到session里面
+        session.setAttribute("shopcode", shopcode1);
 
         //页面带过来的授权code
         String code = request.getParameter("code");
@@ -78,16 +87,28 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
             WeiXinUserInfo weiXinUserInfo = apiAllWeiXiRequest.getWeiXinUserInfo(code, appid, xAppSecret);
             openId = weiXinUserInfo.getOpenid();
             nickname = weiXinUserInfo.getNickname();
+            session.setAttribute("openId", openId);
+            session.setAttribute("nickname", nickname);
         }
-        //页面进来将openid和nickname,shopcode存入session
-        session.setAttribute("openId", openId);
-        session.setAttribute("nickname", nickname);
-        session.setAttribute("shopcode", shopcode);
-        Object plateNumber1 = session.getAttribute("plateNumber");
-        if ("".equals(plateNumber1) || null == plateNumber1) {
-            request.getRequestDispatcher("/Views/shoplogin/shoplogin.jsp?shopcode=" + shopcode).forward(request, response);
+        String plateNumber = (String) session.getAttribute("plateNumber");
+        //判断session里面有没有plateNumber
+        if ("".equals(plateNumber) || null == plateNumber) {
+            //去登录记录里面查询是否有登录记录
+            if (null != openId && !"".equals(openId)) {
+                LogInLog logInLog = logInLogService.getLogInLog(shopcode, openId);
+                if (logInLog == null) {
+                    //如果为空的话直接跳转至登录页面
+                    request.getRequestDispatcher("/Views/shoplogin/shoplogin.jsp?shopcode=" + shopcode).forward(request, response);
+                } else {
+                    //获取车牌号
+                    plateNumber = logInLog.getPlateNumber();
+                    //如果有记录,就获取记录并存入到session
+                    session.setAttribute("plateNumber", plateNumber);
+                }
+            }
+
         }
-      
+
         //返回true代表继续往下执行
         return true;
     }

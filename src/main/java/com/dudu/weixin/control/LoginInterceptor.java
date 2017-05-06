@@ -78,7 +78,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         } else {
             flagStr = strWxShopcode.split("_")[1]; //页面跳转判断
             lmcode2 = strWxShopcode.split("_")[0]; //联盟code
-            if (lmcode != null) {
+            if (null != lmcode && !"".equals(lmcode)) {
                 if (!lmcode.equals(lmcode2)) {
                     //判断session里面的联盟code和页面登录进来的联盟code是否相同,如果不相同说明同一个手机关注了两个联盟
                     request.getRequestDispatcher("/Views/login/login.jsp?lmcode=" + lmcode2).forward(request, response);
@@ -91,7 +91,6 @@ public class LoginInterceptor implements HandlerInterceptor {
         openId = (String) httpSession.getAttribute("openId");
         //判断session里面有没有openId
         if (null == openId || openId.equals("")) {
-            //TODO 暂时注释掉 获取用户的openid
             String code = request.getParameter("code");
             WeiXinConfig weiXinConfig = apiWeiXinConfig.getWeiXinConfig(lmcode);
             //获取微信用户的基本信息
@@ -110,17 +109,20 @@ public class LoginInterceptor implements HandlerInterceptor {
                 || "baoYangList".equals(flagStr) || "cheXianTouBao".equals(flagStr) || "logout".equals(flagStr) || "AHIInfoxiangqing".equals(flagStr)) {
             //如果车牌号为空直接往下执行
             if (platenumber == null || "null".equals(platenumber) || "".equals(platenumber)) {
-                //根据openId和lmcode查询是否有登录记录,如果有记录则不用登录
-                LogInLog logInLog = logInLogService.getLogInLog(lmcode, openId);
-                if (logInLog == null) {
-                    //如果没有记录跳转至登录页面
-                    request.getRequestDispatcher("/Views/login/login.jsp?lmcode=" + lmcode).forward(request, response);
-                } else {
-                    //获取车牌号
-                    String plateNumber = logInLog.getPlateNumber();
-                    //如果有记录,就获取记录并存入到session
-                    httpSession.setAttribute("plateNumber", plateNumber);
+                if (null != openId && !"".equals(openId)) {
+                    //根据openId和lmcode查询是否有登录记录,如果有记录则不用登录
+                    LogInLog logInLog = logInLogService.getLogInLog(lmcode, openId);
+                    if (logInLog == null) {
+                        //如果没有记录跳转至登录页面
+                        request.getRequestDispatcher("/Views/login/login.jsp?lmcode=" + lmcode).forward(request, response);
+                    } else {
+                        //获取车牌号
+                        String plateNumber = logInLog.getPlateNumber();
+                        //如果有记录,就获取记录并存入到session
+                        httpSession.setAttribute("plateNumber", plateNumber);
+                    }
                 }
+
             }
         }
         //返回true代表继续往下执行

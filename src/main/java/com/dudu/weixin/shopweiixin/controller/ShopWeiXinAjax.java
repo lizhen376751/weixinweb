@@ -1,5 +1,6 @@
 package com.dudu.weixin.shopweiixin.controller;
 
+import com.dudu.weixin.shopweiixin.service.ShopBaoYangTiXing;
 import com.dudu.weixin.shopweiixin.service.ShopWeixinLogin;
 import com.dudu.weixin.shopweiixin.service.ShopXiaoFeiJiLu;
 import org.slf4j.Logger;
@@ -39,6 +40,11 @@ public class ShopWeiXinAjax {
      */
     @Autowired
     private ShopXiaoFeiJiLu shopXiaoFeiJiLu;
+    /**
+     * 引入保养提醒的服务
+     */
+    @Autowired
+    private ShopBaoYangTiXing shopBaoYangTiXing;
 
     /**
      * @param request 请求
@@ -48,15 +54,17 @@ public class ShopWeiXinAjax {
     @RequestMapping(value = "shopAjax", method = RequestMethod.POST)
     public Object commonAjax(HttpServletRequest request) {
         String shopcode = (String) httpSession.getAttribute("shopcode");
-        String platenumber = (String) httpSession.getAttribute("platenumber");
+        String platenumber = (String) httpSession.getAttribute("plateNumber");
         String businessType = request.getParameter("businessType");
-        if ("login".equals(businessType)) {
+        if ("login".equals(businessType)) { //登录页面
             platenumber = request.getParameter("platenumber");
             String password = request.getParameter("password");
             String checklogin = shopWeixinLogin.checklogin(shopcode, platenumber, password, request);
             return checklogin;
-        } else if ("xiaofeijilu".equals(businessType)) {
+        } else if ("xiaofeijilu".equals(businessType)) { //消费记录页面
             return shopXiaoFeiJiLu.queryXiaoFeiJiLu(shopcode, platenumber);
+        } else if ("baoYangTiXingList".equals(businessType)) { //保养提醒页面
+            return shopBaoYangTiXing.queryBaoYangTiXing(shopcode, platenumber);
         }
         return null;
     }

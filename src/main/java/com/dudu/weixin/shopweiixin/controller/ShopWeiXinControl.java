@@ -45,6 +45,8 @@ public class ShopWeiXinControl {
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
         } else if ("xiaofeijilu".equals(flagStr)) {
             return "/shopxiaofeijilu/xiaofeijilu.jsp"; //消费记录
+        } else if ("BaoYangTiXing".equals(flagStr)) {
+            return "/shopbaoyangtixing/baoYangList.jsp"; //保养提醒
         }
         return null;
     }

@@ -189,8 +189,8 @@ public class ShopWeixinLogin {
         HttpSession session = request.getSession();
         if (integer > 0) {
             //登录成功将shopcode和车牌号码存入到session里面
+            session.setAttribute("shopcode", shopcode);
             session.setAttribute("plateNumber", plateNumber);
-
             return "1";
         } else {
             //返回2提示客户重新登录
