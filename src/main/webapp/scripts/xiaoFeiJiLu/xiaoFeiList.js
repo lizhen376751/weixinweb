@@ -13,13 +13,14 @@ $(document).ready(function () {
     var top = $("#top").val();
     $.ajax({
         type    : 'POST',
-        url     : '/getCommonAjax',
+        url     : '/shopAjax',
         data    : {
-            fromflag   : "getServiceListByLmcodeAndCarNo",
+            businessType   : "xiaofeijilu",
             top : top
         },
         success:function(jsondata){
             var json = JSON.parse(jsonData);
+            alert(jsonData);
 
 
         }

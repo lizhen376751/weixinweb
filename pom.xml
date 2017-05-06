@@ -8,6 +8,7 @@
   <name>DuduWeiXin</name>
 
   <properties>
+    <dudu.soa.SalesCenter.version>1.1-SNAPSHOT</dudu.soa.SalesCenter.version>
     <dudu.soa.DuduMessageCenter.version>1.0-SNAPSHOT</dudu.soa.DuduMessageCenter.version>
     <dudu.soa.DuduWeixinDubbo.version>1.0-SNAPSHOT</dudu.soa.DuduWeixinDubbo.version>
     <dudu.soa.DuduBaseData>1.1-SNAPSHOT</dudu.soa.DuduBaseData>
@@ -184,6 +185,14 @@
         <artifactId>DuduMessageCenter-api</artifactId>
         <version>${dudu.soa.DuduMessageCenter.version}</version>
       </dependency>
+
+      <!--消费记录-->
+      <dependency>
+        <groupId>com.dudu.soa</groupId>
+        <artifactId>SalesCenter-api</artifactId>
+        <version>${dudu.soa.SalesCenter.version}</version>
+      </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

@@ -1,6 +1,7 @@
-package com.dudu.weixin.aashopweiixin.controller;
+package com.dudu.weixin.shopweiixin.controller;
 
-import com.dudu.weixin.aashopweiixin.service.ShopWeixinLogin;
+import com.dudu.weixin.shopweiixin.service.ShopWeixinLogin;
+import com.dudu.weixin.shopweiixin.service.ShopXiaoFeiJiLu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,21 +34,29 @@ public class ShopWeiXinAjax {
      */
     @Autowired
     private HttpSession httpSession;
+    /**
+     * 引入消费记录服务
+     */
+    @Autowired
+    private ShopXiaoFeiJiLu shopXiaoFeiJiLu;
 
     /**
      * @param request 请求
      * @return 对象
      */
     @ResponseBody
-    @RequestMapping(value = "/shopAjax", method = RequestMethod.POST)
+    @RequestMapping(value = "shopAjax", method = RequestMethod.POST)
     public Object commonAjax(HttpServletRequest request) {
-        Object shopcode = httpSession.getAttribute("shopcode");
+        String shopcode = (String) httpSession.getAttribute("shopcode");
+        String platenumber = (String) httpSession.getAttribute("platenumber");
         String businessType = request.getParameter("businessType");
         if ("login".equals(businessType)) {
-            String platenumber = request.getParameter("platenumber");
+            platenumber = request.getParameter("platenumber");
             String password = request.getParameter("password");
-            String checklogin = shopWeixinLogin.checklogin(shopcode.toString(), platenumber, password, request);
+            String checklogin = shopWeixinLogin.checklogin(shopcode, platenumber, password, request);
             return checklogin;
+        } else if ("xiaofeijilu".equals(businessType)) {
+            return shopXiaoFeiJiLu.queryXiaoFeiJiLu(shopcode, platenumber);
         }
         return null;
     }

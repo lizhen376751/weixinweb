@@ -151,6 +151,11 @@ public class MenuUtil {
         String commonUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?"
                 + "appid=" + appid + "&redirect_uri=http://lizhen12.tunnel.2bdata.com/shopweixinMenuServlet?shopcode=" + code;
 
+        CommonButton btn11 = new CommonButton();
+        btn11.setName("消费记录");
+        btn11.setType("view");
+        btn11.setUrl(commonUrl + "_xiaofeijilu" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
         CommonButton btn12 = new CommonButton();
         btn12.setName("AHI指数");
         btn12.setType("view");
@@ -158,7 +163,7 @@ public class MenuUtil {
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
-        mainBtn1.setSubbutton(new CommonButton[]{btn12});
+        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12});
 
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1});

@@ -56,7 +56,7 @@
         <mvc:interceptor>
             <mvc:mapping path="/shopweixinMenuServlet"/>
             <!-- 店管家微信 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
-            <bean class="com.dudu.weixin.aashopweiixin.controller.ShopWeixinInterceptor"/>
+            <bean class="com.dudu.weixin.shopweiixin.controller.ShopWeixinInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>

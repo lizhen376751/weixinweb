@@ -1,0 +1,85 @@
+/*公共样式*/
+.blue{
+	color: #31a3ff;
+}
+.yellow{
+	background: #ffbb05;
+}
+.red{
+	color: #ff1c3c;
+}
+.green{
+	background: #07d6dd;
+}
+.white{
+	color: white;
+}
+span{display: inline-block;}
+/*每一次的消费记录*/
+.box{
+	width: 100%;
+	border-top: 1px #e1e1e1 solid;
+	border-bottom: 1px #e1e1e1 solid;
+}
+/*Top*/
+.top{
+	width: 100%;
+	overflow: hidden;
+	margin-top: 33px;
+}
+.top div{
+	float: left;
+}
+/*时间*/
+.timer{
+	width: 50%;
+	text-indent: 24px;
+}
+/*公里数*/
+.number{
+	width: 50%;
+	text-align: right;
+	box-sizing: border-box;
+	padding-right: 24px;
+}
+/*Middle*/
+.middle{
+	width: 100%;
+	min-height: 53px;
+	margin-top: 25px;
+	overflow: hidden;
+}
+.middle div{
+	float: left;
+}
+/*消费类型*/
+.middle .left{
+	text-indent: 24px;
+}
+/*.middle .center{
+	width: 13.42%;
+	height: 53px;
+	line-height: 53px;
+	text-align: center;
+	border-radius: 7px;
+}*/
+.middle .right{
+	width: 77%;
+	min-height: 53px;
+	line-height: 53px;
+	box-sizing: border-box;
+	padding: 0px 24px 0px 5px;
+}
+/*Bottom*/
+.bottom{
+	width: 100%;
+	overflow: hidden;
+	margin: 18px 0px 40px 0px;
+}
+.bottom div{
+	float: left;
+}
+/*付款方式*/
+.bottom .left{
+	text-indent: 24px;
+}

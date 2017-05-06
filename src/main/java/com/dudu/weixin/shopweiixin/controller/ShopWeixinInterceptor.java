@@ -1,4 +1,4 @@
-package com.dudu.weixin.aashopweiixin.controller;
+package com.dudu.weixin.shopweiixin.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.weixindubbo.shopinfo.api.ApiShopInfo;

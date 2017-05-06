@@ -1,4 +1,4 @@
-package com.dudu.weixin.aashopweiixin.controller;
+package com.dudu.weixin.shopweiixin.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +43,8 @@ public class ShopWeiXinControl {
         String shopcode = strWxShopcode.split("_")[0]; //联盟code
         if ("AHIInfo".equals(flagStr)) {
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
+        } else if ("xiaofeijilu".equals(flagStr)) {
+            return "/shopxiaofeijilu/xiaofeijilu.jsp"; //消费记录
         }
         return null;
     }
@@ -56,8 +58,6 @@ public class ShopWeiXinControl {
      */
     @RequestMapping(value = "shopweixinServlet", method = RequestMethod.GET)
     public String shopWeiXinPageJump(HttpServletRequest request, Model model) {
-        //TODO 暂时写死
-        httpSession.setAttribute("shopcode", "0533001");
         String serviceType = request.getParameter("serviceType");
         if ("login".equals(serviceType)) {
             return "/shoplogin/shoplogin.jsp"; //登录页面
