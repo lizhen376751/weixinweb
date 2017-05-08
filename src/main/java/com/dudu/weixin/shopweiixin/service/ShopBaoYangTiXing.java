@@ -4,6 +4,8 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.customercenter.customerdemand.api.ApiCustomerDemand;
 import com.dudu.soa.customercenter.customerdemand.model.QueryCustomerDemandParam;
 import com.dudu.soa.customercenter.customerdemand.model.ResultQueryCustomerDemand;
+import com.dudu.soa.weixindubbo.shopinfo.api.ApiShopInfo;
+import com.dudu.soa.weixindubbo.shopinfo.module.ShopInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +16,11 @@ import java.util.List;
  */
 @Service
 public class ShopBaoYangTiXing {
+    /**
+     * 引入店铺信息的接口
+     */
+    @Reference(version = "1.0")
+    private ApiShopInfo apiShopInfo;
     /**
      * 引入查询客户需求接口(保养提醒)
      */
@@ -33,14 +40,14 @@ public class ShopBaoYangTiXing {
         queryCustomerDemandParam.setShopCode(shopcode);
         List<ResultQueryCustomerDemand> resultQueryCustomerDemands = apiCustomerDemand.queryCustomerDemand(queryCustomerDemandParam);
         if (resultQueryCustomerDemands.size() > 0) {
-//            for(String str:strs){
-//                System.out.println(str);
-//            }
-//            for (){
-//
-//            }
+            for (ResultQueryCustomerDemand resultQueryCustomerDemand : resultQueryCustomerDemands) {
+                String shopCode = resultQueryCustomerDemand.getShopCode();
+                ShopInfo shopInfo = apiShopInfo.getShopInfo(shopCode);
+                String shopName = shopInfo.getShopName();
+                resultQueryCustomerDemand.setUpdateUserName(shopName);
+            }
+
         }
-//        updateUserName
         return resultQueryCustomerDemands;
     }
 }
