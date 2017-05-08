@@ -642,14 +642,7 @@ $(document).ready(function(){
                     var json = JSON.parse(jsondata);
                     Duducreds=json;
                     // console.log(json)
-                    lrz(that.files[0], {
-                        width: 800
-                    }).then(function (rst) {
-                        console.log(rst.file);
-                        var filesss = rst.file;
-                        new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
-                    });
-
+                    new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
                 },
                 error:function(data){
 
