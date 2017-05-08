@@ -164,6 +164,22 @@ public class ChexiantoubaoService {
         String customerName = request.getParameter("your_name");
         if (null != customerName && !"".equals(customerName)) {
             cm.setCustomerName(customerName);
+
+        }
+        //获取车辆识别代号
+        String vehicleIdentificationCode = request.getParameter("car_model");
+        if (null != vehicleIdentificationCode && !"".equals(vehicleIdentificationCode)) {
+            cm.setVehicleIdentificationCode(vehicleIdentificationCode);
+        }
+        //获取车辆发动机号
+        String engineNumber = request.getParameter("engine_number");
+        if (null != engineNumber && !"".equals(engineNumber)) {
+            cm.setEngineNumber(engineNumber);
+       }
+       //获取车辆使用性质
+        String operationType = request.getParameter("property");
+        if (null != operationType && !"".equals(operationType)) {
+            cm.setOperationType(operationType);
         }
         //获取注册日期
         String registrationDate = request.getParameter("registration_date");
