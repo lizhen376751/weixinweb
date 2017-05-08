@@ -152,7 +152,8 @@ public class ChexiantoubaoService {
         if (null != customerId1 && !"".equals(customerId1)) {
             int customerId = Integer.parseInt(customerId1);
             cm.setId(customerId);
-
+        } else {
+            cm.setId(null);
         }
 
         //获取客户手机号
