@@ -166,7 +166,7 @@ public class AllController {
             String mineShopCode = request.getParameter("mineShopCode");
             model.addAttribute("mineShopCode", mineShopCode);
             return "/baoxian/cheXianTouBao/cheXianTouBao.jsp"; //车险投保
-        }  else if ("cheXianOnline".equals(flagStr)) {
+        } else if ("cheXianOnline".equals(flagStr)) {
             return "redirect:http://kefu6.kuaishang.cn/bs/im.htm?cas=56463___619761&fi=58696&from=9"; //车险投保易璐邦的在线咨询
         } else if ("register".equals(flagStr)) {
             return "/register/register.jsp"; //注册
@@ -189,6 +189,17 @@ public class AllController {
             return "/cheXianList/cheXianList.jsp"; //车险报价
         }
         return "/login/login.jsp?lmcode=" + lmcode;
+    }
+
+    /**
+     * 车险投保的在线交流小图标
+     *
+     * @return 字符串路径
+     */
+    @RequestMapping(value = "/cheXianOnline", method = RequestMethod.GET)
+    public String cheXianOnline() {
+        return "redirect:http://kefu6.kuaishang.cn/bs/im.htm?cas=56463___619761&fi=58696&from=9"; //车险投保易璐邦的在线咨询
+
     }
 
 
@@ -302,8 +313,9 @@ public class AllController {
 
     /**
      * 跳转至保险详情页面
+     *
      * @param request 请求
-     * @param model 返回数据
+     * @param model   返回数据
      * @return 保险详情页面
      */
     @RequestMapping(value = "baoXianDetails")

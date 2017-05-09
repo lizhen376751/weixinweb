@@ -17,7 +17,7 @@ $(document).ready(function(){
     var body = $("body");   //---------------------------------------------------------------获取body元素
     var kf_logo = $(".kf"); //-----------------------------------------huoqu
     kf_logo.on("click",function (e) {
-        window.location.href = "/oauthLoginServlet?flagStr=cheXianOnline";
+        window.location.href = "/cheXianOnline";
         e.stopPropagation();
     });
     var ylb = shopCode.substring(0,3);

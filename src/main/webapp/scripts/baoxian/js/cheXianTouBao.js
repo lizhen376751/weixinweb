@@ -2,7 +2,7 @@
 $(document).ready(function(){
     var kf_logo = $(".kf"); //-----------------------------------------huoqu
     kf_logo.on("click",function (e) {
-        window.location.href = "/oauthLoginServlet?flagStr=cheXianOnline";
+        window.location.href = "/cheXianOnline";
         e.stopPropagation();
     })
 
