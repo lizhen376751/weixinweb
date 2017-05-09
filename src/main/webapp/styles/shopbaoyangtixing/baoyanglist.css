@@ -23,4 +23,31 @@
 .by_bgcolorfjj{background:#ff1c3c} /*非常紧急*/
 .by_bgcolorjj{background:#ff6f28}  /*紧急*/
 .by_bgcolorpt{background:#31a3ff}  /*普通*/
-
+/*Middle*/
+.middle{
+	width: 100%;
+	min-height: 53px;
+	margin-top: 13px;
+	overflow: hidden;
+}
+.middle div{
+	float: left;
+}
+/*消费类型*/
+/*.middle .left{
+	text-indent: 24px;
+}*/
+/*.middle .center{
+	width: 13.42%;
+	height: 53px;
+	line-height: 53px;
+	text-align: center;
+	border-radius: 7px;
+}*/
+.middle .right{
+	width: 77%;
+	min-height: 53px;
+	line-height: 53px;
+	box-sizing: border-box;
+	padding: 0px 24px 0px 5px;
+}
