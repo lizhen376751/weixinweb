@@ -47,17 +47,15 @@ $(document).ready(function () {
                         "<div class='middle by_cenulcolor'>"+
                             "<div class='left font_1 blue'>保养类型：</div>"+
                             "<div class='right font_1'>"+
-                                "<span class='txt'>"+"json[ii].demandTypeName"+"</span>"+
+                                "<span class='txt'>"+json[ii].demandTypeName+"</span>"+
                             "</div>"+
                         "</div>"+
-                        // "<div class='by_center font_1 by_cenulcolor'> 保养类型：" + json[ii].demandTypeName + "</div>" +
                         "<div class='middle by_cenulcolor'>"+
                             "<div class='left font_1 blue'>详<i style='visibility: hidden'>保养</i>情：</div>"+
                             "<div class='right font_1'>"+
-                                "<span class='txt'>"+"json[ii].customerDemandMemo"+"</span>"+
+                                "<span class='txt'>"+json[ii].customerDemandMemo+"</span>"+
                             "</div>"+
                         "</div>"+
-                        // "<div class='by_center font_1 by_cenulcolor'> 详<i style='visibility: hidden'>保养</i>情：" + json[ii].customerDemandMemo + "</div>" +
                         "<div class='by_center font_1 by_cenulcolor'> 状<i  style='visibility: hidden'>保养</i>态：" + flaghtml + " </div>" +
                         "</li>"
                 }
