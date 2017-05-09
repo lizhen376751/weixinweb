@@ -55,12 +55,14 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
+
         HttpSession session = request.getSession();
         String shopcode = (String) session.getAttribute("shopcode");
 
         //参数中获取shopcode
         String strWxShopcode = request.getParameter("shopcode");
         String flagStr = strWxShopcode.split("_")[1]; //页面跳转判断
+
         String shopcode1 = strWxShopcode.split("_")[0]; //店铺code
         //判断session的shopcode是否为空
         if (null != shopcode && !"".equals(shopcode)) {
@@ -69,9 +71,11 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
                 //如果不一致,跳转至登录页面
                 request.getRequestDispatcher("/Views/shoplogin/shoplogin.jsp?shopcode=" + shopcode).forward(request, response);
             }
+        } else {
+            //如果为空的话讲shopcode存入到session里面
+            session.setAttribute("shopcode", shopcode1);
+            shopcode = shopcode1;
         }
-        //如果为空的话讲shopcode存入到session里面
-        session.setAttribute("shopcode", shopcode1);
 
         //页面带过来的授权code
         String code = request.getParameter("code");
