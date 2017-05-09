@@ -56,7 +56,7 @@ $(document).ready(function () {
                                 "<span class='txt'>"+json[ii].customerDemandMemo+"</span>"+
                             "</div>"+
                         "</div>"+
-                        "<div class='by_center font_1 by_cenulcolor'> 状<i  style='visibility: hidden'>保养</i>态：" + flaghtml + " </div>" +
+                        "<div class='by_center font_1 by_cenulcolor' style='margin-top: 13px;margin-bottom: 43px;'> 状<i  style='visibility: hidden'>保养</i>态：" + flaghtml + " </div>" +
                         "</li>"
                 }
 
