@@ -1,6 +1,7 @@
 package com.dudu.weixin.shopweiixin.controller;
 
 import com.dudu.weixin.shopweiixin.service.ShopBaoYangTiXing;
+import com.dudu.weixin.shopweiixin.service.ShopShiGongBuZhou;
 import com.dudu.weixin.shopweiixin.service.ShopWeixinLogin;
 import com.dudu.weixin.shopweiixin.service.ShopXiaoFeiJiLu;
 import org.slf4j.Logger;
@@ -45,6 +46,11 @@ public class ShopWeiXinAjax {
      */
     @Autowired
     private ShopBaoYangTiXing shopBaoYangTiXing;
+    /**
+     * 查看施工步骤
+     */
+    @Autowired
+    private ShopShiGongBuZhou shopShiGongBuZhou;
 
     /**
      * @param request 请求
@@ -63,6 +69,12 @@ public class ShopWeiXinAjax {
             return checklogin;
         } else if ("xiaofeijilu".equals(businessType)) { //消费记录页面
             return shopXiaoFeiJiLu.queryXiaoFeiJiLu(shopcode, platenumber);
+        } else if ("shigongbuzhou".equals(businessType)) { //施工步骤
+            //TODO 获取三个参数
+            String shopCode = request.getParameter("shopcode"); //店铺编码
+            String wxpingzheng = request.getParameter("shopcode"); //维修单号
+            String xiangmubianma = request.getParameter("shopcode"); //项目字符串
+            return shopShiGongBuZhou.queryListShiGongBuZhou(shopCode, wxpingzheng, xiangmubianma);
         } else if ("baoYangTiXingList".equals(businessType)) { //保养提醒页面
             return shopBaoYangTiXing.queryBaoYangTiXing(shopcode, platenumber);
         }

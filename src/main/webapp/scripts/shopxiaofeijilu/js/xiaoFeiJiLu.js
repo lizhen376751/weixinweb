@@ -56,8 +56,8 @@ $(document).ready(function () {
                     var xu_number = $(this).attr("xm_num");
                     var shopCode = $(this).attr("shopCode");
                     var wxpingzheng = $(this).attr("wxpingzheng");
-                    console.log(xu_number)
-                    console.log(shopCode)
+                    console.log(xu_number);
+                    console.log(shopCode);
                     console.log(wxpingzheng)
                 })
             }  // addLabel函数结束
@@ -75,8 +75,9 @@ $(document).ready(function () {
             if (arr[i].purchaseProjectList.length != 0) {   //判断是否存在消费的项目
                 var xm = "";
                 for(var j = 0;j < arr[i].purchaseProjectList.length;j++){
-                    xm += '<div><span>'+j+'</span><p>'+arr[i].purchaseProjectList[j].projectName+'</p></div>';
-                    xm_num += arr[i].purchaseProjectList[j].projectCode + "-" + arr[i].purchaseProjectList[j].Id + "-";
+                    var s = j + 1;
+                    xm += '<div><span>'+s+'</span><p>'+arr[i].purchaseProjectList[j].projectName+'</p></div>';
+                    xm_num += arr[i].purchaseProjectList[j].projectCode + "-" + arr[i].purchaseProjectList[j].projectId + "_";
                 }
                 xfxm = '<div class="middle_1 font_1">'+
                             '<div class="left_1">消费项目：</div>'+
@@ -86,7 +87,8 @@ $(document).ready(function () {
             if (arr[i].purchaseProductList.length != 0) {   //判断是否存在消费的商品
                 var sp = "";
                 for(var h = 0;j < arr[i].purchaseProductList.length.length;h++){
-                    sp += '<div><span>'+h+'</span><p>'+arr[i].purchaseProductList.length[h].projectName+'</p></div>'
+                    w = h + 1;
+                    sp += '<div><span>'+w+'</span><p>'+arr[i].purchaseProductList.length[h].projectName+'</p></div>'
                 }
                 xfsp = '<div class="middle_1 font_1">'+
                     '<div class="left_1">消费商品：</div>'+
@@ -94,16 +96,18 @@ $(document).ready(function () {
                     '</div>'
 
             }
+            var htmlzhifufangshi = "";//第一种收款方式
+            var htmlzhifufangshiSecond = "";//第二种收款方式
             if ((arr[i].zhifufangshiSecond == null) && (arr[i].zhifufangshi == null)) {   //判断付款方式是否都为空
                 fkfs += "未付款";
             } else {
 
                 if (arr[i].zhifufangshi != null) {   //第一种收款方式
-                   var htmlzhifufangshi = "<span>" + arr[i].zhifufangshi + "</span>（<span class='red'>" + arr[i].zhifufangshiJinE + "</span>）"
+                    htmlzhifufangshi = "<span>" + arr[i].zhifufangshi + "</span>（<span class='red'>￥" + arr[i].zhifufangshiJinE + "</span>）"
                 }
 
                 if (arr[i].zhifufangshiSecond != null) {  //第二种收款方式
-                   var htmlzhifufangshiSecond = arr[i].zhifufangshiSecond + "(<span class='red'>" + arr[i].zhifufangshiBJinE + "</span>)"
+                    htmlzhifufangshiSecond = arr[i].zhifufangshiSecond + "(<span class='red'>￥" + arr[i].zhifufangshiBJinE + "</span>)"
                 } else {
 
                 }
@@ -123,7 +127,7 @@ $(document).ready(function () {
                                  '</div>'+
                                 '<div>'+
                                     '<span style="margin-left: 26px;">付款方式：</span>'+fkfs+
-                                 '</div>'+
+                                '</div>'+
                             '</div>'+
                         '<div class="btn">'+
                             '<div class="pingjia font_1">去评价</div>'+

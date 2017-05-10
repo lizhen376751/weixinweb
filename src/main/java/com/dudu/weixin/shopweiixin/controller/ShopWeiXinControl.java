@@ -45,6 +45,14 @@ public class ShopWeiXinControl {
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
         } else if ("xiaofeijilu".equals(flagStr)) {
             return "/shopxiaofeijilu/xiaofeijilu.jsp"; //消费记录
+        } else if ("施工步骤".equals(flagStr)) {
+            String shopCode = request.getParameter("shopcode"); //店铺编码
+            String strWxShopcode1 = request.getParameter("shopcode"); //维修单号
+            String strWxShopcode2 = request.getParameter("shopcode"); //项目字符串
+            model.addAttribute("shopCode", "");
+            model.addAttribute("shopCode", "");
+            model.addAttribute("shopCode", "");
+            return "/shopshigongbuzhou/stepPhoto.jsp"; //施工步骤
         } else if ("BaoYangTiXing".equals(flagStr)) {
             return "/shopbaoyangtixing/baoYangList.jsp"; //保养提醒
         }
@@ -68,5 +76,16 @@ public class ShopWeiXinControl {
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
         }
         return null;
+    }
+
+    /**
+     * 所有的post请求最终走get请求
+     *
+     * @param request 请求
+     * @param model   向叶面返回参数
+     */
+    @RequestMapping(value = "shopweixinMenuServlet", method = RequestMethod.POST)
+    public void doPost(HttpServletRequest request, Model model) {
+        this.shopWeiXinMenuPageJump(request, model);
     }
 }
