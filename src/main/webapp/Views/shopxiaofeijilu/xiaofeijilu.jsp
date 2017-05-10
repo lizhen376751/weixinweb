@@ -4,12 +4,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <title>消费记录</title>
-    <link rel="stylesheet" type="text/css" href="../css/weix.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/xiaoFeiJiLu.css"/>
-    <script src="../js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../js/xiaoFeiJiLu.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
+    <link rel="stylesheet" type="text/css" href="/styles/shopxiaofeijilu/css/xiaoFeiJiLu.css"/>
+    <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/shopxiaofeijilu/js/xiaoFeiJiLu.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 <ul style="height: 100%;">
@@ -26,10 +26,14 @@
             <div class="middle_1 font_1">
                 <div class="left_1">消费项目：</div>
                 <div class="right_1">
-                    <div><span>1</span><p>水蜡洗车</p></div>
-                    <div><span>1</span><p>水蜡洗车</p></div>
-                    <div><span>1</span><p>水蜡洗车</p></div>
-                    <div><span>1</span><p>水蜡洗车</p></div>
+                    <div><span>1</span>
+                        <p>水蜡洗车</p></div>
+                    <div><span>1</span>
+                        <p>水蜡洗车</p></div>
+                    <div><span>1</span>
+                        <p>水蜡洗车</p></div>
+                    <div><span>1</span>
+                        <p>水蜡洗车</p></div>
                 </div>
                 <!--<div style="float: left;margin-top: 29px;">
                     <span style="margin-left: 26px;">施工技师：</span>

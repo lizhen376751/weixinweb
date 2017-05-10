@@ -51,7 +51,7 @@ $(document).ready(function () {
                 //alert(jsonData);
                 addLabel(arr);
                 var pJ = $(".pJ");//获取去评价按钮
-                var sgbz = $(".sgbz");获取施工步骤按钮
+                var sgbz = $(".sgbz");//获取施工步骤按钮
                 sgbz.on("click",function () {
                     var xu_number = $(this).attr("xm_num");
                     var shopCode = $(this).attr("shopCode");

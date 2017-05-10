@@ -31,7 +31,7 @@ public class ShopXiaoFeiJiLu {
      * 店管家消费记录
      *
      * @param mainShopCode 店铺编码
-     * @param plateNumber 车牌号
+     * @param plateNumber  车牌号
      * @return 消费列表
      */
     public List<ResultPurchaseHistory> queryXiaoFeiJiLu(String mainShopCode, String plateNumber) {

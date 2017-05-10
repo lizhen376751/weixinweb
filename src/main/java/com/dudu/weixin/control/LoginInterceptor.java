@@ -8,7 +8,6 @@ import com.dudu.soa.weixindubbo.weixin.http.module.parammodule.WeiXinUserInfo;
 import com.dudu.soa.weixindubbo.weixin.weixinconfig.api.ApiWeiXinConfig;
 import com.dudu.soa.weixindubbo.weixin.weixinconfig.module.WeiXinConfig;
 import com.dudu.weixin.service.LogInLogService;
-import com.dudu.weixin.util.AdvancedUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +38,7 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Autowired
     private LogInLogService logInLogService;
-    /**
-     * 获取网页授权的access_token
-     */
-    @Autowired
-    private AdvancedUtil advancedUtil;
+
     /**
      * 引入获取appid和sercert的方法
      */
@@ -52,7 +47,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     /**
      * 引入微信通讯相关接口
      */
-    @Reference(version = "1.0")
+    @Reference(version = "1.0", timeout = 300000)
     private ApiAllWeiXiRequest apiAllWeiXiRequest;
 
     /**

@@ -4,6 +4,10 @@ package com.dudu.weixin.control;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.weixin.util.Constant;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -17,6 +21,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 配置微信的url点击提交之后,与服务器的交互
@@ -81,16 +88,63 @@ public class CoreController extends HttpServlet {
      * @param response 回应请求
      */
     @RequestMapping(value = "/urlconfig", method = RequestMethod.POST)
-    public void doPost(HttpServletRequest request, HttpServletResponse response) {
+    public void doPost(PrintWriter out,HttpServletRequest request, HttpServletResponse response) {
         System.out.println("这是post方法！");
+        // 将解析结果存储在HashMap中
+        Map<String, String> map = new HashMap<String, String>();
+        // 从request中取得输入流
+        InputStream inputStream = null;
         try {
-            InputStream inputStream = request.getInputStream();
-            //TODO 调用微信消息处理的接口
-            log.info("request中的inputStream==========================" + inputStream);
-            apiAllWeiXiRequest.receivemessage(inputStream);
+            inputStream = request.getInputStream();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // 读取输入流
+        SAXReader reader = new SAXReader();
+        Document document = null;
+        try {
+            document = reader.read(inputStream);
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        // 得到xml根元素
+        Element root = document.getRootElement();
+        // 得到根元素的所有子节点
+        List<Element> elementList = root.elements();
+
+        // 遍历所有子节点
+        for (Element e : elementList) {
+            map.put(e.getName(), e.getText());
+        }
+        log.info("接受消息为==========================" + map);
+        String receivemessage = apiAllWeiXiRequest.receivemessage(map);
+        log.info("发送消息为==========================" + receivemessage);
+        out.println(receivemessage);
+        out.close();
+        // 释放资源
+        try {
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        inputStream = null;
+
+
+        //TODO 调用微信消息处理的接口
+        // 读取输入流
+//            SAXReader reader = new SAXReader();
+//            Document document = null;
+//            try {
+//                document = reader.read(inputStream);
+//            } catch (DocumentException e) {
+//                e.printStackTrace();
+//            }
+//            log.info("request中的inputStream==========================" + document);
+//            apiAllWeiXiRequest.receivemessage(document);
+//            log.info("request中的inputStream==========================" + inputStream);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }
