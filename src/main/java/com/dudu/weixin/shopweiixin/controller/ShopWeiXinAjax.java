@@ -63,18 +63,13 @@ public class ShopWeiXinAjax {
         String platenumber = (String) httpSession.getAttribute("plateNumber");
         String businessType = request.getParameter("businessType");
         if ("login".equals(businessType)) { //登录页面
-            platenumber = request.getParameter("platenumber");
-            String password = request.getParameter("password");
-            String checklogin = shopWeixinLogin.checklogin(shopcode, platenumber, password, request);
-            return checklogin;
+            return shopWeixinLogin.checklogin(shopcode, request);
         } else if ("xiaofeijilu".equals(businessType)) { //消费记录页面
             return shopXiaoFeiJiLu.queryXiaoFeiJiLu(shopcode, platenumber);
         } else if ("shigongbuzhou".equals(businessType)) { //施工步骤
-            //TODO 获取三个参数
-            String shopCode = request.getParameter("shopcode"); //店铺编码
-            String wxpingzheng = request.getParameter("shopcode"); //维修单号
-            String xiangmubianma = request.getParameter("shopcode"); //项目字符串
-            return shopShiGongBuZhou.queryListShiGongBuZhou(shopCode, wxpingzheng, xiangmubianma);
+            return shopShiGongBuZhou.queryListShiGongBuZhou(request);
+        } else if ("biaozhunliucheng".equals(businessType)) { //标准流程查看
+            return shopShiGongBuZhou.queryProjectProcess(request);
         } else if ("baoYangTiXingList".equals(businessType)) { //保养提醒页面
             return shopBaoYangTiXing.queryBaoYangTiXing(shopcode, platenumber);
         }

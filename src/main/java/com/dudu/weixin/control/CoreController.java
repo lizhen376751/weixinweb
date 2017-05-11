@@ -39,7 +39,7 @@ public class CoreController extends HttpServlet {
     /**
      * 引入消息处理接口
      */
-    @Reference(version = "1.0")
+    @Reference(version = "1.0", timeout = 300000)
     private ApiAllWeiXiRequest apiAllWeiXiRequest;
 
     /**
@@ -88,7 +88,7 @@ public class CoreController extends HttpServlet {
      * @param response 回应请求
      */
     @RequestMapping(value = "/urlconfig", method = RequestMethod.POST)
-    public void doPost(PrintWriter out,HttpServletRequest request, HttpServletResponse response) {
+    public void doPost(PrintWriter out, HttpServletRequest request, HttpServletResponse response) {
         System.out.println("这是post方法！");
         // 将解析结果存储在HashMap中
         Map<String, String> map = new HashMap<String, String>();

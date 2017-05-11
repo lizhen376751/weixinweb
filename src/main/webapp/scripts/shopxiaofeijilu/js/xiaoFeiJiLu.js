@@ -56,9 +56,8 @@ $(document).ready(function () {
                     var xu_number = $(this).attr("xm_num");
                     var shopCode = $(this).attr("shopCode");
                     var wxpingzheng = $(this).attr("wxpingzheng");
-                    console.log(xu_number);
-                    console.log(shopCode);
-                    console.log(wxpingzheng)
+                    window.location.href="/shopweixinServlet?serviceType=shigongbuzhou&xu_number="+xu_number+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng;
+
                 })
             }  // addLabel函数结束
 

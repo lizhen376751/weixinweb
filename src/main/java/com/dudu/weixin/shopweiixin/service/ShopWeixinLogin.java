@@ -36,7 +36,7 @@ public class ShopWeixinLogin {
     /**
      * 引入微信通讯相关的基础接口
      */
-    @Reference(version = "1.0")
+    @Reference(version = "1.0", timeout = 300000)
     private ApiAllWeiXiRequest apiAllWeiXiRequest;
     /**
      * 引入查询店铺信息接口
@@ -50,13 +50,14 @@ public class ShopWeixinLogin {
     private LogInLogService logInLogService;
 
     /**
-     * @param shopcode    店铺编码
-     * @param plateNumber 车牌号
-     * @param password    密码
-     * @param request     请求
+     * @param shopcode 店铺编码
+     * @param request  请求
      * @return 0提示用户名或者密码错误, 返回1表示登录成功, 返回2网络错误提示客户重新登录
      */
-    public String checklogin(String shopcode, String plateNumber, String password, HttpServletRequest request) {
+    public String checklogin(String shopcode, HttpServletRequest request) {
+        String plateNumber = request.getParameter("platenumber"); //车牌号
+        String password = request.getParameter("password"); //密码
+
         HttpSession session = request.getSession();
         String openId = session.getAttribute("openId").toString();
         String nickname = session.getAttribute("nickname").toString();

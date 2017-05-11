@@ -15,7 +15,7 @@ public class CreateMenuService {
     /**
      * 引入菜单创建的接口
      */
-    @Reference(version = "1.0")
+    @Reference(version = "1.0", timeout = 300000)
     private ApiAllWeiXiRequest apiAllWeiXiRequest;
 
     /**

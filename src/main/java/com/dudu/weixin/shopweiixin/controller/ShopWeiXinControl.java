@@ -45,14 +45,6 @@ public class ShopWeiXinControl {
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
         } else if ("xiaofeijilu".equals(flagStr)) {
             return "/shopxiaofeijilu/xiaofeijilu.jsp"; //消费记录
-        } else if ("施工步骤".equals(flagStr)) {
-            String shopCode = request.getParameter("shopcode"); //店铺编码
-            String strWxShopcode1 = request.getParameter("shopcode"); //维修单号
-            String strWxShopcode2 = request.getParameter("shopcode"); //项目字符串
-            model.addAttribute("shopCode", "");
-            model.addAttribute("shopCode", "");
-            model.addAttribute("shopCode", "");
-            return "/shopshigongbuzhou/stepPhoto.jsp"; //施工步骤
         } else if ("BaoYangTiXing".equals(flagStr)) {
             return "/shopbaoyangtixing/baoYangList.jsp"; //保养提醒
         }
@@ -69,8 +61,22 @@ public class ShopWeiXinControl {
     @RequestMapping(value = "shopweixinServlet", method = RequestMethod.GET)
     public String shopWeiXinPageJump(HttpServletRequest request, Model model) {
         String serviceType = request.getParameter("serviceType");
-        if ("login".equals(serviceType)) {
-            return "/shoplogin/shoplogin.jsp"; //登录页面
+        if ("login".equals(serviceType)) { //登录页面
+            return "/shoplogin/shoplogin.jsp";
+        } else if ("shigongbuzhou".equals(serviceType)) { //施工步骤
+            String shopCode = request.getParameter("shopCode"); //店铺编码
+            String wxpingzheng = request.getParameter("wxpingzheng"); //维修单号
+            String xunumber = request.getParameter("xu_number"); //项目字符串
+            model.addAttribute("shopCode", shopCode);
+            model.addAttribute("wxpingzheng", wxpingzheng);
+            model.addAttribute("xunumber", xunumber);
+            return "/shopshigongbuzhou/stepPhoto.jsp";
+        } else if ("biaozhunliucheng".equals(serviceType)) { //标准流程查看
+            String itemCode = request.getParameter("itemCode"); //项目编码
+            String shopCodeLm = request.getParameter("shopCodeLm"); //品牌商编码
+            model.addAttribute("itemCode", itemCode);
+            model.addAttribute("shopCodeLm", shopCodeLm);
+            return "/shopshigongbuzhou/standardProcesses.jsp";
         } else if ("AHIInfo".equals(serviceType)) {
             //TODO 登录在成功之后暂时跳转至ahi,后期换成个人中心
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
@@ -84,7 +90,7 @@ public class ShopWeiXinControl {
      * @param request 请求
      * @param model   向叶面返回参数
      */
-    @RequestMapping(value = "shopweixinMenuServlet", method = RequestMethod.POST)
+    @RequestMapping(value = "shopweixinServlet", method = RequestMethod.POST)
     public void doPost(HttpServletRequest request, Model model) {
         this.shopWeiXinMenuPageJump(request, model);
     }
