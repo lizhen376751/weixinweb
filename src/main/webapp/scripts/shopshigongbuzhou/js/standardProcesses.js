@@ -27,7 +27,7 @@ $(function(){
         success: function (jsonData) {
             var arr = JSON.parse(jsonData);
             console.log(arr);
-
+            add_step(arr)
             }
 
         });
