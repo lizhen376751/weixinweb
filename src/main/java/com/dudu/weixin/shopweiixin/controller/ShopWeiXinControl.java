@@ -60,6 +60,7 @@ public class ShopWeiXinControl {
      */
     @RequestMapping(value = "shopweixinServlet", method = RequestMethod.GET)
     public String shopWeiXinPageJump(HttpServletRequest request, Model model) {
+        String plateNumber = (String) httpSession.getAttribute("plateNumber");
         String serviceType = request.getParameter("serviceType");
         if ("login".equals(serviceType)) { //登录页面
             return "/shoplogin/shoplogin.jsp";
@@ -67,6 +68,7 @@ public class ShopWeiXinControl {
             String shopCode = request.getParameter("shopCode"); //店铺编码
             String wxpingzheng = request.getParameter("wxpingzheng"); //维修单号
             String xunumber = request.getParameter("xu_number"); //项目字符串
+            model.addAttribute("plateNumber", plateNumber);
             model.addAttribute("shopCode", shopCode);
             model.addAttribute("wxpingzheng", wxpingzheng);
             model.addAttribute("xunumber", xunumber);

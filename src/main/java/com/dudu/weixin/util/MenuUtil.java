@@ -166,9 +166,19 @@ public class MenuUtil {
         btn13.setType("view");
         btn13.setUrl(commonUrl + "_BaoYangTiXing" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
+        CommonButton btn14 = new CommonButton();
+        btn14.setName("中天商城");
+        btn14.setType("view");
+        btn14.setUrl("http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzI0MzQwMDc4Mg==&shelf_id=1&showwxpaytitle=1#wechat_redirect");
+
+        CommonButton btn15 = new CommonButton();
+        btn15.setName("优惠中心");
+        btn15.setType("view");
+        btn15.setUrl("https://mp.weixin.qq.com/bizmall/cardshelf?shelf_id=1&showwxpaytitle=1&biz=MzI0MzQwMDc4Mg==&t=cardticket/shelf_list&scene=1000007#wechat_redirect");
+
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
-        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13});
+        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14, btn15});
 
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1});
