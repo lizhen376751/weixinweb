@@ -19,7 +19,7 @@
     <script src="/scripts/shopshigongbuzhou/js/stepPhoto.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-<input  name="plateNumber" id="plateNumber" value="<%=plateNumber%>" >
+<input type="hidden" name="plateNumber" id="plateNumber" value="<%=plateNumber%>" >
 <input type="hidden" name="shopCode" id="shopCode" value=${shopCode} >
 <input type="hidden" name="wxpingzheng"   id="wxpingzheng" value=${wxpingzheng} />
 <input type="hidden" name="xunumber"  id="xunumber" value=${xunumber} />

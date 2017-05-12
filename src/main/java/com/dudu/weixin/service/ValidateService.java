@@ -58,6 +58,11 @@ public class ValidateService {
         //验证是否有发送记录
         if (null != smsSend1) {
             //如果有发送记录,获取验证码
+            Date sendTime = smsSend1.getSendTime();
+            //如果超过了十分钟,验证码失效
+            if ((new Date().getTime() - sendTime.getTime()) > 600000) {
+                return false;
+            }
             String identifyingCode = smsSend1.getIdentifyingCode();
             //如果有验证码,验证验证码是否相同
             if (null != identifyingCode && !"".equals(identifyingCode)) {
