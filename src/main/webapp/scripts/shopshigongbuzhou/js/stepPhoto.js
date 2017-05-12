@@ -20,7 +20,7 @@ $(function () {
     var project_name = $(".project_name");//-----------------------------------获取项目的名称
     var ul = $("ul");//-----------------------------------------------------获取步骤容器
     var btn = $(".btn");//---------------------------------------------------获取标准流程按钮
-    var images = $(".images"); //--------------------------------------获取页面中的每一步的图片
+
 
     $.ajax({
         type: 'POST',
@@ -52,9 +52,15 @@ $(function () {
 
                   //var html = '';     //循环每个项目的内容
                 for(var j = 0; j < arr2.length; j++){
+                    if(arr2[j].images.length != 0){
+                        var srcs = arr2[j].images[0].fileUrl;
+                    }else{
+                        // var srcs = arr2[j].commonImages[0].fileUrl;
+                        srcs = "";
+                    }
                     title+= "<li>" +
                         "<div class='photo'>" +
-                        "<img src=' "+arr2[j].images[0].fileUrl+" ' class='images'/>" +
+                        "<img src=' "+srcs+" ' class='images'/>" +
                         "</div>" +
                         "<span class='step_num font_4 color_3'>"+arr2[j].stepNumber+"</span>" +
                         "<p class='step_name font_3'>"+arr2[j].projectStepName+"</p>" +
@@ -70,7 +76,9 @@ $(function () {
             $("#btn_idv").on("click", function () {
                 //TODO 获取参数进行替换
                 window.location.href = "/shopweixinServlet?serviceType=biaozhunliucheng&itemCode=CSXM0001000600010002&shopCodeLm=CS000";
-            })
+            });
+
+            var images = $(".images"); //--------------------------------------获取页面中的每一步的图片
         }
 
 
@@ -95,9 +103,7 @@ $(function () {
     //--------------------------------------------------点击标准流程跳转的页面
 
 })
-$(function(){
 
-})
 
 
 

@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" href="/styles/shopshigongbuzhou/css/stepPhoto.css"/>
     <!--引入JS-->
     <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/scripts/shopshigongbuzhou/js/jquery.imgbox.pack.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/shopshigongbuzhou/js/stepPhoto.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
