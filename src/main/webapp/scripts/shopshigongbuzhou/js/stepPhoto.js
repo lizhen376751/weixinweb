@@ -68,7 +68,8 @@ $(function () {
 
                 }
                   title+="</ul>"+
-                          "<div id='btn_idv' class='btn  font_3 color_3'>标准流程</div>"
+                          "<div id='btn_idv' class='btn  font_3 color_3'>标准流程</div>"+
+                          "<span class='fgx'></span>"
 
 
             }
