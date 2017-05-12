@@ -20,7 +20,7 @@ $(function () {
     var project_name = $(".project_name");//-----------------------------------获取项目的名称
     var ul = $("ul");//-----------------------------------------------------获取步骤容器
     var btn = $(".btn");//---------------------------------------------------获取标准流程按钮
-
+    var plateNumber = $("#plateNumber").val()//----------------------------获取车牌号
 
     $.ajax({
         type: 'POST',
@@ -41,7 +41,7 @@ $(function () {
                       title+="<div class='title font_1'>" +
                           "<div class='title_left'>"+
                           "<span class='step_color1'>车牌号：</span>"+
-                          "<span class='step_color2 car_num'></span>"+
+                          "<span class='step_color2 car_num'>"+plateNumber+"</span>"+
                           "</div>"+
                           "<div class='title_right'>"+
                           "<span class='step_color2 project_name'>"+arr2[0].projectName+"</span>"+
