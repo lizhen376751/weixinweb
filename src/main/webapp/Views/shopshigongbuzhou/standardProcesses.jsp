@@ -19,38 +19,38 @@
 <!------------------------------------------------title部分-->
 <div class="title font_1">
     <span class="step_color1">项目：</span>
-    <span class="step_color2">怡人怡车换油</span>
+    <span class="step_color2 xm_name">怡人怡车换油</span>
 </div>
 <!------------------------------------------------------标准步骤-->
 <ul>
-    <li>
-        <!--设置背景-->
-        <div class="step_left">
-            <div class="img">
-                <img src="/files/shopshigongbuzhou/stepPhoto/300414.jpg" class="image"/>
-            </div>
-            <span class="step_num font_4 color_3">1</span>
-        </div>
-        <div class="step_text">
-            <p class="step_title font_1 step_color2">启动发动机</p>
-            <p class="step_detail font_4">确认变速箱档位在V/P之间，手刹拉近确认变速箱档位在V/P之间，手刹拉近确认变速箱档位在V/P之间，手刹拉近确认变速箱档位在V/P之间</p>
-            <p class="font_4" id="step_note">注：其他车门玻璃也需要检查也玻璃也需要检查也玻璃也需要检查也玻璃也需要检查也</p>
-        </div>
-    </li>
-    <li>
-        <!--设置背景-->
-        <div class="step_left">
-            <div class="img">
-                <img src="/files/shopshigongbuzhou/stepPhoto/300414.jpg" class="image"/>
-            </div>
-            <span class="step_num font_4 color_3">2</span>
-        </div>
-        <div class="step_text">
-            <p class="step_title font_1 step_color2">启动发动机</p>
-            <p class="step_detail font_4">确认变速箱档位在V/P之间，手刹拉近确认变速箱档位在V/P之间，手刹拉近确认变速箱档位在V/P之间，手刹拉近确认变速箱档位在V/P之间</p>
-            <p class="font_4" id="step_note">注：其他车门玻璃也需要检查</p>
-        </div>
-    </li>
+    <%--<li>--%>
+        <%--<!--设置背景-->--%>
+        <%--<div class="step_left">--%>
+            <%--<div class="img">--%>
+                <%--<img src="/files/shopshigongbuzhou/stepPhoto/300414.jpg" class="image"/>--%>
+            <%--</div>--%>
+            <%--<span class="step_num font_4 color_3">1</span>--%>
+        <%--</div>--%>
+        <%--<div class="step_text">--%>
+            <%--<p class="step_title font_1 step_color2">启动发动机</p>--%>
+            <%--<p class="step_detail font_4">确认变速箱档位在V/P之间，手刹拉近确认变速箱档位在V/P之间，手刹拉近确认变速箱档位在V/P之间，手刹拉近确认变速箱档位在V/P之间</p>--%>
+            <%--<p class="font_4" id="step_note">注：其他车门玻璃也需要检查也玻璃也需要检查也玻璃也需要检查也玻璃也需要检查也</p>--%>
+        <%--</div>--%>
+    <%--</li>--%>
+    <%--<li>--%>
+        <%--<!--设置背景-->--%>
+        <%--<div class="step_left">--%>
+            <%--<div class="img">--%>
+                <%--<img src="/files/shopshigongbuzhou/stepPhoto/300414.jpg" class="image"/>--%>
+            <%--</div>--%>
+            <%--<span class="step_num font_4 color_3">2</span>--%>
+        <%--</div>--%>
+        <%--<div class="step_text">--%>
+            <%--<p class="step_title font_1 step_color2">启动发动机</p>--%>
+            <%--<p class="step_detail font_4">确认变速箱档位在V/P之间，手刹拉近确认变速箱档位在V/P之间，手刹拉近确认变速箱档位在V/P之间，手刹拉近确认变速箱档位在V/P之间</p>--%>
+            <%--<p class="font_4" id="step_note">注：其他车门玻璃也需要检查</p>--%>
+        <%--</div>--%>
+    <%--</li>--%>
 
 </ul>
 </body>
