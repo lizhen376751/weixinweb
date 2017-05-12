@@ -350,7 +350,7 @@ $(document).ready(function () {
 
 
     jkzs.on("click", function () {
-        window.location.href = "/oauthLoginServlet?flagStr=AHIInfo";
+        window.location.href = "/shopweixinServlet?serviceType=AHIInfo";
     });
 
 

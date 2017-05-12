@@ -55,7 +55,7 @@ public class ShopWeixinLoginService {
      * @return 0提示用户名或者密码错误, 返回1表示登录成功, 返回2网络错误提示客户重新登录
      */
     public String checklogin(String shopcode, HttpServletRequest request) {
-        String plateNumber = request.getParameter("platenumber"); //车牌号
+        String plateNumber = request.getParameter("platenumber").toUpperCase(); //车牌号
         String password = request.getParameter("password"); //密码
 
         HttpSession session = request.getSession();

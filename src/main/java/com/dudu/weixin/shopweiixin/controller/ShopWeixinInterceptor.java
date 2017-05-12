@@ -105,7 +105,7 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
                     request.getRequestDispatcher("/Views/shoplogin/shoplogin.jsp?shopcode=" + shopcode).forward(request, response);
                 } else {
                     //获取车牌号
-                    plateNumber = logInLog.getPlateNumber();
+                    plateNumber = logInLog.getPlateNumber().toUpperCase();
                     //如果有记录,就获取记录并存入到session
                     session.setAttribute("plateNumber", plateNumber);
                 }

@@ -88,7 +88,7 @@ public class ShopPersonCenterService {
         ShopPersonCenter shopPersonCenter = new ShopPersonCenter();
         CustomerInfo customerInfo = shopCustomInfo.queryCustomerList(shopcode, plateNumber);
         if (customerInfo != null) {
-            shopPersonCenter.setPlateNumber(customerInfo.getPlateNumber());
+            shopPersonCenter.setPlateNumber(customerInfo.getPlateNumber().toUpperCase());
             shopPersonCenter.setCarBrand(customerInfo.getCarBrand());
             shopPersonCenter.setCarModel(customerInfo.getCarModel());
             shopPersonCenter.setCarSeries(customerInfo.getCarSeries());

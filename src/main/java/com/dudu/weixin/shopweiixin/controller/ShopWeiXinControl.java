@@ -82,6 +82,8 @@ public class ShopWeiXinControl {
             model.addAttribute("shopCodeLm", shopCodeLm);
             return "/shopshigongbuzhou/standardProcesses.jsp";
         } else if ("AHIInfo".equals(serviceType)) {
+            return "/ahi/AHIxiangqing.jsp"; //AHI指数
+        } else if ("AHIInfo".equals(serviceType)) {
             //TODO 登录在成功之后暂时跳转至ahi,后期换成个人中心
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
         }
