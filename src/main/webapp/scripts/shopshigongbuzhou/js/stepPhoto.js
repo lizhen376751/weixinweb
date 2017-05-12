@@ -21,7 +21,7 @@ $(function () {
     var ul = $("ul");//-----------------------------------------------------获取步骤容器
     var btn = $(".btn");//---------------------------------------------------获取标准流程按钮
     var plateNumber = $("#plateNumber").val()//----------------------------获取车牌号
-
+    console.log(plateNumber)
     $.ajax({
         type: 'POST',
         url: '/shopAjax',
@@ -79,19 +79,20 @@ $(function () {
             });
 
             var images = $(".images"); //--------------------------------------获取页面中的每一步的图片
+            images.on("click", function () {
+                var src = $(this).attr("src");
+                $(".box").show();
+                $(".img").attr("src", src);
+                $(".box").bind("touchmove", function (e) {
+                    e.preventDefault(); //遮罩层出现后禁止body滑动
+                });
+            })
         }
 
 
     });
 
-    images.on("click", function () {
-        var src = $(this).attr("src");
-        $(".box").show();
-        $(".img").attr("src", src);
-        $(".box").bind("touchmove", function (e) {
-            e.preventDefault(); //遮罩层出现后禁止body滑动
-        });
-    })
+
     $(".box").on("click", function () {
         $(this).hide()
     });
