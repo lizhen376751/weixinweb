@@ -1,0 +1,155 @@
+
+#item-container {
+	position: fixed;
+	top: 0px;
+	left: 0;
+	right: 0;
+	width: 100%;
+	bottom: 0;
+	overflow: auto;
+	background: #f7f7f7;
+	font-size: initial;
+}
+#item-container li {
+	padding: 10px 20px;
+	border-bottom: 1px solid #ccc;
+}
+#item-container li:last-child {
+	border-bottom: none;
+}
+
+.ch{
+	color:rgb(88,181,225);
+	font-weight: bold;
+	font-size: 20px;
+	background: #fcfcfc;
+}
+.index-sidebar-container {
+	position: fixed;
+	top: 40px;
+	right: 0;
+	overflow: visible;
+	-webkit-user-select: none;
+	user-select: none;
+	cursor: default;
+	/*display: none;*/
+}
+.index-sidebar-container ul {
+	padding: 0 5px;
+	list-style: none;
+	font-size: 0.13rem;
+	line-height: 1.5;
+	color: #999;
+}
+.index-sidebar-container li {
+	text-align: center;
+}
+.index-sidebar-container .current-char {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin-left: -80px;
+	margin-top: -20px;
+	height: 40px;
+	width: 40px;
+	line-height: 40px;
+	font-size: 0.32rem;
+	text-align: center;
+	color: #999;
+}
+
+/*------------------------------------------------------------------------------------------------------------------------二层车型车系信息*/
+.second_carList{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #fff;
+	display: none;
+	z-index: 4;
+	background: #fff;
+	overflow: auto;
+}
+.second_cpxx{
+	width: 100%;
+	padding: 10px 20px;
+	font-size: 20px;
+	background: #58B5FF;
+	color: #fff;
+	box-sizing: border-box;
+}
+.second_carList ul{
+	padding-bottom: 2.2rem;
+}
+.second_carList ul li{
+	width: 100%;
+	padding: 10px 20px;
+	font-size: 16px;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.second_btn{
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	background: #fff;
+}
+.second_btn .second_back{
+	width: 90%;
+	height: 1rem;
+	background: #58B5FF;
+	color: #fff;
+	text-align: center;
+	line-height: 1rem;
+	margin: 0.16rem auto;
+	font-size: 20px;
+	border-radius: 0.2rem;
+}
+/*------------------------------------------------------------------------------------------------------------------------三层车型信息*/
+.third_carList{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #fff;
+	display: none;
+	z-index: 6;
+	background: #fff;
+	overflow: auto;
+}
+.third_cpxx{
+	width: 100%;
+	padding: 10px 20px;
+	font-size: 20px;
+	background: #58B5FF;
+	color: #fff;
+	box-sizing: border-box;
+}
+.third_carList ul li{
+	width: 100%;
+	padding: 10px 20px;
+	font-size: 16px;
+	border-bottom: 1px solid #ccc;
+}
+.third_btn{
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	background: #fff;
+}
+.third_btn .third_back{
+	width: 90%;
+	height: 1rem;
+	background: #58B5FF;
+	color: #fff;
+	text-align: center;
+	line-height: 1rem;
+	margin: 0.16rem auto;
+	font-size: 20px;
+	border-radius: 0.2rem;
+}

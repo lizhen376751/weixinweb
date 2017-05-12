@@ -182,7 +182,6 @@ public class AllAjax {
         //个人中心
         if ("personcenter".equals(fromflag)) {
             String businessType = request.getParameter("businessType");
-            //TODO 以下的进行封装
             Object personcenter = personcenterService.personcenter(request, businessType, platenumber, lmcode);
             return personcenter;
         }

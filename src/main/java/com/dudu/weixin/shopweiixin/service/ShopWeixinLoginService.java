@@ -22,7 +22,7 @@ import java.util.List;
  * Created by lizhen on 2017/5/2.
  */
 @Service
-public class ShopWeixinLogin {
+public class ShopWeixinLoginService {
     /**
      * 引入店管家的客户中心接口
      */

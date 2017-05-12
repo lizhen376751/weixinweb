@@ -17,7 +17,7 @@ import java.util.List;
  * Created by lizhen on 2017/5/9.
  */
 @Service
-public class ShopShiGongBuZhou {
+public class ShopShiGongBuZhouService {
     /**
      * 施工步骤接口
      */

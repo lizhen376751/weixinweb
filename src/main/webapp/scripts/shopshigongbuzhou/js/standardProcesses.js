@@ -26,6 +26,7 @@ $(function(){
         },
         success: function (jsonData) {
             var arr = JSON.parse(jsonData);
+            $(".xm_name").text(arr[0].itemName)
             console.log(arr);
             add_step(arr)
             }

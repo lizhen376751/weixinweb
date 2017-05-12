@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.customercenter.customer.api.ApiCustomerInfo;
 import com.dudu.soa.customercenter.customer.module.CustomerInfo;
 import com.dudu.soa.customercenter.customer.module.CustomerInfoParam;
+import com.dudu.soa.customercenter.customer.module.UpdateCustomerInfoParam;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  * Created by lizhen on 2017/5/6.
  */
 @Service
-public class ShopCustomInfo {
+public class ShopCustomInfoService {
     /**
      * 引入店管家的客户中心接口
      */
@@ -37,5 +38,18 @@ public class ShopCustomInfo {
             return customerInfo;
         }
         return null;
+    }
+
+    /**
+     * 修改店管家客户信息
+     *
+     * @param updateCustomerInfoParam 传入修改的参数
+     * @return 受影响的行数
+     */
+    public Integer updateCustomerInfo(UpdateCustomerInfoParam updateCustomerInfoParam) {
+//         id, mainShopCode, plateNumber,    carBrandId, carModelId, carSeriesId ,kilo
+        int i = apiCustomerInfo.updateCustomer(updateCustomerInfoParam);
+        return i;
+
     }
 }

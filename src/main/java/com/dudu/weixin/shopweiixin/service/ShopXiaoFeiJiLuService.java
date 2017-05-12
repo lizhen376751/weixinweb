@@ -15,7 +15,7 @@ import java.util.List;
  * Created by lizhen on 2017/5/6.
  */
 @Service
-public class ShopXiaoFeiJiLu {
+public class ShopXiaoFeiJiLuService {
     /**
      * 引入消费记录接口
      */
@@ -25,7 +25,7 @@ public class ShopXiaoFeiJiLu {
      * 引入店管家客户中心
      */
     @Autowired
-    private ShopCustomInfo shopCustomInfo;
+    private ShopCustomInfoService shopCustomInfo;
 
     /**
      * 店管家消费记录

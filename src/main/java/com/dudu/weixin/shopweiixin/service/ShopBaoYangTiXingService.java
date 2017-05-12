@@ -15,7 +15,7 @@ import java.util.List;
  * Created by lizhen on 2017/5/6.
  */
 @Service
-public class ShopBaoYangTiXing {
+public class ShopBaoYangTiXingService {
     /**
      * 引入店铺信息的接口
      */
