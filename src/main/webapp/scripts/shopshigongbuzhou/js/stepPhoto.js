@@ -77,6 +77,8 @@ $(function () {
 
             }
             $(".wrap").append(title);
+            var nn = $(".fgx").length;
+            $($(".fgx")[nn - 1]).hide();
             $(".btn").on("click", function () {
                 var codes = $(this).attr("itemCode");
                 var codelm = $(this).attr("shopCodeLm");
