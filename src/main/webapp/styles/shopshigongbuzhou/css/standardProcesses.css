@@ -77,14 +77,14 @@ li{
 }
 .step_detail{
 	color: #4d4d4d;
-	height: 1.25rem;
+	/*height: 1.25rem;*/
 	margin: 0.15rem 0.24rem 0rem 0.24rem;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 #step_note{
 	margin: 0.1rem 0.24rem 0rem 0.24rem;
 	color: #ff083d;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
 

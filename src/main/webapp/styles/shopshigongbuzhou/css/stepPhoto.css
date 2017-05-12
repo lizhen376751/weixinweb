@@ -105,13 +105,13 @@ li{
 	display: none;
 }
 .img_bg{
-	max-width: 95%;
-	/*max-height: 45%;*/
-	margin: 25% auto;
+	/*max-width: 95%;*/
+	/*!*max-height: 45%;*!*/
+	/*margin: 25% auto;*/
 	
 }
 .img_bg img{
-	margin: 0 auto;
+	margin: 25% auto;
 	max-width: 100%;
 	/*border: 0.03rem #fff solid;*/
 }

@@ -94,6 +94,22 @@ $(function () {
                 $(".box").bind("touchmove", function (e) {
                     e.preventDefault(); //遮罩层出现后禁止body滑动
                 });
+                var boxH = $(".box").height();
+                var imgw = $(".img").width();
+                var imgH = $(".img").height();
+                var imgTop = (boxH - imgH)/200
+                if(imgH > imgw && boxH > imgH){
+                    console.log(1)
+                    $(".img").css({
+                        margin: imgTop+"rem auto 0rem"
+                    })
+                }else if(boxH <= imgH){
+                    console.log(2)
+                    $(".img").css({
+                        margin: "0rem auto",
+                        height: "100vh"
+                    })
+                }
             })
         }
 
