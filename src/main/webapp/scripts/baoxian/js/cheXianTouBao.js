@@ -49,6 +49,7 @@ $(document).ready(function(){
         var optDateTime = $.extend(opt['datetime'], opt['default']);
         var optTime = $.extend(opt['time'], opt['default']);
         $("#registration_date").mobiscroll($.extend(opt['date'], opt['default']));
+        $("#insurance_maturity_date").mobiscroll($.extend(opt['date'], opt['default']));
     }
     all_day()
     //	初始化当前日期
@@ -203,6 +204,7 @@ $(document).ready(function(){
         var phone_number = $("#phone_number");//手机号
         var daihao = $("#daihao");//车辆代号
         var engine_number = $("#engine_number");//发动机号码
+        var insurance_maturity_date = $("#insurance_maturity_date");//保险到期日
         var registration_date = $("#registration_date");//注册日期
         var property = $(".property") //使用性质
         xinxi.on("click",function(){
@@ -212,6 +214,8 @@ $(document).ready(function(){
             phone_number.val(arr[i].mobilePhone);
             daihao.val(arr[i].frameNumber);
             engine_number.val(arr[i].engineNumber);
+            var insurance_time = dateFormat(arr[i].insuranceDate)
+            insurance_maturity_date.val(insurance_time);
             var date_time = dateFormat(arr[i].createTime)
             registration_date.val(date_time);
             if(arr[i].sex == 1){

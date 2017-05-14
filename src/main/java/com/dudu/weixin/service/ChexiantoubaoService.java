@@ -155,7 +155,19 @@ public class ChexiantoubaoService {
         } else {
             cm.setId(null);
         }
-
+        //获取保险到期日
+        String insuranceMaturityDate = request.getParameter("insurance_maturity_date");
+        if (null != insuranceMaturityDate && !"".equals(insuranceMaturityDate)) {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date parse = simpleDateFormat.parse(insuranceMaturityDate);
+            cm.setInsuranceMaturityDate(parse);
+        }
+        //获取客户性别
+        String sex = request.getParameter("sex");
+        Integer integer1 = Integer.valueOf(sex);
+        if (null != integer1 && !"".equals(integer1)) {
+            cm.setSex(integer1);
+        }
         //获取客户手机号
         String customerMobile = request.getParameter("phone_number");
         if (null != customerMobile && !"".equals(customerMobile)) {
