@@ -120,7 +120,7 @@
                             <li style="position: relative;">
                                 <label>保险到期日：</label>
                                 <input type="text" name="insurance_maturity_date" class="insurance_maturity_date"
-                                       id="insurance_maturity_date" value=""/>
+                                       id="insurance_maturity_date" value="" style="width: 65%;"/>
                                 <label for="insurance_maturity_date"><img src="/files/baoxian/img/calendar.png"
                                                                     style="position: absolute;top:13px;right: 44px;"
                                                                     class="calendar"/></label>

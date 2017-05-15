@@ -159,7 +159,7 @@ $(document).ready(function(){
                     success:function(jsondata){
                         state = true;
                         var json = JSON.parse(jsondata);
-                        //console.log(json);
+                        console.log(json);
                         if(json[0]){
                             tishi.css("display","block");
                             add_tishi(json);
@@ -214,10 +214,14 @@ $(document).ready(function(){
             phone_number.val(arr[i].mobilePhone);
             daihao.val(arr[i].frameNumber);
             engine_number.val(arr[i].engineNumber);
-            var insurance_time = dateFormat(arr[i].insuranceDate)
-            insurance_maturity_date.val(insurance_time);
-            var date_time = dateFormat(arr[i].createTime)
-            registration_date.val(date_time);
+            if(arr[i].insuranceDate != null && arr[i].insuranceDate != "" && arr[i].insuranceDate != undefined){
+                var insurance_time = dateFormat(arr[i].insuranceDate)
+                insurance_maturity_date.val(insurance_time);
+            }
+            if(arr[i].createTime != null && arr[i].createTime != "" && arr[i].createTime != undefined){
+                var date_time = dateFormat(arr[i].createTime)
+                registration_date.val(date_time);
+            }
             if(arr[i].sex == 1){
                 sex_nan.attr("checked",true)
             }else{
