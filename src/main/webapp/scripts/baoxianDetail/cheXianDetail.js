@@ -39,21 +39,25 @@ $(document).ready(function(){
     var shopCodeLm = getvl("shopcodelm");//------------------------------------------------------------获取的网址上的联盟code
     var orderNumb = getvl("orderNumb");//------------------------------------------------------------获取的网址上的订单编号
     var companyId = getvl("companyid");//------------------------------------------------------------获取的网址上的保险公司id
-
+	var totalPrice = "";//----------------------------------------------------------------------------记录投保价格
 	console.log('/findClientInsurance/'+shopCode+'/'+shopCodeLm+'/'+companyId+'/'+orderNumb+'/'+plateNumber);
     //-----------------------------------------------------------------------------------------------------------请求页面加载数据
     $.ajax({
         type    : 'get',
         url     : '/findClientInsurance/'+shopCode+'/'+shopCodeLm+'/'+companyId+'/'+orderNumb+'/'+decodeURI(plateNumber),
+        async: false,
         success:function(jsondata){
             var json = JSON.parse(jsondata);
             console.log(json);
             bxgs.text(json.insuranceCompanyName);
             if(json.offerFlag == 0){
-                quote.text("报价中")
+                quote.text("报价中");
+                $(".tb_btn").hide();
 			}else{
                 quote.text("报价成功");
+                $(".tb_btn").show();
 			}
+            totalPrice = json.totalPrice;
             bfhj.text("¥"+json.totalPrice);
             if(json.customerModel.customerName){
                 xm.text(json.customerModel.customerName);
@@ -152,7 +156,31 @@ $(document).ready(function(){
             coverage_infor_ul.append(htmls);
 		}
     }
+//	----------------------------------------------------------投保按钮提交
+	$(".tb_btn").on("click",function () {
+        $.ajax({
+            type    : 'get',
+            url     : '/findClientInsurance/'+shopCode+'/'+shopCodeLm+'/'+companyId+'/'+orderNumb+'/'+decodeURI(plateNumber),
+			data : {
+                shopCode :shopCode,
+                shopCodeLm :shopCodeLm,
+                orderNumb : orderNumb,
+                companyId : companyId,
+                totalPrice : totalPrice
+			},
+            async: false,
+            success:function(jsondata){
+                var json = JSON.parse(jsondata);
+                console.log(json);
 
+
+
+            },
+            error:function(eee){
+
+            }
+        });
+    })
 
 })
 
