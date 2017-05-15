@@ -43,6 +43,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -296,6 +297,10 @@ public class AllAjax {
             String ids = request.getParameter("ids");
             String id = encodingUrl(ids);
             return yangCheInfoService.getInfo(Integer.parseInt(id));
+        }
+        //客户确定购买保险的保险公司
+        if ("toubao".equals(fromflag)) {
+            return chexiantoubaoService.updateInsuranceOrderCompany(request);
         }
         //获取联盟活动信息
         if ("queryLMActivity".equals(fromflag)) {

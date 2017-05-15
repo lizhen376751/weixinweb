@@ -11,6 +11,7 @@ import com.dudu.soa.baoxian.kaidan.module.BaoXianList;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianParamList;
 import com.dudu.soa.baoxian.kaidan.module.ClientInsuranceResult;
 import com.dudu.soa.baoxian.kaidan.module.ClientInsuranceTypeParam;
+import com.dudu.soa.baoxian.kaidan.module.CustomerCompany;
 import com.dudu.soa.baoxian.kaidan.module.CustomerModel;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceBill;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceCompany;
@@ -32,6 +33,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -393,6 +395,40 @@ public class ChexiantoubaoService {
         ClientInsuranceResult clientInsuranceResult = aPIBaoXainKaiDan.queryClientInsurace(clientInsuranceTypeParam);
         if (clientInsuranceResult != null) {
             return clientInsuranceResult;
+        }
+        return null;
+    }
+
+    /**
+     * 更新客户购买保险的保险公司
+     * @param request 请求
+     * @return Integer 受影响行数
+     */
+    public Integer updateInsuranceOrderCompany(HttpServletRequest request) {
+        CustomerCompany customerCompany = new CustomerCompany();
+        String shopCode = request.getParameter("shopCode");
+        if (shopCode != null && !shopCode.equals("")) {
+            customerCompany.setShopCode(shopCode);
+        }
+        String shopCodeLm = request.getParameter("shopCodeLm");
+        if (shopCodeLm != null && !shopCodeLm.equals("")) {
+            customerCompany.setShopCodeLm(shopCodeLm);
+        }
+        String orderNumb = request.getParameter("orderNumb");
+        if (orderNumb != null && !orderNumb.equals("")) {
+            customerCompany.setOrderNumb(orderNumb);
+        }
+        String companyId = request.getParameter("companyId");
+        if (companyId != null) {
+            customerCompany.setCompanyId(Integer.valueOf(companyId));
+        }
+        String totalPrice1 = request.getParameter("totalPrice");
+        if (totalPrice1 != null) {
+            customerCompany.setTotalPrice(new BigDecimal(Integer.valueOf(totalPrice1)));
+        }
+        Integer integer = aPIBaoXainKaiDan.updateInsuranceOrderCompany(customerCompany);
+        if (integer != null) {
+            return integer;
         }
         return null;
     }

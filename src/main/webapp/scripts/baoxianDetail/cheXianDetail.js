@@ -159,9 +159,10 @@ $(document).ready(function(){
 //	----------------------------------------------------------投保按钮提交
 	$(".tb_btn").on("click",function () {
         $.ajax({
-            type    : 'get',
-            url     : '/findClientInsurance/'+shopCode+'/'+shopCodeLm+'/'+companyId+'/'+orderNumb+'/'+decodeURI(plateNumber),
+            type    : 'post',
+            url     : '/getCommonAjax',
 			data : {
+                fromflag : "toubao",
                 shopCode :shopCode,
                 shopCodeLm :shopCodeLm,
                 orderNumb : orderNumb,
@@ -172,7 +173,12 @@ $(document).ready(function(){
             success:function(jsondata){
                 var json = JSON.parse(jsondata);
                 console.log(json);
-
+                if(jsondata == 1) {
+                    alert("投保成功")
+                    window.location.href = "/queryInsurance";
+                } else {
+                    alert("投保失败，请重试");
+                }
 
 
             },
