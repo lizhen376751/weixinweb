@@ -639,7 +639,7 @@ $(document).ready(function(){
             var DuduOssCallbackVarData1 = {
                 "shopCode" :mineShopCode,
                 "orderCode" : projectId,
-                "imageType" : ""+i+""
+                "imageType" : 1
             }
             console.log(this.files[0]);
             $.ajax({
