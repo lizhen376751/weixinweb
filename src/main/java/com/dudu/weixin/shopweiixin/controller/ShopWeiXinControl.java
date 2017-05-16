@@ -49,6 +49,8 @@ public class ShopWeiXinControl {
             return "/shopbaoyangtixing/baoYangList.jsp"; //保养提醒
         } else if ("shoppersoncenter".equals(flagStr)) {
             return "/shoppersonCenter/shoppersonalCenter.jsp"; //个人中心
+        } else if ("xialajiazai".equals(flagStr)) {
+            return "/fenye.jsp"; //下拉加载
         }
         return null;
     }

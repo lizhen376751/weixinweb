@@ -171,10 +171,15 @@ public class MenuUtil {
         btn14.setType("view");
         btn14.setUrl(commonUrl + "_shoppersoncenter" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
+        CommonButton btn15 = new CommonButton();
+        btn15.setName("下拉加载");
+        btn15.setType("view");
+        btn15.setUrl(commonUrl + "_xialajiazai" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
-        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14});
+        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14, btn15});
 
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1});

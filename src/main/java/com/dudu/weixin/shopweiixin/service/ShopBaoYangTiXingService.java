@@ -6,6 +6,7 @@ import com.dudu.soa.customercenter.customerdemand.model.QueryCustomerDemandParam
 import com.dudu.soa.customercenter.customerdemand.model.ResultQueryCustomerDemand;
 import com.dudu.soa.weixindubbo.shopinfo.api.ApiShopInfo;
 import com.dudu.soa.weixindubbo.shopinfo.module.ShopInfo;
+import com.dudu.weixin.mould.PageResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class ShopBaoYangTiXingService {
      * @param platenumber 车牌号码
      * @return 保养提醒列表
      */
-    public List<ResultQueryCustomerDemand> queryBaoYangTiXing(String shopcode, String platenumber) {
+    public PageResult<ResultQueryCustomerDemand> queryBaoYangTiXing(String shopcode, String platenumber) {
         QueryCustomerDemandParam queryCustomerDemandParam = new QueryCustomerDemandParam();
         queryCustomerDemandParam.setCarHaoPai(platenumber);
         queryCustomerDemandParam.setShopCode(shopcode);
@@ -48,6 +49,8 @@ public class ShopBaoYangTiXingService {
             }
 
         }
-        return resultQueryCustomerDemands;
+        PageResult rageResult = new PageResult<ResultQueryCustomerDemand>(resultQueryCustomerDemands);
+        return rageResult;
+
     }
 }
