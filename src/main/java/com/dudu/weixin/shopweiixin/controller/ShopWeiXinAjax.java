@@ -97,7 +97,7 @@ public class ShopWeiXinAjax {
         String plateNumber = (String) httpSession.getAttribute("plateNumber");
         String businessType = request.getParameter("businessType");
         if ("xialajiazai".equals(businessType)) { //下拉加载页面
-            String page = request.getParameter("pageNo");
+            String page = request.getParameter("page");
             log.info("分页查询出来的数据为===========================================" + page);
             return shopBaoYangTiXing.queryBaoYangTiXing(shopcode, plateNumber);
         }

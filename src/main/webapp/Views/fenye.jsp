@@ -73,38 +73,38 @@
             data: {
                 businessType: "xialajiazai",
                 page: $("#pageNo").val(),
-                rows: "20"
+                rows: "3"
             },
             cache: false,
-            success: function (data) {
+            success: function (json) {
+                var data = JSON.parse(json);
                 loading = true;
-                alert(data);
+                console.log(data.rows);
+                alert(data.rows.length);
                 if (data == null) {
 
                     $("#pageNo").val(parseInt($("#pageNo").val()) - 1);
                 } else {
                     var content = "";
                     if (type == "00") {
-                        if (data.length == 0) { //如果数据的条数为空,显示空内容
+                        if (data.rows.length == 0) { //如果数据的条数为空,显示空内容
                             $("#pageNo").val(parseInt($("#pageNo").val()) - 1);
                             return "";
                         }
                         for (var i = 0; i < data.length; i++) {
                             content = content
                                 + '<tr>'
-                                + '<td><div>' + data[i].carHaoPai + '</div><div>' + data[i].createUserName + '</div></td>'
-                                + '<td>¥' + data[i].addTime + '</td>'
+                                + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
                                 + '</tr>';
                         }
                         $("#wrapper").append(content);
                     } else {
 
-                        for (var i = 0; i < data.length; i++) {
+                        for (var i = 0; i < data.rows.length; i++) {
 
                             content = content
                                 + '<tr>'
-                                + '<td><div>' + data[i].carHaoPai + '</div><div>' + data[i].createUserName + '</div></td>'
-                                + '<td>¥' + data[i].addTime + '</td>'
+                                + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
                                 + '</tr>';
                         }
                         $("#wrapper").html(content);
