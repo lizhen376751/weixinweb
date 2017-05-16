@@ -29,6 +29,8 @@ import com.dudu.soa.lmbasedata.basedata.relation.module.ShopStructureParam;
 import com.dudu.soa.lmbasedata.basedata.shop.api.ApiShopIntf;
 import com.dudu.soa.lmbasedata.basedata.shop.module.ShopParam;
 import com.dudu.soa.lmbasedata.basedata.shop.module.ShopQueryFruit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,6 +48,10 @@ import java.util.List;
  */
 @Service
 public class ChexiantoubaoService {
+    /**
+     * 打印日志
+     */
+    private static Logger logger = LoggerFactory.getLogger(ChexiantoubaoService.class);
     /**
      * 引入保险开单api
      */
@@ -140,6 +146,7 @@ public class ChexiantoubaoService {
         }
         //获取身份证图片2
         String idCardImg2 = request.getParameter("filepath_2");
+        logger.info(drivingLicenseImg1 + "身份证图片===============================================");
         if (null != idCardImg2 && !"".equals(idCardImg2)) {
             insuranceBill.setIdCardImg2(idCardImg2);
         }
