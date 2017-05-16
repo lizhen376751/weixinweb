@@ -670,9 +670,9 @@ $(document).ready(function(){
                 if(srcs == "" && state == false){
                     setTimeout(function() { a();},2000);
                 }else{
-                    console.log(srcs);
+                    console.log(projectId);
                     imgage.attr("src",srcs);
-                    $(onself).nextAll(".tupian").val(srcs);
+                    $(onself).nextAll(".tupian").val(projectId);
                     srcs = "";
                     state = true;
                 }
