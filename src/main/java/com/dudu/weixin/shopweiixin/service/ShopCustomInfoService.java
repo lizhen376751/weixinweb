@@ -18,7 +18,7 @@ public class ShopCustomInfoService {
     /**
      * 引入店管家的客户中心接口
      */
-    @Reference(version = "0.0.1")
+    @Reference(version = "0.0.1", timeout = 30000)
     private ApiCustomerInfo apiCustomerInfo;
 
     /**
