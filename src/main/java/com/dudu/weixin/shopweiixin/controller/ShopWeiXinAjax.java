@@ -26,7 +26,7 @@ public class ShopWeiXinAjax {
     /**
      * logprint 日志打印
      */
-    private static Logger logprint = LoggerFactory.getLogger(ShopWeiXinAjax.class);
+    private static Logger log = LoggerFactory.getLogger(ShopWeiXinAjax.class);
     /**
      * 引入登录的服务
      */
@@ -59,6 +59,7 @@ public class ShopWeiXinAjax {
     private ShopPersonCenterService shopPersonCenterService;
 
     /**
+     * 不需要分页的数据
      * @param request 请求
      * @return 对象
      */
@@ -80,6 +81,25 @@ public class ShopWeiXinAjax {
             return shopBaoYangTiXing.queryBaoYangTiXing(shopcode, plateNumber);
         } else if ("shoppersoncenter".equals(businessType)) { //个人中心
             return shopPersonCenterService.personcenter(request, plateNumber, shopcode);
+        }
+        return null;
+    }
+
+    /**
+     * 需要查询分页的数据
+     * @param request 请求
+     * @return 对象
+     */
+    @ResponseBody
+    @RequestMapping(value = "pagingquery", method = RequestMethod.POST)
+    public Object pagingquery(HttpServletRequest request) {
+        String shopcode = (String) httpSession.getAttribute("shopcode");
+        String plateNumber = (String) httpSession.getAttribute("plateNumber");
+        String businessType = request.getParameter("businessType");
+        if ("xialajiazai".equals(businessType)) { //下拉加载页面
+            String page = request.getParameter("pageNo");
+            log.info("分页查询出来的数据为===========================================" + page);
+            return shopBaoYangTiXing.queryBaoYangTiXing(shopcode, plateNumber);
         }
         return null;
     }
