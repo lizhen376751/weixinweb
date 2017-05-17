@@ -3,6 +3,7 @@ package com.dudu.weixin.service;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.customercenter.customer.api.ApiCusCar;
 import com.dudu.soa.customercenter.customer.module.Car;
+import com.dudu.weixin.mould.PageResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,17 +27,23 @@ public class CarTypeService {
      * @param num  品牌或者车系的id
      * @return 车的集合
      */
-    public List<Car> queryAllCar(String type, Integer num) {
+    public PageResult<Car> queryAllCar(String type, Integer num) {
         switch (type) {
             //查询车辆品牌
             case "CarBrand":
-                return apiCusCar.queryCarBrand();
+                List<Car> cars = apiCusCar.queryCarBrand();
+                PageResult rageResult = new PageResult<Car>(cars);
+                return rageResult;
             //根据品牌查询车系
             case "CarSeries":
-                return apiCusCar.queryCarSeries(num);
+                List<Car> cars1 = apiCusCar.queryCarSeries(num);
+                PageResult rageResult1 = new PageResult<Car>(cars1);
+                return rageResult1;
             //根据车系查询车辆型号
             case "CarModel":
-                return apiCusCar.queryCarModel(num);
+                List<Car> cars2 = apiCusCar.queryCarModel(num);
+                PageResult rageResult2 = new PageResult<Car>(cars2);
+                return rageResult2;
             default:
                 return null;
         }

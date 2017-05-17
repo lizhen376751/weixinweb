@@ -100,6 +100,8 @@ public class ShopWeiXinAjax {
             String page = request.getParameter("page");
             log.info("分页查询出来的数据为===========================================" + page);
             return shopBaoYangTiXing.queryBaoYangTiXing(shopcode, plateNumber);
+        } else if ("shoppersoncenter".equals(businessType)) { //个人中心
+            return shopPersonCenterService.personcenter(request, plateNumber, shopcode);
         }
         return null;
     }
