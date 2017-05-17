@@ -1,4 +1,7 @@
-
+body{
+	background: #f2f2f2;
+	font-family: "微软雅黑";
+}
 /*-----------------------------------------top车牌号-------------------------*/
 .top_header{
 	width: 100%;
@@ -31,6 +34,7 @@
 .box ul{
 	width: 100%;
 	overflow: hidden;
+	background: #fff;
 }
 .box li{
 	width: 50%;
@@ -44,7 +48,7 @@
 .box li .text_1{
 	width: 3.38rem;
 	height: 0.64rem;
-	background: url(/files/personCenter/underline.png) no-repeat bottom;
+	background: url(../img/personalCenter/underline.png) no-repeat bottom;
 	background-size: 3.38rem;
 	margin: 0.24rem auto 0.64rem;
 	text-align: center;
@@ -52,15 +56,6 @@
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-}
-.clpp_txt{
-	color:#bababa;
-}
-.lcs_num{
-	color:#bababa;
-}
-.jkzs_txt{
-	color:#bababa;
 }
 /*-----------------------------------------------------------------------------灰色分割线*/
 .box .split_bar{
@@ -74,7 +69,6 @@
 	margin: 0.4rem auto;
 	text-align: center;
 	position: relative;
-	line-height: 0.75rem;
 }
 .box li .text_2 span{
 	width: 100%;
@@ -97,114 +91,109 @@
 	position: absolute;
 	top: 0.4rem;
 	right: -1px;
-	
+
 }
 /*--------------------------------------------------------------------------联盟卡包*/
 .cards{
 	width: 100%;
-	margin-top: 0.4rem;
-}
-.cards .cards_title{
-	width: 1.59rem;
-	margin: 0 auto;
+	/*margin-bottom: 0.4rem;*/
+	background: #fff;
 }
 /*------------------------------------------------------------------------------没有联盟卡时显示*/
 .cards .no_card{
 	width: 100%;
 	text-align: center;
-	margin-top: 1.6rem;
+	margin-top: 0.8rem;
+	margin-bottom: 0.8rem;
+	display: none;
 }
 /*------------------------------------------------------------------------------有联盟卡时显示*/
 .cards ul{
 	width: 100%;
-	margin-bottom: 2rem;
+	/*margin-bottom: 2rem;*/
 }
 .cards ul li{
-	width: 6.86rem;
-	max-width: 686px;
-	height: 4.1rem;
-	max-height: 410px;
-	border-radius: 0.2rem;
-	margin: 0.4rem auto;
+	width: 100%;
+	height: 1.46rem;
+	max-height: 146px;
 	position: relative;
 	overflow: hidden;
-	box-shadow: 0px 0px 10px rgba(85,184,255,0.5);
+	border-bottom: 0.02rem #eaeaea solid;
 }
-.cards ul li .cards_name{
-	width: 100%;
-	height: 1rem;
-	max-height: 100px;
-	background: #58b5ff;
-	position: absolute;
-	left: 0;
-	bottom: 0;
+.cards .cards_title{
+	height: 1.16rem;
+	max-height: 116px;
+}
+.cards ul li img{
+	width: 1.19rem;
+	max-width: 119px;
+	margin: 0.4rem auto 0px;
+}
+.cards ul li .cards_left{
+	width: 1.66rem;
+	max-width: 166px;
+	height: 0.68rem;
+	max-height: 68px;
+	background: #57b6ff;
+	border-radius: 0.12rem;
 	text-align: center;
-	line-height: 1rem;
-}
-/*-----------------------------------------------------------------条形码*/
-.cards ul li .bar_code{
-	width: 3.48rem;
-	max-width: 348px;
-	height: 1.2rem;
-	max-height: 120px;
-	margin: 0.72rem auto 0px;
-	/*background: greenyellow;*/
-}
-/*-------------------------------------------------------------------条形码数字*/
-.cards ul li .bar_num{
-	width: 100%;
-	text-align: center;
-	margin-top: 0.26rem;
-	letter-spacing: 0.06rem;
-}
-/*------------------------------------------------------------------底部按钮*/
-.button_bar{
-	width: 100%;
-	overflow: hidden;
-	position: fixed;
-	left: 0;
-	bottom: 0rem;
-	background: #FFFFFF;
-}
-.button_bar .button_left{
-	width: 50%;
+	line-height: 0.7rem;
 	float: left;
-	overflow: hidden;
-	margin-top: 6px;
-	margin-bottom: 0.74rem;
+	margin: 0.38rem 0 0 0.64rem;
+	color: #fff;
 }
-.button_bar .button_right{
-	width: 50%;
-	float: left;
-	margin-top: 6px;
-	margin-bottom: 0.74rem;
-}
-/*-----------------------------------------------------------------------了解详情按钮*/
-.button_bar .ljxq{
-	width: 3rem;
-	max-width: 300px;
-	height: 0.98rem;
-	max-height: 98px;
-	text-align: center;
-	line-height: 0.98rem;
-	border-radius: 0.2rem;
-	background: #58b5ff;
+.cards ul li .cards_right{
 	float: right;
-	margin-right: 0.43rem;
+	width: 3.8rem;
+	height: 0.68rem;
+	max-height: 68px;
+	line-height: 0.68rem;
+	margin: 0.38rem 0.64rem 0 0;
+	color: #474646;
+	overflow: hidden;
 }
-/*----------------------------------------------------------------------卡激活按钮*/
-
-.button_bar .kjh{
+.cards ul .cards_fg{
+	width: 100%;
+	height: 0.24rem;
+	max-height: 24px;
+	background: #f2f2f2;
+}
+/*-----------------------------------------------------------------剩余金额*/
+.zjje{
+	margin: 0 0.64rem;
+}
+.zjje ul{
+	width: 100%;
+	overflow: hidden;
+}
+.zjje ul li{
+	width: 50%;
+	float: left;
+	overflow: hidden;
+	margin-top: 0.64rem;
+}
+.zjje ul li span{
+	float: left;
+}
+.zjje_left{
+	color: #57B6FF;
+}
+.zjje_right{
+	color: #474646;
+}
+/*-----------------------------------------------------------------------退出账号按钮*/
+.button_bar{
 	width: 3rem;
 	max-width: 300px;
 	height: 0.98rem;
 	max-height: 98px;
+	background: #58b5ff;
 	text-align: center;
 	line-height: 0.98rem;
+	margin: 0.64rem auto 0.2rem;
 	border-radius: 0.2rem;
-	background: #58b5ff;
-	margin-left: 0.43rem;
 }
+
 /*--------------------------------------------------------------------------------车辆品牌的遮罩层*/
 .car_brand{
 	width: 100%;
@@ -273,57 +262,7 @@
 	border-radius: 10px;
 }
 
-@media only screen and (min-width: 1080px) {
-	/*-----------------------------------------------------------------每一张卡*/
-	.cards ul{
-		margin-bottom: 176px;
-	}
-	.cards ul li{
-		border-radius: 20px;
-	}
-	/*-------------------------------------------------------------卡的名字*/
-	.cards ul li .cards_name{
-		line-height: 100px;
-		font-size: 42px;
-	}
-	/*------------------------------------------------------------条形码*/
-	.cards ul li .bar_code{
-		margin: 72px auto 0px;
-	}
-	/*-----------------------------------------------------------条形码数字*/
-	.cards ul li .bar_num{
-		margin-top: 26px;
-		font-size: 36px;
-		letter-spacing: 6px;
-	}
-	/*-------------------------------------------------------底部按钮*/
-	.button_bar .button_left{
-		margin-bottom: 74px;
-	}
-	.button_bar .button_right{
-		margin-bottom: 74px;
-	}
-	/*-------------------------------------------------------------------------------了解详情按钮*/
-	.button_bar .ljxq{
-		margin-right: 43px;
-		line-height: 98px;
-		border-radius: 20px;
-	}
-	/*--------------------------------------------------------------------------------激活卡按钮*/
-	.button_bar .kjh{
-		margin-left: 43px;
-		line-height: 98px;
-		border-radius: 20px;
-	}
-	
-	/*-------------------------------------------------------------------修改里程数中的取消和确定按钮*/
-	.mileage .holdder .qx{
-		line-height: 100px;
-	}
-	.mileage .holdder .qd{
-		line-height: 100px;
-	}
-}
+
 
 
 

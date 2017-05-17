@@ -66,39 +66,92 @@
 			</ul>
 		</div>
 		<!-----------------------------------------------------------------------------------------------车主主要信息结束-->
-		<!-------------------------------------------------------------------------------联盟卡包-->
+		<!-------------------------------------------------------------------------------卡包-->
 		<div class="cards">
-			<img src="/files/personCenter/lmkb.png" class="cards_title"/>
-			<div class="no_card font_4 color_5" style="display: none;">您还没有联盟卡~</div>
-			<!-------------------------------------------------------------------联盟卡-->
-			<ul style="display: block;"><!-------------------------------------------------------------------------如果有卡显示，如果没卡就不显示-->
-				<!---------------------------------------------------------------每一种卡-->
-				<%--<li>--%>
-					<%--<!-----------------------------------------------------------条形码-->--%>
-					<%--<img class="bar_code"/>--%>
-					<%--<!----------------------------------------------------------条形码的数字-->--%>
-					<%--<div class="bar_num font_1 color_4">0562589464631</div>--%>
-					<%--<!-----------------------------------------------------------卡的名称-->--%>
-					<%--<div class="cards_name font_3 color_3">888至尊卡</div>--%>
-				<%--</li>--%>
-				<%--<li>--%>
-					<%--<!-----------------------------------------------------------条形码-->--%>
-					<%--<img class="bar_code"/>--%>
-					<%--<!----------------------------------------------------------条形码的数字-->--%>
-					<%--<div class="bar_num font_1 color_4">0562589464631</div>--%>
-					<%--<!-----------------------------------------------------------卡的名称-->--%>
-					<%--<div class="cards_name font_3 color_3">888至尊卡</div>--%>
-				<%--</li>--%>
+			<!-------------------------------------------------------------------项目卡-->
+			<ul class="font_1 project_card"><!-------------------------------------如果有卡显示，如果没卡就不显示-->
+				<!---------------------------------------------------------------title-->
+				<li class="cards_title">
+					<img src="../img/mipmap-xxhdpi/XMK.png"/>
+				</li>
+				<div class="no_card font_4 color_5 no_project_card">您还没有项目卡~</div>
+				<div class="xmk">
+					<li>
+						<span class="cards_left">卡号</span>
+						<span class="cards_right">123456789101234567</span>
+					</li>
+					<li class="xmk">
+						<span class="cards_left">名称</span>
+						<span class="cards_right">洗车专用</span>
+					</li>
+				</div>
+				<span class="cards_fg"></span>
 			</ul>
+
+			<!-------------------------------------------------------------------充值卡-->
+			<ul class="font_1 recharge_cards"><!-------------------------------------如果有卡显示，如果没卡就不显示-->
+				<!---------------------------------------------------------------title-->
+				<li class="cards_title">
+					<img src="../img/mipmap-xxhdpi/CZK.png"/>
+				</li>
+				<div class="no_card font_4 color_5 no_recharge_cards">您还没有充值卡~</div>
+				<div class="czk">
+					<li>
+						<span class="cards_left">卡号</span>
+						<span class="cards_right">123456789101234567</span>
+					</li>
+					<li>
+						<span class="cards_left">名称</span>
+						<span class="cards_right">300元&nbsp;充值卡</span>
+					</li>
+				</div>
+				<span class="cards_fg"></span>
+			</ul>
+
+			<!-------------------------------------------------------------------代金券-->
+			<ul class="font_1 vouchers"><!----------------------------------------如果有卡显示，如果没卡就不显示-->
+				<!---------------------------------------------------------------title-->
+				<li class="cards_title">
+					<img src="../img/mipmap-xxhdpi/DJQ.png"/>
+				</li>
+				<div class="no_card font_4 color_5 no_vouchers">您还没有代金券~</div>
+				<div class="djq">
+					<li>
+						<span class="cards_left">名称</span>
+						<span class="cards_right">精洗</span>
+					</li>
+					<li>
+						<span class="cards_left">内容</span>
+						<span class="cards_right">可抵金额80.00</span>
+					</li>
+				</div>
+			</ul>
+
 		</div>   <!-------------------------------联盟卡包结束-->
+		<!---------------------------------------------------------------------资金金额------------------>
+		<div class="zjje font_1">
+			<ul>
+				<li>
+					<span class="zjje_left">赠送金额剩余：</span>
+					<span class="zjje_right zsje">￥80.88</span>
+				</li>
+				<li>
+					<span class="zjje_left">当前定金金额：</span>
+					<span class="zjje_right djje">￥80.88</span>
+				</li>
+				<li>
+					<span class="zjje_left">会员积分：</span>
+					<span class="zjje_right hyjf">￥80.88</span>
+				</li>
+				<li>
+					<span class="zjje_left">特种卡：</span>
+					<span class="zjje_right tzk">￥80.88</span>
+				</li>
+			</ul>
+		</div>
 		<!--------------------------------------------------------------------底部按钮-->
 		<div class="button_bar font_1 color_3">
-			<div class="button_left">  <!------------------------------------------了解详情按钮-->
-				<div class="ljxq">了解详情</div>
-			</div>   
-			<div class="button_right"> <!---------------------------------------------卡激活按钮-->
-				<div class="kjh">卡激活</div>
-			</div>  
+			退出账号
 		</div>
 		<!-------------------------------------------------------------------------------------------------------修改车辆品牌的遮罩层-->
 		<div class="car_brand">
