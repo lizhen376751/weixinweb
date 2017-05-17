@@ -59,19 +59,22 @@ $(document).ready(function(){
 			}
             totalPrice = json.totalPrice;
             bfhj.text("¥"+json.totalPrice);
-            if(json.customerModel.customerName){
-                xm.text(json.customerModel.customerName);
-			};
-            if(json.customerModel.plateNumber){
-                cph.text(json.customerModel.plateNumber);
-			};
-			if(json.customerModel.customerMobile){
-                sjh.text(json.customerModel.customerMobile);
-			};
-			if(json.customerModel.createTime){
-                var datas = dateFormat(json.customerModel.createTime)
-                zcrq.text(datas);
-			}
+            if(json.customerModel != null && json.customerModel != "" && json.customerModel != undefined){
+                if(json.customerModel.customerName != null && json.customerModel.customerName != "" && json.customerModel.customerName != undefined){
+                    xm.text(json.customerModel.customerName);
+                };
+                if(json.customerModel.plateNumber != null && json.customerModel.plateNumber != "" && json.customerModel.plateNumber != undefined){
+                    cph.text(json.customerModel.plateNumber);
+                };
+                if(json.customerModel.customerMobile != null && json.customerModel.customerMobile != "" && json.customerModel.customerMobile != undefined){
+                    sjh.text(json.customerModel.customerMobile);
+                };
+                if(json.customerModel.createTime != null && json.customerModel.createTime != "" && json.customerModel.createTime != undefined){
+                    var datas = dateFormat(json.customerModel.createTime)
+                    zcrq.text(datas);
+                }
+            }
+
 			if(json.list){
                 add_xzxx(json.list);
 			}

@@ -62,17 +62,17 @@
                         <!-----------------姓名-->
                         <li>
                             <span class="color_11">姓名：</span>
-                            <span class="color_9 xm">张三</span>
+                            <span class="color_9 xm"></span>
                         </li>
                         <!-----------------车牌号-->
                         <li>
                             <span class="color_11">车牌号：</span>
-                            <span class="color_9 cph">鲁A00000</span>
+                            <span class="color_9 cph"></span>
                         </li>
                         <!-----------------手机号码-->
                         <li>
                             <span class="color_11">手机号码：</span>
-                            <span class="color_9 sjh">15236987562</span>
+                            <span class="color_9 sjh"></span>
                         </li>
                         <!-----------------车辆识别码-->
                         <li>
@@ -92,7 +92,7 @@
                         <!-----------------注册日期-->
                         <li>
                             <span class="color_11">注册日期：</span>
-                            <span class="color_9 zcrq">2017-03-25</span>
+                            <span class="color_9 zcrq"></span>
                         </li>
 
                     </ul>
