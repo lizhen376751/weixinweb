@@ -11,7 +11,7 @@
 		<title>个人中心</title>
 		<link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/personCenter/car-brand.css"/>
-		<link rel="stylesheet" type="text/css" href="/styles/personCenter/personalCenter.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/shoppersonCenter/personalCenter.css"/>
 		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/personCenter/JsBarcode.all.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/personCenter/car-brand.js" type="text/javascript" charset="utf-8"></script>
