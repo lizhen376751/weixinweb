@@ -33,11 +33,19 @@ $(document).ready(function(){
             var lis = "";
             var num = 0;
             for (j = 0;j < arr[i].list.length;j++) {
-                if (arr[i].list[j].baoJiaState != 0) {
+                if (arr[i].list[j].baoJiaState == 1) {
                     lis += '<li>'+
                         '<span class="color_9">'+arr[i].list[j].insurancename+'：</span>'+
                         '<span class="price">¥'+arr[i].list[j].totalPrices+'</span>'+
                         '<span class="quote color_10">已报价</span>'+
+                        '<span class="detail color_3" ddbh="'+arr[i].orderNumb+'" bxgs="'+arr[i].list[j].companyid+'" carId="'+arr[i].carId+'" shopCode="'+arr[i].shopCode+'" shopLm="'+arr[i].shopcodelm+'">详情</span>'+
+                        '</li>';
+                    num += 1;
+                }else if(arr[i].list[j].baoJiaState == 2){
+                    lis += '<li>'+
+                        '<span class="color_9">'+arr[i].list[j].insurancename+'：</span>'+
+                        '<span class="price">¥'+arr[i].list[j].totalPrices+'</span>'+
+                        '<span class="quote color_10">已投保</span>'+
                         '<span class="detail color_3" ddbh="'+arr[i].orderNumb+'" bxgs="'+arr[i].list[j].companyid+'" carId="'+arr[i].carId+'" shopCode="'+arr[i].shopCode+'" shopLm="'+arr[i].shopcodelm+'">详情</span>'+
                         '</li>';
                     num += 1;
