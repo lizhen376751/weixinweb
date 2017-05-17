@@ -72,7 +72,7 @@
 			<ul class="font_1 project_card"><!-------------------------------------如果有卡显示，如果没卡就不显示-->
 				<!---------------------------------------------------------------title-->
 				<li class="cards_title">
-					<img src="../img/mipmap-xxhdpi/XMK.png"/>
+					<img src="/files/shoppersonCenter/XMK.png"/>
 				</li>
 				<div class="no_card font_4 color_5 no_project_card">您还没有项目卡~</div>
 				<div class="xmk">
@@ -92,7 +92,7 @@
 			<ul class="font_1 recharge_cards"><!-------------------------------------如果有卡显示，如果没卡就不显示-->
 				<!---------------------------------------------------------------title-->
 				<li class="cards_title">
-					<img src="../img/mipmap-xxhdpi/CZK.png"/>
+					<img src="/files/shoppersonCenter/CZK.png"/>
 				</li>
 				<div class="no_card font_4 color_5 no_recharge_cards">您还没有充值卡~</div>
 				<div class="czk">
@@ -112,7 +112,7 @@
 			<ul class="font_1 vouchers"><!----------------------------------------如果有卡显示，如果没卡就不显示-->
 				<!---------------------------------------------------------------title-->
 				<li class="cards_title">
-					<img src="../img/mipmap-xxhdpi/DJQ.png"/>
+					<img src="/files/shoppersonCenter/DJQ.png"/>
 				</li>
 				<div class="no_card font_4 color_5 no_vouchers">您还没有代金券~</div>
 				<div class="djq">
