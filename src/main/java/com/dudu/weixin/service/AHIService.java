@@ -34,7 +34,10 @@ public class AHIService {
     public List<ResultTotalAHIPoint> queryAllPointByPlateNumber(String plateNumber) {
         String plateNumbers = "";
         try {
-            plateNumbers = java.net.URLDecoder.decode(plateNumber, "utf-8");
+            if (null != plateNumber && !"".equals(plateNumber)) {
+                plateNumbers = java.net.URLDecoder.decode(plateNumber, "utf-8");
+            }
+
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

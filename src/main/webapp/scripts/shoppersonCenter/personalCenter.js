@@ -130,12 +130,14 @@ $(document).ready(function () {
     app.data = []; //-----------------------------------------------------------------------------------------------------车牌号集合:奥迪
     $.ajax({
         type: 'POST',
-        url: '/shopAjax',
+        url: '/pagingquery',
         data: {
             businessType: "shoppersoncenter",
             servicetype: "carType",
             type: "CarBrand",
-            num: 0
+            num: 0,
+            page: "1",
+            rows: "50"
         },
         success: function (jsonData) {
             json = JSON.parse(jsonData);

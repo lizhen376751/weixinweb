@@ -37,7 +37,7 @@ public class PagingQueryInterceptor implements HandlerInterceptor {
             requestParam.setSortStr(sortStr);
             requestParam.setPageSize(pageSize);
             DuduSOAHelp.setLocalRequestPageparams(requestParam);
-//            DuduSOAHelp.setActionType(request.getParameter("ACTIONTYPE"));
+            DuduSOAHelp.setActionType(request.getParameter("ACTIONTYPE"));
         } catch (Exception e) {
             e.printStackTrace();
         }
