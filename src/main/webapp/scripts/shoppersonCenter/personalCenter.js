@@ -140,8 +140,8 @@ $(document).ready(function () {
         success: function (jsonData) {
             json = JSON.parse(jsonData);
             console.log(json);
-            for (var i = 0; i < json.length; i++) {
-                var zifu = json[i].carFirst + json[i].carId + "-" + json[i].carName;
+            for (var i = 0; i < json.rows.length; i++) {
+                var zifu = json.rows[i].carFirst + json.rows[i].carId + "-" + json.rows[i].carName;
                 app.data.push(zifu);
             }
             console.log(app.data);
