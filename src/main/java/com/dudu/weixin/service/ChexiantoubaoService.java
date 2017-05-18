@@ -156,6 +156,24 @@ public class ChexiantoubaoService {
         if (null != plateNumber && !"".equals(plateNumber)) {
             cm.setPlateNumber(plateNumber);
         }
+        //获取车辆品牌id
+        String carBrandId = request.getParameter("carBrandId");
+        if (null != carBrandId && !"".equals(carBrandId)) {
+            Integer integer = Integer.valueOf(carBrandId);
+            cm.setVehicleBrand(integer);
+        }
+        //获取车系id
+        String carSeriesId = request.getParameter("carSeriesId");
+        if (null != carSeriesId && !"".equals(carSeriesId)) {
+            Integer integer = Integer.valueOf(carSeriesId);
+            cm.setCarSeries(integer);
+        }
+        //获取车型id
+        String carModelId = request.getParameter("carModelId");
+        if (null != carModelId && !"".equals(carModelId)) {
+            Integer integer = Integer.valueOf(carModelId);
+            cm.setVehicleType(integer);
+        }
         //获取客户id
         String customerId1 = request.getParameter("customerId");
         if (null != customerId1 && !"".equals(customerId1)) {

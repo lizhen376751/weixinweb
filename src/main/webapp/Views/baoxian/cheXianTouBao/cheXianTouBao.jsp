@@ -86,6 +86,13 @@
                             </li>
                             <!--隐藏域-->
                             <input type="hidden" value="" id="hiddens" name="customerId">
+                            <!--车辆品牌id-->
+                            <input type="hidden" value="" id="carBrandId" name="carBrandId">
+                            <!--车系id-->
+                            <input type="hidden" value="" id="carSeriesId" name="carSeriesId">
+                            <!--车型id-->
+                            <input type="hidden" value="" id="carModelId" name="carModelId">
+
                             <!--您的姓名-->
                             <li>
                                 <label>您的姓名：</label>

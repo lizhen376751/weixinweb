@@ -197,6 +197,9 @@ $(document).ready(function(){
         //获取车牌信息的弹出框
         var xinxi = $(".xinxi");
         //获取车辆信息页中的信息
+        var carModelId = $("#carModelId"); //车型id
+        var carSeriesId = $("#carSeriesId"); //车系id
+        var carBrandId = $("#carBrandId"); //车辆品牌id
         var car_number = $("#car_number");//车牌号
         var your_name = $("#your_name"); //用户名
         var sex_nan = $("#nan");//性别男
@@ -209,6 +212,9 @@ $(document).ready(function(){
         var property = $(".property") //使用性质
         xinxi.on("click",function(){
             var i = $(this).index();
+            carModelId.val(arr[i].carModelId);
+            carSeriesId.val(arr[i].carSeriesId);
+            carBrandId.val(arr[i].carBrandId);
             car_number.val(arr[i].plateNumber);
             your_name.val(arr[i].customerName);
             phone_number.val(arr[i].mobilePhone);
