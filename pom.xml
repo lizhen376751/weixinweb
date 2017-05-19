@@ -39,31 +39,16 @@
   </properties>
     <dependencies>
       <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>3.8.1</version>
-        <scope>test</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-web</artifactId>
-        <version>${spring.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-webmvc</artifactId>
-        <version>${spring.version}</version>
-      </dependency>
-      <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>servlet-api</artifactId>
         <version>2.5</version>
+        <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>jsp-api</artifactId>
         <version>2.0</version>
+        <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>jstl</groupId>
@@ -93,45 +78,15 @@
         <version>${dudu.framework.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.alibaba</groupId>
-        <artifactId>dubbo</artifactId>
-        <version>2.5.3</version>
-        <exclusions>
-          <exclusion>
-            <artifactId>spring</artifactId>
-            <groupId>org.springframework</groupId>  <!-- 用于排除dubbo引用冲突 -->
-          </exclusion>
-          <exclusion>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-          </exclusion>
-        </exclusions>
+        <groupId>com.dudu.soa</groupId>
+        <artifactId>DuduFramework-parent-dubbo</artifactId>
+        <version>${dudu.framework.version}</version>
+        <type>pom</type>
       </dependency>
       <dependency>
-        <groupId>org.aspectj</groupId>
-        <artifactId>aspectjweaver</artifactId>
-        <version>1.8.1</version>
-      </dependency>
-      <dependency>
-        <groupId>org.aspectj</groupId>
-        <artifactId>aspectjrt</artifactId>
-        <version>1.8.1</version>
-      </dependency>
-      <dependency>
-        <groupId>com.github.sgroschupf</groupId>
-        <artifactId>zkclient</artifactId>
-        <version>0.1</version>
-        <exclusions>
-          <exclusion>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.zookeeper</groupId>
-        <artifactId>zookeeper</artifactId>
-        <version>3.4.8</version>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>4.3.2.RELEASE</version>
       </dependency>
       <dependency>
         <groupId>com.dudu.soa</groupId>
@@ -197,8 +152,14 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+            <scope>test</scope>
         </dependency>
-
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>4.3.2.RELEASE</version>
+        <scope>test</scope>
+      </dependency>
     </dependencies>
 
     <build>
