@@ -231,8 +231,8 @@ $(document).ready(function () {
                                 second_carList.show();
                                 second_cpxx.text(car_1);
                                 second_lis.children().remove();
-                                for(var i = 0;i < json.length;i++){
-                                    var lis = '<li carId="'+json[i].carId+'">'+json[i].carName+'</li>';
+                                for(var i = 0;i < json.rows.length;i++){
+                                    var lis = '<li carId="'+json.rows[i].carId+'">'+json.rows[i].carName+'</li>';
                                     second_lis.append(lis);
                                 }
                                 var second_ul_li = $(".second_carList ul li");
@@ -257,8 +257,8 @@ $(document).ready(function () {
                                             third_carList.show();
                                             third_cpxx.text(car_2);
                                             third_lis.children().remove();
-                                            for(var i = 0;i < json.length;i++){
-                                                var lis = '<li carId="'+json[i].carId+'">'+json[i].carName+'</li>';
+                                            for(var i = 0;i < json.rows.length;i++){
+                                                var lis = '<li carId="'+json.rows[i].carId+'">'+json.rows[i].carName+'</li>';
                                                 third_lis.append(lis);
                                             }
                                             var third_ul_li = $(".third_carList ul li");
