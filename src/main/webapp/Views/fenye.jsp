@@ -56,9 +56,7 @@
 
 <input type="hidden" name="pageNo" id="pageNo" value="1"/>
 <div class="white">
-    <table id="wrapper">
-
-    </table>
+    
 </div>
 </body>
 <script>
@@ -68,7 +66,7 @@
     var pageStart = 0,pageEnd = 0;
 
     // dropload
-    $('.content').dropload({
+    $('.white').dropload({
         scrollArea : window,
         domUp : {
             domClass   : 'dropload-up',
@@ -94,9 +92,7 @@
                 cache: false,
                 success: function(json){
                     var data = JSON.parse(json);
-                    loading = true;
                     console.log(data.rows);
-                    alert(data.rows.length);
                     if (data == null) {
 
                     } else {
@@ -143,9 +139,7 @@
                 cache: false,
                 success: function(json){
                     var data = JSON.parse(json);
-                    loading = true;
                     console.log(data.rows);
-                    alert(data.rows.length);
                     if (data == null) {
 
                     } else {
