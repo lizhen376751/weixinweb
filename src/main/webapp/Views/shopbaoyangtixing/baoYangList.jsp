@@ -12,12 +12,13 @@
 	<link href="/styles/weix.css" rel="stylesheet" type="text/css"/>
 	<link href="/styles/shopbaoyangtixing/baoyanglist.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="/scripts/jquery-1.12.1.min.js"></script>
+	<script src="/scripts/zepto.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="/scripts/shopbaoyangtixing/iscroll.js"></script>
 	<script type="text/javascript" src="/scripts/shopbaoyangtixing/baoYangList.js"></script>
 	<script  type="text/javascript"  src="/scripts/main.js"></script>
 </head>
 <body>
-
+<input type="hidden" name="pageNo" id="pageNo" value="1"/>
 <%--ÍøÒ³¼ÓÔØÐ§¹û--%>
 <div id="loading">
 	<img src="/files/loading.gif"  alt="loading.." />
