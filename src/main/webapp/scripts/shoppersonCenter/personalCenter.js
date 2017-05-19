@@ -128,135 +128,140 @@ $(document).ready(function () {
     //--------------------------------------------------------------------------------------------------------------------------车型车系的请求
     var app = app || {};
     app.data = []; //-----------------------------------------------------------------------------------------------------车牌号集合:奥迪
-    $.ajax({
-        type: 'POST',
-        url: '/pagingquery',
-        data: {
-            businessType: "shoppersoncenter",
-            servicetype: "carType",
-            type: "CarBrand",
-            num: 0,
-            page: "1",
-            rows: "50"
-        },
-        success: function (jsonData) {
-            json = JSON.parse(jsonData);
-            console.log(json);
-            for (var i = 0; i < json.rows.length; i++) {
-                var zifu = json.rows[i].carFirst + json.rows[i].carId + "-" + json.rows[i].carName;
-                app.data.push(zifu);
-            }
-            console.log(app.data);
-            app.main();
-            $(".index-sidebar-container").css("display","none")
-            var car_brand = $(".car_brand"); //----------------------------------------------------车系品牌遮罩层
-            var item_container_li = $("#item-container ul li") //--------------------------------- 获取每一个车牌号:奥迪
-            //---------------------------------------------------------------------------------------点击出现车辆品牌分类
-            clpp.on("click", function () {
-                car_brand.show();
-                $(".index-sidebar-container").css("display", "block")
-            });
-            //----------------------------------------------------------------------------------------点击获取进一步的信息
-            item_container_li.on("click", function () {
-                car_1 = "";
-                car_1 = $(this).text();
-                var car_id = $(this).attr("ids");
-                console.log(car_id);
-                // car_brand.hide();
-                $(".index-sidebar-container").css("display", "none");
+    for(var g = 1; g < 5;g++){
+        $.ajax({
+            type: 'POST',
+            url: '/pagingquery',
+            data: {
+                businessType: "shoppersoncenter",
+                servicetype: "carType",
+                type: "CarBrand",
+                num: 0,
+                page: ""+g+"",
+                rows: "50"
+            },
+            success: function (jsonData) {
+                json = JSON.parse(jsonData);
+                console.log(json);
+                for (var i = 0; i < json.rows.length; i++) {
+                    var zifu = json.rows[i].carFirst + json.rows[i].carId + "-" + json.rows[i].carName;
+                    app.data.push(zifu);
+                }
+                console.log(app.data);
+                if(g == 4){
+                    app.main();
+                    $(".index-sidebar-container").css("display","none")
+                    var car_brand = $(".car_brand"); //----------------------------------------------------车系品牌遮罩层
+                    var item_container_li = $("#item-container ul li") //--------------------------------- 获取每一个车牌号:奥迪
+                    //---------------------------------------------------------------------------------------点击出现车辆品牌分类
+                    clpp.on("click", function () {
+                        car_brand.show();
+                        $(".index-sidebar-container").css("display", "block")
+                    });
+                    //----------------------------------------------------------------------------------------点击获取进一步的信息
+                    item_container_li.on("click", function () {
+                        car_1 = "";
+                        car_1 = $(this).text();
+                        var car_id = $(this).attr("ids");
+                        console.log(car_id);
+                        // car_brand.hide();
+                        $(".index-sidebar-container").css("display", "none");
 
-                // clpp_txt.text(car_1);
-                // clpp_txt.css({
-                //     color: "#6c6c6c"
-                // });
-                //--------------------------------------------------------------------------------------------二级车系信息的数据请求
-                $.ajax({
-                    type: 'POST',
-                    url: '/shopAjax',
-                    data: {
-                        businessType: "shoppersoncenter",
-                        servicetype: "carType",
-                        type: "CarSeries",
-                        num: car_id //品牌编码
-                    },
-                    success: function (jsonData) {
-                        json = JSON.parse(jsonData);
-                        console.log(json);
-                        second_carList.show();
-                        second_cpxx.text(car_1);
-                        second_lis.children().remove();
-                        for(var i = 0;i < json.length;i++){
-                            var lis = '<li carId="'+json[i].carId+'">'+json[i].carName+'</li>';
-                            second_lis.append(lis);
-                        }
-                        var second_ul_li = $(".second_carList ul li");
-                        second_ul_li.on("click",function () {
-                            car_2 = "";
-                            car_2 = $(this).text();
-                            // second_carList.hide();
-                            var carId = $(this).attr("carId");//获取车系的编码
-                            //---------------------------------------------------------------------------------------------------------------------------三级车辆型号数据请求
-                            $.ajax({
-                                type: 'POST',
-                                url: '/shopAjax',
-                                data: {
-                                    businessType: "shoppersoncenter",
-                                    servicetype: "carType",
-                                    type: "CarModel",
-                                    num: carId //车系编码
-                                },
-                                success: function (jsonData) {
-                                    json = JSON.parse(jsonData);
-                                    console.log(json);
-                                    third_carList.show();
-                                    third_cpxx.text(car_2);
-                                    third_lis.children().remove();
-                                    for(var i = 0;i < json.length;i++){
-                                        var lis = '<li carId="'+json[i].carId+'">'+json[i].carName+'</li>';
-                                        third_lis.append(lis);
-                                    }
-                                    var third_ul_li = $(".third_carList ul li");
-                                    third_ul_li.on("click",function () {
-                                        car_3 = "";
-                                        car_3 = $(this).text();
-                                        var carIds = $(this).attr("carId");
-                                        //------------------------------------------------------------------------------------------------------------------车辆信息全部数据上传
-                                        $.ajax({
-                                            type: 'POST',
-                                            url: '/shopAjax',
-                                            data: {
-                                                businessType: "shoppersoncenter",
-                                                servicetype: "updateCarType",
-                                                carModelId: carIds, //车型编码
-                                                carSeriesId: carId,//车系编码
-                                                carBrandId: car_id,//品牌编码
-                                                id:khID //客户ID
-                                            },
-                                            async: false,
-                                            success: function (jsonData) {
-                                                car_brand.hide();
-                                                second_carList.hide();
-                                                third_carList.hide();
-                                                $("body").scrollTop(0)
-                                                var clpp_txts = car_1 + car_2 + car_3;
-                                                clpp_txt.text(clpp_txts);
-                                                clpp_txt.css({
-                                                    color: "#6c6c6c"
+                        // clpp_txt.text(car_1);
+                        // clpp_txt.css({
+                        //     color: "#6c6c6c"
+                        // });
+                        //--------------------------------------------------------------------------------------------二级车系信息的数据请求
+                        $.ajax({
+                            type: 'POST',
+                            url: '/shopAjax',
+                            data: {
+                                businessType: "shoppersoncenter",
+                                servicetype: "carType",
+                                type: "CarSeries",
+                                num: car_id //品牌编码
+                            },
+                            success: function (jsonData) {
+                                json = JSON.parse(jsonData);
+                                console.log(json);
+                                second_carList.show();
+                                second_cpxx.text(car_1);
+                                second_lis.children().remove();
+                                for(var i = 0;i < json.length;i++){
+                                    var lis = '<li carId="'+json[i].carId+'">'+json[i].carName+'</li>';
+                                    second_lis.append(lis);
+                                }
+                                var second_ul_li = $(".second_carList ul li");
+                                second_ul_li.on("click",function () {
+                                    car_2 = "";
+                                    car_2 = $(this).text();
+                                    // second_carList.hide();
+                                    var carId = $(this).attr("carId");//获取车系的编码
+                                    //---------------------------------------------------------------------------------------------------------------------------三级车辆型号数据请求
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/shopAjax',
+                                        data: {
+                                            businessType: "shoppersoncenter",
+                                            servicetype: "carType",
+                                            type: "CarModel",
+                                            num: carId //车系编码
+                                        },
+                                        success: function (jsonData) {
+                                            json = JSON.parse(jsonData);
+                                            console.log(json);
+                                            third_carList.show();
+                                            third_cpxx.text(car_2);
+                                            third_lis.children().remove();
+                                            for(var i = 0;i < json.length;i++){
+                                                var lis = '<li carId="'+json[i].carId+'">'+json[i].carName+'</li>';
+                                                third_lis.append(lis);
+                                            }
+                                            var third_ul_li = $(".third_carList ul li");
+                                            third_ul_li.on("click",function () {
+                                                car_3 = "";
+                                                car_3 = $(this).text();
+                                                var carIds = $(this).attr("carId");
+                                                //------------------------------------------------------------------------------------------------------------------车辆信息全部数据上传
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: '/shopAjax',
+                                                    data: {
+                                                        businessType: "shoppersoncenter",
+                                                        servicetype: "updateCarType",
+                                                        carModelId: carIds, //车型编码
+                                                        carSeriesId: carId,//车系编码
+                                                        carBrandId: car_id,//品牌编码
+                                                        id:khID //客户ID
+                                                    },
+                                                    async: false,
+                                                    success: function (jsonData) {
+                                                        car_brand.hide();
+                                                        second_carList.hide();
+                                                        third_carList.hide();
+                                                        $("body").scrollTop(0)
+                                                        var clpp_txts = car_1 + car_2 + car_3;
+                                                        clpp_txt.text(clpp_txts);
+                                                        clpp_txt.css({
+                                                            color: "#6c6c6c"
+                                                        });
+
+                                                    }
                                                 });
 
-                                            }
-                                        });
+                                            })
+                                        }
+                                    });
 
-                                    })
-                                }
-                            });
+                                })
+                            }
+                        });
+                    });
+                }
+            }
+        });
+    }
 
-                        })
-                    }
-                });
-            });
-        }
-    });
     //时间戳转换成日期格式
     function dateFormat(val) {
         var now = new Date(val),
