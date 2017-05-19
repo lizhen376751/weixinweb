@@ -11,8 +11,6 @@ $(document).ready(function () {
         var date=y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
         return date.substr(0, 11);
     }
-    var top = $("#page1").val();
-    console.log(top);
     $(function () {
         query('01');//第一次加载
     });
@@ -28,7 +26,7 @@ $(document).ready(function () {
                 rows: "3"
             },
             cache: false,
-            success: function (json) {
+            success: function (jsondata) {
                 var json = JSON.parse(jsondata);
                 console.log(json);
                 var html = "";
