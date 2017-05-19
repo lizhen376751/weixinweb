@@ -99,44 +99,27 @@
                     alert(data.rows.length);
                     if (data == null) {
 
-                        $("#pageNo").val(parseInt($("#pageNo").val()) - 1);
                     } else {
                         var content = "";
-                        if (type == "00") {
-                            if (data.rows.length == 0) { //如果数据的条数为空,显示空内容
-                                $("#pageNo").val(parseInt($("#pageNo").val()) - 1);
-                                return "";
-                            }
-                            for (var i = 0; i < data.length; i++) {
-                                content = content
-                                    + '<tr>'
-                                    + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
-                                    + '</tr>';
-                            }
-                            $("#wrapper").append(content);
-                        } else {
-
-                            for (var i = 0; i < data.rows.length; i++) {
-
-                                content = content
-                                    + '<tr>'
-                                    + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
-                                    + '</tr>';
-                            }
-
+                        for (var i = 0; i < data.rows.length; i++) {
+                            content = content
+                                + '<tr>'
+                                + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
+                                + '</tr>';
                         }
+                        // 为了测试，延迟1秒加载
+                        setTimeout(function(){
+                            $("#wrapper").html(content);
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                            // 重置索引值，重新拼接more.json数据
+                            counter = 0;
+                            // 解锁
+                            me.unlock();
+                            me.noData(false);
+                        },1000);
                     }
-                    // 为了测试，延迟1秒加载
-                    setTimeout(function(){
-                        $("#wrapper").html(content);
-                        // 每次数据加载完，必须重置
-                        me.resetload();
-                        // 重置索引值，重新拼接more.json数据
-                        counter = 0;
-                        // 解锁
-                        me.unlock();
-                        me.noData(false);
-                    },1000);
+
                 },
                 error: function(xhr, type){
                     alert('Ajax error!');
@@ -165,44 +148,26 @@
                     alert(data.rows.length);
                     if (data == null) {
 
-                        $("#pageNo").val(parseInt($("#pageNo").val()) - 1);
                     } else {
                         var content = "";
-                        if (type == "00") {
-                            if (data.rows.length == 0) { //如果数据的条数为空,显示空内容
-                                $("#pageNo").val(parseInt($("#pageNo").val()) - 1);
-                                return "";
-                            }
-                            for (var i = 0; i < data.length; i++) {
-                                content = content
-                                    + '<tr>'
-                                    + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
-                                    + '</tr>';
-                            }
-                            $("#wrapper").append(content);
-                        } else {
-
-                            for (var i = 0; i < data.rows.length; i++) {
-
-                                content = content
-                                    + '<tr>'
-                                    + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
-                                    + '</tr>';
-                            }
-
+                        for (var i = 0; i < data.rows.length; i++) {
+                            content = content
+                                + '<tr>'
+                                + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
+                                + '</tr>';
                         }
+                        // 为了测试，延迟1秒加载
+                        setTimeout(function(){
+                            $("#wrapper").html(content);
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                            // 重置索引值，重新拼接more.json数据
+                            counter = 0;
+                            // 解锁
+                            me.unlock();
+                            me.noData(false);
+                        },1000);
                     }
-                    // 为了测试，延迟1秒加载
-                    setTimeout(function(){
-                        $("#wrapper").html(content);
-                        // 每次数据加载完，必须重置
-                        me.resetload();
-                        // 重置索引值，重新拼接more.json数据
-                        counter = 0;
-                        // 解锁
-                        me.unlock();
-                        me.noData(false);
-                    },1000);
                 },
                 error: function(xhr, type){
                     alert('Ajax error!');
