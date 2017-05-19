@@ -92,7 +92,7 @@
                     rows: ""+num+""
                 },
                 cache: false,
-                success: function(data){
+                success: function(json){
                     var data = JSON.parse(json);
                     loading = true;
                     console.log(data.rows);
@@ -158,7 +158,7 @@
                     rows: ""+num+""
                 },
                 cache: false,
-                success: function(data){
+                success: function(json){
                     var data = JSON.parse(json);
                     loading = true;
                     console.log(data.rows);
