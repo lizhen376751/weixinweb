@@ -140,6 +140,7 @@ $(document).ready(function () {
                 page: ""+g+"",
                 rows: "50"
             },
+            async: false,
             success: function (jsonData) {
                 json = JSON.parse(jsonData);
                 console.log(json);
