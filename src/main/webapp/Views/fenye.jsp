@@ -64,6 +64,39 @@
 </div>
 </body>
 <script>
+    $.ajax({
+        type: 'POST',
+        url: "/pagingquery",
+        data: {
+            businessType: "xialajiazai",
+            page: "1",
+            rows: "3"
+        },
+        async: false,
+        success: function (json) {
+            var data = JSON.parse(json);
+            if (data == null) {
+
+            } else {
+                var content = "";
+                if (data.rows.length == 0) { //如果数据的条数为空,显示空内容
+                    return "";
+                }else{
+                    for (var i = 0; i < data.length; i++) {
+                        content = content
+                            + '<tr>'
+                            + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
+                            + '</tr>';
+                    }
+                    $("#wrapper").append(content);
+                }
+
+            }
+        },
+        error: function () {
+            alert("查询数据出错啦，请刷新再试");
+        }
+    });
     var pageNum = 1;
     refresher.init({
         id:"wrapper",
