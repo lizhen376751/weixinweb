@@ -82,7 +82,7 @@
                 if (data.rows.length == 0) { //如果数据的条数为空,显示空内容
                     return "";
                 }else{
-                    for (var i = 0; i < data.length; i++) {
+                    for (var i = 0; i < data.rows.length; i++) {
                         content = content
                             + '<tr>'
                             + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
@@ -124,13 +124,13 @@
                         if (data.rows.length == 0) { //如果数据的条数为空,显示空内容
                             return "";
                         }else{
-                            for (var i = 0; i < data.length; i++) {
+                            for (var i = 0; i < data.rows.length; i++) {
                                 content = content
                                     + '<tr>'
                                     + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
                                     + '</tr>';
                             }
-//                            $(".white").children().remove();
+                            $(".white").children().remove();
                             $(".white").append(content);
                         }
 
@@ -169,7 +169,7 @@
                             return "";
                         }else{
 
-                        for (var i = 0; i < data.length; i++) {
+                        for (var i = 0; i < data.rows.length; i++) {
                             content = content
                                 + '<tr>'
                                 + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
