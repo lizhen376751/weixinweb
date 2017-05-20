@@ -130,7 +130,7 @@
                                     + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
                                     + '</tr>';
                             }
-                            $(".white").children().remove();
+//                            $(".white").children().remove();
                             $(".white").append(content);
                         }
 
@@ -159,7 +159,7 @@
             async: false,
             success: function (json) {
                 document.getElementById("wrapper").querySelector(".pullDownIcon").style.display="none";
-                document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='css/ok.png'/>刷新成功";
+                document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='/files/ok.png'/>刷新成功";
                 var data = JSON.parse(json);
                 if (data == null) {
 
