@@ -57,8 +57,8 @@
 <body>
 
 <input type="hidden" name="pageNo" id="pageNo" value="1"/>
-<div class="white">
-    <table id="wrapper">
+<div id="wrapper">
+    <table class="white">
 
     </table>
 </div>
