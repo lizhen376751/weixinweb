@@ -187,7 +187,9 @@
                         document.getElementById("wrapper").querySelector(".pullUpIcon").style.display="none";
                         document.getElementById("wrapper").querySelector(".pullUpLabel").innerHTML="已到最低层了";
                     }
-                    wrapper.refresh();
+                    if(pageNum < sx_num){
+                        wrapper.refresh();
+                    }
                 },
                 error: function () {
                     alert("到最低数据了");
