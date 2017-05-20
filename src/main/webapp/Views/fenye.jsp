@@ -64,6 +64,7 @@
 </div>
 </body>
 <script>
+    var sx_num = 0;
     $.ajax({
         type: 'POST',
         url: "/pagingquery",
@@ -75,6 +76,11 @@
         async: false,
         success: function (json) {
             var data = JSON.parse(json);
+            if(data.records % pageSize == 0){
+                sx_num = data.records/pageSize;
+            }else{
+                sx_num = data.records/pageSize +1;
+            }
             if (data == null) {
 
             } else {
@@ -148,46 +154,47 @@
     }
     function Load() {
         pageNum++;
-        $.ajax({
-            type: 'POST',
-            url: "/pagingquery",
-            data: {
-                businessType: "xialajiazai",
-                page: ""+pageNum+"",
-                rows: "3"
-            },
-            async: false,
-            success: function (json) {
-                document.getElementById("wrapper").querySelector(".pullDownIcon").style.display="none";
-                document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='/files/ok.png'/>刷新成功";
-                var data = JSON.parse(json);
-                if (data == null) {
+        if(pageNum <= sx_num){
+            $.ajax({
+                type: 'POST',
+                url: "/pagingquery",
+                data: {
+                    businessType: "xialajiazai",
+                    page: ""+pageNum+"",
+                    rows: "3"
+                },
+                async: false,
+                success: function (json) {
+                    var data = JSON.parse(json);
+                    if (data == null) {
 
-                } else {
-                    var content = "";
+                    } else {
+                        var content = "";
                         if (data.rows.length == 0) { //如果数据的条数为空,显示空内容
                             return "";
                         }else{
 
-                        for (var i = 0; i < data.rows.length; i++) {
-                            content = content
-                                + '<tr>'
-                                + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
-                                + '</tr>';
+                            for (var i = 0; i < data.rows.length; i++) {
+                                content = content
+                                    + '<tr>'
+                                    + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
+                                    + '</tr>';
+                            }
+                            $(".white").append(content);
                         }
-                        $(".white").append(content);
                     }
-                }
-                setTimeout(function () {
+                    if(pageNum == sx_num){
+                        document.getElementById("wrapper").querySelector(".pullUpIcon").style.display="none";
+                        document.getElementById("wrapper").querySelector(".pullUpLabel").innerHTML="已到最低层了";
+                    }
                     wrapper.refresh();
-                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
-                },1000);
+                },
+                error: function () {
+                    alert("到最低数据了");
+                }
+            });
+        }
 
-            },
-            error: function () {
-                alert("到最低数据了");
-            }
-        });
 //        setTimeout(function () {
 //            var el, li, i;
 //            el =document.querySelector("#wrapper ul");
