@@ -10,9 +10,11 @@
           content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
     <title>滑动到底部加载下一页内容</title>
-    <link href="/styles/shopbaoyangtixing/dropload.css" rel="stylesheet" type="text/css"/>
+    <link href="/styles/pullToRefresh.css" rel="stylesheet" type="text/css"/>
     <script src="/scripts/login/js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/scripts/dropload.js" type="text/javascript" charset="utf-8"></script>
+    <%--<script src="/scripts/zepto.min.js" type="text/javascript" charset="utf-8"></script>--%>
+    <script type="text/javascript" src="/scripts/iscroll.js"></script>
+    <script type="text/javascript" src="/scripts/pullToRefresh.js"></script>
     <script type="text/javascript" src="/scripts/main.js"></script>
     <style>
         table {
@@ -56,122 +58,116 @@
 
 <input type="hidden" name="pageNo" id="pageNo" value="1"/>
 <div class="white">
-    
+    <table id="wrapper">
+
+    </table>
 </div>
 </body>
 <script>
-    var counter = 0;
-    // 每页展示4个
-    var num = 4;
-    var pageStart = 0,pageEnd = 0;
-
-    // dropload
-    $('.white').dropload({
-        scrollArea : window,
-        domUp : {
-            domClass   : 'dropload-up',
-            domRefresh : '<div class="dropload-refresh">↓下拉刷新-自定义内容</div>',
-            domUpdate  : '<div class="dropload-update">↑释放更新-自定义内容</div>',
-            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中-自定义内容...</div>'
-        },
-        domDown : {
-            domClass   : 'dropload-down',
-            domRefresh : '<div class="dropload-refresh">↑上拉加载更多-自定义内容</div>',
-            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中-自定义内容...</div>',
-            domNoData  : '<div class="dropload-noData">暂无数据-自定义内容</div>'
-        },
-        loadUpFn : function(me){
-            $.ajax({
-                type: 'POST',
-                url: "/pagingquery",
-                data: {
-                    businessType: "xialajiazai",
-                    page: ""+counter+"",
-                    rows: ""+num+""
-                },
-                cache: false,
-                success: function(json){
-                    var data = JSON.parse(json);
-                    console.log(data.rows);
-                    if (data == null) {
-
-                    } else {
-                        var content = "";
-                        for (var i = 0; i < data.rows.length; i++) {
-                            content = content
-                                + '<tr>'
-                                + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
-                                + '</tr>';
-                        }
-                        // 为了测试，延迟1秒加载
-                        setTimeout(function(){
-                            $("#wrapper").html(content);
-                            // 每次数据加载完，必须重置
-                            me.resetload();
-                            // 重置索引值，重新拼接more.json数据
-                            counter = 0;
-                            // 解锁
-                            me.unlock();
-                            me.noData(false);
-                        },1000);
-                    }
-
-                },
-                error: function(xhr, type){
-                    alert('Ajax error!');
-                    // 即使加载出错，也得重置
-                    me.resetload();
-                }
-            });
-        },
-        loadDownFn : function(me){
-            counter++;
-            pageEnd = num * counter;
-            pageStart = pageEnd - num;
-            $.ajax({
-                type: 'POST',
-                url: "/pagingquery",
-                data: {
-                    businessType: "xialajiazai",
-                    page: ""+counter+"",
-                    rows: ""+num+""
-                },
-                cache: false,
-                success: function(json){
-                    var data = JSON.parse(json);
-                    console.log(data.rows);
-                    if (data == null) {
-
-                    } else {
-                        var content = "";
-                        for (var i = 0; i < data.rows.length; i++) {
-                            content = content
-                                + '<tr>'
-                                + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
-                                + '</tr>';
-                        }
-                        // 为了测试，延迟1秒加载
-                        setTimeout(function(){
-                            $("#wrapper").html(content);
-                            // 每次数据加载完，必须重置
-                            me.resetload();
-                            // 重置索引值，重新拼接more.json数据
-                            counter = 0;
-                            // 解锁
-                            me.unlock();
-                            me.noData(false);
-                        },1000);
-                    }
-                },
-                error: function(xhr, type){
-                    alert('Ajax error!');
-                    // 即使加载出错，也得重置
-                    me.resetload();
-                }
-            });
-        },
-        threshold : 50
+    var pageNum = 1;
+    refresher.init({
+        id:"wrapper",
+        pullDownAction:Refresh,
+        pullUpAction:Load
     });
+    function Refresh() {
+        $.ajax({
+            type: 'POST',
+            url: "/pagingquery",
+            data: {
+                businessType: "xialajiazai",
+                page: "1",
+                rows: "3"
+            },
+            async: false,
+            success: function (json) {
+                document.getElementById("wrapper").querySelector(".pullDownIcon").style.display="none";
+                document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='/files/ok.png'/>刷新成功";
+                var data = JSON.parse(json);
+                if (data == null) {
+
+                } else {
+                    var content = "";
+                        if (data.rows.length == 0) { //如果数据的条数为空,显示空内容
+                            return "";
+                        }else{
+                            for (var i = 0; i < data.length; i++) {
+                                content = content
+                                    + '<tr>'
+                                    + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
+                                    + '</tr>';
+                            }
+                            $("#wrapper").children().remove();
+                            $("#wrapper").append(content);
+                        }
+
+                }
+                setTimeout(function () {
+                    wrapper.refresh();
+                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
+                },1000);
+
+            },
+            error: function () {
+                alert("查询数据出错啦，请刷新再试");
+            }
+        });
+    }
+    function Load() {
+        pageNum++;
+        $.ajax({
+            type: 'POST',
+            url: "/pagingquery",
+            data: {
+                businessType: "xialajiazai",
+                page: ""+pageNum+"",
+                rows: "3"
+            },
+            async: false,
+            success: function (json) {
+                document.getElementById("wrapper").querySelector(".pullDownIcon").style.display="none";
+                document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='css/ok.png'/>刷新成功";
+                var data = JSON.parse(json);
+                if (data == null) {
+
+                } else {
+                    var content = "";
+                        if (data.rows.length == 0) { //如果数据的条数为空,显示空内容
+                            return "";
+                        }else{
+
+                        for (var i = 0; i < data.length; i++) {
+                            content = content
+                                + '<tr>'
+                                + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
+                                + '</tr>';
+                        }
+                        $("#wrapper").append(content);
+                    }
+                }
+                setTimeout(function () {
+                    wrapper.refresh();
+                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
+                },1000);
+
+            },
+            error: function () {
+                alert("到最低数据了");
+            }
+        });
+//        setTimeout(function () {
+//            var el, li, i;
+//            el =document.querySelector("#wrapper ul");
+//            for (i=0; i<2; i++) {
+//                li = document.createElement('li');
+//                li.innerHTML="<img src='img/game8.png'><div class='game-info'><h1>华仔超神战记</h1><p>9万次下载     89.18M</p><p>秒杀虚拟摇杆，砸烂手机键盘</p></div><button>下载</button>"
+//                el.appendChild(li, el.childNodes[0]);
+//            }
+//            wrapper.refresh();
+//        },2000);
+    }
+
+
 
 
 
