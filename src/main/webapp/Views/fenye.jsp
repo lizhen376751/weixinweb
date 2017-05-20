@@ -76,10 +76,10 @@
         async: false,
         success: function (json) {
             var data = JSON.parse(json);
-            if(data.records % pageSize == 0){
-                sx_num = data.records/pageSize;
+            if(data.records % data.pageSize == 0){
+                sx_num = data.records/data.pageSize;
             }else{
-                sx_num = data.records/pageSize +1;
+                sx_num = data.records/data.pageSize +1;
             }
             if (data == null) {
 
