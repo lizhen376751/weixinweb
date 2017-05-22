@@ -91,7 +91,7 @@ $(document).ready(function(){
     //------------------------------------------------------------------ajax请求数据
 
     $.ajax({
-        type    : 'post',
+        type    : 'POST',
         url     : '/findInsurance',
         data :{
             shopCode :shopCode
@@ -123,7 +123,7 @@ $(document).ready(function(){
     $(".ss_btn").on("click",function(){
         var ss_val = $(".ss_val").val();
         $.ajax({
-            type    : 'post',
+            type    : 'POST',
             url     : '/findInsurance',
             data :{
                 shopCode :shopCode,
