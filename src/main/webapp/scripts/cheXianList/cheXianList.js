@@ -91,11 +91,11 @@ $(document).ready(function(){
     //------------------------------------------------------------------ajax请求数据
 
     $.ajax({
-        type    : 'get',
-        url     : '/findInsurance/'+shopCode,
-        // data :{
-        //     shopCode :shopCode
-        // },
+        type    : 'post',
+        url     : '/findInsurance',
+        data :{
+            shopCode :shopCode
+        },
         success:function(jsondata){
             var json = JSON.parse(jsondata);
             // add_service(json,quarters);
@@ -120,6 +120,40 @@ $(document).ready(function(){
         }
     });
 
+    $(".ss_btn").on("click",function(){
+        var ss_val = $(".ss_val").val();
+        $.ajax({
+            type    : 'post',
+            url     : '/findInsurance',
+            data :{
+                shopCode :shopCode,
+                carNumber : ss_val
+            },
+            success:function(jsondata){
+                $(".bills").remove();
+                var json = JSON.parse(jsondata);
+                // add_service(json,quarters);
+                addBills(json);
+                console.log(json);
+                var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
+                //--------------------------------------------------------------------------------------点击详情按钮跳转
+                detail.on("click",function(){
+                    // alert("该功能暂未开通~");
+                    var ddxq = $(this).attr("ddbh");
+                    var bxgs = $(this).attr("bxgs");
+                    var carId = $(this).attr("carId");
+                    var shopCode = $(this).attr("shopCode");
+                    var shopLm = $(this).attr("shopLm");
+                    // console.log(ddxq);
+                    // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
+                    window.location.href = "/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs;
+                });
+            },
+            error:function(eee){
+                alert("失败");
+            }
+        });
+    })
 
 
 

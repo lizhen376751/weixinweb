@@ -400,14 +400,13 @@ public class AllAjax {
 
     /**
      * 获取保险列表
-     *
-     * @param shopCode 店铺编码
-     * @return List<BaoXianList>
+     * @param request 参数
+     * @return List<Insurance> 保险列表
      */
     @ResponseBody
-    @RequestMapping(value = "findInsurance/{shopCode}", method = RequestMethod.GET)
-    public List<Insurance> queryInsurance(@PathVariable("shopCode") String shopCode) {
-        List<Insurance> list = cheXianService.queryBaoXianList(shopCode);
+    @RequestMapping(value = "findInsurance", method = RequestMethod.POST)
+    public List<Insurance> queryInsurance(HttpServletRequest request) {
+        List<Insurance> list = cheXianService.queryBaoXianList(request);
         return list;
     }
 

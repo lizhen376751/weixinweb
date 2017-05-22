@@ -6,7 +6,7 @@ import com.dudu.soa.baoxian.kaidan.module.Insurance;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceCompanyDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,15 +22,21 @@ public class CheXianService {
     private ChexiantoubaoService chexiantoubaoService;
 
     /**
-     * @param shopCode 店铺编码
-     * @return 集合
+     * 获取保险列表
+     * @param request 请求
+     * @return List<Insurance> 保险列表
      */
-    public List<Insurance> queryBaoXianList(String shopCode) {
+    public List<Insurance> queryBaoXianList(HttpServletRequest request) {
         BaoXianParamList baoXianParamList = new BaoXianParamList();
+        String shopCode = request.getParameter("shopCode");
+        String carNumber = request.getParameter("carNumber");
         if (null != shopCode && !"".equals(shopCode)) {
             List<String> list = new ArrayList<>();
             list.add(shopCode);
             baoXianParamList.setShopCode(list);
+        }
+        if (null != carNumber && !"".equals(carNumber)) {
+            baoXianParamList.setCarId(carNumber);
         }
         List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
         List<Insurance> list = new ArrayList<>();
