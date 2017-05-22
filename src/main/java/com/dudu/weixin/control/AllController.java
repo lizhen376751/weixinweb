@@ -274,7 +274,7 @@ public class AllController {
      * @param tokenStr token字符串
      * @return 页面跳转至车险列表展示页面
      */
-    @RequestMapping(value = "queryInsurance", method = RequestMethod.GET)
+    @RequestMapping(value = "/queryInsurance", method = RequestMethod.GET)
     public String queryCarInsurance(HttpServletRequest request, Model model, @RequestHeader(value = "token", required = false) String tokenStr) {
         //如果不为空,传进来的就是token,如果为空的话就是写死的token
         tokenStr = tokenStr != null ? tokenStr : "AQAAAITdno+PtJqG3cXdzt3T3ZyNmp6LmquWkprdxc/T3ZqHj42WjJqrlpKa3cXP092SnpaRrJeQj7yQm5rdxd3PyszMz8/"
