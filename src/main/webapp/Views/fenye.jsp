@@ -100,7 +100,6 @@
                         + '</tr>';
                 }
                 $(".white").append(content);
-                me.resetload();
             }
         },
         error: function () {
