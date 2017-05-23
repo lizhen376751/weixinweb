@@ -25,11 +25,9 @@
 	<img src="/files/loading.gif"  alt="loading.." />
 </div>
 <div class="secretarylist1">
-	<div id="wrapper" style="height:100%; overflow:auto; ">
-		<div id="scroller">
+	<div id="wrapper">
 			<ul id="thelist" class="margin_auto" style="height:100%;">
 			</ul>
-		</div>
 	</div>
 </div>
 </body>

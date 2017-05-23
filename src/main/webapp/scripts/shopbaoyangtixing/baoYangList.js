@@ -77,7 +77,7 @@ $(document).ready(function () {
         }
     });
     refresher.init({
-        id:"scroller",
+        id:"wrapper",
         able:"#thelist",
         pullDownAction:Refresh,
         pullUpAction:Load
@@ -95,8 +95,8 @@ $(document).ready(function () {
                 },
                 async: false,
                 success: function (jsondata) {
-                    document.getElementById("scroller").querySelector(".pullDownIcon").style.display="none";
-                    document.getElementById("scroller").querySelector(".pullDownLabel").innerHTML="<img src='/files/ok.png'/>刷新成功";
+                    document.getElementById("wrapper").querySelector(".pullDownIcon").style.display="none";
+                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='/files/ok.png'/>刷新成功";
                     page = 1;
                     var json = JSON.parse(jsondata);
                     if(json.records % json.pageSize == 0){
@@ -147,8 +147,8 @@ $(document).ready(function () {
                     }
                     $("#thelist").children().remove();
                     $("#thelist").append(html);
-                    scroller.refresh();
-                    document.getElementById("scroller").querySelector(".pullDownLabel").innerHTML="";
+                    wrapper.refresh();
+                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
                     $(".pullUpIcon").show();
                     refresher.info.loadingLable = "加载中...";
                     refresher.info.pullUpLable = "上拉加载更多"
@@ -194,7 +194,7 @@ $(document).ready(function () {
                     }
                 });
             }
-            scroller.refresh();
+            wrapper.refresh();
         },1000)
     }
     function page_num(add_num) {
