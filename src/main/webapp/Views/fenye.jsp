@@ -171,7 +171,6 @@
                                 + '</tr>';
                         }
                         $(".white").append(content);
-                        wrapper.refresh();
                         page_num()
                     }
                 },
@@ -180,6 +179,7 @@
                 }
             });
         }
+        wrapper.refresh();
     }
     function page_num() {
         if(page == 3){
