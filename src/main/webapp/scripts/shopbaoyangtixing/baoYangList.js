@@ -197,6 +197,7 @@ $(document).ready(function () {
             wrapper.refresh();
         },1000)
     }
+    page_num(add_num)
     function page_num(add_num) {
         if(page == add_num){
             $(".pullUpIcon").hide();
