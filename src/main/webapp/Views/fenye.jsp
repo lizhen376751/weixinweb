@@ -171,6 +171,7 @@
                         }
                         $(".white").append(content);
                         wrapper.refresh();
+                        page_num()
                     }
                 },
                 error: function () {
@@ -179,10 +180,13 @@
             });
         }
     }
-    if(page == 3){
-        $(".pullUpIcon").hide();
-        $(".pullUpLabel").text("已经到了最底部了！")
+    function page_num() {
+        if(page == 3){
+            $(".pullUpIcon").hide();
+            $(".pullUpLabel").text("已经到了最底部了！")
+        }
     }
+
 
 
 //    $(function () {
