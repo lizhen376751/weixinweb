@@ -140,6 +140,10 @@
                     $(".white").append(content);
                     wrapper.refresh();
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
+                    $(".pullUpIcon").show();
+                    refresher.info.loadingLable = "加载中...";
+                    refresher.info.pullUpLable = "上拉加载更多"
+                    refresher.info.pullingUpLable = "释放加载更多"
                 }
             },
             error: function () {
@@ -180,10 +184,6 @@
             });
         }
         wrapper.refresh();
-        $(".pullUpIcon").show();
-        refresher.info.loadingLable = "加载中...";
-        refresher.info.pullUpLable = "上拉加载更多"
-        refresher.info.pullingUpLable = "释放加载更多"
     }
     function page_num() {
         if(page == 3){
