@@ -79,7 +79,7 @@
 <script>
     var page = 1; //记录当前加载的页数
     var add_num = 0;//记录加载的次数
-    $('#wrapper').dropload({
+    $('.white').dropload({
         scrollArea : window,
         domUp : {
             domClass   : 'dropload-up',
@@ -106,7 +106,6 @@
                 success: function (json) {
                     var data = JSON.parse(json);
                     console.log(data.rows);
-                    alert(data.rows.length);
                     if (data != null && data.rows != null) {
                         var content = "";
                         for (var i = 0; i < data.rows.length; i++) {
@@ -139,7 +138,6 @@
                 success: function (json) {
                     var data = JSON.parse(json);
                     console.log(data.rows);
-                    alert(data.rows.length);
                     if (data != null && data.rows != null) {
                         var content = "";
                         for (var i = 0; i < data.rows.length; i++) {
