@@ -79,7 +79,35 @@
 <script>
     var page = 1; //记录当前加载的页数
     var add_num = 0;//记录加载的次数
-    $('.white').dropload({
+    $.ajax({
+        type: 'POST',
+        url: "/pagingquery",
+        data: {
+            businessType: "xialajiazai",
+            page: "1",
+            rows: "3"
+        },
+        async: false,
+        success: function (json) {
+            var data = JSON.parse(json);
+            console.log(data.rows);
+            if (data != null && data.rows != null) {
+                var content = "";
+                for (var i = 0; i < data.rows.length; i++) {
+                    content = content
+                        + '<tr>'
+                        + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
+                        + '</tr>';
+                }
+                $(".white").append(content);
+                me.resetload();
+            }
+        },
+        error: function () {
+            alert("查询数据出错啦，请刷新再试");
+        }
+    });
+    $('#wrapper').dropload({
         scrollArea : window,
         domUp : {
             domClass   : 'dropload-up',
@@ -114,6 +142,7 @@
                                 + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
                                 + '</tr>';
                         }
+                        $(".white").children().remove();
                         $(".white").append(content);
                         me.resetload();
                     }
