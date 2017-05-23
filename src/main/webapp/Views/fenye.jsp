@@ -110,6 +110,7 @@
     refresher.init({
         id:"wrapper",
         pullDownAction:Refresh,
+        pullUpAction:Load
     });
     function Refresh() {
         $.ajax({
@@ -126,7 +127,7 @@
                 console.log(data.rows);
                 if (data != null && data.rows != null) {
                     document.getElementById("wrapper").querySelector(".pullDownIcon").style.display="none";
-                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='css/ok.png'/>刷新成功";
+                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='/files/ok.png'/>刷新成功";
                     var content = "";
                     for (var i = 0; i < data.rows.length; i++) {
                         content = content
@@ -145,42 +146,43 @@
             }
         });
     }
-    window.onscroll= function  () {
-        if ($(document).scrollTop() >= $(document).height() - $(window).height() - 1) {
-            page++;
-            if(page <= 3){
-                $.ajax({
-                    type: 'POST',
-                    url: "/pagingquery",
-                    data: {
-                        businessType: "xialajiazai",
-                        page: ""+page+"",
-                        rows: "3"
-                    },
-                    async: false,
-                    success: function (json) {
-                        var data = JSON.parse(json);
-                        console.log(data.rows);
-                        if (data != null && data.rows != null) {
-                            var content = "";
-                            for (var i = 0; i < data.rows.length; i++) {
-                                content = content
-                                    + '<tr>'
-                                    + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
-                                    + '</tr>';
-                            }
-                            $(".white").append(content);
+    function Load() {
+        page++;
+        if(page <= 3){
+            $.ajax({
+                type: 'POST',
+                url: "/pagingquery",
+                data: {
+                    businessType: "xialajiazai",
+                    page: ""+page+"",
+                    rows: "3"
+                },
+                async: false,
+                success: function (json) {
+                    var data = JSON.parse(json);
+                    console.log(data.rows);
+                    if (data != null && data.rows != null) {
+                        var content = "";
+                        for (var i = 0; i < data.rows.length; i++) {
+                            content = content
+                                + '<tr>'
+                                + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
+                                + '</tr>';
                         }
-                    },
-                    error: function () {
-                        alert("查询数据出错啦，请刷新再试");
+                        $(".white").append(content);
+                        wrapper.refresh();
                     }
-                });
-            }
-
+                },
+                error: function () {
+                    alert("查询数据出错啦，请刷新再试");
+                }
+            });
         }
     }
-
+    if(page == 3){
+        $(".pullUpIcon").hide();
+        $(".pullUpLabel").text("已经到了最底部了！")
+    }
 
 
 //    $(function () {
