@@ -11,7 +11,8 @@ var refresher = {
 		"pullingDownLable": "释放立即刷新",
 		"pullUpLable": "上拉加载更多",
 		"pullingUpLable": "释放加载更多",
-		"loadingLable": "加载中..."
+		"loadingLable": "加载中...",
+		"loadingDownLable":"加载中..."
 	},
 	init: function(parameter) {
 		var wrapper = document.getElementById(parameter.id);
@@ -103,7 +104,7 @@ var refresher = {
 		if (pullDownEle.className.match('flip')&&!pullDownEle.className.match('loading')) {
 			pullDownEle.classList.add("loading");
 			pullDownEle.classList.remove("flip");
-			pullDownEle.querySelector('.pullDownLabel').innerHTML = refresher.info.loadingLable;
+			pullDownEle.querySelector('.pullDownLabel').innerHTML = refresher.info.loadingDownLable;
 			if (pullDownAction) pullDownAction();	
 		}
 		if (pullUpEle.className.match('flip')&&!pullUpEle.className.match('loading')) {
