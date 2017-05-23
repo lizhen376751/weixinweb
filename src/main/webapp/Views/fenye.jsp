@@ -180,12 +180,18 @@
             });
         }
         wrapper.refresh();
+        $(".pullUpIcon").show();
+        refresher.info.loadingLable = "加载中...";
+        refresher.info.pullUpLable = "上拉加载更多"
+        refresher.info.pullingUpLable = "释放加载更多"
     }
     function page_num() {
         if(page == 3){
             $(".pullUpIcon").hide();
             $(".pullUpLabel").text("已经到了最底部了！");
-            refresher.info.loadingLable = "已经到了最底部了!"
+            refresher.info.loadingLable = "已经到了最底部了!";
+            refresher.info.pullUpLable = "已经到了最底部了!"
+            refresher.info.pullingUpLable = "已经到了最底部了!"
         }
     }
 
