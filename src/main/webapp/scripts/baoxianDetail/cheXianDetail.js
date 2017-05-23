@@ -178,7 +178,7 @@ $(document).ready(function(){
                 console.log(json);
                 if(jsondata == 1) {
                     alert("投保成功")
-                    self.location = document.referrer;
+                    window.location.href = "/appbaoxianlist?mineShopCode="+shopCode;
                 } else {
                     alert("投保失败，请重试");
                 }
