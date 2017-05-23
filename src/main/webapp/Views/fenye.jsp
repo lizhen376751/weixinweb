@@ -114,7 +114,7 @@
                                 + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
                                 + '</tr>';
                         }
-                        $("#wrapper").append(content);
+                        $(".white").append(content);
                         me.resetload();
                     }
                 },
@@ -146,7 +146,7 @@
                                 + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
                                 + '</tr>';
                         }
-                        $("#wrapper").append(content);
+                        $(".white").append(content);
                         me.resetload();
                     }
                 },
