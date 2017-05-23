@@ -10,10 +10,11 @@
 	<meta name="Description" content="description ..."/>
 
 	<link href="/styles/weix.css" rel="stylesheet" type="text/css"/>
+	<link href="/styles/pullToRefresh.css" rel="stylesheet" type="text/css"/>
 	<link href="/styles/shopbaoyangtixing/baoyanglist.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="/scripts/jquery-1.12.1.min.js"></script>
-	<script src="/scripts/zepto.min.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript" src="/scripts/shopbaoyangtixing/iscroll.js"></script>
+	<script type="text/javascript" src="/scripts/iscroll.js"></script>
+	<script type="text/javascript" src="/scripts/pullToRefresh.js"></script>
 	<script type="text/javascript" src="/scripts/shopbaoyangtixing/baoYangList.js"></script>
 	<script  type="text/javascript"  src="/scripts/main.js"></script>
 </head>

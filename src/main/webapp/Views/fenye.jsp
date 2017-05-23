@@ -91,6 +91,11 @@
         async: false,
         success: function (json) {
             var data = JSON.parse(json);
+            if(data.records % data.pageSize == 0){
+                add_num = data.records/data.pageSize;
+            }else{
+                add_num = data.records/data.pageSize + 1;
+            }
             console.log(data.rows);
             if (data != null && data.rows != null) {
                 var content = "";
@@ -109,6 +114,7 @@
     });
     refresher.init({
         id:"wrapper",
+        able:".white",
         pullDownAction:Refresh,
         pullUpAction:Load
     });
@@ -153,7 +159,7 @@
     }
     function Load() {
         page++;
-        if(page <= 3){
+        if(page <= add_num){
             $.ajax({
                 type: 'POST',
                 url: "/pagingquery",
@@ -175,7 +181,7 @@
                                 + '</tr>';
                         }
                         $(".white").append(content);
-                        page_num()
+                        page_num(add_num)//必须添加
                     }
                 },
                 error: function () {
@@ -185,8 +191,8 @@
         }
         wrapper.refresh();
     }
-    function page_num() {
-        if(page == 3){
+    function page_num(add_num) {
+        if(page == add_num){
             $(".pullUpIcon").hide();
             $(".pullUpLabel").text("已经到了最底部了！");
             refresher.info.loadingLable = "已经到了最底部了!";

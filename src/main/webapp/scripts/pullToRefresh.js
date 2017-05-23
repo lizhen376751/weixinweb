@@ -20,7 +20,7 @@ var refresher = {
 		div.className = "scroller";
 		wrapper.appendChild(div);
 		var scroller = wrapper.querySelector(".scroller");
-		var list = wrapper.querySelector("#" + parameter.id + " .white");
+		var list = wrapper.querySelector("#" + parameter.id + " "+parameter.able);
 		scroller.insertBefore(list, scroller.childNodes[0]);
 		var pullDown = document.createElement("div");
 		pullDown.className = "pullDown";
