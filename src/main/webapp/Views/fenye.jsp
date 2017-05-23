@@ -183,7 +183,8 @@
     function page_num() {
         if(page == 3){
             $(".pullUpIcon").hide();
-            $(".pullUpLabel").text("已经到了最底部了！")
+            $(".pullUpLabel").text("已经到了最底部了！");
+            refresher.info.loadingLable = "已经到了最底部了!"
         }
     }
 
