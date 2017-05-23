@@ -123,6 +123,7 @@
             },
             async: false,
             success: function (json) {
+                page = 1;
                 var data = JSON.parse(json);
                 console.log(data.rows);
                 if (data != null && data.rows != null) {
