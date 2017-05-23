@@ -116,9 +116,9 @@
         },
         domDown : {
             domClass   : 'dropload-down',
-            domRefresh : '<div class="dropload-refresh">↑上拉加载更多-自定义内容</div>',
-            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中-自定义内容...</div>',
-            domNoData  : '<div class="dropload-noData">暂无数据-自定义内容</div>'
+            domRefresh : '',
+            domLoad    : '',
+            domNoData  : ''
         },
         loadUpFn : function(me){
             $.ajax({
@@ -153,39 +153,45 @@
 
         },
         loadDownFn : function(me){
-            page++;
-            $.ajax({
-                type: 'POST',
-                url: "/pagingquery",
-                data: {
-                    businessType: "xialajiazai",
-                    page: ""+page+"",
-                    rows: "3"
-                },
-                async: false,
-                success: function (json) {
-                    var data = JSON.parse(json);
-                    console.log(data.rows);
-                    if (data != null && data.rows != null) {
-                        var content = "";
-                        for (var i = 0; i < data.rows.length; i++) {
-                            content = content
-                                + '<tr>'
-                                + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
-                                + '</tr>';
-                        }
-                        $(".white").append(content);
-                        me.resetload();
-                    }
-                },
-                error: function () {
-                    alert("查询数据出错啦，请刷新再试");
-                }
-            });
+
         },
         threshold : 50
     });
+    window.onscroll= function  () {
+        if ($(document).scrollTop() >= $(document).height() - $(window).height() - 1) {
+            page++;
+            if(page <= 3){
+                $.ajax({
+                    type: 'POST',
+                    url: "/pagingquery",
+                    data: {
+                        businessType: "xialajiazai",
+                        page: ""+page+"",
+                        rows: "3"
+                    },
+                    async: false,
+                    success: function (json) {
+                        var data = JSON.parse(json);
+                        console.log(data.rows);
+                        if (data != null && data.rows != null) {
+                            var content = "";
+                            for (var i = 0; i < data.rows.length; i++) {
+                                content = content
+                                    + '<tr>'
+                                    + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
+                                    + '</tr>';
+                            }
+                            $(".white").append(content);
+                        }
+                    },
+                    error: function () {
+                        alert("查询数据出错啦，请刷新再试");
+                    }
+                });
+            }
 
+        }
+    }
 
 
 
