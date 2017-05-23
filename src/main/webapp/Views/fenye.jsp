@@ -10,11 +10,11 @@
           content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
     <title>滑动到底部加载下一页内容</title>
-    <link href="/styles/shopbaoyangtixing/dropload.css" rel="stylesheet" type="text/css"/>
+    <link href="/styles/pullToRefresh.css" rel="stylesheet" type="text/css"/>
     <script src="/scripts/login/js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
     <%--<script src="/scripts/zepto.min.js" type="text/javascript" charset="utf-8"></script>--%>
-    <script type="text/javascript" src="/scripts/dropload.js"></script>
-    <%--<script type="text/javascript" src="/scripts/pullToRefresh.js"></script>--%>
+    <script type="text/javascript" src="/scripts/iscroll.js"></script>
+    <script type="text/javascript" src="/scripts/pullToRefresh.js"></script>
     <script type="text/javascript" src="/scripts/main.js"></script>
     <style>
         *{
@@ -40,6 +40,7 @@
         table td {
             padding: 6px 0;
             width: 33%;
+            height: 200px;
             border-bottom: 1px solid #e1e1e1;
         }
 
@@ -106,57 +107,44 @@
             alert("查询数据出错啦，请刷新再试");
         }
     });
-    $('#wrapper').dropload({
-        scrollArea : window,
-        domUp : {
-            domClass   : 'dropload-up',
-            domRefresh : '<div class="dropload-refresh">↓下拉刷新-自定义内容</div>',
-            domUpdate  : '<div class="dropload-update">↑释放更新-自定义内容</div>',
-            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中-自定义内容...</div>'
-        },
-        domDown : {
-            domClass   : 'dropload-down',
-            domRefresh : '',
-            domLoad    : '',
-            domNoData  : ''
-        },
-        loadUpFn : function(me){
-            $.ajax({
-                type: 'POST',
-                url: "/pagingquery",
-                data: {
-                    businessType: "xialajiazai",
-                    page: "1",
-                    rows: "3"
-                },
-                async: false,
-                success: function (json) {
-                    var data = JSON.parse(json);
-                    console.log(data.rows);
-                    if (data != null && data.rows != null) {
-                        var content = "";
-                        for (var i = 0; i < data.rows.length; i++) {
-                            content = content
-                                + '<tr>'
-                                + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
-                                + '</tr>';
-                        }
-                        $(".white").children().remove();
-                        $(".white").append(content);
-                        me.resetload();
-                    }
-                },
-                error: function () {
-                    alert("查询数据出错啦，请刷新再试");
-                }
-            });
-
-        },
-        loadDownFn : function(me){
-
-        },
-        threshold : 50
+    refresher.init({
+        id:"wrapper",
+        pullDownAction:Refresh,
     });
+    function Refresh() {
+        $.ajax({
+            type: 'POST',
+            url: "/pagingquery",
+            data: {
+                businessType: "xialajiazai",
+                page: "1",
+                rows: "3"
+            },
+            async: false,
+            success: function (json) {
+                var data = JSON.parse(json);
+                console.log(data.rows);
+                if (data != null && data.rows != null) {
+                    document.getElementById("wrapper").querySelector(".pullDownIcon").style.display="none";
+                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='css/ok.png'/>刷新成功";
+                    var content = "";
+                    for (var i = 0; i < data.rows.length; i++) {
+                        content = content
+                            + '<tr>'
+                            + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
+                            + '</tr>';
+                    }
+                    $(".white").children().remove();
+                    $(".white").append(content);
+                    wrapper.refresh();
+                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
+                }
+            },
+            error: function () {
+                alert("查询数据出错啦，请刷新再试");
+            }
+        });
+    }
     window.onscroll= function  () {
         if ($(document).scrollTop() >= $(document).height() - $(window).height() - 1) {
             page++;
