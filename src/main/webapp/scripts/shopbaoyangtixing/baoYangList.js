@@ -25,9 +25,9 @@ $(document).ready(function () {
         success: function (jsondata) {
             var json = JSON.parse(jsondata);
             if(json.records % json.pageSize == 0){
-                add_num = json.records/json.pageSize;
+                add_num = parseInt(json.records/json.pageSize);
             }else{
-                add_num = json.records/json.pageSize + 1;
+                add_num = parseInt(json.records/json.pageSize) + 1;
             }
             var html = "";
             if (json.rows.length > 0) {
