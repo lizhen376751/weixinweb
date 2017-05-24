@@ -13,6 +13,12 @@ $(document).ready(function () {
     }
     var page = 1; //记录当前加载的页数
     var add_num = 0;//记录加载的次数
+    refresher.init({
+        id:"wrapper",
+        able:"#thelist",
+        pullDownAction:Refresh,
+        pullUpAction:Load
+    });
     $.ajax({
         type: 'POST',
         url: "/pagingquery",
@@ -76,12 +82,6 @@ $(document).ready(function () {
         error: function () {
             alert("查询数据出错啦，请刷新再试");
         }
-    });
-    refresher.init({
-        id:"wrapper",
-        able:"#thelist",
-        pullDownAction:Refresh,
-        pullUpAction:Load
     });
     //下拉刷新函数
     function Refresh() {
@@ -203,6 +203,7 @@ $(document).ready(function () {
     function page_num(add_num) {
         if(page == add_num){
             $(".pullUpIcon").css("opacity","0");
+            console.log($(".pullUpIcon"))
             $(".pullUpLabel").text("已经到了最底部了！");
             refresher.info.loadingLable = "已经到了最底部了!";
             refresher.info.pullUpLable = "已经到了最底部了!"
