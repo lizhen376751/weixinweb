@@ -150,7 +150,7 @@ $(document).ready(function () {
                     $("#thelist").append(html);
                     wrapper.refresh();
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
-                    $(".pullUpIcon").css("opacity",1);
+                    $(".pullUpIcon").css("opacity","1");
                     refresher.info.loadingLable = "加载中...";
                     refresher.info.pullUpLable = "上拉加载更多"
                     refresher.info.pullingUpLable = "释放加载更多";
@@ -202,7 +202,7 @@ $(document).ready(function () {
 
     function page_num(add_num) {
         if(page == add_num){
-            $(".pullUpIcon").css("opacity",0);
+            $(".pullUpIcon").css("opacity","0");
             $(".pullUpLabel").text("已经到了最底部了！");
             refresher.info.loadingLable = "已经到了最底部了!";
             refresher.info.pullUpLable = "已经到了最底部了!"

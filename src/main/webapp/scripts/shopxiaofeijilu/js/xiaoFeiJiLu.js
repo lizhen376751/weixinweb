@@ -50,7 +50,7 @@ $(document).ready(function () {
                 console.log(arr);
                 //alert(jsonData);
                 addLabel(arr);
-                var pJ = $(".pJ");//获取去评价按钮
+                var pJ = $(".pingjia");//获取去评价按钮
                 var sgbz = $(".sgbz");//获取施工步骤按钮
                 sgbz.on("click",function () {
                     var xu_number = $(this).attr("xm_num");
@@ -71,23 +71,23 @@ $(document).ready(function () {
             var xm_num = "";//记录该项目的数据
             var xfsp = "";  //记录消费商品
             var fkfs = "";//记录付款方式
-            if (arr[i].purchaseProjectList.length != 0) {   //判断是否存在消费的项目
+            if (arr[i].resultPurchaseHistory.purchaseProjectList.length != 0) {   //判断是否存在消费的项目
                 var xm = "";
-                for(var j = 0;j < arr[i].purchaseProjectList.length;j++){
+                for(var j = 0;j < arr[i].resultPurchaseHistory.purchaseProjectList.length;j++){
                     var s = j + 1;
-                    xm += '<div><span>'+s+'</span><p>'+arr[i].purchaseProjectList[j].projectName+'</p></div>';
-                    xm_num += arr[i].purchaseProjectList[j].projectCode + "-" + arr[i].purchaseProjectList[j].projectId + "_";
+                    xm += '<div><span>'+s+'</span><p>'+arr[i].resultPurchaseHistory.purchaseProjectList[j].projectName+'</p></div>';
+                    xm_num += arr[i].resultPurchaseHistory.purchaseProjectList[j].projectCode + "-" + arr[i].resultPurchaseHistory.purchaseProjectList[j].projectId + "_";
                 }
                 xfxm = '<div class="middle_1 font_1">'+
                             '<div class="left_1">消费项目：</div>'+
                             '<div class="right_1">'+xm+'</div>'+
                         '</div>'
             }
-            if (arr[i].purchaseProductList.length != 0) {   //判断是否存在消费的商品
+            if (arr[i].resultPurchaseHistory.purchaseProductList.length != 0) {   //判断是否存在消费的商品
                 var sp = "";
-                for(var h = 0;j < arr[i].purchaseProductList.length.length;h++){
+                for(var h = 0;j < arr[i].resultPurchaseHistory.purchaseProductList.length.length;h++){
                     w = h + 1;
-                    sp += '<div><span>'+w+'</span><p>'+arr[i].purchaseProductList.length[h].projectName+'</p></div>'
+                    sp += '<div><span>'+w+'</span><p>'+arr[i].resultPurchaseHistory.purchaseProductList.length[h].projectName+'</p></div>'
                 }
                 xfsp = '<div class="middle_1 font_1">'+
                     '<div class="left_1">消费商品：</div>'+
@@ -97,39 +97,45 @@ $(document).ready(function () {
             }
             var htmlzhifufangshi = "";//第一种收款方式
             var htmlzhifufangshiSecond = "";//第二种收款方式
-            if ((arr[i].zhifufangshiSecond == null) && (arr[i].zhifufangshi == null)) {   //判断付款方式是否都为空
+            if ((arr[i].resultPurchaseHistory.zhifufangshiSecond == null) && (arr[i].resultPurchaseHistory.zhifufangshi == null)) {   //判断付款方式是否都为空
                 fkfs += "未付款";
             } else {
 
-                if (arr[i].zhifufangshi != null) {   //第一种收款方式
-                    htmlzhifufangshi = "<span>" + arr[i].zhifufangshi + "</span>（<span class='red'>￥" + arr[i].zhifufangshiJinE + "</span>）"
+                if (arr[i].resultPurchaseHistory.zhifufangshi != null) {   //第一种收款方式
+                    htmlzhifufangshi = "<span>" + arr[i].resultPurchaseHistory.zhifufangshi + "</span>（<span class='red'>￥" + arr[i].resultPurchaseHistory.zhifufangshiJinE + "</span>）"
                 }
 
-                if (arr[i].zhifufangshiSecond != null) {  //第二种收款方式
-                    htmlzhifufangshiSecond = arr[i].zhifufangshiSecond + "(<span class='red'>￥" + arr[i].zhifufangshiBJinE + "</span>)"
+                if (arr[i].resultPurchaseHistory.zhifufangshiSecond != null) {  //第二种收款方式
+                    htmlzhifufangshiSecond = arr[i].resultPurchaseHistory.zhifufangshiSecond + "(<span class='red'>￥" + arr[i].resultPurchaseHistory.zhifufangshiBJinE + "</span>)"
                 } else {
 
                 }
 
                 fkfs += htmlzhifufangshiSecond + htmlzhifufangshi;
             }
+            //判断是否评价
+            var pingjia = "";
+            if(arr[i].isevaluate){
+                pingjia = '<div class="yupingjia font_1">已评价</div>'
+            }else{
+                pingjia = '<div class="pingjia font_1">去评价</div>'
+            }
             var html = '<li>'+
                          '<div class="detail_1">'+
                              '<div class="top_1 font_2">'+
-                                '<div class="left_11">日期：'+arr[i].kprq+ '</div>'+
-                                '<div class="right_11">公里数：'+arr[i].gongLiShu+ 'km</div>'+
+                                '<div class="left_11">日期：'+arr[i].resultPurchaseHistory.kprq+ '</div>'+
+                                '<div class="right_11">公里数：'+arr[i].resultPurchaseHistory.gongLiShu+ 'km</div>'+
                              '</div>'+xfsp+xfxm+
                             '<div class="bottom_1 font_1">'+
                                 '<div>'+
                                      '<span style="margin-left: 26px;">施工店铺：</span>'+
-                                     '<span>'+arr[i].shopName+'</span>'+
+                                     '<span>'+arr[i].resultPurchaseHistory.shopName+'</span>'+
                                  '</div>'+
                                 '<div>'+
                                     '<span style="margin-left: 26px;">付款方式：</span>'+fkfs+
                                 '</div>'+
                             '</div>'+
-                        '<div class="btn">'+
-                            '<div class="pingjia font_1">去评价</div>'+
+                        '<div class="btn">'+ pingjia +
                              '<div class="sgbz font_1" xm_num = "'+xm_num+'" shopCode="'+arr[i].shopCode+'" wxpingzheng="'+arr[i].wxpingzheng+'">施工步骤</div>'+
                          '</div>'+
                     '</div>'+
