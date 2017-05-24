@@ -70,7 +70,8 @@ $(document).ready(function () {
                     "<div style='width:100%;height:100%;margin-top:6%;' align='center'><font size='6'>无保养提醒信息！</font> </div>" +
                     "</li>"
             }
-            $("#thelist").append(html)
+            $("#thelist").append(html);
+            page_num(add_num)
         },
         error: function () {
             alert("查询数据出错啦，请刷新再试");
@@ -197,7 +198,7 @@ $(document).ready(function () {
             wrapper.refresh();
         },1000)
     }
-    page_num(add_num)
+
     function page_num(add_num) {
         if(page == add_num){
             $(".pullUpIcon").hide();
