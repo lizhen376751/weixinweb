@@ -3,6 +3,19 @@
  */
 //微信授权方法
 //arr 必须为数组，类似 ['scanQRCode']
+//所有要调用的 API 都要加到这个列表:
+// 'checkJsApi',基础接口,判断当前客户端版本是否支持指定JS接口
+//'chooseImage',一次选择一张或多张图片，一般和uploadImage一起用
+//'previewImage',是微信客户端给内置浏览器增加的一个Javascript Interface，通过调用这个API，可以调起微信客户端提供的大图片查看组件。
+//'uploadImage'，微信上传图片
+//'downloadImage',下载图片
+// 'getNetworkType',//网络状态接口
+// 'openLocation',//使用微信内置地图查看地理位置接口
+//'getLocation' //获取地理位置接口
+// 'scanQRCode',扫码接口，包括二维码和条形码
+
+
+
 function wxsq(arr) {
     $.ajax({
         url: "/getCommonAjax2",
