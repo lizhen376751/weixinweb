@@ -100,11 +100,11 @@ $(document).ready(function () {
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='/files/ok.png'/>刷新成功";
                     page = 1;
                     var json = JSON.parse(jsondata);
-                    if(json.records % json.pageSize == 0){
-                        add_num = json.records/json.pageSize;
-                    }else{
-                        add_num = json.records/json.pageSize + 1;
-                    }
+                    // if(json.records % json.pageSize == 0){
+                    //     add_num = json.records/json.pageSize;
+                    // }else{
+                    //     add_num = json.records/json.pageSize + 1;
+                    // }
                     var html = "";
                     if (json.rows.length > 0) {
                         if (json.rows.length > 5) {
