@@ -1,5 +1,9 @@
 package com.dudu.weixin.shopweiixin.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.dudu.soa.weixindubbo.shopinfo.api.ApiShopInfo;
+import com.dudu.soa.weixindubbo.shopinfo.module.ShopInfo;
+import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.weixin.shopweiixin.service.ShopBaoYangTiXingService;
 import com.dudu.weixin.shopweiixin.service.ShopPersonCenterService;
 import com.dudu.weixin.shopweiixin.service.ShopShiGongBuZhouService;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 /**
  * 所有的店管家微信的Ajax入口
@@ -57,9 +62,20 @@ public class ShopWeiXinAjax {
      */
     @Autowired
     private ShopPersonCenterService shopPersonCenterService;
+    /**
+     * 引入店铺信息的接口
+     */
+    @Reference(version = "1.0")
+    private ApiShopInfo apiShopInfo;
+    /**
+     * 引入微信通讯相关的接口
+     */
+    @Reference(version = "1.0", timeout = 300000)
+    private ApiAllWeiXiRequest apiAllWeiXiRequest;
 
     /**
      * 不需要分页的数据
+     *
      * @param request 请求
      * @return 对象
      */
@@ -73,6 +89,8 @@ public class ShopWeiXinAjax {
             return shopWeixinLogin.checklogin(shopcode, request);
         } else if ("xiaofeijilu".equals(businessType)) { //消费记录页面
             return shopXiaoFeiJiLu.queryXiaoFeiJiLu(shopcode, plateNumber);
+        } else if ("goevaluation".equals(businessType)) { //去评价
+            return shopXiaoFeiJiLu.queryXiaoFeiJiLu(shopcode, plateNumber);
         } else if ("shigongbuzhou".equals(businessType)) { //施工步骤
             return shopShiGongBuZhou.queryListShiGongBuZhou(request);
         } else if ("biaozhunliucheng".equals(businessType)) { //标准流程查看
@@ -81,12 +99,18 @@ public class ShopWeiXinAjax {
             return shopBaoYangTiXing.queryBaoYangTiXing(shopcode, plateNumber);
         } else if ("shoppersoncenter".equals(businessType)) { //个人中心
             return shopPersonCenterService.personcenter(request, plateNumber, shopcode);
+        } else if ("jssdk".equals(businessType)) { //前端js获取签名
+            String url = request.getParameter("url");
+            ShopInfo shopInfo = apiShopInfo.getShopInfo(shopcode);
+            HashMap<String, String> stringStringHashMap = apiAllWeiXiRequest.jsSDKSign(shopInfo.getwXAppId(), shopInfo.getwXAppSecret(), url);
+            return stringStringHashMap;
         }
         return null;
     }
 
     /**
      * 需要查询分页的数据
+     *
      * @param request 请求
      * @return 对象
      */
@@ -96,10 +120,12 @@ public class ShopWeiXinAjax {
         String shopcode = (String) httpSession.getAttribute("shopcode");
         String plateNumber = (String) httpSession.getAttribute("plateNumber");
         String businessType = request.getParameter("businessType");
-        if ("xialajiazai".equals(businessType)) { //下拉加载页面
+        if ("xialajiazai".equals(businessType)) { //TODO 下拉加载页面
             String page = request.getParameter("page");
             log.info("分页查询出来的数据为===========================================" + page);
             return shopBaoYangTiXing.queryBaoYangTiXing(shopcode, plateNumber);
+        } else if ("xiaofeijilu".equals(businessType)) { //消费记录页面
+            return shopXiaoFeiJiLu.queryXiaoFeiJiLu(shopcode, plateNumber);
         } else if ("shoppersoncenter".equals(businessType)) { //个人中心
             return shopPersonCenterService.personcenter(request, plateNumber, shopcode);
         }

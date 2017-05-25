@@ -187,6 +187,8 @@ public class AllController {
             return "/login/login.jsp?lmcode=" + lmcode; //登录页面 (注册时提示已注册,提供跳转至登录的入口)
         } else if ("baoxianlist".equals(flagStr)) {
             return "/cheXianList/cheXianList.jsp"; //车险报价
+        } else if ("fuwudaohang".equals(flagStr)) {
+            return "/fuwudaohang.jsp"; //服务导航
         }
         return "/login/login.jsp?lmcode=" + lmcode;
     }

@@ -20,8 +20,15 @@ public class Fuwudaohang {
      */
     @RequestMapping(value = "/fuwudaohang", method = RequestMethod.GET)
     public void preHandle(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String longitude = request.getParameter("latitude");
+        String latitude = request.getParameter("longitude");
+//        System.out.println("==============" + latitude + "," + longitude);
 
-        response.sendRedirect("http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?shopcode=CS000&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4");
+//         String latitude = "29.910757";
+//         String longitude = "121.59543";
+//         System.out.println("==============" + latitude + "," + longitude);
+        response.sendRedirect("http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?"
+                + "shopcode=FL000&latitude=" + latitude + "&longitude=" + longitude + "&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4");
 
 //        request.getRequestDispatcher("http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?shopcode=CS000&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4"
 //        ).forward(request, response);

@@ -84,12 +84,13 @@ public class CoreController extends HttpServlet {
     /**
      * post方法用于接收微信服务端消息,并进行回复消息
      *
+     * @param out      返回消息
      * @param request  请求
      * @param response 回应请求
      */
     @RequestMapping(value = "/urlconfig", method = RequestMethod.POST)
     public void doPost(PrintWriter out, HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("这是post方法！");
+        log.info("这是post方法！");
         // 将解析结果存储在HashMap中
         Map<String, String> map = new HashMap<String, String>();
         // 从request中取得输入流
@@ -129,22 +130,6 @@ public class CoreController extends HttpServlet {
         }
         inputStream = null;
 
-
-        //TODO 调用微信消息处理的接口
-        // 读取输入流
-//            SAXReader reader = new SAXReader();
-//            Document document = null;
-//            try {
-//                document = reader.read(inputStream);
-//            } catch (DocumentException e) {
-//                e.printStackTrace();
-//            }
-//            log.info("request中的inputStream==========================" + document);
-//            apiAllWeiXiRequest.receivemessage(document);
-//            log.info("request中的inputStream==========================" + inputStream);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
     }
 }

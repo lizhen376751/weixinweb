@@ -51,6 +51,8 @@ public class ShopWeiXinControl {
             return "/shoppersonCenter/shoppersonalCenter.jsp"; //个人中心
         } else if ("xialajiazai".equals(flagStr)) {
             return "/fenye.jsp"; //下拉加载
+        } else if ("fuwudaohang".equals(flagStr)) {
+            return "/fuwudaohang.jsp"; //服务导航
         }
         return null;
     }

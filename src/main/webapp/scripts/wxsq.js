@@ -16,7 +16,7 @@
 
 
 
-function wxsq(arr) {
+function lmwxsq() {
     $.ajax({
         url: "/getCommonAjax2",
         type: 'POST',
@@ -32,10 +32,33 @@ function wxsq(arr) {
                 timestamp: data.timestamp, //生成签名的时间戳，必填
                 nonceStr: data.nonceStr,   //生成签名的随机串，必填
                 signature: data.signature,  // 签名，必填
-                jsApiList: arr    //--------------------------------- // 所有要调用的 API 都要加到这个列表中
+                jsApiList: ['checkJsApi', 'getNetworkType', 'openLocation', 'getLocation', 'scanQRCode']    //--------------------------------- // 所有要调用的 API 都要加到这个列表中
             });
         },
         dataType: 'json',
         async: false
     });
+}
+    function shopwxsq() {
+        $.ajax({
+            url: "/shopAjax",
+            type: 'POST',
+            data: {
+                url: location.href.split('#')[0],
+                businessType: "jssdk"
+            },
+            success: function (data) {
+                console.log(data);
+                wx.config({
+                    debug: false,//true为开启调试模式，数据会alert出来，false为关闭调试模式
+                    appId: data.appId, //公众号的唯一标示，必填
+                    timestamp: data.timestamp, //生成签名的时间戳，必填
+                    nonceStr: data.nonceStr,   //生成签名的随机串，必填
+                    signature: data.signature,  // 签名，必填
+                    jsApiList: ['checkJsApi','getNetworkType','openLocation','getLocation','scanQRCode']    //--------------------------------- // 所有要调用的 API 都要加到这个列表中
+                });
+            },
+            dataType: 'json',
+            async: false
+        });
 }
