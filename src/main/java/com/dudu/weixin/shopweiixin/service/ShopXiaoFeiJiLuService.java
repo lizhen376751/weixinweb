@@ -2,12 +2,18 @@ package com.dudu.weixin.shopweiixin.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.customercenter.customer.module.CustomerInfo;
+import com.dudu.soa.salescenter.bills.api.ApiBills;
+import com.dudu.soa.salescenter.bills.module.BillsDetailParam;
+import com.dudu.soa.salescenter.bills.module.ResultBillsDetail;
 import com.dudu.soa.salescenter.xfjl.api.ApiPurchaseHistoryIntf;
 import com.dudu.soa.salescenter.xfjl.module.QueryParamPurchaseHistory;
 import com.dudu.soa.salescenter.xfjl.module.ResultPurchaseHistory;
+import com.dudu.weixin.mould.PageResult;
+import com.dudu.weixin.shopweiixin.mould.RecordsConsumption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +28,11 @@ public class ShopXiaoFeiJiLuService {
     @Reference(version = "0.0.1", timeout = 30000)
     private ApiPurchaseHistoryIntf apiPurchaseHistoryIntf;
     /**
+     * 引入查询消费单据详情接口
+     */
+    @Reference(version = "1.0")
+    private ApiBills apiBills;
+    /**
      * 引入店管家客户中心
      */
     @Autowired
@@ -34,7 +45,8 @@ public class ShopXiaoFeiJiLuService {
      * @param plateNumber  车牌号
      * @return 消费列表
      */
-    public List<ResultPurchaseHistory> queryXiaoFeiJiLu(String mainShopCode, String plateNumber) {
+    public List<RecordsConsumption> queryXiaoFeiJiLu(String mainShopCode, String plateNumber) {
+        List<RecordsConsumption> recordsConsumptions = new ArrayList<RecordsConsumption>();
         CustomerInfo customerInfo = shopCustomInfo.queryCustomerList(mainShopCode, plateNumber);
         Integer id = null;
         if (customerInfo != null) {
@@ -44,7 +56,44 @@ public class ShopXiaoFeiJiLuService {
         queryParamPurchaseHistory.setShopCode(mainShopCode);
         queryParamPurchaseHistory.setCustomerId(id);
         List<ResultPurchaseHistory> resultPurchaseHistories = apiPurchaseHistoryIntf.queryPurchaseHistory(queryParamPurchaseHistory);
-        return resultPurchaseHistories;
+        //TODO 后期加入分页查询,不知道应该怎么搞,查询出数据看看
+        PageResult rageResult = new PageResult<ResultPurchaseHistory>(resultPurchaseHistories);
+        Long records = rageResult.getRecords();
+        for (ResultPurchaseHistory resultPurchaseHistory : resultPurchaseHistories) {
+            RecordsConsumption recordsConsumption = new RecordsConsumption();
+            recordsConsumption.setResultPurchaseHistory(resultPurchaseHistory);
+            String shopCode = resultPurchaseHistory.getShopCode();
+            String wxpingzheng = resultPurchaseHistory.getWxpingzheng();
+            //TODO 查询是否评价,然后将参数放入数据
+            if (true) {
+                recordsConsumption.setIsevaluate(true);
+            }
+            recordsConsumptions.add(recordsConsumption);
+        }
+        return recordsConsumptions;
     }
+
+    /**
+     * 点击评价时查询消费单据详情
+     *
+     * @param shopcode    店铺编码
+     * @param plateNumber 车牌号
+     * @param wxpingzheng 维修凭证
+     * @return 单据详情阿
+     */
+    public ResultBillsDetail getBillsDetail(String shopcode, String plateNumber, String wxpingzheng) {
+        CustomerInfo customerInfo = shopCustomInfo.queryCustomerList(shopcode, plateNumber);
+        Integer id = null;
+        if (customerInfo != null) {
+            id = customerInfo.getId();
+        }
+        BillsDetailParam billsDetailParam = new BillsDetailParam()
+                .setShopCode(shopcode)
+                .setCustomId(id)
+                .setPingZheng(wxpingzheng);
+        ResultBillsDetail billsDetail = apiBills.getBillsDetail(billsDetailParam);
+        return billsDetail;
+    }
+
 
 }

@@ -176,13 +176,22 @@ public class MenuUtil {
         btn15.setType("view");
         btn15.setUrl(commonUrl + "_xialajiazai" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
+        CommonButton btn21 = new CommonButton();
+        btn21.setName("服务导航");
+        btn21.setType("view");
+        btn21.setUrl(commonUrl + "_fuwudaohang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
         mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14, btn15});
 
+        ComplexButton mainBtn2 = new ComplexButton();
+        mainBtn2.setName("服务导航");
+        mainBtn2.setSubbutton(new CommonButton[]{btn21});
+
         Menu menu = new Menu();
-        menu.setButton(new Button[]{mainBtn1});
+        menu.setButton(new Button[]{mainBtn1, mainBtn2});
         return menu;
     }
 
