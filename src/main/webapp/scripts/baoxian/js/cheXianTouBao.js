@@ -201,14 +201,21 @@ $(document).ready(function(){
         var carSeriesId = $("#carSeriesId"); //车系id
         var carBrandId = $("#carBrandId"); //车辆品牌id
         var car_number = $("#car_number");//车牌号
+        car_number.val("");
         var your_name = $("#your_name"); //用户名
+        your_name.val("");
         var sex_nan = $("#nan");//性别男
         var sex_nv = $("#nv"); // 性别女
         var phone_number = $("#phone_number");//手机号
+        phone_number.val("");
         var daihao = $("#daihao");//车辆代号
+        daihao.val("");
         var engine_number = $("#engine_number");//发动机号码
+        engine_number.val("");
         var insurance_maturity_date = $("#insurance_maturity_date");//保险到期日
+        insurance_maturity_date.val("");
         var registration_date = $("#registration_date");//注册日期
+        registration_date.val("");
         var property = $(".property") //使用性质
         xinxi.on("click",function(){
             var i = $(this).index();
