@@ -42,6 +42,7 @@ $(document).ready(function(){
 	var totalPrice = "";//----------------------------------------------------------------------------记录投保价格
 	console.log('/findClientInsurance/'+shopCode+'/'+shopCodeLm+'/'+companyId+'/'+orderNumb+'/'+plateNumber);
     //-----------------------------------------------------------------------------------------------------------请求页面加载数据
+    var tbstate = false;
     $.ajax({
         type    : 'get',
         url     : '/findClientInsurance/'+shopCode+'/'+shopCodeLm+'/'+companyId+'/'+orderNumb+'/'+decodeURI(plateNumber),
@@ -59,6 +60,11 @@ $(document).ready(function(){
 			}
             totalPrice = json.totalPrice;
             bfhj.text("¥"+json.totalPrice);
+            if(json.insuranceCompanyHaveChosen == null){
+                tbstate = true;
+            }else{
+                tbstate = false;
+            }
             if(json.customerModel != null && json.customerModel != "" && json.customerModel != undefined){
                 if(json.customerModel.customerName != null && json.customerModel.customerName != "" && json.customerModel.customerName != undefined){
                     xm.text(json.customerModel.customerName);
@@ -161,34 +167,39 @@ $(document).ready(function(){
     }
 //	----------------------------------------------------------投保按钮提交
 	$(".tb_btn").on("click",function () {
-        $.ajax({
-            type    : 'post',
-            url     : '/getCommonAjax',
-			data : {
-                fromflag : "toubao",
-                shopCode :shopCode,
-                shopCodeLm :shopCodeLm,
-                orderNumb : orderNumb,
-                companyId : companyId,
-                totalPrice : totalPrice
-			},
-            async: false,
-            success:function(jsondata){
-                var json = JSON.parse(jsondata);
-                console.log(json);
-                if(jsondata == 1) {
-                    alert("投保成功")
-                    window.location.href = "/appbaoxianlist?mineShopCode="+shopCode;
-                } else {
-                    alert("投保失败，请重试");
+	    if(tbstate){
+            $.ajax({
+                type    : 'post',
+                url     : '/getCommonAjax',
+                data : {
+                    fromflag : "toubao",
+                    shopCode :shopCode,
+                    shopCodeLm :shopCodeLm,
+                    orderNumb : orderNumb,
+                    companyId : companyId,
+                    totalPrice : totalPrice
+                },
+                async: false,
+                success:function(jsondata){
+                    var json = JSON.parse(jsondata);
+                    console.log(json);
+                    if(jsondata == 1) {
+                        alert("投保成功")
+                        window.location.href = "/appbaoxianlist?mineShopCode="+shopCode;
+                    } else {
+                        alert("投保失败，请重试");
+                    }
+
+
+                },
+                error:function(eee){
+
                 }
+            });
+        }else{
+	        alert("您已投保，请勿重复投保！")
+        }
 
-
-            },
-            error:function(eee){
-
-            }
-        });
     })
 
 })
