@@ -41,7 +41,7 @@
         win.addEventListener(resizeEvt, recalc, false);
         doc.addEventListener('DOMContentLoaded', recalc, false);
     })(document, window);
-    shopwxsq();
+    lmwxsq();
     var tswz = $(".tswz");
     var box = $(".box");
 
