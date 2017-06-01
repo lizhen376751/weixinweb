@@ -43,7 +43,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -202,7 +201,7 @@ public class AllAjax {
                 lmcode = request.getParameter("lmcode"); //联盟code
                 httpSession.setAttribute("lmcode", lmcode); //没有的话将session存入
             }
-            String login = autoLoginService.login(platenumber, lmcode, password, openId, nickname);
+            String login = autoLoginService.login(platenumber.toUpperCase(), lmcode, password, openId, nickname);
             return login;
         }
         //登录,注册,填写车牌号后发送请求
@@ -236,7 +235,7 @@ public class AllAjax {
             String mobilephone = request.getParameter("mobilephone");
             String password = request.getParameter("password");
             String verificationCode = request.getParameter("verificationCode");
-            String register = autoLoginService.register(platenumber, lmcode, password, openId, mobilephone, verificationCode, nickname);
+            String register = autoLoginService.register(platenumber.toUpperCase(), lmcode, password, openId, mobilephone, verificationCode, nickname);
             return register;
         }
         return null;
