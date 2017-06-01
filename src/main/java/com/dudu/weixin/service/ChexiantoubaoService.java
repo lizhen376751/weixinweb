@@ -372,7 +372,6 @@ public class ChexiantoubaoService {
 
     /**
      * 根据保险公司获取保险信息列表
-     *
      * @param request 获取域信息
      * @return 保险信息列表
      */
