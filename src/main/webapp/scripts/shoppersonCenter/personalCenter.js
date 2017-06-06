@@ -16,6 +16,7 @@ $(window).load(function(){
     }, 1000);
 });
 $(document).ready(function () {
+    var shopCode = $(".shopCode"); //----------------------------------------------------------店铺编码
     var clpp = $(".clpp")  //------------------------------------------------------------------车辆品牌
     var car_num = $(".car_num"); //-------------------------------------------------------------获取车牌号信息框
     var clpp_txt = $(".clpp_txt"); //----------------------------------------------------------获取车辆品牌的信息框
@@ -124,6 +125,22 @@ $(document).ready(function () {
 
         }
 
+    });
+    //--------------------------------------------------------------------------------------------------------------------------个人中心的请求
+    $.ajax({
+        type: 'POST',
+        url: '/shopAjax',
+        data: {
+            businessType: "shoppersoncenter",
+            servicetype: "personalRightsAndInterests",
+            shopCode: "shopCode",
+            customerId : "khID",
+            plateNumb: "car_num"
+        },
+        success: function (jsonData) {
+            json = JSON.parse(jsonData);
+            console.log(json);
+        }
     });
     //--------------------------------------------------------------------------------------------------------------------------车型车系的请求
     var app = app || {};
