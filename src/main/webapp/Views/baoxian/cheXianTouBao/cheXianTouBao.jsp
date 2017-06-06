@@ -472,3 +472,5 @@
 <iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
 </body>
 </html>
+<script type="text/javascript" src="http://kefu6.kuaishang.cn/bs/ks.j?cI=619761&fI=58696&ism=1" charset="utf-8"></script>
+
