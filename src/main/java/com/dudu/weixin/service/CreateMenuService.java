@@ -41,6 +41,9 @@ public class CreateMenuService {
             case "yilubang":
                 menu = menuUtil.getYiLuBangmenu(appid, code);
                 break;
+            case "yangchengtai":
+                menu = menuUtil.getYangchengtai(appid, code);
+                break;
             default:
                 menu = null;
         }
