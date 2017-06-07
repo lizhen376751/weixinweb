@@ -1,5 +1,6 @@
 package com.dudu.weixin.shopweiixin.service;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.ahi.module.ResultTotalAHIPoint;
 import com.dudu.soa.customercenter.customer.module.CustomerInfo;
 import com.dudu.soa.customercenter.customer.module.UpdateCustomerInfoParam;
@@ -34,7 +35,7 @@ public class ShopPersonCenterService {
     /**
      * 引入查询个人权益的服务
      */
-    @Autowired
+    @Reference(version = "1.0")
     private ApiUserEquity apiUserEquity;
 
     /**
