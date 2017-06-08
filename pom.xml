@@ -18,6 +18,7 @@
     <dudu.soa.dududata.version>1.1-SNAPSHOT</dudu.soa.dududata.version>
     <dudu.soa.lianmengka.version>1.1-SNAPSHOT</dudu.soa.lianmengka.version>
     <dudu.soa.lianmengkabasedata.version>1.1-SNAPSHOT</dudu.soa.lianmengkabasedata.version>
+    <dudu.soa.DuDuFinaceCenter.version>1.0-SNAPSHOT</dudu.soa.DuDuFinaceCenter.version>
     <dudu.framework.version>1.1-SNAPSHOT</dudu.framework.version>
     <spring.version>4.3.6.RELEASE</spring.version>
     <dudu.disconf.enable.remote.conf>true</dudu.disconf.enable.remote.conf>
@@ -71,6 +72,11 @@
         <groupId>com.dudu.soa</groupId>
         <artifactId>LianmengBaseData-api</artifactId>
         <version>${dudu.soa.lianmengkabasedata.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.dudu.soa</groupId>
+        <artifactId>DuDuFinaceCenter-api</artifactId>
+        <version>${dudu.soa.DuDuFinaceCenter.version}</version>
       </dependency>
       <dependency>
         <groupId>com.dudu.soa</groupId>

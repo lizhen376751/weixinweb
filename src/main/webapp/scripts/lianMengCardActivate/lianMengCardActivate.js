@@ -88,6 +88,8 @@ $(document).ready(function () {
                     var tempArray = url.split(',');
                     var tempNum = tempArray[1];
                     label.val(tempNum);
+                    car_tsk.hide();
+                    password_tsk.hide();
                 } else {
                     label.val(url);
                 }
@@ -177,13 +179,6 @@ $(document).ready(function () {
                     if (backdata == "0") {
                         tc_ceng.show();
                         l_box.show();
-                        // setTimeout(function () {
-                        //     tc_ceng.hide();
-                        //     l_box.hide();
-                        //     b_box.hide();
-                        //     card_num.val("");
-                        //     activate_num.val("")
-                        // }, 3000);
                     } else if (backdata == "1") {
                         tc_ceng.show();
                         ty.show();
@@ -193,6 +188,11 @@ $(document).ready(function () {
                     } else if (backdata == "2") {
                         tc_ceng.show();
                         b_box.show();
+                    }else if(backdata == "3"){
+                        tc_ceng.show();
+                        ty.show();
+                        tyt.show();
+                        llt.text("该卡号已被禁用!");
                     }
                 }
             });

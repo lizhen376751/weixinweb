@@ -1,8 +1,12 @@
 package com.dudu.weixin.shopweiixin.service;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.ahi.module.ResultTotalAHIPoint;
 import com.dudu.soa.customercenter.customer.module.CustomerInfo;
 import com.dudu.soa.customercenter.customer.module.UpdateCustomerInfoParam;
+import com.dudu.soa.finace.userequity.api.ApiUserEquity;
+import com.dudu.soa.finace.userequity.module.EquityParam;
+import com.dudu.soa.finace.userequity.module.InviolableRights;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.CarTypeService;
 import com.dudu.weixin.shopweiixin.mould.ShopPersonCenter;
@@ -28,6 +32,11 @@ public class ShopPersonCenterService {
      */
     @Autowired
     private AHIService ahiService;
+    /**
+     * 引入查询个人权益的服务
+     */
+    @Reference(version = "1.0")
+    private ApiUserEquity apiUserEquity;
 
     /**
      * 引入车辆品牌车系型号的服务
@@ -51,6 +60,9 @@ public class ShopPersonCenterService {
             //查询车辆品牌车型车系
             case "carType":
                 return carTypeService.queryAllCar(request.getParameter("type"), Integer.parseInt(request.getParameter("num")));
+            //查询个人权益
+            case "personalRightsAndInterests":
+                return  this.getShopPersonalRightsAndInterests(request);
             //修改车辆品牌车型车系
             case "updateCarType":
                 return shopCustomInfo.updateCustomerInfo(
@@ -104,4 +116,26 @@ public class ShopPersonCenterService {
         return shopPersonCenter;
     }
 
+    /**
+     * 获取用户个人权益
+     * @param request 请求
+     * @return InviolableRights 用户个人权益
+     */
+    public InviolableRights getShopPersonalRightsAndInterests(HttpServletRequest request) {
+        EquityParam equityParam = new EquityParam();
+        String shopCode = request.getParameter("shopCode");
+        String customerId = request.getParameter("customerId");
+        String plateNumb = request.getParameter("plateNumb");
+        if (null != shopCode && !"".equals(shopCode) && null != customerId && !"".equals(customerId) && null != plateNumb && !"".equals(plateNumb)) {
+            Integer keHuId = Integer.parseInt(customerId);
+            equityParam.setShopCode(shopCode);
+            equityParam.setCustomerId(keHuId);
+            equityParam.setPlateNumb(plateNumb);
+        }
+        InviolableRights inviolableRights = apiUserEquity.getInviolableRights(equityParam);
+        if (null != inviolableRights && !"".equals(inviolableRights)) {
+            return inviolableRights;
+        }
+        return null;
+    }
 }
