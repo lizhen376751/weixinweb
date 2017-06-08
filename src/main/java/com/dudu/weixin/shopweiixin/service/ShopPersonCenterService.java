@@ -127,7 +127,7 @@ public class ShopPersonCenterService {
         String customerId = request.getParameter("customerId");
         String plateNumb = request.getParameter("plateNumb");
         if (null != shopCode && !"".equals(shopCode) && null != customerId && !"".equals(customerId) && null != plateNumb && !"".equals(plateNumb)) {
-            Integer keHuId = Integer.valueOf(customerId);
+            Integer keHuId = Integer.parseInt(customerId);
             equityParam.setShopCode(shopCode);
             equityParam.setCustomerId(keHuId);
             equityParam.setPlateNumb(plateNumb);

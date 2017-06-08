@@ -127,15 +127,16 @@ $(document).ready(function () {
 
     });
     //--------------------------------------------------------------------------------------------------------------------------个人中心的请求
+    console.log(shopCode)
     $.ajax({
         type: 'POST',
         url: '/shopAjax',
         data: {
             businessType: "shoppersoncenter",
             servicetype: "personalRightsAndInterests",
-            shopCode: "shopCode",
-            customerId : "khID",
-            plateNumb: "car_num"
+            shopCode: shopCode.val(),
+            customerId : khID,
+            plateNumb: car_num.text()
         },
         success: function (jsonData) {
             json = JSON.parse(jsonData);
