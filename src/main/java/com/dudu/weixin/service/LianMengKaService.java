@@ -70,21 +70,26 @@ public class LianMengKaService {
                 //已经激活
                 return "1";
             } else {
-                //没有激活,修改为激活状态
-                noActive.setIsactive("1");
-                //查询联盟用户id
-                WxCustomer wxCustomer = wxCustomerService.getWxCustomer(platenumber, lmcode);
-                apiNoActive.updateNOActive(noActive);
-                //将此激活的联盟卡保存到激活的库中
-                LianMengKaFaKaSaveModule saveModule = new LianMengKaFaKaSaveModule();
-                saveModule.setCard_number(noActive1.getCardnum());
-                saveModule.setCard_type(2);
-                saveModule.setCust_id(wxCustomer.getId());
-                saveModule.setProduct_code(noActive1.getCardcode());
-                saveModule.setProduct_shopcode(lmcode);
-                apiLianmengkaOperateIntf.addLianmengKa(saveModule);
-                //激活成功
-                return "2";
+                if (noActive1.getDisable()) {
+                    //没有激活,修改为激活状态
+                    noActive.setIsactive("1");
+                    //查询联盟用户id
+                    WxCustomer wxCustomer = wxCustomerService.getWxCustomer(platenumber, lmcode);
+                    apiNoActive.updateNOActive(noActive);
+                    //将此激活的联盟卡保存到激活的库中
+                    LianMengKaFaKaSaveModule saveModule = new LianMengKaFaKaSaveModule();
+                    saveModule.setCard_number(noActive1.getCardnum());
+                    saveModule.setCard_type(2);
+                    saveModule.setCust_id(wxCustomer.getId());
+                    saveModule.setProduct_code(noActive1.getCardcode());
+                    saveModule.setProduct_shopcode(lmcode);
+                    apiLianmengkaOperateIntf.addLianmengKa(saveModule);
+                    //激活成功
+                    return "2";
+                } else {
+                    return "3";
+                }
+
             }
         }
         return "0";
