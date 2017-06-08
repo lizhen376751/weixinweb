@@ -78,14 +78,14 @@
 				</li>
 				<div class="no_card font_4 color_5 no_project_card">您还没有项目卡~</div>
 				<div class="xmk">
-					<li>
-						<span class="cards_left">卡号</span>
-						<span class="cards_right">123456789101234567</span>
-					</li>
-					<li class="xmk">
-						<span class="cards_left">名称</span>
-						<span class="cards_right">洗车专用</span>
-					</li>
+					<%--<li>--%>
+						<%--<span class="cards_left">卡号</span>--%>
+						<%--<span class="cards_right">123456789101234567</span>--%>
+					<%--</li>--%>
+					<%--<li class="xmk">--%>
+						<%--<span class="cards_left">名称</span>--%>
+						<%--<span class="cards_right">洗车专用</span>--%>
+					<%--</li>--%>
 				</div>
 				<span class="cards_fg"></span>
 			</ul>
@@ -98,14 +98,14 @@
 				</li>
 				<div class="no_card font_4 color_5 no_recharge_cards">您还没有充值卡~</div>
 				<div class="czk">
-					<li>
-						<span class="cards_left">卡号</span>
-						<span class="cards_right">123456789101234567</span>
-					</li>
-					<li>
-						<span class="cards_left">名称</span>
-						<span class="cards_right">300元&nbsp;充值卡</span>
-					</li>
+					<%--<li>--%>
+						<%--<span class="cards_left">卡号</span>--%>
+						<%--<span class="cards_right">123456789101234567</span>--%>
+					<%--</li>--%>
+					<%--<li>--%>
+						<%--<span class="cards_left">名称</span>--%>
+						<%--<span class="cards_right">300元&nbsp;充值卡</span>--%>
+					<%--</li>--%>
 				</div>
 				<span class="cards_fg"></span>
 			</ul>
@@ -118,14 +118,14 @@
 				</li>
 				<div class="no_card font_4 color_5 no_vouchers">您还没有代金券~</div>
 				<div class="djq">
-					<li>
-						<span class="cards_left">名称</span>
-						<span class="cards_right">精洗</span>
-					</li>
-					<li>
-						<span class="cards_left">内容</span>
-						<span class="cards_right">可抵金额80.00</span>
-					</li>
+					<%--<li>--%>
+						<%--<span class="cards_left">名称</span>--%>
+						<%--<span class="cards_right">精洗</span>--%>
+					<%--</li>--%>
+					<%--<li>--%>
+						<%--<span class="cards_left">内容</span>--%>
+						<%--<span class="cards_right">可抵金额80.00</span>--%>
+					<%--</li>--%>
 				</div>
 			</ul>
 

@@ -127,7 +127,6 @@ $(document).ready(function () {
 
     });
     //--------------------------------------------------------------------------------------------------------------------------个人中心的请求
-    console.log(shopCode)
     $.ajax({
         type: 'POST',
         url: '/shopAjax',
@@ -140,7 +139,77 @@ $(document).ready(function () {
         },
         success: function (jsonData) {
             json = JSON.parse(jsonData);
-            console.log(json);
+            //赠送金额剩余
+            $(".zsje").text("￥"+json.giftMoney);
+            //当前定金金额
+            $(".djje").text("￥"+json.deposit);
+            //会员积分
+            $(".hyjf").text(json.memberPoints);
+            //特种卡
+            $(".tzk").text("￥"+json.specialCardAmount)
+        //    动态添加项目卡及充值卡及代金券
+        //    项目卡
+            var no_project_card = $(".no_project_card")//没有项目卡的时候，该标签显示
+            var xmk = $(".xmk"); //获取项目卡的容器
+            if(json.projectCardList != null && json.projectCardList.length > 0){
+                var xmk_label = "";
+                for(var i = 0;i < json.projectCardList.length;i++){
+                    xmk_label += '<li>'+
+                                    '<span class="cards_left">卡号</span>'+
+                                    '<span class="cards_right">'+json.projectCardList[i].cardNumb+'</span>'+
+                                '</li>'+
+                                '<li class="xmk">'+
+                                    '<span class="cards_left">名称</span>'+
+                                    '<span class="cards_right">'+json.projectCardList[i].cardName+'</span>'+
+                                '</li>'
+                }
+                xmk.append(xmk_label)
+            }else{
+                no_project_card.show();
+                xmk.hide()
+            }
+        //    充值卡
+            var no_recharge_cards = $(".no_recharge_cards")//没有项目卡的时候，该标签显示
+            var czk = $(".czk"); //获取项目卡的容器
+            if(json.rechargeableCardList != null && json.rechargeableCardList.length > 0){
+                var czk_label = "";
+                for(var g = 0;g < json.rechargeableCardList.length;g++){
+                    czk_label += '<li>'+
+                        '<span class="cards_left">卡号</span>'+
+                        '<span class="cards_right">'+json.rechargeableCardList[g].cardNumb+'</span>'+
+                        '</li>'+
+                        '<li>'+
+                        '<span class="cards_left">名称</span>'+
+                        '<span class="cards_right">'+json.rechargeableCardList[g].cardName+'</span>'+
+                        '</li>';
+                }
+                czk.append(czk_label)
+            }else{
+                no_recharge_cards.show();
+                czk.hide()
+            }
+
+
+        //    代金券
+            var no_vouchers = $(".no_vouchers")//没有项目卡的时候，该标签显示
+            var djq = $(".djq"); //获取项目卡的容器
+            if(json.cashCouponList != null && json.cashCouponList.length > 0){
+                var djq_label = "";
+                for(var h = 0;h < json.cashCouponList.length;h++){
+                    djq_label += '<li>'+
+                        '<span class="cards_left">名称</span>'+
+                        '<span class="cards_right">'+json.cashCouponList[h].voucherName+'</span>'+
+                        '</li>'+
+                        '<li>'+
+                        '<span class="cards_left">内容</span>'+
+                        '<span class="cards_right">'+json.cashCouponList[h].statusDetail+'</span>'+
+                        '</li>';
+                }
+                djq.append(czk_label)
+            }else{
+                no_vouchers.show();
+                djq.hide()
+            }
         }
     });
     //--------------------------------------------------------------------------------------------------------------------------车型车系的请求
