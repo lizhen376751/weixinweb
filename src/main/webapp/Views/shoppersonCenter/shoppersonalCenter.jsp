@@ -135,19 +135,19 @@
 			<ul>
 				<li>
 					<span class="zjje_left">赠送金额剩余：</span>
-					<span class="zjje_right zsje">￥80.88</span>
+					<span class="zjje_right zsje">￥0</span>
 				</li>
 				<li>
 					<span class="zjje_left">当前定金金额：</span>
-					<span class="zjje_right djje">￥80.88</span>
+					<span class="zjje_right djje">￥0</span>
 				</li>
 				<li>
 					<span class="zjje_left">会员积分：</span>
-					<span class="zjje_right hyjf">￥80.88</span>
+					<span class="zjje_right hyjf">0</span>
 				</li>
 				<li>
 					<span class="zjje_left">特种卡：</span>
-					<span class="zjje_right tzk">￥80.88</span>
+					<span class="zjje_right tzk">￥0</span>
 				</li>
 			</ul>
 		</div>

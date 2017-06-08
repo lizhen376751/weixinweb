@@ -140,13 +140,21 @@ $(document).ready(function () {
         success: function (jsonData) {
             json = JSON.parse(jsonData);
             //赠送金额剩余
-            $(".zsje").text("￥"+json.giftMoney);
+            if(json.giftMoney != null && json.giftMoney != ''){
+                $(".zsje").text("￥"+json.giftMoney);
+            }
             //当前定金金额
-            $(".djje").text("￥"+json.deposit);
+            if(json.deposit != null && json.deposit != ""){
+                $(".djje").text("￥"+json.deposit);
+            }
             //会员积分
-            $(".hyjf").text(json.memberPoints);
+            if(json.memberPoints != null && json.memberPoints != ""){
+                $(".hyjf").text(json.memberPoints);
+            }
             //特种卡
-            $(".tzk").text("￥"+json.specialCardAmount)
+            if(json.specialCardAmount != null && json.specialCardAmount != ""){
+                $(".tzk").text("￥"+json.specialCardAmount)
+            }
         //    动态添加项目卡及充值卡及代金券
         //    项目卡
             var no_project_card = $(".no_project_card")//没有项目卡的时候，该标签显示
