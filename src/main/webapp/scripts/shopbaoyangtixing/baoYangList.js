@@ -177,19 +177,50 @@ $(document).ready(function () {
                     },
                     async: false,
                     success: function (json) {
-                        var data = JSON.parse(json);
-                        console.log(data.rows);
-                        if (data != null && data.rows != null) {
-                            var content = "";
-                            for (var i = 0; i < data.rows.length; i++) {
-                                content = content
-                                    + '<tr>'
-                                    + '<td><div>' + data.rows[i].carHaoPai + '</div><div>' +data.rows[i].carHaoPai + '</div></td>'
-                                    + '</tr>';
+                        var json = JSON.parse(json);
+                        var html = "";
+                        if (json.rows.length > 0) {
+                            if (json.rows.length > 5) {
+                                $("#thelist").attr("style", "");
                             }
-                            $(".white").append(content);
-                            page_num(add_num)//必须添加
+                            for (var ii = 0; ii < json.rows.length; ii++) {
+                                var flaghtml = "";
+                                if (json.rows[ii].customerDemandLevel == 1) {
+                                    flaghtml += "<span class='by_bgcolorfjj by_width'>非常紧急</span>";
+                                } else if (json.rows[ii].customerDemandLevel == 2) {
+                                    flaghtml += "<span class='by_bgcolorjj by_width'>紧急</span>";
+                                } else {
+                                    flaghtml += "<span class='by_bgcolorpt by_width'>普通</span>";
+                                }
+                                var data = dateFormat(json.rows[ii].customerDemandDateBegin)
+                                html += "<li>" +
+                                    "<div class='by_center by_top'>" +
+                                    "<span class='by_date font_2'>" + data + "</span>" +
+                                    "<span class='by_name font_2'>&nbsp;&nbsp;" + json.rows[ii].updateUserName + "</span>" +
+                                    "</div>" +
+                                    "<div class='middle by_cenulcolor'>"+
+                                    "<div class='left font_1 blue'>保养类型：</div>"+
+                                    "<div class='right font_1'>"+
+                                    "<span class='txt'>"+json.rows[ii].demandTypeName+"</span>"+
+                                    "</div>"+
+                                    "</div>"+
+                                    "<div class='middle by_cenulcolor'>"+
+                                    "<div class='left font_1 blue'>详<i style='visibility: hidden'>保养</i>情：</div>"+
+                                    "<div class='right font_1'>"+
+                                    "<span class='txt'>"+json.rows[ii].customerDemandMemo+"</span>"+
+                                    "</div>"+
+                                    "</div>"+
+                                    "<div class='by_center font_1 by_cenulcolor' style='margin-top: 13px;margin-bottom: 43px;'> 状<i  style='visibility: hidden'>保养</i>态：" + flaghtml + " </div>" +
+                                    "</li>"
+                            }
+
+                        } else {
+                            html += "<li>" +
+                                "<div style='width:100%;height:100%;margin-top:6%;' align='center'><font size='6'>无保养提醒信息！</font> </div>" +
+                                "</li>"
                         }
+                        $("#thelist").append(html);
+                        page_num(add_num)//必须添加
                     },
                     error: function () {
                         alert("查询数据出错啦，请刷新再试");
