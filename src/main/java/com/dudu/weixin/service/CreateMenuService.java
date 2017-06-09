@@ -26,7 +26,7 @@ public class CreateMenuService {
      * @param url       服务器地址
      * @return 创建成功或者失败
      */
-    public boolean createMenu(String type, String code, String appid, String appSecret, String url) {
+    public String createMenu(String type, String code, String appid, String appSecret, String url) {
         MenuUtil menuUtil = new MenuUtil();
         Menu menu = null;
         switch (type) {
@@ -42,8 +42,8 @@ public class CreateMenuService {
             default:
                 menu = null;
         }
-        boolean ss = apiAllWeiXiRequest.createMenu(menu, appid, appSecret);
-        return ss;
+        String menu1 = apiAllWeiXiRequest.createMenu(menu, appid, appSecret);
+        return menu1;
     }
 
 }

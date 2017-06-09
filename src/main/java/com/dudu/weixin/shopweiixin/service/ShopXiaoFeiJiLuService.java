@@ -69,6 +69,7 @@ public class ShopXiaoFeiJiLuService {
             }
             recordsConsumptions.add(recordsConsumption);
         }
+
         return recordsConsumptions;
     }
 

@@ -40,7 +40,7 @@ public class CreateMenuController {
                                         @PathVariable("appid") String appid, @PathVariable("appSecret") String appSecret,
                                         @PathVariable("url") String url, @PathVariable("yuming") String yuming) {
         url = url + yuming;
-        boolean menu = createMenuService.createMenu(type, code, appid, appSecret, url);
+        String menu = createMenuService.createMenu(type, code, appid, appSecret, url);
         logprint.info("生成菜单====================" + menu);
     }
 }
