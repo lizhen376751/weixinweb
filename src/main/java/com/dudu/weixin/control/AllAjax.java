@@ -148,6 +148,37 @@ public class AllAjax {
     @Reference(version = "1.0")
     private ApiWeiXinConfig weiXinConfig;
 
+
+    /**
+     * 需要分页查询的数据
+     *
+     * @param request  请求
+     * @param response 返回
+     * @param fromflag 路径参数
+     * @param cardNo   联盟卡号
+     * @param model    返回数据
+     * @return Object 返回路径
+     */
+    @ResponseBody
+    @RequestMapping(value = "lmpagingquery", method = RequestMethod.POST)
+    public Object lmQueryPage(HttpServletRequest request, HttpServletResponse response,
+                              @RequestParam(name = "fromflag", required = false) String fromflag,
+                              @RequestParam(name = "cardNo", required = false) String cardNo, Model model
+    ) {
+
+        String platenumber = (String) httpSession.getAttribute("plateNumber"); //车牌号码
+        String openId = (String) httpSession.getAttribute("openId"); //openid
+        String lmcode = (String) httpSession.getAttribute("lmcode"); //联盟code
+        String nickname = (String) httpSession.getAttribute("nickname"); //微信昵称
+
+        if ("personcenter".equals(fromflag)) { //个人中心
+            String businessType = request.getParameter("businessType");
+            Object personcenter = personcenterService.personcenter(request, businessType, platenumber, lmcode);
+            return personcenter;
+        }
+        return null;
+    }
+
     /**
      * 每个方法的行数有限制所以分成2个方法
      *
@@ -180,11 +211,7 @@ public class AllAjax {
             return stringStringHashMap;
         }
         //个人中心
-        if ("personcenter".equals(fromflag)) {
-            String businessType = request.getParameter("businessType");
-            Object personcenter = personcenterService.personcenter(request, businessType, platenumber, lmcode);
-            return personcenter;
-        }
+
 
         //联盟卡激活
         if ("lianMengCardActivate".equals(fromflag)) {
@@ -399,6 +426,7 @@ public class AllAjax {
 
     /**
      * 获取保险列表
+     *
      * @param request 参数
      * @return List<Insurance> 保险列表
      */
