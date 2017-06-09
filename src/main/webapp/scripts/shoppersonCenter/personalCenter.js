@@ -213,7 +213,7 @@ $(document).ready(function () {
                         '<span class="cards_right">'+json.cashCouponList[h].statusDetail+'</span>'+
                         '</li>';
                 }
-                djq.append(czk_label)
+                djq.append(djq_label)
             }else{
                 no_vouchers.show();
                 djq.hide()
