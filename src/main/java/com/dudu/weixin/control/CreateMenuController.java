@@ -32,11 +32,15 @@ public class CreateMenuController {
      * @param type      菜单的类型
      * @param appid     appid
      * @param appSecret sercert
+     * @param url       服务器地址
+     * @param yuming    服务器域名
      */
-    @RequestMapping(value = "createMenu/{code}/{type}/{appid}/{appSecret}", method = RequestMethod.GET)
+    @RequestMapping(value = "createMenu/{code}/{type}/{appid}/{appSecret}/{url}/{yuming}", method = RequestMethod.GET)
     public void duduchewangceshipingtai(@PathVariable("code") String code, @PathVariable("type") String type,
-                                        @PathVariable("appid") String appid, @PathVariable("appSecret") String appSecret) {
-        boolean menu = createMenuService.createMenu(type, code, appid, appSecret);
+                                        @PathVariable("appid") String appid, @PathVariable("appSecret") String appSecret,
+                                        @PathVariable("url") String url, @PathVariable("yuming") String yuming) {
+        url = url + yuming;
+        boolean menu = createMenuService.createMenu(type, code, appid, appSecret, url);
         logprint.info("生成菜单====================" + menu);
     }
 }

@@ -56,7 +56,6 @@ public class ShopXiaoFeiJiLuService {
         queryParamPurchaseHistory.setShopCode(mainShopCode);
         queryParamPurchaseHistory.setCustomerId(id);
         List<ResultPurchaseHistory> resultPurchaseHistories = apiPurchaseHistoryIntf.queryPurchaseHistory(queryParamPurchaseHistory);
-        //TODO 后期加入分页查询,不知道应该怎么搞,查询出数据看看
         PageResult rageResult = new PageResult<ResultPurchaseHistory>(resultPurchaseHistories);
         Long records = rageResult.getRecords();
         for (ResultPurchaseHistory resultPurchaseHistory : resultPurchaseHistories) {

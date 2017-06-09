@@ -23,26 +23,21 @@ public class CreateMenuService {
      * @param code      店铺编码或者联盟编码
      * @param appid     微信的appid
      * @param appSecret 微信的sercret
+     * @param url       服务器地址
      * @return 创建成功或者失败
      */
-    public boolean createMenu(String type, String code, String appid, String appSecret) {
+    public boolean createMenu(String type, String code, String appid, String appSecret, String url) {
         MenuUtil menuUtil = new MenuUtil();
         Menu menu = null;
         switch (type) {
-            case "geren":
-                menu = menuUtil.getGeRenCeshiMenu(appid, code);
+            case "lianmeng": //联盟的
+                menu = menuUtil.getLianMengMenu(appid, code, url);
                 break;
-            case "lianmeng":
-                menu = menuUtil.getLianMengMenu(appid, code);
+            case "shop": //店管家
+                menu = menuUtil.getShopMenu(appid, code, url);
                 break;
-            case "shop":
-                menu = menuUtil.getShopMenu(appid, code);
-                break;
-            case "yilubang":
+            case "yilubang": //易璐邦
                 menu = menuUtil.getYiLuBangmenu(appid, code);
-                break;
-            case "yangchengtai":
-                menu = menuUtil.getYangchengtai(appid, code);
                 break;
             default:
                 menu = null;

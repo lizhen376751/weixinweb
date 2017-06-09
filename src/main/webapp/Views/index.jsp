@@ -49,6 +49,8 @@
             <li class="btnli">菜单类型:<input name="type" class="regbtn" value=""/></li>
             <li class="btnli">appid:<input name="appid" class="regbtn" value=""/></li>
             <li class="btnli">appsecret:<input name="appSecret" class="regbtn" value=""/></li>
+            <li class="btnli">服务器地址:<input name="url" class="regbtn" value=""/></li>
+            <li class="btnli">服务器域名:<input name="yuming" class="regbtn" value=""/></li>
             <li class="btnli"><input type="button" class="regbtns" value="创建菜单" onclick="creatMenu()"/></li>
         </ul>
     </div>
