@@ -35,6 +35,9 @@ $(document).ready(function () {
             }else{
                 add_num = parseInt(json.records/json.pageSize) + 1;
             }
+            if(json.records == 0){
+                $(".pullUp").hide()
+            }
             var html = "";
             if (json.rows.length > 0) {
                 if (json.rows.length > 5) {

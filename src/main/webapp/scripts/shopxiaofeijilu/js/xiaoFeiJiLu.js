@@ -17,7 +17,6 @@ $(document).ready(function () {
         pullUpAction:Load
     });
     //动态添加每一条消费记录
-        var top = $("#top").val();
         $.ajax({
             type: 'POST',
             url: '/pagingquery',
@@ -29,7 +28,17 @@ $(document).ready(function () {
             success: function (jsonData) {
                 var arr = JSON.parse(jsonData);
                 console.log(arr);
-                addLabel(arr);
+                if(arr.records % arr.pageSize == 0){
+                    add_num = parseInt(arr.records/arr.pageSize);
+                }else{
+                    add_num = parseInt(arr.records/arr.pageSize) + 1;
+                }
+                if(arr.records == 0){
+                    $(".pullUp").hide()
+                }
+                console.log(add_num)
+                addLabel(arr.rows);
+                page_num(add_num)
             }  // addLabel函数结束
 
 
@@ -41,7 +50,7 @@ $(document).ready(function () {
                 type: 'POST',
                 url: "/pagingquery",
                 data: {
-                    businessType: "xialajiazai",
+                    businessType: "xiaofeijilu",
                     page: "1",
                     rows: "15"
                 },
@@ -51,8 +60,9 @@ $(document).ready(function () {
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='/files/ok.png'/>刷新成功";
                     page = 1;
                     var json = JSON.parse(jsondata);
+                    console.log(json)
                     ul.children().remove();
-                    addLabel(json);
+                    addLabel(json.rows);
                     wrapper.refresh();
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
                     $(".pullUpIcon").css("opacity","1");
@@ -76,14 +86,14 @@ $(document).ready(function () {
                     type: 'POST',
                     url: "/pagingquery",
                     data: {
-                        businessType: "xialajiazai",
+                        businessType: "xiaofeijilu",
                         page: ""+page+"",
                         rows: "15"
                     },
                     async: false,
                     success: function (json) {
                         var json = JSON.parse(json);
-                        addLabel(json);
+                        addLabel(json.rows);
                         page_num(add_num)//必须添加
                     },
                     error: function () {
@@ -176,7 +186,7 @@ $(document).ready(function () {
                                 '</div>'+
                             '</div>'+
                         '<div class="btn">'+ pingjia +
-                             '<div class="sgbz font_1" xm_num = "'+xm_num+'" shopCode="'+arr[i].resultPurchaseHistory.shopCode+'" wxpingzheng="'+arr[i].resultPurchaseHistory.wxpingzheng+'">施工步骤</div>'+
+                             '<div class="sgbz font_1" sgbz="sgbz" xm_num = "'+xm_num+'" shopCode="'+arr[i].resultPurchaseHistory.shopCode+'" wxpingzheng="'+arr[i].resultPurchaseHistory.wxpingzheng+'">施工步骤</div>'+
                          '</div>'+
                     '</div>'+
                 '</li>';
@@ -184,15 +194,20 @@ $(document).ready(function () {
         }
     }
 //    点击施工步骤进行跳转
-    ul.onclick = function(e){
+    ul.on("click",function (e) {
         var ev = e || window.event;
         var target = ev.target || ev.srcElement;
-        if(target.className.toLowerCase() == "sgbz") {
+        if($(target).attr("sgbz").toLowerCase() == "sgbz") {
             var xu_number = $(target).attr("xm_num");
             var shopCode = $(target).attr("shopCode");
             var wxpingzheng = $(target).attr("wxpingzheng");
-            window.location.href="/shopweixinServlet?serviceType=shigongbuzhou&xu_number="+xu_number+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng;
+            if(xu_number != null && xu_number != ""){
+                window.location.href="/shopweixinServlet?serviceType=shigongbuzhou&xu_number="+xu_number+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng;
+            }else{
+                alert("消费的为商品")
+            }
+
         }
-    }
+    })
 
 })
