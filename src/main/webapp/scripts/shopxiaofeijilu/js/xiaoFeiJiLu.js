@@ -1,29 +1,4 @@
 $(document).ready(function () {
-    // var arr = [{
-    // 	timer:"2017-2-21",
-    // 	num:"106km",
-    // 	project:"商品类",
-    // 	kardName:["某某把套","某某车贴","某某车贴","某某车贴","某某车贴","某某车贴","某某车贴","某某车贴","某某车贴","某某车贴"],
-    // 	mode:"现金",
-    // 	cast1:"¥1482.00",
-    // 	cast2:"¥1482.00"
-    // },{
-    // 	timer:"2017-2-21",
-    // 	num:"106km",
-    // 	project:"商品类",
-    // 	kardName:["奥嘉隔热UII"],
-    // 	mode:"支付宝",
-    // 	cast1:"¥3560.00",
-    // 	cast2:"¥3560.00"
-    // },{
-    // 	timer:"2017-2-21",
-    // 	num:"120km",
-    // 	project:"项目类",
-    // 	kardName:["洗车卡255"],
-    // 	mode:"现金",
-    // 	cast1:"¥800.00",
-    // 	cast2:"¥800.00"
-    // }];
     var ul = $("ul");//获取ul容器
     //出去逗号的span
     function deletes() {
@@ -33,38 +8,103 @@ $(document).ready(function () {
             $(punctuation[punctuation.length - 1]).remove()
         }
     }
-
+    var page = 1; //记录当前加载的页数
+    var add_num = 0;//记录加载的次数
+    refresher.init({
+        id:"wrapper",
+        able:"ul",
+        pullDownAction:Refresh,
+        pullUpAction:Load
+    });
     //动态添加每一条消费记录
-
-    $(document).ready(function () {
         var top = $("#top").val();
         $.ajax({
             type: 'POST',
-            url: '/shopAjax',
+            url: '/pagingquery',
             data: {
                 businessType: "xiaofeijilu",
-                top: top
+                page: "1",
+                rows: "15"
             },
             success: function (jsonData) {
                 var arr = JSON.parse(jsonData);
                 console.log(arr);
-                //alert(jsonData);
                 addLabel(arr);
-                var pJ = $(".pingjia");//获取去评价按钮
-                var sgbz = $(".sgbz");//获取施工步骤按钮
-                sgbz.on("click",function () {
-                    var xu_number = $(this).attr("xm_num");
-                    var shopCode = $(this).attr("shopCode");
-                    var wxpingzheng = $(this).attr("wxpingzheng");
-                    window.location.href="/shopweixinServlet?serviceType=shigongbuzhou&xu_number="+xu_number+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng;
-
-                })
             }  // addLabel函数结束
 
 
         });
-    })
+    //下拉刷新函数
+    function Refresh() {
+        setTimeout(function () {
+            $.ajax({
+                type: 'POST',
+                url: "/pagingquery",
+                data: {
+                    businessType: "xialajiazai",
+                    page: "1",
+                    rows: "15"
+                },
+                async: false,
+                success: function (jsondata) {
+                    document.getElementById("wrapper").querySelector(".pullDownIcon").style.display="none";
+                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='/files/ok.png'/>刷新成功";
+                    page = 1;
+                    var json = JSON.parse(jsondata);
+                    ul.children().remove();
+                    addLabel(json);
+                    wrapper.refresh();
+                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
+                    $(".pullUpIcon").css("opacity","1");
+                    refresher.info.loadingLable = "加载中...";
+                    refresher.info.pullUpLable = "上拉加载更多"
+                    refresher.info.pullingUpLable = "释放加载更多";
+                    page_num(add_num)
+                },
+                error: function () {
+                    alert("查询数据出错啦，请刷新再试");
+                }
+            });
+        },1000)
+    }
+    //---------------------------------------------------上拉加载函数
+    function Load() {
+        setTimeout(function () {
+            page++;
+            if(page <= add_num){
+                $.ajax({
+                    type: 'POST',
+                    url: "/pagingquery",
+                    data: {
+                        businessType: "xialajiazai",
+                        page: ""+page+"",
+                        rows: "15"
+                    },
+                    async: false,
+                    success: function (json) {
+                        var json = JSON.parse(json);
+                        addLabel(json);
+                        page_num(add_num)//必须添加
+                    },
+                    error: function () {
+                        alert("查询数据出错啦，请刷新再试");
+                    }
+                });
+            }
+            wrapper.refresh();
+        },1000)
+    }
 
+    function page_num(add_num) {
+        if(page == add_num){
+            $(".pullUpIcon").css("opacity","0");
+            console.log($(".pullUpIcon"))
+            $(".pullUpLabel").text("已经到了最底部了！");
+            refresher.info.loadingLable = "已经到了最底部了!";
+            refresher.info.pullUpLable = "已经到了最底部了!"
+            refresher.info.pullingUpLable = "已经到了最底部了!"
+        }
+    }
     function addLabel(arr) {
         for(var i = 0;i < arr.length;i++){
             var xfxm = "";  //记录消费项目
@@ -136,13 +176,23 @@ $(document).ready(function () {
                                 '</div>'+
                             '</div>'+
                         '<div class="btn">'+ pingjia +
-                             '<div class="sgbz font_1" xm_num = "'+xm_num+'" shopCode="'+arr[i].shopCode+'" wxpingzheng="'+arr[i].wxpingzheng+'">施工步骤</div>'+
+                             '<div class="sgbz font_1" xm_num = "'+xm_num+'" shopCode="'+arr[i].resultPurchaseHistory.shopCode+'" wxpingzheng="'+arr[i].resultPurchaseHistory.wxpingzheng+'">施工步骤</div>'+
                          '</div>'+
                     '</div>'+
                 '</li>';
             ul.append(html)
         }
     }
-
+//    点击施工步骤进行跳转
+    ul.onclick = function(e){
+        var ev = e || window.event;
+        var target = ev.target || ev.srcElement;
+        if(target.className.toLowerCase() == "sgbz") {
+            var xu_number = $(target).attr("xm_num");
+            var shopCode = $(target).attr("shopCode");
+            var wxpingzheng = $(target).attr("wxpingzheng");
+            window.location.href="/shopweixinServlet?serviceType=shigongbuzhou&xu_number="+xu_number+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng;
+        }
+    }
 
 })
