@@ -45,7 +45,7 @@ public class ShopXiaoFeiJiLuService {
      * @param plateNumber  车牌号
      * @return 消费列表
      */
-    public List<RecordsConsumption> queryXiaoFeiJiLu(String mainShopCode, String plateNumber) {
+    public  PageResult<RecordsConsumption> queryXiaoFeiJiLu(String mainShopCode, String plateNumber) {
         List<RecordsConsumption> recordsConsumptions = new ArrayList<RecordsConsumption>();
         CustomerInfo customerInfo = shopCustomInfo.queryCustomerList(mainShopCode, plateNumber);
         Integer id = null;
@@ -69,8 +69,8 @@ public class ShopXiaoFeiJiLuService {
             }
             recordsConsumptions.add(recordsConsumption);
         }
-
-        return recordsConsumptions;
+        rageResult.setRows(recordsConsumptions);
+        return rageResult;
     }
 
     /**
