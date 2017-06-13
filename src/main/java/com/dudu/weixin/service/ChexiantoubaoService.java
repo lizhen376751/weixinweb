@@ -85,6 +85,7 @@ public class ChexiantoubaoService {
 
     /**
      * 获取保险公司接口
+     *
      * @param shopCodeLm 联盟编码
      * @return List<BaoXianGongSi> 联盟相关的保险公司
      */
@@ -191,8 +192,8 @@ public class ChexiantoubaoService {
         }
         //获取客户性别
         String sex = request.getParameter("sex");
-        Integer integer1 = Integer.valueOf(sex);
-        if (null != integer1 && !"".equals(integer1)) {
+        if (null != sex && !"".equals(sex)) {
+            Integer integer1 = Integer.valueOf(sex);
             cm.setSex(integer1);
         }
         //获取客户手机号
@@ -215,8 +216,8 @@ public class ChexiantoubaoService {
         String engineNumber = request.getParameter("engine_number");
         if (null != engineNumber && !"".equals(engineNumber)) {
             cm.setEngineNumber(engineNumber);
-       }
-       //获取车辆使用性质
+        }
+        //获取车辆使用性质
         String operationType = request.getParameter("property");
         if (null != operationType && !"".equals(operationType)) {
             cm.setOperationType(operationType);
@@ -306,6 +307,7 @@ public class ChexiantoubaoService {
 
     /**
      * 查询店铺相关联盟
+     *
      * @param shopCode 店铺编码
      * @return List<ShopQueryFruit> 返回的联盟
      */
@@ -314,12 +316,12 @@ public class ChexiantoubaoService {
         shopParam.setType("1";
 
         return apiShopIntf.queryShopInfo(shopParam);*/
-       List<ShopQueryFruit> list = new ArrayList<>();
+        List<ShopQueryFruit> list = new ArrayList<>();
         ShopSearchStructureParam ssp = new ShopSearchStructureParam();
         ssp.setCode(shopCode);
         List<ShopStructureParam> shopStructureParams = apiRelationIntf.queryShopRelation(ssp);
         if (shopStructureParams != null && shopStructureParams.size() > 0) {
-            for (ShopStructureParam sp: shopStructureParams) {
+            for (ShopStructureParam sp : shopStructureParams) {
                 String brandcode = sp.getBrandcode();
                 ShopParam shopParam = new ShopParam();
                 shopParam.setCode(brandcode);
@@ -372,6 +374,7 @@ public class ChexiantoubaoService {
 
     /**
      * 根据保险公司获取保险信息列表
+     *
      * @param request 获取域信息
      * @return 保险信息列表
      */
@@ -412,8 +415,9 @@ public class ChexiantoubaoService {
 
     /**
      * 获取客户端保险详情
+     *
      * @param clientInsuranceTypeParam 查询参数
-     * @return  ClientInsuranceResult  查询结果返回
+     * @return ClientInsuranceResult  查询结果返回
      */
     public ClientInsuranceResult getClientInsurance(ClientInsuranceTypeParam clientInsuranceTypeParam) {
         ClientInsuranceResult clientInsuranceResult = aPIBaoXainKaiDan.queryClientInsurace(clientInsuranceTypeParam);
@@ -425,6 +429,7 @@ public class ChexiantoubaoService {
 
     /**
      * 更新客户购买保险的保险公司
+     *
      * @param request 请求
      * @return Integer 受影响行数
      */
