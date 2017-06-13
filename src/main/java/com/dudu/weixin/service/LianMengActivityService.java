@@ -24,12 +24,12 @@ public class LianMengActivityService {
     /**
      *引入联盟活动接口
      */
-    @Reference(version = "0.0.1")
+    @Reference
     private ApiLMActivityInft apiLMActivityInft;
     /**
      *引入上传图片的接口
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiDuduFilesIntf apiDuduFilesIntf;
 
     /**

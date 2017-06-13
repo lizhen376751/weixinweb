@@ -42,12 +42,12 @@ public class LoginInterceptor implements HandlerInterceptor {
     /**
      * 引入获取appid和sercert的方法
      */
-    @Reference(version = "1.0", owner = "lizhen")
+    @Reference(owner = "lizhen")
     private ApiWeiXinConfig apiWeiXinConfig;
     /**
      * 引入微信通讯相关接口
      */
-    @Reference(version = "1.0", timeout = 300000)
+    @Reference(timeout = 300000)
     private ApiAllWeiXiRequest apiAllWeiXiRequest;
 
     /**

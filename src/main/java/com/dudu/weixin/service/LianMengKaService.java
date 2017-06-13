@@ -28,7 +28,7 @@ public class LianMengKaService {
     /**
      * 引入联盟卡激活的接口
      */
-    @Reference(version = "1.0", owner = "lizhen")
+    @Reference(owner = "lizhen")
     private ApiNoActive apiNoActive;
     /**
      * 引入联盟用户信息接口
@@ -43,7 +43,7 @@ public class LianMengKaService {
     /**
      * 引入联盟卡信息接口
      */
-    @Reference(version = "0.0.1")
+    @Reference
     private ApiLianmengkaOperateIntf apiLianmengkaOperateIntf;
 
 

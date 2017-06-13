@@ -26,22 +26,22 @@ public class ShopWeixinLoginService {
     /**
      * 引入店管家的客户中心接口
      */
-    @Reference(version = "0.0.1")
+    @Reference
     private ApiCustomerInfo apiCustomerInfo;
     /**
      * 引入店管家微信的用户中心的接口
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiShopWeixinUser apishopWeixinUser;
     /**
      * 引入微信通讯相关的基础接口
      */
-    @Reference(version = "1.0", timeout = 300000)
+    @Reference(timeout = 300000)
     private ApiAllWeiXiRequest apiAllWeiXiRequest;
     /**
      * 引入查询店铺信息接口
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiShopInfo apishopInfo;
     /**
      * 引入登录记录的服务

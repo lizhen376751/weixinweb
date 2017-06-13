@@ -20,12 +20,12 @@ public class ShopBaoYangTiXingService {
     /**
      * 引入店铺信息的接口
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiShopInfo apiShopInfo;
     /**
      * 引入查询客户需求接口(保养提醒)
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiCustomerDemand apiCustomerDemand;
 
     /**

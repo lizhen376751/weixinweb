@@ -23,13 +23,13 @@ public class ValidateService {
     /**
      * 引入验证码记录接口
      */
-    @Reference(version = "1.0")
+    @Reference
 
     private ApiSmsSend apiSmsSend;
     /**
      * 引入短信发送接口
      */
-    @Reference(version = "0.0.1")
+    @Reference
     private ApiSendSms apiSendSms;
     /**
      * 引入用户信息的服务(用于修改密码)

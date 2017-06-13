@@ -39,7 +39,7 @@ public class CoreController extends HttpServlet {
     /**
      * 引入消息处理接口
      */
-    @Reference(version = "1.0", timeout = 300000)
+    @Reference(timeout = 300000)
     private ApiAllWeiXiRequest apiAllWeiXiRequest;
 
     /**

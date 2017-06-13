@@ -14,7 +14,7 @@ public class LogInLogService {
     /**
      * 引入登录历史记录接口
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiLogInLog apiLogInLog;
 
     /**

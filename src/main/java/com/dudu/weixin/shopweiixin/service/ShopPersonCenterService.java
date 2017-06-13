@@ -35,7 +35,7 @@ public class ShopPersonCenterService {
     /**
      * 引入查询个人权益的服务
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiUserEquity apiUserEquity;
 
     /**

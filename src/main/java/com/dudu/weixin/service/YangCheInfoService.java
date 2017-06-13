@@ -19,12 +19,12 @@ public class YangCheInfoService {
     /**
      * 养车信息接口
      */
-    @Reference(version = "0.0.1")
+    @Reference
     private ApiYangCheInfoIntf apiYangCheInfoIntf;
     /**
      * 图片地址
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiDuduFilesIntf apiDuduFilesIntf;
     /**
      * 常量

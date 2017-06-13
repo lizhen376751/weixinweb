@@ -15,7 +15,7 @@ public class LianmengIntroducedService {
      *@Autowired lizhen
      * @Title 联盟介绍
      */
-    @Reference(version = "0.0.1", owner = "lizhen")
+    @Reference(owner = "lizhen")
     private  ApiIntroducedIntf apiIntroducedIntf;
 
     /**

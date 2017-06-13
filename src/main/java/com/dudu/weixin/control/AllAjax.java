@@ -135,17 +135,17 @@ public class AllAjax {
     /**
      * 引入图片上传的接口
      */
-    @Reference(version = "1.0", owner = "miaohao")
+    @Reference(owner = "miaohao")
     private ApiDuduDataOssSecretConfigIntf ossSecretConfigIntf;
     /**
      * 引入微信通讯相关的接口
      */
-    @Reference(version = "1.0", timeout = 300000)
+    @Reference(timeout = 300000)
     private ApiAllWeiXiRequest apiAllWeiXiRequest;
     /**
      * 引入微信配置的相关接口
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiWeiXinConfig weiXinConfig;
 
 

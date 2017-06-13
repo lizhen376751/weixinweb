@@ -55,32 +55,32 @@ public class ChexiantoubaoService {
     /**
      * 引入保险开单api
      */
-    @Reference(version = "1.0", owner = "zhangyuanlei")
+    @Reference(owner = "zhangyuanlei")
     private APIBaoXainKaiDan aPIBaoXainKaiDan;
     /**
      * 引入保险类型api
      */
-    @Reference(version = "1.0", timeout = 1200000)
+    @Reference(timeout = 1200000)
     private APIBaoXianType aPIBaoXianType;
     /**
      * 获取联盟总部信息
      */
-    @Reference(version = "0.0.1", owner = "lichengjia")
+    @Reference(owner = "lichengjia")
     private ApiShopIntf apiShopIntf;
     /**
      * 获取服务顾问接口
      */
-    @Reference(version = "1.0", owner = "zhush")
+    @Reference(owner = "zhush")
     private ApiBaseDataEmployee apiBaseDataEmployee;
     /**
      * 获取客户信息
      */
-    @Reference(version = "0.0.1", timeout = 3000)
+    @Reference(timeout = 3000)
     private ApiCustomerInfo apiCustomerInfo;
     /**
      * 根据店铺查询相关联盟
      */
-    @Reference(version = "0.0.1")
+    @Reference
     private ApiRelationIntf apiRelationIntf;
 
     /**

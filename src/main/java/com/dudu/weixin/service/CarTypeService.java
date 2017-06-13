@@ -17,7 +17,7 @@ public class CarTypeService {
     /**
      * 引入查询车辆车型品牌和型号
      */
-    @Reference(version = "0.0.1")
+    @Reference
     private ApiCusCar apiCusCar;
 
     /**

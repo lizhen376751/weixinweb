@@ -25,12 +25,12 @@ public class ShopXiaoFeiJiLuService {
     /**
      * 引入消费记录接口
      */
-    @Reference(version = "0.0.1", timeout = 30000)
+    @Reference(timeout = 30000)
     private ApiPurchaseHistoryIntf apiPurchaseHistoryIntf;
     /**
      * 引入查询消费单据详情接口
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiBills apiBills;
     /**
      * 引入店管家客户中心

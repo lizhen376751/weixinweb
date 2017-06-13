@@ -38,12 +38,12 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
     /**
      * 引入微信通讯相关接口
      */
-    @Reference(version = "1.0", timeout = 300000)
+    @Reference(timeout = 300000)
     private ApiAllWeiXiRequest apiAllWeiXiRequest;
     /**
      * 引入查询店铺信息接口
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiShopInfo apishopInfo;
 
     /**

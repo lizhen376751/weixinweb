@@ -25,7 +25,7 @@ public class ShopInfoService {
      * @param shopcode
      * @return
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiShopInfo apiShopInfo;
 
     /**

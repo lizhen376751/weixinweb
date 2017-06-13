@@ -65,12 +65,12 @@ public class ShopWeiXinAjax {
     /**
      * 引入店铺信息的接口
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiShopInfo apiShopInfo;
     /**
      * 引入微信通讯相关的接口
      */
-    @Reference(version = "1.0", timeout = 300000)
+    @Reference(timeout = 300000)
     private ApiAllWeiXiRequest apiAllWeiXiRequest;
 
     /**

@@ -21,12 +21,12 @@ public class ShopShiGongBuZhouService {
     /**
      * 施工步骤接口
      */
-    @Reference(version = "0.0.1")
+    @Reference
     private ApiShopWorkComplateIntf apiShopWorkComplateIntf;
     /**
      * 引入标准流程查看接口
      */
-    @Reference(version = "0.0.1")
+    @Reference
     private ApiProjectIntf apiProjectIntf;
 
     /**

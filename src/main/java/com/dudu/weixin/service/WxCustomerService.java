@@ -14,7 +14,7 @@ public class WxCustomerService {
     /**
      * 引入联盟卡用户注册接口
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiWxCustomer apiWxCustomer;
 
     /**

@@ -16,7 +16,7 @@ public class CommonToolsService {
     /**
      * 引入查询店铺信息的接口
      */
-    @Reference(version = "1.0")
+    @Reference
     private ApiShopInfo apiShopInfo;
 
     /**

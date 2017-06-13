@@ -8,18 +8,18 @@
   <name>DuduWeiXin</name>
 
   <properties>
-    <dudu.soa.SalesCenter.version>1.1-SNAPSHOT</dudu.soa.SalesCenter.version>
+    <dudu.soa.SalesCenter.version>1.0-SNAPSHOT</dudu.soa.SalesCenter.version>
     <dudu.soa.DuduMessageCenter.version>1.0-SNAPSHOT</dudu.soa.DuduMessageCenter.version>
     <dudu.soa.DuduWeixinDubbo.version>1.0-SNAPSHOT</dudu.soa.DuduWeixinDubbo.version>
-    <dudu.soa.DuduBaseData>1.1-SNAPSHOT</dudu.soa.DuduBaseData>
-    <dudu.soa.CustomerServiceCenter.version>1.1-SNAPSHOT</dudu.soa.CustomerServiceCenter.version>
+    <dudu.soa.DuduBaseData>1.0-SNAPSHOT</dudu.soa.DuduBaseData>
+    <dudu.soa.CustomerServiceCenter.version>1.0-SNAPSHOT</dudu.soa.CustomerServiceCenter.version>
     <dudu.soa.baoxian.version>1.0-SNAPSHOT</dudu.soa.baoxian.version>
-    <dudu.soa.ahi.version>1.1-SNAPSHOT</dudu.soa.ahi.version>
-    <dudu.soa.dududata.version>1.1-SNAPSHOT</dudu.soa.dududata.version>
-    <dudu.soa.lianmengka.version>1.1-SNAPSHOT</dudu.soa.lianmengka.version>
-    <dudu.soa.lianmengkabasedata.version>1.1-SNAPSHOT</dudu.soa.lianmengkabasedata.version>
+    <dudu.soa.ahi.version>1.0-SNAPSHOT</dudu.soa.ahi.version>
+    <dudu.soa.dududata.version>1.0-SNAPSHOT</dudu.soa.dududata.version>
+    <dudu.soa.lianmengka.version>1.0-SNAPSHOT</dudu.soa.lianmengka.version>
+    <dudu.soa.lianmengkabasedata.version>1.0-SNAPSHOT</dudu.soa.lianmengkabasedata.version>
     <dudu.soa.DuDuFinaceCenter.version>1.0-SNAPSHOT</dudu.soa.DuDuFinaceCenter.version>
-    <dudu.framework.version>1.1-SNAPSHOT</dudu.framework.version>
+    <dudu.framework.version>1.0-SNAPSHOT</dudu.framework.version>
     <spring.version>4.3.6.RELEASE</spring.version>
     <dudu.disconf.enable.remote.conf>true</dudu.disconf.enable.remote.conf>
     <dudu.disconf.conf_server_host>http://disconf.gw.duduchewang.cn</dudu.disconf.conf_server_host>

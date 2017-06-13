@@ -22,7 +22,7 @@ public class AHIService {
     /**
      *
      */
-    @Reference(version = "0.0.1")
+    @Reference
     private ApiAHIPoint apiAHIPoint;
 
     /**
