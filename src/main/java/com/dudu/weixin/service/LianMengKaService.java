@@ -78,11 +78,16 @@ public class LianMengKaService {
                     apiNoActive.updateNOActive(noActive);
                     //将此激活的联盟卡保存到激活的库中
                     LianMengKaFaKaSaveModule saveModule = new LianMengKaFaKaSaveModule();
-                    saveModule.setCard_number(noActive1.getCardnum());
-                    saveModule.setCard_type(2);
-                    saveModule.setCust_id(wxCustomer.getId());
-                    saveModule.setProduct_code(noActive1.getCardcode());
-                    saveModule.setProduct_shopcode(lmcode);
+                    saveModule.setCardNumber(noActive1.getCardnum());
+                    saveModule.setCardType(2);
+                    saveModule.setCustId(wxCustomer.getId());
+                    saveModule.setProductCode(noActive1.getCardcode());
+                    saveModule.setProductShopCode(lmcode);
+//                    saveModule.setCard_number();
+//                    saveModule.setCard_type(2);
+//                    saveModule.setCust_id(wxCustomer.getId());
+//                    saveModule.setProduct_code(noActive1.getCardcode());
+//                    saveModule.setProduct_shopcode(lmcode);
                     apiLianmengkaOperateIntf.addLianmengKa(saveModule);
                     //激活成功
                     return "2";
@@ -108,8 +113,10 @@ public class LianMengKaService {
         List<LianmengkaXmLeftResultModule> results = null;
         try {
             LianmengkaXmLeftQueryModule queryModule = new LianmengkaXmLeftQueryModule();
-            queryModule.setBrand_code(shopcode);
-            queryModule.setCar_haopai(carHaoPai);
+            queryModule.setBrandCode(shopcode);
+            queryModule.setCarHaopai(carHaoPai);
+//            queryModule.setBrand_code(shopcode);
+//            queryModule.setCar_haopai(carHaoPai);
             results = apiLianmengkaOperateIntf.queryXmkLeftCount(queryModule);
 
         } catch (Exception e) {
@@ -130,9 +137,12 @@ public class LianMengKaService {
         List<LianmengkaXmCustResultModule> results = null;
 
         LianmengkaXmCustQueryModule queryModule = new LianmengkaXmCustQueryModule();
-        queryModule.setBrand_code(shopcode);
-        queryModule.setCard_number(cardNo);
-        queryModule.setCar_haopai(carHaoPai);
+        queryModule.setBrandCode(shopcode);
+        queryModule.setCardNumber(cardNo);
+        queryModule.setCarHaopai(carHaoPai);
+//        queryModule.setBrand_code(shopcode);
+//        queryModule.setCard_number(cardNo);
+//        queryModule.setCar_haopai(carHaoPai);
         results = apiLianmengkaOperateIntf.queryXiangmukaCustRecords(queryModule);
         if (results == null || results.size() == 0) {
             return null;
@@ -140,10 +150,12 @@ public class LianMengKaService {
             //把消费店铺编码 替换为 店铺名称
             for (int i = 0; i < results.size(); i++) {
                 LianmengkaXmCustResultModule lianmengkaXmCustResultModule = results.get(i);
-                String custcode = lianmengkaXmCustResultModule.getCust_code();
+                String custcode = lianmengkaXmCustResultModule.getCustCode();
+//                String custcode = lianmengkaXmCustResultModule.getCust_code();
                 String custshopName = commonTools.getShopName(custcode);
                 //单纯的查询,把custcode替换成了cust_shopName
-                lianmengkaXmCustResultModule.setCust_code(custshopName);
+                lianmengkaXmCustResultModule.setCustCode(custshopName);
+//                lianmengkaXmCustResultModule.setCust_code(custshopName);
 
             }
         }
@@ -162,27 +174,35 @@ public class LianMengKaService {
 //        System.out.println(shopcode + "," + cardNo + "," + carHaoPai);
         List<LianmengKaResultModule> results = null;
         LiangmengKaQueryModule queryModule = new LiangmengKaQueryModule();
-        queryModule.setProduct_shopcode(shopcode); //联盟总部编码
-        queryModule.setCard_number(cardNo); //卡号
-        queryModule.setCar_haopai(carHaoPai);
-        queryModule.setCard_type("2"); //1充值卡，2项目卡
+        queryModule.setProductShopCode(shopcode);
+        queryModule.setCardNumber(cardNo);
+        queryModule.setCarHaopai(carHaoPai);
+        queryModule.setCardType("2");
+
+//        queryModule.setProduct_shopcode(shopcode); //联盟总部编码
+//        queryModule.setCard_number(cardNo); //卡号
+//        queryModule.setCar_haopai(carHaoPai);
+//        queryModule.setCard_type("2"); //1充值卡，2项目卡
 
         results = apiLianmengkaOperateIntf.getLianmengCustomerCardInfos(queryModule);
 
         if (results != null && results.size() > 0) {
             LianmengKaResultModule lianmengKaResultModule = results.get(0);
             if (lianmengKaResultModule != null) {
-                String sellcode = lianmengKaResultModule.getSell_code().toString();
+                String sellcode = lianmengKaResultModule.getSellCode().toString();
+//                String sellcode = lianmengKaResultModule.getSell_code().toString();
 
                 //查询出店铺列表图片
                 String shopListImg = commonTools.getShopListImg(sellcode);
                 //TODO 后期需要把shopListImg放入results结果集,暂时存入Customer_mobile里面
-                lianmengKaResultModule.setCustomer_mobile(shopListImg);
+                lianmengKaResultModule.setCustomerMobile(shopListImg);
+//                lianmengKaResultModule.setCustomer_mobile(shopListImg);
                 //把发卡店铺编码 替换为 店铺名称
                 String sellshopName = commonTools.getShopName(sellcode);
                 //TODO 后期需要把sell_shopName放入results结果集,暂时存入sell_shopName里面
-                lianmengKaResultModule.setCar_haopai(sellshopName);
-//                System.out.println("+============" + sellcode + shopListImg + sellshopName);
+                lianmengKaResultModule.setCarHaopai(sellshopName);
+//                lianmengKaResultModule.setCar_haopai(sellshopName);
+
 
             }
         }

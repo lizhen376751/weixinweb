@@ -69,6 +69,8 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
             //判断session里面的shopcode与菜单按钮带过来的shopcode是否一致
             if (!shopcode1.equals(shopcode)) {
                 //如果不一致,跳转至登录页面
+                //将session清空(因为session不可能存储两个车牌号)
+                session.setAttribute("shopcode", shopcode1);
                 request.getRequestDispatcher("/Views/shoplogin/shoplogin.jsp?shopcode=" + shopcode).forward(request, response);
             }
         } else {

@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -68,6 +69,7 @@ public class AllController {
     @Resource
     private DuduOauthService duduOauthService;
 
+
     /**
      * 嘟嘟车网测试平台网页授权回调页面
      *
@@ -78,6 +80,21 @@ public class AllController {
     @RequestMapping(value = "MP_verify_xtfw75328NsMZ6bb.txt", method = RequestMethod.GET)
     public String duduchewangceshipingtai(HttpServletRequest request, HttpServletResponse response) {
         return "/MP_verify_xtfw75328NsMZ6bb.txt";
+    }
+
+
+    /**
+     * 嘟嘟车网车管家网页授权回调页面
+     *
+     * @param request     请求
+     * @param response    返回
+     * @param wenjianming 文件名字
+     * @return 路径
+     */
+    @ResponseBody
+    @RequestMapping(value = "/MP_verify_{wenjianming}.txt", method = RequestMethod.GET)
+    public Object duduchewangCheGuanjia(@PathVariable String wenjianming, HttpServletRequest request, HttpServletResponse response) {
+        return wenjianming;
     }
 
     /**
@@ -91,6 +108,7 @@ public class AllController {
     public String yilubang(HttpServletRequest request, HttpServletResponse response) {
         return "/MP_verify_LfkUMEM3uc7s4hpv.txt";
     }
+
 
     /**
      * 点击菜单后进入
