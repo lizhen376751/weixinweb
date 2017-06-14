@@ -1,42 +1,60 @@
 <%@ page language="java" pageEncoding="utf-8" %>
 
+
+<html>
+
+</html>
+
 <html>
 <head>
-    <meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport"/>
-    <meta content="yes" name="apple-mobile-web-app-capable"/>
-    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
-    <meta content="telephone=no" name="format-detection"/>
-    <title>嘟嘟车网</title>
-    <meta name="keywords" content="keyword ..."/>
-    <meta name="Description" content="description ..."/>
-    <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script language="JavaScript">
+
+<meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="telephone=no" name="format-detection"/>
+<title>嘟嘟车网</title>
+<meta name="keywords" content="keyword ..."/>
+<meta name="Description" content="description ..."/>
+<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script language="JavaScript">
 
 
-        //登录
-        function login() {
-            window.location.href = "/shopweixinServlet?serviceType=login";
+    //登录
+    function login() {
+        window.location.href = "/shopweixinServlet?serviceType=login";
+    }
+    //aHi
+    function AHIInfo() {
+        window.location.href = "/ahi";
+    }
+    //ahi详情
+    function AHIxiangqing() {
+        window.location.href = "/AHIInfoxiangqing";
+    }
+    //创建菜单
+    function creatMenu() {
+        var regbtns = $(".regbtn");
+        var a = '';
+        for (var i = 0; i < regbtns.length; i++) {
+            a += '/' + $(regbtns[i]).val()
         }
-        //aHi
-        function AHIInfo() {
-            window.location.href = "/ahi";
-        }
-        //ahi详情
-        function AHIxiangqing() {
-            window.location.href = "/AHIInfoxiangqing";
-        }
-        //创建菜单
-        function creatMenu() {
-            var regbtns = $(".regbtn");
-            var a = '';
-            for (var i = 0; i < regbtns.length; i++) {
-                a += '/' + $(regbtns[i]).val()
+        console.log(a);
+        $.ajax({
+            type    : 'GET',
+            url     : '/createMenu' + a,
+
+            success:function(jsondata){
+                var json = JSON.parse(jsondata);
+                alert(jsondata);
+            },
+            error:function(eee){
+                 alert("我有点懵,您稍后再试!");
             }
-            console.log(a)
-            window.location.href = "/createMenu" + a;
-        }
+        });
+//        window.location.href = "/createMenu" + a;
+    }
 
-    </script>
+</script>
 </head>
 <body>
 

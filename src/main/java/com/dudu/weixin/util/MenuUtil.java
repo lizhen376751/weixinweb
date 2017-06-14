@@ -159,6 +159,20 @@ public class MenuUtil {
         btn21.setType("view");
         btn21.setUrl(commonUrl + "_fuwudaohang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
+        CommonButton btn22 = new CommonButton();
+        btn22.setName("商城");
+        btn22.setType("view");
+        btn22.setUrl("http://301.jnfpsm.com/api/unc2mdcbpb/shop/");
+
+        CommonButton btn23 = new CommonButton();
+        btn23.setName("原来商城");
+        btn23.setType("view");
+        btn23.setUrl("http://www.pt.elubon.com/api/7vlgjqlhg2/shop/");
+
+        CommonButton btn24 = new CommonButton();
+        btn24.setName("违章查询");
+        btn24.setType("view");
+        btn24.setUrl("http://weizhang.lequ66.top/?pc");
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
@@ -166,7 +180,7 @@ public class MenuUtil {
 
         ComplexButton mainBtn2 = new ComplexButton();
         mainBtn2.setName("服务导航");
-        mainBtn2.setSubbutton(new CommonButton[]{btn21});
+        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn23, btn24 });
 
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2});
@@ -202,7 +216,7 @@ public class MenuUtil {
         btn11.setUrl(commonUrl + "_lmkInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn12 = new CommonButton();
-        btn12.setName("AHI指数");
+        btn12.setName("车辆健康指数");
         btn12.setType("view");
         btn12.setUrl(commonUrl + "_AHIInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
@@ -225,13 +239,12 @@ public class MenuUtil {
         CommonButton btn22 = new CommonButton();
         btn22.setName("商城");
         btn22.setType("view");
-        btn22.setUrl("http://www.pt.elubon.com/api/7vlgjqlhg2/shop/");
+        btn22.setUrl("http://301.jnfpsm.com/api/unc2mdcbpb/shop/");
 
         CommonButton btn23 = new CommonButton();
         btn23.setName("服务导航");
         btn23.setType("view");
-        btn23.setUrl("http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?shopcode=FL000"
-                + "&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4");
+        btn23.setUrl(commonUrl + "_fuwudaohang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn24 = new CommonButton();
         btn24.setName("一键洗车");
