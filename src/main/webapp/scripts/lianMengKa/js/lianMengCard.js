@@ -77,19 +77,19 @@ $(document).ready(function () {
 				//卡的头部
 				obj_append("div2","box",$($(".lianMeng")[i]),"div","");
 				//卡的名字
-				obj_append("div3","card_name font_3",$($(".box")[i]),"div",arr[i].card_name);
+				obj_append("div3","card_name font_3",$($(".box")[i]),"div",arr[i].cardName);
 				//卡的详情
 				obj_append("div4","card_content",$($(".box")[i]),"div","");
 				//条形码
 				obj_append("div5","card_barcode",$($(".card_content")[i]),"div","");
 				obj_append("div6","barcode_img",$($(".card_barcode")[i]),"img","");
 				//生成条形码
-                $($('.card_content .card_barcode .barcode_img')[i]).JsBarcode(arr[i].card_number,options);//jQuery
+                $($('.card_content .card_barcode .barcode_img')[i]).JsBarcode(arr[i].cardNumber,options);//jQuery
 				//卡号
 				obj_append("div7","card_number font_4",$($(".card_content")[i]),"div","");
 				obj_append("div8","",$($(".card_number")[i]),"p","您的卡号为：");
 				obj_append("div9","number",$($(".card_number")[i]),"div","");
-				obj_append("div10","first",$($(".number")[i]),"span",arr[i].card_number);
+				obj_append("div10","first",$($(".number")[i]),"span",arr[i].cardNumber);
 				//卡内剩余
 				obj_append("div11","card_surplus",$($(".lianMeng")[i]),"div","");
 				obj_append("div12","font_4",$($(".card_surplus")[i]),"p","卡内剩余");
@@ -102,7 +102,7 @@ $(document).ready(function () {
 				obj_append("div18","width_2 margin_2 border_1 height",$($(".biaoTou")[i]),"span","次数");
                 var s = 0;
 				for (var j = 0;j < arr[i].leftMx.length;j++) {
-					var yxrqDateTime = arr[i].leftMx[j].effective_date;
+					var yxrqDateTime = arr[i].leftMx[j].effectiveDate;
                     var dates = dateFormat(yxrqDateTime);
                     var cc = dates.replace(/-/ig,"/");
 					var news = new Date();
@@ -113,16 +113,16 @@ $(document).ready(function () {
                     // console.log(h);
                     var newDate = new Date(h);
                     var oldDate = new Date(cc);
-					if(arr[i].leftMx[j].current_num != 0 && arr[i].leftMx[j].current_num != ""){
+					if(arr[i].leftMx[j].currentNum != 0 && arr[i].leftMx[j].currentNum != ""){
                         if(oldDate >= newDate){
                             obj_append("div14","border_2",$($("ul")[i]),"li","");
                             s++;
                             var li = $($("ul")[i]).find("li");
                             //obj_append("div15","width_1",$(li[s]),"span",s);
-                            obj_append("div16","width_2",$(li[s]),"span",arr[i].leftMx[j].spname);
+                            obj_append("div16","width_2",$(li[s]),"span",arr[i].leftMx[j].spName);
                             obj_append("div17","width_2 margin_2",$(li[s]),"span",dates);
-                            obj_append("div18","width_2 margin_2",$(li[s]),"span",arr[i].leftMx[j].current_num);
-                            obj_append("div15","width_1 margin_1",$(li[s]),"img","","/files/lianMengKa/img/erweima.png",arr[i].leftMx[j].card_id,arr[i].leftMx[j].item_code,arr[i].leftMx[j].type_flg);
+                            obj_append("div18","width_2 margin_2",$(li[s]),"span",arr[i].leftMx[j].currentNum);
+                            obj_append("div15","width_1 margin_1",$(li[s]),"img","","/files/lianMengKa/img/erweima.png",arr[i].leftMx[j].cardId,arr[i].leftMx[j].itemCode,arr[i].leftMx[j].typeFlg);
                         }
 					}
 				}
@@ -133,7 +133,7 @@ $(document).ready(function () {
                 }
 				//添加明细
 				obj_append("div19","card_detailed font_3",$($(".card_surplus")[i]),"a","明细");
-				$($("a")[i]).attr("href","/oauthLoginServlet?flagStr=lianMengDetails&cardName="+arr[i].card_name+"&cardNo="+arr[i].card_number)
+				$($("a")[i]).attr("href","/oauthLoginServlet?flagStr=lianMengDetails&cardName="+arr[i].cardName+"&cardNo="+arr[i].cardNumber)
                 //添加每一张卡与卡之间的分界条
                 obj_append("div20","fjt",$($(".lianMeng")[i]),"span");
 			}

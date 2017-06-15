@@ -316,7 +316,7 @@ $(document).ready(function () {
         for (var i = 0; i < arr.length; i++) {
             var falge = false;
             for (var j = 0;j < arr[i].leftMx.length;j++) {
-                var yxrqDateTime = arr[i].leftMx[j].effective_date;
+                var yxrqDateTime = arr[i].leftMx[j].effectiveDate;
                 var dates = dateFormat(yxrqDateTime);
                 var cc = dates.replace(/-/ig,"/");
                 var news = new Date();
@@ -327,7 +327,7 @@ $(document).ready(function () {
                 // console.log(h);
                 var newDate = new Date(h);
                 var oldDate = new Date(cc);
-                if(arr[i].leftMx[j].current_num != 0 && arr[i].leftMx[j].current_num != ""){
+                if(arr[i].leftMx[j].currentNum != 0 && arr[i].leftMx[j].currentNum != ""){
                     if(oldDate >= newDate){
                     falge = true;
                     }
@@ -337,11 +337,11 @@ $(document).ready(function () {
                 var htmls = '';
                 htmls += '<li>' +
                     '<img class="bar_code bar_code' + i + '"/>' +
-                    '<div class="bar_num font_1 color_4">' + arr[i].card_number + '</div>' +
-                    '<div class="cards_name font_3 color_3">' + arr[i].card_name + '</div>' +
+                    '<div class="bar_num font_1 color_4">' + arr[i].cardNumber + '</div>' +
+                    '<div class="cards_name font_3 color_3">' + arr[i].cardName + '</div>' +
                     '</li>';
                 uls.append(htmls);
-                JsBarcode(".bar_code" + i, arr[i].card_number, options);
+                JsBarcode(".bar_code" + i, arr[i].cardNumber, options);
             }
         }
     }
