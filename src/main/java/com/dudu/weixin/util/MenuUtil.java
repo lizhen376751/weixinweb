@@ -159,20 +159,11 @@ public class MenuUtil {
         btn21.setType("view");
         btn21.setUrl(commonUrl + "_fuwudaohang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
+
         CommonButton btn22 = new CommonButton();
-        btn22.setName("商城");
+        btn22.setName("违章查询");
         btn22.setType("view");
-        btn22.setUrl("http://301.jnfpsm.com/api/unc2mdcbpb/shop/");
-
-        CommonButton btn23 = new CommonButton();
-        btn23.setName("原来商城");
-        btn23.setType("view");
-        btn23.setUrl("http://www.pt.elubon.com/api/7vlgjqlhg2/shop/");
-
-        CommonButton btn24 = new CommonButton();
-        btn24.setName("违章查询");
-        btn24.setType("view");
-        btn24.setUrl("http://weizhang.lequ66.top/?pc");
+        btn22.setUrl("http://weizhang.lequ66.top/?pc");
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
@@ -180,7 +171,7 @@ public class MenuUtil {
 
         ComplexButton mainBtn2 = new ComplexButton();
         mainBtn2.setName("服务导航");
-        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn23, btn24 });
+        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22 });
 
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2});
@@ -236,10 +227,6 @@ public class MenuUtil {
         btn21.setType("view");
         btn21.setUrl(commonUrl + "_lianMengJieShao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
-        CommonButton btn22 = new CommonButton();
-        btn22.setName("商城");
-        btn22.setType("view");
-        btn22.setUrl("http://301.jnfpsm.com/api/unc2mdcbpb/shop/");
 
         CommonButton btn23 = new CommonButton();
         btn23.setName("服务导航");
@@ -278,7 +265,7 @@ public class MenuUtil {
 
         ComplexButton mainBtn2 = new ComplexButton();
         mainBtn2.setName("服务");
-        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn23, btn24, btn25});
+        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn23, btn24, btn25});
 
         ComplexButton mainBtn3 = new ComplexButton();
         mainBtn3.setName("活动");

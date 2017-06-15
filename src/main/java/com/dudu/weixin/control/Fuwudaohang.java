@@ -27,6 +27,7 @@ public class Fuwudaohang {
 //         String latitude = "29.910757";
 //         String longitude = "121.59543";
 //         System.out.println("==============" + latitude + "," + longitude);
+//        http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?shopcode=FL000&latitude=29.910757&longitude=121.59543&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4
         response.sendRedirect("http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?"
                 + "shopcode=FL000&latitude=" + latitude + "&longitude=" + longitude + "&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4");
 
