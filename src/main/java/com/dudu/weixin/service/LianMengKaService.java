@@ -188,6 +188,7 @@ public class LianMengKaService {
 
         if (results != null && results.size() > 0) {
             LianmengKaResultModule lianmengKaResultModule = results.get(0);
+            lianmengKaResultModule = null;
             if (lianmengKaResultModule != null) {
                 String sellcode = lianmengKaResultModule.getSellCode().toString();
 //                String sellcode = lianmengKaResultModule.getSell_code().toString();
