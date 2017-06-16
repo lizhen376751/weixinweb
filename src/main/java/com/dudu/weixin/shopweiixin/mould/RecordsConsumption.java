@@ -9,10 +9,10 @@ import java.io.Serializable;
  * Created by lizhen on 2017/5/22.
  */
 
-public class RecordsConsumption implements Serializable{
+public class RecordsConsumption implements Serializable {
     /**
      * 根据消费记录接口查询出来的
-     *查询出来的消费记录实体
+     * 查询出来的消费记录实体
      */
     private ResultPurchaseHistory resultPurchaseHistory;
     /**
@@ -21,7 +21,8 @@ public class RecordsConsumption implements Serializable{
     private Boolean isevaluate;
 
     /**
-     *  RecordsConsumption(消费记录数据组装) 字符串形式
+     * RecordsConsumption(消费记录数据组装) 字符串形式
+     *
      * @return RecordsConsumption(消费记录数据组装)字符串
      */
     @Override
@@ -31,6 +32,7 @@ public class RecordsConsumption implements Serializable{
 
     /**
      * 获取 根据消费记录接口查询出来的     查询出来的消费记录实体
+     *
      * @return resultPurchaseHistory 根据消费记录接口查询出来的     查询出来的消费记录实体
      */
     public ResultPurchaseHistory getResultPurchaseHistory() {
@@ -39,6 +41,7 @@ public class RecordsConsumption implements Serializable{
 
     /**
      * 设置 根据消费记录接口查询出来的     查询出来的消费记录实体
+     *
      * @param resultPurchaseHistory 根据消费记录接口查询出来的     查询出来的消费记录实体
      * @return 返回 RecordsConsumption(消费记录数据组装)
      */
@@ -49,6 +52,7 @@ public class RecordsConsumption implements Serializable{
 
     /**
      * 获取 根据评价接口查询出来的是否进行了评价
+     *
      * @return isevaluate 根据评价接口查询出来的是否进行了评价
      */
     public Boolean getIsevaluate() {
@@ -57,6 +61,7 @@ public class RecordsConsumption implements Serializable{
 
     /**
      * 设置 根据评价接口查询出来的是否进行了评价
+     *
      * @param isevaluate 根据评价接口查询出来的是否进行了评价
      * @return 返回 RecordsConsumption(消费记录数据组装)
      */

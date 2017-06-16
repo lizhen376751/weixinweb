@@ -17,13 +17,14 @@ public class LogInLogService {
     @Reference
     private ApiLogInLog apiLogInLog;
 
+
     /**
-     * 新增登录记录
-     *
+     *新增登录记录
      * @param plateNumber 车牌号
      * @param lmcode      联盟code
      * @param openid      微信openid
      * @param nickname    微信昵称
+     * @return 新增的id
      */
     public Integer addLogInLog(String plateNumber, String lmcode, String openid, String nickname) {
         LogInLog logInLog = new LogInLog();
