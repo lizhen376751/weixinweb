@@ -15,7 +15,7 @@
     </div>
 	<center class="top_title">怡人怡车</center>
 	<div class="logo">
-		<img class="log_img" src="img/LOGO.png">
+		<img class="log_img" src="/files/weixinfenxiang/img/LOGO.png">
 		<span class="download"><a href="http://app.dl.gw.duduchewang.cn"> 免费下载</a></span>
 	</div>
 	<div class="conter">

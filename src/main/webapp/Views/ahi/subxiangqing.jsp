@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>AHI</title>
+    <title>车辆健康指数</title>
     <link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
     <link rel="stylesheet" type="text/css" href="/styles/ahi/ahi.css"/>
     <link rel="stylesheet" type="text/css" href="/styles/ahi/swiper.min.css"/>
