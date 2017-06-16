@@ -34,7 +34,7 @@
 			<ul class="conter_miaos">
 				<li style="float:left;width: 60%;">
 					<p class="p1" > 
-						<img  src="img/111.png">
+						<img  src="/files/weixinfenxiang/img/111.png">
 						<span class="font1">长按识别二维码</span>
 					</p>
 					<p class="p2">关注怡人怡车</p>

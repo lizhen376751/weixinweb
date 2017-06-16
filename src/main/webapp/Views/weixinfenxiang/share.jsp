@@ -69,7 +69,7 @@
 					</p>
 				</li>
 				<li class="p4" style="float:right">
-					<img  src="img/wei.png"/>
+					<img  src="/files/weixinfenxiang/img/wei.png"/>
 				</li>
 			</ul>
 		</div>
