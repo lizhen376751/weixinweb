@@ -33,9 +33,9 @@ $(document).ready(function () {
             obj_append("div1","border_2",$("ul"),"li","");
             var li = $("ul li");//消费详情
             var s = i + 1;
-            obj_append("div3","width_2 shenglue",$(li[s]),"span",arr[i].spname);
-            obj_append("div4","width_3 margin_1 shenglue",$(li[s]),"span",arr[i].cust_code);
-            obj_append("div5","width_2 margin_2 shenglue",$(li[s]),"span",arr[i].operate_date);
+            obj_append("div3","width_2 shenglue",$(li[s]),"span",arr[i].spName);
+            obj_append("div4","width_3 margin_1 shenglue",$(li[s]),"span",arr[i].custCode);
+            obj_append("div5","width_2 margin_2 shenglue",$(li[s]),"span",arr[i].operateDate);
             obj_append("div6","width_1 margin_2 shenglue",$(li[s]),"span",arr[i].record);
         }
     }
@@ -44,10 +44,10 @@ $(document).ready(function () {
     var shop_name = $(".shop_name");//发卡店铺
     //向html中添加数据
     function appending_shopName (obj) {
-        shop_name.text("发售店铺："+obj.car_haopai);//发卡店铺
+        shop_name.text("发售店铺："+obj.carHaopai);//发卡店铺
         var shopLogoImg="<img src='/files/lianMengKa/img/nonepic.png' style='width:236px;height:236px;border-radius:50%;' />";
-        if(obj.customer_mobile!=null && obj.customer_mobile!=""){
-            shopLogoImg="<img src='http://shop.duduchewang.com/upload/"+obj.sell_code+"/shopimg/"+obj.customer_mobile+"' style='width:236px;height:236px;border-radius:50%;' />";
+        if(obj.customerMobile!=null && obj.customerMobile!=""){
+            shopLogoImg="<img src='http://shop.duduchewang.com/upload/"+obj.sellCode+"/shopimg/"+obj.customerMobile+"' style='width:236px;height:236px;border-radius:50%;' />";
         }
         $(".circle").html(shopLogoImg);
     }
