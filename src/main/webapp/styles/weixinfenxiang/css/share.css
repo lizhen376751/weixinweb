@@ -238,7 +238,7 @@ ul{list-style: none;}
 .zhezhao{
 	display:none;
 	vertical-align: middle;
-	background: url(../img/bg_img.png) repeat;    
+	background: url(/files/weixinfenxiang/img/bg_img.png) repeat;
 	text-align: center; 
     height: 100%;
     width: 100%;
