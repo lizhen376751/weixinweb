@@ -142,6 +142,32 @@ body{
 	margin: 0.38rem 0 0 0.64rem;
 	color: #fff;
 }
+.cards ul li .cards_title{
+	width: 2.22rem;
+	max-width: 166px;
+	height: 0.68rem;
+	max-height: 68px;
+	background: #57b6ff;
+	border-radius: 0.12rem;
+	text-align: center;
+	line-height: 0.7rem;
+	float: left;
+	margin: 0.38rem 0 0 0.64rem;
+	color: #fff;
+}
+.cards ul li .cards_details{
+	width: 2.22rem;
+	max-width: 166px;
+	height: 0.68rem;
+	max-height: 68px;
+	background: #57b6ff;
+	border-radius: 0.12rem;
+	text-align: center;
+	line-height: 0.7rem;
+	float: left;
+	margin: 0.38rem 0 0 0.64rem;
+	color: #fff;
+}
 .cards ul li .cards_right{
 	float: right;
 	width: 3.8rem;

@@ -126,6 +126,8 @@ $(document).ready(function () {
         }
 
     });
+
+
     //--------------------------------------------------------------------------------------------------------------------------个人中心的请求
     $.ajax({
         type: 'POST',
@@ -133,9 +135,12 @@ $(document).ready(function () {
         data: {
             businessType: "shoppersoncenter",
             servicetype: "personalRightsAndInterests",
-            shopCode: shopCode.val(),
+           /* shopCode: shopCode.val(),
             customerId : khID,
-            plateNumb: car_num.text()
+            plateNumb: car_num.text()*/
+            shopCode: "0533001",
+            customerId : 28763,
+            plateNumb: "闽A12121"
         },
         success: function (jsonData) {
             json = JSON.parse(jsonData);
@@ -161,15 +166,33 @@ $(document).ready(function () {
             var xmk = $(".xmk"); //获取项目卡的容器
             if(json.projectCardList != null && json.projectCardList.length > 0){
                 var xmk_label = "";
+
                 for(var i = 0;i < json.projectCardList.length;i++){
+                    var xmk_mx ="";
+                    for( var m = 0; m <json.projectCardList[i].list.length; m++ ) {
+                        xmk_mx += '<li>'+
+                                    '<span class="cards_details">'+json.projectCardList[i].list[m].projectName+'</span>&nbsp;'+'<span class="cards_details">'+dateFormat(json.projectCardList[i].list[m].validDate)+'</span>&nbsp;'+
+                                    '<span class="cards_details">'+json.projectCardList[i].list[m].currentTimes+'</span>'+
+                                    '</li>'
+                    }
                     xmk_label += '<li>'+
                                     '<span class="cards_left">卡号</span>'+
                                     '<span class="cards_right">'+json.projectCardList[i].cardNumb+'</span>'+
                                 '</li>'+
-                                '<li class="xmk">'+
+                                '<li>'+
                                     '<span class="cards_left">名称</span>'+
                                     '<span class="cards_right">'+json.projectCardList[i].cardName+'</span>'+
+                                '</li>'+
+                                '<li>'+
+                                '<span class="cards_title">项目名称</span>&nbsp;'+'<span class="cards_title">有效日期</span>&nbsp;'+
+                                '<span class="cards_title">剩余次数</span>'+
+                                '</li>'+xmk_mx+
+                                '<li>'+
+                                /*'<a href="#" style="background:#57b6ff;color: #fff;text-align: center"  onclick="projectCardMX('+json.projectCardList[i].cardNumb+',\''+shopCode.val()+'\','+khID+')">明细</a>'+*/
+                                '<a href="#" style="background:#57b6ff;color: #fff;text-align: center"  onclick="projectCardMX('+json.projectCardList[i].cardNumb+',\'0533001\',28763)">明细</a>'+
                                 '</li>'
+
+
                 }
                 xmk.append(xmk_label)
             }else{
@@ -189,7 +212,18 @@ $(document).ready(function () {
                         '<li>'+
                         '<span class="cards_left">名称</span>'+
                         '<span class="cards_right">'+json.rechargeableCardList[g].cardName+'</span>'+
-                        '</li>';
+                        '</li>'+
+                        '<li>'+
+                        '<span class="cards_left">有效日期</span>'+
+                        '<span class="cards_right">'+dateFormat(json.rechargeableCardList[g].validDate)+'</span>'+
+                        '</li>'+
+                        '<li>'+
+                        '<span class="cards_left">剩余金额</span>'+
+                        '<span class="cards_right">'+json.rechargeableCardList[g].residualAmount+'</span>'+
+                        '</li>'+
+                        '<li>'+
+                        '<a href="#" style="background:#57b6ff;color: #fff;text-align: center"  onclick="rechargeableCardMX('+json.rechargeableCardList[g].cardNumb+',\'0533001\',28763)">明细</a>'+
+                        '</li>'
                 }
                 czk.append(czk_label)
             }else{
@@ -205,13 +239,23 @@ $(document).ready(function () {
                 var djq_label = "";
                 for(var h = 0;h < json.cashCouponList.length;h++){
                     djq_label += '<li>'+
+                        '<span class="cards_left">券号</span>'+
+                        '<span class="cards_right">'+json.cashCouponList[h].voucherNumb+'</span>'+
+                        '</li>'+
+                        '<li>'+
                         '<span class="cards_left">名称</span>'+
                         '<span class="cards_right">'+json.cashCouponList[h].voucherName+'</span>'+
                         '</li>'+
                         '<li>'+
                         '<span class="cards_left">内容</span>'+
                         '<span class="cards_right">'+json.cashCouponList[h].statusDetail+'</span>'+
-                        '</li>';
+                        '</li>'+
+                        '<li>'+
+                        '<span class="cards_left">有效期</span>'+
+                        '<span class="cards_right">'+dateFormat(json.cashCouponList[h].validDate)+'</span>'+
+                        '</li>'+
+                        '<li>'+
+                        '</li>'
                 }
                 djq.append(djq_label)
             }else{
@@ -463,10 +507,6 @@ $(document).ready(function () {
     // $(".index-sidebar-container").css("display","none")//------------------------------默认隐藏
 
 
-    jkzs.on("click", function () {
-        window.location.href = "/shopweixinServlet?serviceType=AHIInfo";
-    });
-
 
     //-----------------------------当前里程用户修改输入事件
     lcs.on("click", function (e) {
@@ -539,3 +579,9 @@ $(document).ready(function () {
     //     return false
     // });
 })
+function projectCardMX(a,b,c) {
+    window.location.href="/shopweixinServlet?serviceType=projectCardMX&cardNumb="+a+"&shopCode="+b+"&customerId="+c;
+};
+function rechargeableCardMX(a,b,c) {
+    window.location.href="/shopweixinServlet?serviceType=rechargeableCardMX&cardNumb="+a+"&shopCode="+b+"&customerId="+c;
+}

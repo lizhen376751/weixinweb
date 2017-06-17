@@ -7,6 +7,8 @@ import com.dudu.soa.customercenter.customer.module.UpdateCustomerInfoParam;
 import com.dudu.soa.finace.userequity.api.ApiUserEquity;
 import com.dudu.soa.finace.userequity.module.EquityParam;
 import com.dudu.soa.finace.userequity.module.InviolableRights;
+import com.dudu.soa.finace.userequity.module.ProjectCardMX;
+import com.dudu.soa.finace.userequity.module.RechargeableCardMX;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.CarTypeService;
 import com.dudu.weixin.shopweiixin.mould.ShopPersonCenter;
@@ -63,6 +65,12 @@ public class ShopPersonCenterService {
             //查询个人权益
             case "personalRightsAndInterests":
                 return  this.getShopPersonalRightsAndInterests(request);
+            //查询项目卡明细
+            case "projectCardMX":
+                return this.queryProjectCardMX(request);
+            //查询充值卡明细
+            case "rechargeableCardMX":
+                return this.queryRechargeableCardMX(request);
             //修改车辆品牌车型车系
             case "updateCarType":
                 return shopCustomInfo.updateCustomerInfo(
@@ -135,6 +143,52 @@ public class ShopPersonCenterService {
         InviolableRights inviolableRights = apiUserEquity.getInviolableRights(equityParam);
         if (null != inviolableRights && !"".equals(inviolableRights)) {
             return inviolableRights;
+        }
+        return null;
+    }
+
+    /**
+     * 获取项目卡明细
+     * @param request 请求
+     * @return List<ProjectCardMX> 项目卡明细集合
+     */
+    public List<ProjectCardMX> queryProjectCardMX(HttpServletRequest request) {
+        String shopCode = request.getParameter("shopCode");
+        String id = request.getParameter("customerId");
+        Integer customerId = Integer.parseInt(id);
+        String cardNumb = request.getParameter("cardNumb");
+        String plateNumber = request.getParameter("plateNumber");
+        EquityParam equityParam = new EquityParam();
+        equityParam.setCardNumb(cardNumb);
+        equityParam.setCustomerId(customerId);
+        equityParam.setShopCode(shopCode);
+        equityParam.setPlateNumb(plateNumber);
+        List<ProjectCardMX> projectCardMXES = apiUserEquity.queryUserProjectCardMX(equityParam);
+        if (null != projectCardMXES && projectCardMXES.size() > 0) {
+            return  projectCardMXES;
+        }
+        return null;
+    }
+
+    /**
+     * 获取充值卡明细
+     * @param request 请求
+     * @return List<RechargeableCardMX> 充值卡明细集合
+     */
+    public List<RechargeableCardMX> queryRechargeableCardMX(HttpServletRequest request) {
+        String shopCode = request.getParameter("shopCode");
+        String id = request.getParameter("customerId");
+        Integer customerId = Integer.parseInt(id);
+        String cardNumb = request.getParameter("cardNumb");
+        String plateNumber = request.getParameter("plateNumber");
+        EquityParam equityParam = new EquityParam();
+        equityParam.setCardNumb(cardNumb);
+        equityParam.setCustomerId(customerId);
+        equityParam.setShopCode(shopCode);
+        equityParam.setPlateNumb(plateNumber);
+        List<RechargeableCardMX> rechargeableCardMXES = apiUserEquity.queryUserRechargeableCardMX(equityParam);
+        if (null != rechargeableCardMXES && rechargeableCardMXES.size() > 0) {
+            return rechargeableCardMXES;
         }
         return null;
     }

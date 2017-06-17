@@ -90,6 +90,24 @@ public class ShopWeiXinControl {
         } else if ("AHIInfo".equals(serviceType)) {
             //TODO 登录在成功之后暂时跳转至ahi,后期换成个人中心
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
+        } else if ("projectCardMX".equals(serviceType)) {
+            String cardNumb = request.getParameter("cardNumb");
+            String shopCode = request.getParameter("shopCode");
+            String customerId = request.getParameter("customerId");
+            model.addAttribute("plateNumber", plateNumber);
+            model.addAttribute("cardNumb", cardNumb);
+            model.addAttribute("shopCode", shopCode);
+            model.addAttribute("customerId", customerId);
+            return "/shoppersonCenter/projectCardMX.jsp";
+        } else if ("rechargeableCardMX".equals(serviceType)) {
+            String cardNumb = request.getParameter("cardNumb");
+            String shopCode = request.getParameter("shopCode");
+            String customerId = request.getParameter("customerId");
+            model.addAttribute("plateNumber", plateNumber);
+            model.addAttribute("cardNumb", cardNumb);
+            model.addAttribute("shopCode", shopCode);
+            model.addAttribute("customerId", customerId);
+            return "/shoppersonCenter/rechargeableCardMX.jsp";
         }
         return null;
     }
