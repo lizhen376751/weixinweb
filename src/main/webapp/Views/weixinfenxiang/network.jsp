@@ -10,7 +10,7 @@
 	<script src="/scripts/weixinfenxiang/js/share.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-	<div class="zhezhao">		
+	<div class="zhezhao">
 		   <img class="zsimg" src=""/>
     </div>
 	<center class="top_title">怡人怡车</center>
@@ -20,6 +20,9 @@
 	</div>
 	<div class="conter">
 		<div class="conter_top conter_css">
+			<li class="btnli">课程名称:<input type="button" value="${courseName}" ></li>
+			<li class="btnli">图片地址:<input type="button" value="${picture}" ></li>
+			<li class="btnli">课程简介:<input type="button" value="${courseBrief}"></li>
 			我在<span class="font_blue">怡人怡车网络学堂</span><br/>
 			学习了课程<span class="font_blue">《汽车保养知识》</span><br/>
 			并通过了测试！

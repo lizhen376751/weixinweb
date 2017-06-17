@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -19,6 +20,18 @@
 		<span class="download"><a href="http://app.dl.gw.duduchewang.cn"> 免费下载</a></span>
 	</div>
 	<div class="conter">
+		<li class="btnli">创建者:<input type="button" value="${createName}" ></li>
+		<li class="btnli">头像:<input type="button" value="${headImg}" ></li>
+		<li class="btnli">文章类型:<input type="button" value="${workTypeName}"></li>
+		<li class="btnli">时间:<input type="button" value="${interval}" ></li>
+		<li class="btnli">内容:<input type="button" value="${details}" ></li>
+		<li class="btnli">评论数:<input type="button" value="${commentNum}"></li>
+		<li class="btnli">点赞数:<input type="button" value="${likeNum}" ></li>
+		<li class="btnli">文章图片集合:<input type="button" value="${imgs}" ></li>
+		<c:forEach items="${imgs}" varStatus="i" var="item" >
+				<h2>${item.imgURL}</h2>
+		</c:forEach>
+
 		<div class="conter_top conter_css">
 			我分享的<br/>
 			<span class="font_blue font_name" id="font_name"></span>在

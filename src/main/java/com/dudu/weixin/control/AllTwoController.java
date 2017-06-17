@@ -1,10 +1,16 @@
 package com.dudu.weixin.control;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.dudu.soa.thq.app.mine.peercircle.api.ApiPeerCircle;
+import com.dudu.soa.thq.app.mine.peercircle.module.PeerCircleList;
+import com.dudu.soa.trainingclassroom.api.ApiCourseTrain;
+import com.dudu.soa.trainingclassroom.module.Course;
 import com.dudu.weixin.service.CreateMenuService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +34,17 @@ public class AllTwoController {
      */
     @Autowired
     private CreateMenuService createMenuService;
+    /**
+     * 引入同行圈接口
+     */
+    @Reference
+    private ApiPeerCircle apiPeerCircle;
+
+    /**
+     * 网络课堂
+     */
+    @Reference
+    private ApiCourseTrain apiCourseTrain;
 
     /**
      * 关于服务导航的url跳转(后期去掉)
@@ -82,22 +99,40 @@ public class AllTwoController {
     }
 
     /**
-     * 同行圈
+     * 微信分享培训课堂
      *
-     * @return 跳转路径
+     * @param id    课程id
+     * @param model 页面
+     * @return 路径
      */
-    @RequestMapping(value = "/network", method = RequestMethod.GET)
-    public String tonghangquan() {
-        return "/weixinfenxiang/network.jsp"; //同行圈
+    @RequestMapping(value = "/network/{id}", method = RequestMethod.GET)
+    public String tonghangquan(@PathVariable("id") String id, Model model) {
+        Course course = apiCourseTrain.weChatCourse(Integer.parseInt(id));
+        model.addAttribute("courseName", course.getCourseName()); //课程名称
+        model.addAttribute("picture", course.getPicture()); //图片地址
+        model.addAttribute("courseBrief", course.getCourseBrief()); //课程简介
+        return "/weixinfenxiang/network.jsp"; //培训课堂
     }
 
+
     /**
-     * 微信分享
+     * 微信分享同行圈
      *
-     * @return 跳转路径
+     * @param id    同行圈id
+     * @param model 页面
+     * @return 路径
      */
-    @RequestMapping(value = "/wechatshare", method = RequestMethod.GET)
-    public String weixinfenxiang() {
-        return "/weixinfenxiang/share.jsp"; //同行圈
+    @RequestMapping(value = "/wechatshare/{id}", method = RequestMethod.GET)
+    public String weixinfenxiang(@PathVariable("id") String id, Model model) {
+        PeerCircleList peerCircleList = apiPeerCircle.weChatQuery(Integer.parseInt(id));
+        model.addAttribute("createName", peerCircleList.getCreateName()); //创建者
+        model.addAttribute("headImg", peerCircleList.getHeadImg()); //头像
+        model.addAttribute("workTypeName", peerCircleList.getWorkTypeName()); //文章类型
+        model.addAttribute("interval", peerCircleList.getInterval()); //时间
+        model.addAttribute("details", peerCircleList.getDetails()); //内容
+        model.addAttribute("imgs", peerCircleList.getImgs()); //文章图片集合
+        model.addAttribute("likeNum", peerCircleList.getLikeNum()); //点赞数
+        model.addAttribute("commentNum", peerCircleList.getCommentNum()); //评论数
+        return "/weixinfenxiang/share.jsp"; //微信分享
     }
 }
