@@ -188,6 +188,12 @@ ul{list-style: none;}
 	/*height: 3.92rem;*/
 	margin-bottom:0.3rem;
 }
+.jianjie{
+	width: 65%;
+	text-align: center;
+	font-size: 0.4rem;
+	margin: 0.15rem auto 0.15rem auto ;
+}
 .zan{
 	width:0.36rem;
     /*    position: absolute;*/
@@ -239,7 +245,7 @@ ul{list-style: none;}
 	display:none;
 	vertical-align: middle;
 	background: url(/files/weixinfenxiang/img/bg_img.png) repeat;
-	
+
 	text-align: center; 
     height: 100%;
     width: 100%;

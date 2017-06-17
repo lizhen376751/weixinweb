@@ -20,16 +20,17 @@
 	</div>
 	<div class="conter">
 		<div class="conter_top conter_css">
-			<li class="btnli">课程名称:<input type="button" value="${courseName}" ></li>
-			<li class="btnli">图片地址:<input type="button" value="${picture}" ></li>
-			<li class="btnli">课程简介:<input type="button" value="${courseBrief}"></li>
+			<%--<li class="btnli">课程名称:<input type="button" value="${courseName}" ></li>--%>
+			<%--<li class="btnli">图片地址:<input type="button" value="${picture}" ></li>--%>
+			<%--<li class="btnli">课程简介:<input type="button" value="${courseBrief}"></li>--%>
 			我在<span class="font_blue">怡人怡车网络学堂</span><br/>
-			学习了课程<span class="font_blue">《汽车保养知识》</span><br/>
+			学习了课程<span class="font_blue">《${courseName}》</span><br/>
 			并通过了测试！
 		</div>
 		<div class="conter_network">
 			<div class="networkdiv">
-				<img class="networkimg" src="/files/weixinfenxiang/img/WechatIMG1.png/">
+				<img class="networkimg" src="${picture}">
+				<div class="jianjie">${courseBrief}</div>
 			</div>
 
 		</div>

@@ -20,42 +20,42 @@
 		<span class="download"><a href="http://app.dl.gw.duduchewang.cn"> 免费下载</a></span>
 	</div>
 	<div class="conter">
-		<li class="btnli">创建者:<input type="button" value="${createName}" ></li>
-		<li class="btnli">头像:<input type="button" value="${headImg}" ></li>
-		<li class="btnli">文章类型:<input type="button" value="${workTypeName}"></li>
-		<li class="btnli">时间:<input type="button" value="${interval}" ></li>
-		<li class="btnli">内容:<input type="button" value="${details}" ></li>
-		<li class="btnli">评论数:<input type="button" value="${commentNum}"></li>
-		<li class="btnli">点赞数:<input type="button" value="${likeNum}" ></li>
-		<li class="btnli">文章图片集合:<input type="button" value="${imgs}" ></li>
-		<c:forEach items="${imgs}" varStatus="i" var="item" >
-				<h2>${item.imgURL}</h2>
-		</c:forEach>
+		<%--<li class="btnli">创建者:<input type="button" value="${createName}" ></li>--%>
+		<%--<li class="btnli">头像:<input type="button" value="${headImg}" ></li>--%>
+		<%--<li class="btnli">文章类型:<input type="button" value="${workTypeName}"></li>--%>
+		<%--<li class="btnli">时间:<input type="button" value="${interval}" ></li>--%>
+		<%--<li class="btnli">内容:<input type="button" value="${details}" ></li>--%>
+		<%--<li class="btnli">评论数:<input type="button" value="${commentNum}"></li>--%>
+		<%--<li class="btnli">点赞数:<input type="button" value="${likeNum}" ></li>--%>
+		<%--<li class="btnli">文章图片集合:<input type="button" value="${imgs}" ></li>--%>
 
 		<div class="conter_top conter_css">
 			我分享的<br/>
-			<span class="font_blue font_name" id="font_name"></span>在
+			<span class="font_blue font_name" id="font_name">${createName}</span>在
 			<span class="font_blue">怡人怡车同行圈</span><br/>
 			的一条动态！
 		</div>
 		<div class="conter_seconed conter_css">
 			<div class="seconed_p">
 				<div class="head_img" style="float:left">
-					<img  id="head_img" src=""/>
+					<img  id="head_img" src="${headImg}"/>
 				</div>
 				<ul class="seconed_div" style="float:left">
-						<li class="li_name" id="li_name"> </li>				
+						<li class="li_name" id="li_name">${createName} </li>
 						<li class="li_time" >
-							<font id="li_time"></font>
-						    <font class="li_leibie" id="li_type"></font>
+							<font id="li_time">${interval}</font>
+						    <font class="li_leibie" id="li_type">${workTypeName}</font>
 						</li>
 				</ul>
 			</div>
 		
-			<p class="p_miaos">				
-					今天给一台宾利欧陆做了一次小保养，车主表示非常满意！	！
+			<p class="p_miaos">
+				${details}
 			</p>
 			<ul class="ul_miaos" id="miaoshu">
+				<c:forEach items="${imgs}" varStatus="i" var="item" >
+					<li><img src="${item.imgURL}" onclick="fangda(this.src)"/>
+				</c:forEach>
 				<!--<li><img src="img/img.png" onclick="fangda(this.src)"/></li>
 				<li><img src="img/img.png" onclick="fangda(this.src)"/></li>
 				<li><img src="img/img.png" onclick="fangda(this.src)"/></li>
@@ -63,8 +63,8 @@
 			</ul>
 			<hr class="borderhr" />
 			<div class="plun">
-				<span><img class="zan" src="/files/weixinfenxiang/img/zan.png"><font class="li_leibie" id="zan"></font></span>
-				<span><img class="ping" src="/files/weixinfenxiang/img/ping.png"><font class="li_leibie" id="ping"></font></span>
+				<span><img class="zan" src="/files/weixinfenxiang/img/zan.png"><font class="li_leibie" id="zan">${likeNum}</font></span>
+				<span><img class="ping" src="/files/weixinfenxiang/img/ping.png"><font class="li_leibie" id="ping">${commentNum}</font></span>
 			</div>
 			
 		
@@ -73,7 +73,7 @@
 			<ul class="conter_miaos">
 				<li style="float:left;width: 60%;">
 					<p class="p1" > 
-						<img  src="img/111.png">
+						<img  src="/files/weixinfenxiang/img/111.png">
 						<span class="font1">长按识别二维码</span>
 					</p>
 					<p class="p2">关注怡人怡车</p>
