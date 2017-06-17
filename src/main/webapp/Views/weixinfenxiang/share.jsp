@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title></title>
+    <title>怡人怡车</title>
     <link rel="stylesheet" type="text/css" href="/styles/weixinfenxiang/css/share.css"/>
 	<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/scripts/weixinfenxiang/js/share.js" type="text/javascript" charset="utf-8"></script>
@@ -14,7 +14,7 @@
 	<div class="zhezhao">		
 		   <img class="zsimg" src=""/>
     </div>
-	<center class="top_title">怡人怡车</center>
+	<%--<center class="top_title">怡人怡车</center>--%>
 	<div class="logo">
 		<img class="log_img" src="/files/weixinfenxiang/img/LOGO.png">
 		<span class="download"><a href="http://app.dl.gw.duduchewang.cn"> 免费下载</a></span>
