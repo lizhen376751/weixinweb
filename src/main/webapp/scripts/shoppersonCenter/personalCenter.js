@@ -135,12 +135,12 @@ $(document).ready(function () {
         data: {
             businessType: "shoppersoncenter",
             servicetype: "personalRightsAndInterests",
-           /* shopCode: shopCode.val(),
+            shopCode: shopCode.val(),
             customerId : khID,
-            plateNumb: car_num.text()*/
-            shopCode: "0533001",
+            plateNumb: car_num.text()
+            /*shopCode: "0533001",
             customerId : 28763,
-            plateNumb: "闽A12121"
+            plateNumb: "闽A12121"*/
         },
         success: function (jsonData) {
             json = JSON.parse(jsonData);
@@ -178,8 +178,6 @@ $(document).ready(function () {
                     xmk_label += '<li>'+
                                     '<span class="cards_left">卡号</span>'+
                                     '<span class="cards_right">'+json.projectCardList[i].cardNumb+'</span>'+
-                                '</li>'+
-                                '<li>'+
                                     '<span class="cards_left">名称</span>'+
                                     '<span class="cards_right">'+json.projectCardList[i].cardName+'</span>'+
                                 '</li>'+
@@ -188,8 +186,8 @@ $(document).ready(function () {
                                 '<span class="cards_title1">剩余次数</span>'+
                                 '</li>'+xmk_mx+
                                 '<li>'+
-                                /*'<a href="#" style="background:#57b6ff;color: #fff;text-align: center"  onclick="projectCardMX('+json.projectCardList[i].cardNumb+',\''+shopCode.val()+'\','+khID+')">明细</a>'+*/
-                                '<a href="#" class="mingxi"  onclick="projectCardMX('+json.projectCardList[i].cardNumb+',\'0533001\',28763)">明细</a>'+
+                                '<a href="#" style="background:#57b6ff;color: #fff;text-align: center"  onclick="projectCardMX('+json.projectCardList[i].cardNumb+',\''+shopCode.val()+'\','+khID+')">明细</a>'+
+                                /*'<a href="#" class="mingxi"  onclick="projectCardMX('+json.projectCardList[i].cardNumb+',\'0533001\',28763)">明细</a>'+*/
                                 '</li>'
 
 
@@ -222,7 +220,8 @@ $(document).ready(function () {
                         '<span class="cards_right">'+json.rechargeableCardList[g].residualAmount+'</span>'+
                         '</li>'+
                         '<li>'+
-                        '<a href="#" class="mingxi"  onclick="rechargeableCardMX('+json.rechargeableCardList[g].cardNumb+',\'0533001\',28763)">明细</a>'+
+                        '<a href="#" style="background:#57b6ff;color: #fff;text-align: center"  onclick="rechargeableCardMX('+json.rechargeableCardList[g].cardNumb+',\''+shopCode.val()+'\','+khID+')">明细</a>'+
+                        /*'<a href="#" class="mingxi"  onclick="rechargeableCardMX('+json.rechargeableCardList[g].cardNumb+',\'0533001\',28763)">明细</a>'+*/
                         '</li>'
                 }
                 czk.append(czk_label)

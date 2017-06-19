@@ -166,19 +166,20 @@ body{
 	line-height: 0.7rem;
 	float: left;
 	margin: 0.38rem 0 0 0.64rem;
-	color: #ccc;
+	color: #8d8d8d;
 	overflow: hidden;
-
 }
 .cards ul li .cards_right{
-	float: right;
-	width: 3.8rem;
+	float: left;
+	width: 2.5rem;
 	height: 0.68rem;
 	max-height: 68px;
 	line-height: 0.68rem;
-	margin: 0.38rem 0.64rem 0 0;
+	margin: 0.38rem 0 0 0.38rem;
 	color: #474646;
 	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .cards ul .cards_fg{
 	width: 100%;

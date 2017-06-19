@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <title>项目卡</title>
-    <link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
+    <link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
     <link rel="stylesheet" type="text/css" href="/styles/shoppersonCenter/projectCardMX.css"/>
     <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 </head>
@@ -22,34 +22,15 @@
     <img src="/files/loading2.gif"  alt="loading.." />
 </div>
 <div class="box">
+    <ul class="font_1">
+        <li class="biaoTou">
+            <span class="titles width1">项目名称</span>
+            <span class="titles width2">日期</span>
+            <span class="titles width3">次数</span>
+        </li>
 
-    <div class="card_name font_3">
-        洗车卡
-    </div>
-
-    <%--<div class="logo">--%>
-    <%--<div class="circle">--%>
-
-    <%--</div>--%>
-    <%--</div>--%>
-    <!--店铺名称-->
-    <%--<div class="shop_name font_2">--%>
-    <%--发售店铺：--%>
-    <%--</div>--%>
-    <!--消费详情-->
-    <div class="cost">
-        <ul class="font_1">
-            <li class="biaoTou">
-                <span class="width_2 height border_1">项目</span>
-                <span class="width_2 height border_1 margin_1">日期</span>
-                <span class="width_1 height border_1 margin_1">次数</span>
-            </li>
-
-        </ul>
-    </div>
-   <%-- <a class="card_detailed font_3" href="/shopweixinServlet?serviceType=shoppersonCenter">
-        返回
-    </a>--%>
+    </ul>
+    <div class="back" id="fanhui">返回</div>
 </div>
 </body>
 <input type="hidden" id="cardNumb" name="cardNumb" value="<%=cardNumb %>" >

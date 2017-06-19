@@ -108,6 +108,8 @@ public class ShopWeiXinControl {
             model.addAttribute("shopCode", shopCode);
             model.addAttribute("customerId", customerId);
             return "/shoppersonCenter/rechargeableCardMX.jsp";
+        } else if ("shoppersoncenter".equals(serviceType)) {
+            return "/shoppersonCenter/shoppersonalCenter.jsp";
         }
         return null;
     }
