@@ -49,7 +49,7 @@
         wx.getLocation({
             success: function (res) {
 //                alert("小宝鸽获取地理位置成功，经纬度为：（" + res.latitude + "，" + res.longitude + "）" );
-                window.location.href ="/fuwudaohang?latitude="+res.latitude+"&longitude="+res.longitude;
+                window.location.href ="/fuwudaohang?latitude="+res.latitude+"&longitude="+res.longitude+"&shopType_search=${shopType_search}";
             },
             fail: function(error) {
                 box.css("height","3rem")

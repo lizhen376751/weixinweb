@@ -206,6 +206,13 @@ public class AllController {
         } else if ("baoxianlist".equals(flagStr)) {
             return "/cheXianList/cheXianList.jsp"; //车险报价
         } else if ("fuwudaohang".equals(flagStr)) {
+            model.addAttribute("shopType_search", "");
+            return "/fuwudaohang.jsp"; //服务导航
+        } else if ("fuwudaohangXC".equals(flagStr)) {
+            model.addAttribute("shopType_search", ",洗车,");
+            return "/fuwudaohang.jsp"; //服务导航
+        } else if ("fuwudaohangYQ".equals(flagStr)) {
+            model.addAttribute("shopType_search", ",油漆,");
             return "/fuwudaohang.jsp"; //服务导航
         }
         return "/login/login.jsp?lmcode=" + lmcode;

@@ -55,7 +55,7 @@ public class MenuUtil {
         btn11.setUrl(commonUrl + "_lmkInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn12 = new CommonButton();
-        btn12.setName("AHI指数");
+        btn12.setName("爱车健康指数");
         btn12.setType("view");
         btn12.setUrl(commonUrl + "_AHIInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
@@ -70,11 +70,29 @@ public class MenuUtil {
         btn21.setType("view");
         btn21.setUrl(commonUrl + "_lianMengJieShao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
+
+        CommonButton btn22 = new CommonButton();
+        btn22.setName("一键洗车");
+        btn22.setType("view");
+        btn22.setUrl(commonUrl + "_fuwudaohangXC" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+
+        CommonButton btn23 = new CommonButton();
+        btn23.setName("一键油漆");
+        btn23.setType("view");
+        btn23.setUrl(commonUrl + "_fuwudaohangYQ" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+
         CommonButton btn24 = new CommonButton();
         btn24.setName("车险投保");
         btn24.setType("view");
         btn24.setUrl(commonUrl + "_cheXianTouBao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
+
+        CommonButton btn25 = new CommonButton();
+        btn25.setName("服务导航");
+        btn25.setType("view");
+        btn25.setUrl(commonUrl + "_fuwudaohang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn31 = new CommonButton();
         btn31.setName("养车百科");
@@ -99,11 +117,12 @@ public class MenuUtil {
 
         ComplexButton mainBtn2 = new ComplexButton();
         mainBtn2.setName("服务");
-        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn24});
+        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn23, btn24, btn25});
 
         ComplexButton mainBtn3 = new ComplexButton();
         mainBtn3.setName("活动");
         mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn34});
+
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});
         return menu;
@@ -153,25 +172,32 @@ public class MenuUtil {
         btn14.setType("view");
         btn14.setUrl(commonUrl + "_shoppersoncenter" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
-
         CommonButton btn21 = new CommonButton();
-        btn21.setName("服务导航");
+        btn21.setName("高速路况");
         btn21.setType("view");
-        btn21.setUrl(commonUrl + "_fuwudaohang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
+        btn21.setUrl("https://gst.u-road.com/gst_wechat/HighSpeedTraffic/expresswayGlance?wxid=gh_f8c30bae42ad");
 
         CommonButton btn22 = new CommonButton();
         btn22.setName("违章查询");
         btn22.setType("view");
-        btn22.setUrl("http://weizhang.lequ66.top/?pc");
+        btn22.setUrl("http://sd.122.gov.cn/views/inquiry.html?q=j");
+
+        CommonButton btn23 = new CommonButton();
+        btn23.setName("附近路况");
+        btn23.setType("view");
+        btn23.setUrl("https://gst.u-road.com/gst_wechat/HighSpeedTraffic/trafficOfNear?wxid=gh_f8c30bae42ad");
+
+        //高速路况        https://gst.u-road.com/gst_wechat/HighSpeedTraffic/expresswayGlance?wxid=gh_f8c30bae42ad
+        //违章查询   http://sd.122.gov.cn/views/inquiry.html?q=j
+        //附近路况  https://gst.u-road.com/gst_wechat/HighSpeedTraffic/trafficOfNear?wxid=gh_f8c30bae42ad
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
         mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14});
 
         ComplexButton mainBtn2 = new ComplexButton();
-        mainBtn2.setName("服务导航");
-        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22 });
+        mainBtn2.setName("服务");
+        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn23});
 
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2});
@@ -199,20 +225,22 @@ public class MenuUtil {
      */
     public Menu getYiLuBangmenu(String appid, String code) {
         String commonUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?"
-                + "appid=wx91ee3b29615c49c7&redirect_uri=http://wx.pre.duduchewang.cn/oauthLoginServlet?lmcode=FL000";
+                + "appid=wxd42683342ffb5ae9&redirect_uri=http://wx.pre.duduchewang.cn/oauthLoginServlet?lmcode=FL000";
+
+//        1、我的卡包  2、爱车健康指数 3、添加卡券 4、个人中心 5、退出账号
 
         CommonButton btn11 = new CommonButton();
-        btn11.setName("联盟卡包");
+        btn11.setName("我的卡包");
         btn11.setType("view");
         btn11.setUrl(commonUrl + "_lmkInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn12 = new CommonButton();
-        btn12.setName("车辆健康指数");
+        btn12.setName("爱车健康指数");
         btn12.setType("view");
         btn12.setUrl(commonUrl + "_AHIInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn13 = new CommonButton();
-        btn13.setName("服务客服");
+        btn13.setName("添加卡券");
         btn13.setType("view");
         btn13.setUrl("http://kefu6.kuaishang.cn/bs/im.htm?cas=56463___619761&fi=58696&ism=1");
 
@@ -221,27 +249,41 @@ public class MenuUtil {
         btn14.setType("view");
         btn14.setUrl(commonUrl + "_personalCenter" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
+        CommonButton btn15 = new CommonButton();
+        btn15.setName("退出账号");
+        btn15.setType("view");
+        btn15.setUrl(commonUrl + "_logout" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+//        1、在线客服  2、服务导航  3、一键洗车 4、一键车漆  5、一键救援
 
         CommonButton btn21 = new CommonButton();
-        btn21.setName("联盟介绍");
+        btn21.setName("在线客服");
         btn21.setType("view");
-        btn21.setUrl(commonUrl + "_lianMengJieShao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn21.setUrl("http://kefu6.kuaishang.cn/bs/im.htm?cas=56463___619761&fi=58696&ism=1");
 
+        CommonButton btn22 = new CommonButton();
+        btn22.setName("服务导航");
+        btn22.setType("view");
+        btn22.setUrl(commonUrl + "_fuwudaohang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn23 = new CommonButton();
-        btn23.setName("服务导航");
+        btn23.setName("一键洗车");
         btn23.setType("view");
-        btn23.setUrl(commonUrl + "_fuwudaohang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn23.setUrl("http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?shopcode=FL000"
+                + "&shopType_appoint=xc&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4");
 
         CommonButton btn24 = new CommonButton();
-        btn24.setName("一键洗车");
+        btn24.setName("一键油漆");
         btn24.setType("view");
         btn24.setUrl("http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?shopcode=FL000"
                 + "&shopType_appoint=xc&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4");
+
         CommonButton btn25 = new CommonButton();
         btn25.setName("一键救援");
         btn25.setType("view");
         btn25.setUrl("http://wx-c.auto-sos.net/?sos_cid=791&sos_sig=5rHgU1");
+
+//        1、养车百科  2、优惠促销  3、老工通知 4、老工商城   5、老工分佣
 
         CommonButton btn31 = new CommonButton();
         btn31.setName("养车百科");
@@ -253,23 +295,32 @@ public class MenuUtil {
         btn32.setType("view");
         btn32.setUrl(commonUrl + "_lianMengActivity" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
-        CommonButton btn34 = new CommonButton();
-        btn34.setName("退出账号");
-        btn34.setType("view");
-        btn34.setUrl(commonUrl + "_logout" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        CommonButton btn33 = new CommonButton();
+        btn33.setName("老工通知");
+        btn33.setType("view");
+        btn33.setUrl(commonUrl + "_YCInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
+        CommonButton btn34 = new CommonButton();
+        btn34.setName("老工商城");
+        btn34.setType("view");
+        btn34.setUrl("http://301.jnfpsm.com/api/unc2mdcbpb/shop/");
+
+        CommonButton btn35 = new CommonButton();
+        btn35.setName("老工分佣");
+        btn35.setType("view");
+        btn35.setUrl("http://301.jnfpsm.com/api/unc2mdcbpb/shop/distribute/join/?wxref=mp.weixin.qq.com");
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
-        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14});
+        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn14, btn15});
 
         ComplexButton mainBtn2 = new ComplexButton();
         mainBtn2.setName("服务");
-        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn23, btn24, btn25});
+        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn25});
 
         ComplexButton mainBtn3 = new ComplexButton();
-        mainBtn3.setName("活动");
-        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn34});
+        mainBtn3.setName("老工养车坊");
+        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn35});
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});
         return menu;
