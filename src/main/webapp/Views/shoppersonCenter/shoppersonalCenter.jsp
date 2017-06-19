@@ -23,7 +23,7 @@
 	<body>
 		<%--网页加载效果--%>
 		<div id="loading">
-			<img src="/files/loading.gif"  alt="loading.." />
+			<img src="/files/loading2.gif"  alt="loading.." />
 		</div>
 		<input type="hidden" value="<%=shopcode%>" class="shopCode">
 		<!--top-------------------------------------------------车牌号-->

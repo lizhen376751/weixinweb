@@ -17,7 +17,7 @@
 <body>
 <%--网页加载效果--%>
 <div id="loading">
-    <img src="/files/loading.gif"  alt="loading.." />
+    <img src="/files/loading2.gif"  alt="loading.." />
 </div>
 <div class="wrap">
     <!-----------------------------------------------------------------------------------头部信息，包括是否报价-->

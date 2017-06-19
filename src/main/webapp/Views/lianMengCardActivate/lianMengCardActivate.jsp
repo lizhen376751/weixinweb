@@ -16,7 +16,7 @@
 	<body>
 	<%--网页加载效果--%>
 	<div id="loading">
-		<img src="/files/loading.gif"  alt="loading.." />
+		<img src="/files/loading2.gif"  alt="loading.." />
 	</div>
 		<!---------------------------------------------------------------------------------头部logo-->
 		<div class="logo">

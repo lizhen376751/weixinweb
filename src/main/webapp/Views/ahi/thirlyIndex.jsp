@@ -54,7 +54,7 @@
 <body>
 <%--网页加载效果--%>
   <div id="loading">
-        <img src="/files/loading.gif"  alt="loading.." />
+        <img src="/files/loading2.gif"  alt="loading.." />
   </div>
   <div class="contermain" >
         <p class="goback" onclick="goback()"><img src="/files/fanhui.png"><span>返回</span></p>

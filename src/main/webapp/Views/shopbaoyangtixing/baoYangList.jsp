@@ -22,7 +22,7 @@
 <input type="hidden" name="pageNo" id="pageNo" value="1"/>
 <%--ÍøÒ³¼ÓÔØÐ§¹û--%>
 <div id="loading">
-	<img src="/files/loading.gif"  alt="loading.." />
+	<img src="/files/loading2.gif"  alt="loading.." />
 </div>
 <div class="secretarylist1">
 	<div id="wrapper">

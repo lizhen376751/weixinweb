@@ -8,9 +8,14 @@
     <title>怡人怡车</title>
     <link rel="stylesheet" type="text/css" href="/styles/weixinfenxiang/css/share.css"/>
 	<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/scripts/main.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/scripts/weixinfenxiang/js/share.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
+<%--网页加载效果--%>
+<div id="loading">
+	<img src="/files/loading2.gif"  alt="loading.." />
+</div>
 	<div class="zhezhao">		
 		   <img class="zsimg" src=""/>
     </div>

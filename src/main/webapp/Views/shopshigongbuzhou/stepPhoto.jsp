@@ -13,9 +13,13 @@
     <link rel="stylesheet" type="text/css" href="/styles/shopshigongbuzhou/css/stepPhoto.css"/>
     <!--引入JS-->
     <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/main.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/shopshigongbuzhou/js/stepPhoto.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
+<div id="loading">
+    <img src="/files/loading2.gif"  alt="loading.." />
+</div>
 <input type="hidden" name="plateNumber" id="plateNumber" value=${plateNumber} >
 <input type="hidden" name="shopCode" id="shopCode" value=${shopCode} >
 <input type="hidden" name="wxpingzheng"   id="wxpingzheng" value=${wxpingzheng} />

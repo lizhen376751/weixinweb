@@ -224,7 +224,7 @@
 <!-- Swiper -->
 <%--网页加载效果--%>
 <div id="loading">
-    <img src="/files/loading.gif"  alt="loading.." />
+    <img src="/files/loading2.gif"  alt="loading.." />
 </div>
 <div class="swiper-container" >
     <div class="swiper-button-next"></div>  <!--下一页按钮-->

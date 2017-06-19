@@ -12,9 +12,13 @@
     <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="/scripts/iscroll.js"></script>
     <script type="text/javascript" src="/scripts/pullToRefresh.js"></script>
+    <script src="/scripts/main.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/shopxiaofeijilu/js/xiaoFeiJiLu.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
+<div id="loading">
+    <img src="/files/loading2.gif"  alt="loading.." />
+</div>
 <div id="wrapper">
     <ul style="height: 100%;">
         <%--<li>--%>
