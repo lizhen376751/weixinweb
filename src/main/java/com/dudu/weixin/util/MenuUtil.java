@@ -104,6 +104,10 @@ public class MenuUtil {
         btn32.setType("view");
         btn32.setUrl(commonUrl + "_lianMengActivity" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
+        CommonButton btn33 = new CommonButton();
+        btn33.setName("老工商城");
+        btn33.setType("view");
+        btn33.setUrl("http://301.jnfpsm.com/api/unc2mdcbpb/shop/");
 
         CommonButton btn34 = new CommonButton();
         btn34.setName("退出账号");
@@ -121,7 +125,7 @@ public class MenuUtil {
 
         ComplexButton mainBtn3 = new ComplexButton();
         mainBtn3.setName("活动");
-        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn34});
+        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn33, btn34});
 
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});
@@ -158,7 +162,7 @@ public class MenuUtil {
         btn11.setUrl(commonUrl + "_xiaofeijilu" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn12 = new CommonButton();
-        btn12.setName("AHI指数");
+        btn12.setName("健康指数");
         btn12.setType("view");
         btn12.setUrl(commonUrl + "_AHIInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
