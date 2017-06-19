@@ -142,8 +142,8 @@ body{
 	margin: 0.38rem 0 0 0.64rem;
 	color: #fff;
 }
-.cards ul li .cards_title{
-	width: 2.22rem;
+.cards ul li .cards_title1{
+	width: 2.8rem;
 	max-width: 166px;
 	height: 0.68rem;
 	max-height: 68px;
@@ -155,18 +155,20 @@ body{
 	margin: 0.38rem 0 0 0.64rem;
 	color: #fff;
 }
-.cards ul li .cards_details{
-	width: 2.22rem;
+.cards ul li .cards_details1{
+	width: 2.8rem;
 	max-width: 166px;
 	height: 0.68rem;
 	max-height: 68px;
-	background: #57b6ff;
+	/*background: #57b6ff;*/
 	border-radius: 0.12rem;
 	text-align: center;
 	line-height: 0.7rem;
 	float: left;
 	margin: 0.38rem 0 0 0.64rem;
-	color: #fff;
+	color: #ccc;
+	overflow: hidden;
+
 }
 .cards ul li .cards_right{
 	float: right;
@@ -290,7 +292,18 @@ body{
 .vouchers{
 	overflow: hidden;
 }
-
+.mingxi{
+	background: #57b6ff;
+	color: #fff;
+	text-align: center;
+	display: block;
+	width: 2rem;
+	height: 0.68rem;
+	margin: 0.38rem auto;
+	border-radius: 0.2rem;
+	text-decoration: none;
+	line-height: 0.68rem;
+}
 
 
 
