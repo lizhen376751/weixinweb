@@ -49,50 +49,56 @@ public class MenuUtil {
 //        wx.pre.duduchewang.cn 预生产
         String commonUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?"
                 + "appid=" + appid + "&redirect_uri=http://" + url + "/oauthLoginServlet?lmcode=" + code;
+
         CommonButton btn11 = new CommonButton();
-        btn11.setName("联盟卡包");
+        btn11.setName("我的卡包");
         btn11.setType("view");
         btn11.setUrl(commonUrl + "_lmkInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn12 = new CommonButton();
-        btn12.setName("爱车健康指数");
+        btn12.setName("健康指数");
         btn12.setType("view");
         btn12.setUrl(commonUrl + "_AHIInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
-        CommonButton btn15 = new CommonButton();
-        btn15.setName("个人中心");
-        btn15.setType("view");
-        btn15.setUrl(commonUrl + "_personalCenter" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        CommonButton btn13 = new CommonButton();
+        btn13.setName("车险投保");
+        btn13.setType("view");
+        btn13.setUrl(commonUrl + "_cheXianTouBao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
+        CommonButton btn14 = new CommonButton();
+        btn14.setName("个人中心");
+        btn14.setType("view");
+        btn14.setUrl(commonUrl + "_personalCenter" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+        CommonButton btn15 = new CommonButton();
+        btn15.setName("退出账号");
+        btn15.setType("view");
+        btn15.setUrl(commonUrl + "_logout" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn21 = new CommonButton();
-        btn21.setName("联盟介绍");
+        btn21.setName("服务导航");
         btn21.setType("view");
-        btn21.setUrl(commonUrl + "_lianMengJieShao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
+        btn21.setUrl(commonUrl + "_fuwudaohang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn22 = new CommonButton();
         btn22.setName("一键洗车");
         btn22.setType("view");
         btn22.setUrl(commonUrl + "_fuwudaohangXC" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
-
         CommonButton btn23 = new CommonButton();
         btn23.setName("一键油漆");
         btn23.setType("view");
         btn23.setUrl(commonUrl + "_fuwudaohangYQ" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
-
         CommonButton btn24 = new CommonButton();
-        btn24.setName("车险投保");
+        btn24.setName("高速路况");
         btn24.setType("view");
-        btn24.setUrl(commonUrl + "_cheXianTouBao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
+        btn24.setUrl("https://gst.u-road.com/gst_wechat/HighSpeedTraffic/expresswayGlance?wxid=gh_f8c30bae42ad");
 
         CommonButton btn25 = new CommonButton();
-        btn25.setName("服务导航");
+        btn25.setName("附近路况");
         btn25.setType("view");
-        btn25.setUrl(commonUrl + "_fuwudaohang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn25.setUrl("https://gst.u-road.com/gst_wechat/HighSpeedTraffic/trafficOfNear?wxid=gh_f8c30bae42ad");
 
         CommonButton btn31 = new CommonButton();
         btn31.setName("养车百科");
@@ -105,27 +111,22 @@ public class MenuUtil {
         btn32.setUrl(commonUrl + "_lianMengActivity" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn33 = new CommonButton();
-        btn33.setName("老工商城");
+        btn33.setName("联盟介绍");
         btn33.setType("view");
-        btn33.setUrl("http://301.jnfpsm.com/api/unc2mdcbpb/shop/");
-
-        CommonButton btn34 = new CommonButton();
-        btn34.setName("退出账号");
-        btn34.setType("view");
-        btn34.setUrl(commonUrl + "_logout" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn33.setUrl(commonUrl + "_lianMengJieShao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
-        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn15});
+        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14, btn15});
 
         ComplexButton mainBtn2 = new ComplexButton();
-        mainBtn2.setName("服务");
+        mainBtn2.setName("服务导航");
         mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn23, btn24, btn25});
 
         ComplexButton mainBtn3 = new ComplexButton();
-        mainBtn3.setName("活动");
-        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn33, btn34});
+        mainBtn3.setName("优惠促销");
+        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn33});
 
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});

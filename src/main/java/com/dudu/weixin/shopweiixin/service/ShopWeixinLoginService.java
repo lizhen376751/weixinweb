@@ -60,6 +60,7 @@ public class ShopWeixinLoginService {
      * @return 0提示用户名或者密码错误, 返回1表示登录成功, 返回2网络错误提示客户重新登录
      */
     public String checklogin(String shopcode, HttpServletRequest request) {
+        String fellback = "";
         String plateNumber = request.getParameter("platenumber").toUpperCase(); //车牌号
         String password = request.getParameter("password"); //密码
 
@@ -78,26 +79,14 @@ public class ShopWeixinLoginService {
             if (null != userPass && !"".equals(userPass)) {
                 //如果密码相等,登录成功
                 if (userPass.equals(password)) {
-                    //获取用户的openid,看是否与之前登录的一致,如果不一致,换成当前登录的openid,openid为空同样保存数据
-                    String openId1 = shopWeixinUser.getOpenId();
-                    shopWeixinUser.setOpenId(openId1);
-                    shopWeixinUser.setNickname(nickname);
-                    if (null != openId1 && !"".equals(openId1) && !"null".equals(openId1)) {
-                        //如果两个openid不相同
-                        if (!openId1.equals(openId)) {
-                            apiShopWeixinUser.updateShopWeixinUser(shopWeixinUser);
-                        }
-                    } else {
-                        apiShopWeixinUser.updateShopWeixinUser(shopWeixinUser);
-                    }
                     //返回1表示登录成功,增加登录记录
                     Integer integer = logInLogService.addLogInLog(plateNumber, shopcode, openId, nickname);
                     String s = successORerror(integer, shopcode, plateNumber, request);
-                    return s;
+                    fellback = s;
 
                 } else {
                     //提示用户名或者密码错误
-                    return "0";
+                    fellback = "0";
                 }
             } else {
                 //密码为空,判断手机号与密码是否相等
@@ -105,12 +94,25 @@ public class ShopWeixinLoginService {
                     //返回1表示登录成功,增加登录记录
                     Integer integer = logInLogService.addLogInLog(plateNumber, shopcode, openId, nickname);
                     String s = successORerror(integer, shopcode, plateNumber, request);
-                    return s;
+                    fellback = s;
                 } else {
                     //提示用户名或者密码错误
-                    return "0";
+                    fellback = "0";
                 }
             }
+            //获取用户的openid,看是否与之前登录的一致,如果不一致,换成当前登录的openid,openid为空同样保存数据
+            String openId1 = shopWeixinUser.getOpenId();
+            shopWeixinUser.setOpenId(openId1);
+            shopWeixinUser.setNickname(nickname);
+            if (null != openId1 && !"".equals(openId1) && !"null".equals(openId1)) {
+                //如果两个openid不相同
+                if (!openId1.equals(openId)) {
+                    apiShopWeixinUser.updateShopWeixinUser(shopWeixinUser);
+                }
+            } else {
+                apiShopWeixinUser.updateShopWeixinUser(shopWeixinUser);
+            }
+
         } else {
             //店管家的客户中心查询是否有此用户
             List<CustomerInfo> customerInfos = this.queryCustomerList(shopcode, plateNumber, password);
@@ -122,14 +124,14 @@ public class ShopWeixinLoginService {
                 Integer integer1 = logInLogService.addLogInLog(plateNumber, shopcode, openId, nickname);
                 //如果数据小于0则没有保存成功,返回2提示客户重新登录
                 String s = successORerror(integer, shopcode, plateNumber, request);
-                return s;
+                fellback = s;
             } else {
                 //没有此用户提示用户名或者密码错误
-                return "0";
+                fellback = "0";
             }
 
-
         }
+        return fellback;
     }
 
     /**
