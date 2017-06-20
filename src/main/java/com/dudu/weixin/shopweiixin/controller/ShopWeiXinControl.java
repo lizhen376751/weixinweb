@@ -1,5 +1,6 @@
 package com.dudu.weixin.shopweiixin.controller;
 
+import com.dudu.weixin.service.LogInLogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,11 @@ public class ShopWeiXinControl {
      */
     @Autowired
     private HttpSession httpSession;
-
+    /**
+     * 登录服务
+     */
+    @Autowired
+    private LogInLogService logInLogService;
     /**
      * 所有店管家微信菜单的页面的跳转
      *
@@ -49,10 +54,6 @@ public class ShopWeiXinControl {
             return "/shopbaoyangtixing/baoYangList.jsp"; //保养提醒
         } else if ("shoppersoncenter".equals(flagStr)) {
             return "/shoppersonCenter/shoppersonalCenter.jsp"; //个人中心
-        } else if ("xialajiazai".equals(flagStr)) {
-            return "/fenye.jsp"; //下拉加载
-        } else if ("fuwudaohang".equals(flagStr)) {
-            return "/fuwudaohang.jsp"; //服务导航
         }
         return null;
     }
@@ -66,10 +67,15 @@ public class ShopWeiXinControl {
      */
     @RequestMapping(value = "shopweixinServlet", method = RequestMethod.GET)
     public String shopWeiXinPageJump(HttpServletRequest request, Model model) {
+        String openId = (String) httpSession.getAttribute("openId");
         String plateNumber = (String) httpSession.getAttribute("plateNumber");
         String serviceType = request.getParameter("serviceType");
         if ("login".equals(serviceType)) { //登录页面
             return "/shoplogin/shoplogin.jsp";
+        } else if ("signout".equals(serviceType)) { //退出账号
+            logInLogService.deleLogInLog(openId);
+            httpSession.setAttribute("plateNumber", null);
+            return  "/shoplogin/shoplogin.jsp";
         } else if ("shigongbuzhou".equals(serviceType)) { //施工步骤
             String shopCode = request.getParameter("shopCode"); //店铺编码
             String wxpingzheng = request.getParameter("wxpingzheng"); //维修单号

@@ -577,6 +577,9 @@ $(document).ready(function () {
     //     e.preventDefault(); //遮罩层出现后禁止body滑动
     //     return false
     // });
+    button_bar.on("click",function () {
+        window.location.href = "/shopweixinServlet?serviceType=signout";
+    })
 })
 function projectCardMX(a,b,c) {
     window.location.href="/shopweixinServlet?serviceType=projectCardMX&cardNumb="+a+"&shopCode="+b+"&customerId="+c;

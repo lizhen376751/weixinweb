@@ -239,14 +239,14 @@ public class MenuUtil {
         btn11.setUrl(commonUrl + "_lmkInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn12 = new CommonButton();
-        btn12.setName("爱车健康指数");
+        btn12.setName("健康指数");
         btn12.setType("view");
         btn12.setUrl(commonUrl + "_AHIInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn13 = new CommonButton();
         btn13.setName("添加卡券");
         btn13.setType("view");
-        btn13.setUrl("http://kefu6.kuaishang.cn/bs/im.htm?cas=56463___619761&fi=58696&ism=1");
+        btn13.setUrl(commonUrl + "_lianMengCardActivate" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn14 = new CommonButton();
         btn14.setName("个人中心");
@@ -273,14 +273,12 @@ public class MenuUtil {
         CommonButton btn23 = new CommonButton();
         btn23.setName("一键洗车");
         btn23.setType("view");
-        btn23.setUrl("http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?shopcode=FL000"
-                + "&shopType_appoint=xc&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4");
+        btn23.setUrl(commonUrl + "_fuwudaohangXC" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn24 = new CommonButton();
         btn24.setName("一键油漆");
         btn24.setType("view");
-        btn24.setUrl("http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?shopcode=FL000"
-                + "&shopType_appoint=xc&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4");
+        btn24.setUrl(commonUrl + "_fuwudaohangYQ" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn25 = new CommonButton();
         btn25.setName("一键救援");
@@ -316,14 +314,14 @@ public class MenuUtil {
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
-        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn14, btn15});
+        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14, btn15});
 
         ComplexButton mainBtn2 = new ComplexButton();
         mainBtn2.setName("服务");
-        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn25});
+        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn23, btn24, btn25});
 
         ComplexButton mainBtn3 = new ComplexButton();
-        mainBtn3.setName("老工养车坊");
+        mainBtn3.setName("老工养车");
         mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn35});
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});
