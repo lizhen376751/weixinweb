@@ -120,13 +120,9 @@ public class ShopWeiXinAjax {
         String shopcode = (String) httpSession.getAttribute("shopcode");
         String plateNumber = (String) httpSession.getAttribute("plateNumber");
         String businessType = request.getParameter("businessType");
-        if ("xialajiazai".equals(businessType)) { //TODO 下拉加载页面
-            String page = request.getParameter("page");
-            log.info("分页查询出来的数据为===========================================" + page);
-            return shopBaoYangTiXing.queryBaoYangTiXing(shopcode, plateNumber);
-        } else if ("xiaofeijilu".equals(businessType)) { //消费记录页面
+       if ("xiaofeijilu".equals(businessType)) { //消费记录页面
             return shopXiaoFeiJiLu.queryXiaoFeiJiLu(shopcode, plateNumber);
-        } else if ("shoppersoncenter".equals(businessType)) { //个人中心
+        } else if ("shoppersoncenter".equals(businessType)) { //个人中心(用于查询车辆品牌型号)
             return shopPersonCenterService.personcenter(request, plateNumber, shopcode);
         }
         return null;

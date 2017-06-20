@@ -34,6 +34,7 @@ public class ShopWeiXinControl {
      */
     @Autowired
     private LogInLogService logInLogService;
+
     /**
      * 所有店管家微信菜单的页面的跳转
      *
@@ -75,15 +76,12 @@ public class ShopWeiXinControl {
         } else if ("signout".equals(serviceType)) { //退出账号
             logInLogService.deleLogInLog(openId);
             httpSession.setAttribute("plateNumber", null);
-            return  "/shoplogin/shoplogin.jsp";
+            return "/shoplogin/shoplogin.jsp";
         } else if ("shigongbuzhou".equals(serviceType)) { //施工步骤
-            String shopCode = request.getParameter("shopCode"); //店铺编码
-            String wxpingzheng = request.getParameter("wxpingzheng"); //维修单号
-            String xunumber = request.getParameter("xu_number"); //项目字符串
             model.addAttribute("plateNumber", plateNumber);
-            model.addAttribute("shopCode", shopCode);
-            model.addAttribute("wxpingzheng", wxpingzheng);
-            model.addAttribute("xunumber", xunumber);
+            model.addAttribute("shopCode", request.getParameter("shopCode")); //店铺编码
+            model.addAttribute("wxpingzheng", request.getParameter("wxpingzheng")); //维修单号
+            model.addAttribute("xunumber", request.getParameter("xu_number")); //项目字符串
             return "/shopshigongbuzhou/stepPhoto.jsp";
         } else if ("biaozhunliucheng".equals(serviceType)) { //标准流程查看
             String itemCode = request.getParameter("itemCode"); //项目编码
@@ -93,29 +91,20 @@ public class ShopWeiXinControl {
             return "/shopshigongbuzhou/standardProcesses.jsp";
         } else if ("AHIInfo".equals(serviceType)) {
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
-        } else if ("AHIInfo".equals(serviceType)) {
-            //TODO 登录在成功之后暂时跳转至ahi,后期换成个人中心
-            return "/ahi/AHIxiangqing.jsp"; //AHI指数
         } else if ("projectCardMX".equals(serviceType)) {
-            String cardNumb = request.getParameter("cardNumb");
-            String shopCode = request.getParameter("shopCode");
-            String customerId = request.getParameter("customerId");
             model.addAttribute("plateNumber", plateNumber);
-            model.addAttribute("cardNumb", cardNumb);
-            model.addAttribute("shopCode", shopCode);
-            model.addAttribute("customerId", customerId);
-            return "/shoppersonCenter/projectCardMX.jsp";
+            model.addAttribute("cardNumb", request.getParameter("cardNumb"));
+            model.addAttribute("shopCode", request.getParameter("shopCode"));
+            model.addAttribute("customerId", request.getParameter("customerId"));
+            return "/shoppersonCenter/projectCardMX.jsp"; //个人中心的项目明细页面
         } else if ("rechargeableCardMX".equals(serviceType)) {
-            String cardNumb = request.getParameter("cardNumb");
-            String shopCode = request.getParameter("shopCode");
-            String customerId = request.getParameter("customerId");
             model.addAttribute("plateNumber", plateNumber);
-            model.addAttribute("cardNumb", cardNumb);
-            model.addAttribute("shopCode", shopCode);
-            model.addAttribute("customerId", customerId);
-            return "/shoppersonCenter/rechargeableCardMX.jsp";
+            model.addAttribute("cardNumb", request.getParameter("cardNumb"));
+            model.addAttribute("shopCode", request.getParameter("shopCode"));
+            model.addAttribute("customerId", request.getParameter("customerId"));
+            return "/shoppersonCenter/rechargeableCardMX.jsp"; //个人中心充值卡明细页面
         } else if ("shoppersoncenter".equals(serviceType)) {
-            return "/shoppersonCenter/shoppersonalCenter.jsp";
+            return "/shoppersonCenter/shoppersonalCenter.jsp"; //内部跳转至个人中心页面
         }
         return null;
     }

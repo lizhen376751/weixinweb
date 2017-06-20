@@ -143,9 +143,9 @@ $(document).ready(function () {
                             ty.show();
                             tyt.show();
                         }else if (jsonData == "1"){
-                            window.location.href = "/shopweixinServlet?serviceType=AHIInfo";  //TODO 登录成功默认跳转至个人中心
+                            window.location.href = "/shopweixinServlet?serviceType=shoppersoncenter";
                         }else if (jsonData == "2"){
-                            // window.location.href = "/oauthLoginServlet?flagStr=personalCenter";  //网络错误
+                            window.location.href = "/shopweixinServlet?serviceType=login";  //网络错误
                         }
 
 

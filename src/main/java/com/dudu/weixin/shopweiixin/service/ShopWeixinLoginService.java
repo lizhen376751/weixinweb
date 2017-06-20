@@ -48,6 +48,11 @@ public class ShopWeixinLoginService {
      */
     @Autowired
     private LogInLogService logInLogService;
+    /**
+     * 引入店管家微信用户接口
+     */
+    @Reference
+    private ApiShopWeixinUser apiShopWeixinUser;
 
     /**
      * @param shopcode 店铺编码
@@ -73,6 +78,18 @@ public class ShopWeixinLoginService {
             if (null != userPass && !"".equals(userPass)) {
                 //如果密码相等,登录成功
                 if (userPass.equals(password)) {
+                    //获取用户的openid,看是否与之前登录的一致,如果不一致,换成当前登录的openid,openid为空同样保存数据
+                    String openId1 = shopWeixinUser.getOpenId();
+                    shopWeixinUser.setOpenId(openId1);
+                    shopWeixinUser.setNickname(nickname);
+                    if (null != openId1 && !"".equals(openId1) && !"null".equals(openId1)) {
+                        //如果两个openid不相同
+                        if (!openId1.equals(openId)) {
+                            apiShopWeixinUser.updateShopWeixinUser(shopWeixinUser);
+                        }
+                    } else {
+                        apiShopWeixinUser.updateShopWeixinUser(shopWeixinUser);
+                    }
                     //返回1表示登录成功,增加登录记录
                     Integer integer = logInLogService.addLogInLog(plateNumber, shopcode, openId, nickname);
                     String s = successORerror(integer, shopcode, plateNumber, request);
