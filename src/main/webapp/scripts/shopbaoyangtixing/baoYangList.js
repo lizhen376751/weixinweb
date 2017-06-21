@@ -52,7 +52,16 @@ $(document).ready(function () {
                     } else {
                         flaghtml += "<span class='by_bgcolorpt by_width'>普通</span>";
                     }
-                    var data = dateFormat(json.rows[ii].customerDemandDateBegin)
+                    var data = dateFormat(json.rows[ii].customerDemandDateBegin);
+                    //判断保养类型是否为null
+                    var bylx = "";
+                    if(json.rows[ii].demandTypeName == null || json.rows[ii].demandTypeName == "" || json.rows[ii].demandTypeName == "null"){
+                        bylx = "汽车保养";
+                    }else{
+                        bylx =  json.rows[ii].demandTypeName;
+                    }
+
+
                     html += "<li>" +
                         "<div class='by_center by_top'>" +
                         "<span class='by_date font_2'>" + data + "</span>" +
@@ -61,7 +70,7 @@ $(document).ready(function () {
                         "<div class='middle by_cenulcolor'>"+
                         "<div class='left font_1 blue'>保养类型：</div>"+
                         "<div class='right font_1'>"+
-                        "<span class='txt'>"+json.rows[ii].demandTypeName+"</span>"+
+                        "<span class='txt'>"+bylx+"</span>"+
                         "</div>"+
                         "</div>"+
                         "<div class='middle by_cenulcolor'>"+

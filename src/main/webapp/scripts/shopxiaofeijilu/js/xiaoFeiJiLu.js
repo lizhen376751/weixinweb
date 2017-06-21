@@ -170,11 +170,18 @@ $(document).ready(function () {
             }else{
                 pingjia = '<div class="pingjia font_1">去评价</div>'
             }
+            //判断公里数是否为null
+            var gls = "";
+            if(arr[i].resultPurchaseHistory.gongLiShu == null || arr[i].resultPurchaseHistory.gongLiShu == "" || arr[i].resultPurchaseHistory.gongLiShu == "null"){
+                gls = 0;
+            }else{
+                gls =  arr[i].resultPurchaseHistory.gongLiShu;
+            }
             var html = '<li>'+
                          '<div class="detail_1">'+
                              '<div class="top_1 font_2">'+
                                 '<div class="left_11">日期：'+arr[i].resultPurchaseHistory.kprq+ '</div>'+
-                                '<div class="right_11">公里数：'+arr[i].resultPurchaseHistory.gongLiShu+ 'km</div>'+
+                                '<div class="right_11">公里数：'+gls+ 'km</div>'+
                              '</div>'+xfsp+xfxm+
                             '<div class="bottom_1 font_1">'+
                                 '<div>'+
