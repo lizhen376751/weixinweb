@@ -577,6 +577,17 @@ $(document).ready(function () {
     //     e.preventDefault(); //遮罩层出现后禁止body滑动
     //     return false
     // });
+    //车辆健康指数点击按钮
+    jkzs.on("click",function () {
+        window.location.href = "/shopweixinServlet?serviceType=AHIInfo"
+    });
+    //保养提醒按钮点击
+    bytx.on("click",function () {
+        window.location.href = "/shopweixinServlet?serviceType=BaoYangTiXing"
+    });
+
+
+    //退出账号按钮点击
     button_bar.on("click",function () {
         window.location.href = "/shopweixinServlet?serviceType=signout";
     })

@@ -91,6 +91,8 @@ public class ShopWeiXinControl {
             return "/shopshigongbuzhou/standardProcesses.jsp";
         } else if ("AHIInfo".equals(serviceType)) {
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
+        } else if ("BaoYangTiXing".equals(serviceType)) {
+            return "/shopbaoyangtixing/baoYangList.jsp"; //保养提醒
         } else if ("projectCardMX".equals(serviceType)) {
             model.addAttribute("plateNumber", plateNumber);
             model.addAttribute("cardNumb", request.getParameter("cardNumb"));

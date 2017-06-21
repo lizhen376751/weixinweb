@@ -23,7 +23,7 @@ $(document).ready(function () {
         type: 'POST',
         url: "/pagingquery",
         data: {
-            businessType: "xialajiazai",
+            businessType: "baoYangTiXingList",
             page: "1",
             rows: "15"
         },
@@ -93,7 +93,7 @@ $(document).ready(function () {
                 type: 'POST',
                 url: "/pagingquery",
                 data: {
-                    businessType: "xialajiazai",
+                    businessType: "baoYangTiXingList",
                     page: "1",
                     rows: "15"
                 },
@@ -174,7 +174,7 @@ $(document).ready(function () {
                     type: 'POST',
                     url: "/pagingquery",
                     data: {
-                        businessType: "xialajiazai",
+                        businessType: "baoYangTiXingList",
                         page: ""+page+"",
                         rows: "15"
                     },

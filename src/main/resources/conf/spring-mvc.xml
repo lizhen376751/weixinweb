@@ -50,24 +50,24 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/oauthLoginServlet"/>
-            <!-- 联盟微信 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+            <!-- 联盟微信点击菜单按钮进行拦截,判断是否登录 -->
             <bean class="com.dudu.weixin.control.LoginInterceptor"/>
         </mvc:interceptor>
         <mvc:interceptor>
             <mvc:mapping path="/shopweixinMenuServlet"/>
-            <!-- 店管家微信 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+            <!-- 店管家微信 店管家微信菜单进行登录判断 -->
             <bean class="com.dudu.weixin.shopweiixin.controller.ShopWeixinInterceptor"/>
         </mvc:interceptor>
 
         <mvc:interceptor>
             <mvc:mapping path="/pagingquery"/>
-            <!-- 店管家微信 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+            <!-- 店管家微信 店管家分页拦截 -->
             <bean class="com.dudu.weixin.control.PagingQueryInterceptor"/>
         </mvc:interceptor>
 
         <mvc:interceptor>
             <mvc:mapping path="/lmpagingquery"/>
-            <!-- 店管家微信 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+            <!-- 联盟微信 分页拦截 -->
             <bean class="com.dudu.weixin.control.PagingQueryInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

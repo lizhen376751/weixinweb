@@ -95,8 +95,6 @@ public class ShopWeiXinAjax {
             return shopShiGongBuZhou.queryListShiGongBuZhou(request);
         } else if ("biaozhunliucheng".equals(businessType)) { //标准流程查看
             return shopShiGongBuZhou.queryProjectProcess(request);
-        } else if ("baoYangTiXingList".equals(businessType)) { //保养提醒页面
-            return shopBaoYangTiXing.queryBaoYangTiXing(shopcode, plateNumber);
         } else if ("shoppersoncenter".equals(businessType)) { //个人中心
             return shopPersonCenterService.personcenter(request, plateNumber, shopcode);
         } else if ("jssdk".equals(businessType)) { //前端js获取签名
@@ -120,8 +118,10 @@ public class ShopWeiXinAjax {
         String shopcode = (String) httpSession.getAttribute("shopcode");
         String plateNumber = (String) httpSession.getAttribute("plateNumber");
         String businessType = request.getParameter("businessType");
-       if ("xiaofeijilu".equals(businessType)) { //消费记录页面
+        if ("xiaofeijilu".equals(businessType)) { //消费记录页面
             return shopXiaoFeiJiLu.queryXiaoFeiJiLu(shopcode, plateNumber);
+        } else if ("baoYangTiXingList".equals(businessType)) { //保养提醒页面
+            return shopBaoYangTiXing.queryBaoYangTiXing(shopcode, plateNumber);
         } else if ("shoppersoncenter".equals(businessType)) { //个人中心(用于查询车辆品牌型号)
             return shopPersonCenterService.personcenter(request, plateNumber, shopcode);
         }
