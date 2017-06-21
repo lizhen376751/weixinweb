@@ -85,6 +85,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         //微信的openid
         openId = (String) httpSession.getAttribute("openId");
         //判断session里面有没有openId
+
         if (null == openId || openId.equals("")) {
             String code = request.getParameter("code");
             WeiXinConfig weiXinConfig = apiWeiXinConfig.getWeiXinConfig(lmcode);
@@ -116,6 +117,9 @@ public class LoginInterceptor implements HandlerInterceptor {
                         //如果有记录,就获取记录并存入到session
                         httpSession.setAttribute("plateNumber", plateNumber);
                     }
+                } else {
+                    //如果没有openid,或者获取opeid失败.直接跳转至登录页面
+                    request.getRequestDispatcher("/Views/login/login.jsp?lmcode=" + lmcode).forward(request, response);
                 }
 
             }

@@ -201,7 +201,7 @@ public class MenuUtil {
         mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14});
 
         ComplexButton mainBtn2 = new ComplexButton();
-        mainBtn2.setName("服务");
+        mainBtn2.setName("路况查询");
         mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn23});
 
         Menu menu = new Menu();
@@ -230,7 +230,7 @@ public class MenuUtil {
      */
     public Menu getYiLuBangmenu(String appid, String code) {
         String commonUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?"
-                + "appid=wxd42683342ffb5ae9&redirect_uri=http://wx.pre.duduchewang.cn/oauthLoginServlet?lmcode=FL000";
+                + "appid=wx91ee3b29615c49c7&redirect_uri=http://wx.pre.duduchewang.cn/oauthLoginServlet?lmcode=FL000";
 
 //        1、我的卡包  2、爱车健康指数 3、添加卡券 4、个人中心 5、退出账号
 

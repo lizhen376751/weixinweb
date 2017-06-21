@@ -207,12 +207,15 @@ public class AllController {
             return "/cheXianList/cheXianList.jsp"; //车险报价
         } else if ("fuwudaohang".equals(flagStr)) {
             model.addAttribute("shopType_search", "");
+            model.addAttribute("lmcode", lmcode);
             return "/fuwudaohang.jsp"; //服务导航全部店铺
         } else if ("fuwudaohangXC".equals(flagStr)) {
             model.addAttribute("shopType_search", ",洗车,");
+            model.addAttribute("lmcode", lmcode);
             return "/fuwudaohang.jsp"; //服务导航一键洗车
         } else if ("fuwudaohangYQ".equals(flagStr)) {
             model.addAttribute("shopType_search", ",油漆,");
+            model.addAttribute("lmcode", lmcode);
             return "/fuwudaohang.jsp"; //服务导航一键油漆
         }
         return "/login/login.jsp?lmcode=" + lmcode;

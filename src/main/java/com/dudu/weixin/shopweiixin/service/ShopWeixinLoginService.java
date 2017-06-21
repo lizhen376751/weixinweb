@@ -102,7 +102,7 @@ public class ShopWeixinLoginService {
             }
             //获取用户的openid,看是否与之前登录的一致,如果不一致,换成当前登录的openid,openid为空同样保存数据
             String openId1 = shopWeixinUser.getOpenId();
-            shopWeixinUser.setOpenId(openId1);
+            shopWeixinUser.setOpenId(openId);
             shopWeixinUser.setNickname(nickname);
             if (null != openId1 && !"".equals(openId1) && !"null".equals(openId1)) {
                 //如果两个openid不相同

@@ -58,7 +58,8 @@ public class AllTwoController {
     public void preHandle(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String longitude = request.getParameter("latitude");
         String latitude = request.getParameter("longitude");
-        String shopTypesearch = request.getParameter("shopType_search");
+        String shopTypesearch = request.getParameter("shopType_search"); //获取服务导航所要选择的标签
+        String shopCode = request.getParameter("shopCode");
         //对中文进行编码
         shopTypesearch = URLEncoder.encode(shopTypesearch, "utf-8");
         //如果获取地理位置失败,默认一个位置,避免页面出错
@@ -80,7 +81,7 @@ public class AllTwoController {
 //        http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?
 //         shopcode=FL000&latitude=29.910757&longitude=121.59543&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4&shopType_search=,油漆,
         response.sendRedirect("http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?"
-                + "shopcode=FL000&latitude=" + latitude + "&longitude=" + longitude + "&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4&shopType_search=" + shopTypesearch);
+                + "shopcode=" + shopCode + "&latitude=" + latitude + "&longitude=" + longitude + "&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4&shopType_search=" + shopTypesearch);
 
     }
 
