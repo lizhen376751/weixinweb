@@ -186,7 +186,7 @@ $(document).ready(function () {
                                 '<span class="cards_title1">剩余次数</span>'+
                                 '</li>'+xmk_mx+
                                 '<li>'+
-                                '<a href="#" style="background:#57b6ff;color: #fff;text-align: center"  onclick="projectCardMX('+json.projectCardList[i].cardNumb+',\''+shopCode.val()+'\','+khID+')">明细</a>'+
+                                '<a href="#"  class="mingxi" onclick="projectCardMX('+json.projectCardList[i].cardNumb+',\''+shopCode.val()+'\','+khID+')">明细</a>'+
                                 /*'<a href="#" class="mingxi"  onclick="projectCardMX('+json.projectCardList[i].cardNumb+',\'0533001\',28763)">明细</a>'+*/
                                 '</li>'
 
@@ -220,7 +220,7 @@ $(document).ready(function () {
                         '<span class="cards_right">'+json.rechargeableCardList[g].residualAmount+'</span>'+
                         '</li>'+
                         '<li>'+
-                        '<a href="#" style="background:#57b6ff;color: #fff;text-align: center"  onclick="rechargeableCardMX('+json.rechargeableCardList[g].cardNumb+',\''+shopCode.val()+'\','+khID+')">明细</a>'+
+                        '<a href="#" class="mingxi"  onclick="rechargeableCardMX('+json.rechargeableCardList[g].cardNumb+',\''+shopCode.val()+'\','+khID+')">明细</a>'+
                         /*'<a href="#" class="mingxi"  onclick="rechargeableCardMX('+json.rechargeableCardList[g].cardNumb+',\'0533001\',28763)">明细</a>'+*/
                         '</li>'
                 }
