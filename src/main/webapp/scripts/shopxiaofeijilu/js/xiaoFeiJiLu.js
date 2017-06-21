@@ -204,7 +204,7 @@ $(document).ready(function () {
             if(xu_number != null && xu_number != ""){
                 window.location.href="/shopweixinServlet?serviceType=shigongbuzhou&xu_number="+xu_number+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng;
             }else{
-                alert("消费的为商品")
+                alert("商品消费暂无施工步骤")
             }
 
         }
