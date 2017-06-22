@@ -1,8 +1,8 @@
 package com.dudu.weixin.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.dudu.soa.customercenter.customer.api.ApiCusCar;
-import com.dudu.soa.customercenter.customer.module.Car;
+import com.dudu.soa.customercenter.custcar.api.ApiCusCar;
+import com.dudu.soa.customercenter.custcar.model.Car;
 import com.dudu.weixin.mould.PageResult;
 import org.springframework.stereotype.Service;
 

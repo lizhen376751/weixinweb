@@ -90,7 +90,8 @@ public class CoreController extends HttpServlet {
      */
     @RequestMapping(value = "/urlconfig", method = RequestMethod.POST)
     public void doPost(PrintWriter out, HttpServletRequest request, HttpServletResponse response) {
-        log.info("这是post方法！");
+        String lmcode = request.getParameter("lmcode");
+        String shopcode = request.getParameter("shopcode");
         // 将解析结果存储在HashMap中
         Map<String, String> map = new HashMap<String, String>();
         // 从request中取得输入流
@@ -117,6 +118,9 @@ public class CoreController extends HttpServlet {
         for (Element e : elementList) {
             map.put(e.getName(), e.getText());
         }
+        map.put("lmcode", lmcode);
+        map.put("shopcode", shopcode);
+        log.info("店铺编码=====" + shopcode + "===联盟编码=====" + lmcode);
         log.info("接受消息为==========================" + map);
         String receivemessage = apiAllWeiXiRequest.receivemessage(map);
         log.info("发送消息为==========================" + receivemessage);
