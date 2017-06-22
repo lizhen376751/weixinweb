@@ -44,6 +44,7 @@ public class ShopWeiXinControl {
      */
     @RequestMapping(value = "shopweixinMenuServlet", method = RequestMethod.GET)
     public String shopWeiXinMenuPageJump(HttpServletRequest request, Model model) {
+        String openId = (String) httpSession.getAttribute("openId");
         String strWxShopcode = request.getParameter("shopcode");
         String flagStr = strWxShopcode.split("_")[1]; //页面跳转判断
         String shopcode = strWxShopcode.split("_")[0]; //联盟code
@@ -55,6 +56,10 @@ public class ShopWeiXinControl {
             return "/shopbaoyangtixing/baoYangList.jsp"; //保养提醒
         } else if ("shoppersoncenter".equals(flagStr)) {
             return "/shoppersonCenter/shoppersonalCenter.jsp"; //个人中心
+        } else if ("weixinshangcheng".equals(flagStr)) { //微信商城
+            return "redirect:http://www.duduchewang.cn/weixincore_cn/zy.jsp?shopcode=" + shopcode + "&openid=" + openId;
+        } else if ("myOrder".equals(flagStr)) { //微信商城里面我的订单
+            return "redirect:http://www.duduchewang.cn/weixincore_cn/evaluateList.jsp?shopcode=" + shopcode + "&openId=" + openId;
         }
         return null;
     }

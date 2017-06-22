@@ -115,7 +115,6 @@ public class MenuUtil {
         btn33.setType("view");
         btn33.setUrl(commonUrl + "_lianMengJieShao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
-
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
         mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14, btn15});
@@ -196,6 +195,22 @@ public class MenuUtil {
         //违章查询   http://sd.122.gov.cn/views/inquiry.html?q=j
         //附近路况  https://gst.u-road.com/gst_wechat/HighSpeedTraffic/trafficOfNear?wxid=gh_f8c30bae42ad
 
+        CommonButton btn31 = new CommonButton();
+        btn31.setName("微信商城");
+        btn31.setType("view");
+        btn31.setUrl(commonUrl + "_weixinshangcheng" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+
+        CommonButton btn32 = new CommonButton();
+        btn32.setName("我的订单");
+        btn32.setType("view");
+        btn32.setUrl(commonUrl + "_myOrder" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+        CommonButton btn33 = new CommonButton();
+        btn33.setName("最新活动");
+        btn33.setType("view");
+        btn33.setUrl("http://www.duduchewang.com/weixincore/huoDongInfo.jsp?shopcode=" + code);
+
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
         mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14});
@@ -204,8 +219,12 @@ public class MenuUtil {
         mainBtn2.setName("路况查询");
         mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn23});
 
+        ComplexButton mainBtn3 = new ComplexButton();
+        mainBtn3.setName("微信商城");
+        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn33});
+
         Menu menu = new Menu();
-        menu.setButton(new Button[]{mainBtn1, mainBtn2});
+        menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});
         return menu;
     }
 
@@ -306,7 +325,7 @@ public class MenuUtil {
         CommonButton btn34 = new CommonButton();
         btn34.setName("老工商城");
         btn34.setType("view");
-        btn34.setUrl("http://301.jnfpsm.com/api/unc2mdcbpb/shop/");
+        btn34.setUrl("http://www.pt.elubon.com/api/7vlgjqlhg2/shop/");
 
         CommonButton btn35 = new CommonButton();
         btn35.setName("老工分佣");
@@ -323,7 +342,7 @@ public class MenuUtil {
 
         ComplexButton mainBtn3 = new ComplexButton();
         mainBtn3.setName("老工养车");
-        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn35});
+        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn34, btn35});
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});
         return menu;
