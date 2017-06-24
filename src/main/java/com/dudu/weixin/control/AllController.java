@@ -29,7 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/3/17.
+ * 所有微信菜单入口
+ * Created by lizhen on 2017/3/17.
  */
 @Controller
 @RequestMapping("/")
@@ -132,7 +133,7 @@ public class AllController {
             lmcode = strWxShopcode.split("_")[0]; //联盟code
 
         }
-        if (null == lmcode || "".equals(lmcode)) {
+        if (null == lmcode || "".equals(lmcode) || "null".equals(lmcode)) {
             lmcode = (String) httpSession.getAttribute("lmcode");
         }
         String carHaopai = (String) httpSession.getAttribute("plateNumber");

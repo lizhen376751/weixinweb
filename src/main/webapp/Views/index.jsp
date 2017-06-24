@@ -8,7 +8,7 @@
 <html>
 <head>
 
-<meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport"/>
+
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="telephone=no" name="format-detection"/>
@@ -22,14 +22,6 @@
     //登录
     function login() {
         window.location.href = "/shopweixinServlet?serviceType=login";
-    }
-    //aHi
-    function AHIInfo() {
-        window.location.href = "/ahi";
-    }
-    //ahi详情
-    function AHIxiangqing() {
-        window.location.href = "/AHIInfoxiangqing";
     }
     //创建菜单
     function creatMenu() {
@@ -53,20 +45,40 @@
         });
 //        window.location.href = "/createMenu" + a;
     }
-    $("#file").on("change",function(){
-        var file = this.files[0];
-        //判断类型是不是图片
-        if(!/image\/\w+/.test(file.type)){
-            alert("请确保文件为图像类型");
-            return false;
-        }
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function(e){
-            var base64 = this.result; //就是base64
-            console.log(base64)
-        }
+    $(function () {
+        $("#file").on("change",function(){
+            var file = this.files[0];
+            //判断类型是不是图片
+            if(!/image\/\w+/.test(file.type)){
+                alert("请确保文件为图像类型");
+                return false;
+            }
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(e){
+                var base = this.result; //就是base64
+                var n = base.indexOf("base64,");
+                var base64 = base.substring(n+7);
+                $.ajax({
+                    type    : 'POST',
+                    url     : '/getCommonAjax2',
+                    data : {
+                        fromflag : 'drivinglicense',
+                        bodys : base64
+                    },
+                    success:function(jsondata){
+                        var json = JSON.parse(jsondata);
+                        console.log(json);
+                        alert("返回的数据为:=="+json)
+                    },
+                    error:function(eee){
+                        alert("我有点懵,您稍后再试!");
+                    }
+                });
+            }
+        })
     })
+
 </script>
 </head>
 <body>

@@ -53,6 +53,7 @@ public class DrivingLicenseService {
             fellback = EntityUtils.toString(response.getEntity());
         } catch (Exception e) {
             e.printStackTrace();
+            fellback = "上传图片失败!";
         }
         return fellback;
     }
