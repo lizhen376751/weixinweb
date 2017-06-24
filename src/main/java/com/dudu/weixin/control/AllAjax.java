@@ -21,6 +21,7 @@ import com.dudu.weixin.service.BaoYangTiXingService;
 import com.dudu.weixin.service.BuyRecordService;
 import com.dudu.weixin.service.CheXianService;
 import com.dudu.weixin.service.ChexiantoubaoService;
+import com.dudu.weixin.service.DrivingLicenseService;
 import com.dudu.weixin.service.LianMengActivityService;
 import com.dudu.weixin.service.LianMengKaService;
 import com.dudu.weixin.service.LianmengIntroducedService;
@@ -147,8 +148,11 @@ public class AllAjax {
      */
     @Reference
     private ApiWeiXinConfig weiXinConfig;
-
-
+    /**
+     * 引入车险投保的行驶证上传照片
+     */
+    @Autowired
+    private DrivingLicenseService drivingLicenseService;
     /**
      * 需要分页查询的数据
      *
@@ -190,7 +194,7 @@ public class AllAjax {
      * @return Object 返回路径
      */
     @ResponseBody
-    @RequestMapping(value = "getCommonAjax2", method = RequestMethod.POST)
+    @RequestMapping(value = "getCommonAjax2", method = {RequestMethod.POST, RequestMethod.GET})
     public Object commonAjax2(HttpServletRequest request, HttpServletResponse response,
                               @RequestParam(name = "fromflag", required = false) String fromflag,
                               @RequestParam(name = "cardNo", required = false) String cardNo, Model model
@@ -200,6 +204,13 @@ public class AllAjax {
         String openId = (String) httpSession.getAttribute("openId"); //openid
         String lmcode = (String) httpSession.getAttribute("lmcode"); //联盟code
         String nickname = (String) httpSession.getAttribute("nickname"); //微信昵称
+
+        //车险投保行驶证
+        if ("drivinglicense".equals(fromflag)) {
+            String bodys = request.getParameter("bodys");
+            return drivingLicenseService.drivingLicenseService(bodys);
+        }
+
         //前端js获取签名
         if ("jssdk".equals(fromflag)) {
             //从参数中获取前端传过来的url
@@ -210,7 +221,6 @@ public class AllAjax {
             HashMap<String, String> stringStringHashMap = apiAllWeiXiRequest.jsSDKSign(config.getAppid(), config.getAppserect(), url);
             return stringStringHashMap;
         }
-        //个人中心
 
 
         //联盟卡激活
