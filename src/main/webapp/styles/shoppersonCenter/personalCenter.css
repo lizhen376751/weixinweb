@@ -168,6 +168,9 @@ body{
 	margin: 0.38rem 0 0 0.64rem;
 	color: #8d8d8d;
 	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
 }
 .cards ul li .cards_right{
 	float: left;

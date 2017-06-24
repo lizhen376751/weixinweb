@@ -221,7 +221,7 @@ $(document).ready(function () {
                         '</li>'+
                         '<li>'+
                         '<a href="#" class="mingxi"  onclick="rechargeableCardMX('+json.rechargeableCardList[g].cardNumb+',\''+shopCode.val()+'\','+khID+')">明细</a>'+
-                        /*'<a href="#" class="mingxi"  onclick="rechargeableCardMX('+json.rechargeableCardList[g].cardNumb+',\'0533001\',28763)">明细</a>'+*/
+                       /* '<a href="#" class="mingxi"  onclick="rechargeableCardMX(2032,\'0533001\',29628)">明细</a>'+*/
                         '</li>'
                 }
                 czk.append(czk_label)

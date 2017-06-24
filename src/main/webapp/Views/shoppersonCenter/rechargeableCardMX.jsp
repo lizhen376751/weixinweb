@@ -24,7 +24,7 @@
 <div class="box">
     <ul class="font_1">
         <li class="biaoTou">
-            <span class="titles width1">卡号</span>
+            <span class="titles width1">项目名称</span>
             <span class="titles width2">日期</span>
             <span class="titles width3">金额</span>
         </li>

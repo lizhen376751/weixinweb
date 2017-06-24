@@ -32,11 +32,18 @@ $(document).ready(function () {
     function appending (arr) {
         var htmls = "";
         for (var i = 0;i < arr.length;i++) {
-            htmls += '<li class="biaoshen">'+
+            for(var n = 0;n <arr[i].rechargeableCardContentList.length;n++) {
+                htmls += '<li class="biaoshen">'+
+                    '<span class="detals width1">'+arr[i].rechargeableCardContentList[n].itemOrProductName+'</span>'+
+                    '<span class="detals width2">'+dateFormat(arr[i].rechargeableCardContentList[n].transactionTime)+'</span>'+
+                    '<span class="detals width3">￥'+arr[i].rechargeableCardContentList[n].transactionAmount+'</span>'+
+                    '</li>';
+            }
+          /*  htmls += '<li class="biaoshen">'+
                 '<span class="detals width1">'+arr[i].cardNumb+'</span>'+
                 '<span class="detals width2">'+dateFormat(arr[i].transactionTime)+'</span>'+
                 '<span class="detals width3">￥'+arr[i].transactionAmount+'</span>'+
-                '</li>';
+                '</li>';*/
         }
         $("ul").append(htmls);
     }
