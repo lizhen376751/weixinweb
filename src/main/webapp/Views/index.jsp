@@ -53,7 +53,20 @@
         });
 //        window.location.href = "/createMenu" + a;
     }
-
+    $("#file").on("change",function(){
+        var file = this.files[0];
+        //判断类型是不是图片
+        if(!/image\/\w+/.test(file.type)){
+            alert("请确保文件为图像类型");
+            return false;
+        }
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(e){
+            var base64 = this.result; //就是base64
+            console.log(base64)
+        }
+    })
 </script>
 </head>
 <body>
@@ -93,7 +106,7 @@
         </ul>
     </div>
 
-
+    <input type="file" id="file">
 </form>
 </body>
 </html>
