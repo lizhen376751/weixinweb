@@ -11,15 +11,20 @@
     doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document,window);
 $(function(){
+    var plateNumber = $("#plateNumber").val();
+    var customId = $("#customId").val();
+    var wxpingzheng = $("#wxpingzheng").val();
+    var shopCode = $("#shopCode").val();
     //初始加载页面
     $.ajax({
         type    : 'post',
-        url     : '/ossconfig/'+mineShopCode+'/18',
+        url     : '/shopAjax',
         data    : {
-            plateNumber:"${plateNumber}",
-            customId:"${customId}",
-            wxpingzheng:"${wxpingzheng}",
-            shopCode:"${shopCode}"
+            businessType : "shopEvaluateParam",
+            plateNumber:plateNumber,
+            customId:customId,
+            wxpingzheng:wxpingzheng,
+            shopCode:shopCode
         },
         success:function(jsondata){
             var json = JSON.parse(jsondata);
