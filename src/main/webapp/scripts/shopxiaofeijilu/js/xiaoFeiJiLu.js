@@ -205,7 +205,7 @@ $(document).ready(function () {
         var ev = e || window.event;
         var target = ev.target || ev.srcElement;
         //施工步骤按钮
-        if($(target).attr("sgbz").toLowerCase() == "sgbz") {
+        if($(target).attr("sgbz") == "sgbz") {
             var xu_number = $(target).attr("xm_num");
             var shopCode = $(target).attr("shopCode");
             var wxpingzheng = $(target).attr("wxpingzheng");
@@ -217,7 +217,7 @@ $(document).ready(function () {
 
         }
         //去评价按钮
-        if($(target).attr("pingjia").toLowerCase() == "pingjia") {
+        if($(target).attr("pingjia") == "pingjia") {
             var xu_number = $(target).attr("xm_num");
             var shopCode = $(target).attr("shopCode");
             var wxpingzheng = $(target).attr("wxpingzheng");
