@@ -45,39 +45,6 @@
         });
 //        window.location.href = "/createMenu" + a;
     }
-    $(function () {
-        $("#file").on("change",function(){
-            var file = this.files[0];
-            //判断类型是不是图片
-            if(!/image\/\w+/.test(file.type)){
-                alert("请确保文件为图像类型");
-                return false;
-            }
-            var reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = function(e){
-                var base = this.result; //就是base64
-                var n = base.indexOf("base64,");
-                var base64 = base.substring(n+7);
-                $.ajax({
-                    type    : 'POST',
-                    url     : '/getCommonAjax2',
-                    data : {
-                        fromflag : 'drivinglicense',
-                        bodys : base64
-                    },
-                    success:function(jsondata){
-                        var json = JSON.parse(jsondata);
-                        console.log(json);
-                        alert("返回的数据为:=="+json)
-                    },
-                    error:function(eee){
-                        alert("我有点懵,您稍后再试!");
-                    }
-                });
-            }
-        })
-    })
 
 </script>
 </head>
@@ -117,8 +84,6 @@
             <li class="btnli"><input type="button" class="regbtns" value="创建菜单" onclick="creatMenu()"/></li>
         </ul>
     </div>
-
-    <input type="file" id="file">
 </form>
 </body>
 </html>
