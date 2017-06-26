@@ -7,7 +7,67 @@ $(document).ready(function(){
     })
 
 
+    //行驶证识别
+    $("#sbxsz").on("change",function(){
+        var file = this.files[0];
+        //判断类型是不是图片
+        if(!/image\/\w+/.test(file.type)){
+            alert("请确保文件为图像类型");
+            return false;
+        }
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(e){
+            var base = this.result; //就是base64
+            var n = base.indexOf("base64,");
+            var base64 = base.substring(n+7);
+            $.ajax({
+                type    : 'POST',
+                url     : '/getCommonAjax2',
+                data : {
+                    fromflag : 'drivinglicense',
+                    bodys : base64
+                },
+                success:function(jsondata){
+                    console.log(jsondata);
+                    if(jsondata != "kOtherError:Algorithm run failed  - "){
+                        var json1 = JSON.parse(jsondata);
+                        var json2 = JSON.parse(json1);
+                        var json3 = JSON.parse(json2.outputs[0].outputValue.dataValue); //最终数据
+                        console.log(json3);
+                        //车牌号正则
+                        var express = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/;
+                        var result =  express.test(json3.plate_num);
+                        console.log(result);
+                        if(result){
+                            var car_number = $("#car_number");//车牌号
+                            car_number.val(json3.plate_num);
+                            var your_name = $("#your_name"); //用户名
+                            your_name.val(json3.owner);
+                            var daihao = $("#daihao");//车辆代号
+                            daihao.val(json3.vin);
+                            var engine_number = $("#engine_number");//发动机号码
+                            engine_number.val(json3.engine_num);
+                            var registration_date = $("#registration_date");//注册日期
+                            var a = json3.register_date.substring(0,4);
+                            var b = json3.register_date.substring(4,6);
+                            var c = json3.register_date.substring(6,8);//第一个开始位置，第二个是结束位置的下一个位置
+                            registration_date.val(a+"-"+b+"-"+c);
+                        }else{
+                            alert("请选择清晰的行驶证图片")
+                        }
 
+                    }else{
+                        alert("请选择有效行驶证图片")
+                    }
+
+                },
+                error:function(eee){
+                    alert("我有点懵,您稍后再试!");
+                }
+            });
+        }
+    })
 
     var mineShopCode = $("#mineShopCode").val();
     console.log(mineShopCode);

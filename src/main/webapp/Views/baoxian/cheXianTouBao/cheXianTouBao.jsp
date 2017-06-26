@@ -159,7 +159,10 @@
                                 <%--<input type="radio" name="property" value="非营运" checked="checked" style="margin-left: 260px;">非营运--%>
                                 <%--<input type="radio" name="property" value="营运" class="margin_left1"/>营运--%>
                             </li>
+                            <input type="file" capture="camera" id="sbxsz">
+                            <span id="pzsb">行驶证牌照识别</span>
                         </ul>
+
                     </div>
                     <!--保险险种的内容-->
                     <div class="two">

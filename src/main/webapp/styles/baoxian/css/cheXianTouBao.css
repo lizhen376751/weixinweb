@@ -41,6 +41,32 @@
 .kf{
 	width: 100%;
 }
+/*识别行驶证按钮*/
+#sbxsz{
+	display: block;
+	width: 20rem;
+	height: 5rem;
+	position: relative;
+	top: 3rem;
+	left: 50%;
+	margin-left: -10rem;
+	z-index: 22;
+	opacity: 0;
+}
+#pzsb{
+	display: block;
+	width: 20rem;
+	height: 5rem;
+	position: relative;
+	top: -2rem;
+	left: 50%;
+	margin-left: -10rem;
+	text-align: center;
+	line-height: 5rem;
+	background: #ff8d12;
+	color: #fff;
+	border-radius: 1rem;
+}
 /*主体内容样式*/
 #wrap{
 	width: 95.37%;
