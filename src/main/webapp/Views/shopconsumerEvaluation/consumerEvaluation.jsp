@@ -12,9 +12,9 @@
 		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<!-- oss -->
 		<script src="https://www.promisejs.org/polyfills/promise-6.1.0.js"></script>
-		<script type="text/javascript" src="/scripts/shopconsumerEvaluation/oss/aliyun-oss-sdk.js"></script>
-		<script type="text/javascript" src="/scripts/shopconsumerEvaluation/oss/base64.js"></script>
-		<script type="text/javascript" src="/scripts/shopconsumerEvaluation/oss/app.js"></script>
+		<script type="text/javascript" src="/scripts/baoxian/oss/aliyun-oss-sdk.js"></script>
+		<script type="text/javascript" src="/scripts/baoxian/oss/base64.js"></script>
+		<script type="text/javascript" src="/scripts/baoxian/oss/app.js"></script>
 		<script src="/scripts/main.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/scripts/shopconsumerEvaluation/consumerEvaluation.js" type="text/javascript" charset="utf-8"></script>
 	</head>
