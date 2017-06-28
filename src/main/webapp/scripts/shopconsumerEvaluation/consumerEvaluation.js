@@ -74,25 +74,22 @@ $(function(){
             '<textarea class="font_4" rows="4" maxlength="110" placeholder="评论：本店的服务满足您的期待吗？请评价一下我们的优点和不足的地方吧!（满足15个字才是 好同志哦！）"></textarea>'+
             '<ul>'+
             '<li class="margin_r">'+
-            '<input type="file" class="project_file" mxid="'+classes+'"/>'+
+            '<input type="file" class="project_file"/>'+
             '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '<input type="hidden" class="uuid" value="" />'+
-            '<input type="hidden" class="mxid" value="1" />'+
             '</li>'+
-            '<li class="margin_r hide">'+
-            '<input type="file" class="project_file" mxid="'+classes+'"/>'+
+            '<li class="margin_r">'+
+            '<input type="file" class="project_file"/>'+
             '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '<input type="hidden" class="uuid" value="" />'+
-            '<input type="hidden" class="mxid" value="2" />'+
             '</li>'+
-            '<li class="hide">'+
-            '<input type="file" class="project_file" mxid="'+classes+'"/>'+
+            '<li>'+
+            '<input type="file" class="project_file"/>'+
             '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '<input type="hidden" class="uuid" value="" />'+
-            '<input type="hidden" class="mxid" value="3" />'+
             '</li>'+
             '</ul>'+
             '</div>'+
@@ -150,25 +147,23 @@ $(function(){
             return false;
         }else{
             //预览本地图片
-            // var srcs = getObjectURL(this.files[0]);   //获取路径
-            // $(this).next(".add_img").hide()
-            // $(this).nextAll(".file_img").attr("src",srcs);
-            // $(this).nextAll(".uuid").val(uuid(16,16));
+            var srcs = getObjectURL(this.files[0]);   //获取路径
+            $(this).next(".add_img").hide()
+            $(this).nextAll(".file_img").attr("src",srcs);
+            $(this).nextAll(".uuid").val(uuid(16,16));
 
             //预览网络图片
-            var onself = this;
+            // var shopcode=mineShopCode;
             var srcd =this.files[0];  //获取本地图片的文件
             var projectId = uuid(16,16);
-            var mxId = $(this).nextAll(".mxid").val();
             var DuduOssCallbackVarData1 = {
-                "shopCode" :shopCode,
+                "shopCode" :mineShopCode,
                 "orderCode" : projectId,
-                "type" : "pj",
-                "mxId":mxId
+                "imageType" : "1"
             }
             $.ajax({
                 type    : 'GET',
-                url     : '/ossconfig/'+mineShopCode+'/22',
+                url     : '/ossconfig/'+mineShopCode+'/18',
                 data    : {},
                 success:function(jsondata){
                     var json = JSON.parse(jsondata);
@@ -180,18 +175,13 @@ $(function(){
                 }
 
             });
-            $(this).next(".add_img").hide();
-            if($(this).parent().next()){
-                $(this).parent().next().show();
-            }
             var state = false;
             function a(){
                 // console.log(srcs)
                 if(srcs == "" && state == false){
                     setTimeout(function() { a();},2000);
                 }else{
-                    $(onself).nextAll(".file_img").attr("src",srcs);
-                    $(onself).nextAll(".uuid").val(projectId);
+                    $(onself).nextAll(".tupian").val(projectId);
                     srcs = "";
                     state = true;
                 }
@@ -264,16 +254,11 @@ $(function(){
 			var project_pj = $(projects[j]).find(".project_text textarea").val();
 			obj.CommodityContent = project_pj;
 			//获取用户上传图片的uuid
-			obj.EvaluateImgs = [];
+			obj.uuid = [];
 			var projrct_uuid = $(projects[j]).find(".project_text li");
 			for(var g = 0;g < projrct_uuid.length;g++){
 				var uuid_val = $(projrct_uuid[g]).find(".uuid").val();
-                var mxid_val = $(projrct_uuid[g]).find(".mxid").val();
-                var images = {
-                    uuid:uuid_val,
-                    mxId:mxid_val
-                };
-				obj.EvaluateImgs.push(images);
+				obj.uuid.push(uuid_val);
 			};
 			data.EvaluateCommodities.push(obj);
 		}
