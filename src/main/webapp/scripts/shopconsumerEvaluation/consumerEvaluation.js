@@ -29,20 +29,20 @@ $(function(){
         },
         success:function(jsondata){
             var json = JSON.parse(jsondata);
+            for (var i = 0;i < json.length;i++){
                 //    是否含有消费商品判断
-                if(json.commodityMx.length != 0){
-                    for(var j = 0;j < json.commodityMx.length;j++){
-                        addPJ(json.commodityMx[j].moduleName);
+                if(json[i].commodityMx.length != 0){
+                    for(var j = 0;j < json[i].commodityMx.length;j++){
+                        addPJ(json[i].commodityMx[j].moduleName);
                     }
                 }
                 //    是否含有消费项目判断
-                if(json.projectMx.length != 0){
-                    for(var j = 0;j < json.projectMx.length;j++){
-                        addPJ(json.projectMx[j].itemName);
+                if(json[i].projectMx.length != 0){
+                    for(var j = 0;j < json[i].projectMx.length;j++){
+                        addPJ(json[i].projectMx[j].itemName);
                     }
                 }
-            $(".project_num img").on("click",click_flower);
-            $(".shop_num img").on("click",click_flower);
+            }
         },
         error:function(data){
 
@@ -51,7 +51,7 @@ $(function(){
     });
     //动态添加每一个评价模块
     function addPJ(name) {
-        var classes = uuid(4,16);
+        var classes = uuid(4,4);
         var sp = '<div class="box">'+
             '<div class="box_l">'+
             '<div class="project_title font_3">'+
@@ -101,8 +101,8 @@ $(function(){
 
 
 	var btn = $(".btn");// 获取提交按钮
-	// $(".project_num img").on("click",click_flower);
-	// $(".shop_num img").on("click",click_flower);
+	$(".project_num img").on("click",click_flower);
+	$(".shop_num img").on("click",click_flower)
 	//点击选花按钮
 	function click_flower () {
 		var classN = $(this).attr("class");
