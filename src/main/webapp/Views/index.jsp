@@ -61,7 +61,6 @@
                     <option value="shop">店管家微信</option>
                     <option value="lianmeng">联盟微信</option>
                     <option value="yilubang">易路邦</option>
-                    <option value="chuangke">创客</option>
                 </select>
             </li>
             <li class="btnli">appid:<input name="appid" class="regbtn" value=""/></li>
