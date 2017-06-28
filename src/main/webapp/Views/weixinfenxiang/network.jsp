@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>怡人怡车智慧门店</title>
+    <title>怡人怡车</title>
     <link rel="stylesheet" type="text/css" href="/styles/weixinfenxiang/css/share.css"/>
 	<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/scripts/main.js" type="text/javascript" charset="utf-8"></script>
