@@ -1,6 +1,7 @@
 package com.dudu.weixin.shopweiixin.controller;
 
 import com.dudu.weixin.service.LogInLogService;
+import com.dudu.weixin.shopweiixin.service.ShopXiaoFeiJiLuService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class ShopWeiXinControl {
      * 日志打印
      */
     private static Logger logprint = LoggerFactory.getLogger(ShopWeiXinControl.class);
+    /**
+     * 引入消费记录服务
+     */
+    @Autowired
+    private ShopXiaoFeiJiLuService shopXiaoFeiJiLu;
     /**
      * session
      */
@@ -94,24 +100,30 @@ public class ShopWeiXinControl {
             model.addAttribute("itemCode", itemCode);
             model.addAttribute("shopCodeLm", shopCodeLm);
             return "/shopshigongbuzhou/standardProcesses.jsp";
-        } else if ("AHIInfo".equals(serviceType)) {
-            return "/ahi/AHIxiangqing.jsp"; //AHI指数
-        } else if ("BaoYangTiXing".equals(serviceType)) {
-            return "/shopbaoyangtixing/baoYangList.jsp"; //保养提醒
-        } else if ("projectCardMX".equals(serviceType)) {
+        } else if ("AHIInfo".equals(serviceType)) { //AHI指数
+            return "/ahi/AHIxiangqing.jsp";
+        } else if ("BaoYangTiXing".equals(serviceType)) { //保养提醒
+            return "/shopbaoyangtixing/baoYangList.jsp";
+        } else if ("projectCardMX".equals(serviceType)) { //个人中心的项目明细页面
             model.addAttribute("plateNumber", plateNumber);
             model.addAttribute("cardNumb", request.getParameter("cardNumb"));
             model.addAttribute("shopCode", request.getParameter("shopCode"));
             model.addAttribute("customerId", request.getParameter("customerId"));
-            return "/shoppersonCenter/projectCardMX.jsp"; //个人中心的项目明细页面
-        } else if ("rechargeableCardMX".equals(serviceType)) {
+            return "/shoppersonCenter/projectCardMX.jsp";
+        } else if ("rechargeableCardMX".equals(serviceType)) { //个人中心充值卡明细页面
             model.addAttribute("plateNumber", plateNumber);
             model.addAttribute("cardNumb", request.getParameter("cardNumb"));
             model.addAttribute("shopCode", request.getParameter("shopCode"));
             model.addAttribute("customerId", request.getParameter("customerId"));
-            return "/shoppersonCenter/rechargeableCardMX.jsp"; //个人中心充值卡明细页面
-        } else if ("shoppersoncenter".equals(serviceType)) {
-            return "/shoppersonCenter/shoppersonalCenter.jsp"; //内部跳转至个人中心页面
+            return "/shoppersonCenter/rechargeableCardMX.jsp";
+        } else if ("shoppersoncenter".equals(serviceType)) { //内部跳转至个人中心页面
+            return "/shoppersonCenter/shoppersonalCenter.jsp";
+        } else if ("shopEvaluateParam".equals(serviceType)) { //消费记录评价页面
+            model.addAttribute("plateNumber", request.getParameter("plateNumber")); //车牌号
+            model.addAttribute("customId", request.getParameter("customId")); //客户id
+            model.addAttribute("wxpingzheng", request.getParameter("wxpingzheng")); //维修凭证
+            model.addAttribute("shopCode", request.getParameter("shopCode")); //店铺编码
+            return "/shopconsumerEvaluation/consumerEvaluation.jsp";
         }
         return null;
     }

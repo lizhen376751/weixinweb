@@ -8,6 +8,7 @@
     <name>DuduWeiXin</name>
 
     <properties>
+        <dudu.soa.DuduEvaluationSystem.version>1.0-SNAPSHOT</dudu.soa.DuduEvaluationSystem.version>
         <dudu.soa.DuduTrainingClassroom.version>1.0-SNAPSHOT</dudu.soa.DuduTrainingClassroom.version>
         <dudu.soa.Tonghangquan.version>1.0-SNAPSHOT</dudu.soa.Tonghangquan.version>
         <dudu.soa.SalesCenter.version>1.0-SNAPSHOT</dudu.soa.SalesCenter.version>
@@ -168,7 +169,12 @@
             <artifactId>DuduTrainingClassroom-api</artifactId>
             <version>${dudu.soa.DuduTrainingClassroom.version}</version>
         </dependency>
-
+        <!--消费评价-->
+        <dependency>
+            <groupId>com.dudu.soa</groupId>
+            <artifactId>DuduEvaluationSystem-api</artifactId>
+            <version>${dudu.soa.DuduEvaluationSystem.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>

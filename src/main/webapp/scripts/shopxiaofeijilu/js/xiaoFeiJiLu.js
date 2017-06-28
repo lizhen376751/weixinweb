@@ -166,7 +166,7 @@ $(document).ready(function () {
             //判断是否评价
             var pingjia = "";
             if(arr[i].isevaluate){
-                pingjia = '<div class="yupingjia font_1">已评价</div>'
+                pingjia = '<div class="yupingjia font_1" yupingjia="yupingjia" shopCode="'+arr[i].resultPurchaseHistory.shopCode+'" wxpingzheng="'+arr[i].resultPurchaseHistory.wxpingzheng+'" customId="'+arr[i].customId+'" plateNumber="'+arr[i].plateNumber+'">已评价</div>'
             }else{
                 pingjia = '<div class="pingjia font_1" pingjia="pingjia" shopCode="'+arr[i].resultPurchaseHistory.shopCode+'" wxpingzheng="'+arr[i].resultPurchaseHistory.wxpingzheng+'" customId="'+arr[i].customId+'" plateNumber="'+arr[i].plateNumber+'">去评价</div>'
             }
@@ -218,6 +218,14 @@ $(document).ready(function () {
         }
         //去评价按钮
         if($(target).attr("pingjia") == "pingjia") {
+            var plateNumber = $(target).attr("plateNumber");
+            var customId = $(target).attr("customId");
+            var shopCode = $(target).attr("shopCode");
+            var wxpingzheng = $(target).attr("wxpingzheng");
+            window.location.href="/shopweixinServlet?serviceType=shopEvaluateParam&customId="+customId+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng+"&plateNumber="+plateNumber;
+        }
+        //已评价按钮
+        if($(target).attr("yupingjia") == "yupingjia") {
             var plateNumber = $(target).attr("plateNumber");
             var customId = $(target).attr("customId");
             var shopCode = $(target).attr("shopCode");

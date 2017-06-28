@@ -97,11 +97,17 @@ public class ShopWeiXinAjax {
             return shopShiGongBuZhou.queryProjectProcess(request);
         } else if ("shoppersoncenter".equals(businessType)) { //个人中心
             return shopPersonCenterService.personcenter(request, plateNumber, shopcode);
-        } else if ("jssdk".equals(businessType)) { //前端js获取签名
+        } else if ("jssdk".equals(businessType)) { //前端js获取微信签名
             String url = request.getParameter("url");
             ShopInfo shopInfo = apiShopInfo.getShopInfo(shopcode);
             HashMap<String, String> stringStringHashMap = apiAllWeiXiRequest.jsSDKSign(shopInfo.getwXAppId(), shopInfo.getwXAppSecret(), url);
             return stringStringHashMap;
+        } else if ("shopEvaluateParam".equals(businessType)) { //消费评价获取单据详情
+            return shopXiaoFeiJiLu.getBillsDetail(request);
+        } else if ("getEvaluateParam".equals(businessType)) { //查看消费评价
+            return shopXiaoFeiJiLu.getEvaluateParam(request);
+        } else if ("addEvaluate".equals(businessType)) { //新增消费评价
+            return shopXiaoFeiJiLu.addEvaluate(request);
         }
         return null;
     }
