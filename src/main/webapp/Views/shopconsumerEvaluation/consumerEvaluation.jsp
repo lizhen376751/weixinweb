@@ -24,98 +24,98 @@
 	<input type="hidden" name="wxpingzheng" value="${wxpingzheng}" id="wxpingzheng">
 	<input type="hidden" name="shopCode" value="${shopCode}" id="shopCode">
 		<div class="project">
-			<%--<!--每一个项目的评价-->--%>
-			<%--<div class="box">--%>
-				<%--<div class="box_l">--%>
-					<%--<!--项目名称-->--%>
-					<%--<div class="project_title font_3">--%>
-						<%--<span class="project_title_txt">怡人怡车洗车</span>--%>
-					<%--</div>--%>
-					<%--<!--项目评价等级-->--%>
-					<%--<div class="project_num">--%>
-						<%--<span class="font_1 color_8">请给出您的评价</span>--%>
-						<%--<ul>--%>
-							<%--<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="xc"/></li>--%>
-							<%--<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="xc"/></li>--%>
-							<%--<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="xc"/></li>--%>
-							<%--<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="xc"/></li>--%>
-							<%--<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="xc"/></li>--%>
-						<%--</ul>--%>
-						<%--<input type="hidden" class="xc_val" value="0" />--%>
-					<%--</div>--%>
-					<%--<!--项目评价文字-->--%>
-					<%--<div class="project_text">--%>
-						<%--<textarea class="font_4" rows="4" maxlength="110" placeholder="评论：本店的服务满足您的期待吗？请评价一下我们的优点和不足的地方吧!（满足15个字才是 好同志哦！）"></textarea>--%>
-						<%--<ul>--%>
-							<%--<li class="margin_r">--%>
-								<%--<input type="file" class="project_file"/>--%>
-								<%--<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>--%>
-								<%--<img src="" class="file_img"/>--%>
-								<%--<input type="hidden" class="uuid" value="" />--%>
-							<%--</li>--%>
-							<%--<li class="margin_r">--%>
-								<%--<input type="file" class="project_file"/>--%>
-								<%--<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>--%>
-								<%--<img src="" class="file_img"/>--%>
-								<%--<input type="hidden" class="uuid" value="" />--%>
-							<%--</li>--%>
-							<%--<li>--%>
-								<%--<input type="file" class="project_file"/>--%>
-								<%--<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>--%>
-								<%--<img src="" class="file_img"/>--%>
-								<%--<input type="hidden" class="uuid" value="" />--%>
-							<%--</li>--%>
-						<%--</ul>--%>
-					<%--</div>--%>
-				<%--</div>--%>
-			<%--</div>--%>
-			<%----%>
-			<%----%>
-			<%--<!--每一个项目的评价-->--%>
-			<%--<div class="box">--%>
-				<%--<div class="box_l">--%>
-					<%--<!--项目名称-->--%>
-					<%--<div class="project_title font_3">--%>
-						<%--<span class="project_title_txt">怡人怡车打蜡</span>--%>
-					<%--</div>--%>
-					<%--<!--项目评价等级-->--%>
-					<%--<div class="project_num">--%>
-						<%--<span class="font_1 color_8">请给出您的评价</span>--%>
-						<%--<ul>--%>
-							<%--<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>--%>
-							<%--<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>--%>
-							<%--<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>--%>
-							<%--<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>--%>
-							<%--<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>--%>
-						<%--</ul>--%>
-						<%--<input type="hidden" class="dl_val" value="0" />--%>
-					<%--</div>--%>
-					<%--<!--项目评价文字-->--%>
-					<%--<div class="project_text">--%>
-						<%--<textarea class="font_4" rows="4" maxlength="110" placeholder="评论：本店的服务满足您的期待吗？请评价一下我们的优点和不足的地方吧!（满足15个字才是 好同志哦！）"></textarea>--%>
-						<%--<ul>--%>
-							<%--<li class="margin_r">--%>
-								<%--<input type="file" class="project_file" accept="image/*"/>--%>
-								<%--<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>--%>
-								<%--<img src="" class="file_img"/>--%>
-								<%--<input type="hidden" class="uuid" value="" />--%>
-							<%--</li>--%>
-							<%--<li class="margin_r">--%>
-								<%--<input type="file" class="project_file"/>--%>
-								<%--<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>--%>
-								<%--<img src="" class="file_img"/>--%>
-								<%--<input type="hidden" class="uuid" value="" />--%>
-							<%--</li>--%>
-							<%--<li>--%>
-								<%--<input type="file" class="project_file"/>--%>
-								<%--<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>--%>
-								<%--<img src="" class="file_img"/>--%>
-								<%--<input type="hidden" class="uuid" value="" />--%>
-							<%--</li>--%>
-						<%--</ul>--%>
-					<%--</div>--%>
-				<%--</div>--%>
-			<%--</div>--%>
+			<!--每一个项目的评价-->
+			<div class="box">
+				<div class="box_l">
+					<!--项目名称-->
+					<div class="project_title font_3">
+						<span class="project_title_txt">怡人怡车洗车</span>
+					</div>
+					<!--项目评价等级-->
+					<div class="project_num">
+						<span class="font_1 color_8">请给出您的评价</span>
+						<ul>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="xc"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="xc"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="xc"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="xc"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="xc"/></li>
+						</ul>
+						<input type="hidden" class="xc_val" value="0" />
+					</div>
+					<!--项目评价文字-->
+					<div class="project_text">
+						<textarea class="font_4" rows="4" maxlength="110" placeholder="评论：本店的服务满足您的期待吗？请评价一下我们的优点和不足的地方吧!（满足15个字才是 好同志哦！）"></textarea>
+						<ul>
+							<li class="margin_r">
+								<input type="file" class="project_file"/>
+								<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>
+								<img src="" class="file_img"/>
+								<input type="hidden" class="uuid" value="" />
+							</li>
+							<li class="margin_r">
+								<input type="file" class="project_file"/>
+								<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>
+								<img src="" class="file_img"/>
+								<input type="hidden" class="uuid" value="" />
+							</li>
+							<li>
+								<input type="file" class="project_file"/>
+								<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>
+								<img src="" class="file_img"/>
+								<input type="hidden" class="uuid" value="" />
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!--每一个项目的评价-->
+			<div class="box">
+				<div class="box_l">
+					<!--项目名称-->
+					<div class="project_title font_3">
+						<span class="project_title_txt">怡人怡车打蜡</span>
+					</div>
+					<!--项目评价等级-->
+					<div class="project_num">
+						<span class="font_1 color_8">请给出您的评价</span>
+						<ul>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>
+						</ul>
+						<input type="hidden" class="dl_val" value="0" />
+					</div>
+					<!--项目评价文字-->
+					<div class="project_text">
+						<textarea class="font_4" rows="4" maxlength="110" placeholder="评论：本店的服务满足您的期待吗？请评价一下我们的优点和不足的地方吧!（满足15个字才是 好同志哦！）"></textarea>
+						<ul>
+							<li class="margin_r">
+								<input type="file" class="project_file" accept="image/*"/>
+								<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>
+								<img src="" class="file_img"/>
+								<input type="hidden" class="uuid" value="" />
+							</li>
+							<li class="margin_r">
+								<input type="file" class="project_file"/>
+								<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>
+								<img src="" class="file_img"/>
+								<input type="hidden" class="uuid" value="" />
+							</li>
+							<li>
+								<input type="file" class="project_file"/>
+								<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>
+								<img src="" class="file_img"/>
+								<input type="hidden" class="uuid" value="" />
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 		
 		<!--店铺服务评分-->

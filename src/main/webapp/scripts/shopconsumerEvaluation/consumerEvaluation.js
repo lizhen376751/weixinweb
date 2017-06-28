@@ -15,7 +15,6 @@ $(function(){
     var customId = $("#customId").val();
     var wxpingzheng = $("#wxpingzheng").val();
     var shopCode = $("#shopCode").val();
-    var project = $(".project");//获取评价的容器
     //初始加载页面
     $.ajax({
         type    : 'post',
@@ -29,73 +28,14 @@ $(function(){
         },
         success:function(jsondata){
             var json = JSON.parse(jsondata);
-            for (var i = 0;i < json.length;i++){
-                //    是否含有消费商品判断
-                if(json[i].commodityMx.length != 0){
-                    for(var j = 0;j < json[i].commodityMx.length;j++){
-                        addPJ(json[i].commodityMx[j].moduleName);
-                    }
-                }
-                //    是否含有消费项目判断
-                if(json[i].projectMx.length != 0){
-                    for(var j = 0;j < json[i].projectMx.length;j++){
-                        addPJ(json[i].projectMx[j].itemName);
-                    }
-                }
-            }
+
         },
         error:function(data){
 
         }
 
     });
-    //动态添加每一个评价模块
-    function addPJ(name) {
-        var classes = uuid(4,4);
-        var sp = '<div class="box">'+
-            '<div class="box_l">'+
-            '<div class="project_title font_3">'+
-            '<span class="project_title_txt">'+name+'</span>'+
-            '</div>'+
-            '<div class="project_num">'+
-            '<span class="font_1 color_8">请给出您的评价</span>'+
-            '<ul>'+
-            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="'+classes+'"/></li>'+
-            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="'+classes+'"/></li>'+
-            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="'+classes+'"/></li>'+
-            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="'+classes+'"/></li>'+
-            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="'+classes+'"/></li>'+
-            '</ul>'+
-            '<input type="hidden" class="'+classes+'"_val" value="0" />'+
-            '</div>'+
-            '<div class="project_text">'+
-            '<textarea class="font_4" rows="4" maxlength="110" placeholder="评论：本店的服务满足您的期待吗？请评价一下我们的优点和不足的地方吧!（满足15个字才是 好同志哦！）"></textarea>'+
-            '<ul>'+
-            '<li class="margin_r">'+
-            '<input type="file" class="project_file"/>'+
-            '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
-            '<img src="" class="file_img"/>'+
-            '<input type="hidden" class="uuid" value="" />'+
-            '</li>'+
-            '<li class="margin_r">'+
-            '<input type="file" class="project_file"/>'+
-            '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
-            '<img src="" class="file_img"/>'+
-            '<input type="hidden" class="uuid" value="" />'+
-            '</li>'+
-            '<li>'+
-            '<input type="file" class="project_file"/>'+
-            '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
-            '<img src="" class="file_img"/>'+
-            '<input type="hidden" class="uuid" value="" />'+
-            '</li>'+
-            '</ul>'+
-            '</div>'+
-            '</div>'+
-            '</div>';
-        project.append(sp)
 
-    }
 
 
 
