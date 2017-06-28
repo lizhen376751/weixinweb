@@ -168,7 +168,7 @@ $(document).ready(function () {
             if(arr[i].isevaluate){
                 pingjia = '<div class="yupingjia font_1">已评价</div>'
             }else{
-                pingjia = '<div class="pingjia font_1" pingjia="pingjia" shopCode="'+arr[i].resultPurchaseHistory.shopCode+'" wxpingzheng="'+arr[i].resultPurchaseHistory.wxpingzheng+'" customId="'+arr[i].customId+'">去评价</div>'
+                pingjia = '<div class="pingjia font_1" pingjia="pingjia">去评价</div>'
             }
             //判断公里数是否为null
             var gls = "";
@@ -218,11 +218,11 @@ $(document).ready(function () {
         }
         //去评价按钮
         if($(target).attr("pingjia") == "pingjia") {
-            var customId = $(target).attr("customId");
+            var xu_number = $(target).attr("xm_num");
             var shopCode = $(target).attr("shopCode");
             var wxpingzheng = $(target).attr("wxpingzheng");
             if(xu_number != null && xu_number != ""){
-                window.location.href="/shopweixinServlet?serviceType=shigongbuzhou&customId="+customId+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng;
+                window.location.href="/shopweixinServlet?serviceType=shigongbuzhou&xu_number="+xu_number+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng;
             }else{
                 alert("商品消费暂无施工步骤")
             }
