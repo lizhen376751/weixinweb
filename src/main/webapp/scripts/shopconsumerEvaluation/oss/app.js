@@ -59,8 +59,8 @@ var applyTokenDoNew = function (fileObj,DuduOssCallbackVarData) {
         }
     }).then(function (res) {
         srcs = res.data.fileUrl;
-        // console.log(srcs)
-        // console.log('upload success: %j', res);
+        console.log(srcs)
+        console.log('upload success: %j', res);
     })
         .then(function () {
             upcount++;

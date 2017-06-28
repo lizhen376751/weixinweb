@@ -32,21 +32,19 @@ $(function(){
                 //    是否含有消费商品判断
                 if(json.commodityMx.length != 0){
                     for(var j = 0;j < json.commodityMx.length;j++){
-                        addPJ(json.commodityMx[j].moduleName,json.commodityMx[j].weixiuyuanSp,json.commodityMx[j].spbm,"COMMODITY");
+                        addPJ(json.commodityMx[j].moduleName,json.commodityMx[j].weixiuyuanSp,json.commodityMx[j].spbm,1);
                     }
                 }
                 //    是否含有消费项目判断
                 if(json.projectMx.length != 0){
                     for(var j = 0;j < json.projectMx.length;j++){
-                        addPJ(json.projectMx[j].itemName,json.projectMx[j].weixiuyuan,json.projectMx[j].itemcode,"PROJECT");
+                        addPJ(json.projectMx[j].itemName,json.projectMx[j].weixiuyuan,json.projectMx[j].itemcode,2);
                     }
                 }
                 $(".shop_num").attr("OrderType",json.ordertype);//单据类型
                 $(".shop_num").attr("CreateDate",json.kprq);//开票日期
             $(".project_num img").on("click",click_flower);
             $(".shop_num img").on("click",click_flower);
-            tpsc();
-
         },
         error:function(data){
 
@@ -70,7 +68,7 @@ $(function(){
             '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="'+classes+'"/></li>'+
             '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="'+classes+'"/></li>'+
             '</ul>'+
-            '<input type="hidden" class="'+classes+'_val" value="0" />'+
+            '<input type="hidden" class="'+classes+'"_val" value="0" />'+
             '</div>'+
             '<div class="project_text">'+
             '<textarea class="font_4" rows="4" maxlength="110" placeholder="评论：本店的服务满足您的期待吗？请评价一下我们的优点和不足的地方吧!（满足15个字才是 好同志哦！）"></textarea>'+
@@ -124,18 +122,7 @@ $(function(){
 		for (var i = 0;i <= num;i++) {
 			imgs[i].src = "/files/shopconsumerEvaluation/flower_gb.png";
 		}
-		switch (num*1+1){
-            case 1:$("."+classN+"_val").val("ONE");
-                break;
-            case 2:$("."+classN+"_val").val("TWO");
-                break;
-            case 3:$("."+classN+"_val").val("THRER");
-                break;
-            case 4:$("."+classN+"_val").val("FOUR");
-                break;
-            case 5:$("."+classN+"_val").val("FIVE");
-                break;
-        }
+		$("."+classN+"_val").val(num*1+1)
 	}
 	
 	
@@ -151,73 +138,69 @@ $(function(){
         }
         return url
     };
-	//图片上传
-	function tpsc() {
-        $(".project_file").on("change",function(){
-            var photoExt=this.value.substr(this.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
-            var tp =".jpg,.gif,.bmp,.JPG,.GIF,.BMP,.ico,.png";
-            var rs=tp.indexOf(photoExt);
+	$(".project_file").on("change",function(){
+        var photoExt=this.value.substr(this.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
+        var tp =".jpg,.gif,.bmp,.JPG,.GIF,.BMP,.ico,.png";
+        var rs=tp.indexOf(photoExt);
+        var onself = this;
+        if(this.value == ""){
+            return false
+        }else if(rs < 0){            //如果返回的结果大于或等于0，说明包含允许上传的文件类型
+            alert("您选择的上传文件不是有效的图片文件！");
+            return false;
+        }else{
+            //预览本地图片
+            // var srcs = getObjectURL(this.files[0]);   //获取路径
+            // $(this).next(".add_img").hide()
+            // $(this).nextAll(".file_img").attr("src",srcs);
+            // $(this).nextAll(".uuid").val(uuid(16,16));
+
+            //预览网络图片
             var onself = this;
-            if(this.value == ""){
-                return false
-            }else if(rs < 0){            //如果返回的结果大于或等于0，说明包含允许上传的文件类型
-                alert("您选择的上传文件不是有效的图片文件！");
-                return false;
-            }else{
-                //预览本地图片
-                // var srcs = getObjectURL(this.files[0]);   //获取路径
-                // $(this).next(".add_img").hide()
-                // $(this).nextAll(".file_img").attr("src",srcs);
-                // $(this).nextAll(".uuid").val(uuid(16,16));
-
-                //预览网络图片
-                var onself = this;
-                var srcd =this.files[0];  //获取本地图片的文件
-                var projectId = uuid(16,16);
-                var mxId = $(this).nextAll(".mxid").val();
-                var DuduOssCallbackVarData1 = {
-                    "shopCode" :shopCode,
-                    "orderCode" : projectId,
-                    "type" : "2",
-                    "mxId":mxId
-                }
-                $.ajax({
-                    type    : 'GET',
-                    url     : '/ossconfig/'+shopCode+'/22',
-                    data    : {},
-                    success:function(jsondata){
-                        var json = JSON.parse(jsondata);
-                        Duducreds=json;
-                        new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
-                    },
-                    error:function(data){
-
-                    }
-
-                });
-                $(this).next(".add_img").hide();
-                var state = false;
-                function a(){
-                    // console.log(srcs)
-                    if(srcs == "" && state == false){
-                        setTimeout(function() { a();},2000);
-                    }else{
-                        $(onself).nextAll(".file_img").attr("src",srcs);
-                        $(onself).nextAll(".uuid").val(projectId);
-                        if($(onself).parent().next()){
-                            $(onself).parent().next().show();
-                        }
-                        srcs = "";
-                        state = true;
-                    }
-                }
-                a();
-
+            var srcd =this.files[0];  //获取本地图片的文件
+            var projectId = uuid(16,16);
+            var mxId = $(this).nextAll(".mxid").val();
+            var DuduOssCallbackVarData1 = {
+                "shopCode" :shopCode,
+                "orderCode" : projectId,
+                "type" : "pj",
+                "mxId":mxId
             }
+            $.ajax({
+                type    : 'GET',
+                url     : '/ossconfig/'+mineShopCode+'/22',
+                data    : {},
+                success:function(jsondata){
+                    var json = JSON.parse(jsondata);
+                    Duducreds=json;
+                    new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
+                },
+                error:function(data){
 
-        })
-    }
+                }
 
+            });
+            $(this).next(".add_img").hide();
+            if($(this).parent().next()){
+                $(this).parent().next().show();
+            }
+            var state = false;
+            function a(){
+                // console.log(srcs)
+                if(srcs == "" && state == false){
+                    setTimeout(function() { a();},2000);
+                }else{
+                    $(onself).nextAll(".file_img").attr("src",srcs);
+                    $(onself).nextAll(".uuid").val(projectId);
+                    srcs = "";
+                    state = true;
+                }
+            }
+            a();
+
+        }
+
+	})
 	
 	//唯一标识符uuid
     function uuid(len, radix) {
@@ -252,50 +235,47 @@ $(function(){
         var dp_val = $(".dp_val").val();
 		//数据包
 		var data = {
-            evaluateMain :{
-                shopStarlevel:dp_val,//店铺评价星级
-                wxPingZheng:wxpingzheng,//维修凭证
-                platenumber:plateNumber,//车牌号
-                shopCode:shopCode, //店铺编码
-                shopIdentification:"SHOPCODE"
-            },
-            evaluateBill:{
+			ShopStarlevel:dp_val,//店铺评价星级
+			EvaluateBill:{
 			    OrderType:$(".shop_num").attr("OrderType"),  //单据类型
                 CreateDate:$(".shop_num").attr("CreateDate") //开票日期
             },
-            evaluateCommodities:[]
+            WxPingZheng:wxpingzheng,//维修凭证
+            Platenumber:plateNumber,//车牌号
+            ShopCode:shopCode, //店铺编码
+            EvaluateCommodities:[]
 		};
 		var projects = $(".box_l");
 		for(var j = 0; j < projects.length;j++){
 			var obj = {};
 			//获取每一个商品或项目的销售或技师ID
             var ServiceStaff = $(projects[j]).attr("ServiceStaff");
-            obj.serviceStaff = ServiceStaff;
+            obj.ServiceStaff = ServiceStaff;
             //获取每一个商品或项目的编码
             var CommodityCode = $(projects[j]).attr("CommodityCode");
-            obj.commodityCode = CommodityCode;
+            obj.CommodityCode = CommodityCode;
             //获取每一个商品或项目的区分
             var ComIdentifica = $(projects[j]).attr("ComIdentifica");
-            obj.comIdentifica = ComIdentifica;
+            obj.ComIdentifica = ComIdentifica;
 			//获取每一个商品或项目的星级
 			var project_xj = $(projects[j]).find(".project_num input").val();
-			obj.commodityStarlevel = project_xj;
+			obj.CommodityStarlevel = project_xj;
 			//获取用户的评价文字
 			var project_pj = $(projects[j]).find(".project_text textarea").val();
-			obj.commodityContent = project_pj;
+			obj.CommodityContent = project_pj;
 			//获取用户上传图片的uuid
-			obj.evaluateImgs = [];
+			obj.EvaluateImgs = [];
 			var projrct_uuid = $(projects[j]).find(".project_text li");
 			for(var g = 0;g < projrct_uuid.length;g++){
 				var uuid_val = $(projrct_uuid[g]).find(".uuid").val();
                 var mxid_val = $(projrct_uuid[g]).find(".mxid").val();
                 var images = {
-                    orderCode:uuid_val,
+                    uuid:uuid_val,
                     mxId:mxid_val
                 };
-				obj.evaluateImgs.push(images);
+				obj.EvaluateImgs.push(images);
 			};
-			data.evaluateCommodities.push(obj);
+			data.EvaluateCommodities.push(obj);
 		}
         var img_val = $(".project_num input");
         var arr = [];
@@ -306,26 +286,10 @@ $(function(){
 		var dj_val = $.inArray("0",arr);
 		//2不能提交；1可以提交
 		if(dj_val == "-1" && dp_val != "0"){
-		    var json_data = JSON.stringify(data);
-            $.ajax({
-                type    : 'POST',
-                url     : '/shopAjax?businessType=addEvaluate',
-                data    : {
-                    aa:json_data,
-                },
-                success:function(jsondata){
-                    // var json = JSON.parse(jsondata);
-
-                },
-                error:function(data){
-
-                }
-
-            });
+			alert(1);
 			console.log(data)
 		}else{
 			alert(2)
-            console.log(data)
 		}
 		console.log($.inArray("0",arr))
 		
