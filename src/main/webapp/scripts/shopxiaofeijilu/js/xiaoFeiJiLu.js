@@ -168,7 +168,7 @@ $(document).ready(function () {
             if(arr[i].isevaluate){
                 pingjia = '<div class="yupingjia font_1">已评价</div>'
             }else{
-                pingjia = '<div class="pingjia font_1" pingjia="pingjia">去评价</div>'
+                pingjia = '<div class="pingjia font_1">去评价</div>'
             }
             //判断公里数是否为null
             var gls = "";
@@ -217,7 +217,7 @@ $(document).ready(function () {
 
         }
         //去评价按钮
-        if($(target).attr("pingjia").toLowerCase() == "pingjia") {
+        if($(target).className("pingjia").toLowerCase() == "pingjia") {
             var xu_number = $(target).attr("xm_num");
             var shopCode = $(target).attr("shopCode");
             var wxpingzheng = $(target).attr("wxpingzheng");
