@@ -137,7 +137,7 @@ $(document).ready(function () {
                 var sp = "";
                 for(var h = 0;j < arr[i].resultPurchaseHistory.purchaseProductList.length;h++){
                     w = h + 1;
-                    sp += '<div><span>'+w+'</span><p>'+arr[i].resultPurchaseHistory.purchaseProductList[h].productName+'</p></div>'
+                    sp += '<div><span>'+w+'</span><p>'+arr[i].resultPurchaseHistory.purchaseProductList.length[h].productName+'</p></div>'
                 }
                 xfsp = '<div class="middle_1 font_1">'+
                     '<div class="left_1">消费商品：</div>'+
