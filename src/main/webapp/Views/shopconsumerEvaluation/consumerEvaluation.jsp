@@ -19,10 +19,6 @@
 		<script src="/scripts/shopconsumerEvaluation/consumerEvaluation.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
-	<input type="hidden" name="plateNumber" value="${plateNumber}" id="plateNumber">
-	<input type="hidden" name="customId" value="${customId}" id="customId">
-	<input type="hidden" name="wxpingzheng" value="${wxpingzheng}" id="wxpingzheng">
-	<input type="hidden" name="shopCode" value="${shopCode}" id="shopCode">
 		<div class="project">
 			<!--每一个项目的评价-->
 			<div class="box">

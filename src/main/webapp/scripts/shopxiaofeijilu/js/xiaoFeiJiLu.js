@@ -222,7 +222,12 @@ $(document).ready(function () {
             var customId = $(target).attr("customId");
             var shopCode = $(target).attr("shopCode");
             var wxpingzheng = $(target).attr("wxpingzheng");
-            window.location.href="/shopweixinServlet?serviceType=shopEvaluateParam&customId="+customId+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng+"&plateNumber="+plateNumber;
+            if(xu_number != null && xu_number != ""){
+                window.location.href="/shopweixinServlet?serviceType=shopEvaluateParam&customId="+customId+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng+"&plateNumber="+plateNumber;
+            }else{
+                alert("商品消费暂无施工步骤")
+            }
+
         }
     })
 
