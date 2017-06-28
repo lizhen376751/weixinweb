@@ -204,20 +204,7 @@ $(document).ready(function () {
     ul.on("click",function (e) {
         var ev = e || window.event;
         var target = ev.target || ev.srcElement;
-        //施工步骤按钮
         if($(target).attr("sgbz").toLowerCase() == "sgbz") {
-            var xu_number = $(target).attr("xm_num");
-            var shopCode = $(target).attr("shopCode");
-            var wxpingzheng = $(target).attr("wxpingzheng");
-            if(xu_number != null && xu_number != ""){
-                window.location.href="/shopweixinServlet?serviceType=shigongbuzhou&xu_number="+xu_number+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng;
-            }else{
-                alert("商品消费暂无施工步骤")
-            }
-
-        }
-        //去评价按钮
-        if($(target).className("pingjia").toLowerCase() == "pingjia") {
             var xu_number = $(target).attr("xm_num");
             var shopCode = $(target).attr("shopCode");
             var wxpingzheng = $(target).attr("wxpingzheng");
