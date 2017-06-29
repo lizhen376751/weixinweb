@@ -55,7 +55,7 @@ public class ChuangKeWeiXinControl {
         String flagStr = lmcode.split("_")[1]; //页面跳转判断
         String shopcode = lmcode.split("_")[0]; //联盟code
         if ("paymentDetails".equals(flagStr)) {
-            return "/ahi/AHIxiangqing.jsp"; //收付明细
+            return "/CKchuangkequan/share.html"; //收付明细
         } else if ("storeSign".equals(flagStr)) {
             return "/shopxiaofeijilu/xiaofeijilu.jsp"; //门店签收
         } else if ("deliveryRecord".equals(flagStr)) {
@@ -67,7 +67,7 @@ public class ChuangKeWeiXinControl {
         } else if ("microMarketing".equals(flagStr)) { //微营销
             return "redirect:http://www.duduchewang.cn/weixincore_cn/evaluateList.jsp?shopcode=" + shopcode + "&openId=" + openId;
         } else if ("microVideo".equals(flagStr)) {  //微视频
-            return "/ahi/AHIxiangqing.jsp";
+            return "/CKchuangkequan/share.html";
         } else if ("pullTies".equals(flagStr)) { //拉关系
             return "/shopxiaofeijilu/xiaofeijilu.jsp";
         } else if ("turfUp".equals(flagStr)) { //抢地盘
