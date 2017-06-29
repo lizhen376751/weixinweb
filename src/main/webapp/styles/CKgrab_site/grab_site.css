@@ -1,0 +1,147 @@
+body{
+	background: #e5e5e5;
+}
+#wrap{
+	width: 100%;
+	background: #e5e5e5;
+}
+/*详情信息*/
+.detail{
+	width: 9.88rem;
+	background: #fafafa;
+	box-shadow: 0px 0px 0.04rem rgba(0,0,0,0.5);
+	margin: 0.2rem auto;
+}
+.detail ul{
+	width: 96%;
+	margin: 0 auto;
+}
+.detail ul li{
+	width: 100%;
+	height: 0.95rem;
+	line-height: 0.95rem;
+	overflow: hidden;
+}
+.l_l{
+	width: 50%;
+	float: left;
+}
+.label{
+	color: #505050;
+}
+.input{
+	border: none;
+	outline: none;
+	color: #959595;
+	height: 0.95rem;
+	line-height: 0.95rem;
+	background: #fafafa;
+	font-size: 0.36rem;
+}
+.width_1{
+	width: 2.9rem;
+}
+.width_2{
+	width: 77%;
+}
+.width_3{
+	width: 50%;
+}
+.dt{
+	width: 0.26rem;
+	float: right;
+	margin-right: 0.05rem;
+    margin-top: 0.34rem;
+}
+.dw{
+	/*float: right;*/
+}
+/*身份证*/
+.sfz{
+	width: 9.88rem;
+	background: #fafafa;
+	box-shadow: 0px 0px 0.04rem rgba(0,0,0,0.5);
+	margin: 0.2rem auto;
+}
+.box{
+	width: 96%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.titles{
+	width: 100%;
+	height: 0.95rem;
+	line-height: 0.95rem;
+	color: #505050;
+}
+.box ul{
+	width: 8.59rem;
+	margin: 0rem auto 1.2rem;
+	overflow: hidden;
+}
+.box ul li{
+	width: 3.83rem;
+	height: 2.58rem;
+	background: #e5e5e5;
+	float: left;
+	margin: 0.2rem;
+	position: relative;
+}
+.sc{
+	width: 0.86rem;
+	position: relative;
+	top: 0.7rem;
+	left: 50%;
+	margin-left: -0.43rem;
+}
+.text{
+	width: 100%;
+	color: #fafafa;
+	position: absolute;
+	bottom: 0.2rem;
+	text-align: center;
+}
+.file{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	opacity: 0;
+}
+.file_img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.margin_L{
+	margin-left: 0.2rem;
+}
+/*注册按钮*/
+.btn{
+	width: 8.51rem;
+	height: 1.1rem;
+	text-align: center;
+	background: #31a3ff;
+	color: #fff;
+	line-height: 1.1rem;
+	margin: 1.08rem auto 0;
+	border-radius: 0.2rem;
+}
+/*.ht{
+	width: 8.51rem;
+	margin: 0.48rem auto 0;
+	overflow: hidden;
+}
+.ht span{
+	float: right;
+	color: #505050;
+}
+.ht input{
+	float: right;
+	margin: 0.03rem;
+}*/

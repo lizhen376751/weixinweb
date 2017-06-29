@@ -5,6 +5,8 @@ import com.dudu.soa.thq.app.mine.peercircle.api.ApiPeerCircle;
 import com.dudu.soa.thq.app.mine.peercircle.module.PeerCircleList;
 import com.dudu.soa.trainingclassroom.api.ApiCourseTrain;
 import com.dudu.soa.trainingclassroom.module.Course;
+import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
+import com.dudu.soa.weixindubbo.weixin.http.module.parammodule.AccessToken;
 import com.dudu.weixin.service.CreateMenuService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +48,12 @@ public class AllTwoController {
      */
     @Reference
     private ApiCourseTrain apiCourseTrain;
+
+    /**
+     * 引入微信通讯相关接口
+     */
+    @Reference(timeout = 300000)
+    private ApiAllWeiXiRequest apiAllWeiXiRequest;
 
     /**
      * 关于服务导航的url跳转(后期去掉)
@@ -143,5 +151,17 @@ public class AllTwoController {
         model.addAttribute("likeNum", peerCircleList.getLikeNum()); //点赞数
         model.addAttribute("commentNum", peerCircleList.getCommentNum()); //评论数
         return "/weixinfenxiang/share.jsp"; //微信分享
+    }
+
+    /**
+     * @param request 请求
+     * @return token的实体类
+     */
+    @RequestMapping(value = "/getToken", method = {RequestMethod.GET, RequestMethod.POST})
+    public Object tonghangquan(HttpServletRequest request) {
+        String appid = request.getParameter("appid");
+        String appsecret = request.getParameter("appsecret");
+        AccessToken tokengetTicket = apiAllWeiXiRequest.getTokengetTicket(appid, appsecret);
+        return tokengetTicket; //培训课堂
     }
 }

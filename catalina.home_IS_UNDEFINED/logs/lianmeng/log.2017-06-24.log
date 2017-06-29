@@ -1,0 +1,48 @@
+2017-06-24 10:51:24.333 [main] DEBUG o.a.http.impl.conn.BasicClientConnectionManager - Get connection for route {s}->https://dm-53.data.aliyun.com:443
+2017-06-24 10:51:24.486 [main] DEBUG o.a.http.impl.conn.DefaultClientConnectionOperator - Connecting to dm-53.data.aliyun.com:443
+2017-06-24 10:51:24.744 [main] DEBUG org.apache.http.client.protocol.RequestAddCookies - CookieSpec selected: default
+2017-06-24 10:51:24.745 [main] DEBUG org.apache.http.client.protocol.RequestAuthCache - Auth cache not set in the context
+2017-06-24 10:51:24.745 [main] DEBUG o.a.h.client.protocol.RequestProxyAuthentication - Proxy auth state: UNCHALLENGED
+2017-06-24 10:51:24.745 [main] DEBUG org.apache.http.impl.client.DefaultHttpClient - Attempt 1 to execute request
+2017-06-24 10:51:24.745 [main] DEBUG org.apache.http.impl.conn.DefaultClientConnection - Sending request: POST /rest/160601/ocr/ocr_vehicle.json HTTP/1.1
+2017-06-24 10:51:24.746 [main] DEBUG org.apache.http.wire -  >> "POST /rest/160601/ocr/ocr_vehicle.json HTTP/1.1[\r][\n]"
+2017-06-24 10:51:24.746 [main] DEBUG org.apache.http.wire -  >> "Authorization: APPCODE d04e50e570fe4b769312adf58696b02b[\r][\n]"
+2017-06-24 10:51:24.746 [main] DEBUG org.apache.http.wire -  >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2017-06-24 10:51:24.746 [main] DEBUG org.apache.http.wire -  >> "Content-Length: 74[\r][\n]"
+2017-06-24 10:51:24.746 [main] DEBUG org.apache.http.wire -  >> "Host: dm-53.data.aliyun.com[\r][\n]"
+2017-06-24 10:51:24.747 [main] DEBUG org.apache.http.wire -  >> "Connection: Keep-Alive[\r][\n]"
+2017-06-24 10:51:24.747 [main] DEBUG org.apache.http.wire -  >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_60)[\r][\n]"
+2017-06-24 10:51:24.747 [main] DEBUG org.apache.http.wire -  >> "[\r][\n]"
+2017-06-24 10:51:24.747 [main] DEBUG org.apache.http.headers - >> POST /rest/160601/ocr/ocr_vehicle.json HTTP/1.1
+2017-06-24 10:51:24.747 [main] DEBUG org.apache.http.headers - >> Authorization: APPCODE d04e50e570fe4b769312adf58696b02b
+2017-06-24 10:51:24.747 [main] DEBUG org.apache.http.headers - >> Content-Type: application/json; charset=UTF-8
+2017-06-24 10:51:24.747 [main] DEBUG org.apache.http.headers - >> Content-Length: 74
+2017-06-24 10:51:24.747 [main] DEBUG org.apache.http.headers - >> Host: dm-53.data.aliyun.com
+2017-06-24 10:51:24.747 [main] DEBUG org.apache.http.headers - >> Connection: Keep-Alive
+2017-06-24 10:51:24.747 [main] DEBUG org.apache.http.headers - >> User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_60)
+2017-06-24 10:51:24.747 [main] DEBUG org.apache.http.wire -  >> "{"inputs":[{"image":{"dataType":50,"dataValue":"Base64[0xe7][0xbc][0x96][0xe7][0xa0][0x81][0xe7][0x9a][0x84][0xe5][0xad][0x97][0xe7][0xac][0xa6]"}}]}"
+2017-06-24 10:51:24.804 [main] DEBUG org.apache.http.wire -  << "HTTP/1.1 400 Bad Request[\r][\n]"
+2017-06-24 10:51:24.806 [main] DEBUG org.apache.http.wire -  << "Server: Tengine[\r][\n]"
+2017-06-24 10:51:24.806 [main] DEBUG org.apache.http.wire -  << "Date: Sat, 24 Jun 2017 02:51:16 GMT[\r][\n]"
+2017-06-24 10:51:24.806 [main] DEBUG org.apache.http.wire -  << "Content-Type: application/json;charset=UTF-8[\r][\n]"
+2017-06-24 10:51:24.806 [main] DEBUG org.apache.http.wire -  << "Content-Length: 84[\r][\n]"
+2017-06-24 10:51:24.806 [main] DEBUG org.apache.http.wire -  << "Connection: keep-alive[\r][\n]"
+2017-06-24 10:51:24.806 [main] DEBUG org.apache.http.wire -  << "Access-Control-Allow-Origin: *[\r][\n]"
+2017-06-24 10:51:24.806 [main] DEBUG org.apache.http.wire -  << "Access-Control-Allow-Methods: GET,POST,PUT,DELETE,HEAD,OPTIONS , PATCH[\r][\n]"
+2017-06-24 10:51:24.807 [main] DEBUG org.apache.http.wire -  << "Access-Control-Allow-Headers: X-Requested-With, X-Sequence,X-Ca-Key,X-Ca-Secret,X-Ca-Version,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-API-Key,X-Ca-Stage,X-Ca-Client-DeviceId,X-Ca-Client-AppId,X-Ca-Signature,X-Ca-Signature-Headers,X-Forwarded-For,X-Ca-Date,X-Ca-Request-Mode,Authorization,Content-Type,Accept,Accept-Ranges,Cache-Control,Range,Content-MD5[\r][\n]"
+2017-06-24 10:51:24.807 [main] DEBUG org.apache.http.wire -  << "Access-Control-Max-Age: 172800[\r][\n]"
+2017-06-24 10:51:24.807 [main] DEBUG org.apache.http.wire -  << "X-Ca-Request-Id: 575B7923-7D56-4E3F-96D3-3FCE1851A4F6[\r][\n]"
+2017-06-24 10:51:24.807 [main] DEBUG org.apache.http.wire -  << "[\r][\n]"
+2017-06-24 10:51:24.808 [main] DEBUG org.apache.http.impl.conn.DefaultClientConnection - Receiving response: HTTP/1.1 400 Bad Request
+2017-06-24 10:51:24.808 [main] DEBUG org.apache.http.headers - << HTTP/1.1 400 Bad Request
+2017-06-24 10:51:24.808 [main] DEBUG org.apache.http.headers - << Server: Tengine
+2017-06-24 10:51:24.808 [main] DEBUG org.apache.http.headers - << Date: Sat, 24 Jun 2017 02:51:16 GMT
+2017-06-24 10:51:24.808 [main] DEBUG org.apache.http.headers - << Content-Type: application/json;charset=UTF-8
+2017-06-24 10:51:24.808 [main] DEBUG org.apache.http.headers - << Content-Length: 84
+2017-06-24 10:51:24.808 [main] DEBUG org.apache.http.headers - << Connection: keep-alive
+2017-06-24 10:51:24.808 [main] DEBUG org.apache.http.headers - << Access-Control-Allow-Origin: *
+2017-06-24 10:51:24.808 [main] DEBUG org.apache.http.headers - << Access-Control-Allow-Methods: GET,POST,PUT,DELETE,HEAD,OPTIONS , PATCH
+2017-06-24 10:51:24.808 [main] DEBUG org.apache.http.headers - << Access-Control-Allow-Headers: X-Requested-With, X-Sequence,X-Ca-Key,X-Ca-Secret,X-Ca-Version,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-API-Key,X-Ca-Stage,X-Ca-Client-DeviceId,X-Ca-Client-AppId,X-Ca-Signature,X-Ca-Signature-Headers,X-Forwarded-For,X-Ca-Date,X-Ca-Request-Mode,Authorization,Content-Type,Accept,Accept-Ranges,Cache-Control,Range,Content-MD5
+2017-06-24 10:51:24.808 [main] DEBUG org.apache.http.headers - << Access-Control-Max-Age: 172800
+2017-06-24 10:51:24.808 [main] DEBUG org.apache.http.headers - << X-Ca-Request-Id: 575B7923-7D56-4E3F-96D3-3FCE1851A4F6
+2017-06-24 10:51:24.811 [main] DEBUG org.apache.http.impl.client.DefaultHttpClient - Connection can be kept alive indefinitely

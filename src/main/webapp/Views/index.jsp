@@ -17,34 +17,38 @@
 <meta name="Description" content="description ..."/>
 <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script language="JavaScript">
-
-
-    //登录
-    function login() {
-        window.location.href = "/shopweixinServlet?serviceType=login";
-    }
-    //创建菜单
-    function creatMenu() {
-        var regbtns = $(".regbtn");
-        var a = '';
-        for (var i = 0; i < regbtns.length; i++) {
-            a += '/' + $(regbtns[i]).val()
+    $(function () {
+        //登录
+        function getToken() {
+            var appid = $(".appid");
+            var appsecret = $(".appsecret");
+            window.location.href = "/getToken?appid="+appid+"&appsecret="+appsecret;
         }
-        console.log(a);
-        $.ajax({
-            type    : 'GET',
-            url     : '/createMenu' + a,
-
-            success:function(jsondata){
-                var json = JSON.parse(jsondata);
-                alert(jsondata);
-            },
-            error:function(eee){
-                 alert("我有点懵,您稍后再试!");
+        //创建菜单
+        function creatMenu() {
+            var regbtns = $(".regbtn");
+            var a = '';
+            for (var i = 0; i < regbtns.length; i++) {
+                a += '/' + $(regbtns[i]).val()
             }
-        });
+            console.log(a);
+            $.ajax({
+                type    : 'GET',
+                url     : '/createMenu' + a,
+
+                success:function(jsondata){
+                    var json = JSON.parse(jsondata);
+                    alert(jsondata);
+                },
+                error:function(eee){
+                    alert("我有点懵,您稍后再试!");
+                }
+            });
 //        window.location.href = "/createMenu" + a;
-    }
+        }
+    })
+
+
 
 </script>
 </head>
@@ -53,8 +57,6 @@
 <form name="form1" method="post" action="checkAction.jsp">
     <div class="regform">
         <ul>
-
-            <li class="btnli"><input type="button" class="reg" value="登录" onclick="login()"/></li>
             <li class="btnli">店铺编码:<input name="type" class="regbtn" value=""/></li>
             <li class="btnli">菜单类型:
                 <select name="code" class="regbtn">
@@ -83,6 +85,10 @@
 
             </li>
             <li class="btnli"><input type="button" class="regbtns" value="创建菜单" onclick="creatMenu()"/></li>
+
+            <li class="btnli">appid:<input name="type" class="appid" value=""/></li>
+            <li class="btnli">appsecret:<input name="type" class="appsecret" value=""/></li>
+            <li class="btnli"><input type="button" class="reg" value="获取token" onclick="getToken()"/></li>
         </ul>
     </div>
 </form>
