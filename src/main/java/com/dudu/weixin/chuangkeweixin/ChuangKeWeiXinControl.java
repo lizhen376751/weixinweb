@@ -55,33 +55,33 @@ public class ChuangKeWeiXinControl {
         String flagStr = lmcode.split("_")[1]; //页面跳转判断
         String shopcode = lmcode.split("_")[0]; //联盟code
         if ("paymentDetails".equals(flagStr)) {
-            return "/CKchuangkequan/share.html"; //收付明细
+            return "/CKshouzhimignxi/shouzhiindex.html"; //收付明细
         } else if ("storeSign".equals(flagStr)) {
             return "/shopxiaofeijilu/xiaofeijilu.jsp"; //门店签收
         } else if ("deliveryRecord".equals(flagStr)) {
             return "/shopbaoyangtixing/baoYangList.jsp"; //发货记录
         } else if ("buyMore".equals(flagStr)) {
-            return "/shoppersonCenter/shoppersonalCenter.jsp"; //我要进货
+            return "/CKpurchase/purchase.html"; //我要进货
         } else if ("microClass".equals(flagStr)) { //微课堂
-            return "redirect:http://www.duduchewang.cn/weixincore_cn/zy.jsp?shopcode=" + shopcode + "&openid=" + openId;
+            return "/CKmicro_classroom/micro_classroom.html";
         } else if ("microMarketing".equals(flagStr)) { //微营销
-            return "redirect:http://www.duduchewang.cn/weixincore_cn/evaluateList.jsp?shopcode=" + shopcode + "&openId=" + openId;
+            return "/CKmicro_marketing/micro_marketing.html";
         } else if ("microVideo".equals(flagStr)) {  //微视频
             return "/CKchuangkequan/share.html";
         } else if ("pullTies".equals(flagStr)) { //拉关系
             return "/shopxiaofeijilu/xiaofeijilu.jsp";
         } else if ("turfUp".equals(flagStr)) { //抢地盘
-            return "/shopbaoyangtixing/baoYangList.jsp";
+            return "/CKgrab_site/grab_site1.html";
         } else if ("informationList".equals(flagStr)) { //信息榜
-            return "/shoppersonCenter/shoppersonalCenter.jsp";
+            return "/CKxinxibang/messagebang.html";
         } else if ("grabAMission".equals(flagStr)) { //抢任务
             return "redirect:http://www.duduchewang.cn/weixincore_cn/zy.jsp?shopcode=" + shopcode + "&openid=" + openId;
         } else if ("myEquipment".equals(flagStr)) { //我的装备
             return "redirect:http://www.duduchewang.cn/weixincore_cn/evaluateList.jsp?shopcode=" + shopcode + "&openId=" + openId;
         } else if ("myTerritory".equals(flagStr)) { //我的地盘
-            return "redirect:http://www.duduchewang.cn/weixincore_cn/zy.jsp?shopcode=" + shopcode + "&openid=" + openId;
+            return "/CKmy_territory/my_territory.html";
         } else if ("personCenter".equals(flagStr)) { //个人中心
-            return "redirect:http://www.duduchewang.cn/weixincore_cn/evaluateList.jsp?shopcode=" + shopcode + "&openId=" + openId;
+            return "/CKpersonal_center/registered.html";
         }
         return null;
     }

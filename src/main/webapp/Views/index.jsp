@@ -2,10 +2,6 @@
 
 
 <html>
-
-</html>
-
-<html>
 <head>
 
 
@@ -17,13 +13,8 @@
 <meta name="Description" content="description ..."/>
 <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script language="JavaScript">
-    $(function () {
-        //登录
-        function getToken() {
-            var appid = $(".appid");
-            var appsecret = $(".appsecret");
-            window.location.href = "/getToken?appid="+appid+"&appsecret="+appsecret;
-        }
+
+
         //创建菜单
         function creatMenu() {
             var regbtns = $(".regbtn");
@@ -46,7 +37,7 @@
             });
 //        window.location.href = "/createMenu" + a;
         }
-    })
+
 
 
 
@@ -85,10 +76,6 @@
 
             </li>
             <li class="btnli"><input type="button" class="regbtns" value="创建菜单" onclick="creatMenu()"/></li>
-
-            <li class="btnli">appid:<input name="type" class="appid" value=""/></li>
-            <li class="btnli">appsecret:<input name="type" class="appsecret" value=""/></li>
-            <li class="btnli"><input type="button" class="reg" value="获取token" onclick="getToken()"/></li>
         </ul>
     </div>
 </form>
