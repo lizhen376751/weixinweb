@@ -7,10 +7,9 @@ body{
 }
 /*详情信息*/
 .detail{
-	width: 9.88rem;
 	background: #fafafa;
 	box-shadow: 0px 0px 0.04rem rgba(0,0,0,0.5);
-	margin: 0.2rem auto;
+	margin: 0.2rem;
 }
 .detail ul{
 	width: 96%;
