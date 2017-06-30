@@ -125,10 +125,12 @@ body{
 	overflow: hidden;
 }
 .ht span{
+	height: 100%;
+	line-height: 0.5rem;
 	float: right;
 	color: #505050;
 }
 .ht input{
 	float: right;
-	margin: 0.03rem;
+	width: 0.4rem;
 }
