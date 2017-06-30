@@ -19,6 +19,6 @@ $(function(){
 	})
 	//点击下一步按钮
 	$(".xyb").on("click",function(){
-		window.location.href = "../../views/grab_site/grab_site2.html"
+		window.location.href = "/Views/Ckgrab_site/grab_site2.html"
 	})
 })
