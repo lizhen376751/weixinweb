@@ -25,6 +25,12 @@ ul,li{
 .font_5{
 	font-size: 0.26rem;  /*26px*/
 }
+.font_6{
+	font-size: 0.42rem;  /*26px*/
+}
+.font_7{
+	font-size: 0.52rem;  /*26px*/
+}
 /* 缓冲图片*/
 #loading{
 	position: fixed;
