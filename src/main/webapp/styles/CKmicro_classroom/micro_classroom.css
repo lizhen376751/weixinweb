@@ -57,6 +57,7 @@ body{
 	box-shadow: 0px 0px 0.04rem rgba(0,0,0,0.5);
 	margin: 0.22rem 0.11rem 0;
 	float: left;
+	position: relative;
 }
 .photo{
 	display: block;
@@ -116,4 +117,11 @@ body{
 .fenxiang{
 	width: 0.44rem;
 	float: right;
+}
+.zc{
+	width: 5.03rem;
+	height: 5.03rem;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
