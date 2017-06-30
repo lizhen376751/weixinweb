@@ -450,15 +450,15 @@ public class MenuUtil {
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("商务中心");
-        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn14});
+        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14});
 
         ComplexButton mainBtn2 = new ComplexButton();
         mainBtn2.setName("服务中心");
-        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn23, btn25});
+        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn23, btn24, btn25});
 
         ComplexButton mainBtn3 = new ComplexButton();
         mainBtn3.setName("创客中心");
-        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn34, btn35});
+        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn33, btn34, btn35});
 
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});

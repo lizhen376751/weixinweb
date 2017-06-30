@@ -14,6 +14,22 @@
 <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script language="JavaScript">
 
+    //创建菜单
+    function getToken() {
+        var appid = $(".appid").val();
+        var appsecret = $(".appsecret").val();
+        $.ajax({
+            type    : 'GET',
+            url     : '/getToken?appid='+appid+'&appsecret='+appsecret ,
+            success:function(jsondata){
+                var json = JSON.parse(jsondata);
+                alert(jsondata);
+            },
+            error:function(eee){
+                alert("我有点懵,您稍后再试!");
+            }
+        });
+    }
 
         //创建菜单
         function creatMenu() {
@@ -76,6 +92,10 @@
 
             </li>
             <li class="btnli"><input type="button" class="regbtns" value="创建菜单" onclick="creatMenu()"/></li>
+
+            <li class="btnli">appid:<input name="type" class="appid" value=""/></li>
+            <li class="btnli">appsecret:<input name="type" class="appsecret" value=""/></li>
+            <li class="btnli"><input type="button" class="regbtns" value="创建菜单" onclick="getToken()"/></li>
         </ul>
     </div>
 </form>

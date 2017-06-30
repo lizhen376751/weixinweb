@@ -157,11 +157,12 @@ public class AllTwoController {
      * @param request 请求
      * @return token的实体类
      */
+    @ResponseBody
     @RequestMapping(value = "/getToken", method = {RequestMethod.GET, RequestMethod.POST})
     public Object tonghangquan(HttpServletRequest request) {
         String appid = request.getParameter("appid");
         String appsecret = request.getParameter("appsecret");
         AccessToken tokengetTicket = apiAllWeiXiRequest.getTokengetTicket(appid, appsecret);
-        return tokengetTicket; //培训课堂
+        return tokengetTicket; //获取的开发者的token
     }
 }
