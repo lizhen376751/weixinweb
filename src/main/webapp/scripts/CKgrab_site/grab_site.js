@@ -18,7 +18,7 @@ $(function(){
         $(this).nextAll("p").hide()
 	})
 	//点击下一步按钮
-	$(".xyb").on("click",function(){
-		window.location.href = "/Views/Ckgrab_site/grab_site2.html"
-	})
+	// $(".xyb").on("click",function(){
+	// 	window.location.href = "/Views/Ckgrab_site/grab_site2.html"
+	// })
 })

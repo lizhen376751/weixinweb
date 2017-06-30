@@ -28,6 +28,7 @@ body{
 	margin:0rem 0rem 0rem 0.1rem;
 	display: inline-block;
 	width: 2.1rem;
+	text-align: right;
 }
 .shouzhi_li li{
 	height: 0.97rem;
