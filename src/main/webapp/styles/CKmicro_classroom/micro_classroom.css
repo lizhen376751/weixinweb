@@ -14,13 +14,13 @@ body{
 	border: 1px #b5b5b5 solid;
 }
 .title ul{
-	width: 8.95rem;
+	width: 9.46rem;
 	height: 100%;
 	overflow: hidden;
 	margin: 0 auto;
 }
 .title ul li{
-	width: 2.4rem;
+	width: 2.1rem;
 	height: 100%;
 	box-sizing: border-box;
 	text-align: center;
@@ -29,7 +29,7 @@ body{
 	color: #505050;
 }
 .margin_L{
-	margin-left: 0.8rem;
+	margin-left: 0.24rem;
 }
 .border_B{
 	border-bottom: 0.05rem #76bcf0 solid;
@@ -65,20 +65,51 @@ body{
 }
 .product_name{
 	width: 4.6rem;
-	margin: 0.2rem auto 0;
+	margin: 0.2rem auto 0.2rem;
+	color: #505050;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 .introduction{
 	width: 4.6rem;
-	margin: 0.06rem auto 0;
+	margin: 0.02rem auto 0;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	color: #505050;
 }
-.price{
+.p_d{
 	width: 4.6rem;
-	margin: 0.2rem auto 0.1rem;
-	color: #b22021;
+	margin: 0.06rem auto 0.12rem;
+	overflow: hidden;
+}
+.trademark{
+	width: 2.2rem;
+	height: 0.6rem;
+	min-height: 19px;
+	min-width: 80px;
+	background: #76bcf0;
+	border-radius: 0.03rem;
+	color: #fff;
+	float: left;
+}
+.trademark img{
+	width: 0.3rem;
+	min-width: 12px;
+	position: relative;
+	top: 0.1rem;
+	left: 0.18rem;
+}
+.trademark .p{
+	position: relative;
+	top: 0.05rem;
+	left: 0.16rem;
+
+}
+.date{
+	clear: both;
+	line-height: 0.5rem;
+	color: #a0a0a0;
+	padding-top: 0.1rem;
 }
