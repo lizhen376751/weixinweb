@@ -135,7 +135,7 @@ $(document).ready(function () {
             }
             if (arr[i].resultPurchaseHistory.purchaseProductList.length != 0) {   //判断是否存在消费的商品
                 var sp = "";
-                for(var h = 0;j < arr[i].resultPurchaseHistory.purchaseProductList.length;h++){
+                for(var h = 0;h < arr[i].resultPurchaseHistory.purchaseProductList.length;h++){
                     w = h + 1;
                     sp += '<div><span>'+w+'</span><p>'+arr[i].resultPurchaseHistory.purchaseProductList[h].productName+'</p></div>'
                 }
