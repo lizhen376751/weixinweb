@@ -194,8 +194,9 @@ $(document).ready(function () {
                 }
                 xmk.append(xmk_label)
             }else{
-                no_project_card.show();
-                xmk.hide()
+                // no_project_card.show();
+                // xmk.hide()
+                $(".xmCards").hide()
             }
         //    充值卡
             var no_recharge_cards = $(".no_recharge_cards")//没有项目卡的时候，该标签显示
@@ -226,8 +227,9 @@ $(document).ready(function () {
                 }
                 czk.append(czk_label)
             }else{
-                no_recharge_cards.show();
-                czk.hide()
+                // no_recharge_cards.show();
+                // czk.hide()
+                $(".czCards").hide()
             }
 
 
@@ -258,8 +260,9 @@ $(document).ready(function () {
                 }
                 djq.append(djq_label)
             }else{
-                no_vouchers.show();
-                djq.hide()
+                // no_vouchers.show();
+                // djq.hide()
+                $(".djCards").hide()
             }
         }
     });

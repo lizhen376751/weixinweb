@@ -1,0 +1,76 @@
+body{
+	background: #e5e5e5;
+	padding-bottom:0.3rem
+}
+.conter{
+
+}
+.conter_css{
+    padding: 0.2rem 0.65rem;
+	 -webkit-box-shadow:  0px 0px 0.04rem rgba(0,0,0,0.5);   
+	 -moz-box-shadow:  0px 0px 0.04rem rgba(0,0,0,0.5);
+	 box-shadow:  0px 0px 0.04rem rgba(0,0,0,0.5);
+	margin-top:0.46rem;
+	background: #fff;
+}
+.conter_shouzhi{
+	 margin: 0.2rem 0.2rem;
+	 
+	 /*-webkit-box-shadow:  0px 0px 0.04rem rgba(0,0,0,0.5);   
+	 -moz-box-shadow:  0px 0px 0.04rem rgba(0,0,0,0.5);
+	 box-shadow:  0px 0px 0.04rem rgba(0,0,0,0.5);
+	margin-top:0.46rem;*/
+	
+}
+table{
+	table-layout: fixed;
+}
+table .overflow{
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.money_num{
+	color:#76bcf0;
+	margin:0rem 0rem 0rem 0.1rem;
+	display: inline-block;
+	width: 2.1rem;
+	text-align: right;
+}
+.shouzhi_li li{
+	height: 0.97rem;
+	line-height:0.97rem;
+}
+.shouzhi_title{
+	 padding: 0rem 0.18rem;
+	height: 0.95rem;
+	line-height: 0.95rem;
+	background:#31a3ff ;
+	color: #fff;
+}
+
+.shouzhi_left{
+	float: left;
+	
+}
+.shouzhi_right{
+	float: right;
+}
+.shouzhi_right img{
+	width:0.4rem;
+}
+.conter_table{
+	width: 100%;
+	
+	background: #fff;
+}
+.shozhitige{
+	margin-bottom: 0.2rem;
+}
+.conter_table td{
+	text-align: center;
+	height: 0.98rem;
+}
+.jiashou{
+	background: #cfcdf0;
+}

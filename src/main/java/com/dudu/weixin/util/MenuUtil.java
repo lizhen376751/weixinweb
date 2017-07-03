@@ -370,83 +370,83 @@ public class MenuUtil {
      * @param appid 微信的appid
      * @param code  联盟编码或者店铺编码
      * @param url   服务器地址
-     * @return lianMengMenu 联盟微信的菜单
+     * @return lianMengMenu 创客微信的菜单
      */
     public Menu getChuangKe(String appid, String code, String url) {
 //        wx.pre.duduchewang.cn 预生产
         String commonUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?"
-                + "appid=" + appid + "&redirect_uri=http://" + url + "/oauthLoginServlet?lmcode=" + code;
+                + "appid=" + appid + "&redirect_uri=http://" + url + "/chuangkeweixinMenu?lmcode=" + code;
 
         CommonButton btn11 = new CommonButton();
         btn11.setName("收付明细");
         btn11.setType("view");
-        btn11.setUrl(commonUrl + "_lmkInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn11.setUrl(commonUrl + "_paymentDetails" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn12 = new CommonButton();
         btn12.setName("门店签收");
         btn12.setType("view");
-        btn12.setUrl(commonUrl + "_AHIInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn12.setUrl(commonUrl + "_storeSign" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn13 = new CommonButton();
         btn13.setName("发货记录");
         btn13.setType("view");
-        btn13.setUrl(commonUrl + "_cheXianTouBao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn13.setUrl(commonUrl + "_deliveryRecord" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn14 = new CommonButton();
         btn14.setName("我要进货");
         btn14.setType("view");
-        btn14.setUrl(commonUrl + "_personalCenter" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn14.setUrl(commonUrl + "_buyMore" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
 
         CommonButton btn21 = new CommonButton();
         btn21.setName("微课堂");
         btn21.setType("view");
-        btn21.setUrl(commonUrl + "_fuwudaohang" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn21.setUrl(commonUrl + "_microClass" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn22 = new CommonButton();
         btn22.setName("微营销");
         btn22.setType("view");
-        btn22.setUrl(commonUrl + "_fuwudaohangXC" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn22.setUrl(commonUrl + "_microMarketing" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn23 = new CommonButton();
-        btn23.setName("微视频");
+        btn23.setName("创客圈");
         btn23.setType("view");
-        btn23.setUrl(commonUrl + "_fuwudaohangYQ" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn23.setUrl(commonUrl + "_microVideo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn24 = new CommonButton();
         btn24.setName("拉关系");
         btn24.setType("view");
-        btn24.setUrl("https://gst.u-road.com/gst_wechat/HighSpeedTraffic/expresswayGlance?wxid=gh_f8c30bae42ad");
+        btn24.setUrl(commonUrl + "_pullTies" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn25 = new CommonButton();
         btn25.setName("抢地盘");
         btn25.setType("view");
-        btn25.setUrl("https://gst.u-road.com/gst_wechat/HighSpeedTraffic/trafficOfNear?wxid=gh_f8c30bae42ad");
+        btn25.setUrl(commonUrl + "_turfUp" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn31 = new CommonButton();
         btn31.setName("信息榜");
         btn31.setType("view");
-        btn31.setUrl(commonUrl + "_YCInfo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn31.setUrl(commonUrl + "_informationList" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn32 = new CommonButton();
         btn32.setName("抢任务");
         btn32.setType("view");
-        btn32.setUrl(commonUrl + "_lianMengActivity" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn32.setUrl(commonUrl + "_grabAMission" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn33 = new CommonButton();
-        btn33.setName("我的装备");
+        btn33.setName("我的礼品");
         btn33.setType("view");
-        btn33.setUrl(commonUrl + "_lianMengJieShao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn33.setUrl(commonUrl + "_myEquipment" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn34 = new CommonButton();
         btn34.setName("我的地盘");
         btn34.setType("view");
-        btn34.setUrl(commonUrl + "_lianMengActivity" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn34.setUrl(commonUrl + "_myTerritory" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn35 = new CommonButton();
         btn35.setName("个人中心");
         btn35.setType("view");
-        btn35.setUrl(commonUrl + "_lianMengJieShao" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn35.setUrl(commonUrl + "_personCenter" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("商务中心");

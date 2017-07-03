@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>收支明细</title>
+    <link rel="stylesheet" type="text/css" href="/styles/ckwx.css"/>
+    <link rel="stylesheet" type="text/css" href="/styles/CKshouzhimingxi/shouzhiindex.css"/>
+	<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/scripts/layout.js"  type="text/javascript" charset="utf-8"></script>
+	<script src="/scripts/CKshouzhimingxi/shouzhiindex.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>
+
+	<div class="conter">
+	    <div class=" conter_css">
+			<ul class="font_4 shouzhi_li">
+				<li>当前余额<font class=" font_3 money_num">15800.00</font>元</li>
+				<li>累计付款<font class=" font_3 money_num">6343.00</font>元</li>
+				<li>累计发货<font class=" font_3 money_num">4746.00</font>元</li>
+			</ul>
+		</div>
+		<div class=" conter_shouzhi">
+			<div class="shozhitige">
+				<div class="font_4 shouzhi_title" onclick="openindex(this)">
+					<span class="shouzhi_left">付款</span>
+					<span class="shouzhi_right"><img  src="/files/CKshouzhimingxi/down.png"/></span>
+				</div>
+				<table border="0" cellpadding="0" cellspacing="0" class="font_3 conter_table">
+					<tr>
+						<td width="50%">日期</td>
+						<td width="50%">金额</td>
+					</tr>
+					<tr>
+						<td>2017-05-18</td>
+						<td>2858.00</td>
+					</tr>
+					<tr>
+						<td>2017-04-18</td>
+						<td>1588.00</td>
+					</tr>
+					<tr>
+						<td>2017-03-18</td>
+						<td>1888.00</td>
+					</tr>
+					
+				</table>
+			</div>	
+			<div class="shozhitige" >
+				<div class="font_4 shouzhi_title" onclick="openindex(this)">
+					<span class="shouzhi_left">发货</span>
+					<span class="shouzhi_right"><img  src="/files/CKshouzhimingxi/down.png"/></span>
+				</div>
+				<table border="0" cellpadding="0" cellspacing="0" class="font_3 conter_table">
+					<tr>
+						<td width="25%">日期</td>
+						<td width="40%">接收人</td>
+						<td width="8%">是否接收</td>
+						<td width="25%">金额</td>
+					</tr>
+					<tr >
+						<td>2017-05-18</td>
+						<td class="overflow">淄博远大汽车服务有限公司</td>
+						<td width="6%">是</td>
+						<td>2858.00</td>
+					</tr>
+					<tr class="jiashou">
+						<td>2017-04-18</td>
+						<td class="overflow">淄博远大汽车服务有限公司</td>
+						<td width="6%">否</td>
+						<td>1588.00</td>
+					</tr>
+					<tr>
+						<td>2017-03-18</td>
+						<td class="overflow">淄博远大汽车服务有限公司</td>
+						<td width="6%">是</td>
+						<td>1888.00</td>
+					</tr>
+					
+				</table>
+				
+			</div>
+		 </div>	
+	</div>
+	
+</body>
+</html>

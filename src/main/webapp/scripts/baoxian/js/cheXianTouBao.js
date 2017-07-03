@@ -15,12 +15,12 @@ $(document).ready(function(){
             alert("请确保文件为图像类型");
             return false;
         }
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function(e){
-            var base = this.result; //就是base64
+        lrz(file, {width: 512}).then(function (rst) {
+            var base = rst.base64; //就是base64
             var n = base.indexOf("base64,");
             var base64 = base.substring(n+7);
+            // console.log(rst)
+            // console.log(base64)
             $.ajax({
                 type    : 'POST',
                 url     : '/getCommonAjax2',
@@ -66,7 +66,7 @@ $(document).ready(function(){
                     alert("我有点懵,您稍后再试!");
                 }
             });
-        }
+        });
     })
 
     var mineShopCode = $("#mineShopCode").val();
