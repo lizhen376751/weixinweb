@@ -409,7 +409,7 @@ public class MenuUtil {
         btn22.setUrl(commonUrl + "_microMarketing" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn23 = new CommonButton();
-        btn23.setName("微视频");
+        btn23.setName("创客圈");
         btn23.setType("view");
         btn23.setUrl(commonUrl + "_microVideo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
@@ -434,7 +434,7 @@ public class MenuUtil {
         btn32.setUrl(commonUrl + "_grabAMission" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
         CommonButton btn33 = new CommonButton();
-        btn33.setName("我的装备");
+        btn33.setName("我的礼品");
         btn33.setType("view");
         btn33.setUrl(commonUrl + "_myEquipment" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 

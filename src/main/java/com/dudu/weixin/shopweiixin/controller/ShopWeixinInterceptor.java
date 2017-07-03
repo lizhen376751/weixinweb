@@ -6,7 +6,6 @@ import com.dudu.soa.weixindubbo.shopinfo.api.ApiShopInfo;
 import com.dudu.soa.weixindubbo.shopinfo.module.ShopInfo;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.soa.weixindubbo.weixin.http.module.parammodule.WeiXinUserInfo;
-import com.dudu.weixin.control.LoginInterceptor;
 import com.dudu.weixin.service.LogInLogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +26,7 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
     /**
      * 日志打印
      */
-    private static Logger log = LoggerFactory.getLogger(LoginInterceptor.class);
+    private static Logger log = LoggerFactory.getLogger(ShopWeixinInterceptor.class);
 
 
     /**
@@ -111,7 +110,10 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
                     //如果有记录,就获取记录并存入到session
                     session.setAttribute("plateNumber", plateNumber);
                 }
+            } else {
+                request.getRequestDispatcher("/Views/shoplogin/shoplogin.jsp?shopcode=" + shopcode).forward(request, response);
             }
+
 
         }
 

@@ -121,6 +121,7 @@ $(document).ready(function () {
             var xm_num = "";//记录该项目的数据
             var xfsp = "";  //记录消费商品
             var fkfs = "";//记录付款方式
+            var sgbz = "";
             if (arr[i].resultPurchaseHistory.purchaseProjectList.length != 0) {   //判断是否存在消费的项目
                 var xm = "";
                 for(var j = 0;j < arr[i].resultPurchaseHistory.purchaseProjectList.length;j++){
@@ -132,7 +133,7 @@ $(document).ready(function () {
                             '<div class="left_1">消费项目：</div>'+
                             '<div class="right_1">'+xm+'</div>'+
                         '</div>'
-                var sgbz = '<div class="sgbz font_1" sgbz="sgbz" xm_num = "'+xm_num+'" shopCode="'+arr[i].resultPurchaseHistory.shopCode+'" wxpingzheng="'+arr[i].resultPurchaseHistory.wxpingzheng+'">施工步骤</div>';
+                sgbz = '<div class="sgbz font_1" sgbz="sgbz" xm_num = "'+xm_num+'" shopCode="'+arr[i].resultPurchaseHistory.shopCode+'" wxpingzheng="'+arr[i].resultPurchaseHistory.wxpingzheng+'">施工步骤</div>';
 
             }
             if (arr[i].resultPurchaseHistory.purchaseProductList.length != 0) {   //判断是否存在消费的商品
@@ -194,7 +195,7 @@ $(document).ready(function () {
                                     '<span style="margin-left: 26px;">付款方式：</span>'+fkfs+
                                 '</div>'+
                             '</div>'+
-                        '<div class="btn">'+ pingjia + sgbz +
+                        '<div class="btn">'+ sgbz +
                          '</div>'+
                     '</div>'+
                 '</li>';
