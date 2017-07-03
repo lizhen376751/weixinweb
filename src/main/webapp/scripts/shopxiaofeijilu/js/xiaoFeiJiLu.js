@@ -132,6 +132,8 @@ $(document).ready(function () {
                             '<div class="left_1">消费项目：</div>'+
                             '<div class="right_1">'+xm+'</div>'+
                         '</div>'
+                var sgbz = '<div class="sgbz font_1" sgbz="sgbz" xm_num = "'+xm_num+'" shopCode="'+arr[i].resultPurchaseHistory.shopCode+'" wxpingzheng="'+arr[i].resultPurchaseHistory.wxpingzheng+'">施工步骤</div>';
+
             }
             if (arr[i].resultPurchaseHistory.purchaseProductList.length != 0) {   //判断是否存在消费的商品
                 var sp = "";
@@ -192,8 +194,7 @@ $(document).ready(function () {
                                     '<span style="margin-left: 26px;">付款方式：</span>'+fkfs+
                                 '</div>'+
                             '</div>'+
-                        '<div class="btn">'+ pingjia +
-                             '<div class="sgbz font_1" sgbz="sgbz" xm_num = "'+xm_num+'" shopCode="'+arr[i].resultPurchaseHistory.shopCode+'" wxpingzheng="'+arr[i].resultPurchaseHistory.wxpingzheng+'">施工步骤</div>'+
+                        '<div class="btn">'+ pingjia + sgbz +
                          '</div>'+
                     '</div>'+
                 '</li>';
