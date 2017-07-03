@@ -39,6 +39,9 @@ public class CreateMenuService {
             case "yilubang": //易璐邦
                 menu = menuUtil.getYiLuBangmenu(appid, code);
                 break;
+            case "chuangke": //创客
+                menu = menuUtil.getChuangKe(appid, code, url);
+                break;
             default:
                 menu = null;
         }
