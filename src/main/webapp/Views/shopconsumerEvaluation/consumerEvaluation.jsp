@@ -78,11 +78,11 @@
 					<div class="project_num">
 						<span class="font_1 color_8">请给出您的评价</span>
 						<ul>
-							<li><img src="../img/consumerEvaluation/flower_bg.png" class="dl"/></li>
-							<li><img src="../img/consumerEvaluation/flower_bg.png" class="dl"/></li>
-							<li><img src="../img/consumerEvaluation/flower_bg.png" class="dl"/></li>
-							<li><img src="../img/consumerEvaluation/flower_bg.png" class="dl"/></li>
-							<li><img src="../img/consumerEvaluation/flower_bg.png" class="dl"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>
+							<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="dl"/></li>
 						</ul>
 						<input type="hidden" class="dl_val" value="0" />
 					</div>
@@ -92,19 +92,19 @@
 						<ul>
 							<li class="margin_r">
 								<input type="file" class="project_file" accept="image/*"/>
-								<img src="../img/consumerEvaluation/add_img.png" class="add_img"/>
+								<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>
 								<img src="" class="file_img"/>
 								<input type="hidden" class="uuid" value="" />
 							</li>
 							<li class="margin_r">
 								<input type="file" class="project_file"/>
-								<img src="../img/consumerEvaluation/add_img.png" class="add_img"/>
+								<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>
 								<img src="" class="file_img"/>
 								<input type="hidden" class="uuid" value="" />
 							</li>
 							<li>
 								<input type="file" class="project_file"/>
-								<img src="../img/consumerEvaluation/add_img.png" class="add_img"/>
+								<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>
 								<img src="" class="file_img"/>
 								<input type="hidden" class="uuid" value="" />
 							</li>
