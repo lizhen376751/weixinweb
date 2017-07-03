@@ -11,10 +11,10 @@
     doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document,window);
 $(function(){
-    var plateNumber = $("#plateNumber").val();
+    var plateNumber = $("#plateNumber").val();//车牌号
     var customId = $("#customId").val();
-    var wxpingzheng = $("#wxpingzheng").val();
-    var shopCode = $("#shopCode").val();
+    var wxpingzheng = $("#wxpingzheng").val();//维修凭证
+    var shopCode = $("#shopCode").val();//店铺编码
     var project = $(".project");//获取评价的容器
     //初始加载页面
     $.ajax({
@@ -32,15 +32,17 @@ $(function(){
                 //    是否含有消费商品判断
                 if(json.commodityMx.length != 0){
                     for(var j = 0;j < json.commodityMx.length;j++){
-                        addPJ(json.commodityMx[j].moduleName);
+                        addPJ(json.commodityMx[j].moduleName,json.commodityMx[j].weixiuyuanSp,json.commodityMx[j].spbm,1);
                     }
                 }
                 //    是否含有消费项目判断
                 if(json.projectMx.length != 0){
                     for(var j = 0;j < json.projectMx.length;j++){
-                        addPJ(json.projectMx[j].itemName);
+                        addPJ(json.projectMx[j].itemName,json.projectMx[j].weixiuyuan,json.projectMx[j].itemcode,2);
                     }
                 }
+                $(".shop_num").attr("OrderType",json.ordertype);//单据类型
+                $(".shop_num").attr("CreateDate",json.kprq);//开票日期
             $(".project_num img").on("click",click_flower);
             $(".shop_num img").on("click",click_flower);
         },
@@ -49,11 +51,11 @@ $(function(){
         }
 
     });
-    //动态添加每一个评价模块
-    function addPJ(name) {
+    //动态添加每一个评价模块(商品或项目名称，销售或技师ID，商品或项目编码，商品或项目区分)
+    function addPJ(name,ServiceStaff,CommodityCode,ComIdentifica) {
         var classes = uuid(4,16);
         var sp = '<div class="box">'+
-            '<div class="box_l">'+
+            '<div class="box_l" ServiceStaff="'+ServiceStaff+'" CommodityCode="'+CommodityCode+'" ComIdentifica="'+ComIdentifica+'">'+
             '<div class="project_title font_3">'+
             '<span class="project_title_txt">'+name+'</span>'+
             '</div>'+
@@ -220,26 +222,37 @@ $(function(){
     }
 	//---------------------------------------------------------------------------提交评价
 	btn.on("click",function(){
+        var dp_val = $(".dp_val").val();
 		//数据包
 		var data = {
-			dp:"0",
-			project:[]
-		}
-		var img_val = $(".project_num input");
-		var arr = [];
-		for(var i = 0; i < img_val.length;i++){
-			var val = $(img_val[i]).val();
-		 	arr.push(val);
-		}
+			ShopStarlevel:dp_val,//店铺评价星级
+			EvaluateBill:{
+			    OrderType:$(".shop_num").attr("OrderType"),  //单据类型
+                CreateDate:$(".shop_num").attr("CreateDate") //开票日期
+            },
+            WxPingZheng:wxpingzheng,//维修凭证
+            Platenumber:plateNumber,//车牌号
+            ShopCode:shopCode, //店铺编码
+            EvaluateCommodities:[]
+		};
 		var projects = $(".box_l");
 		for(var j = 0; j < projects.length;j++){
 			var obj = {};
-			//获取每一个项目的星级
+			//获取每一个商品或项目的销售或技师ID
+            var ServiceStaff = $(projects[j]).attr("ServiceStaff");
+            obj.ServiceStaff = ServiceStaff;
+            //获取每一个商品或项目的编码
+            var CommodityCode = $(projects[j]).attr("CommodityCode");
+            obj.CommodityCode = CommodityCode;
+            //获取每一个商品或项目的区分
+            var ComIdentifica = $(projects[j]).attr("ComIdentifica");
+            obj.ComIdentifica = ComIdentifica;
+			//获取每一个商品或项目的星级
 			var project_xj = $(projects[j]).find(".project_num input").val();
-			obj.xj = project_xj;
+			obj.CommodityStarlevel = project_xj;
 			//获取用户的评价文字
 			var project_pj = $(projects[j]).find(".project_text textarea").val();
-			obj.pj = project_pj;
+			obj.CommodityContent = project_pj;
 			//获取用户上传图片的uuid
 			obj.uuid = [];
 			var projrct_uuid = $(projects[j]).find(".project_text li");
@@ -247,10 +260,14 @@ $(function(){
 				var uuid_val = $(projrct_uuid[g]).find(".uuid").val();
 				obj.uuid.push(uuid_val);
 			};
-			data.project.push(obj);
+			data.EvaluateCommodities.push(obj);
 		}
-		var dp_val = $(".dp_val").val();
-		data.dp = dp_val;
+        var img_val = $(".project_num input");
+        var arr = [];
+        for(var i = 0; i < img_val.length;i++){
+            var val = $(img_val[i]).val();
+            arr.push(val);
+        }
 		var dj_val = $.inArray("0",arr);
 		//2不能提交；1可以提交
 		if(dj_val == "-1" && dp_val != "0"){
