@@ -11,8 +11,31 @@
     doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document,window);
 $(function(){
+    //初始加载页面
+    $.ajax({
+        type    : 'post',
+        url     : '/ossconfig/'+mineShopCode+'/18',
+        data    : {
+            plateNumber:"${plateNumber}",
+            customId:"${customId}",
+            wxpingzheng:"${wxpingzheng}",
+            shopCode:"${shopCode}"
+        },
+        success:function(jsondata){
+            var json = JSON.parse(jsondata);
+
+        },
+        error:function(data){
+
+        }
+
+    });
+
+
+
+
+
 	var btn = $(".btn");// 获取提交按钮
-	
 	$(".project_num img").on("click",click_flower);
 	$(".shop_num img").on("click",click_flower)
 	//点击选花按钮
