@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.net.URLEncoder;
 
 /**
@@ -54,6 +55,11 @@ public class AllTwoController {
      */
     @Reference(timeout = 300000)
     private ApiAllWeiXiRequest apiAllWeiXiRequest;
+    /**
+     * session
+     */
+    @Autowired
+    private HttpSession httpSession;
 
     /**
      * 关于服务导航的url跳转(后期去掉)
@@ -164,5 +170,18 @@ public class AllTwoController {
         String appsecret = request.getParameter("appsecret");
         AccessToken tokengetTicket = apiAllWeiXiRequest.getTokengetTicket(appid, appsecret);
         return tokengetTicket; //获取的开发者的token
+    }
+
+    /**
+     * ahi页面
+     *
+     * @param request     请求
+     * @return 路径字符串
+     */
+    @RequestMapping(value = "/ahiTiXing", method = {RequestMethod.GET, RequestMethod.POST})
+    public String ahi(HttpServletRequest request) {
+        String plateNumber = request.getParameter("plateNumber");
+        httpSession.setAttribute("plateNumber", plateNumber);
+        return "/ahi/AHIxiangqing.jsp";
     }
 }

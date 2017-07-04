@@ -62,7 +62,7 @@
             $.ajax({
                 type: "post",
                 dataType: "text",
-                url: 'getCommonAjax',
+                url: '/getCommonAjax',
                 data: {'fromflag': 'queryAllPointByPlateNumber'},
                 success: function (data) {
                     data = eval('(' + data + ')');
@@ -110,7 +110,7 @@
             $.ajax({
                 type: "post",
                 dataType: "text",
-                url: 'getCommonAjax',
+                url: '/getCommonAjax',
                 data: {'fromflag': 'queryCarPointOne'},
                 success: function (data) {
                     data = eval('(' + data + ')');
