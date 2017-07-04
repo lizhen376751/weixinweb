@@ -86,14 +86,6 @@ public class AllController {
             return "/daoHang/daoHangliebiao/service/daohangindex.jsp?shopcode=" + lmcode + "&openid=" + openId + '"'; //服务导航
         } else if ("AHIInfo".equals(flagStr)) {
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
-        } else if ("AHIInfoxiangqing".equals(flagStr)) {
-            String id = request.getParameter("id");
-            model.addAttribute("id", id);
-            return "/ahi/subxiangqing.jsp"; //ahi详情
-        } else if ("thirlyIndex".equals(flagStr)) {
-            String inspectionDetailedDescription = request.getParameter("inspectionDetailedDescription");
-            model.addAttribute("inspectionDetailedDescription", inspectionDetailedDescription);
-            return "/ahi/thirlyIndex.jsp"; //ahi三级页面
         } else if ("xiaoFeiList".equals(flagStr)) {
             return "/xiaoFeiJiLu/xiaoFeiList.jsp"; //消费记录
         } else if ("baoYangList".equals(flagStr)) {
