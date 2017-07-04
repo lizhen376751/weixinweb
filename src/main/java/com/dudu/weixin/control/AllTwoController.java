@@ -62,6 +62,20 @@ public class AllTwoController {
     private HttpSession httpSession;
 
     /**
+     * 微信网页授权回调页面
+     *
+     * @param request     请求
+     * @param response    返回
+     * @param wenjianming 文件名字
+     * @return 路径
+     */
+    @ResponseBody
+    @RequestMapping(value = "/MP_verify_{wenjianming}.txt", method = RequestMethod.GET)
+    public Object duduchewangCheGuanjia(@PathVariable String wenjianming, HttpServletRequest request, HttpServletResponse response) {
+        return wenjianming;
+    }
+
+    /**
      * 关于服务导航的url跳转(后期去掉)
      *
      * @param request  请求
@@ -84,16 +98,6 @@ public class AllTwoController {
             longitude = "29.910757";
         }
         log.info(latitude + "获取的地理位置为:" + longitude);
-//        System.out.println("==============" + latitude + "," + longitude);
-
-//         String latitude = "29.910757";
-//         String longitude = "121.59543";
-//         System.out.println("==============" + latitude + "," + longitude);
-//        http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?shopcode=FL000&latitude=29.910757&longitude=121.59543&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4
-        //        http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?
-//         shopcode=FL000&latitude=29.910757&longitude=121.59543&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4&shopType_search=,洗车,
-//        http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?
-//         shopcode=FL000&latitude=29.910757&longitude=121.59543&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4&shopType_search=,油漆,
         response.sendRedirect("http://wx.duduchewang.cn/weixincore/daoHang/service/daohangindex.jsp?"
                 + "shopcode=" + shopCode + "&latitude=" + latitude + "&longitude=" + longitude + "&openid=oSsYXwMun4NrZE8b_OQi6kMaPyg4&shopType_search=" + shopTypesearch);
 
@@ -175,7 +179,7 @@ public class AllTwoController {
     /**
      * ahi页面
      *
-     * @param request     请求
+     * @param request 请求
      * @return 路径字符串
      */
     @RequestMapping(value = "/ahiTiXing", method = {RequestMethod.GET, RequestMethod.POST})
@@ -184,4 +188,6 @@ public class AllTwoController {
         httpSession.setAttribute("plateNumber", plateNumber);
         return "/ahi/AHIxiangqing.jsp";
     }
+
+
 }

@@ -1,32 +1,17 @@
 package com.dudu.weixin.control;
 
-import com.alibaba.fastjson.JSONObject;
-import com.dudu.soa.baoxian.kaidan.module.BaoXianList;
-import com.dudu.soa.baoxian.kaidan.module.BaoXianParamList;
-import com.dudu.soa.framework.commons.oauth.module.DuduToken;
-import com.dudu.soa.framework.oauth.DuduOauthService;
-import com.dudu.weixin.service.ChexiantoubaoService;
 import com.dudu.weixin.service.LogInLogService;
-import com.dudu.weixin.service.ShopInfoService;
 import com.dudu.weixin.service.ValidateService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 所有微信菜单入口
@@ -44,71 +29,18 @@ public class AllController {
      */
     @Autowired
     private HttpSession httpSession;
-    /**
-     * 店铺信息
-     */
-    @Autowired
-    private ShopInfoService shopInfoService;
+
     /**
      * 登录服务
      */
     @Autowired
     private LogInLogService logInLogService;
-    /**
-     * 车险投保
-     */
-    @Autowired
-    private ChexiantoubaoService chexiantoubaoService;
+
     /**
      * 引入验证码发送的服务
      */
     @Autowired
     private ValidateService validateService;
-    /**
-     * 引入token服务
-     */
-    @Resource
-    private DuduOauthService duduOauthService;
-
-
-    /**
-     * 嘟嘟车网测试平台网页授权回调页面
-     *
-     * @param request  请求
-     * @param response 返回
-     * @return 路径
-     */
-    @RequestMapping(value = "MP_verify_xtfw75328NsMZ6bb.txt", method = RequestMethod.GET)
-    public String duduchewangceshipingtai(HttpServletRequest request, HttpServletResponse response) {
-        return "/MP_verify_xtfw75328NsMZ6bb.txt";
-    }
-
-
-    /**
-     * 嘟嘟车网车管家网页授权回调页面
-     *
-     * @param request     请求
-     * @param response    返回
-     * @param wenjianming 文件名字
-     * @return 路径
-     */
-    @ResponseBody
-    @RequestMapping(value = "/MP_verify_{wenjianming}.txt", method = RequestMethod.GET)
-    public Object duduchewangCheGuanjia(@PathVariable String wenjianming, HttpServletRequest request, HttpServletResponse response) {
-        return wenjianming;
-    }
-
-    /**
-     * 一路帮网页授权回调页面
-     *
-     * @param request  请求
-     * @param response 返回
-     * @return 路径
-     */
-    @RequestMapping(value = "MP_verify_LfkUMEM3uc7s4hpv.txt", method = RequestMethod.GET)
-    public String yilubang(HttpServletRequest request, HttpServletResponse response) {
-        return "/MP_verify_LfkUMEM3uc7s4hpv.txt";
-    }
 
 
     /**
@@ -119,8 +51,7 @@ public class AllController {
      * @return 字符串
      */
     @RequestMapping(value = "oauthLoginServlet", method = RequestMethod.GET)
-    public String oauthLogin(HttpServletRequest request,
-                             Model model) {
+    public String oauthLogin(HttpServletRequest request, Model model) {
 
         //获取参数,并将其分解
         String strWxShopcode = request.getParameter("lmcode");
@@ -223,156 +154,28 @@ public class AllController {
     }
 
     /**
-     * 车险投保的在线交流小图标
+     * 联盟微信内部页面的相关跳转
      *
-     * @return 字符串路径
+     * @param request 请求
+     * @param model   返回页面的数据
+     * @return 路径
      */
-    @RequestMapping(value = "/cheXianOnline", method = RequestMethod.GET)
-    public String cheXianOnline() {
-        return "redirect:http://kefu6.kuaishang.cn/bs/im.htm?cas=56463___619761&fi=58696&from=9"; //车险投保易璐邦的在线咨询
-
-    }
-
-
-    /**
-     * 仅用于app端页面车险投保
-     *
-     * @param request  请求
-     * @param model    绑定数据
-     * @param tokenStr token字符串
-     * @return 页面跳转至车险投保页面
-     */
-    @RequestMapping(value = "/cheXianTouBao", method = RequestMethod.GET)
-    public String cheXianTouBao(HttpServletRequest request, Model model, @RequestHeader(value = "token", required = false) String tokenStr) {
-        //如果不为空,传进来的就是token,如果为空的话就是写死的token
-        tokenStr = tokenStr != null ? tokenStr : "AQAAAITdno+PtJqG3cXdzt3T3ZyNmp6LmquWkprdxc/T3ZqHj42WjJqrlpKa3cXP092SnpaRrJeQj7yQm5rdxd3PyszMz8/"
-                + "O3dPdkZaclLGekprdxd0ZYnEZSlYYa2Dd092NkJOatpvdxc3O092Ml5CPvJCbmt3F3c/KzMzPz87d092KjJqNs5Cem7aRtpvdxd3PyszMz8/"
-                + "Oz87d092Jmo2MlpCR3cXOgg==";
-        DuduToken token = duduOauthService.getDuduToken(tokenStr);
-        String mineShopCode = token.getMainShopCode();
-        request.setAttribute("mineShopCode", mineShopCode);
-        model.addAttribute("mineShopCode", mineShopCode);
-        return "/baoxian/cheXianTouBao/cheXianTouBao.jsp"; //车险投保
-    }
-
-
-    /**
-     * 提交保险
-     *
-     * @param request 获取参数
-     * @return String
-     * @throws ParseException 异常抛出
-     */
-    @ResponseBody
-    @RequestMapping(value = "baoxiantijiao", method = RequestMethod.POST)
-    public String baoXianTiJiao(HttpServletRequest request) throws ParseException {
-        Integer integer = chexiantoubaoService.baoXianTiJiao(request);
-        if (integer > 0) {
-            return JSONObject.toJSONString("1");
+    @RequestMapping(value = "lmInternalJump", method = RequestMethod.GET)
+    public String lmInternalJump(HttpServletRequest request, Model model) {
+        String business = request.getParameter("business");
+        if ("AHIInfoxiangqing".equals(business)) {
+            String id = request.getParameter("id");
+            model.addAttribute("id", id);
+            return "/ahi/subxiangqing.jsp"; //ahi详情
+        } else if ("thirlyIndex".equals(business)) {
+            String inspectionDetailedDescription = request.getParameter("inspectionDetailedDescription");
+            model.addAttribute("inspectionDetailedDescription", inspectionDetailedDescription);
+            return "/ahi/thirlyIndex.jsp"; //ahi三级页面
         } else {
-            return JSONObject.toJSONString("0");
+            return "/login/login.jsp";
         }
 
     }
 
-
-    /**
-     * @param request 请求
-     * @param model   绑定参数
-     * @return 页面跳转至车险列表展示页面
-     */
-    @RequestMapping(value = "queryBaoXian", method = RequestMethod.GET)
-    public String queryInsurance(HttpServletRequest request, Model model) {
-        BaoXianParamList baoXianParamList = new BaoXianParamList();
-        String lmcode = (String) request.getSession().getAttribute("lmcode");
-        String plateNumber = (String) request.getSession().getAttribute("plateNumber");
-        if (null != lmcode && !"".equals(lmcode)) {
-            baoXianParamList.setShopcodelm(lmcode);
-        }
-        if (null != plateNumber && !"".equals(plateNumber)) {
-            baoXianParamList.setCarId(plateNumber);
-        }
-        List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
-        model.addAttribute("list", baoXianLists);
-        return "/cheXianList/cheXianList.jsp"; //展示车险列表的页面
-    }
-
-    /**
-     * 仅用于app端保险列表页面的按钮进入
-     *
-     * @param request  请求
-     * @param model    绑定数据
-     * @param tokenStr token字符串
-     * @return 页面跳转至车险列表展示页面
-     */
-    @RequestMapping(value = "/queryInsurance", method = RequestMethod.GET)
-    public String queryCarInsurance(HttpServletRequest request, Model model, @RequestHeader(value = "token", required = false) String tokenStr) {
-        //如果不为空,传进来的就是token,如果为空的话就是写死的token
-        tokenStr = tokenStr != null ? tokenStr : "AQAAAITdno+PtJqG3cXdzt3T3ZyNmp6LmquWkprdxc/T3ZqHj42WjJqrlpKa3cXP092SnpaRrJeQj7yQm5rdxd3PyszMz8/"
-                + "O3dPdkZaclLGekprdxd0ZYnEZSlYYa2Dd092NkJOatpvdxc3O092Ml5CPvJCbmt3F3c/KzMzPz87d092KjJqNs5Cem7aRtpvdxd3PyszMz8/"
-                + "Oz87d092Jmo2MlpCR3cXOgg==";
-        DuduToken token = duduOauthService.getDuduToken(tokenStr);
-        String shopCode = token.getShopCode();
-        model.addAttribute("shopCode", shopCode);
-        //++++++++++++++++++++++++++++++++++++++++
-        BaoXianParamList baoXianParamList = new BaoXianParamList();
-        if (null != shopCode && !"".equals(shopCode)) {
-            List<String> list = new ArrayList<>();
-            list.add(shopCode);
-            baoXianParamList.setShopCode(list);
-        }
-        List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
-        model.addAttribute("list", baoXianLists);
-        return "/cheXianList/cheXianList.jsp"; //展示车险列表的页面
-
-    }
-
-    /**
-     * 仅用于app端保险提交之后跳转至列表页面
-     *
-     * @param request 请求
-     * @param model   返回数据
-     * @return 页面跳转至车险列表展示页面
-     */
-    @RequestMapping(value = "/appbaoxianlist", method = RequestMethod.GET)
-    public String appbaoxianlist(HttpServletRequest request, Model model) {
-        String mineShopCode = request.getParameter("mineShopCode");
-        model.addAttribute("shopCode", mineShopCode);
-        return "/cheXianList/cheXianList.jsp"; //展示车险列表的页面
-
-    }
-
-    /**
-     * 跳转至保险详情页面
-     *
-     * @param request 请求
-     * @param model   返回数据
-     * @return 保险详情页面
-     */
-    @RequestMapping(value = "baoXianDetails")
-    public String toInsuranceDetails(HttpServletRequest request, Model model) {
-        String companyid = request.getParameter("companyid");
-        if (companyid != null) {
-            Integer companyId = Integer.parseInt(companyid);
-            model.addAttribute("companyId", companyId);
-        }
-        String shopcodelm = request.getParameter("shopcodelm");
-        if (shopcodelm != null && !shopcodelm.equals("")) {
-            model.addAttribute("shopCodeLm", shopcodelm);
-        }
-        String orderNumb = request.getParameter("orderNumb");
-        if (orderNumb != null && !orderNumb.equals("")) {
-            model.addAttribute("orderNumb", orderNumb);
-        }
-        String shopCode = request.getParameter("shopCode");
-        if (shopCode != null && !shopCode.equals("")) {
-            model.addAttribute("shopCode", shopCode);
-        }
-        String carId = request.getParameter("carId");
-        if (carId != null && !carId.equals("")) {
-            model.addAttribute("plateNumber", carId);
-        }
-        return "/baoxianDetail/cheXianDetail.jsp"; //车险详情展示页面
-    }
 
 }

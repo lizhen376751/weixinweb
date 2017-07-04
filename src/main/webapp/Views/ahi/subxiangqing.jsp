@@ -18,7 +18,7 @@
             $.ajax({
                 type: "post",
                 dataType: "text",
-                url: 'getCommonAjax',
+                url: '/getCommonAjax',
                 data: {'fromflag': 'queryCarPointOne'},
                 success: function (data) {
                     data = eval('(' + data + ')');
@@ -28,7 +28,7 @@
                                 type: "post",
                                 async: false,
                                 dataType: "text",
-                                url: 'getCommonAjax',
+                                url: '/getCommonAjax',
                                 data: {
                                     'fromflag': 'queryCarPointTwo',
                                     'id': data[i].id,

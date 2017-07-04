@@ -145,7 +145,7 @@
             });
         });
         function toSubxiangqing(id) {
-            window.location.href = '/oauthLoginServlet?flagStr=AHIInfoxiangqing&id=' + id;
+            window.location.href = '/lmInternalJump?business=AHIInfoxiangqing&id=' + id;
         }
         Date.prototype.format = function (format) {
             var date = {

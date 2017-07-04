@@ -46,7 +46,7 @@
 
     });
     function  goback(){
-        window.location.href = "/oauthLoginServlet?flagStr=AHIInfoxiangqing&id="+ids;
+        window.location.href = "/lmInternalJump?business=AHIInfoxiangqing&id="+ids;
 
     }
 </script>

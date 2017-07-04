@@ -77,7 +77,7 @@
             <li class="btnli">appsecret:<input name="appSecret" class="regbtn" value=""/></li>
             <li class="btnli">服务器地址:
                 <select name="code" class="regbtn">
-                    <option value="y1po99v.hk1.mofasuidao.">本地测试</option>
+                    <option value="6t2gqvu.hk1.mofasuidao.">本地测试</option>
                     <option value="lm.wx.dev.duduchewang.">测试环境</option>
                     <option value="wx.pre.duduchewang.">预生产环境</option>
                     <option value="shop">随机环境</option>

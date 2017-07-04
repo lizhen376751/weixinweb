@@ -77,7 +77,7 @@ public class ShopWeiXinControl {
      * @param model   模板
      * @return 字符串的路径跳转
      */
-    @RequestMapping(value = "shopweixinServlet", method = RequestMethod.GET)
+    @RequestMapping(value = "shopweixinServlet", method = {RequestMethod.GET, RequestMethod.POST})
     public String shopWeiXinPageJump(HttpServletRequest request, Model model) {
         String openId = (String) httpSession.getAttribute("openId");
         String plateNumber = (String) httpSession.getAttribute("plateNumber");
@@ -128,14 +128,4 @@ public class ShopWeiXinControl {
         return null;
     }
 
-    /**
-     * 所有的post请求最终走get请求
-     *
-     * @param request 请求
-     * @param model   向叶面返回参数
-     */
-    @RequestMapping(value = "shopweixinServlet", method = RequestMethod.POST)
-    public void doPost(HttpServletRequest request, Model model) {
-        this.shopWeiXinMenuPageJump(request, model);
-    }
 }
