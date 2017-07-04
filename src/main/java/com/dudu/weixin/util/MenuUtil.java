@@ -215,6 +215,11 @@ public class MenuUtil {
         btn33.setType("view");
         btn33.setUrl("http://www.duduchewang.com/weixincore/huoDongInfo.jsp?shopcode=" + code);
 
+        CommonButton btn34 = new CommonButton();
+        btn34.setName("添加卡券");
+        btn13.setType("view");
+        btn13.setUrl(commonUrl + "_lianMengCardActivate" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
         mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14});
@@ -225,7 +230,7 @@ public class MenuUtil {
 
         ComplexButton mainBtn3 = new ComplexButton();
         mainBtn3.setName("微信商城");
-        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn33});
+        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn33, btn34});
 
         Menu menu = new Menu();
         menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});
