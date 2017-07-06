@@ -36,6 +36,7 @@ body{
 	width: 100%;
 	background: #fff;
 	margin-top: 0.32rem;
+	margin-bottom: 0.13rem;
 }
 .infor .infor_til{
 	width: 94%;
@@ -117,4 +118,5 @@ body{
 	text-align: center;
 	line-height: 1.2rem;
 	display: none;
+	z-index: 99;
 }
