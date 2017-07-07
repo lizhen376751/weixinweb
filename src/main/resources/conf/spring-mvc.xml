@@ -63,6 +63,7 @@
             <mvc:mapping path="/pagingquery"/>
             <!-- 店管家微信 店管家分页拦截 -->
             <bean class="com.dudu.weixin.control.PagingQueryInterceptor"/>
+
         </mvc:interceptor>
 
         <mvc:interceptor>

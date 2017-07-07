@@ -260,7 +260,7 @@ public class MenuUtil {
      */
     public Menu getYiLuBangmenu(String appid, String code) {
         String commonUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?"
-                + "appid=wx91ee3b29615c49c7&redirect_uri=http://wx.pre.duduchewang.cn/oauthLoginServlet?lmcode=FL000";
+                + "appid=wxd42683342ffb5ae9&redirect_uri=http://wx.pre.duduchewang.cn/oauthLoginServlet?lmcode=FL000";
 
 //        1、我的卡包  2、爱车健康指数 3、添加卡券 4、个人中心 5、退出账号
 
