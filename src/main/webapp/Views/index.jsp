@@ -80,6 +80,7 @@
                     <option value="6t2gqvu.hk1.mofasuidao.">本地测试</option>
                     <option value="lm.wx.dev.duduchewang.">测试环境</option>
                     <option value="wx.pre.duduchewang.">预生产环境</option>
+                    <option value="wx.pdu.duduchewang.">预生产环境</option>
                     <option value="shop">随机环境</option>
                 </select>
             </li>
