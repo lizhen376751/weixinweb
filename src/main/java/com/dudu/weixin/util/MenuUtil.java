@@ -336,7 +336,7 @@ public class MenuUtil {
         CommonButton btn34 = new CommonButton();
         btn34.setName("老工商城");
         btn34.setType("view");
-        btn34.setUrl("http://www.pt.elubon.com/api/7vlgjqlhg2/shop/");
+        btn34.setUrl("http://301.jnfpsm.com/api/unc2mdcbpb/shop");
 
         CommonButton btn35 = new CommonButton();
         btn35.setName("老工分佣");
