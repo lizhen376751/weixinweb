@@ -79,6 +79,15 @@ $(document).ready(function(){
                     var datas = dateFormat(json.customerModel.createTime)
                     zcrq.text(datas);
                 }
+                if(json.customerModel.vehicleIdentificationCode != null && json.customerModel.vehicleIdentificationCode != "" && json.customerModel.vehicleIdentificationCode != undefined){
+                    clsbdm.text(json.customerModel.vehicleIdentificationCode);
+                };
+                if(json.customerModel.engineNumber != null && json.customerModel.engineNumber != "" && json.customerModel.engineNumber != undefined){
+                    fdjxh.text(json.customerModel.engineNumber);
+                }
+                if(json.customerModel.operationType != null && json.customerModel.operationType != "" && json.customerModel.operationType != undefined){
+                    syxz.text(json.customerModel.operationType);
+                }
             }
 
 			if(json.list){
