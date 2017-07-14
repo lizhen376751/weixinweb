@@ -29,6 +29,10 @@ public class MenuUtil {
      * 创客微信
      */
     private Menu chuangKe;
+    /**
+     * 老版店管家微信
+     */
+    private Menu oldShopMenu;
 
     /**
      * MenuUtil(根据不同的公众号配置不同的菜单) 字符串形式
@@ -484,4 +488,80 @@ public class MenuUtil {
     }
 
 
+    /**
+     * 老版店管家微信菜单
+     *
+     * @param appid 微信的appid
+     * @param code  联盟编码或者店铺编码
+     * @param url   服务器地址
+     * @return geRenCeshiMenu 店管家微信菜单
+     */
+    public Menu getOldShopMenu(String appid, String code, String url) {
+        url = "www.duduchewang.cn";
+        String lujing = "weixincore_cn";
+
+        CommonButton btn11 = new CommonButton();
+        btn11.setName("我的账号");
+        btn11.setType("view");
+        btn11.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http%3A%2F%2F" + url
+                + "%2F" + lujing + "%2FoauthLoginServlet?shopcode=" + code + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+        CommonButton btn12 = new CommonButton();
+        btn12.setName("我的消息");
+        btn12.setType("view");
+        btn12.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http%3A%2F%2F" + url
+                + "%2F" + lujing + "%2FoauthIMServlet?shopcode=" + code + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+        CommonButton btn13 = new CommonButton();
+        btn13.setName("电子优惠券");
+        btn13.setType("view");
+        btn13.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http%3A%2F%2F" + url
+                + "%2F" + lujing + "%2FoauthYHServlet?shopcode=" + code + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+        CommonButton btn14 = new CommonButton();
+        btn14.setName("我的订单");
+        btn14.setType("view");
+        btn14.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http%3A%2F%2F" + url
+                + "%2F" + lujing + "%2FoauthODServlet?shopcode=" + code + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+        CommonButton btn15 = new CommonButton();
+        btn15.setName("保养提醒");
+        btn15.setType("view");
+        btn15.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http%3A%2F%2F" + url
+                + "%2F" + lujing + "%2FDateDueReminderServlet?shopcode=" + code + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+
+        CommonButton btn2 = new CommonButton();
+        btn2.setName("微信商城");
+        btn2.setType("view");
+        btn2.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http%3A%2F%2F" + url
+                + "%2F" + lujing + "%2FShangChengServlet?shopcode=" + code + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+        CommonButton btn31 = new CommonButton();
+        btn31.setName("最新活动");
+        btn31.setType("view");
+        btn31.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http%3A%2F%2F" + url
+                + "%2F" + lujing + "%2FhuoDongInfo.jsp?shopcode=" + code + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+        ComplexButton mainBtn1 = new ComplexButton();
+        mainBtn1.setName("车管家");
+        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14, btn15});
+
+        Menu menu = new Menu();
+        menu.setButton(new Button[]{mainBtn1, btn2, btn31});
+        return menu;
+
+
+    }
+
+    /**
+     * 设置 老版店管家微信菜单
+     *
+     * @param shopMenu 店管家微信菜单
+     * @return 返回 MenuUtil(根据不同的公众号配置不同的菜单)
+     */
+    public MenuUtil setOldShopMenu(Menu shopMenu) {
+        this.shopMenu = shopMenu;
+        return this;
+    }
 }

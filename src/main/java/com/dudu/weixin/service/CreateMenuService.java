@@ -42,6 +42,9 @@ public class CreateMenuService {
             case "chuangke": //创客
                 menu = menuUtil.getChuangKe(appid, code, url);
                 break;
+            case "oldShop": //老版店管家
+                menu = menuUtil.getOldShopMenu(appid, code, url);
+                break;
             default:
                 menu = null;
         }
