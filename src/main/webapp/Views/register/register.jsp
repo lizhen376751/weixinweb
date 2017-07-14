@@ -60,6 +60,10 @@
 		<!--------------------------------------------------------------------------------------底部提交按钮-->
 		<div class="footer_button">
 			<span class="tjxx font_3 color_3">提交信息</span>
+			<div class="ht">
+				<a href="/Views/register/chuangkexieyi.jsp" class="font_5">我已阅读并接受会员协议</a>
+				<input type="checkbox" name="" id="" checked="checked" class="xy"/>
+			</div>
 		</div>
 		<!-------------------------------------------------------------------------------弹出层-->
 		<div class="tcc">

@@ -180,7 +180,7 @@
 	line-height: 0.98rem;
 	border-radius: 0.2rem;
 	background: #58b5ff;
-	margin: 0.2rem auto 0.72rem;
+	margin: 0.2rem auto 0.42rem;
 }
 
 /*------------------------------------------------------------------------弹出层*/
@@ -370,6 +370,23 @@
 	left: 50%;
 	margin-left: -3rem;
 	bottom: 0.48rem;
+}
+.ht{
+	width: 8.51rem;
+	height: 0.5rem;
+	margin: 0.24rem auto 0;
+	overflow: hidden;
+}
+.ht a{
+	height: 100%;
+	line-height: 0.5rem;
+	float: right;
+	color: #58b5ff;
+	font-size:0.3rem;
+}
+.ht input{
+	float: right;
+	width: 0.4rem;
 }
 
 

@@ -249,6 +249,10 @@ $(document).ready(function () {
     })
     //------------------------------------------------------------------------------------提交信息的判断
     tjxx.on("click", function () {
+        if(!$(".xy").is(':checked')){
+            alert('请选中协议')
+            return false;
+        }
         car_judge();
         var car_value = car_num.val();
         var password_value = count_password.val();
@@ -364,7 +368,12 @@ $(document).ready(function () {
         l_box.hide();
         b_box.hide();
         ty.hide();
-    })
+    });
+
+
+
+
+
 
 });
 
