@@ -145,16 +145,16 @@
                             <li>
                                 <label>使用性质：</label>
                                 <select name="property" class="property">
-                                    <option value="0201">家庭自用-非营运</option>
-                                    <option value="0202">机关自用-非营运</option>
-                                    <option value="0203">企业自用-非营运</option>
-                                    <option value="0209">特殊用途-非营运</option>
-                                    <option value="0104">出租客运-营运</option>
-                                    <option value="0105">租赁客运-营运</option>
-                                    <option value="0106">城市公交-营运</option>
-                                    <option value="0107">公路客运-营运</option>
-                                    <option value="0108">营业货运-营运</option>
-                                    <option value="0109">特殊用途-营运</option>
+                                    <option value="1">家庭自用-非营运</option>
+                                    <option value="2">机关自用-非营运</option>
+                                    <option value="3">企业自用-非营运</option>
+                                    <option value="4">特殊用途-非营运</option>
+                                    <option value="5">出租客运-营运</option>
+                                    <option value="6">租赁客运-营运</option>
+                                    <option value="7">城市公交-营运</option>
+                                    <option value="8">公路客运-营运</option>
+                                    <option value="9">营业货运-营运</option>
+                                    <option value="10">特殊用途-营运</option>
                                 </select>
                                 <%--<input type="radio" name="property" value="非营运" checked="checked" style="margin-left: 260px;">非营运--%>
                                 <%--<input type="radio" name="property" value="营运" class="margin_left1"/>营运--%>

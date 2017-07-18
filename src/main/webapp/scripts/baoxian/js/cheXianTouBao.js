@@ -304,34 +304,34 @@ $(document).ready(function(){
             if(arr[i].licenseFlag != null && arr[i].licenseFlag != ""){
                 switch (arr[i].licenseFlag)
                 {
-                    case "0201":     //家庭自用-非营运
+                    case "1":     //家庭自用-非营运
                         property.val("0201");
                         break;
-                    case "0202":     //机关自用-非营运
+                    case "2":     //机关自用-非营运
                         property.val("0202");
                         break;
-                    case "0203":     //企业自用-非营运
+                    case "3":     //企业自用-非营运
                         property.val("0203");
                         break;
-                    case "0209":     //特殊用途-非营运
+                    case "4":     //特殊用途-非营运
                         property.val("0201");
                         break;
-                    case "0104":     //出租客运-营运
+                    case "5":     //出租客运-营运
                         property.val("0104");
                         break;
-                    case "0105":     //租赁客运-营运
+                    case "6":     //租赁客运-营运
                         property.val("0105");
                         break;
-                    case "0106":    //城市公交-营运
+                    case "7":    //城市公交-营运
                         property.val("0106");
                         break;
-                    case "0107":    //公路客运-营运
+                    case "8":    //公路客运-营运
                         property.val("0107");
                         break;
-                    case "0108":    //营业货运-营运
+                    case "9":    //营业货运-营运
                         property.val("0108");
                         break;
-                    case "0109":    //特殊用途-营运
+                    case "10":    //特殊用途-营运
                         property.val("0109");
                         break;
                 }
