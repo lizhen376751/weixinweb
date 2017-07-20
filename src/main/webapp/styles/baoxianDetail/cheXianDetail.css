@@ -78,7 +78,9 @@ body{
 
 /*----------------------------------------------------------------------------------险种信息*/
 .coverage_infor{
-	margin-bottom: 1.23rem;
+	position: relative;
+	bottom: 1.23rem;
+
 }
 .coverage_infor ul li{
 	width: 100%;
