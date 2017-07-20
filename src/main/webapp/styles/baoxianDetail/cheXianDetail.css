@@ -34,7 +34,7 @@ body{
 /*-----------------------------------------------------------------------------------基本信息和险种信息*/
 .infor{
 	width: 100%;
-	background: #fff;
+	background: #000;
 	margin-top: 0.32rem;
 	margin-bottom: 0.13rem;
     border: 1px  solid  red;
