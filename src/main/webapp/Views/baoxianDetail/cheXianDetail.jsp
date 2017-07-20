@@ -98,8 +98,8 @@
                     </ul>
                 </div>
                 <!-------------------------------------------------------------------------险种信息-->
-                <div class="swiper-slide coverage_infor font_3" style="bottom: 1.23rem;position: relative">
-                    <ul>
+                <div class="swiper-slide coverage_infor font_3" >
+                    <ul style="margin: 0rem 1.23rem">
                         <!---------------------------------------------------------------表头-->
                         <li class="color_7">
                             <span class="bxlx">保险类型</span>
