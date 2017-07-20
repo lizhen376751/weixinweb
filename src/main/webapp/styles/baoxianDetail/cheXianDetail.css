@@ -33,11 +33,11 @@ body{
 }
 /*-----------------------------------------------------------------------------------基本信息和险种信息*/
 .infor{
-	width: 100%;
-	background: #000;
+	width: 90%;
+	border: 1px  solid red;
+	background: #fff;
 	margin-top: 0.32rem;
 	margin-bottom: 0.13rem;
-    border: 1px  solid  red;
 }
 .infor .infor_til{
 	width: 94%;
