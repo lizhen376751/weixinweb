@@ -37,7 +37,7 @@ body{
 	background: #fff;
 	margin-top: 0.32rem;
 	/*margin-bottom: 0.13rem;*/
-	margin-bottom: 1.23rem;
+	padding-bottom: 1.23rem;
 }
 .infor .infor_til{
 	width: 94%;
