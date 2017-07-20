@@ -81,7 +81,7 @@
                         </li>
                         <!-----------------发动机型号-->
                         <li>
-                            <span class="color_11">发动机型号：</span>
+                            <span class="color_11">发动机号：</span>
                             <span class="color_9 fdjxh"></span>
                         </li>
                         <!-----------------使用性质-->
