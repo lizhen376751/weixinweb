@@ -37,6 +37,7 @@ body{
 	background: #fff;
 	margin-top: 0.32rem;
 	margin-bottom: 0.13rem;
+    border: 1px  solid  red;
 }
 .infor .infor_til{
 	width: 94%;
@@ -77,11 +78,7 @@ body{
 }
 
 /*----------------------------------------------------------------------------------险种信息*/
-.coverage_infor{
-	position: relative;
-	bottom: 1.23rem;
 
-}
 .coverage_infor ul li{
 	width: 100%;
 	overflow: hidden;
