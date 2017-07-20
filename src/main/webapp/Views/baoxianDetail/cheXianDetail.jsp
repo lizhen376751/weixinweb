@@ -98,7 +98,7 @@
                     </ul>
                 </div>
                 <!-------------------------------------------------------------------------险种信息-->
-                <div class="swiper-slide coverage_infor font_3" >
+                <div class="swiper-slide coverage_infor font_3" style="top:1rem;bottom: 1.23rem;position: relative">
                     <ul>
                         <!---------------------------------------------------------------表头-->
                         <li class="color_7">
