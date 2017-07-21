@@ -13,7 +13,7 @@
 		
 		<script src="/scripts/cheXianList/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script  type="text/javascript"  src="/scripts/main.js"></script>
-		<script src="/scripts/cheXianList/cheXianList.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/scripts/cheXianList/cheXianList1.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
 	<%--网页加载效果--%>
