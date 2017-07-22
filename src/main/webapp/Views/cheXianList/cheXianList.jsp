@@ -9,9 +9,13 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>订单列表</title>
 		<link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
+		<link href="/styles/pullToRefresh.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/cheXianList/cheXianList.css"/>
+
 		
 		<script src="/scripts/cheXianList/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/scripts/iscroll.js"></script>
+		<script type="text/javascript" src="/scripts/pullToRefresh.js"></script>
 		<script  type="text/javascript"  src="/scripts/main.js"></script>
 		<script src="/scripts/cheXianList/cheXianList1.js" type="text/javascript" charset="utf-8"></script>
 	</head>
@@ -23,18 +27,13 @@
 	<div class="kfk">
 		<img src="/files/cheXianList/kf.png" alt="" class="kf"/>
 	</div>
-	<div class="ss">
-		<input type="text" class="ss_val font_1" placeholder="请输入车牌号"/>
-		<span class="font_1 ss_btn color_3">搜索</span>
-	</div>
-	<%--<div class="ss">--%>
-		<%--订单状态：<select>--%>
-		<%--<option value="0">报价中</option>--%>
-		<%--<option value="1">已报价</option>--%>
-		<%--<option value="2">已投保</option>--%>
-	<%--</select>--%>
-	<%--</div>--%>
-	<input type="hidden" name="shopCode" id="shopCode" value="<%=shopCode%>" />
+	<div id="wrapper">
+		<div id="thelist" class="margin_auto" style="height:100%;">
+			<div class="ss">
+				<input type="text" class="ss_val font_1" placeholder="请输入车牌号"/>
+				<span class="font_1 ss_btn color_3">搜索</span>
+			</div>
+
 		<!--------------------------------------------------------------------------------每一条单据-->
 		<%--<div class="bills">--%>
 			<%--<!----------------------------------------------------------------------------每一条单据的标头，包括车牌号，单据编号-->--%>
@@ -81,5 +80,8 @@
 				<%--<span class="isolation"></span>--%>
 			<%--</div>  <!---------------------------------------------------------------------------------------保险公司结束-->--%>
 		<%--</div>   <!----------------------------------------------------------------------每一条单据结束-->--%>
+		</div>
+	  </div>
+	  <input type="hidden" name="shopCode" id="shopCode" value="<%=shopCode%>" />
 	</body>
 </html>
