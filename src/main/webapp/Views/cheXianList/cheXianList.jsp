@@ -27,13 +27,13 @@
 		<input type="text" class="ss_val font_1" placeholder="请输入车牌号"/>
 		<span class="font_1 ss_btn color_3">搜索</span>
 	</div>
-	<div class="ss">
-		订单状态：<select>
-		<option value="0">报价中</option>
-		<option value="1">已报价</option>
-		<option value="2">已投保</option>
-	</select>
-	</div>
+	<%--<div class="ss">--%>
+		<%--订单状态：<select>--%>
+		<%--<option value="0">报价中</option>--%>
+		<%--<option value="1">已报价</option>--%>
+		<%--<option value="2">已投保</option>--%>
+	<%--</select>--%>
+	<%--</div>--%>
 	<input type="hidden" name="shopCode" id="shopCode" value="<%=shopCode%>" />
 		<!--------------------------------------------------------------------------------每一条单据-->
 		<%--<div class="bills">--%>
