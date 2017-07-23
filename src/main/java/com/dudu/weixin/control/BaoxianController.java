@@ -136,8 +136,9 @@ public class BaoxianController {
             list.add(shopCode);
             baoXianParamList.setShopCode(list);
         }
-        List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
-        model.addAttribute("list", baoXianLists);
+        //由于页面调用ajax异步查询,所以该调用无用
+       /* List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
+        model.addAttribute("list", baoXianLists);*/
         return "/cheXianList/cheXianList.jsp"; //展示车险列表的页面
 
     }

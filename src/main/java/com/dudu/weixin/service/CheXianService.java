@@ -1,11 +1,10 @@
 package com.dudu.weixin.service;
 
-import com.dudu.soa.baoxian.kaidan.module.BaoXianList;
 import com.dudu.soa.baoxian.kaidan.module.BaoXianParamList;
 import com.dudu.soa.baoxian.kaidan.module.Insurance;
-import com.dudu.soa.baoxian.kaidan.module.InsuranceCompanyDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +37,8 @@ public class CheXianService {
         if (null != carNumber && !"".equals(carNumber)) {
             baoXianParamList.setCarId(carNumber);
         }
-        List<BaoXianList> baoXianLists = chexiantoubaoService.queryInsurance(baoXianParamList);
-        List<Insurance> list = new ArrayList<>();
+        List<Insurance>  list = chexiantoubaoService.queryAppInsurance(baoXianParamList);
+        /*List<Insurance> list = new ArrayList<>();
         for (int i = 0; i < baoXianLists.size(); i++) {
             if (i == 0) {
                 BaoXianList bs = baoXianLists.get(0);
@@ -90,7 +89,7 @@ public class CheXianService {
                     list.add(ic);
                 }
             }
-        }
+        }*/
 
         return list;
     }

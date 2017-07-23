@@ -13,6 +13,7 @@ import com.dudu.soa.baoxian.kaidan.module.ClientInsuranceResult;
 import com.dudu.soa.baoxian.kaidan.module.ClientInsuranceTypeParam;
 import com.dudu.soa.baoxian.kaidan.module.CustomerCompany;
 import com.dudu.soa.baoxian.kaidan.module.CustomerModel;
+import com.dudu.soa.baoxian.kaidan.module.Insurance;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceBill;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceCompany;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceInfo;
@@ -290,6 +291,15 @@ public class ChexiantoubaoService {
         List<BaoXianList> baoXianLists = aPIBaoXainKaiDan.queryInsuranceList(baoXianParamList);
 
         return baoXianLists;
+    }
+    /**
+     * app端查询保险列表
+     *
+     * @param baoXianParamList 查询条件
+     * @return List<BaoXianList>
+     */
+    public List<Insurance> queryAppInsurance(BaoXianParamList baoXianParamList) {
+        return aPIBaoXainKaiDan.queryAppInsuranceOrderList(baoXianParamList);
     }
 
     /**
