@@ -27,10 +27,12 @@
 	<div class="kfk">
 		<img src="/files/cheXianList/kf.png" alt="" class="kf"/>
 	</div>
-	<div class="ss">
-		<input type="text" class="ss_val font_1" placeholder="请输入车牌号"/>
-		<span class="font_1 ss_btn color_3">搜索</span>
-	</div>
+	<div id="wrapper">
+		<ul id="thelist" class="margin_auto" style="height:100%;">
+			<div class="ss">
+				<input type="text" class="ss_val font_1" placeholder="请输入车牌号"/>
+				<span class="font_1 ss_btn color_3">搜索</span>
+			</div>
 
 		<!--------------------------------------------------------------------------------每一条单据-->
 		<%--<div class="bills">--%>
@@ -78,7 +80,8 @@
 				<%--<span class="isolation"></span>--%>
 			<%--</div>  <!---------------------------------------------------------------------------------------保险公司结束-->--%>
 		<%--</div>   <!----------------------------------------------------------------------每一条单据结束-->--%>
-
+		</ul>
+	  </div>
 	  <input type="hidden" name="shopCode" id="shopCode" value="<%=shopCode%>" />
 	</body>
 </html>

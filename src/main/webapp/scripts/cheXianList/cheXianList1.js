@@ -85,7 +85,7 @@ $(document).ready(function(){
                 '</div>'+
                 '</div> ';
         }
-        body.append(html);
+        $("#thelist").append(html);
     }
 
 
@@ -98,19 +98,46 @@ $(document).ready(function(){
         var date=y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
         return date.substr(0, 11);
     }
+
+    //数据分页
+    var page = 1; //记录当前加载的页数
+    var add_num = 0;//记录加载的次数
+    refresher.init({
+        id:"wrapper",
+        able:"#thelist",
+        pullDownAction:Refresh,
+        pullUpAction:Load
+    });
     //------------------------------------------------------------------ajax请求数据
 
     $.ajax({
         type    : 'POST',
         url     : '/findInsurance',
         data :{
-            shopCode :shopCode
+            shopCode :shopCode,
+            page: "1",
+            rows: "25"
         },
         success:function(jsondata){
             var json = JSON.parse(jsondata);
-            // add_service(json,quarters);
-            addBills(json);
-            console.log(json);
+            if(json.records % json.pageSize == 0){   //判断一共能请求刷新的次数
+                add_num = parseInt(json.records/json.pageSize);
+            }else{
+                add_num = parseInt(json.records/json.pageSize) + 1;
+            }
+            if(json.records == 0){
+                $(".pullUp").hide()
+            }
+            addBills(json);     //请求出的数据添加进入页面
+            //数据添加完成后开始调用加载插件
+            wrapper.refresh();
+            document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
+            $(".pullUpIcon").css("opacity","1");
+            refresher.info.loadingLable = "加载中...";
+            refresher.info.pullUpLable = "上拉加载更多"
+            refresher.info.pullingUpLable = "释放加载更多";
+            page_num(add_num)
+            //调用加载插件结束
             var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
             //--------------------------------------------------------------------------------------点击详情按钮跳转
             detail.on("click",function(){
@@ -129,7 +156,66 @@ $(document).ready(function(){
             alert("失败");
         }
     });
-
+    //下拉刷新函数
+    function Refresh() {
+        setTimeout(function () {
+            $.ajax({
+                type: 'POST',
+                url  : '/findInsurance',
+                data :{
+                    shopCode :shopCode,
+                    page: "1",
+                    rows: "15"
+                },
+                async: false,
+                success: function (jsondata) {
+                    document.getElementById("wrapper").querySelector(".pullDownIcon").style.display="none";
+                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='/files/ok.png'/>刷新成功";
+                    page = 1;
+                    var json = JSON.parse(jsondata);
+                    $("#thelist").children().remove();
+                    addBills(json);     //请求出的数据添加进入页面
+                    wrapper.refresh();
+                    document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
+                    $(".pullUpIcon").css("opacity","1");
+                    refresher.info.loadingLable = "加载中...";
+                    refresher.info.pullUpLable = "上拉加载更多"
+                    refresher.info.pullingUpLable = "释放加载更多";
+                    page_num(add_num)
+                },
+                error: function () {
+                    alert("查询数据出错啦，请刷新再试");
+                }
+            });
+        },1000)
+    }
+    //---------------------------------------------------上拉加载函数
+    function Load() {
+        setTimeout(function () {
+            page++;
+            if(page <= add_num){
+                $.ajax({
+                    type: 'POST',
+                    url   : '/findInsurance',
+                    data :{
+                        shopCode :shopCode,
+                        page: ""+page+"",
+                        rows: "15"
+                    },
+                    async: false,
+                    success: function (json) {
+                        var json = JSON.parse(json);
+                        addBills(json);     //请求出的数据添加进入页面
+                        page_num(add_num)//必须添加
+                    },
+                    error: function () {
+                        alert("查询数据出错啦，请刷新再试");
+                    }
+                });
+            }
+            wrapper.refresh();
+        },1000)
+    }
     $(".ss_btn").on("click",function(){
         var ss_val = $(".ss_val").val();
         $.ajax({
@@ -165,20 +251,16 @@ $(document).ready(function(){
         });
     })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    function page_num(add_num) {
+        if(page == add_num){
+            $(".pullUpIcon").css("opacity","0");
+            console.log($(".pullUpIcon"))
+            $(".pullUpLabel").text("已经到了最底部了！");
+            refresher.info.loadingLable = "已经到了最底部了!";
+            refresher.info.pullUpLable = "已经到了最底部了!"
+            refresher.info.pullingUpLable = "已经到了最底部了!"
+        }
+    }
 })
 
 
