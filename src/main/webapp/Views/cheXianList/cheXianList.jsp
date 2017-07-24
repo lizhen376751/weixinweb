@@ -19,6 +19,10 @@
 		<script  type="text/javascript"  src="/scripts/main.js"></script>
 		<script src="/scripts/cheXianList/cheXianList1.js" type="text/javascript" charset="utf-8"></script>
 	</head>
+	<style>
+		.pullDownIcon{    font-size: 0.36rem;}
+		.pullDownLabel{    font-size: 0.36rem;}
+	</style>
 	<body>
 	<%--网页加载效果--%>
 	<div id="loading">
