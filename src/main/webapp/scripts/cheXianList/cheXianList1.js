@@ -88,6 +88,69 @@ $(document).ready(function(){
         $("#thelist").append(html);
     }
 
+    //------------------------------------------------------------------------------------动态添加每一条订单状态和付款状态的数据
+    function addBills2 (arr){
+        var html = "";
+        for (var i = 0;i < arr.length;i++) {
+            var dates = dateFormat(arr[i].kaiDanDate);
+            var lis = "";
+            var num = 0;
+            for (j = 0;j < arr[i].list.length;j++) {
+                if (arr[i].list[j].baoJiaState == 1) {
+                    lis += '<li>'+
+                        '<span class="color_9">'+arr[i].list[j].insurancename+'：</span>'+
+                        '<span class="price">¥'+arr[i].list[j].totalPrices+'</span>'+
+                        '<span class="quote color_10">已报价</span>'+
+                        '<span class="detail color_3" ddbh="'+arr[i].orderNumb+'" bxgs="'+arr[i].list[j].companyid+'" carId="'+arr[i].carId+'" shopCode="'+arr[i].shopCode+'" shopLm="'+arr[i].shopcodelm+'">详情</span>'+
+                        '</li>';
+                    num += 1;
+                }else if(arr[i].list[j].baoJiaState == 2){
+                    if(arr[i].fuKuanFlag==1){
+                        lis += '<li>'+
+                            '<span class="color_9">'+arr[i].list[j].insurancename+'：</span>'+
+                            '<span class="price">¥'+arr[i].list[j].totalPrices+'</span>'+
+                            '<span class="quote color_10">已付款</span>'+
+                            '<span class="detail color_3" ddbh="'+arr[i].orderNumb+'" bxgs="'+arr[i].list[j].companyid+'" carId="'+arr[i].carId+'" shopCode="'+arr[i].shopCode+'" shopLm="'+arr[i].shopcodelm+'">详情</span>'+
+                            '</li>';
+                    }else{
+                        lis += '<li>'+
+                            '<span class="color_9">'+arr[i].list[j].insurancename+'：</span>'+
+                            '<span class="price">¥'+arr[i].list[j].totalPrices+'</span>'+
+                            '<span class="quote color_10">已投保</span>'+
+                            '<span class="detail color_3" ddbh="'+arr[i].orderNumb+'" bxgs="'+arr[i].list[j].companyid+'" carId="'+arr[i].carId+'" shopCode="'+arr[i].shopCode+'" shopLm="'+arr[i].shopcodelm+'">详情</span>'+
+                            '</li>';
+                    }
+
+                    num += 1;
+                }else{
+                    lis += '<li>'+
+                        '<span class="color_9">'+arr[i].list[j].insurancename+'：</span>'+
+                        '<span class="price">¥0.0</span>'+
+                        '<span class="quote color_10">报价中</span>'+
+                        '<span class="detail color_3" ddbh="'+arr[i].orderNumb+'" bxgs="'+arr[i].list[j].companyid+'" carId="'+arr[i].carId+'" shopCode="'+arr[i].shopCode+'" shopLm="'+arr[i].shopcodelm+'">详情</span>'+
+                        '</li>';
+                }
+            }
+            html += '<div class="bills">'+
+                '<div class="bills_header">'+
+                '<div class="header_main font_1">'+
+                '<ul>'+
+                '<li class="width_1"><span class="car_num">车牌号：</span><span>'+arr[i].carId+'</span></li>'+
+                '<li class="width_2"><span>订单日期：</span><span>'+dates+'</span></li>'+
+                '<li class="width_1"><span>订单编号：</span><span class="order_num">'+arr[i].orderNumb+'</span></li>'+
+                '<li class="width_2 color_10"><span>共'+num+'家保险公司完成报价</span></li>'+
+                '</ul>'+
+                '</div>'+
+                '</div>'+
+                '<div class="bills_company font_1">'+
+                '<ul>'+lis+'</ul>'+
+                '<span class="isolation"></span>'+
+                '</div>'+
+                '</div> ';
+        }
+        $("#thelist").append(html);
+    }
+
 
     //时间戳转换成日期格式
     function dateFormat(val) {
@@ -120,8 +183,6 @@ $(document).ready(function(){
             rows: "15"
         },
         success:function(jsondata){
-            var selectfukuan="";
-            
             var json = JSON.parse(jsondata);
             if(json.records % json.pageSize == 0){   //判断一共能请求刷新的次数
                 add_num = parseInt(json.records/json.pageSize);
@@ -131,7 +192,7 @@ $(document).ready(function(){
             if(json.records == 0){
                 $(".pullUp").hide()
             }
-            addBills (json,selectfukuan);     //请求出的数据添加进入页面
+            addBills(json);     //请求出的数据添加进入页面
             //数据添加完成后开始调用加载插件
             wrapper.refresh();
             document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
@@ -174,19 +235,9 @@ $(document).ready(function(){
             },
             success: function (jsondata) {
                 var json = JSON.parse(jsondata);
-                var json = JSON.parse(jsondata);
-                if(json.records % json.pageSize == 0){   //判断一共能请求刷新的次数
-                    add_num = parseInt(json.records/json.pageSize);
-                }else{
-                    add_num = parseInt(json.records/json.pageSize) + 1;
-                }
-                if(json.records == 0){
-                    $(".pullUp").hide()
-                }
-                var json = JSON.parse(jsondata);
                // console.log(json);
                 $("#thelist").children().remove();
-                addBills (json,selectthis);
+                addBills2 (json);
                 //数据添加完成后开始调用加载插件
                 wrapper.refresh();
                 document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
@@ -239,7 +290,7 @@ $(document).ready(function(){
                     $(".pullUp").hide()
                 }
                 $("#thelist").children().remove();
-                addBills (json,selectfukuan);
+                addBills2 (json);
                 //数据添加完成后开始调用加载插件
                 wrapper.refresh();
                 document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
@@ -287,7 +338,7 @@ $(document).ready(function(){
                     page = 1;
                     var json = JSON.parse(jsondata);
                     $("#thelist").children().remove();
-                    addBills (json,selectfukuan);     //请求出的数据添加进入页面
+                    addBills(json);     //请求出的数据添加进入页面
                     wrapper.refresh();
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
                     $(".pullUpIcon").css("opacity","1");
@@ -331,7 +382,7 @@ $(document).ready(function(){
                     async: false,
                     success: function (json) {
                         var json = JSON.parse(json);
-                        addBills (json,selectfukuan);     //请求出的数据添加进入页面
+                        addBills(json);     //请求出的数据添加进入页面
                         page_num(add_num)//必须添加
                         var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
                         //--------------------------------------------------------------------------------------点击详情按钮跳转
