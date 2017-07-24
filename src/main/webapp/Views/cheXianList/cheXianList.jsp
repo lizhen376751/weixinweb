@@ -37,7 +37,7 @@
 				<tr width="100%">
 					<td style="text-align: right">订单状态:</td>
 					<td>
-						<select id="selectdingdan " class="font_1 color_9" >
+						<select id="selectdingdan" class="font_1 color_9" >
 							<option value="">请选择</option>
 							<option value="0">报价中</option>
 							<option value="1">已报价</option>
