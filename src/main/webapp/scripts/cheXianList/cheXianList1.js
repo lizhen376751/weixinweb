@@ -121,6 +121,7 @@ $(document).ready(function(){
         },
         success:function(jsondata){
             var selectfukuan="";
+            
             var json = JSON.parse(jsondata);
             if(json.records % json.pageSize == 0){   //判断一共能请求刷新的次数
                 add_num = parseInt(json.records/json.pageSize);
