@@ -1,5 +1,15 @@
-
-
+$(function(){
+    var shopCode = $("#shopCode").val();
+    var body = $("body");   //---------------------------------------------------------------获取body元素
+    var kf_logo = $(".kf"); //-----------------------------------------huoqu
+    kf_logo.on("click",function (e) {
+        window.location.href = "/cheXianOnline";
+        e.stopPropagation();
+    });
+    var ylb = shopCode.substring(0,3);
+    if(ylb != "YLB"){
+        kf_logo.hide();
+    };
     //------------------------------------------------------------------------------------动态添加每一条订单状态和付款状态的数据
     function selectdate (arr){
         var html = "";
@@ -121,7 +131,7 @@
     })
     //付款状态请求3
     $("#selectfakuan").change(function(){
-        alert(111)
+    
         //数据分页
         var page3 = 1; //记录当前加载的页数
         var add_num3 = 0;//记录加载的次数
@@ -379,7 +389,7 @@
         }
     }
 
-
+})
 
 
 
