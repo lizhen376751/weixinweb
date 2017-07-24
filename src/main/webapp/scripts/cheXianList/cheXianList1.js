@@ -171,7 +171,9 @@ $(document).ready(function(){
             },
             success: function (jsondata) {
                 var json = JSON.parse(jsondata);
-                //console.log(selectthis)
+               // console.log(json);
+                $("#thelist").children().remove();
+                addBills (json)
             }
         })
     })
@@ -189,7 +191,8 @@ $(document).ready(function(){
             },
             success: function (jsondata) {
                 var json = JSON.parse(jsondata);
-               // console.log(json);
+                $("#thelist").children().remove();
+                addBills (json)
 
             }
         })
