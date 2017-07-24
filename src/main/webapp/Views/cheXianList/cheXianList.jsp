@@ -24,16 +24,15 @@
 	<div id="loading">
 		<img src="/files/loading2.gif"  alt="loading.." />
 	</div>
+	<div class="kfk">
+		<img src="/files/cheXianList/kf.png" alt="" class="kf"/>
+	</div>
+	<div class="ss">
+		<input type="text" class="ss_val font_1" placeholder="请输入车牌号"/>
+		<span class="font_1 ss_btn color_3">搜索</span>
+	</div>
 	<div id="wrapper">
-
-		<div class="kfk">
-			<img src="/files/cheXianList/kf.png" alt="" class="kf"/>
-		</div>
-		<div class="ss">
-			<input type="text" class="ss_val font_1" placeholder="请输入车牌号"/>
-			<span class="font_1 ss_btn color_3">搜索</span>
-		</div>
-		<ul id="thelist" class="margin_auto" >
+	   <ul id="thelist" class="margin_auto" style="height:100%;">
 		<!--------------------------------------------------------------------------------每一条单据-->
 		<%--<div class="bills">--%>
 			<%--<!----------------------------------------------------------------------------每一条单据的标头，包括车牌号，单据编号-->--%>
