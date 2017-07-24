@@ -46,7 +46,11 @@ body{
 	margin-right: 0.24rem;
 	cursor: pointer;
 }
-
+.tabledelse  select{
+	border-radius: 0.1rem;
+	-webkit-border-radius: 0.1rem;
+	width: 2rem;
+}
 /*-----------------------------------------------------------------------------------------每一条单据*/
 .bills{
 	width: 100%;

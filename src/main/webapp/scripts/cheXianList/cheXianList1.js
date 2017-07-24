@@ -156,6 +156,47 @@ $(document).ready(function(){
             alert("失败");
         }
     });
+
+    //订单状态请求
+    $("#selectdingdan").change(function(){
+        var selectthis=$(this).val()
+        $.ajax({
+            type: 'POST',
+            url: '/findInsurance',
+            data: {
+                shopCode: shopCode,
+                value: selectthis,
+                page: "1",
+                rows: "15"
+            },
+            success: function (jsondata) {
+                var json = JSON.parse(jsondata);
+                //console.log(selectthis)
+
+
+            }
+        })
+    })
+    //付款状态请求
+    $("#selectfakuan").change(function(){
+        var selectfukuan=$(this).val();
+        $.ajax({
+            type: 'POST',
+            url: '/findInsurance',
+            data: {
+                shopCode: shopCode,
+                value2: selectfukuan,
+                page: "1",
+                rows: "15"
+            },
+            success: function (jsondata) {
+                var json = JSON.parse(jsondata);
+               // console.log(json);
+
+            }
+        })
+    })
+
     //下拉刷新函数
     function Refresh() {
         setTimeout(function () {

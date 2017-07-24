@@ -31,6 +31,29 @@
 		<input type="text" class="ss_val font_1" placeholder="请输入车牌号"/>
 		<span class="font_1 ss_btn color_3">搜索</span>
 	</div>
+	<div class="ss">
+		<table border="0" width="100%" class="tabledelse font_1 color_9">
+			<tr width="100%">
+				<td style="text-align: right">订单状态:</td>
+				<td>
+					<select id="selectdingdan " class="font_1 color_9" >
+						<option value="">请选择</option>
+						<option value="0">报价中</option>
+						<option value="1">已报价</option>
+						<option value="2">已投保</option>
+					</select>
+				</td>
+				<td style="text-align: right">付款状态：</td>
+				<td>
+					<select id="selectfakuan" class="font_1 color_9" >
+						<option value="">请选择</option>
+						<option value="0">未付款</option>
+						<option value="1">已付款</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
 	<div id="wrapper">
 	   <ul id="thelist" class="margin_auto" style="height:100%;">
 		<!--------------------------------------------------------------------------------每一条单据-->
