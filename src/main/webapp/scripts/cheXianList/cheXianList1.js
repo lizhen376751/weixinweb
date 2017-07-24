@@ -116,7 +116,7 @@ $(document).ready(function(){
         data :{
             shopCode :shopCode,
             page: "1",
-            rows: "25"
+            rows: "15"
         },
         success:function(jsondata){
             var json = JSON.parse(jsondata);
@@ -165,7 +165,7 @@ $(document).ready(function(){
                 data :{
                     shopCode :shopCode,
                     page: "1",
-                    rows: "25"
+                    rows: "15"
                 },
                 async: false,
                 success: function (jsondata) {
@@ -200,7 +200,7 @@ $(document).ready(function(){
                     data :{
                         shopCode :shopCode,
                         page: ""+page+"",
-                        rows: "25"
+                        rows: "15"
                     },
                     async: false,
                     success: function (json) {
