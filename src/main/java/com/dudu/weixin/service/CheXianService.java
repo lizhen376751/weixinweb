@@ -34,7 +34,11 @@ public class CheXianService {
         String baoJiaState = request.getParameter("baoJiaState");
 
         if (null != paymentStatus && !"".equals(paymentStatus)) {
-            baoXianParamList.setPaymentStatus(Integer.parseInt(paymentStatus));
+            if ("00".equals(paymentStatus)) {
+                baoXianParamList.setPaymentStatus(0);
+            }else{
+                baoXianParamList.setPaymentStatus(1);
+            }
         }
         if (null != baoJiaState && !"".equals(baoJiaState)) {
             baoXianParamList.setBaoJiaState(Integer.parseInt(baoJiaState));
