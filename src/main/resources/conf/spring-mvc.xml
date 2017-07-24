@@ -71,5 +71,11 @@
             <!-- 联盟微信 分页拦截 -->
             <bean class="com.dudu.weixin.control.PagingQueryInterceptor"/>
         </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/findInsurance"/>
+            <!-- 联盟微信 分页拦截 -->
+            <bean class="com.dudu.weixin.control.PagingQueryInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 </beans>
