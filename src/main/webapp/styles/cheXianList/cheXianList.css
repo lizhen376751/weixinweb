@@ -49,9 +49,9 @@ body{
 .tishidiv{
 	position: fixed;
 	width: 100%;
-	height: 2.2rem;
+	/*height: 2.2rem;*/
 	z-index: 999;
-	background: #f4f4f4;;
+	background: #f4f4f4;
 }
 .tabledelse  select{
 	border-radius: 0.1rem;
