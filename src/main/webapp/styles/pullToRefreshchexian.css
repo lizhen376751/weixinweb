@@ -30,7 +30,7 @@
 }
 .pullDown, .pullUp {
 	text-align: center;
-	/*height: 0.8rem;*/
+	height: 0.8rem;
 	line-height: 0.8rem;
 	font-size: 0.36rem;
 	color: #888;
