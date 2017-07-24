@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>订单列表</title>
 		<link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
-		<link  rel="stylesheet" type="text/css" href="/styles/pullToRefresh.css"/>
+		<link  rel="stylesheet" type="text/css" href="/styles/pullToRefreshchexian.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/cheXianList/cheXianList.css"/>
 
 		
@@ -19,10 +19,6 @@
 		<script  type="text/javascript"  src="/scripts/main.js"></script>
 		<script src="/scripts/cheXianList/cheXianList1.js" type="text/javascript" charset="utf-8"></script>
 	</head>
-	<style>
-		.pullDownIcon{    font-size: 0.36rem;}
-		.pullDownLabel{    font-size: 0.36rem;}
-	</style>
 	<body>
 	<%--网页加载效果--%>
 	<div id="loading">
