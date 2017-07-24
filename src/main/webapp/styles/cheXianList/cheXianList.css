@@ -50,6 +50,9 @@ body{
 	border-radius: 0.1rem;
 	-webkit-border-radius: 0.1rem;
 	width: 2rem;
+	height: 0.7rem;
+	line-height:  0.7rem;
+	background:#fff ;
 }
 /*-----------------------------------------------------------------------------------------每一条单据*/
 .bills{
