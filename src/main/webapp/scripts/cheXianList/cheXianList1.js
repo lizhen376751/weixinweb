@@ -220,7 +220,20 @@ $(document).ready(function(){
                     refresher.info.loadingLable = "加载中...";
                     refresher.info.pullUpLable = "上拉加载更多"
                     refresher.info.pullingUpLable = "释放加载更多";
-                    page_num(add_num)
+                    page_num(add_num);
+                    var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
+                    //--------------------------------------------------------------------------------------点击详情按钮跳转
+                    detail.on("click",function(){
+                        // alert("该功能暂未开通~");
+                        var ddxq = $(this).attr("ddbh");
+                        var bxgs = $(this).attr("bxgs");
+                        var carId = $(this).attr("carId");
+                        var shopCode = $(this).attr("shopCode");
+                        var shopLm = $(this).attr("shopLm");
+                        // console.log(ddxq);
+                        // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
+                        window.location.href = "/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs;
+                    });
                 },
                 error: function () {
                     alert("查询数据出错啦，请刷新再试");
@@ -246,6 +259,19 @@ $(document).ready(function(){
                         var json = JSON.parse(json);
                         addBills(json);     //请求出的数据添加进入页面
                         page_num(add_num)//必须添加
+                        var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
+                        //--------------------------------------------------------------------------------------点击详情按钮跳转
+                        detail.on("click",function(){
+                            // alert("该功能暂未开通~");
+                            var ddxq = $(this).attr("ddbh");
+                            var bxgs = $(this).attr("bxgs");
+                            var carId = $(this).attr("carId");
+                            var shopCode = $(this).attr("shopCode");
+                            var shopLm = $(this).attr("shopLm");
+                            // console.log(ddxq);
+                            // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
+                            window.location.href = "/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs;
+                        });
                     },
                     error: function () {
                         alert("查询数据出错啦，请刷新再试");
