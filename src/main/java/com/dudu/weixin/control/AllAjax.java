@@ -15,7 +15,6 @@ import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.soa.weixindubbo.weixin.weixinconfig.api.ApiWeiXinConfig;
 import com.dudu.soa.weixindubbo.weixin.weixinconfig.module.WeiXinConfig;
-import com.dudu.weixin.mould.PageResult;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.AutoLoginService;
 import com.dudu.weixin.service.BaoYangTiXingService;
@@ -443,7 +442,7 @@ public class AllAjax {
      */
     @ResponseBody
     @RequestMapping(value = "findInsurance", method = RequestMethod.POST)
-    public PageResult<Insurance> queryInsurance(HttpServletRequest request) {
+    public List<Insurance> queryInsurance(HttpServletRequest request) {
         return cheXianService.queryBaoXianList(request);
     }
 

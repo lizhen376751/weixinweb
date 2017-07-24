@@ -72,10 +72,10 @@
             <bean class="com.dudu.weixin.control.PagingQueryInterceptor"/>
         </mvc:interceptor>
 
-        <mvc:interceptor>
+        <!--<mvc:interceptor>
             <mvc:mapping path="/findInsurance"/>
-            <!-- 联盟微信 分页拦截 -->
+            &lt;!&ndash; 联盟微信 分页拦截 &ndash;&gt;
             <bean class="com.dudu.weixin.control.PagingQueryInterceptor"/>
-        </mvc:interceptor>
+        </mvc:interceptor>-->
     </mvc:interceptors>
 </beans>
