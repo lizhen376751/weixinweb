@@ -10,6 +10,15 @@ $(function(){
     if(ylb != "YLB"){
         kf_logo.hide();
     };
+    //时间戳转换成日期格式
+    function dateFormat(val) {
+        var now = new Date(val),
+            y = now.getFullYear(),
+            m = now.getMonth() + 1,
+            d = now.getDate();
+        var date=y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+        return date.substr(0, 11);
+    }
     //------------------------------------------------------------------------------------动态添加每一条订单状态和付款状态的数据
     function selectdate (arr){
         var html = "";
@@ -131,7 +140,7 @@ $(function(){
     })
     //付款状态请求3
     $("#selectfakuan").change(function(){
-    
+
         //数据分页
         var page3 = 1; //记录当前加载的页数
         var add_num3 = 0;//记录加载的次数
