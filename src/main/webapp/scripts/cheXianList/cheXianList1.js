@@ -159,21 +159,19 @@ $(document).ready(function(){
 
     //订单状态请求
     $("#selectdingdan").change(function(){
-        var selectthis=$(this).val()
+        var selectthis=$(this).val();
         $.ajax({
             type: 'POST',
             url: '/findInsurance',
             data: {
                 shopCode: shopCode,
-                value: selectthis,
+                baoJiaState: selectthis,
                 page: "1",
                 rows: "15"
             },
             success: function (jsondata) {
                 var json = JSON.parse(jsondata);
                 //console.log(selectthis)
-
-
             }
         })
     })
@@ -185,7 +183,7 @@ $(document).ready(function(){
             url: '/findInsurance',
             data: {
                 shopCode: shopCode,
-                value2: selectfukuan,
+                paymentStatus: selectfukuan,
                 page: "1",
                 rows: "15"
             },
