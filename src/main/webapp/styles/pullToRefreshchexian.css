@@ -35,7 +35,8 @@
 	font-size: 0.36rem;
 	color: #888;
 	font-family: Arial, Microsoft YaHei;
-	background-color: #333;
+	/*background-color: #333;*/
+	background-color: #fff;
 }
 .pullDown .pullDownIcon, .pullUp .pullUpIcon {
 	background: url("/files/arrow.png") no-repeat;
