@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>订单列表</title>
 		<link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
-		<link href="/styles/pullToRefresh.css" rel="stylesheet" type="text/css"/>
+		<link  rel="stylesheet" type="text/css" href="/styles/pullToRefresh.css"/>
 		<link rel="stylesheet" type="text/css" href="/styles/cheXianList/cheXianList.css"/>
 
 		
@@ -24,11 +24,11 @@
 	<div id="loading">
 		<img src="/files/loading2.gif"  alt="loading.." />
 	</div>
-	<div class="kfk">
-		<img src="/files/cheXianList/kf.png" alt="" class="kf"/>
-	</div>
 	<div id="wrapper">
 		<ul id="thelist" class="margin_auto" style="height:100%;">
+			<div class="kfk">
+				<img src="/files/cheXianList/kf.png" alt="" class="kf"/>
+			</div>
 			<div class="ss">
 				<input type="text" class="ss_val font_1" placeholder="请输入车牌号"/>
 				<span class="font_1 ss_btn color_3">搜索</span>
