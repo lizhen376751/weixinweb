@@ -444,7 +444,19 @@ public class AllAjax {
     @ResponseBody
     @RequestMapping(value = "findInsurance", method = RequestMethod.POST)
     public PageResult<Insurance> queryInsurance(HttpServletRequest request) {
-       return cheXianService.queryBaoXianList(request);
+        return cheXianService.queryBaoXianList(request);
+    }
+
+    /**
+     * 获取app保险列表
+     *
+     * @param request 参数
+     * @return List<Insurance> 保险列表
+     */
+    @ResponseBody
+    @RequestMapping(value = "findAppInsurance", method = RequestMethod.POST)
+    public List<Insurance> findAppInsurance(HttpServletRequest request) {
+        return cheXianService.queryAppBaoXianList(request);
     }
 
     /**
