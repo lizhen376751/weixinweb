@@ -20,7 +20,7 @@ $(function(){
         return date.substr(0, 11);
     }
     //------------------------------------------------------------------------------------动态添加每一条订单状态和付款状态的数据
-    function selectdate (arr){
+    function selectdate (arr,nameid){
         var html = "";
         for (var i = 0;i < arr.length;i++) {
             var dates = dateFormat(arr[i].kaiDanDate);
@@ -79,7 +79,7 @@ $(function(){
                 '</div>'+
                 '</div> ';
         }
-        $("#thelist").append(html);
+        $("#"+nameid).append(html);
     }
     //订单请求数据分页
     var page2 = 1; //记录当前加载的页数
@@ -122,7 +122,7 @@ $(function(){
                 var json = JSON.parse(jsondata);
                // console.log(json);
                 $("#thelist2").children().remove();
-                selectdate (json.rows);
+                selectdate (json.rows,"thelist2");
                 //数据添加完成后开始调用加载插件
                 wrapper.refresh();
                 document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
@@ -177,7 +177,7 @@ $(function(){
                     $(".pullUp").hide()
                 }
                 $("#thelist3").children().remove();
-                selectdate (json.rows);
+                selectdate (json.rows,"thelist3");
                 //数据添加完成后开始调用加载插件
                 wrapper.refresh();
                 document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
@@ -233,7 +233,7 @@ $(function(){
                     page2 = 1;
                     var json = JSON.parse(jsondata);
                     $("#thelist2").children().remove();
-                    selectdate(json.rows);     //请求出的数据添加进入页面
+                    selectdate (json.rows,"thelist2");     //请求出的数据添加进入页面
                     wrapper.refresh();
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
                     $(".pullUpIcon").css("opacity","1");
@@ -279,7 +279,7 @@ $(function(){
                     async: false,
                     success: function (json) {
                         var json = JSON.parse(json);
-                        selectdate(json.rows);     //请求出的数据添加进入页面
+                        selectdate (json.rows,"thelist2");    //请求出的数据添加进入页面
                         page_num2(add_num2)//必须添加
                         var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
                         //--------------------------------------------------------------------------------------点击详情按钮跳转
@@ -330,7 +330,7 @@ $(function(){
                     page3 = 1;
                     var json = JSON.parse(jsondata);
                     $("#thelist3").children().remove();
-                    selectdate(json.rows);     //请求出的数据添加进入页面
+                    selectdate (json.rows,"thelist3");    //请求出的数据添加进入页面
                     wrapper.refresh();
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
                     $(".pullUpIcon").css("opacity","1");
@@ -375,7 +375,7 @@ $(function(){
                     async: false,
                     success: function (json) {
                         var json = JSON.parse(json);
-                        selectdate(json.rows);     //请求出的数据添加进入页面
+                        selectdate (json.rows,"thelist3");   //请求出的数据添加进入页面
                         page_num3(add_num3)//必须添加
                         var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
                         //--------------------------------------------------------------------------------------点击详情按钮跳转
