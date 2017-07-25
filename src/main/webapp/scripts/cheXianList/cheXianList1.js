@@ -107,12 +107,19 @@ $(document).ready(function(){
         pullUpAction:Load
     });
     //------------------------------------------------------------------ajax请求数据
-
+    var selectajax="";
+    if($(':focus').length==0) {
+    }
+    else{
+        //弹出焦点元素的name
+        selectajax= $(":focus").val();
+    }
     $.ajax({
         type    : 'POST',
         url     : '/findInsurance',
         data :{
             shopCode :shopCode,
+            paymentStatus: selectajax,
             baoJiaState: "",
             page: "1",
             rows: "15"
