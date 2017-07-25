@@ -109,13 +109,13 @@
 		</ul>
 	  </div>
 	  <%--订单状态--%>
-	  <div id="wrapper2" style="display:none;margin-top: 2.2rem;overflow: auto;">
-		 <ul id="thelist2" class="" >
+	  <div id="wrapper2" style="display:none;overflow: auto;">
+		 <ul id="thelist2" class="" class="" style="margin-top: 2.2rem;">
 		 </ul>
 	  </div>
 	<%--付款状态--%>
-	  <div id="wrapper3" style="display:none;margin-top: 2.2rem;overflow: auto;">
-		<ul id="thelist3" class="" >
+	  <div id="wrapper3" style="display:none;overflow: auto;">
+		<ul id="thelist3" class="" style="margin-top: 2.2rem;">
 		</ul>
 	  </div>
 	  <input type="hidden" name="shopCode" id="shopCode" value="<%=shopCode%>" />

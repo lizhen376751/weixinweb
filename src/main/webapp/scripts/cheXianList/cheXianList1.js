@@ -281,7 +281,6 @@ $(document).ready(function(){
     function page_num(add_num) {
         if(page == add_num){
             $(".pullUpIcon").css("opacity","0");
-            console.log($(".pullUpIcon"))
             $(".pullUpLabel").text("已经到了最底部了！");
             refresher.info.loadingLable = "已经到了最底部了!";
             refresher.info.pullUpLable = "已经到了最底部了!"
