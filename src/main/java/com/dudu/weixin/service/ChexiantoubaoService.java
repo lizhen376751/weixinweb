@@ -16,7 +16,9 @@ import com.dudu.soa.baoxian.kaidan.module.CustomerModel;
 import com.dudu.soa.baoxian.kaidan.module.Insurance;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceBill;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceCompany;
+import com.dudu.soa.baoxian.kaidan.module.InsuranceCompanyDetails;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceInfo;
+import com.dudu.soa.baoxian.kaidan.module.InsuranceOrder;
 import com.dudu.soa.baoxian.kaidan.module.InsuranceType;
 import com.dudu.soa.basedata.employee.api.ApiBaseDataEmployee;
 import com.dudu.soa.basedata.employee.module.Employee;
@@ -292,6 +294,7 @@ public class ChexiantoubaoService {
 
         return baoXianLists;
     }
+
     /**
      * app端查询保险列表
      *
@@ -299,7 +302,25 @@ public class ChexiantoubaoService {
      * @return List<BaoXianList>
      */
     public List<Insurance> queryAppInsurance(BaoXianParamList baoXianParamList) {
-        return aPIBaoXainKaiDan.queryAppInsuranceOrderList(baoXianParamList);
+        List<InsuranceOrder> orderList = aPIBaoXainKaiDan.appOnlyQueryInsuranceOrder(baoXianParamList);
+        List<Insurance> insuranceList = new ArrayList<Insurance>();
+        for (InsuranceOrder inOrder : orderList) {
+            Insurance insurance = new Insurance();
+            insurance.setOrderNumb(inOrder.getOrderNumb());
+            insurance.setShopCode(inOrder.getShopCode());
+            insurance.setCarId(inOrder.getPlateNumber());
+            insurance.setFuKuanFlag(inOrder.getPaymentStatus());
+            insurance.setKaiDanDate(inOrder.getBillingDate());
+            insurance.setOrderBaoJiaState(inOrder.getBaoJiaState());
+            insurance.setCustomerId(inOrder.getCustomerId());
+            insurance.setShopcodelm(inOrder.getShopCodeLm());
+            insurance.setOrderId(inOrder.getId());
+            insurance.setAssistant(inOrder.getAssistantId());
+            List<InsuranceCompanyDetails> insuranceCompanyDetailss = aPIBaoXainKaiDan.appQueryCompanyDetailsbyOrderId(inOrder.getId());
+            insurance.setList(insuranceCompanyDetailss);
+            insuranceList.add(insurance);
+        }
+        return insuranceList;
     }
 
     /**

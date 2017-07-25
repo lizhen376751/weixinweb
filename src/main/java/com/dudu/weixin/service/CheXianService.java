@@ -2,6 +2,7 @@ package com.dudu.weixin.service;
 
 import com.dudu.soa.baoxian.kaidan.module.BaoXianParamList;
 import com.dudu.soa.baoxian.kaidan.module.Insurance;
+import com.dudu.weixin.mould.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class CheXianService {
      * @param request 请求
      * @return List<Insurance> 保险列表
      */
-    public List<Insurance> queryBaoXianList(HttpServletRequest request) {
+    public PageResult queryBaoXianList(HttpServletRequest request) {
         BaoXianParamList baoXianParamList = new BaoXianParamList();
         String shopCode = request.getParameter("shopCode");
         String carNumber = request.getParameter("carNumber");
@@ -54,11 +55,7 @@ public class CheXianService {
 
         List<Insurance> list = chexiantoubaoService.queryAppInsurance(baoXianParamList);
 
-//        PageParams resultCurrentPageParams = DuduSOAHelp.getResultCurrentPageParams(); //用于分页
-//        return new PageResult<Insurance>(list);
-
-
-        return list;
+        return new PageResult<Insurance>(list);
     }
 
     /**
