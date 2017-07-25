@@ -176,6 +176,7 @@ $(document).ready(function(){
                 var json = JSON.parse(jsondata);
                 // console.log(json);
                 $("#thelist").children().remove();
+                $(".pullUpLabel").html("上拉加载更多");
                 addBills(json.rows);
                 //数据添加完成后开始调用加载插件
                 wrapper.refresh();
