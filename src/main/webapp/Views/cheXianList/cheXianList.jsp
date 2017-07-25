@@ -17,7 +17,7 @@
 		<script type="text/javascript" src="/scripts/iscroll.js"></script>
 		<script type="text/javascript" src="/scripts/pullToRefresh.js"></script>
 		<script  type="text/javascript"  src="/scripts/main.js"></script>
-		<script src="/scripts/cheXianList/cheXianList1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/scripts/cheXianList/cheXianList12.js" type="text/javascript" charset="utf-8"></script>
 		<%--//订单状态和付款状态选择时相应的js代码--%>
 		<%--<script src="/scripts/cheXianList/cheXianiscroll.js" type="text/javascript" charset="utf-8"></script>--%>
 	</head>
