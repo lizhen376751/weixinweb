@@ -35,7 +35,7 @@
 			<span class="font_1 ss_btn color_3">搜索</span>
 		</div>
 		<div class="ss">
-			<table border="0" width="100%" class="tabledelse font_1 color_9">
+			<table border="0" width="100%"  class="tabledelse font_1 color_9">
 				<tr width="100%">
 					<td style="text-align: right">订单状态:</td>
 					<td>
@@ -58,8 +58,7 @@
 			</table>
 		</div>
 	</div>
-	<div style=""></div>
-	<div id="wrapper" style="overflow: auto;">
+	<div id="wrapper" style="overflow: auto;padding-top:2.2rem">
 	   <ul id="thelist" class="" >
 		<!--------------------------------------------------------------------------------每一条单据-->
 		<%--<div class="bills">--%>
