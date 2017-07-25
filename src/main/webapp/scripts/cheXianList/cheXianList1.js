@@ -158,6 +158,55 @@ $(document).ready(function(){
         }
     });
 
+    //订单状态请求  2
+    $("#selectdingdan").change(function(){
+        var selectthis=$(this).val();
+        add_num=0;//将加载的次数清零
+        page=1 ;   //将页数也重新归为初始值1
+        selectajax=selectthis;
+        $.ajax({
+            type: 'POST',
+            url: '/findInsurance',
+            data: {
+                shopCode: shopCode,
+                baoJiaState: selectthis,
+                page: "1",
+                rows: "15"
+            },
+            success: function (jsondata) {
+                var json = JSON.parse(jsondata);
+                // console.log(json);
+                $("#thelist").children().remove();
+                addBills(json.rows);
+                //数据添加完成后开始调用加载插件
+                wrapper.refresh();
+                document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
+                $(".pullUpIcon").css("opacity","1");
+                refresher.info.loadingLable = "加载中...";
+                refresher.info.pullUpLable = "上拉加载更多"
+                refresher.info.pullingUpLable = "释放加载更多";
+                page_num(add_num)
+                //调用加载插件结束
+                var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
+                //--------------------------------------------------------------------------------------点击详情按钮跳转
+                detail.on("click",function(){
+                    // alert("该功能暂未开通~");
+                    var ddxq = $(this).attr("ddbh");
+                    var bxgs = $(this).attr("bxgs");
+                    var carId = $(this).attr("carId");
+                    var shopCode = $(this).attr("shopCode");
+                    var shopLm = $(this).attr("shopLm");
+                    // console.log(ddxq);
+                    // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
+                    window.location.href = "/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs;
+                });
+            },
+            error:function(eee){
+                alert("失败");
+            }
+        })
+    })
+
     //付款状态请求3
     $("#selectfakuan").change(function(){
         var selectfukuan=$(this).val();
@@ -184,7 +233,7 @@ $(document).ready(function(){
                     $(".pullUp").hide()
                 }
                 $("#thelist").children().remove();
-                addBills (json.rows);
+                addBills(json.rows);
                 //数据添加完成后开始调用加载插件
                 wrapper.refresh();
                 document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
