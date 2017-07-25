@@ -25,10 +25,7 @@ public class MenuUtil {
      * 易璐邦菜单微信
      */
     private Menu yiLuBangmenu;
-    /**
-     * 创客微信
-     */
-    private Menu chuangKe;
+
     /**
      * 老版店管家微信
      */
@@ -362,131 +359,6 @@ public class MenuUtil {
         menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});
         return menu;
     }
-
-    /**
-     * 设置 易璐邦菜单微信
-     *
-     * @param yiLuBangmenu 易璐邦菜单微信
-     * @return 返回 MenuUtil(根据不同的公众号配置不同的菜单)
-     */
-
-    public MenuUtil setYiLuBangmenu(Menu yiLuBangmenu) {
-        this.yiLuBangmenu = yiLuBangmenu;
-        return this;
-    }
-
-    /**
-     * 创客微信菜单
-     *
-     * @param appid 微信的appid
-     * @param code  联盟编码或者店铺编码
-     * @param url   服务器地址
-     * @return lianMengMenu 创客微信的菜单
-     */
-    public Menu getChuangKe(String appid, String code, String url) {
-//        wx.pre.duduchewang.cn 预生产
-        String commonUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?"
-                + "appid=" + appid + "&redirect_uri=http://" + url + "/chuangkeweixinMenu?lmcode=" + code;
-
-        CommonButton btn11 = new CommonButton();
-        btn11.setName("收付明细");
-        btn11.setType("view");
-        btn11.setUrl(commonUrl + "_paymentDetails" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn12 = new CommonButton();
-        btn12.setName("门店签收");
-        btn12.setType("view");
-        btn12.setUrl(commonUrl + "_storeSign" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn13 = new CommonButton();
-        btn13.setName("发货记录");
-        btn13.setType("view");
-        btn13.setUrl(commonUrl + "_deliveryRecord" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn14 = new CommonButton();
-        btn14.setName("我要进货");
-        btn14.setType("view");
-        btn14.setUrl(commonUrl + "_buyMore" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-
-        CommonButton btn21 = new CommonButton();
-        btn21.setName("微课堂");
-        btn21.setType("view");
-        btn21.setUrl(commonUrl + "_microClass" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn22 = new CommonButton();
-        btn22.setName("微营销");
-        btn22.setType("view");
-        btn22.setUrl(commonUrl + "_microMarketing" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn23 = new CommonButton();
-        btn23.setName("创客圈");
-        btn23.setType("view");
-        btn23.setUrl(commonUrl + "_microVideo" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn24 = new CommonButton();
-        btn24.setName("拉关系");
-        btn24.setType("view");
-        btn24.setUrl(commonUrl + "_pullTies" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn25 = new CommonButton();
-        btn25.setName("抢地盘");
-        btn25.setType("view");
-        btn25.setUrl(commonUrl + "_turfUp" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn31 = new CommonButton();
-        btn31.setName("信息榜");
-        btn31.setType("view");
-        btn31.setUrl(commonUrl + "_informationList" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn32 = new CommonButton();
-        btn32.setName("抢任务");
-        btn32.setType("view");
-        btn32.setUrl(commonUrl + "_grabAMission" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn33 = new CommonButton();
-        btn33.setName("我的礼品");
-        btn33.setType("view");
-        btn33.setUrl(commonUrl + "_myEquipment" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn34 = new CommonButton();
-        btn34.setName("我的地盘");
-        btn34.setType("view");
-        btn34.setUrl(commonUrl + "_myTerritory" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        CommonButton btn35 = new CommonButton();
-        btn35.setName("个人中心");
-        btn35.setType("view");
-        btn35.setUrl(commonUrl + "_personCenter" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
-
-        ComplexButton mainBtn1 = new ComplexButton();
-        mainBtn1.setName("商务中心");
-        mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14});
-
-        ComplexButton mainBtn2 = new ComplexButton();
-        mainBtn2.setName("服务中心");
-        mainBtn2.setSubbutton(new CommonButton[]{btn21, btn22, btn23, btn24, btn25});
-
-        ComplexButton mainBtn3 = new ComplexButton();
-        mainBtn3.setName("创客中心");
-        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32, btn33, btn34, btn35});
-
-        Menu menu = new Menu();
-        menu.setButton(new Button[]{mainBtn1, mainBtn2, mainBtn3});
-        return menu;
-    }
-
-    /**
-     * 设置 创客微信的菜单
-     *
-     * @param chuangKe 联盟微信的菜单
-     * @return 返回 MenuUtil(根据不同的公众号配置不同的菜单)
-     */
-    public MenuUtil setChuangKe(Menu chuangKe) {
-        this.chuangKe = chuangKe;
-        return this;
-    }
-
 
     /**
      * 老版店管家微信菜单
