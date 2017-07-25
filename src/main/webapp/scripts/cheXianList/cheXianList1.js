@@ -161,6 +161,8 @@ $(document).ready(function(){
     //付款状态请求3
     $("#selectfakuan").change(function(){
         var selectfukuan=$(this).val();
+        add_num=0;//将加载的次数清零
+        page=1 ;   //将页数也重新归为初始值1
         selectajax=selectfukuan;
         $.ajax({
             type: 'POST',
@@ -190,6 +192,7 @@ $(document).ready(function(){
                 refresher.info.loadingLable = "加载中...";
                 refresher.info.pullUpLable = "上拉加载更多"
                 refresher.info.pullingUpLable = "释放加载更多";
+
                 page_num(add_num)
                 //调用加载插件结束
                 var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
