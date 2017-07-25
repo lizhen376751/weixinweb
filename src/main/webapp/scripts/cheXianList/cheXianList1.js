@@ -177,8 +177,6 @@ $(document).ready(function(){
                 // console.log(json);
                 $("#thelist").children().remove();
                 $(".pullUpLabel").html("上拉加载更多");
-                var target_top = $("#wrapper").offset().top;  //重新选择后 页面回到顶部
-                $("#wrapper").animate({scrollTop: target_top}, 1000);
                 addBills(json.rows);
                 //数据添加完成后开始调用加载插件
                 wrapper.refresh();
@@ -235,8 +233,6 @@ $(document).ready(function(){
                 }
                 $("#thelist").children().remove();
                 $(".pullUpLabel").html("上拉加载更多");
-                var target_top = $("#wrapper").offset().top;  //重新选择后 页面回到顶部
-                $("#wrapper").animate({scrollTop: target_top}, 1000);
                 addBills(json.rows);
                 //数据添加完成后开始调用加载插件
                 wrapper.refresh();
