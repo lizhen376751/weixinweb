@@ -107,15 +107,16 @@ $(document).ready(function(){
         pullUpAction:Load
     });
     //------------------------------------------------------------------ajax请求数据
-    var selectajax=""; //选中的状态
 
+    var selectdingdan="";  //订单状态选中的状态
+    var selectajax=""; //付款状体选中的状态
     $.ajax({
         type    : 'POST',
         url     : '/findInsurance',
         data :{
             shopCode :shopCode,
-            paymentStatus: selectajax,
-            baoJiaState: "",
+            paymentStatus: selectajax,    //付款状体选中的状态
+            baoJiaState: selectdingdan,   //订单状态选中的状态
             page: "1",
             rows: "15"
         },
@@ -158,17 +159,19 @@ $(document).ready(function(){
         }
     });
 
+
     //订单状态请求  2
     $("#selectdingdan").change(function(){
-        var selectthis=$(this).val();
+        selectdingdan=$(this).val();   //订单状态选中的状态
+        selectajax=$("#selectfakuan").val();  //付款状体选中的状态
         page=1 ;   //将页数也重新归为初始值1
-        selectajax=selectthis;
         $.ajax({
             type: 'POST',
             url: '/findInsurance',
             data: {
                 shopCode: shopCode,
-                baoJiaState: selectthis,
+                paymentStatus: selectajax,  //付款状体选中的状态
+                baoJiaState: selectdingdan,  //订单状态选中的状态
                 page: "1",
                 rows: "15"
             },
@@ -209,15 +212,16 @@ $(document).ready(function(){
 
     //付款状态请求3
     $("#selectfakuan").change(function(){
-        var selectfukuan=$(this).val();
+        selectajax=$(this).val();   //付款状态
+        selectdingdan=$("#selectdingdan").val();   //订单状体
         page=1 ;   //将页数也重新归为初始值1
-        selectajax=selectfukuan;
         $.ajax({
             type: 'POST',
             url: '/findInsurance',
             data: {
                 shopCode: shopCode,
-                paymentStatus: selectfukuan,
+                paymentStatus: selectajax,  //付款状态
+                baoJiaState: selectdingdan,      //订单状体
                 page: "1",
                 rows: "15"
             },
@@ -263,6 +267,8 @@ $(document).ready(function(){
             }
         })
     })
+
+
     //下拉刷新函数
     function Refresh() {
         setTimeout(function () {
@@ -271,7 +277,8 @@ $(document).ready(function(){
                 url  : '/findInsurance',
                 data :{
                     shopCode :shopCode,
-                    paymentStatus: selectajax,
+                    paymentStatus: selectajax,   //付款状态
+                     baoJiaState: selectdingdan,  //订单状态
                     page: "1",
                     rows: "15"
                 },
@@ -320,7 +327,8 @@ $(document).ready(function(){
                     url   : '/findInsurance',
                     data :{
                         shopCode :shopCode,
-                        paymentStatus: selectajax,
+                        paymentStatus: selectajax,   //付款状态
+                        baoJiaState: selectdingdan,  //订单状态
                         page: ""+page+"",
                         rows: "15"
                     },

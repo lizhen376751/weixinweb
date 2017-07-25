@@ -50,8 +50,8 @@
 					<td>
 						<select id="selectfakuan" class="font_1 color_9" >
 							<option value="">请选择</option>
-							<option value="00">未付款</option>
-							<option value="11">已付款</option>
+							<option value="0">未付款</option>
+							<option value="1">已付款</option>
 						</select>
 					</td>
 				</tr>
