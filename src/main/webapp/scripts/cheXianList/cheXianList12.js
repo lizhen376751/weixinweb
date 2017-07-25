@@ -163,10 +163,14 @@ $(document).ready(function(){
     //订单状态请求  2
     $("#selectdingdan").change(function(){
         selectdingdan=$(this).val();   //订单状态选中的状态
-        if(selectdingdan==0||selectdingdan==1){
-            $("#selectfakuan").attr("disabled","disabled");  //当订单状态为控制、0、1时付款状态不能选择
-        }else{
+        if(selectdingdan==""||selectdingdan==2){
+            $("#selectfakuan").removeAttr("disabled");
             selectajax=$("#selectfakuan").val();  //付款状体选中的状态
+
+        }else{
+            $("#selectfakuan").attr("disabled","disabled");  //当订单状态为0、1时付款状态不能选择
+            alert(11)
+
         }
         page=1 ;   //将页数也重新归为初始值1
         $.ajax({
@@ -222,6 +226,7 @@ $(document).ready(function(){
             $("#selectdingdan").attr("disabled","disabled");  //当订单状态为控制、0、1时付款状态不能选择
         }else{
             selectdingdan=$("#selectdingdan").val();   //订单状体
+            $("#selectdingdan").removeAttr("disabled");
         }
         page=1 ;   //将页数也重新归为初始值1
         $.ajax({
