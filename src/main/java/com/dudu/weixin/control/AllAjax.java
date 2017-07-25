@@ -3,7 +3,6 @@ package com.dudu.weixin.control;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.baoxian.kaidan.module.ClientInsuranceResult;
 import com.dudu.soa.baoxian.kaidan.module.ClientInsuranceTypeParam;
-import com.dudu.soa.baoxian.kaidan.module.Insurance;
 import com.dudu.soa.dududata.oss.api.ApiDuduDataOssSecretConfigIntf;
 import com.dudu.soa.dududata.oss.module.OssSecretConfig;
 import com.dudu.soa.dududata.oss.module.param.OssSecretConfigParam;
@@ -447,17 +446,7 @@ public class AllAjax {
         return cheXianService.queryBaoXianList(request);
     }
 
-    /**
-     * 获取app保险列表
-     *
-     * @param request 参数
-     * @return List<Insurance> 保险列表
-     */
-    @ResponseBody
-    @RequestMapping(value = "findAppInsurance", method = RequestMethod.POST)
-    public List<Insurance> findAppInsurance(HttpServletRequest request) {
-        return cheXianService.queryAppBaoXianList(request);
-    }
+
 
     /**
      * @param shopCode    店铺编码

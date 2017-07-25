@@ -34,15 +34,14 @@ public class CheXianService {
         String paymentStatus = request.getParameter("paymentStatus");
         String baoJiaState = request.getParameter("baoJiaState");
 
-        if (null != paymentStatus && !"".equals(paymentStatus)) {
-            if ("00".equals(paymentStatus)) {
-                baoXianParamList.setPaymentStatus(0);
-            }else{
-                baoXianParamList.setPaymentStatus(1);
+        if (null != paymentStatus && !"".equals(paymentStatus) && null != baoJiaState && !"".equals(baoJiaState)) {
+            int fukuanState = Integer.parseInt(paymentStatus);
+            int dingDanState = Integer.parseInt(baoJiaState);
+            if (fukuanState == 1) {
+                dingDanState = 2;
             }
-        }
-        if (null != baoJiaState && !"".equals(baoJiaState)) {
-            baoXianParamList.setBaoJiaState(Integer.parseInt(baoJiaState));
+            baoXianParamList.setBaoJiaState(dingDanState);
+            baoXianParamList.setPaymentStatus(fukuanState);
         }
         if (null != shopCode && !"".equals(shopCode)) {
             List<String> list = new ArrayList<>();
@@ -58,43 +57,5 @@ public class CheXianService {
         return new PageResult<Insurance>(list);
     }
 
-    /**
-     * 获取保险列表
-     *
-     * @param request 请求
-     * @return List<Insurance> 保险列表
-     */
-    public List<Insurance> queryAppBaoXianList(HttpServletRequest request) {
-        BaoXianParamList baoXianParamList = new BaoXianParamList();
-        String shopCode = request.getParameter("shopCode");
-        String carNumber = request.getParameter("carNumber");
-        String paymentStatus = request.getParameter("paymentStatus");
-        String baoJiaState = request.getParameter("baoJiaState");
 
-        if (null != paymentStatus && !"".equals(paymentStatus)) {
-            if ("00".equals(paymentStatus)) {
-                baoXianParamList.setPaymentStatus(0);
-            }else{
-                baoXianParamList.setPaymentStatus(1);
-            }
-        }
-        if (null != baoJiaState && !"".equals(baoJiaState)) {
-            baoXianParamList.setBaoJiaState(Integer.parseInt(baoJiaState));
-        }
-        if (null != shopCode && !"".equals(shopCode)) {
-            List<String> list = new ArrayList<>();
-            list.add(shopCode);
-            baoXianParamList.setShopCode(list);
-        }
-        if (null != carNumber && !"".equals(carNumber)) {
-            baoXianParamList.setCarId(carNumber);
-        }
-
-        List<Insurance> list = chexiantoubaoService.queryAppInsurance(baoXianParamList);
-
-//        PageParams resultCurrentPageParams = DuduSOAHelp.getResultCurrentPageParams(); //用于分页
-
-
-        return list;
-    }
 }
