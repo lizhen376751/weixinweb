@@ -5,6 +5,7 @@ import com.dudu.soa.baoxian.kaidan.module.Insurance;
 import com.dudu.weixin.mould.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -34,14 +35,17 @@ public class CheXianService {
         String paymentStatus = request.getParameter("paymentStatus");
         String baoJiaState = request.getParameter("baoJiaState");
 
-        if (null != paymentStatus && !"".equals(paymentStatus) && null != baoJiaState && !"".equals(baoJiaState)) {
-            int fukuanState = Integer.parseInt(paymentStatus);
-            int dingDanState = Integer.parseInt(baoJiaState);
-            if (fukuanState == 1) {
-                dingDanState = 2;
+        if (StringUtils.hasText(baoJiaState)) {
+            baoXianParamList.setBaoJiaState(Integer.valueOf(baoJiaState));
+        }
+        if (StringUtils.hasText(paymentStatus)) {
+            //当付款状态为1的时候,订单状态为2
+            if (Integer.valueOf(paymentStatus) == 1) {
+                baoXianParamList.setBaoJiaState(2);
+                baoXianParamList.setPaymentStatus(1);
+            } else {
+                baoXianParamList.setPaymentStatus(Integer.valueOf(paymentStatus));
             }
-            baoXianParamList.setBaoJiaState(dingDanState);
-            baoXianParamList.setPaymentStatus(fukuanState);
         }
         if (null != shopCode && !"".equals(shopCode)) {
             List<String> list = new ArrayList<>();
