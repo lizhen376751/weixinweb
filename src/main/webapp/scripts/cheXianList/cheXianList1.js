@@ -161,7 +161,6 @@ $(document).ready(function(){
     //订单状态请求  2
     $("#selectdingdan").change(function(){
         var selectthis=$(this).val();
-        add_num=0;//将加载的次数清零
         page=1 ;   //将页数也重新归为初始值1
         selectajax=selectthis;
         $.ajax({
@@ -210,7 +209,6 @@ $(document).ready(function(){
     //付款状态请求3
     $("#selectfakuan").change(function(){
         var selectfukuan=$(this).val();
-        add_num=0;//将加载的次数清零
         page=1 ;   //将页数也重新归为初始值1
         selectajax=selectfukuan;
         $.ajax({
