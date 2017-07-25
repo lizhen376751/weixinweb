@@ -58,7 +58,8 @@
 			</table>
 		</div>
 	</div>
-	<div id="wrapper" style="overflow: auto;padding-top:2.2rem">
+	<div style="height: 2.2rem;"></div>
+	<div id="wrapper" style="overflow: auto;">
 	   <ul id="thelist" class="" >
 		<!--------------------------------------------------------------------------------每一条单据-->
 		<%--<div class="bills">--%>
