@@ -84,9 +84,9 @@ $(function(){
     //订单请求数据分页
     var page2 = 1; //记录当前加载的页数
     var add_num2 = 0;//记录加载的次数
-    refresher.init({
-        id:"wrapper",
-        able:"#thelist",
+     refresher.init({
+        id:"wrapper2",
+        able:"#thelist2",
         pullDownAction:Refresh2,
         pullUpAction:Load2
     });
@@ -95,8 +95,8 @@ $(function(){
     var page3 = 1; //记录当前加载的页数
     var add_num3 = 0;//记录加载的次数
     refresher.init({
-        id:"wrapper",
-        able:"#thelist",
+        id:"wrapper3",
+        able:"#thelist3",
         pullDownAction:Refresh3,
         pullUpAction:Load3
     });
@@ -104,6 +104,9 @@ $(function(){
 
     //订单状态请求  2
     $("#selectdingdan").change(function(){
+        $("#wrapper").hide();
+        $("#wrapper3").hide();
+        $("#wrapper2").show();
 
         var selectthis=$(this).val();
         $.ajax({
@@ -118,8 +121,8 @@ $(function(){
             success: function (jsondata) {
                 var json = JSON.parse(jsondata);
                // console.log(json);
-                $("#thelist").children().remove();
-                selectdate (json);
+                $("#thelist2").children().remove();
+                selectdate (json.rows);
                 //数据添加完成后开始调用加载插件
                 wrapper.refresh();
                 document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
@@ -150,7 +153,9 @@ $(function(){
     })
     //付款状态请求3
     $("#selectfakuan").change(function(){
-
+        $("#wrapper").hide();
+        $("#wrapper2").hide();
+        $("#wrapper3").show();
         var selectfukuan=$(this).val();
         $.ajax({
             type: 'POST',
@@ -171,8 +176,8 @@ $(function(){
                 if(json.records == 0){
                     $(".pullUp").hide()
                 }
-                $("#thelist").children().remove();
-                selectdate (json);
+                $("#thelist3").children().remove();
+                selectdate (json.rows);
                 //数据添加完成后开始调用加载插件
                 wrapper.refresh();
                 document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
@@ -204,12 +209,20 @@ $(function(){
 
     //下拉刷新函数
     function Refresh2() {
+       var selectthis2="";
+        if($(':focus').length==0) {
+        }
+        else{
+              //弹出焦点元素的name
+            selectthis2= $(":focus").val();
+        }
         setTimeout(function () {
             $.ajax({
                 type: 'POST',
                 url  : '/findInsurance',
                 data :{
                     shopCode :shopCode,
+                    baoJiaState: selectthis2,
                     page: "1",
                     rows: "15"
                 },
@@ -219,8 +232,8 @@ $(function(){
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='/files/ok.png'/>刷新成功";
                     page2 = 1;
                     var json = JSON.parse(jsondata);
-                    $("#thelist").children().remove();
-                    selectdate(json);     //请求出的数据添加进入页面
+                    $("#thelist2").children().remove();
+                    selectdate(json.rows);     //请求出的数据添加进入页面
                     wrapper.refresh();
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
                     $(".pullUpIcon").css("opacity","1");
@@ -250,6 +263,7 @@ $(function(){
     }
     //---------------------------------------------------上拉加载函数
     function Load2() {
+
         setTimeout(function () {
             page2++;
             if(page2 <= add_num2){
@@ -258,13 +272,14 @@ $(function(){
                     url   : '/findInsurance',
                     data :{
                         shopCode :shopCode,
+                        baoJiaState: selectthis2,
                         page: ""+page2+"",
                         rows: "15"
                     },
                     async: false,
                     success: function (json) {
                         var json = JSON.parse(json);
-                        selectdate(json);     //请求出的数据添加进入页面
+                        selectdate(json.rows);     //请求出的数据添加进入页面
                         page_num2(add_num2)//必须添加
                         var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
                         //--------------------------------------------------------------------------------------点击详情按钮跳转
@@ -291,10 +306,18 @@ $(function(){
 
     //下拉刷新函数
     function Refresh3() {
+        var selectfukuan3="";
+        if($(':focus').length==0) {
+        }
+        else{
+            //弹出焦点元素的name
+            selectfukuan3= $(":focus").val();
+        }
         setTimeout(function () {
             $.ajax({
                 type: 'POST',
                 url  : '/findInsurance',
+                paymentStatus: selectfukuan3,
                 data :{
                     shopCode :shopCode,
                     page: "1",
@@ -306,8 +329,8 @@ $(function(){
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='/files/ok.png'/>刷新成功";
                     page3 = 1;
                     var json = JSON.parse(jsondata);
-                    $("#thelist").children().remove();
-                    selectdate(json);     //请求出的数据添加进入页面
+                    $("#thelist3").children().remove();
+                    selectdate(json.rows);     //请求出的数据添加进入页面
                     wrapper.refresh();
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
                     $(".pullUpIcon").css("opacity","1");
@@ -345,13 +368,14 @@ $(function(){
                     url   : '/findInsurance',
                     data :{
                         shopCode :shopCode,
+                        paymentStatus: selectfukuan3,
                         page: ""+page3+"",
                         rows: "15"
                     },
                     async: false,
                     success: function (json) {
                         var json = JSON.parse(json);
-                        selectdate(json);     //请求出的数据添加进入页面
+                        selectdate(json.rows);     //请求出的数据添加进入页面
                         page_num3(add_num3)//必须添加
                         var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
                         //--------------------------------------------------------------------------------------点击详情按钮跳转

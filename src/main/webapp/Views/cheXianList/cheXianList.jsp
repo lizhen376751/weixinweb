@@ -19,7 +19,7 @@
 		<script  type="text/javascript"  src="/scripts/main.js"></script>
 		<script src="/scripts/cheXianList/cheXianList1.js" type="text/javascript" charset="utf-8"></script>
 		<%--//订单状态和付款状态选择时相应的js代码--%>
-		<script src="/scripts/cheXianList/cheXianiscroll.js" type="text/javascript" charset="utf-8"></script>
+		<%--<script src="/scripts/cheXianList/cheXianiscroll.js" type="text/javascript" charset="utf-8"></script>--%>
 	</head>
 	<body>
 	<%--网页加载效果--%>
@@ -106,6 +106,16 @@
 				<%--<span class="isolation"></span>--%>
 			<%--</div>  <!---------------------------------------------------------------------------------------保险公司结束-->--%>
 		<%--</div>   <!----------------------------------------------------------------------每一条单据结束-->--%>
+		</ul>
+	  </div>
+	  <%--订单状态--%>
+	  <div id="wrapper2" style="display:none;margin-top: 2.2rem;overflow: auto;">
+		 <ul id="thelist2" class="margin_auto" >
+		 </ul>
+	  </div>
+	<%--付款状态--%>
+	  <div id="wrapper3" style="display:none;margin-top: 2.2rem;overflow: auto;">
+		<ul id="thelist3" class="margin_auto" >
 		</ul>
 	  </div>
 	  <input type="hidden" name="shopCode" id="shopCode" value="<%=shopCode%>" />

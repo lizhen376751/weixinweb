@@ -127,7 +127,7 @@ $(document).ready(function(){
             if(json.records == 0){
                 $(".pullUp").hide()
             }
-            addBills(json);     //请求出的数据添加进入页面
+            addBills(json.rows);     //请求出的数据添加进入页面
             //数据添加完成后开始调用加载插件
             wrapper.refresh();
             document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
@@ -175,7 +175,7 @@ $(document).ready(function(){
                     page = 1;
                     var json = JSON.parse(jsondata);
                     $("#thelist").children().remove();
-                    addBills(json);     //请求出的数据添加进入页面
+                    addBills(json.rows);     //请求出的数据添加进入页面
                     wrapper.refresh();
                     document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
                     $(".pullUpIcon").css("opacity","1");
@@ -219,7 +219,7 @@ $(document).ready(function(){
                     async: false,
                     success: function (json) {
                         var json = JSON.parse(json);
-                        addBills(json);     //请求出的数据添加进入页面
+                        addBills(json.rows);     //请求出的数据添加进入页面
                         page_num(add_num)//必须添加
                         var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
                         //--------------------------------------------------------------------------------------点击详情按钮跳转
