@@ -169,7 +169,6 @@ $(document).ready(function(){
 
         }else{
             $("#selectfakuan").attr("disabled","disabled");  //当订单状态为0、1时付款状态不能选择
-            alert(11)
 
         }
         page=1 ;   //将页数也重新归为初始值1
