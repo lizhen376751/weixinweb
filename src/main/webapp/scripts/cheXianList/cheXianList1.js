@@ -107,13 +107,8 @@ $(document).ready(function(){
         pullUpAction:Load
     });
     //------------------------------------------------------------------ajax请求数据
-    var selectajax="";
-    if($(':focus').length==0) {
-    }
-    else{
-        //弹出焦点元素的name
-        selectajax= $(":focus").val();
-    }
+    var selectajax=""; //选中的状态
+
     $.ajax({
         type    : 'POST',
         url     : '/findInsurance',
@@ -166,6 +161,7 @@ $(document).ready(function(){
     //付款状态请求3
     $("#selectfakuan").change(function(){
         var selectfukuan=$(this).val();
+        selectajax=selectfukuan;
         $.ajax({
             type: 'POST',
             url: '/findInsurance',
@@ -223,6 +219,7 @@ $(document).ready(function(){
                 url  : '/findInsurance',
                 data :{
                     shopCode :shopCode,
+                    paymentStatus: selectajax,
                     page: "1",
                     rows: "15"
                 },
@@ -271,6 +268,7 @@ $(document).ready(function(){
                     url   : '/findInsurance',
                     data :{
                         shopCode :shopCode,
+                        paymentStatus: selectajax,
                         page: ""+page+"",
                         rows: "15"
                     },
