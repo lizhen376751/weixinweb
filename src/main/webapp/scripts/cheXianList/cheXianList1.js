@@ -175,10 +175,8 @@ $(document).ready(function(){
             success: function (jsondata) {
                 var json = JSON.parse(jsondata);
                 // console.log(json);
-                $("#thelist").children().remove();
+                $("#thelist").children().empty();
                 $(".pullUpLabel").html("上拉加载更多");
-                var target_top = $("#wrapper").offset().top;  //重新选择后 页面回到顶部
-                $("html,body").scrollTop(target_top);
                 addBills(json.rows);
                 //数据添加完成后开始调用加载插件
                 wrapper.refresh();
@@ -233,10 +231,8 @@ $(document).ready(function(){
                 if(json.records == 0){
                     $(".pullUp").hide()
                 }
-                $("#thelist").children().remove();
+                $("#thelist").children().empty()();
                 $(".pullUpLabel").html("上拉加载更多");
-                var target_top = $("#wrapper").offset().top;  //重新选择后 页面回到顶部
-                $("html,body").scrollTop(target_top);
                 addBills(json.rows);
                 //数据添加完成后开始调用加载插件
                 wrapper.refresh();
