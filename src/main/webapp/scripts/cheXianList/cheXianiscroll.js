@@ -94,20 +94,20 @@ $(function(){
     //付款状态数据分页
     var page3 = 1; //记录当前加载的页数
     var add_num3 = 0;//记录加载的次数
-    // refresher.init({
-    //     id:"wrapper3",
-    //     able:"#thelist3",
-    //     pullDownAction:Refresh3,
-    //     pullUpAction:Load3
-    // });
-    var refresher3= {
-        init: {
-            id: "wrapper3",
-            able: "#thelist3",
-            pullDownAction: Refresh3,
-            pullUpAction: Load3
-        }
-    };
+    refresher.init({
+        id:"wrapper3",
+        able:"#thelist3",
+        pullDownAction:Refresh3,
+        pullUpAction:Load3
+    });
+    // var refresher3= {
+    //     init: {
+    //         id: "wrapper3",
+    //         able: "#thelist3",
+    //         pullDownAction: Refresh3,
+    //         pullUpAction: Load3
+    //     }
+    // };
 
 
     //订单状态请求  2
@@ -190,9 +190,9 @@ $(function(){
                 wrapper3.refresh();
                 document.getElementById("wrapper3").querySelector(".pullDownLabel").innerHTML="";
                 $(".pullUpIcon").css("opacity","1");
-                refresher3.info.loadingLable = "加载中...";
-                refresher3.info.pullUpLable = "上拉加载更多"
-                refresher3.info.pullingUpLable = "释放加载更多";
+                refresher.info.loadingLable = "加载中...";
+                refresher.info.pullUpLable = "上拉加载更多"
+                refresher.info.pullingUpLable = "释放加载更多";
                 page_num3(add_num3)
                 //调用加载插件结束
                 var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
@@ -342,9 +342,9 @@ $(function(){
                     wrapper3.refresh();
                     document.getElementById("wrapper3").querySelector(".pullDownLabel").innerHTML="";
                     $(".pullUpIcon").css("opacity","1");
-                    refresher3.info.loadingLable = "加载中...";
-                    refresher3.info.pullUpLable = "上拉加载更多"
-                    refresher3.info.pullingUpLable = "释放加载更多";
+                    refresher.info.loadingLable = "加载中...";
+                    refresher.info.pullUpLable = "上拉加载更多"
+                    refresher.info.pullingUpLable = "释放加载更多";
                     page_num3(add_num3);
                     var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
                     //--------------------------------------------------------------------------------------点击详情按钮跳转
@@ -421,9 +421,9 @@ $(function(){
         if(page3 == add_num3){
             $(".pullUpIcon").css("opacity","0");
             $(".pullUpLabel").text("已经到了最底部了！");
-            refresher3.info.loadingLable = "已经到了最底部了!";
-            refresher3.info.pullUpLable = "已经到了最底部了!"
-            refresher3.info.pullingUpLable = "已经到了最底部了!"
+            refresher.info.loadingLable = "已经到了最底部了!";
+            refresher.info.pullUpLable = "已经到了最底部了!"
+            refresher.info.pullingUpLable = "已经到了最底部了!"
         }
     }
 
