@@ -109,12 +109,12 @@
 		</ul>
 	  </div>
 	  <%--订单状态--%>
-	  <div id="wrapper2" style="display:none;overflow: auto;">
+	  <div id="wrapper2" style="display:none;margin-top: 2.2rem;overflow: auto;">
 		 <ul id="thelist2" class="" >
 		 </ul>
 	  </div>
 	<%--付款状态--%>
-	  <div id="wrapper3" style="display:none;overflow: auto;">
+	  <div id="wrapper3" style="display:none;margin-top: 2.2rem;overflow: auto;">
 		<ul id="thelist3" class="" >
 		</ul>
 	  </div>
