@@ -19,7 +19,7 @@
 		<script  type="text/javascript"  src="/scripts/main.js"></script>
 		<script src="/scripts/cheXianList/cheXianList1.js" type="text/javascript" charset="utf-8"></script>
 		<%--//订单状态和付款状态选择时相应的js代码--%>
-		<script src="/scripts/cheXianList/cheXianiscroll.js" type="text/javascript" charset="utf-8"></script>
+		<%--<script src="/scripts/cheXianList/cheXianiscroll.js" type="text/javascript" charset="utf-8"></script>--%>
 	</head>
 	<body>
 	<%--网页加载效果--%>
@@ -109,15 +109,11 @@
 		</ul>
 	  </div>
 	  <%--订单状态--%>
-	  <div id="wrapper2" style="display:none;overflow: auto;">
-		 <ul id="thelist2" class="" class="" style="margin-top: 2.2rem;">
-		 </ul>
-	  </div>
+	  <%--<div id="wrapper2" style="display:none;overflow: auto;">--%>
+		 <%--<ul id="thelist2" class="" class="" style="margin-top: 2.2rem;">--%>
+		 <%--</ul>--%>
+	  <%--</div>--%>
 	<%--付款状态--%>
-	  <div id="wrapper3" style="display:none;overflow: auto;">
-		<ul id="thelist3" class="" style="margin-top: 2.2rem;">
-		</ul>
-	  </div>
 	  <input type="hidden" name="shopCode" id="shopCode" value="<%=shopCode%>" />
 	</body>
 </html>
