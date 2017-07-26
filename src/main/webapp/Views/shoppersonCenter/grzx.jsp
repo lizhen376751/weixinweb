@@ -31,19 +31,19 @@
 			<div class="n-top">
 				<div class="n-content">
 					<img src="/files/shoppersonCenter/grzx/head.png" class="n-img n-head"/>
-					<div class="nt-text car_num">鲁A20323</div>
+					<div class="nt-text car_num"></div>   <!--车牌号码-->
 				</div>
 			</div> <!--n-top结束-->
 			<div class="n-bottom">
 				<div class="n-carnum">
 					<img src="/files/shoppersonCenter/grzx/cp.png" class="nl-logo"/>
-					<div class="nb-text">阿斯顿·马丁</div>
+					<div class="nb-text"></div>       <!--车牌-->
 					<img src="/files/shoppersonCenter/grzx/bj.png" class="nr-bj"/>
 				</div>
 				<div class="n-kilometre">
 					<img src="/files/shoppersonCenter/grzx/gl.png" class="nl-logo"/>
 					<div class="xs">
-						<div class="nb-num">20000km</div>
+						<div class="nb-num"></div>
 						<img src="/files/shoppersonCenter/grzx/bj.png" class="nr-bj"/>
 					</div>
 					<div class="xg">
@@ -64,13 +64,13 @@
 					<img src="/files/shoppersonCenter/grzx/jkzs.png" class="c-logo"/>
 					<div class="cl-text">健康指数</div>
 					<img src="/files/shoppersonCenter/grzx/jt.png" class="c-jt"/>
-					<div class="cr-text jkzs_num">66分</div>
+					<div class="cr-text jkzs_num"></div>
 				</li>
 				<li class="bytx">
 					<img src="/files/shoppersonCenter/grzx/bytx.png" class="c-logo"/>
 					<div class="cl-text">保养提醒</div>
 					<img src="/files/shoppersonCenter/grzx/jt.png" class="c-jt"/>
-					<div class="cr-text bytx_num">20000km</div>
+					<div class="cr-text bytx_num"></div>
 				</li>
 				<li class="ct-margin xmk">
 					<img src="/files/shoppersonCenter/grzx/xmk.png" class="c-logo"/>
@@ -88,28 +88,28 @@
 					<img src="/files/shoppersonCenter/grzx/djq.png" class="c-logo"/>
 					<div class="cl-text">代金券</div>
 					<img src="/files/shoppersonCenter/grzx/jt.png" class="c-jt"/>
-					<div class="cr-text djq_num">剩余2张</div>
+					<div class="cr-text djq_num"></div>
 				</li>
 				<li class="ct-margin">
 					<img src="/files/shoppersonCenter/grzx/hydj.png" class="c-logo"/>
 					<div class="cl-text">会员等级</div>
 					<img src="/files/shoppersonCenter/grzx/jt.png" class="c-jt hide"/>
-					<div class="cr-text hydj_num">5级</div>
+					<div class="cr-text hydj_num"></div>
 				</li>
 				<li>
 					<img src="/files/shoppersonCenter/grzx/hyjf.png" class="c-logo"/>
 					<div class="cl-text">会员积分</div>
 					<img src="/files/shoppersonCenter/grzx/jt.png" class="c-jt hide"/>
-					<div class="cr-text hyjf_num">500分</div>
+					<div class="cr-text hyjf_num"></div>
 				</li>
 				<li class="ct-margin">
 					<div class="l-t">
 						<p class="ll-t">赠送金额：</p>
-						<p class="lr-t zsje">￥500</p>
+						<p class="lr-t zsje"></p>
 					</div>
 					<div class="l-t">
 						<p class="ll-t">定金金额：</p>
-						<p class="lr-t djje">￥500</p>
+						<p class="lr-t djje"></p>
 					</div>
 				</li>
 			</ul>

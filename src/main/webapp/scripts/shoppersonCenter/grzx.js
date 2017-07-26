@@ -54,6 +54,8 @@ $(function () {
     var car_3 = ""; //----------------------------------------------------------------------------------记录车牌类型第三次数据
     //-------------------------------------------------------------------------------------页面加载需求的数据的请求:车牌/里程数/AHI
     var khID = "";//记录客户ID
+
+    //个人信息请求
     $.ajax({
         type: 'POST',
         url: '/shopAjax',
@@ -108,6 +110,7 @@ $(function () {
         },
         success: function (jsonData) {
             json = JSON.parse(jsonData);
+              console.log(json)
             //赠送金额剩余
             if(json.giftMoney != null && json.giftMoney != ''){
                 zsje.text("￥"+json.giftMoney);
@@ -159,7 +162,7 @@ $(function () {
         return {
             gotoChar: function (ch) {
                 if (ch === '*') {
-                    console.log(elItemList.scrollTop);
+                  //  console.log(elItemList.scrollTop);
                     a.scrollTop = 0;
                 } else if (ch === '#') {
                     a.scrollTop = elItemList.scrollHeight;
@@ -192,12 +195,12 @@ $(function () {
             async: false,
             success: function (jsonData) {
                 json = JSON.parse(jsonData);
-                console.log(json);
+              //  console.log(json);
                 for (var i = 0; i < json.rows.length; i++) {
                     var zifu = json.rows[i].carFirst + json.rows[i].carId + "-" + json.rows[i].carName;
                     app.data.push(zifu);
                 }
-                console.log(app.data);
+               // console.log(app.data);
                 if(g == 4){
                     app.main();
                     $(".index-sidebar-container").css("display","none")
@@ -213,7 +216,7 @@ $(function () {
                         car_1 = "";
                         car_1 = $(this).text();
                         var car_id = $(this).attr("ids");
-                        console.log(car_id);
+                       // console.log(car_id);
                         // car_brand.hide();
                         $(".index-sidebar-container").css("display", "none");
 
@@ -233,7 +236,7 @@ $(function () {
                             },
                             success: function (jsonData) {
                                 json = JSON.parse(jsonData);
-                                console.log(json);
+                               // console.log(json);
                                 second_carList.show();
                                 second_cpxx.text(car_1);
                                 second_lis.children().remove();
@@ -259,7 +262,7 @@ $(function () {
                                         },
                                         success: function (jsonData) {
                                             json = JSON.parse(jsonData);
-                                            console.log(json);
+                                          //  console.log(json);
                                             third_carList.show();
                                             third_cpxx.text(car_2);
                                             third_lis.children().remove();
