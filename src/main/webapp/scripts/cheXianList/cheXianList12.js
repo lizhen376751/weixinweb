@@ -110,6 +110,7 @@ $(document).ready(function(){
 
     var selectdingdan="";  //订单状态选中的状态
     var selectajax=""; //付款状体选中的状态
+    var ss_val="";     //搜索框的值
     $.ajax({
         type    : 'POST',
         url     : '/findInsurance',
@@ -118,7 +119,8 @@ $(document).ready(function(){
             paymentStatus: selectajax,    //付款状体选中的状态
             baoJiaState: selectdingdan,   //订单状态选中的状态
             page: "1",
-            rows: "15"
+            rows: "15",
+            carNumber : ss_val
         },
         success:function(jsondata){
             var json = JSON.parse(jsondata);
@@ -163,6 +165,7 @@ $(document).ready(function(){
     //订单状态请求  2
     $("#selectdingdan").change(function(){
         selectdingdan=$(this).val();   //订单状态选中的状态
+        ss_val=$(".ss_val").val()//搜索框的值
         if(selectdingdan==""||selectdingdan==2){
             $("#selectfakuan").removeAttr("disabled");
             selectajax=$("#selectfakuan").val();  //付款状体选中的状态
@@ -180,10 +183,19 @@ $(document).ready(function(){
                 paymentStatus: selectajax,  //付款状体选中的状态
                 baoJiaState: selectdingdan,  //订单状态选中的状态
                 page: "1",
-                rows: "15"
+                rows: "15",
+                carNumber : ss_val
             },
             success: function (jsondata) {
                 var json = JSON.parse(jsondata);
+                if(json.records % json.pageSize == 0){   //判断一共能请求刷新的次数
+                    add_num = parseInt(json.records/json.pageSize);
+                }else{
+                    add_num = parseInt(json.records/json.pageSize) + 1;
+                }
+                if(json.records == 0){
+                    $(".pullUp").hide()
+                }
                 // console.log(json);
                 $("#thelist").children().remove();
                 $(".pullUpLabel").html("上拉加载更多");
@@ -220,6 +232,7 @@ $(document).ready(function(){
     //付款状态请求3
     $("#selectfakuan").change(function(){
         selectajax=$(this).val();   //付款状态
+        ss_val=$(".ss_val").val()//搜索框的值
         if(selectajax==1){
             $("#selectdingdan").val("2").attr("selected", true);
             $("#selectdingdan").attr("disabled","disabled");  //当订单状态为控制、0、1时付款状态不能选择
@@ -236,7 +249,8 @@ $(document).ready(function(){
                 paymentStatus: selectajax,  //付款状态
                 baoJiaState: selectdingdan,      //订单状体
                 page: "1",
-                rows: "15"
+                rows: "15",
+                carNumber : ss_val
             },
             success: function (jsondata) {
                 var json = JSON.parse(jsondata);
@@ -280,7 +294,66 @@ $(document).ready(function(){
             }
         })
     })
-
+    $(".ss_btn").on("click",function(){
+        selectajax=$("#selectfakuan").val();   //付款状态
+        selectdingdan=$("#selectdingdan").val();   //订单状体
+        page=1 ;   //将页数也重新归为初始值1
+         ss_val = $(".ss_val").val();  //搜索框的值
+        $.ajax({
+            type    : 'POST',
+            url     : '/findInsurance',
+            data :{
+                shopCode :shopCode,
+                paymentStatus: selectajax,   //付款状态
+                baoJiaState: selectdingdan,  //订单状态
+                page: "1",
+                rows: "15",
+                carNumber : ss_val
+            },
+            success:function(jsondata){
+                //$(".bills").remove();
+                var json = JSON.parse(jsondata);
+                var json = JSON.parse(jsondata);
+                if(json.records % json.pageSize == 0){   //判断一共能请求刷新的次数
+                    add_num = parseInt(json.records/json.pageSize);
+                }else{
+                    add_num = parseInt(json.records/json.pageSize) + 1;
+                }
+                if(json.records == 0){
+                    $(".pullUp").hide()
+                }
+                // console.log(json);
+                $("#thelist").children().remove();
+                $(".pullUpLabel").html("上拉加载更多");
+                addBills(json.rows);
+                //数据添加完成后开始调用加载插件
+                wrapper.refresh();
+                document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";
+                $(".pullUpIcon").css("opacity","1");
+                refresher.info.loadingLable = "加载中...";
+                refresher.info.pullUpLable = "上拉加载更多"
+                refresher.info.pullingUpLable = "释放加载更多";
+                page_num(add_num)
+                //调用加载插件结束
+                var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
+                //--------------------------------------------------------------------------------------点击详情按钮跳转
+                detail.on("click",function(){
+                    // alert("该功能暂未开通~");
+                    var ddxq = $(this).attr("ddbh");
+                    var bxgs = $(this).attr("bxgs");
+                    var carId = $(this).attr("carId");
+                    var shopCode = $(this).attr("shopCode");
+                    var shopLm = $(this).attr("shopLm");
+                    // console.log(ddxq);
+                    // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
+                    window.location.href = "/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs;
+                });
+            },
+            error:function(eee){
+                alert("失败");
+            }
+        });
+    })
 
     //下拉刷新函数
     function Refresh() {
@@ -293,7 +366,8 @@ $(document).ready(function(){
                     paymentStatus: selectajax,   //付款状态
                      baoJiaState: selectdingdan,  //订单状态
                     page: "1",
-                    rows: "15"
+                    rows: "15",
+                    carNumber : ss_val
                 },
                 async: false,
                 success: function (jsondata) {
@@ -343,7 +417,8 @@ $(document).ready(function(){
                         paymentStatus: selectajax,   //付款状态
                         baoJiaState: selectdingdan,  //订单状态
                         page: ""+page+"",
-                        rows: "15"
+                        rows: "15",
+                        carNumber : ss_val
                     },
                     async: false,
                     success: function (json) {
@@ -372,40 +447,7 @@ $(document).ready(function(){
             wrapper.refresh();
         },1000)
     }
-    $(".ss_btn").on("click",function(){
-        var ss_val = $(".ss_val").val();
-        $.ajax({
-            type    : 'POST',
-            url     : '/findInsurance',
-            data :{
-                shopCode :shopCode,
-                carNumber : ss_val
-            },
-            success:function(jsondata){
-                $(".bills").remove();
-                var json = JSON.parse(jsondata);
-                // add_service(json,quarters);
-                addBills(json);
-                console.log(json);
-                var detail = $(".detail");    //--------------------------------------------------------获取详情按钮
-                //--------------------------------------------------------------------------------------点击详情按钮跳转
-                detail.on("click",function(){
-                    // alert("该功能暂未开通~");
-                    var ddxq = $(this).attr("ddbh");
-                    var bxgs = $(this).attr("bxgs");
-                    var carId = $(this).attr("carId");
-                    var shopCode = $(this).attr("shopCode");
-                    var shopLm = $(this).attr("shopLm");
-                    // console.log(ddxq);
-                    // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
-                    window.location.href = "/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs;
-                });
-            },
-            error:function(eee){
-                alert("失败");
-            }
-        });
-    })
+
 
     function page_num(add_num) {
         if(page == add_num){
