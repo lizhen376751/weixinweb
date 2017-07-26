@@ -60,8 +60,8 @@ public class ShopWeiXinControl {
             return "/shopxiaofeijilu/xiaofeijilu.jsp"; //消费记录
         } else if ("BaoYangTiXing".equals(flagStr)) {
             return "/shopbaoyangtixing/baoYangList.jsp"; //保养提醒
-        } else if ("shoppersoncenter".equals(flagStr)) {
-            return "/shoppersonCenter/shoppersonalCenter.jsp"; //个人中心
+       // } else if ("shoppersoncenter".equals(flagStr)) {
+           // return "/shoppersonCenter/shoppersonalCenter.jsp"; //个人中心
         } else if ("shoppersoncenter".equals(flagStr)) {
             return "/shoppersonCenter/grzx.jsp"; //个人中心
         } else if ("weixinshangcheng".equals(flagStr)) { //微信商城
