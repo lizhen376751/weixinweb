@@ -18,7 +18,7 @@
 		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<%--<script src="/scripts/personCenter/JsBarcode.all.min.js" type="text/javascript" charset="utf-8"></script>--%>
 		<%--<script src="/scripts/personCenter/car-brand.js" type="text/javascript" charset="utf-8"></script>--%>
-		<script src="/scripts/shoppersonCenter/grzx.js" type="text/javascript" charset="utf-8"></script>
+		<%--<script src="/scripts/shoppersonCenter/grzx.js" type="text/javascript" charset="utf-8"></script>--%>
 	</head>
 	<body>
 		<%--网页加载效果--%>
