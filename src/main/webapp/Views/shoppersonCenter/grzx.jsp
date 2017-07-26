@@ -2,7 +2,7 @@
 <%--<%--%>
 <%--HttpSession Session = request.getSession();--%>
 <%--String plateNumber = (String)Session.getAttribute("plateNumber");--%>
-<%--<%String shopcode = (String)request.getSession().getAttribute("shopcode");%>--%>
+<%String shopcode = (String)request.getSession().getAttribute("shopcode");%>
 <%--%>--%>
 <!DOCTYPE html>
 <html>
@@ -25,7 +25,7 @@
 		<div id="loading">
 			<img src="/files/loading2.gif"  alt="loading.." />
 		</div>
-		<%--<input type="hidden" value="<%=shopcode%>" class="shopCode">--%>
+		<input type="hidden" value="<%=shopcode%>" class="shopCode">
 		<!--顶部导航部分-->
 		<div class="nav">
 			<div class="n-top">
