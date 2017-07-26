@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -187,6 +188,21 @@ public class BaoxianController {
         String carId = request.getParameter("carId");
         if (carId != null && !carId.equals("")) {
             model.addAttribute("plateNumber", carId);
+        }
+        String fkstate = request.getParameter("fkstate");
+        if (fkstate != null && !fkstate.equals("")) {
+            model.addAttribute("fkstate", fkstate);
+        }
+        String bxdqdate = request.getParameter("bxdqdate");
+        if (bxdqdate != null && !bxdqdate.equals("")) {
+            Long aLong = Long.valueOf(bxdqdate);
+            String format = new SimpleDateFormat("yyyy-MM-dd").format(aLong);
+            model.addAttribute("bxdqdate", format);
+        }
+
+        String bjstate = request.getParameter("bjstate");
+        if (bjstate != null && !bjstate.equals("")) {
+            model.addAttribute("bjstate", bjstate);
         }
         return "/baoxianDetail/cheXianDetail.jsp"; //车险详情展示页面
     }

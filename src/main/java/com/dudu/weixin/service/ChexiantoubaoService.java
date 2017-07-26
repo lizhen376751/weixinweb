@@ -315,7 +315,9 @@ public class ChexiantoubaoService {
             insurance.setCustomerId(inOrder.getCustomerId());
             insurance.setShopcodelm(inOrder.getShopCodeLm());
             insurance.setOrderId(inOrder.getId());
+            insurance.setInsuranceMaturityDate(inOrder.getInsuranceMaturityDate());
             insurance.setAssistant(inOrder.getAssistantId());
+
             List<InsuranceCompanyDetails> insuranceCompanyDetailss = aPIBaoXainKaiDan.appQueryCompanyDetailsbyOrderId(inOrder.getId());
             insurance.setList(insuranceCompanyDetailss);
             insuranceList.add(insurance);
