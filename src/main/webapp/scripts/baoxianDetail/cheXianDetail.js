@@ -220,7 +220,7 @@ $(document).ready(function () {
                     console.log(json);
                     if (jsondata == 1) {
                         alert("投保成功")
-                        window.location.href = "/appbaoxianlist?mineShopCode=" + shopCode;
+                        window.location.href = "/queryInsurance";
                     } else {
                         alert("投保失败，请重试");
                     }
