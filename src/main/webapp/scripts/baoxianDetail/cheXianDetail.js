@@ -64,6 +64,7 @@ $(document).ready(function(){
                 tbstate = true;
             }else{
                 tbstate = false;
+                $(".tb_btn").css("background","#c3c6c8")  //投保按钮变为灰色
             }
             if(json.customerModel != null && json.customerModel != "" && json.customerModel != undefined){
                 if(json.customerModel.customerName != null && json.customerModel.customerName != "" && json.customerModel.customerName != undefined){
