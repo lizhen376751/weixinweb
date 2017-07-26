@@ -62,6 +62,8 @@ public class ShopWeiXinControl {
             return "/shopbaoyangtixing/baoYangList.jsp"; //保养提醒
         } else if ("shoppersoncenter".equals(flagStr)) {
             return "/shoppersonCenter/shoppersonalCenter.jsp"; //个人中心
+        } else if ("shoppersoncenter".equals(flagStr)) {
+            return "/shoppersonCenter/grzx.jsp"; //个人中心
         } else if ("weixinshangcheng".equals(flagStr)) { //微信商城
             return "redirect:http://www.duduchewang.cn/weixincore_cn/zy.jsp?shopcode=" + shopcode + "&openid=" + openId;
         } else if ("myOrder".equals(flagStr)) { //微信商城里面我的订单
