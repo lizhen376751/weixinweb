@@ -31,7 +31,16 @@ $(document).ready(function () {
     var bxdqdate = $("#bxdqdate").val(); //-----保险到期时间(联盟设置的保险公司给的到期时间)
     var bjstate = $("#bjstate").val();  //------报价状态
     var fkstate = $("#fkstate").val();  //------付款状态
-
+    if (bjstate == 0) {
+        quote.text("报价中");
+        $(".tb_btn").hide();
+    } else if (bjstate == 1){
+        quote.text("报价成功");
+        $(".tb_btn").show();
+    }else {
+        quote.text("已投保");
+        $(".tb_btn").hide();
+    }
 
     var plateNumber = getvl("carId");   //------------------------------------------------------------获取的网址上的车牌号
     var shopCode = getvl("shopCode");		//------------------------------------------------------------获取的网址上的shopcode
@@ -50,13 +59,6 @@ $(document).ready(function () {
             var json = JSON.parse(jsondata);
             console.log(json);
             bxgs.text(json.insuranceCompanyName);
-            if (json.offerFlag == 0) {
-                quote.text("报价中");
-                $(".tb_btn").hide();
-            } else {
-                quote.text("报价成功");
-                $(".tb_btn").show();
-            }
             totalPrice = json.totalPrice;
             bfhj.text("¥" + json.totalPrice);
             if (json.insuranceCompanyHaveChosen == null) {
