@@ -12,13 +12,13 @@
 		<title>个人中心</title>
 		<!--引入CSS-->
 		<link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
-		<link rel="stylesheet" type="text/css" href="/styles/personCenter/car-brand.css"/>
+		<%--<link rel="stylesheet" type="text/css" href="/styles/personCenter/car-brand.css"/>--%>
 		<link rel="stylesheet" type="text/css" href="/styles/shoppersonCenter/grzx.css"/>
 		<!--引入JS-->
-		<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/scripts/personCenter/JsBarcode.all.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/scripts/personCenter/car-brand.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/scripts/shoppersonCenter/grzx.js" type="text/javascript" charset="utf-8"></script>
+		<%--<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>--%>
+		<%--<script src="/scripts/personCenter/JsBarcode.all.min.js" type="text/javascript" charset="utf-8"></script>--%>
+		<%--<script src="/scripts/personCenter/car-brand.js" type="text/javascript" charset="utf-8"></script>--%>
+		<%--<script src="/scripts/shoppersonCenter/grzx.js" type="text/javascript" charset="utf-8"></script>--%>
 	</head>
 	<body>
 		<%--网页加载效果--%>
