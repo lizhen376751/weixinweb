@@ -207,7 +207,7 @@ $(document).ready(function(){
                 }
             });
         }else{
-	        alert("您已投保，请勿重复投保！")
+	      //  alert("您已投保，请勿重复投保！")
         }
 
     })
