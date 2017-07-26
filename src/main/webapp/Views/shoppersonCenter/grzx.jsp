@@ -2,7 +2,7 @@
 <%--<%--%>
 <%--HttpSession Session = request.getSession();--%>
 <%--String plateNumber = (String)Session.getAttribute("plateNumber");--%>
-<%String shopcode = (String)request.getSession().getAttribute("shopcode");%>
+<%--<%String shopcode = (String)request.getSession().getAttribute("shopcode");%>--%>
 <%--%>--%>
 <!DOCTYPE html>
 <html>
