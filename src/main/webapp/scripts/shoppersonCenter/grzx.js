@@ -135,43 +135,43 @@ $(function () {
     var app = app || {};
     app.data = []; //-----------------------------------------------------------------------------------------------------车牌号集合:奥迪
     //----------------------------------------------------------------获取车辆品牌部分元素
-    // app.ItemList = function (data) {
-    //     var list = [];
-    //     var map = {};
-    //     var html;
-    //     html = data.map(function (item) {
-    //         var i = item.lastIndexOf('-');
-    //         var en = item.slice(0, i);  // Angola
-    //         var cn = item.slice(i + 1); // 安哥拉
-    //         var ch = en[0]; // A
-    //         var num = en.substring(1);
-    //         if (map[ch]) {
-    //             return '<li class="car_list" ids="' + num + '">' + cn + '</li>'
-    //         } else {
-    //             map[ch] = true;
-    //             return '<li data-cw="' + ch + '" class="ch">' + ch + '</li><li data-ch="' + ch + '" class="car_list" ids="' + num + '">' + cn + '</li>'
-    //         }
-    //
-    //     }).join('');
-    //     var elItemList = document.querySelector('#item-container ul');
-    //     var a = document.querySelector('#item-container');
-    //     elItemList.innerHTML = html;
-    //     return {
-    //         gotoChar: function (ch) {
-    //             if (ch === '*') {
-    //                 console.log(elItemList.scrollTop);
-    //                 a.scrollTop = 0;
-    //             } else if (ch === '#') {
-    //                 a.scrollTop = elItemList.scrollHeight;
-    //             } else {
-    //                 var target = elItemList.querySelector('[data-cw="' + ch + '"]');//检索的目标
-    //                 if (target) {
-    //                     target.scrollIntoView();
-    //                 }
-    //             }
-    //         }
-    //     }
-    // };
+    app.ItemList = function (data) {
+        var list = [];
+        var map = {};
+        var html;
+        html = data.map(function (item) {
+            var i = item.lastIndexOf('-');
+            var en = item.slice(0, i);  // Angola
+            var cn = item.slice(i + 1); // 安哥拉
+            var ch = en[0]; // A
+            var num = en.substring(1);
+            if (map[ch]) {
+                return '<li class="car_list" ids="' + num + '">' + cn + '</li>'
+            } else {
+                map[ch] = true;
+                return '<li data-cw="' + ch + '" class="ch">' + ch + '</li><li data-ch="' + ch + '" class="car_list" ids="' + num + '">' + cn + '</li>'
+            }
+
+        }).join('');
+        var elItemList = document.querySelector('#item-container ul');
+        var a = document.querySelector('#item-container');
+        elItemList.innerHTML = html;
+        return {
+            gotoChar: function (ch) {
+                if (ch === '*') {
+                    console.log(elItemList.scrollTop);
+                    a.scrollTop = 0;
+                } else if (ch === '#') {
+                    a.scrollTop = elItemList.scrollHeight;
+                } else {
+                    var target = elItemList.querySelector('[data-cw="' + ch + '"]');//检索的目标
+                    if (target) {
+                        target.scrollIntoView();
+                    }
+                }
+            }
+        }
+    };
     app.main = function () {
         var itemList = app.ItemList(app.data);
         new IndexSidebar().on('charChange', itemList.gotoChar);
