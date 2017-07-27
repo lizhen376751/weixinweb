@@ -381,6 +381,10 @@ $(function () {
     bytx.on("click", function () {
         window.location.href = "/shopweixinServlet?serviceType=BaoYangTiXing"
     });
+    //项目卡按钮点击
+    xmk.on("click", function () {
+        window.location.href = "/shopweixinServlet?serviceType=projectCard"
+    });
 
 
 });
