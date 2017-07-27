@@ -420,17 +420,17 @@ public class MenuUtil {
         CommonButton btn2 = new CommonButton();
         btn2.setName("商城");
         btn2.setType("view");
-        btn2.setUrl("www.shinycm.com/");
+        btn2.setUrl("http://www.shinycm.com/");
 
         CommonButton btn31 = new CommonButton();
         btn31.setName(" 注册质保");
         btn31.setType("view");
-        btn31.setUrl("www.shinycm.com/w_ApplyZhiBao.aspx");
+        btn31.setUrl("http://www.shinycm.com/w_ApplyZhiBao.aspx");
 
         CommonButton btn32 = new CommonButton();
         btn32.setName("查询质保");
         btn32.setType("view");
-        btn32.setUrl("www.shinycm.com/w_SearchZhiBao.aspx");
+        btn32.setUrl("http://www.shinycm.com/w_SearchZhiBao.aspx");
 
         ComplexButton mainBtn3 = new ComplexButton();
         mainBtn3.setName("质保");
