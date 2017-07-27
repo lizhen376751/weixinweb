@@ -20,9 +20,8 @@ $(function(){
         centeredSlides: true,
         slidesPerView: 1.5,
         touchRatio: 0.2,
-        paginationClickable: true,
         onSlideChangeEnd:function(swiper){    //获取当前swiper的索引值
-            alert(swiper.activeIndex)
+            console.log(swiper.activeIndex)
             funswiper(swiper.activeIndex);
         },
 //      slideToClickedSlide: true,
@@ -69,21 +68,9 @@ $(function(){
                                     '<p class="c-num">NO·'+xmklist[i].cardNumb+'</p>'+
                               '</div>'
                 }
-                //获取第一个的项目列表
-
-                for(var j=0;j<xmklist[indexsiper].list.length;j++){
-                    var time=dateFormat(xmklist[indexsiper].list[j].currentTimes)
-                    xmkview+='<tr>'+
-                        '<td class="td1">'+xmklist[indexsiper].list[j].projectName+'</td>'+
-                        '<td class="td2">'+xmklist[indexsiper].list[j].projectName+'</td>'+
-                        '<td class="td3">'+time+'</td>'+
-                        ' </tr>'
-                }
-
             }
 
             $(".swiper-wrapper").append(xmkhtnl);
-            $(".listbody").append(xmkview);
 
         }
 
