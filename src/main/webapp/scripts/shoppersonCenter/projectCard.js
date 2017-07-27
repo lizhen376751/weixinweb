@@ -119,7 +119,6 @@ $(function(){
                               ' </tr>'
                 }
 
-
                 $(".listbody").append(xmkview);
 
             }
