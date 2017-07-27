@@ -29,7 +29,7 @@ $(function(){
         loop:false
     });
     var customerId=getvl("customerId")    //获取地址栏传参客户ID
-    var indexsiper=1;   //swiper默认显示的是第一条项目卡的list
+    var indexsiper=0;   //swiper默认显示的是第一条项目卡的list
     //请求多少张项目卡的请求
     //转化时间戳
     function dateFormat(val) {
@@ -71,11 +71,11 @@ $(function(){
                 }
                 //获取第一个的项目列表
 
-                for(var j=0;j<xmklist[indexsiper-1].list.length;j++){
-                    var time=dateFormat(xmklist[indexsiper-1].list[j].currentTimes)
+                for(var j=0;j<xmklist[indexsiper].list.length;j++){
+                    var time=dateFormat(xmklist[indexsiper].list[j].currentTimes)
                     xmkview+='<tr>'+
-                        '<td class="td1">'+xmklist[indexsiper-1].list[j].projectName+'</td>'+
-                        '<td class="td2">'+xmklist[indexsiper-1].list[j].projectName+'</td>'+
+                        '<td class="td1">'+xmklist[indexsiper].list[j].projectName+'</td>'+
+                        '<td class="td2">'+xmklist[indexsiper].list[j].projectName+'</td>'+
                         '<td class="td3">'+time+'</td>'+
                         ' </tr>'
                 }
@@ -115,11 +115,11 @@ $(function(){
                     $("#wrap").hide();    //项目卡列表隐藏
                     $(".n-card").show();    //没有项目卡的提示显示
                 }else{
-                        for(var j=0;j<xmklist2[index-1].list.length;j++){
-                            var time=dateFormat(xmklist2[index-1].list[j].currentTimes)
+                        for(var j=0;j<xmklist2[index].list.length;j++){
+                            var time=dateFormat(xmklist2[index].list[j].currentTimes)
                             xmkview2+='<tr>'+
-                                            '<td class="td1">'+xmklist2[index-1].list[j].projectName+'</td>'+
-                                            '<td class="td2">'+xmklist2[index-1].list[j].projectName+'</td>'+
+                                            '<td class="td1">'+xmklist2[index].list[j].projectName+'</td>'+
+                                            '<td class="td2">'+xmklist2[index].list[j].projectName+'</td>'+
                                             '<td class="td3">'+time+'</td>'+
                                       ' </tr>'
                         }
