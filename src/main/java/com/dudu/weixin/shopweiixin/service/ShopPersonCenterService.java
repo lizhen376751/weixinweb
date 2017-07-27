@@ -149,7 +149,7 @@ public class ShopPersonCenterService {
      */
     public InviolableRights getShopPersonalRightsAndInterests(HttpServletRequest request) {
         EquityParam equityParam = new EquityParam();
-        String shopCode = (String) httpSession.getAttribute("shopCode");
+        String shopCode = (String) httpSession.getAttribute("shopcode");
         String customerId = request.getParameter("customerId");
         String plateNumb = (String) httpSession.getAttribute("plateNumber");
         logger.info("============获取用户个人权益shopcode============" + shopCode);
