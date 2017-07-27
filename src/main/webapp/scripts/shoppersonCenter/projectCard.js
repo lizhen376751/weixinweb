@@ -20,6 +20,7 @@ $(function(){
         centeredSlides: true,
         slidesPerView: 1.5,
         touchRatio: 0.2,
+        paginationClickable :true,
         onSlideChangeEnd:function(swiper){    //获取当前swiper的索引值
             alert(swiper.activeIndex)
             funswiper(swiper.activeIndex);
