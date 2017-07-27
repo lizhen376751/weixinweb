@@ -403,24 +403,47 @@ public class MenuUtil {
                 + "%2F" + lujing + "%2FDateDueReminderServlet?shopcode=" + code + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
 
 
+//        CommonButton btn2 = new CommonButton();
+//        btn2.setName("微信商城");
+//        btn2.setType("view");
+//        btn2.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http%3A%2F%2F" + url
+//                + "%2F" + lujing + "%2FShangChengServlet?shopcode=" + code + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
+
+//        CommonButton btn31 = new CommonButton();
+//        btn31.setName("最新活动");
+//        btn31.setType("view");
+//        btn31.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http%3A%2F%2F" + url
+//                + "%2F" + lujing + "%2FhuoDongInfo.jsp?shopcode=" + code + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+//
+
         CommonButton btn2 = new CommonButton();
-        btn2.setName("微信商城");
+        btn2.setName("商城");
         btn2.setType("view");
-        btn2.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http%3A%2F%2F" + url
-                + "%2F" + lujing + "%2FShangChengServlet?shopcode=" + code + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn2.setUrl("www.shinycm.com/");
 
         CommonButton btn31 = new CommonButton();
-        btn31.setName("最新活动");
+        btn31.setName(" 注册质保");
         btn31.setType("view");
-        btn31.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http%3A%2F%2F" + url
-                + "%2F" + lujing + "%2FhuoDongInfo.jsp?shopcode=" + code + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        btn31.setUrl("www.shinycm.com/w_ApplyZhiBao.aspx");
+
+        CommonButton btn32 = new CommonButton();
+        btn31.setName("查询质保");
+        btn31.setType("view");
+        btn31.setUrl("www.shinycm.com/w_SearchZhiBao.aspx");
+
+        ComplexButton mainBtn3 = new ComplexButton();
+        mainBtn3.setName("质保");
+        mainBtn3.setSubbutton(new CommonButton[]{btn31, btn32});
+
 
         ComplexButton mainBtn1 = new ComplexButton();
         mainBtn1.setName("车管家");
         mainBtn1.setSubbutton(new CommonButton[]{btn11, btn12, btn13, btn14, btn15});
 
+
         Menu menu = new Menu();
-        menu.setButton(new Button[]{mainBtn1, btn2, btn31});
+        menu.setButton(new Button[]{mainBtn1, btn2, mainBtn3});
         return menu;
 
 
