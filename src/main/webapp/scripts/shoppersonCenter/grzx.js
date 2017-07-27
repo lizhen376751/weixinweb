@@ -66,7 +66,7 @@ $(function () {
         async: false,
         success: function (jsonData) {
             json = JSON.parse(jsonData);
-            console.log(json);
+           // console.log(json);
             car_num.text(json.plateNumber);    //-------------------------------------------------------------动态添加车牌号码
             var cltxt = "";//---------------------------------------------------------------定义车牌信息添加的字符串
             khID = json.id;
@@ -116,7 +116,7 @@ $(function () {
         },
         success: function (jsonData) {
             json = JSON.parse(jsonData);
-            console.log(json)
+           //console.log(json)
             //赠送金额剩余
             if (json.giftMoney != null && json.giftMoney != '') {
                 zsje.text("￥" + json.giftMoney);
@@ -383,7 +383,7 @@ $(function () {
     });
     //项目卡按钮点击
     xmk.on("click", function () {
-        window.location.href = "/shopweixinServlet?serviceType=projectCard"
+        window.location.href = "/shopweixinServlet?serviceType=projectCard&customerId="+khID
     });
 
 
