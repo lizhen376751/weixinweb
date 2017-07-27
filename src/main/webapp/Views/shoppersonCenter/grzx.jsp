@@ -117,7 +117,7 @@
 		<!--退出登录按钮-->
 		<div class="b-btn">退出登录</div>
 		<!-------------------------------------------------------------------------------------------------------修改车辆品牌的遮罩层-->
-		<div class="car_brand">
+		<div class="car_brand"  style="display: none">
 			<div id="item-container">
 				<ul></ul>
 			</div>
