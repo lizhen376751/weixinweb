@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -24,6 +25,12 @@ import java.util.List;
  */
 @Service
 public class ShopPersonCenterService {
+
+    /**
+     * 引入session
+     */
+    @Autowired
+    private HttpSession httpSession;
     /**
      * 引入店管家的客户中心服务
      */
@@ -134,9 +141,9 @@ public class ShopPersonCenterService {
      */
     public InviolableRights getShopPersonalRightsAndInterests(HttpServletRequest request) {
         EquityParam equityParam = new EquityParam();
-        String shopCode = request.getParameter("shopCode");
+        String shopCode = (String) httpSession.getAttribute("shopCode");
         String customerId = request.getParameter("customerId");
-        String plateNumb = request.getParameter("plateNumb");
+        String plateNumb = (String) httpSession.getAttribute("plateNumb");
         if (null != shopCode && !"".equals(shopCode) && null != customerId && !"".equals(customerId) && null != plateNumb && !"".equals(plateNumb)) {
             Integer keHuId = Integer.parseInt(customerId);
             equityParam.setShopCode(shopCode);

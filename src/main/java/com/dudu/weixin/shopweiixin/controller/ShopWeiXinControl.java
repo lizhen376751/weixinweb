@@ -127,6 +127,7 @@ public class ShopWeiXinControl {
             model.addAttribute("shopCode", request.getParameter("shopCode")); //店铺编码
             return "/shopconsumerEvaluation/consumerEvaluation.jsp";
         } else if ("projectCard".equals(serviceType)) { //跳转项目卡页面
+            model.addAttribute("customerId", request.getParameter("customerId")); //客户ID
             return "/shoppersonCenter/projectCard.jsp";
         }
         return null;
