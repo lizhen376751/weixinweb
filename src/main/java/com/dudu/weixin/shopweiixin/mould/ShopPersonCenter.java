@@ -34,6 +34,10 @@ public class ShopPersonCenter {
      * 保养提醒
      */
     private String maintenanceReminder;
+    /**
+     * 会员等级
+     */
+    private String levelName;
 
     /**
      * ahi总分
@@ -47,7 +51,7 @@ public class ShopPersonCenter {
     @Override
     public String toString() {
         return "id:" + id + ",plateNumber:" + plateNumber + ",carBrand:" + carBrand + ",carSeries:" + carSeries + ",carModel:" + carModel + ",currentmileage:" + currentmileage
-                + ",maintenanceReminder:" + maintenanceReminder + ",point:" + point;
+                + ",maintenanceReminder:" + maintenanceReminder + ",levelName:" + levelName + ",point:" + point;
     }
 
     /**
@@ -173,6 +177,24 @@ public class ShopPersonCenter {
      */
     public ShopPersonCenter setMaintenanceReminder(String maintenanceReminder) {
         this.maintenanceReminder = maintenanceReminder;
+        return this;
+    }
+
+    /**
+     * 获取 会员等级
+     * @return levelName 会员等级
+     */
+    public String getLevelName() {
+        return this.levelName;
+    }
+
+    /**
+     * 设置 会员等级
+     * @param levelName 会员等级
+     * @return 返回 ShopPersonCenter(店管家微信的个人中心实体类)
+     */
+    public ShopPersonCenter setLevelName(String levelName) {
+        this.levelName = levelName;
         return this;
     }
 

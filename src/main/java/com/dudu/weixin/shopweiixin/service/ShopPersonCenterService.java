@@ -48,6 +48,7 @@ public class ShopPersonCenterService {
 
     /**
      * 所有关于店管家个人中心的统一路径
+     *
      * @param request     请求数据
      * @param plateNumber 车牌号
      * @param shopcode    店铺编码
@@ -64,7 +65,7 @@ public class ShopPersonCenterService {
                 return carTypeService.queryAllCar(request.getParameter("type"), Integer.parseInt(request.getParameter("num")));
             //查询个人权益
             case "personalRightsAndInterests":
-                return  this.getShopPersonalRightsAndInterests(request);
+                return this.getShopPersonalRightsAndInterests(request);
             //查询项目卡明细
             case "projectCardMX":
                 return this.queryProjectCardMX(request);
@@ -108,13 +109,14 @@ public class ShopPersonCenterService {
         ShopPersonCenter shopPersonCenter = new ShopPersonCenter();
         CustomerInfo customerInfo = shopCustomInfo.queryCustomerList(shopcode, plateNumber);
         if (customerInfo != null) {
-            shopPersonCenter.setPlateNumber(customerInfo.getPlateNumber().toUpperCase());
-            shopPersonCenter.setCarBrand(customerInfo.getCarBrand());
-            shopPersonCenter.setCarModel(customerInfo.getCarModel());
-            shopPersonCenter.setCarSeries(customerInfo.getCarSeries());
-            shopPersonCenter.setCurrentmileage(customerInfo.getKilo());
-            shopPersonCenter.setId(customerInfo.getId());
-            shopPersonCenter.setMaintenanceReminder(customerInfo.getKilo());
+            shopPersonCenter.setPlateNumber(customerInfo.getPlateNumber().toUpperCase())
+                    .setCarBrand(customerInfo.getCarBrand())
+                    .setCarModel(customerInfo.getCarModel())
+                    .setCarSeries(customerInfo.getCarSeries())
+                    .setCurrentmileage(customerInfo.getKilo())
+                    .setId(customerInfo.getId())
+                    .setLevelName(customerInfo.getLevelName())
+                    .setMaintenanceReminder(customerInfo.getKilo());
         }
         //查询ahi分数
         List<ResultTotalAHIPoint> resultTotalAHIPoints = ahiService.queryAllPointByPlateNumber(plateNumber);
@@ -126,6 +128,7 @@ public class ShopPersonCenterService {
 
     /**
      * 获取用户个人权益
+     *
      * @param request 请求
      * @return InviolableRights 用户个人权益
      */
@@ -149,6 +152,7 @@ public class ShopPersonCenterService {
 
     /**
      * 获取项目卡明细
+     *
      * @param request 请求
      * @return List<ProjectCardMX> 项目卡明细集合
      */
@@ -165,13 +169,14 @@ public class ShopPersonCenterService {
         equityParam.setPlateNumb(plateNumber);
         List<ProjectCardMX> projectCardMXES = apiUserEquity.queryUserProjectCardMX(equityParam);
         if (null != projectCardMXES && projectCardMXES.size() > 0) {
-            return  projectCardMXES;
+            return projectCardMXES;
         }
         return null;
     }
 
     /**
      * 获取充值卡明细
+     *
      * @param request 请求
      * @return List<RechargeableCardMX> 充值卡明细集合
      */
