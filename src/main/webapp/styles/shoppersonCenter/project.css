@@ -1,0 +1,57 @@
+.box{
+	width: 100%;
+}
+.box ul{
+	width: 100%;
+	margin-top: 0.24rem;
+}
+.box ul li{
+	width: 95%;
+	overflow: hidden;
+	height: 0.76rem;
+}
+.biaoTou{
+	width: 100%;
+	color: #31a3ff;
+	margin: 0 auto;
+}
+.titles{
+	height: 100%;
+	text-align: center;
+	float: left;
+	margin-left: 3%;
+	line-height: 0.76rem;
+	border-radius: 0.15rem;
+	border: 0.02rem solid #31a3ff;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+.biaoshen{
+	width: 100%;
+	color: #8d8d8d;
+	margin: 0.1rem auto 0rem;
+	border-bottom: 0.01rem dashed #8d8d8d;
+}
+.detals{
+	height: 100%;
+	text-align: center;
+	float: left;
+	margin-left: 3%;
+	line-height: 0.76rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.width1{
+	width: 44%;
+}
+.width2{
+	width: 29%;
+}
+.width3{
+	width: 15%;
+}

@@ -1,0 +1,137 @@
+body{
+	height: 100%;
+}
+#wrap{
+	display: none;
+}
+.nav{
+	width: 100%;
+	background: #e0e8f2;
+}
+.swiper-container{
+	margin-top: 0;
+}
+.gallery-thumbs{
+	height: 5.3rem;
+}
+.gallery-thumbs .swiper-wrapper{
+	transform: translate3d(1.84rem, 0px, 0px); 
+	transition-duration: 0ms;
+}
+.gallery-thumbs .swiper-slide{
+	width: 7.4rem;
+	height: 4.53rem;
+	background: url(/files/shoppersonCenter/projectCard/lb_bg.png) no-repeat;
+	background-size: 100% 100%;
+}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+	bottom: 5px;
+}
+.c-title{
+	font-size: 0.6rem;
+	color: #fff;
+	padding-left: 0.3rem;
+	padding-right: 0.15rem;
+	margin-top: 1.1rem;
+	overflow: hidden;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.c-num{
+	font-size: 0.48rem;
+	color: #fff;
+	padding-left: 0.3rem;
+	margin-top: 0.68rem;
+	padding-right: 0.15rem;
+	overflow: hidden;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/*主要内容*/
+.c-content{
+	width: 100%;
+	background: #fff;
+}
+.c-box{
+	padding: 0.26rem;
+	position: relative;
+	margin-bottom: 1rem;
+}
+table{
+	width: 100%;
+	table-layout: fixed;
+	font-size: 0.4rem;
+}
+table thead{
+	background: #76bcf0;
+	color: #fff;
+}
+table tr{
+	width: 100%;
+	height: 0.96rem;
+	line-height: 0.96rem;
+	text-align: center;
+}
+table tbody td{
+	width: 33.33333%;
+	 overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    color: #505050;
+    border-bottom: 0.01rem #e5e5e5 solid;
+    border-right: 0.01rem #e5e5e5 solid;
+}
+.details{
+	width: 1.22rem;
+	height: 1.23rem;
+	background: url(/files/shoppersonCenter/projectCard/mx.png) no-repeat;
+	background-size: 100% 100%;
+	font-size: 0.42rem;
+	color: #fff;
+	text-align: center;
+	line-height: 1.23rem;
+	position: absolute;
+	top: 3.4rem;
+	right: 0.36rem;
+}
+.td1{
+	border-left: 0.01rem #e5e5e5 solid;
+}
+.back{
+	width: 100%;
+	height: 1.1rem;
+	background: #fff;
+	position: fixed;
+	bottom: 0rem;
+}
+.b-btn{
+	width: 3.4rem;
+	height: 0.95rem;
+	background: #4a60e6;
+	text-align: center;
+	line-height: 0.95rem;
+	font-size: 0.48rem;
+	color: #fff;
+	border-radius: 0.12rem;
+	margin: 0 auto;
+}
+/*没有项目卡*/
+.n-card{
+	width: 100%;
+	height: 100vh;
+	background: #e0e8f2;
+	overflow: hidden;
+}
+.n-img{
+	width: 8.03rem;
+	margin: 2rem auto 0;
+}
+.n-text{
+	font-size: 0.48rem;
+	text-align: center;
+	color: #505050;
+	margin-top: 1rem;
+}
