@@ -12,8 +12,6 @@ import com.dudu.soa.finace.userequity.module.RechargeableCardMX;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.CarTypeService;
 import com.dudu.weixin.shopweiixin.mould.ShopPersonCenter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,12 +25,6 @@ import java.util.List;
  */
 @Service
 public class ShopPersonCenterService {
-
-    /**
-     * 日志打印
-     */
-    @Autowired
-    private static Logger logger = LoggerFactory.getLogger(ShopPersonCenterService.class);
 
     /**
      * 引入session
@@ -152,8 +144,6 @@ public class ShopPersonCenterService {
         String shopCode = (String) httpSession.getAttribute("shopCode");
         String customerId = request.getParameter("customerId");
         String plateNumb = (String) httpSession.getAttribute("plateNumb");
-        logger.info("========================" + shopCode);
-        logger.info("========================" + plateNumb);
         if (null != shopCode && !"".equals(shopCode) && null != customerId && !"".equals(customerId) && null != plateNumb && !"".equals(plateNumb)) {
             Integer keHuId = Integer.parseInt(customerId);
             equityParam.setShopCode(shopCode);
