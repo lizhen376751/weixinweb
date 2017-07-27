@@ -36,12 +36,12 @@
             </li>
             <!-----------------------------------------------------------------------------商业险生效日期-->
             <li>
-                <span class="color_11">商业险生效日期：</span>
+                <span class="color_11">商业险到期日：</span>
                 <span class="color_9 syx"></span>
             </li>
             <!-----------------------------------------------------------------------------交强险生效日期-->
             <li>
-                <span class="color_11">交强险生效日期：</span>
+                <span class="color_11">交强险到期日：</span>
                 <span class="color_9 jqx"></span>
             </li>
         </ul>
@@ -141,6 +141,9 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="bxdqdate" name="bxdqdate" value="${bxdqdate}"/>
+    <input type="hidden" id="bjstate" name="bjstate" value="${bjstate}"/>
+    <input type="hidden" id="fkstate" name="fkstate" value="${fkstate}"/>
     <div class="tb_btn font_2">投保</div>
 </div>
 </body>
