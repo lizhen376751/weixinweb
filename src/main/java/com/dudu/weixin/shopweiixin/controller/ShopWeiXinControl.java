@@ -126,6 +126,10 @@ public class ShopWeiXinControl {
             model.addAttribute("wxpingzheng", request.getParameter("wxpingzheng")); //维修凭证
             model.addAttribute("shopCode", request.getParameter("shopCode")); //店铺编码
             return "/shopconsumerEvaluation/consumerEvaluation.jsp";
+        } else if ("projectCard".equals(serviceType)) {
+            model.addAttribute("plateNumber", request.getParameter("plateNumber")); //车牌号
+            model.addAttribute("shopCode", request.getParameter("shopCode")); //店铺编码
+            return "/shoppersonCenter/projectCard.jsp";
         }
         return null;
     }
