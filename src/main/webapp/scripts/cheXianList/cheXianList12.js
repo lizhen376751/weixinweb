@@ -158,7 +158,9 @@ $(document).ready(function () {
                 var fkstate = $(this).attr("ddfkzt");
                 // console.log(ddxq);
                 // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
-
+                $("#selectdingdan").val("") ;  //订单状态选中的状态
+                $("#selectfakuan").val("") ;  //付款状体选中的状态
+                $(".ss_val").val("") ;     //搜索框的值
                 window.location.href = "/baoXianDetails?carId=" + carId + "&shopCode=" + shopCode + "&shopcodelm=" + shopLm + "&orderNumb=" + ddxq + "&companyid=" + bxgs + "&fkstate=" + fkstate + "&bxdqdate=" + bxdqdate + "&bjstate=" + bjstate;
             });
         },
@@ -302,6 +304,9 @@ $(document).ready(function () {
                     var fkstate = $(this).attr("ddfkzt");
                     // console.log(ddxq);
                     // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
+                    $("#selectdingdan").val("") ;  //订单状态选中的状态
+                    $("#selectfakuan").val("") ;  //付款状体选中的状态
+                    $(".ss_val").val("") ;     //搜索框的值
                     window.location.href = "/baoXianDetails?carId=" + carId + "&shopCode=" + shopCode + "&shopcodelm=" + shopLm + "&orderNumb=" + ddxq + "&companyid=" + bxgs + "&fkstate=" + fkstate + "&bxdqdate=" + bxdqdate + "&bjstate=" + bjstate;
                 });
             },
@@ -365,6 +370,9 @@ $(document).ready(function () {
                     var fkstate = $(this).attr("ddfkzt");
                     // console.log(ddxq);
                     // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
+                    $("#selectdingdan").val("") ;  //订单状态选中的状态
+                    $("#selectfakuan").val("") ;  //付款状体选中的状态
+                    $(".ss_val").val("") ;     //搜索框的值
                     window.location.href = "/baoXianDetails?carId=" + carId + "&shopCode=" + shopCode + "&shopcodelm=" + shopLm + "&orderNumb=" + ddxq + "&companyid=" + bxgs + "&fkstate=" + fkstate + "&bxdqdate=" + bxdqdate + "&bjstate=" + bjstate;
                 });
             },
@@ -417,6 +425,9 @@ $(document).ready(function () {
                         var fkstate = $(this).attr("ddfkzt");
                         // console.log(ddxq);
                         // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
+                        $("#selectdingdan").val("") ;  //订单状态选中的状态
+                        $("#selectfakuan").val("") ;  //付款状体选中的状态
+                        $(".ss_val").val("") ;     //搜索框的值
                         window.location.href = "/baoXianDetails?carId=" + carId + "&shopCode=" + shopCode + "&shopcodelm=" + shopLm + "&orderNumb=" + ddxq + "&companyid=" + bxgs + "&fkstate=" + fkstate + "&bxdqdate=" + bxdqdate + "&bjstate=" + bjstate;
                     });
                 },
@@ -462,6 +473,9 @@ $(document).ready(function () {
                             var fkstate = $(this).attr("ddfkzt");
                             // console.log(ddxq);
                             // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
+                            $("#selectdingdan").val("") ;  //订单状态选中的状态
+                            $("#selectfakuan").val("") ;  //付款状体选中的状态
+                            $(".ss_val").val("") ;     //搜索框的值
                             window.location.href = "/baoXianDetails?carId=" + carId + "&shopCode=" + shopCode + "&shopcodelm=" + shopLm + "&orderNumb=" + ddxq + "&companyid=" + bxgs + "&fkstate=" + fkstate + "&bxdqdate=" + bxdqdate + "&bjstate=" + bjstate;
                         });
                     },
