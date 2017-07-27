@@ -21,7 +21,7 @@
 		<%--//订单状态和付款状态选择时相应的js代码--%>
 		<%--<script src="/scripts/cheXianList/cheXianiscroll.js" type="text/javascript" charset="utf-8"></script>--%>
 	</head>
-	<body onLoad="javascript:document.yourFormName.reset()">
+	<body >
 	<%--网页加载效果--%>
 	<div id="loading">
 		<img src="/files/loading2.gif"  alt="loading.." />
