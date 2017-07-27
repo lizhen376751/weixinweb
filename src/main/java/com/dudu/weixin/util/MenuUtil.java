@@ -418,7 +418,7 @@ public class MenuUtil {
 //
 
         CommonButton btn2 = new CommonButton();
-        btn2.setName("商城");
+        btn2.setName("官网");
         btn2.setType("view");
         btn2.setUrl("http://www.shinycm.com/");
 
