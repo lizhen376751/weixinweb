@@ -152,8 +152,8 @@ public class ShopPersonCenterService {
         String shopCode = (String) httpSession.getAttribute("shopCode");
         String customerId = request.getParameter("customerId");
         String plateNumb = (String) httpSession.getAttribute("plateNumb");
-        logger.info("============获取用户个人权益shopcode============" + shopCode);
-        logger.info("============获取用户个人权益plateNumb============" + plateNumb);
+        logger.info("========================" + shopCode);
+        logger.info("========================" + plateNumb);
         if (null != shopCode && !"".equals(shopCode) && null != customerId && !"".equals(customerId) && null != plateNumb && !"".equals(plateNumb)) {
             Integer keHuId = Integer.parseInt(customerId);
             equityParam.setShopCode(shopCode);
