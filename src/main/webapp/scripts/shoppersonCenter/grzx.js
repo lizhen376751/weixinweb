@@ -4,13 +4,13 @@
         recalc = function () {
             var clientWidth = docEl.clientWidth;
             if (!clientWidth) return;
-            docEl.style.fontSize =Math.floor(100*(clientWidth / 1080))+ 'px';
+            docEl.style.fontSize = Math.floor(100 * (clientWidth / 1080)) + 'px';
         };
     if (!doc.addEventListener) return;
     win.addEventListener(resizeEvt, recalc, false);
     doc.addEventListener('DOMContentLoaded', recalc, false);
-})(document,window);
-$(window).load(function(){
+})(document, window);
+$(window).load(function () {
     setTimeout(function () {
         $("#loading").hide();
     }, 1000);
@@ -61,7 +61,7 @@ $(function () {
         url: '/shopAjax',
         data: {
             businessType: "shoppersoncenter",
-            servicetype : "personcenter"
+            servicetype: "personcenter"
         },
         async: false,
         success: function (jsonData) {
@@ -72,13 +72,13 @@ $(function () {
             khID = json.id;
             //------------------------------------------------------------------------------------------------车系品牌添加
             if (json.carBrand != null || json.carModel != null || json.carSeries != null) {
-                if(json.carBrand == null){
+                if (json.carBrand == null) {
                     json.carBrand = "";
                 }
-                if(json.carModel == null){
+                if (json.carModel == null) {
                     json.carModel = "";
                 }
-                if(json.carSeries == null){
+                if (json.carSeries == null) {
                     json.carSeries = "";
                 }
                 var cltxt = json.carBrand + json.carSeries + json.carModel;
@@ -87,10 +87,16 @@ $(function () {
 
             //-----------------------------------------------------------------------------------------------当前里程(保养提醒)判断
             if (json.currentmileage != null && json.currentmileage != "") {
-                kilometre.text(json.currentmileage+"km");
+                kilometre.text(json.currentmileage + "km");
             };
             if (json.point != null && json.point != "") {
                 jkzs_num.text(json.point);//---------------------------------------------------------------------------------健康指数动态添加
+            };
+
+            if (json.levelName != null && json.levelName != "") {
+                hydj_num.text(json.levelName);//---------------------------------------------------------------------------------会员等级
+            } else {
+                hydj_num.text("非会员");
             };
         }
     });
@@ -102,7 +108,7 @@ $(function () {
             businessType: "shoppersoncenter",
             servicetype: "personalRightsAndInterests",
             shopCode: shopCode.val(),
-            customerId : khID,
+            customerId: khID,
             plateNumb: car_num.text()
             /*shopCode: "0533001",
              customerId : 28763,
@@ -110,28 +116,27 @@ $(function () {
         },
         success: function (jsonData) {
             json = JSON.parse(jsonData);
-              console.log(json)
+            console.log(json)
             //赠送金额剩余
-            if(json.giftMoney != null && json.giftMoney != ''){
-                zsje.text("￥"+json.giftMoney);
+            if (json.giftMoney != null && json.giftMoney != '') {
+                zsje.text("￥" + json.giftMoney);
             }
             //当前定金金额
-            if(json.deposit != null && json.deposit != ""){
-                djje.text("￥"+json.deposit);
+            if (json.deposit != null && json.deposit != "") {
+                djje.text("￥" + json.deposit);
             }
             //会员积分
-            if(json.memberPoints != null && json.memberPoints != ""){
-                hyjf_num.text(json.memberPoints+"分");
+            if (json.memberPoints != null && json.memberPoints != "") {
+                hyjf_num.text(json.memberPoints + "分");
+            } else {
+                hyjf_num.text("0分");
             }
             //特种卡
             // if(json.specialCardAmount != null && json.specialCardAmount != ""){
             //     $(".tzk").text("￥"+json.specialCardAmount)
             // }
             // 代金券
-            if(json.cashCouponList != null && json.cashCouponList.length > 0){
-                var djq_label = json.cashCouponList.length;
-                djq_num.text("剩余"+djq_label+"张");
-            }
+            djq_num.text("剩余" + json.daiJinQuanNumber + "张");
         }
     });
     //--------------------------------------------------------------------------------------------------------------------------车型车系的请求
@@ -162,7 +167,7 @@ $(function () {
         return {
             gotoChar: function (ch) {
                 if (ch === '*') {
-                  //  console.log(elItemList.scrollTop);
+                    //  console.log(elItemList.scrollTop);
                     a.scrollTop = 0;
                 } else if (ch === '#') {
                     a.scrollTop = elItemList.scrollHeight;
@@ -180,7 +185,7 @@ $(function () {
         new IndexSidebar().on('charChange', itemList.gotoChar);
 
     };
-    for(var g = 1; g < 5;g++){
+    for (var g = 1; g < 5; g++) {
         $.ajax({
             type: 'POST',
             url: '/pagingquery',
@@ -189,21 +194,21 @@ $(function () {
                 servicetype: "carType",
                 type: "CarBrand",
                 num: 0,
-                page: ""+g+"",
+                page: "" + g + "",
                 rows: "50"
             },
             async: false,
             success: function (jsonData) {
                 json = JSON.parse(jsonData);
-              //  console.log(json);
+                //  console.log(json);
                 for (var i = 0; i < json.rows.length; i++) {
                     var zifu = json.rows[i].carFirst + json.rows[i].carId + "-" + json.rows[i].carName;
                     app.data.push(zifu);
                 }
-               // console.log(app.data);
-                if(g == 4){
+                // console.log(app.data);
+                if (g == 4) {
                     app.main();
-                    $(".index-sidebar-container").css("display","none")
+                    $(".index-sidebar-container").css("display", "none")
                     var car_brand = $(".car_brand"); //----------------------------------------------------车系品牌遮罩层
                     var item_container_li = $("#item-container ul li") //--------------------------------- 获取每一个车牌号:奥迪
                     //---------------------------------------------------------------------------------------点击出现车辆品牌分类
@@ -216,7 +221,7 @@ $(function () {
                         car_1 = "";
                         car_1 = $(this).text();
                         var car_id = $(this).attr("ids");
-                       // console.log(car_id);
+                        // console.log(car_id);
                         // car_brand.hide();
                         $(".index-sidebar-container").css("display", "none");
 
@@ -236,16 +241,16 @@ $(function () {
                             },
                             success: function (jsonData) {
                                 json = JSON.parse(jsonData);
-                               // console.log(json);
+                                // console.log(json);
                                 second_carList.show();
                                 second_cpxx.text(car_1);
                                 second_lis.children().remove();
-                                for(var i = 0;i < json.rows.length;i++){
-                                    var lis = '<li carId="'+json.rows[i].carId+'">'+json.rows[i].carName+'</li>';
+                                for (var i = 0; i < json.rows.length; i++) {
+                                    var lis = '<li carId="' + json.rows[i].carId + '">' + json.rows[i].carName + '</li>';
                                     second_lis.append(lis);
                                 }
                                 var second_ul_li = $(".second_carList ul li");
-                                second_ul_li.on("click",function () {
+                                second_ul_li.on("click", function () {
                                     car_2 = "";
                                     car_2 = $(this).text();
                                     // second_carList.hide();
@@ -262,16 +267,16 @@ $(function () {
                                         },
                                         success: function (jsonData) {
                                             json = JSON.parse(jsonData);
-                                          //  console.log(json);
+                                            //  console.log(json);
                                             third_carList.show();
                                             third_cpxx.text(car_2);
                                             third_lis.children().remove();
-                                            for(var i = 0;i < json.rows.length;i++){
-                                                var lis = '<li carId="'+json.rows[i].carId+'">'+json.rows[i].carName+'</li>';
+                                            for (var i = 0; i < json.rows.length; i++) {
+                                                var lis = '<li carId="' + json.rows[i].carId + '">' + json.rows[i].carName + '</li>';
                                                 third_lis.append(lis);
                                             }
                                             var third_ul_li = $(".third_carList ul li");
-                                            third_ul_li.on("click",function () {
+                                            third_ul_li.on("click", function () {
                                                 car_3 = "";
                                                 car_3 = $(this).text();
                                                 var carIds = $(this).attr("carId");
@@ -285,7 +290,7 @@ $(function () {
                                                         carModelId: carIds, //车型编码
                                                         carSeriesId: carId,//车系编码
                                                         carBrandId: car_id,//品牌编码
-                                                        id:khID //客户ID
+                                                        id: khID //客户ID
                                                     },
                                                     async: false,
                                                     success: function (jsonData) {
@@ -315,32 +320,32 @@ $(function () {
         });
     }
     //---------------------------------------------------------------------------------------------------------------车系二级页面的返回按钮
-    second_back.on("click",function () {
+    second_back.on("click", function () {
         second_carList.hide();
-        $(".index-sidebar-container").css("display","block")
+        $(".index-sidebar-container").css("display", "block")
     });
     //---------------------------------------------------------------------------------------------------------------车系三级页面的返回按钮
-    third_back.on("click",function () {
+    third_back.on("click", function () {
         third_carList.hide();
     });
     //---------------------------------------------------------------------------------------------------------------公里数修改
-    kilometre_bj.on("click",function(){
+    kilometre_bj.on("click", function () {
         $(".xs").hide();
         $(".xg").show();
     });
     //---------------------------------------------------------------------------------------------------------------公里数确定修改按钮
-    kilometre_sure.on("click",function(){
+    kilometre_sure.on("click", function () {
         var oneself = this;
         var reg = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
         var gl_num_val = $("#gl_num").val();
-        if(reg.test(gl_num_val)){
+        if (reg.test(gl_num_val)) {
             $(".n-dd").show();
             $(oneself).hide();
             var k = 0;
-            var timer = setInterval(function(){
-                k =k+20;
-                $(".n-dd")[0].style.transform = 'rotateZ('+k+'deg)';
-            },100);
+            var timer = setInterval(function () {
+                k = k + 20;
+                $(".n-dd")[0].style.transform = 'rotateZ(' + k + 'deg)';
+            }, 100);
             //------------------------------------------------------------------------------------------上传里程数数据
             $.ajax({
                 type: 'POST',
@@ -349,10 +354,10 @@ $(function () {
                     businessType: "shoppersoncenter",
                     servicetype: "currentmileage",
                     kilo: gl_num_val, //公里数
-                    id:khID //客户ID
+                    id: khID //客户ID
                 },
                 success: function (jsonData) {
-                    $(".nb-num").text(gl_num_val+"km");
+                    $(".nb-num").text(gl_num_val + "km");
                     $(".xs").show();
                     $(".xg").hide();
                     $(".n-dd").hide();
@@ -361,7 +366,7 @@ $(function () {
                     clearInterval(timer);
                 }
             });  //-------------------------------------------上传结束
-        }else{
+        } else {
             alert("请输入正确的里程数~");
             $("#gl_num").val("");
         }
@@ -369,23 +374,13 @@ $(function () {
 
     })
     //车辆健康指数点击按钮
-    jkzs.on("click",function () {
+    jkzs.on("click", function () {
         window.location.href = "/shopweixinServlet?serviceType=AHIInfo"
     });
     //保养提醒按钮点击
-    bytx.on("click",function () {
+    bytx.on("click", function () {
         window.location.href = "/shopweixinServlet?serviceType=BaoYangTiXing"
     });
-
-
-
-
-
-
-
-
-
-
 
 
 });
