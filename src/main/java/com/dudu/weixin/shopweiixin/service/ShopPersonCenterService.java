@@ -141,9 +141,9 @@ public class ShopPersonCenterService {
      */
     public InviolableRights getShopPersonalRightsAndInterests(HttpServletRequest request) {
         EquityParam equityParam = new EquityParam();
-        String shopCode = (String) httpSession.getAttribute("shopCode");
+        String shopCode = (String) httpSession.getAttribute("shopcode");
         String customerId = request.getParameter("customerId");
-        String plateNumb = (String) httpSession.getAttribute("plateNumb");
+        String plateNumb = (String) httpSession.getAttribute("plateNumber");
         if (null != shopCode && !"".equals(shopCode) && null != customerId && !"".equals(customerId) && null != plateNumb && !"".equals(plateNumb)) {
             Integer keHuId = Integer.parseInt(customerId);
             equityParam.setShopCode(shopCode);
