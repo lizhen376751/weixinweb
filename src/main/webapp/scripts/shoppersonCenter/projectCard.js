@@ -20,13 +20,13 @@ $(function(){
         centeredSlides: true,
         slidesPerView: 1.5,
         touchRatio: 0.2,
-        paginationClickable :true,
+        paginationClickable: true,
         onSlideChangeEnd:function(swiper){    //获取当前swiper的索引值
             alert(swiper.activeIndex)
             funswiper(swiper.activeIndex);
         },
 //      slideToClickedSlide: true,
-        loop:true
+        loop:false
     });
     var customerId=getvl("customerId")    //获取地址栏传参客户ID
     var indexsiper=1;   //swiper默认显示的是第一条项目卡的list
@@ -109,18 +109,22 @@ $(function(){
                 $(".listbody").remove();  //去掉原来的项目卡内容
                 var json = JSON.parse(jsonData);
                 console.log(json);
-                var xmkview="";
-                var xmklist=json.projectCardList;
-                for(var j=0;j<xmklist[index-1].list.length;j++){
-                    var time=dateFormat(xmklist[index-1].list[j].currentTimes)
-                    xmkview+='<tr>'+
-                                    '<td class="td1">'+xmklist[index-1].list[j].projectName+'</td>'+
-                                    '<td class="td2">'+xmklist[index-1].list[j].projectName+'</td>'+
-                                    '<td class="td3">'+time+'</td>'+
-                              ' </tr>'
+                var xmkview2="";
+                var xmklist2=json.projectCardList;
+                if(xmklist2.length==0||xmklist2.length==null){
+                    $("#wrap").hide();    //项目卡列表隐藏
+                    $(".n-card").show();    //没有项目卡的提示显示
+                }else{
+                        for(var j=0;j<xmklist2[index-1].list.length;j++){
+                            var time=dateFormat(xmklist2[index-1].list[j].currentTimes)
+                            xmkview2+='<tr>'+
+                                            '<td class="td1">'+xmklist2[index-1].list[j].projectName+'</td>'+
+                                            '<td class="td2">'+xmklist2[index-1].list[j].projectName+'</td>'+
+                                            '<td class="td3">'+time+'</td>'+
+                                      ' </tr>'
+                        }
                 }
-
-                $(".listbody").append(xmkview);
+                $(".listbody").append(xmkview2);
 
             }
 
