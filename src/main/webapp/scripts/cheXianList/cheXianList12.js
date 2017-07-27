@@ -230,9 +230,9 @@ $(document).ready(function () {
                     // console.log(ddxq);
                     // console.log("/baoXianDetails?carId="+carId+"&shopCode="+shopCode+"&shopcodelm="+shopLm+"&orderNumb="+ddxq+"&companyid="+bxgs)
                     //清空选择框和搜索框的值为空，目的是返回时为初始状态
-                    selectdingdan = "";  //订单状态选中的状态
-                    selectajax = ""; //付款状体选中的状态
-                    ss_val = "";     //搜索框的值
+                    $("#selectdingdan").val("") ;  //订单状态选中的状态
+                    $("#selectfakuan").val("") ;  //付款状体选中的状态
+                    $(".ss_val").val("") ;     //搜索框的值
                     window.location.href = "/baoXianDetails?carId=" + carId + "&shopCode=" + shopCode + "&shopcodelm=" + shopLm + "&orderNumb=" + ddxq + "&companyid=" + bxgs + "&fkstate=" + fkstate + "&bxdqdate=" + bxdqdate + "&bjstate=" + bjstate;
                 });
             },
