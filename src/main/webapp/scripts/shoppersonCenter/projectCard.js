@@ -14,18 +14,23 @@ $(function(){
         if(reg.test(location.href)) return decodeURI(RegExp.$2.replace(/\+/g, " "));
         return "";
     };
-    var galleryThumbs = new Swiper('.gallery-thumbs', {
+//     var galleryThumbs = new Swiper('.gallery-thumbs', {
+//         pagination: '.swiper-pagination',
+//         slidesPerView: 3,
+//         paginationClickable: true,
+//         spaceBetween: 30
+//         // onSlideChangeEnd:function(swiper){    //获取当前swiper的索引值
+//         //     console.log(swiper.activeIndex)
+//         //     funswiper(swiper.activeIndex);
+//         // },
+// //      slideToClickedSlide: true,
+//
+//     });
+    var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
-        spaceBetween: 10,
-        centeredSlides: true,
-        slidesPerView: 1.5,
-        touchRatio: 0.2,
-        onSlideChangeEnd:function(swiper){    //获取当前swiper的索引值
-            console.log(swiper.activeIndex)
-            funswiper(swiper.activeIndex);
-        },
-//      slideToClickedSlide: true,
-        loop:false
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 30
     });
     var customerId=getvl("customerId")    //获取地址栏传参客户ID
     var indexsiper=0;   //swiper默认显示的是第一条项目卡的list
@@ -54,11 +59,12 @@ $(function(){
         async: false,
         success: function (jsonData) {
            var json = JSON.parse(jsonData);
-            //console.log(json);
+            console.log(json);
             var xmkhtnl="";
             var xmkview="";
             var xmklist=json.projectCardList;
-            if(xmklist.length==0||xmklist.length==null){
+            // if(json.projectCardList.length==0||json.projectCardList.length==null||xmklist==null){
+            if(xmklist==null){
                 $("#wrap").hide();    //项目卡列表隐藏
                 $(".n-card").show();    //没有项目卡的提示显示
             }else{
@@ -68,9 +74,10 @@ $(function(){
                                     '<p class="c-num">NO·'+xmklist[i].cardNumb+'</p>'+
                               '</div>'
                 }
+                $(".swiper-wrapper").append(xmkhtnl);
             }
 
-            $(".swiper-wrapper").append(xmkhtnl);
+
 
         }
 
@@ -78,7 +85,7 @@ $(function(){
     });
 
 
-   function funswiper(index){
+  /* function funswiper(index){
         $.ajax({
             type: 'POST',
             url: '/shopAjax',
@@ -87,9 +94,9 @@ $(function(){
                 servicetype: "personalRightsAndInterests",
                 customerId: customerId
                 // plateNumb: car_num.text()
-                /*shopCode: "0533001",
+                /!*shopCode: "0533001",
                  customerId : 28763,
-                 plateNumb: "闽A12121"*/
+                 plateNumb: "闽A12121"*!/
             },
             async: false,
             success: function (jsonData) {
@@ -117,5 +124,5 @@ $(function(){
 
 
         });
-    }
+    }*/
 });
