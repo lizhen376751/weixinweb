@@ -57,6 +57,17 @@ $(function(){
                                     '<p class="c-num">NO·'+xmklist[i].cardNumb+'</p>'+
                               '</div>'
                 }
+                //列表默认显示第一个的
+                for(var j=0;j<xmklist[0].list.length;j++){
+                    var time=dateFormat(xmklist[0].list[j].currentTimes)
+                    xmkview+='<tr>'+
+                        '<td class="td1">'+xmklist[0].list[j].projectName+'</td>'+
+                        '<td class="td2">'+time+'</td>'+
+                        '<td class="td3">'+xmklist[0].list[j].currentTimes+'</td>'+
+                        ' </tr>'
+                }
+
+                $("#listbody").append(xmkview);
                 $(".swiper-wrapper").append(xmkhtnl);
             }
 
@@ -95,23 +106,20 @@ $(function(){
             success: function (jsonData) {
                 $(".listbody").remove();  //去掉原来的项目卡内容
                 var json = JSON.parse(jsonData);
-                console.log(json);
                 var xmkview2="";
                 var xmklist2=json.projectCardList;
-                if(xmklist2.length==0||xmklist2.length==null){
-                    $("#wrap").hide();    //项目卡列表隐藏
-                    $(".n-card").show();    //没有项目卡的提示显示
-                }else{
-                        for(var j=0;j<xmklist2[index].list.length;j++){
-                            var time=dateFormat(xmklist2[index].list[j].currentTimes)
-                            xmkview2+='<tr>'+
-                                            '<td class="td1">'+xmklist2[index].list[j].projectName+'</td>'+
-                                            '<td class="td2">'+xmklist2[index].list[j].projectName+'</td>'+
-                                            '<td class="td3">'+time+'</td>'+
-                                      ' </tr>'
-                        }
+
+                for(var j=0;j<xmklist2[index].list.length;j++){
+                    var time=dateFormat(xmklist2[index].list[j].currentTimes)
+                    xmkview2+='<tr>'+
+                                    '<td class="td1">'+xmklist2[index].list[j].projectName+'</td>'+
+                                    '<td class="td2">'+time+'</td>'+
+                                    '<td class="td3">'+xmklist2[index].list[j].currentTimes+'</td>'+
+                              ' </tr>'
                 }
-                $(".listbody").append(xmkview2);
+                $("#listbody").html("");
+                $("#listbody").append(xmkview2);
+
 
             }
 
