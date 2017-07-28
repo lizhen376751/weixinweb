@@ -68,7 +68,7 @@ $(function(){
     });
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
-        slidesPerView: 'auto',
+        slidesPerView: 1.5,
         centeredSlides: true,
         paginationClickable: true,
         onSlideChangeEnd:function(swiper){    //获取当前swiper的索引值

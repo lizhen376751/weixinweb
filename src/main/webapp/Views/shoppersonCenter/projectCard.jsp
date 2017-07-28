@@ -23,8 +23,8 @@
 		<div class="nav">
 			<%--<div class="swiper-container gallery-thumbs swiper-container-horizontal">--%>
 				<%--<div class="swiper-wrapper" style="transform: translate3d(1.84rem, 0px, 0px);transition-duration: 0ms;">--%>
-			<div class="swiper-container gallery-thumbs">
-				<div class="swiper-wrapper">
+			<div class="swiper-container gallery-thumbs swiper-container-horizontal">
+				<div class="swiper-wrapper" style="transform: translate3d(1.84rem, 0px, 0px);transition-duration: 0ms;">
 				<!--	<div class="swiper-slide">
 							<p class="c-title">洗车经济卡</p>
 							<p class="c-num">NO·203223336</p>
