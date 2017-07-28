@@ -72,8 +72,8 @@ $(function(){
         centeredSlides: true,
         paginationClickable: true,
         onSlideChangeEnd:function(swiper){    //获取当前swiper的索引值
-            alert(swiper.activeIndex)
-            //funswiper(swiper.activeIndex);
+            //alert(swiper.activeIndex)
+            funswiper(swiper.activeIndex);
         },
         spaceBetween: 30
 
@@ -81,7 +81,7 @@ $(function(){
 
     });
 
-  /* function funswiper(index){
+   function funswiper(index){
         $.ajax({
             type: 'POST',
             url: '/shopAjax',
@@ -89,10 +89,7 @@ $(function(){
                 businessType: "shoppersoncenter",
                 servicetype: "personalRightsAndInterests",
                 customerId: customerId
-                // plateNumb: car_num.text()
-                /!*shopCode: "0533001",
-                 customerId : 28763,
-                 plateNumb: "闽A12121"*!/
+
             },
             async: false,
             success: function (jsonData) {
@@ -120,5 +117,5 @@ $(function(){
 
 
         });
-    }*/
+    }
 });
