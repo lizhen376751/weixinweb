@@ -14,24 +14,7 @@ $(function(){
         if(reg.test(location.href)) return decodeURI(RegExp.$2.replace(/\+/g, " "));
         return "";
     };
-//     var galleryThumbs = new Swiper('.gallery-thumbs', {
-//         pagination: '.swiper-pagination',
-//         slidesPerView: 3,
-//         paginationClickable: true,
-//         spaceBetween: 30
-//         // onSlideChangeEnd:function(swiper){    //获取当前swiper的索引值
-//         //     console.log(swiper.activeIndex)
-//         //     funswiper(swiper.activeIndex);
-//         // },
-// //      slideToClickedSlide: true,
-//
-//     });
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        slidesPerView: 3,
-        paginationClickable: true,
-        spaceBetween: 30
-    });
+
     var customerId=getvl("customerId")    //获取地址栏传参客户ID
     var indexsiper=0;   //swiper默认显示的是第一条项目卡的list
     //请求多少张项目卡的请求
@@ -83,7 +66,20 @@ $(function(){
 
 
     });
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        paginationClickable: true,
+        onSlideChangeEnd:function(swiper){    //获取当前swiper的索引值
+            alert(swiper.activeIndex)
+            //funswiper(swiper.activeIndex);
+        },
+        spaceBetween: 30
 
+//      slideToClickedSlide: true,
+
+    });
 
   /* function funswiper(index){
         $.ajax({
