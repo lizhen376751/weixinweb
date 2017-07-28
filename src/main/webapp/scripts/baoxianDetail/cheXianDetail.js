@@ -225,8 +225,10 @@ $(document).ready(function () {
                     var json = JSON.parse(jsondata);
                     console.log(json);
                     if (jsondata == 1) {
-                        alert("投保成功")
-                        window.location.href = "/queryInsurance";
+                        alert("投保成功");
+                        quote.text("已投保");
+                        $(".tb_btn").css("background", "#c3c6c8");
+
                     } else {
                         alert("投保失败，请重试");
                     }
