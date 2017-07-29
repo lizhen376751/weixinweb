@@ -50,22 +50,23 @@ $(document).ready(function () {
     var customerId = $("#customerId").val();
     var plateNumber = $("#plateNumber").val();
 
+
     $.ajax({
         type    : 'POST',
         url     : '/pagingquery',
         data    : {
             businessType   : "shoppersoncenter",
             shopCode   : shopCode,
-            customerId : customerId,
+            customerId : "29628",
             cardNumb   : cardNumb,
-            plateNumber: plateNumber,
+            plateNumber: "鲁A2032",
             servicetype:"projectCardMX"
 
         },
         success : function(jsonData){
-            //var json = JSON.parse(jsonData);
-            console.log(jsonData)
-            appending(jsonData)
+            var json = JSON.parse(jsonData);
+           // console.log(jsonData+ "-----------------")
+            appending(json)
         }
     });
   $("#fanhui").on("click",function () {

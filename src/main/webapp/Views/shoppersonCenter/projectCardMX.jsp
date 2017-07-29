@@ -5,7 +5,7 @@
     String cardNumb=request.getParameter("cardNumb");
     String shopCode=request.getParameter("shopCode");
     String cusomerId=request.getParameter("customerId");
-    String plateNumber = request.getParameter("plateNumber");
+    String plateNumber = (String) request.getAttribute("plateNumber");
 %>
 
 <html>
@@ -33,9 +33,9 @@
     <div class="back" id="fanhui">返回</div>
 </div>
 </body>
-<input type="hidden" id="cardNumb" name="cardNumb" value="<%=cardNumb %>" >
-<input type="hidden" id="shopCode" name="shopCode" value="<%=shopCode %>" >
-<input type="hidden" id="customerId" name="customerId" value="<%=cusomerId %>" >
+<input type="hidden" id="cardNumb" name="cardNumb" value="<%=cardNumb%>" >
+<input type="hidden" id="shopCode" name="shopCode" value="<%=shopCode%>" >
+<input type="hidden" id="customerId" name="customerId" value="<%=cusomerId%>" >
 <input type="hidden" id="plateNumber" name="plateNumber" value="<%=plateNumber%>">
 <script src="/scripts/shoppersonCenter/projectCardMX.js" type="text/javascript" charset="utf-8"></script>
 </html>
