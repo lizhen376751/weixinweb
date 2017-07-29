@@ -24,7 +24,7 @@ public class ShopWeiXinControl {
     /**
      * 日志打印
      */
-    private static Logger logprint = LoggerFactory.getLogger(ShopWeiXinControl.class);
+    private static Logger logger = LoggerFactory.getLogger(ShopWeiXinControl.class);
     /**
      * 引入消费记录服务
      */
@@ -123,15 +123,15 @@ public class ShopWeiXinControl {
             return "/shoppersonCenter/rechargeableCardMX.jsp";
         } else if ("shoppersoncenter".equals(serviceType)) { //内部跳转至个人中心页面
             return "/shoppersonCenter/shoppersonalCenter.jsp";
-        } else if ("shopEvaluateParam".equals(serviceType)) { //添加消费记录评价页面
+        } else if ("shopEvaluateParam".equals(serviceType)) { //消费记录评价页面
             String sign = request.getParameter("sign");
             model.addAttribute("plateNumber", request.getParameter("plateNumber")); //车牌号
             model.addAttribute("customId", request.getParameter("customId")); //客户id
             model.addAttribute("wxpingzheng", request.getParameter("wxpingzheng")); //维修凭证
             model.addAttribute("shopCode", request.getParameter("shopCode")); //店铺编码
-            if ("addPingJia".equals(sign)) {
+            if ("addPingJia".equals(sign)) { //添加消费评价页面
                 return "/shopconsumerEvaluation/consumerEvaluation.jsp";
-            } else {
+            } else if ("queryPingJia".equals(sign)) { //查询消费评价页面
                 return "/shopconsumerEvaluation/consumerEvaluation1.jsp";
             }
         } else if ("projectCard".equals(serviceType)) { //跳转项目卡页面
