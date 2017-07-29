@@ -70,7 +70,8 @@ $(document).ready(function () {
         }
     });
   $("#fanhui").on("click",function () {
-      window.location.href="/shopweixinServlet?serviceType=shoppersoncenter"
+      window.location.href = "/shopweixinServlet?serviceType=projectCard&customerId="+customerId
+      // window.location.href="/shopweixinServlet?serviceType=shoppersoncenter"
   })
 
 })

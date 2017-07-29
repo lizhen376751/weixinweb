@@ -386,6 +386,11 @@ $(function () {
     xmk.on("click", function () {
         window.location.href = "/shopweixinServlet?serviceType=projectCard&customerId="+khID
     });
+    //充值卡按钮点击
+    czk.on("click", function () {
+        window.location.href = "/shopweixinServlet?serviceType=projectCZHICard&customerId="+khID
+
+    });
 
 
 });

@@ -66,13 +66,13 @@ $(document).ready(function () {
 
         },
         success : function(jsonData){
-
             var json = JSON.parse(jsonData);
             appending(json)
         }
     });
     $(".back").on("click",function () {
-        window.location.href="/shopweixinServlet?serviceType=shoppersoncenter"
+        window.location.href = "/shopweixinServlet?serviceType=projectCZHICard&customerId="+customerId
+       // window.location.href="/shopweixinServlet?serviceType=shoppersoncenter"
     })
 
 

@@ -63,7 +63,7 @@ $(function(){
                 }
                 //列表默认显示第一个的
                 for(var j=0;j<xmklist[0].list.length;j++){
-                    var time=dateFormat(xmklist[0].list[j].currentTimes)
+                    var time=dateFormat(xmklist[0].list[j].validDate)
                     xmkview+='<tr>'+
                                 '<td class="td1">'+xmklist[0].list[j].projectName+'</td>'+
                                 '<td class="td2">'+time+'</td>'+
@@ -120,7 +120,7 @@ $(function(){
                 xmkmingxi2+='<div class="details" id="details" onclick="tCardMX('+xmklist2[index].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'
 
                 for(var j=0;j<xmklist2[index].list.length;j++){
-                    var time=dateFormat(xmklist2[index].list[j].currentTimes)
+                    var time=dateFormat(xmklist2[index].list[j].validDate)
                     xmkview2+='<tr>'+
                                     '<td class="td1">'+xmklist2[index].list[j].projectName+'</td>'+
                                     '<td class="td2">'+time+'</td>'+

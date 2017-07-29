@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
-<%String shopcode = (String)request.getSession().getAttribute("shopcode");%>
+<%String shopCode = (String)request.getSession().getAttribute("shopcode");%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,26 +23,26 @@
 		<div class="nav">
 			<div class="swiper-container gallery-thumbs swiper-container-horizontal">
 				<div class="swiper-wrapper" style="transform: translate3d(1.84rem, 0px, 0px);transition-duration: 0ms;">
-				<!--<div class="swiper-slide">
-						<p class="c-title">洗车经济卡</p>
-						<p class="c-num">NO·203223336</p>
-					</div>
-					<div class="swiper-slide">
-						<p class="c-title">打蜡经济卡</p>
-						<p class="c-num">NO·203223333</p>
-					</div>
-					<div class="swiper-slide" >
-						<p class="c-title">抛光经济卡</p>
-						<p class="c-num">NO·203223333</p>
-					</div>
-					<div class="swiper-slide" >
-						<p class="c-title">洗车经济卡</p>
-						<p class="c-num">NO·203223333</p>
-					</div>
-					<div class="swiper-slide" >
-						<p class="c-title">修理经济卡</p>
-						<p class="c-num">NO·203223333</p>
-					</div>-->
+					<!--<div class="swiper-slide">
+                            <p class="c-title">洗车经济卡</p>
+                            <p class="c-num">NO·203223336</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <p class="c-title">打蜡经济卡</p>
+                            <p class="c-num">NO·203223333</p>
+                        </div>
+                        <div class="swiper-slide" >
+                            <p class="c-title">抛光经济卡</p>
+                            <p class="c-num">NO·203223333</p>
+                        </div>
+                        <div class="swiper-slide" >
+                            <p class="c-title">洗车经济卡</p>
+                            <p class="c-num">NO·203223333</p>
+                        </div>
+                        <div class="swiper-slide" >
+                            <p class="c-title">修理经济卡</p>
+                            <p class="c-num">NO·203223333</p>
+                        </div>-->
 				</div>
 				<!--分页器-->
 				<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
@@ -50,23 +50,23 @@
 		</div>  <!--nav结束-->
 		<div class="c-content">
 			<div class="c-box">
-				<table border="0" cellspacing="0" cellpadding="0" class="">
+				<table border="0" cellspacing="0" cellpadding="0" class="listtable">
 					<thead>
-						<tr>
-							<td class="td1">项目名称</td>
-							<td class="td2">有效日期</td>
-							<td class="td3">剩余次数</td>
-						</tr>
+					<tr>
+						<td class="td1">项目名称</td>
+						<td class="td2">有效日期</td>
+						<td class="td3">剩余次数</td>
+					</tr>
 					</thead>
 					<tbody id="listbody">
-					   <!--<tr>
-							<td class="td1">轿车-精洗</td>
-							<td class="td2">2017-06-21</td>
-							<td class="td3">10</td>
-						</tr>-->
-				  </tbody>
+					<!--<tr>
+                         <td class="td1">轿车-精洗</td>
+                         <td class="td2">2017-06-21</td>
+                         <td class="td3">10</td>
+                     </tr>-->
+					</tbody>
 				</table>
-				<div class="details">明细</div>
+				<%--<div class="details" id="details">明细</div>--%>
 			</div>
 		</div>
 
@@ -80,5 +80,6 @@
 	<div class="back">
 		<div class="b-btn" onclick="javascript:history.back(-1);">返回</div>
 	</div>
+	<input type="hidden" id="shopCode" class="shopCode" name="shopCode" value="<%=shopCode%>" >
 	</body>
 </html>

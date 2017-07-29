@@ -5,13 +5,13 @@
     String cardNumb=request.getParameter("cardNumb");
     String shopCode=request.getParameter("shopCode");
     String cusomerId=request.getParameter("customerId");
-    String plateNumber = request.getParameter("plateNumber");
+    String plateNumber = (String) request.getAttribute("plateNumber");
 %>
 
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>充值卡</title>
+    <title>充值卡明细</title>
     <link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
     <link rel="stylesheet" type="text/css" href="/styles/shoppersonCenter/rechargeableCardMX.css"/>
     <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
