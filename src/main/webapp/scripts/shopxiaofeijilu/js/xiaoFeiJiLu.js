@@ -195,7 +195,7 @@ $(document).ready(function () {
                                     '<span style="margin-left: 26px;">付款方式：</span>'+fkfs+
                                 '</div>'+
                             '</div>'+
-                        '<div class="btn">'+ sgbz +
+                        '<div class="btn">'+ sgbz +pingjia+
                          '</div>'+
                     '</div>'+
                 '</li>';

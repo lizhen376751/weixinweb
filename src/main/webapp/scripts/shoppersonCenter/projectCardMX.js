@@ -57,7 +57,7 @@ $(document).ready(function () {
         data    : {
             businessType   : "shoppersoncenter",
             shopCode   : shopCode,
-            customerId : "29628",
+            customerId : customerId,
             cardNumb   : cardNumb,
             plateNumber: plateNumber,
             servicetype:"projectCardMX"
