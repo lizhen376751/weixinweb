@@ -130,10 +130,8 @@ public class ShopWeiXinControl {
             model.addAttribute("wxpingzheng", request.getParameter("wxpingzheng")); //维修凭证
             model.addAttribute("shopCode", request.getParameter("shopCode")); //店铺编码
             if ("addPingJia".equals(sign)) { //添加消费评价页面
-                logger.info("==========跳转添加消费评价页面=========");
                 return "/shopconsumerEvaluation/consumerEvaluation.jsp";
             } else if ("queryPingJia".equals(sign)) { //查询消费评价页面
-                logger.info("==========跳转查询消费评价页面=========");
                 return "/shopconsumerEvaluation/consumerEvaluation1.jsp";
             }
         } else if ("projectCard".equals(serviceType)) { //跳转项目卡页面
