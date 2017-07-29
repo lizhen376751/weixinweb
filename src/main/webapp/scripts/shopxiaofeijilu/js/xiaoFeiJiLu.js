@@ -224,7 +224,7 @@ $(document).ready(function () {
             var customId = $(target).attr("customId");
             var shopCode = $(target).attr("shopCode");
             var wxpingzheng = $(target).attr("wxpingzheng");
-            window.location.href="/shopweixinServlet?serviceType=shopEvaluateParam&customId="+customId+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng+"&plateNumber="+plateNumber;
+            window.location.href="/shopweixinServlet?serviceType=shopEvaluateParam&sign=addPingJia&customId="+customId+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng+"&plateNumber="+plateNumber;
         }
         //已评价按钮
         if($(target).attr("yupingjia") == "yupingjia") {
@@ -232,7 +232,7 @@ $(document).ready(function () {
             var customId = $(target).attr("customId");
             var shopCode = $(target).attr("shopCode");
             var wxpingzheng = $(target).attr("wxpingzheng");
-            window.location.href="/shopweixinServlet?serviceType=shopEvaluateParam&customId="+customId+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng+"&plateNumber="+plateNumber;
+            window.location.href="/shopweixinServlet?serviceType=shopEvaluateParam&sign=queryPingJia&customId="+customId+"&shopCode="+shopCode+"&wxpingzheng="+wxpingzheng+"&plateNumber="+plateNumber;
         }
     })
 

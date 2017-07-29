@@ -60,8 +60,8 @@ public class ShopWeiXinControl {
             return "/shopxiaofeijilu/xiaofeijilu.jsp"; //消费记录
         } else if ("BaoYangTiXing".equals(flagStr)) {
             return "/shopbaoyangtixing/baoYangList.jsp"; //保养提醒
-       // } else if ("shoppersoncenter".equals(flagStr)) {
-        //    return "/shoppersonCenter/shoppersonalCenter.jsp"; //个人中心
+            // } else if ("shoppersoncenter".equals(flagStr)) {
+            //    return "/shoppersonCenter/shoppersonalCenter.jsp"; //个人中心
         } else if ("shoppersoncenter".equals(flagStr)) {
             return "/shoppersonCenter/grzx.jsp"; //个人中心
         } else if ("weixinshangcheng".equals(flagStr)) { //微信商城
@@ -112,6 +112,9 @@ public class ShopWeiXinControl {
             model.addAttribute("shopCode", request.getParameter("shopCode"));
             model.addAttribute("customerId", request.getParameter("customerId"));
             return "/shoppersonCenter/projectCardMX.jsp";
+        } else if ("projectCZHICard".equals(serviceType)) { //个人中心的充值卡明细页面
+            model.addAttribute("plateNumber", plateNumber);
+            return "/shoppersonCenter/projectCZHICard.jsp";
         } else if ("rechargeableCardMX".equals(serviceType)) { //个人中心充值卡明细页面
             model.addAttribute("plateNumber", plateNumber);
             model.addAttribute("cardNumb", request.getParameter("cardNumb"));
@@ -120,12 +123,17 @@ public class ShopWeiXinControl {
             return "/shoppersonCenter/rechargeableCardMX.jsp";
         } else if ("shoppersoncenter".equals(serviceType)) { //内部跳转至个人中心页面
             return "/shoppersonCenter/shoppersonalCenter.jsp";
-        } else if ("shopEvaluateParam".equals(serviceType)) { //消费记录评价页面
+        } else if ("shopEvaluateParam".equals(serviceType)) { //添加消费记录评价页面
+            String sign = request.getParameter("sign");
             model.addAttribute("plateNumber", request.getParameter("plateNumber")); //车牌号
             model.addAttribute("customId", request.getParameter("customId")); //客户id
             model.addAttribute("wxpingzheng", request.getParameter("wxpingzheng")); //维修凭证
             model.addAttribute("shopCode", request.getParameter("shopCode")); //店铺编码
-            return "/shopconsumerEvaluation/consumerEvaluation.jsp";
+            if ("addPingJia".equals(sign)) {
+                return "/shopconsumerEvaluation/consumerEvaluation.jsp";
+            } else {
+                return "/shopconsumerEvaluation/consumerEvaluation1.jsp";
+            }
         } else if ("projectCard".equals(serviceType)) { //跳转项目卡页面
             model.addAttribute("customerId", request.getParameter("customerId")); //客户ID
             return "/shoppersonCenter/projectCard.jsp";
