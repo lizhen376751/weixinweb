@@ -27,6 +27,8 @@ $(function(){
         var date=y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
         return date.substr(0, 11);
     }
+
+
     $.ajax({
         type: 'POST',
         url: '/shopAjax',
@@ -45,6 +47,7 @@ $(function(){
             console.log(json);
             var xmkhtnl="";
             var xmkview="";
+            var  xmkmingxi="";//项目卡明细跳转
             var xmklist=json.projectCardList;
             // if(json.projectCardList.length==0||json.projectCardList.length==null||xmklist==null){
             if(xmklist==null){
@@ -56,19 +59,23 @@ $(function(){
                                     '<p class="c-title">'+xmklist[i].cardName+'</p>'+
                                     '<p class="c-num">NO·'+xmklist[i].cardNumb+'</p>'+
                               '</div>'
+
                 }
                 //列表默认显示第一个的
                 for(var j=0;j<xmklist[0].list.length;j++){
                     var time=dateFormat(xmklist[0].list[j].currentTimes)
                     xmkview+='<tr>'+
-                        '<td class="td1">'+xmklist[0].list[j].projectName+'</td>'+
-                        '<td class="td2">'+time+'</td>'+
-                        '<td class="td3">'+xmklist[0].list[j].currentTimes+'</td>'+
-                        ' </tr>'
+                                '<td class="td1">'+xmklist[0].list[j].projectName+'</td>'+
+                                '<td class="td2">'+time+'</td>'+
+                                '<td class="td3">'+xmklist[0].list[j].currentTimes+'</td>'+
+                            ' </tr>'
                 }
+                xmkmingxi+='<div class="details" id="details" onclick="tCardMX('+xmklist[0].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'   //默认显示第一张项目卡的明细
 
                 $("#listbody").append(xmkview);
                 $(".swiper-wrapper").append(xmkhtnl);
+                $(".listtable").after(xmkmingxi);
+
             }
 
 
@@ -107,7 +114,10 @@ $(function(){
                 $(".listbody").remove();  //去掉原来的项目卡内容
                 var json = JSON.parse(jsonData);
                 var xmkview2="";
+                var xmkmingxi2="";    //项目明细跳转
                 var xmklist2=json.projectCardList;
+
+                xmkmingxi2+='<div class="details" id="details" onclick="tCardMX('+xmklist2[index].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'
 
                 for(var j=0;j<xmklist2[index].list.length;j++){
                     var time=dateFormat(xmklist2[index].list[j].currentTimes)
@@ -119,6 +129,8 @@ $(function(){
                 }
                 $("#listbody").html("");
                 $("#listbody").append(xmkview2);
+                $("#details").remove();
+                $(".listtable").after(xmkmingxi2);
 
 
             }
@@ -126,4 +138,9 @@ $(function(){
 
         });
     }
+
 });
+//项目卡明细跳转
+function tCardMX(a,b,c) {
+    window.location.href="/shopweixinServlet?serviceType=projectCardMX&cardNumb="+a+"&shopCode="+b+"&customerId="+c;
+};

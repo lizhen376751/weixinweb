@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>项目卡</title>
+    <title>项目卡明细</title>
     <link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
     <link rel="stylesheet" type="text/css" href="/styles/shoppersonCenter/projectCardMX.css"/>
     <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
