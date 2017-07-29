@@ -30,7 +30,7 @@
         </li>
 
     </ul>
-    <div class="back" id="fanhui">返回</div>
+    <div class="back" id="fanhui"  onclick="javascript:history.back(-1);">返回</div>
 </div>
 </body>
 <input type="hidden" id="cardNumb" name="cardNumb" value="<%=cardNumb%>" >
