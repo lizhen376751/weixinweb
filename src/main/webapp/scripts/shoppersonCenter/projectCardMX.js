@@ -63,8 +63,9 @@ $(document).ready(function () {
 
         },
         success : function(jsonData){
-            var json = JSON.parse(jsonData);
-            appending(json)
+            //var json = JSON.parse(jsonData);
+            console.log(jsonData)
+            appending(jsonData)
         }
     });
   $("#fanhui").on("click",function () {
