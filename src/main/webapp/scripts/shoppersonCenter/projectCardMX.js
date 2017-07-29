@@ -59,7 +59,7 @@ $(document).ready(function () {
             shopCode   : shopCode,
             customerId : "29628",
             cardNumb   : cardNumb,
-            plateNumber: "鲁A2032",
+            plateNumber: plateNumber,
             servicetype:"projectCardMX"
 
         },
