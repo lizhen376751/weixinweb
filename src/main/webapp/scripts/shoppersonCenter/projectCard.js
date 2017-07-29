@@ -140,6 +140,11 @@ $(function(){
     }
 
 });
+//返回键按钮  返回到个人中心页面
+$(".b-btn").onclick(function(){
+    window.location.href = "/shopweixinMenuServlet?flagStr=shoppersoncenter&shopcode=" + shopCode.val()
+})
+
 //项目卡明细跳转
 function tCardMX(a,b,c) {
     window.location.href="/shopweixinServlet?serviceType=projectCardMX&cardNumb="+a+"&shopCode="+b+"&customerId="+c;

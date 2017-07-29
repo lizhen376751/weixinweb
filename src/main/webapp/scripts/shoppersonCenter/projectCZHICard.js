@@ -129,7 +129,10 @@ $(function(){
         });
     }
 });
-
+//返回键按钮  返回到个人中心页面
+$(".b-btn").onclick(function(){
+    window.location.href = "/shopweixinMenuServlet?flagStr=shoppersoncenter&shopcode=" + shopCode.val()
+})
 //充值卡跳转页面
 function changeCardCZ(a,b,c) {
     window.location.href="/shopweixinServlet?serviceType=rechargeableCardMX&cardNumb="+a+"&shopCode="+b+"&customerId="+c;

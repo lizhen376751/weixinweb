@@ -78,7 +78,7 @@
 	</div>
 	<!--返回按钮-->
 	<div class="back">
-		<div class="b-btn" onclick="javascript:history.back(-1);">返回</div>
+		<div class="b-btn" >返回</div>
 	</div>
 	<input type="hidden" id="shopCode" class="shopCode" name="shopCode" value="<%=shopCode%>" >
 	</body>
