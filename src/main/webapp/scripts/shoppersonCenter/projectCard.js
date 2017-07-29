@@ -138,12 +138,12 @@ $(function(){
 
         });
     }
-
-});
 //返回键按钮  返回到个人中心页面
-$(".b-btn").onclick(function(){
-    window.location.href = "/shopweixinMenuServlet?flagStr=shoppersoncenter&shopcode=" + shopCode.val()
-})
+    $(".b-btn").click(function(){
+        window.location.href = "shopweixinMenuServlet?shopcode="+shopCode.val()+"_shoppersoncenter";
+    })
+});
+
 
 //项目卡明细跳转
 function tCardMX(a,b,c) {
