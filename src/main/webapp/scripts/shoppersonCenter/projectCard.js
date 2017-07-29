@@ -14,19 +14,7 @@ $(function(){
         if(reg.test(location.href)) return decodeURI(RegExp.$2.replace(/\+/g, " "));
         return "";
     };
-    var galleryThumbs = new Swiper('.gallery-thumbs', {
-        pagination: '.swiper-pagination',
-        spaceBetween: 10,
-        centeredSlides: true,
-        slidesPerView: 1.5,
-        touchRatio: 0.2,
-        onSlideChangeEnd:function(swiper){    //获取当前swiper的索引值
-            console.log(swiper.activeIndex)
-            funswiper(swiper.activeIndex);
-        },
-//      slideToClickedSlide: true,
-        loop:false
-    });
+
     var customerId=getvl("customerId")    //获取地址栏传参客户ID
     var indexsiper=0;   //swiper默认显示的是第一条项目卡的list
     //请求多少张项目卡的请求
@@ -54,11 +42,12 @@ $(function(){
         async: false,
         success: function (jsonData) {
            var json = JSON.parse(jsonData);
-            //console.log(json);
+            console.log(json);
             var xmkhtnl="";
             var xmkview="";
             var xmklist=json.projectCardList;
-            if(xmklist.length==0||xmklist.length==null){
+            // if(json.projectCardList.length==0||json.projectCardList.length==null||xmklist==null){
+            if(xmklist==null){
                 $("#wrap").hide();    //项目卡列表隐藏
                 $(".n-card").show();    //没有项目卡的提示显示
             }else{
@@ -68,15 +57,40 @@ $(function(){
                                     '<p class="c-num">NO·'+xmklist[i].cardNumb+'</p>'+
                               '</div>'
                 }
+                //列表默认显示第一个的
+                for(var j=0;j<xmklist[0].list.length;j++){
+                    var time=dateFormat(xmklist[0].list[j].currentTimes)
+                    xmkview+='<tr>'+
+                        '<td class="td1">'+xmklist[0].list[j].projectName+'</td>'+
+                        '<td class="td2">'+time+'</td>'+
+                        '<td class="td3">'+xmklist[0].list[j].currentTimes+'</td>'+
+                        ' </tr>'
+                }
+
+                $("#listbody").append(xmkview);
+                $(".swiper-wrapper").append(xmkhtnl);
             }
 
-            $(".swiper-wrapper").append(xmkhtnl);
+
 
         }
 
 
     });
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 1.5,
+        centeredSlides: true,
+        paginationClickable: true,
+        onSlideChangeEnd:function(swiper){    //获取当前swiper的索引值
+            //alert(swiper.activeIndex)
+            funswiper(swiper.activeIndex);
+        },
+        spaceBetween: 30
 
+//      slideToClickedSlide: true,
+
+    });
 
    function funswiper(index){
         $.ajax({
@@ -86,32 +100,26 @@ $(function(){
                 businessType: "shoppersoncenter",
                 servicetype: "personalRightsAndInterests",
                 customerId: customerId
-                // plateNumb: car_num.text()
-                /*shopCode: "0533001",
-                 customerId : 28763,
-                 plateNumb: "闽A12121"*/
+
             },
             async: false,
             success: function (jsonData) {
                 $(".listbody").remove();  //去掉原来的项目卡内容
                 var json = JSON.parse(jsonData);
-                console.log(json);
                 var xmkview2="";
                 var xmklist2=json.projectCardList;
-                if(xmklist2.length==0||xmklist2.length==null){
-                    $("#wrap").hide();    //项目卡列表隐藏
-                    $(".n-card").show();    //没有项目卡的提示显示
-                }else{
-                        for(var j=0;j<xmklist2[index].list.length;j++){
-                            var time=dateFormat(xmklist2[index].list[j].currentTimes)
-                            xmkview2+='<tr>'+
-                                            '<td class="td1">'+xmklist2[index].list[j].projectName+'</td>'+
-                                            '<td class="td2">'+xmklist2[index].list[j].projectName+'</td>'+
-                                            '<td class="td3">'+time+'</td>'+
-                                      ' </tr>'
-                        }
+
+                for(var j=0;j<xmklist2[index].list.length;j++){
+                    var time=dateFormat(xmklist2[index].list[j].currentTimes)
+                    xmkview2+='<tr>'+
+                                    '<td class="td1">'+xmklist2[index].list[j].projectName+'</td>'+
+                                    '<td class="td2">'+time+'</td>'+
+                                    '<td class="td3">'+xmklist2[index].list[j].currentTimes+'</td>'+
+                              ' </tr>'
                 }
-                $(".listbody").append(xmkview2);
+                $("#listbody").html("");
+                $("#listbody").append(xmkview2);
+
 
             }
 

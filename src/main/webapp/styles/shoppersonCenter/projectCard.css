@@ -15,7 +15,7 @@ body{
 	height: 5.3rem;
 }
 .gallery-thumbs .swiper-wrapper{
-	transform: translate3d(1.84rem, 0px, 0px); 
+	transform: translate3d(1.84rem, 0px, 0px);
 	transition-duration: 0ms;
 }
 .gallery-thumbs .swiper-slide{
