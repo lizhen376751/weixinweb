@@ -69,9 +69,9 @@ $(document).ready(function () {
             appending(json)
         }
     });
-  $("#fanhui").on("click",function () {
-      window.location.href = "/shopweixinServlet?serviceType=projectCardMX&customerId="+customerId
-      // window.location.href="/shopweixinServlet?serviceType=shoppersoncenter"
-  })
+  // $("#fanhui").on("click",function () {
+  //     window.location.href = "/shopweixinServlet?serviceType=projectCardMX&customerId="+customerId
+  //     // window.location.href="/shopweixinServlet?serviceType=shoppersoncenter"
+  // })
 
 })

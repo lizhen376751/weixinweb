@@ -70,10 +70,10 @@ $(document).ready(function () {
             appending(json)
         }
     });
-    $(".back").on("click",function () {
-        window.location.href = "/shopweixinServlet?serviceType=projectCZHICard&customerId="+customerId
-       // window.location.href="/shopweixinServlet?serviceType=shoppersoncenter"
-    })
+    // $(".back").on("click",function () {
+    //     window.location.href = "/shopweixinServlet?serviceType=projectCZHICard&customerId="+customerId
+    //    // window.location.href="/shopweixinServlet?serviceType=shoppersoncenter"
+    // })
 
 
 })
