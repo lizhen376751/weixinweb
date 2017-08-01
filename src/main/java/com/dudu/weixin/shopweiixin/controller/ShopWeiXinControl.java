@@ -122,7 +122,7 @@ public class ShopWeiXinControl {
             model.addAttribute("customerId", request.getParameter("customerId"));
             return "/shoppersonCenter/rechargeableCardMX.jsp";
         } else if ("shoppersoncenter".equals(serviceType)) { //内部跳转至个人中心页面
-            return "/shoppersonCenter/shoppersonalCenter.jsp";
+            return "/shoppersonCenter/grzx.jsp"; //个人中心
         } else if ("shopEvaluateParam".equals(serviceType)) { //消费记录评价页面
             String sign = request.getParameter("sign");
             model.addAttribute("plateNumber", request.getParameter("plateNumber")); //车牌号

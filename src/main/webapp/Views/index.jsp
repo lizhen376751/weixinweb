@@ -61,6 +61,12 @@
 </head>
 <body>
 
+<form action="http://exampleurl/" method="post" enctype="multipart/form-data">
+    <input type="text" name="usrId" value="usrId" id="usrId"/>
+    <input type="file" name="file" value="file"/>
+    <input name="submit" type="submit" id="submit"/>
+</form>
+
 <form name="form1" method="post" action="checkAction.jsp">
     <div class="regform">
         <ul>
