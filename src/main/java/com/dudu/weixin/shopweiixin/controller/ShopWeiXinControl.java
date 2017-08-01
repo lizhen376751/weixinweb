@@ -114,7 +114,9 @@ public class ShopWeiXinControl {
             return "/shoppersonCenter/projectCardMX.jsp";
         } else if ("projectCZHICard".equals(serviceType)) { //个人中心的充值卡明细页面
             model.addAttribute("plateNumber", plateNumber);
-            return "/shoppersonCenter/projectCZHICard.jsp";
+            model.addAttribute("cardNumb", request.getParameter("cardNumb"));
+            model.addAttribute("shopCode", request.getParameter("shopCode"));
+            model.addAttribute("customerId", request.getParameter("customerId"));
         } else if ("rechargeableCardMX".equals(serviceType)) { //个人中心充值卡明细页面
             model.addAttribute("plateNumber", plateNumber);
             model.addAttribute("cardNumb", request.getParameter("cardNumb"));
