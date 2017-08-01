@@ -29,6 +29,7 @@ $(function(){
         },
         success:function(jsondata){
             var json = JSON.parse(jsondata);
+           console.log(json)
                 //    是否含有消费商品判断
                 if(json.commodityMx.length != 0){
                     for(var j = 0;j < json.commodityMx.length;j++){
@@ -68,25 +69,19 @@ $(function(){
             '</ul>'+
             '</div>'+
             '<div class="project_text">'+
-            '<textarea class="font_4" rows="4" maxlength="110" placeholder="评论：本店的服务满足您的期待吗？请评价一下我们的优点和不足的地方吧!（满足15个字才是 好同志哦！）"></textarea>'+
+            '<textarea class="font_4" rows="4" maxlength="110" disabled="disabled"></textarea>'+
             '<ul>'+
             '<li class="margin_r">'+
             '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
-            '<input type="hidden" class="uuid" value="" />'+
-            '<input type="hidden" class="mxid" value="1" />'+
             '</li>'+
             '<li class="margin_r hide">'+
             '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
-            '<input type="hidden" class="uuid" value="" />'+
-            '<input type="hidden" class="mxid" value="2" />'+
             '</li>'+
             '<li class="hide">'+
             '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
-            '<input type="hidden" class="uuid" value="" />'+
-            '<input type="hidden" class="mxid" value="3" />'+
             '</li>'+
             '</ul>'+
             '</div>'+
@@ -104,8 +99,62 @@ $(function(){
         },
         success:function(jsondata){
             var json=JSON.parse(jsondata)
-            console.log(json)
+            console.log(json);
+            if(json.length>0){
+                //获取商品或者项目的评价个数
+                 var commodityStarlevel=json[0].commodityStarlevel;
+                 switch (commodityStarlevel){
+                     case "ONE":flower("project_num",1);
+                          break;
+                     case "TWO":flower("project_num",2);
+                         break;
+                     case "THRER":flower("project_num",3);
+                         break;
+                     case "FOUR":flower("project_num",4);
+                         break;
+                     case "FIVE":flower("project_num",5);
+                         break;
+
+                 };
+                 //获取店铺的评价个数
+                var shopStarlevel=json[0].shopStarlevel;
+                switch (shopStarlevel){
+                    case "ONE":flower("shop_num",1);
+                        break;
+                    case "TWO":flower("shop_num",2);
+                        break;
+                    case "THRER":flower("shop_num",3);
+                        break;
+                    case "FOUR":flower("shop_num",4);
+                        break;
+                    case "FIVE":flower("shop_num",5);
+                        break;
+
+                }
+                //获取评价的内容
+
+                $(".project_text").find("textarea").text(json[0].commodityContent);
+                //获取图片
+                var nnn=json[0].imgs;
+                if(nnn.length>0){
+                     for(var imglen=0;imglen<nnn.length;imglen++){
+                         $(".project_text").find("li").eq(imglen).find("img").attr("src",nnn[imglen]);
+                     }
+                };
+            }
+
         }
     });
+
+    function flower(name,num){
+        $("."+name).find("li").each(function(index,element){
+             if(index<num){
+                 $(this).find("img").attr("src","/files/shopconsumerEvaluation/flower_gb.png");
+             }
+
+        })
+
+
+    }
 
 })
