@@ -391,6 +391,9 @@ $(function () {
         window.location.href = "/shopweixinServlet?serviceType=projectCZHICard&customerId="+khID
 
     });
-
+//退出账号按钮点击
+    quit.on("click",function () {
+        window.location.href = "/shopweixinServlet?serviceType=signout";
+    })
 
 });
