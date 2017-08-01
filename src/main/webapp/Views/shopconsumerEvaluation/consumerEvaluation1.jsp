@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <meta charset="UTF-8">
-    <title>消费评价</title>
+    <title>消费评价查看</title>
     <!--引入css-->
     <link rel="stylesheet" type="text/css" href="/styles/wxlm.css"/>
     <link rel="stylesheet" type="text/css" href="/styles/shopconsumerEvaluation/consumerEvaluation.css"/>
@@ -16,7 +16,7 @@
     <script type="text/javascript" src="/scripts/shopconsumerEvaluation/oss/base64.js"></script>
     <script type="text/javascript" src="/scripts/shopconsumerEvaluation/oss/app.js"></script>
     <script src="/scripts/main.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/scripts/shopconsumerEvaluation/consumerEvaluation.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/shopconsumerEvaluation/consumerEvaluation2.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 <input type="hidden" name="plateNumber" value="${plateNumber}" id="plateNumber">
