@@ -113,7 +113,7 @@ $(function(){
 	//点击选花按钮
 	function click_flower () {
 		var classN = $(this).attr("class");
-//		console.log(classN)
+//		 console.log(classN)
 		var imgs = $("."+classN);
 		for (var i = 0;i < imgs.length;i++) {
 			$(imgs[i]).attr("index",i);
@@ -297,13 +297,15 @@ $(function(){
 			};
 			data.evaluateCommodities.push(obj);
 		}
+		console
         var img_val = $(".project_num input");
         var arr = [];
         for(var i = 0; i < img_val.length;i++){
             var val = $(img_val[i]).val();
             arr.push(val);
         }
-		var dj_val = $.inArray("0",arr);
+		var dj_val = $.inArray("0",arr);   //判断arr数组中是否包含值为0的元素  有则返回其索引值，没有则返回-1
+        //  console.log(dj_val)
 		//2不能提交；1可以提交
 		if(dj_val == "-1" && dp_val != "0"){
 		    var json_data = JSON.stringify(data);
@@ -322,12 +324,12 @@ $(function(){
                 }
 
             });
-			console.log(data)
+			//console.log(data)
 		}else{
 			alert(2)
-            console.log(data)
+           // console.log(data)
 		}
-		console.log($.inArray("0",arr))
+		//console.log($.inArray("0",arr))
 		
 	})
 })
