@@ -307,8 +307,8 @@ $(function(){
         }
 		var dj_val = $.inArray("0",arr);   //判断arr数组中是否包含值为0的元素  有则返回其索引值，没有则返回-1
         //  console.log(dj_val)
-		//-1 不能提交
-		if(dj_val == "-1" && dp_val == "0"){   //判断商品，项目，店铺的星级评价是否为空
+		//-1 可以提交证明里面没有值为0的评价
+		if(dj_val != "-1" || dp_val == "0"){   //判断商品，项目，店铺的星级评价是否为空
               alert("请进行星级评价")
 		}else{
             var json_data = JSON.stringify(data);
