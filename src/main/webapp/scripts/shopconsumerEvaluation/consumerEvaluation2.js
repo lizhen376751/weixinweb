@@ -53,7 +53,6 @@ $(function(){
     });
     //动态添加每一个评价模块(商品或项目名称，销售或技师ID，商品或项目编码，商品或项目区分)
     function addPJ(name,ServiceStaff,CommodityCode,ComIdentifica) {
-        var classes = uuid(4,16);
         var sp = '<div class="box">'+
             '<div class="box_l" ServiceStaff="'+ServiceStaff+'" CommodityCode="'+CommodityCode+'" ComIdentifica="'+ComIdentifica+'">'+
             '<div class="project_title font_3">'+
@@ -62,33 +61,33 @@ $(function(){
             '<div class="project_num">'+
             '<span class="font_1 color_8">您的评价</span>'+
             '<ul>'+
-            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="'+classes+'"/></li>'+
-            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="'+classes+'"/></li>'+
-            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="'+classes+'"/></li>'+
-            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="'+classes+'"/></li>'+
-            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" class="'+classes+'"/></li>'+
+            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" /></li>'+
+            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" /></li>'+
+            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png"/></li>'+
+            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" /></li>'+
+            '<li><img src="/files/shopconsumerEvaluation/flower_bg.png" /></li>'+
             '</ul>'+
-            '<input type="hidden" class="'+classes+'_val" value="0" />'+
+            '<input type="hidden"  value="0" />'+
             '</div>'+
             '<div class="project_text">'+
             '<textarea class="font_4" rows="4" maxlength="110" placeholder="评论：本店的服务满足您的期待吗？请评价一下我们的优点和不足的地方吧!（满足15个字才是 好同志哦！）"></textarea>'+
             '<ul>'+
             '<li class="margin_r">'+
-            '<input type="file" class="project_file" mxid="'+classes+'"/>'+
+            '<input type="file" class="project_file" />'+
             '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '<input type="hidden" class="uuid" value="" />'+
             '<input type="hidden" class="mxid" value="1" />'+
             '</li>'+
             '<li class="margin_r hide">'+
-            '<input type="file" class="project_file" mxid="'+classes+'"/>'+
+            '<input type="file" class="project_file" />'+
             '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '<input type="hidden" class="uuid" value="" />'+
             '<input type="hidden" class="mxid" value="2" />'+
             '</li>'+
             '<li class="hide">'+
-            '<input type="file" class="project_file" mxid="'+classes+'"/>'+
+            '<input type="file" class="project_file" />'+
             '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '<input type="hidden" class="uuid" value="" />'+
@@ -110,7 +109,7 @@ $(function(){
         },
         success:function(jsondata){
             var json=JSON.parse(jsondata)
-            console.log(json);
+            //console.log(json);
             if(json.length>0){
                 for(var ii=0;ii<json.length;ii++){
                     var thiselem=$("div[commoditycode='"+json[ii].commodityCode+"']");
