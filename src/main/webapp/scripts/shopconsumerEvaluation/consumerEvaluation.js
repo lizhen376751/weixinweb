@@ -298,7 +298,7 @@ $(function(){
 			data.evaluateCommodities.push(obj);
 		}
 
-		获取
+		//获取
         var img_val = $(".project_num input");
         var arr = [];
         for(var i = 0; i < img_val.length;i++){
