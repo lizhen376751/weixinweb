@@ -109,10 +109,17 @@ $(function(){
         },
         success:function(jsondata){
             var json=JSON.parse(jsondata)
-            //console.log(json);
+            var thiselem=0;
+            var box_llen=$(".box_l");
+            console.log(json);
             if(json.length>0){
                 for(var ii=0;ii<json.length;ii++){
-                    var thiselem=$("div[commoditycode='"+json[ii].commodityCode+"']");
+                    for(var aaa=0;aaa<box_llen.length;aaa++){
+                        if(box_llen.eq(aaa).attr("commoditycode")==json[ii].commodityCode){
+                            thiselem=thiselem;
+                        }
+                    }
+                 //   var thiselem=$("div[commoditycode='"+json[ii].commodityCode+"']");
                 //获取商品或者项目的评价个数
                  var commodityStarlevel=json[ii].commodityStarlevel;
                  switch (commodityStarlevel){
