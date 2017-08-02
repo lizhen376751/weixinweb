@@ -45,6 +45,79 @@ $(function(){
             $(".shop_num").attr("OrderType",json.ordertype);//单据类型
             $(".shop_num").attr("CreateDate",json.kprq);//开票日期
 
+            //获取已评价的内容
+            $.ajax({
+                type: 'POST',
+                url: '/shopAjax?businessType=getEvaluateParam',
+                data: {
+                    businessType: "getEvaluateParam",
+                },
+                success:function(jsondata){
+                    var json=JSON.parse(jsondata)
+                    console.log(json);
+                    if(json.length>0){
+                        for(var ii=0;ii<json.length;ii++){
+                            var thiselem=$("div[commoditycode='"+json[ii].commodityCode+"']");
+                            //获取商品或者项目的评价个数
+                            var commodityStarlevel=json[ii].commodityStarlevel;
+                            switch (commodityStarlevel){
+                                case "ONE":flower(thiselem,"project_num",1);
+                                    break;
+                                case "TWO":flower(thiselem,"project_num",2);
+                                    break;
+                                case "THRER":flower(thiselem,"project_num",3);
+                                    break;
+                                case "FOUR":flower(thiselem,"project_num",4);
+                                    break;
+                                case "FIVE":flower(thiselem,"project_num",5);
+                                    break;
+
+                            };
+                            //获取店铺的评价个数
+                            var shopStarlevel=json[0].shopStarlevel;
+                            switch (shopStarlevel){
+                                case "ONE":shopflower("shop_num",1);
+                                    break;
+                                case "TWO":shopflower("shop_num",2);
+                                    break;
+                                case "THRER":shopflower("shop_num",3);
+                                    break;
+                                case "FOUR":shopflower("shop_num",4);
+                                    break;
+                                case "FIVE":shopflower("shop_num",5);
+                                    break;
+
+                            }
+                            //获取评价的内容
+                            thiselem.find(".project_text").find("textarea").text(json[ii].commodityContent);
+                            //获取图片
+                            var nnn=json[ii].imgs;
+                            //alert(nnn.length)
+                            if(nnn.length>0 && nnn!=null){
+                                for(var imglen=0;imglen<nnn.length;imglen++){
+                                    thiselem.find(".project_text").find("li").eq(imglen).find("img").attr("src",nnn[imglen]);
+                                }
+                            };
+                        }
+                    }
+                    function flower(elem,name,num){    //商品的评价
+                        elem.children("."+name).find("li").each(function(index,element){
+                            if(index<num){
+                                $(this).find("img").attr("src","/files/shopconsumerEvaluation/flower_gb.png");
+                            }
+                        })
+                    }
+                    function shopflower(name,num){    //店铺的评价
+
+                        $(".shop_num").find("li").each(function(index,element){
+                            if(index<num){
+                                $(this).find("img").attr("src","/files/shopconsumerEvaluation/flower_gb.png");
+                            }
+                        })
+                    }
+                }
+            });
+
         },
         error:function(data){
 
@@ -90,80 +163,9 @@ $(function(){
         project.append(sp)
 
     }
-//获取已评价的内容
-    $.ajax({
-        type: 'POST',
-        url: '/shopAjax?businessType=getEvaluateParam',
-        data: {
-            businessType: "getEvaluateParam",
-        },
-        success:function(jsondata){
-            var json=JSON.parse(jsondata)
-            console.log(json);
-            if(json.length>0){
-                for(var ii=0;ii<json.length;ii++){
-                    var thiselem=$("div[commoditycode='"+json[ii].commodityCode+"']");
-                    //获取商品或者项目的评价个数
-                    var commodityStarlevel=json[ii].commodityStarlevel;
-                    switch (commodityStarlevel){
-                        case "ONE":flower(thiselem,"project_num",1);
-                            break;
-                        case "TWO":flower(thiselem,"project_num",2);
-                            break;
-                        case "THRER":flower(thiselem,"project_num",3);
-                            break;
-                        case "FOUR":flower(thiselem,"project_num",4);
-                            break;
-                        case "FIVE":flower(thiselem,"project_num",5);
-                            break;
 
-                    };
-                    //获取店铺的评价个数
-                    var shopStarlevel=json[0].shopStarlevel;
-                    switch (shopStarlevel){
-                        case "ONE":shopflower("shop_num",1);
-                            break;
-                        case "TWO":shopflower("shop_num",2);
-                            break;
-                        case "THRER":shopflower("shop_num",3);
-                            break;
-                        case "FOUR":shopflower("shop_num",4);
-                            break;
-                        case "FIVE":shopflower("shop_num",5);
-                            break;
 
-                    }
-                    //获取评价的内容
-                    thiselem.find(".project_text").find("textarea").text(json[ii].commodityContent);
-                    //获取图片
-                    var nnn=json[ii].imgs;
-                    //alert(nnn.length)
-                    if(nnn.length>0 && nnn!=null){
-                        for(var imglen=0;imglen<nnn.length;imglen++){
-                            thiselem.find(".project_text").find("li").eq(imglen).find("img").attr("src",nnn[imglen]);
-                        }
-                    };
-                }
-            }
 
-        }
-    });
-
-    function flower(elem,name,num){    //商品的评价
-
-        elem.find("."+name).find("li").each(function(index,element){
-            if(index<num){
-                $(this).find("img").attr("src","/files/shopconsumerEvaluation/flower_gb.png");
-            }
-        })
-    }
-    function shopflower(name,num){    //店铺的评价
-
-        $(".shop_num").find("li").each(function(index,element){
-            if(index<num){
-                $(this).find("img").attr("src","/files/shopconsumerEvaluation/flower_gb.png");
-            }
-        })
-    }
 
 })
+
