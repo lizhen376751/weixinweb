@@ -249,7 +249,7 @@ $(function(){
     }
 	//---------------------------------------------------------------------------提交评价
 	btn.on("click",function(){
-        var dp_val = $(".dp_val").val();
+        var dp_val = $(".dp_val").val();  //获取店铺的星级评价
 		//数据包
 		var data = {
             evaluateMain :{
@@ -297,7 +297,8 @@ $(function(){
 			};
 			data.evaluateCommodities.push(obj);
 		}
-		console
+
+		获取
         var img_val = $(".project_num input");
         var arr = [];
         for(var i = 0; i < img_val.length;i++){
@@ -306,9 +307,11 @@ $(function(){
         }
 		var dj_val = $.inArray("0",arr);   //判断arr数组中是否包含值为0的元素  有则返回其索引值，没有则返回-1
         //  console.log(dj_val)
-		//2不能提交；1可以提交
-		if(dj_val == "-1" && dp_val != "0"){
-		    var json_data = JSON.stringify(data);
+		//-1 不能提交
+		if(dj_val == "-1" && dp_val == "0"){   //判断商品，项目，店铺的星级评价是否为空
+              alert("请进行星级评价")
+		}else{
+            var json_data = JSON.stringify(data);
             $.ajax({
                 type    : 'POST',
                 url     : '/shopAjax?businessType=addEvaluate',
@@ -316,7 +319,8 @@ $(function(){
                     aa:json_data,
                 },
                 success:function(jsondata){
-                    // var json = JSON.parse(jsondata);
+                    alert("评价成功");
+                    window.location.go(-1) //是刷新上一页
 
                 },
                 error:function(data){
@@ -324,12 +328,7 @@ $(function(){
                 }
 
             });
-			//console.log(data)
-		}else{
-			alert(2)
-           // console.log(data)
 		}
-		//console.log($.inArray("0",arr))
 		
 	})
 })
