@@ -137,6 +137,7 @@ $(function(){
                     thiselem.find(".project_text").find("textarea").text(json[ii].commodityContent);
                     //获取图片
                     var nnn=json[ii].imgs;
+                    alert(nnn.length)
                     if(nnn.length>0 && nnn.length!=null){
                         for(var imglen=0;imglen<nnn.length;imglen++){
                             thiselem.find(".project_text").find("li").eq(imglen).find("img").attr("src",nnn[imglen]);
