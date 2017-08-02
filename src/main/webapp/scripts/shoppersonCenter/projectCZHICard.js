@@ -15,6 +15,7 @@ $(function(){
     };
 
     var customerId=getvl("customerId")    //获取地址栏传参客户ID
+    var plateNumber = $("#plateNumber").val();
     var indexsiper=0;   //swiper默认显示的是第一条项目卡的list
     //请求多少张项目卡的请求
     //转化时间戳
@@ -26,6 +27,8 @@ $(function(){
         var date=y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
         return date.substr(0, 11);
     }
+
+    //上面轮播所有充值卡的请求
     $.ajax({
         type: 'POST',
         url: '/shopAjax',
@@ -41,7 +44,7 @@ $(function(){
         async: false,
         success: function (jsonData) {
            var json = JSON.parse(jsonData);
-            console.log(json);
+             console.log(json);
             var czkhtnl="";
             var czkview="";
             var  czkmingxi="";//充值卡明细跳转
@@ -53,23 +56,48 @@ $(function(){
             }else{
                 for(var i=0;i<czklist.length;i++){
                     czkhtnl+='<div class="swiper-slide">'+
-                                    '<p class="c-title">'+czklist[i].cardName+'</p>'+
-                                    '<p class="c-num">NO·'+czklist[i].cardNumb+'</p>'+
+                                    '<p class="c-zong c-title">'+czklist[i].cardName+'</p>'+
+                                    '<p class="c-zong c-num">NO·'+czklist[i].cardNumb+'</p>'+
+                                    '<p class=" c-zong c-money">剩余金额:'+czklist[i].residualAmount+'</p>'+
+                                    '<p class="c-zong  c-time">'+dateFormat(czklist[i].validDate)+'&nbsp;&nbsp;</p>'+
                               '</div>'
                 }
-                //列表默认显示第一个的
-                var cztime=dateFormat(czklist[0].validDate)
-                czkview+='<tr>'+
-                            '<td class="td1">'+czklist[0].cardName+'</td>'+
-                            '<td class="td2">'+cztime+'</td>'+
-                            '<td class="td3">'+czklist[0].residualAmount+'</td>'+
-                        ' </tr>'
+                //列表默认显示第一个的明细列表
+                $.ajax({
+                    type    : 'POST',
+                    url     : '/pagingquery',
+                    data    : {
+                        businessType   : "shoppersoncenter",
+                        shopCode   : shopCode.val(),
+                        customerId : customerId,
+                        cardNumb   : czklist[0].cardNumb,
+                        plateNumber: plateNumber,
+                        servicetype:"rechargeableCardMX"
 
-                czkmingxi+='<div class="details" id="details" onclick="changeCardCZ('+czklist[0].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'   //默认显示第一张项目卡的明细
+                    },
+                    success : function(jsonData){
+                        var arr = JSON.parse(jsonData);
+                        //console.log(arr)
+                        for (var i = 0;i < arr.length;i++) {
+                            for(var n = 0;n <arr[i].rechargeableCardContentList.length;n++) {
+                                czkview += '<tr>'+
+                                    '<td class="td1">'+arr[i].rechargeableCardContentList[n].itemOrProductName+'</td>'+
+                                    '<td class="td2">'+dateFormat(arr[i].rechargeableCardContentList[n].transactionTime)+'</td>'+
+                                    '<td class="td3">￥'+arr[i].rechargeableCardContentList[n].transactionAmount+'</td>'+
+                                    ' </tr>';
+                            }
 
-                $("#listbody").append(czkview);
+                        }
+                        $("#listbody").append(czkview);
+                    }
+                });
+
+
+               // czkmingxi+='<div class="details" id="details" onclick="changeCardCZ('+czklist[0].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'   //默认显示第一张项目卡的明细
+
+
                 $(".swiper-wrapper").append(czkhtnl);
-                $(".listtable").after(czkmingxi);
+               // $(".listtable").after(czkmingxi);
             }
 
 
@@ -94,47 +122,68 @@ $(function(){
     });
 //轮播的时候下面的列表动态变化函数
    function funswiper(index){
-        $.ajax({
-            type: 'POST',
-            url: '/shopAjax',
-            data: {
-                businessType: "shoppersoncenter",
-                servicetype: "personalRightsAndInterests",
-                customerId: customerId
+    $.ajax({
+        type: 'POST',
+        url: '/shopAjax',
+        data: {
+            businessType: "shoppersoncenter",
+            servicetype: "personalRightsAndInterests",
+            customerId: customerId
 
-            },
-            async: false,
-            success: function (jsonData) {
-                $(".listbody").remove();  //去掉原来的项目卡内容
-                var json = JSON.parse(jsonData);
-                var czkview2="";
-                var czklist2=json.rechargeableCardList;
-                var cakmingxi2="";    //充值卡明细跳转
-                var cztime2=dateFormat(czklist2[index].validDate)
-                czkview2+='<tr>'+
-                                '<td class="td1">'+czklist2[index].cardName+'</td>'+
-                                '<td class="td2">'+cztime2+'</td>'+
-                                '<td class="td3">'+czklist2[index].residualAmount+'</td>'+
-                          ' </tr>'
-                cakmingxi2+='<div class="details" id="details" onclick="changeCardCZ('+czklist2[index].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'
+        },
+        async: false,
+        success: function (jsonData) {
+            $(".listbody").remove();  //去掉原来的项目卡内容
+            var json = JSON.parse(jsonData);
+            var czkview2="";
+            var czklist2=json.rechargeableCardList;
+            //轮播滑动时调用相应的详情请求
+            $.ajax({
+                type    : 'POST',
+                url     : '/pagingquery',
+                data    : {
+                    businessType   : "shoppersoncenter",
+                    shopCode   : shopCode.val(),
+                    customerId : customerId,
+                    cardNumb   : czklist2[index].cardNumb,
+                    plateNumber: plateNumber,
+                    servicetype:"rechargeableCardMX"
 
-                $("#listbody").html("");
-                $("#listbody").append(czkview2);
-                $("#details").remove();
-                $(".listtable").after(cakmingxi2);
+                },
+                success : function(jsonData){
+                    var arr = JSON.parse(jsonData);
+                   // console.log(arr)
+                    for (var i = 0;i < arr.length;i++) {
+                        for(var n = 0;n <arr[i].rechargeableCardContentList.length;n++) {
+                            czkview2 += '<tr>'+
+                                '<td class="td1">'+arr[i].rechargeableCardContentList[n].itemOrProductName+'</td>'+
+                                '<td class="td2">'+dateFormat(arr[i].rechargeableCardContentList[n].transactionTime)+'</td>'+
+                                '<td class="td3">￥'+arr[i].rechargeableCardContentList[n].transactionAmount+'</td>'+
+                                ' </tr>';
+                        }
 
-            }
+                    }
+                    $("#listbody").html("");
+                    $("#listbody").append(czkview2);
+                }
+            });
+           // cakmingxi2+='<div class="details" id="details" onclick="changeCardCZ('+czklist2[index].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'
+           // $("#details").remove();
+          //  $(".listtable").after(cakmingxi2);
+
+        }
 
 
-        });
-    }
-    //返回键按钮  返回到个人中心页面
-    $(".b-btn").click(function(){
-        window.location.href = "shopweixinMenuServlet?shopcode="+shopCode.val()+"_shoppersoncenter";      //"/shopweixinMenuServlet?flagStr=shoppersoncenter&shopcode=" + shopCode.val()
-    })
+    });
+
+}
+//返回键按钮  返回到个人中心页面
+$(".b-btn").click(function(){
+    window.location.href = "shopweixinMenuServlet?shopcode="+shopCode.val()+"_shoppersoncenter";      //"/shopweixinMenuServlet?flagStr=shoppersoncenter&shopcode=" + shopCode.val()
+})
 });
 
 //充值卡跳转页面
-function changeCardCZ(a,b,c) {
-    window.location.href="/shopweixinServlet?serviceType=rechargeableCardMX&cardNumb="+a+"&shopCode="+b+"&customerId="+c;
-}
+// function changeCardCZ(a,b,c) {
+//     window.location.href="/shopweixinServlet?serviceType=rechargeableCardMX&cardNumb="+a+"&shopCode="+b+"&customerId="+c;
+// }

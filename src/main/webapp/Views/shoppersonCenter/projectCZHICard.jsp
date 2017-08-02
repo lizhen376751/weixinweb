@@ -1,6 +1,9 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
-<%String shopCode = (String)request.getSession().getAttribute("shopcode");%>
+<%
+	String shopCode = (String)request.getSession().getAttribute("shopcode");
+	String plateNumber = (String) request.getAttribute("plateNumber");
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -54,8 +57,8 @@
 					<thead>
 					<tr>
 						<td class="td1">项目名称</td>
-						<td class="td2">有效日期</td>
-						<td class="td3">剩余次数</td>
+						<td class="td2">日期</td>
+						<td class="td3">金额</td>
 					</tr>
 					</thead>
 					<tbody id="listbody">
@@ -81,5 +84,6 @@
 		<div class="b-btn" >返回</div>
 	</div>
 	<input type="hidden" id="shopCode" class="shopCode" name="shopCode" value="<%=shopCode%>" >
+	<input type="hidden" id="plateNumber" name="plateNumber" value="<%=plateNumber%>">
 	</body>
 </html>
