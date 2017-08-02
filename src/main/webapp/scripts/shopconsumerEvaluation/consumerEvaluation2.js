@@ -99,7 +99,7 @@ $(function(){
         },
         success:function(jsondata){
             var json=JSON.parse(jsondata)
-            console.log(json);
+           // console.log(json);
             if(json.length>0){
                 for(var ii=0;ii<json.length;ii++){
                     var thiselem=$("div[commoditycode='"+json[ii].commodityCode+"']");
