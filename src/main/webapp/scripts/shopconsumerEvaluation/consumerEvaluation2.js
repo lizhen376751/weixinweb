@@ -74,21 +74,21 @@ $(function(){
             '<ul>'+
             '<li class="margin_r">'+
             '<input type="file" class="project_file" />'+
-            '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
+           // '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '<input type="hidden" class="uuid" value="" />'+
             '<input type="hidden" class="mxid" value="1" />'+
             '</li>'+
             '<li class="margin_r hide">'+
             '<input type="file" class="project_file" />'+
-            '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
+           // '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '<input type="hidden" class="uuid" value="" />'+
             '<input type="hidden" class="mxid" value="2" />'+
             '</li>'+
             '<li class="hide">'+
             '<input type="file" class="project_file" />'+
-            '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
+          //  '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '<input type="hidden" class="uuid" value="" />'+
             '<input type="hidden" class="mxid" value="3" />'+
@@ -109,14 +109,14 @@ $(function(){
         },
         success:function(jsondata){
             var json=JSON.parse(jsondata)
-            var thiselem=0;
+            var thiselem="";
             var box_llen=$(".box_l");
-            console.log(json);
+            //console.log(json);
             if(json.length>0){
                 for(var ii=0;ii<json.length;ii++){
                     for(var aaa=0;aaa<box_llen.length;aaa++){
                         if(box_llen.eq(aaa).attr("commoditycode")==json[ii].commodityCode){
-                            thiselem=thiselem;
+                            thiselem=box_llen.eq(aaa);
                         }
                     }
                  //   var thiselem=$("div[commoditycode='"+json[ii].commodityCode+"']");
