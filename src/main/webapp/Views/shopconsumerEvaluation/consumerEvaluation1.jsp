@@ -131,8 +131,8 @@
     <input type="hidden" class="dp_val" value="0" />
 </div>
 <!--提交按钮-->
-<div class="btn font_3">
-    提交评价
+<div class="btn font_3"  onclick="javascript:history.back(-1);">
+    返回
 </div>
 </body>
 

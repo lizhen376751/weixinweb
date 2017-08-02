@@ -101,60 +101,68 @@ $(function(){
             var json=JSON.parse(jsondata)
             console.log(json);
             if(json.length>0){
+                for(var ii=0;ii<json.length;ii++){
+                    var thiselem=$("div[commoditycode='"+json[ii].commodityCode+"']");
                 //获取商品或者项目的评价个数
-                 var commodityStarlevel=json[0].commodityStarlevel;
+                 var commodityStarlevel=json[ii].commodityStarlevel;
                  switch (commodityStarlevel){
-                     case "ONE":flower("project_num",1);
+                     case "ONE":flower(thiselem,"project_num",1);
                           break;
-                     case "TWO":flower("project_num",2);
+                     case "TWO":flower(thiselem,"project_num",2);
                          break;
-                     case "THRER":flower("project_num",3);
+                     case "THRER":flower(thiselem,"project_num",3);
                          break;
-                     case "FOUR":flower("project_num",4);
+                     case "FOUR":flower(thiselem,"project_num",4);
                          break;
-                     case "FIVE":flower("project_num",5);
+                     case "FIVE":flower(thiselem,"project_num",5);
                          break;
 
                  };
                  //获取店铺的评价个数
                 var shopStarlevel=json[0].shopStarlevel;
                 switch (shopStarlevel){
-                    case "ONE":flower("shop_num",1);
+                    case "ONE":shopflower("shop_num",1);
                         break;
-                    case "TWO":flower("shop_num",2);
+                    case "TWO":shopflower("shop_num",2);
                         break;
-                    case "THRER":flower("shop_num",3);
+                    case "THRER":shopflower("shop_num",3);
                         break;
-                    case "FOUR":flower("shop_num",4);
+                    case "FOUR":shopflower("shop_num",4);
                         break;
-                    case "FIVE":flower("shop_num",5);
+                    case "FIVE":shopflower("shop_num",5);
                         break;
 
                 }
                 //获取评价的内容
-
-                $(".project_text").find("textarea").text(json[0].commodityContent);
+                 thiselem.find(".project_text").find("textarea").text(json[ii].commodityContent);
                 //获取图片
-                var nnn=json[0].imgs;
+                var nnn=json[ii].imgs;
                 if(nnn.length>0){
                      for(var imglen=0;imglen<nnn.length;imglen++){
-                         $(".project_text").find("li").eq(imglen).find("img").attr("src",nnn[imglen]);
+                         thiselem.find(".project_text").find("li").eq(imglen).find("img").attr("src",nnn[imglen]);
                      }
                 };
             }
+          }
 
         }
     });
 
-    function flower(name,num){
-        $("."+name).find("li").each(function(index,element){
-             if(index<num){
-                 $(this).find("img").attr("src","/files/shopconsumerEvaluation/flower_gb.png");
-             }
+    function flower(elem,name,num){    //商品的评价
 
+            elem.find("."+name).find("li").each(function(index,element){
+                 if(index<num){
+                     $(this).find("img").attr("src","/files/shopconsumerEvaluation/flower_gb.png");
+                 }
+            })
+        }
+    function shopflower(name,num){    //店铺的评价
+
+        $(".shop_num").find("li").each(function(index,element){
+            if(index<num){
+                $(this).find("img").attr("src","/files/shopconsumerEvaluation/flower_gb.png");
+            }
         })
-
-
     }
 
 })
