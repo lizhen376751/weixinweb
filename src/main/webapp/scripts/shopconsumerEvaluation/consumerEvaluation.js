@@ -320,7 +320,7 @@ $(function(){
                 },
                 success:function(jsondata){
                     alert("评价成功");
-                    window.location.go(-1) //是刷新上一页
+                    javascript:history.back(-1); //是刷新上一页
 
                 },
                 error:function(data){
