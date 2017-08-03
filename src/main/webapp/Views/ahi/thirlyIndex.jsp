@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<%@ page contentType="text/html; charset=GBK" language="java" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" %>
+<%@ page language="java" pageEncoding="utf-8" %>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>³µÁ¾½¡¿µÖ¸Êı</title>
+    <title>è½¦è¾†å¥åº·æŒ‡æ•°</title>
     <link rel="stylesheet" type="text/css" href="/styles/weix.css"/>
     <link rel="stylesheet" type="text/css" href="/styles/ahi/ahi.css"/>
     <script type="text/javascript" src="/scripts/ahi/jquery-1.12.1.min.js"></script>
@@ -16,16 +17,16 @@
     $(function () {
         var jsonp = eval('('+decodeURI(decodeURI('<%=request.getParameter("inspectionDetailedDescription")%>'))+')');
          console.log(jsonp);
-        $("#radiusblue").html("<span class='radiusjb' ></span>&nbsp;&nbsp;" + jsonp.name + "&nbsp;&nbsp;<span class='radiusjb' ></span>"); //Ãû×Ö
+        $("#radiusblue").html("<span class='radiusjb' ></span>&nbsp;&nbsp;" + jsonp.name + "&nbsp;&nbsp;<span class='radiusjb' ></span>"); //åå­—
         if(jsonp.processPicture){
-            $("#photoimg").append("<img class='xq_img' onclick='fangda(this.src)' src='" + jsonp.processPicture + "'/>");//Ìí¼ÓÍ¼Æ¬
+            $("#photoimg").append("<img class='xq_img' onclick='fangda(this.src)' src='" + jsonp.processPicture + "'/>");//æ·»åŠ å›¾ç‰‡
         }else if(jsonp.videoPath){
             $("#photoimg").append(
                 '<video class="xq_vieo" poster="/files/ahi/vedio.jpg" controls>'+
                   '<source src="'+jsonp.videoPath+'" type="video/mp4">Your browser does not support the video tag.'+
-                '</video> ');//Ìí¼ÓÊÓÆµ
+                '</video> ');//æ·»åŠ è§†é¢‘
         }else if(jsonp.processPicture==null && jsonp.videoPath==null){
-            $("#photoimg").append("ÎŞ");//ÊÓÆµºÍÍ¼Æ¬¶¼Ã»ÓĞÊ±
+            $("#photoimg").append("æ— ");//è§†é¢‘å’Œå›¾ç‰‡éƒ½æ²¡æœ‰æ—¶
         }
 
 
@@ -57,12 +58,12 @@
 </script>
 
 <body>
-<%--ÍøÒ³¼ÓÔØĞ§¹û--%>
+<%--ç½‘é¡µåŠ è½½æ•ˆæœ--%>
   <div id="loading">
         <img src="/files/loading2.gif"  alt="loading.." />
   </div>
   <div class="contermain" >
-        <p class="goback" onclick="goback()"><img src="/files/fanhui.png"><span>·µ»Ø</span></p>
+        <p class="goback" onclick="goback()"><img src="/files/fanhui.png"><span>è¿”å›</span></p>
         <div class="zhezhao">
             <img class="zsimg" src=""/>
         </div>
