@@ -15,7 +15,7 @@
 <script>
     var ids = <%=request.getParameter("id")%>;
     $(function () {
-        var jsonp = decodeURI(<%=request.getParameter("inspectionDetailedDescription")%>);
+        var jsonp = <%=request.getParameter("inspectionDetailedDescription")%>;
          console.log(jsonp);
         $("#radiusblue").html("<span class='radiusjb' ></span>&nbsp;&nbsp;" + jsonp.name + "&nbsp;&nbsp;<span class='radiusjb' ></span>"); //名字
         if(jsonp.processPicture){
