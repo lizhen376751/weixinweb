@@ -55,7 +55,7 @@ $(document).ready(function () {
                     var data = dateFormat(json.rows[ii].customerDemandDateBegin);
                     //判断保养类型是否为null
                     var bylx = "";
-                    if(json.rows[ii].demandTypeName == null || json.rows[ii].demandTypeName == "" || json.rows[ii].demandTypeName == "null"){
+                    if(json.rows[ii].demandTypeName == null && json.rows[ii].demandTypeName == "" && json.rows[ii].demandTypeName == "null"){
                         bylx = "汽车保养";
                     }else{
                         bylx =  json.rows[ii].demandTypeName;
@@ -135,7 +135,7 @@ $(document).ready(function () {
 
                             //判断保养类型是否为null
                             var bylx2 = "";
-                            if(json.rows[ii].demandTypeName == null || json.rows[ii].demandTypeName == "" || json.rows[ii].demandTypeName == "null"){
+                            if(json.rows[ii].demandTypeName == null && json.rows[ii].demandTypeName == "" && json.rows[ii].demandTypeName == "null"){
                                 bylx2 = "汽车保养";
                             }else{
                                 bylx2 =  json.rows[ii].demandTypeName;
@@ -216,12 +216,12 @@ $(document).ready(function () {
                                 var data = dateFormat(json.rows[ii].customerDemandDateBegin)
                                 //判断保养类型是否为null
                                 var bylx3 = "";
-                                if(json.rows[ii].demandTypeName == null || json.rows[ii].demandTypeName == "" || json.rows[ii].demandTypeName == "null"){
+                                if(json.rows[ii].demandTypeName == null && json.rows[ii].demandTypeName == "" && json.rows[ii].demandTypeName == "null"){
                                     bylx3 = "汽车保养";
                                 }else{
                                     bylx3 =  json.rows[ii].demandTypeName;
                                 }
-                                
+
 
                                 html += "<li>" +
                                     "<div class='by_center by_top'>" +
