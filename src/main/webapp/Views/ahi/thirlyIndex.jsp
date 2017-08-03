@@ -15,12 +15,17 @@
     var ids = <%=request.getParameter("id")%>;
     $(function () {
         var jsonp = eval('('+decodeURI(decodeURI('<%=request.getParameter("inspectionDetailedDescription")%>'))+')');
-
+         console.log(jsonp);
         $("#radiusblue").html("<span class='radiusjb' ></span>&nbsp;&nbsp;" + jsonp.name + "&nbsp;&nbsp;<span class='radiusjb' ></span>"); //名字
         if(jsonp.processPicture){
             $("#photoimg").append("<img class='xq_img' onclick='fangda(this.src)' src='" + jsonp.processPicture + "'/>");//添加图片
-        }else{
-            $("#photoimg").append("无");//添加图片
+        }else if(jsonp.videoPath){
+            $("#photoimg").append(
+                '<video class="xq_vieo" poster="/files/ahi/vedio.jpg" controls>'+
+                  '<source src="'+jsonp.videoPath+'" type="video/mp4">Your browser does not support the video tag.'+
+                '</video> ');//添加视频
+        }else if(jsonp.processPicture==null && jsonp.videoPath==null){
+            $("#photoimg").append("无");//视频和图片都没有时
         }
 
 
