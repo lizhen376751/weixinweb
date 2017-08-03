@@ -15,8 +15,7 @@
     var ids = <%=request.getParameter("id")%>;
     $(function () {
         var jsonp = eval('('+decodeURI(decodeURI('<%=request.getParameter("inspectionDetailedDescription")%>'))+')');
-        console.log(jsonp);
-        alert(jsonp)
+
         $("#radiusblue").html("<span class='radiusjb' ></span>&nbsp;&nbsp;" + jsonp.name + "&nbsp;&nbsp;<span class='radiusjb' ></span>"); //Ãû×Ö
         if(jsonp.processPicture){
             $("#photoimg").append("<img class='xq_img' onclick='fangda(this.src)' src='" + jsonp.processPicture + "'/>");//Ìí¼ÓÍ¼Æ¬

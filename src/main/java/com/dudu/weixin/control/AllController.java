@@ -162,6 +162,7 @@ public class AllController {
         } else if ("thirlyIndex".equals(business)) {
             String inspectionDetailedDescription = request.getParameter("inspectionDetailedDescription");
             model.addAttribute("inspectionDetailedDescription", inspectionDetailedDescription);
+            logger.info("==================inspectionDetailedDescription========================" + inspectionDetailedDescription.toString());
             return "/ahi/thirlyIndex.jsp"; //ahi三级页面
         } else {
             return "/login/login.jsp";
