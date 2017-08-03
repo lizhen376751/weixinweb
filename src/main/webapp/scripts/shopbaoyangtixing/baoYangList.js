@@ -221,6 +221,7 @@ $(document).ready(function () {
                                 }else{
                                     bylx3 =  json.rows[ii].demandTypeName;
                                 }
+                                
 
                                 html += "<li>" +
                                     "<div class='by_center by_top'>" +
