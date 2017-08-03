@@ -32,7 +32,7 @@ public class ShopXiaoFeiJiLuService {
     /**
      * 日志打印
      */
-    private static Logger log = LoggerFactory.getLogger(ShopXiaoFeiJiLuService.class);
+    private static Logger logger = LoggerFactory.getLogger(ShopXiaoFeiJiLuService.class);
     /**
      * 引入消费记录接口
      */
@@ -131,7 +131,7 @@ public class ShopXiaoFeiJiLuService {
         String aa = request.getParameter("aa");
         JSONObject jsonObject = JSONObject.parseObject(aa);
         EvaluateReturn evaluateReturn = JSONObject.toJavaObject(jsonObject, EvaluateReturn.class);
-        log.info("实体类转换为========" + evaluateReturn);
+        logger.info("实体类转换为========" + evaluateReturn);
 //        List<EvaluateCommodity> evaluateCommodities = evaluateReturn.getEvaluateCommodities();
 //        log.info("商品评价========" + evaluateCommodities);
 //        EvaluateBill evaluateBill = evaluateReturn.getEvaluateBill();
@@ -152,6 +152,9 @@ public class ShopXiaoFeiJiLuService {
         String shopcode = request.getParameter("shopcode");
         String wxpingzheng = request.getParameter("wxpingzheng");
         String plateNumber = request.getParameter("plateNumber");
+        logger.info("===================shopcode===============" + shopcode);
+        logger.info("===================wxpingzheng===============" + wxpingzheng);
+        logger.info("===================plateNumber===============" + plateNumber);
         EvaluateParam evaluateParam = new EvaluateParam();
         evaluateParam.setPlatenumber(plateNumber);
         evaluateParam.setShopCode(shopcode);
