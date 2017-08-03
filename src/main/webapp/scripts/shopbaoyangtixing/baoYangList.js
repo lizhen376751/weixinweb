@@ -132,7 +132,6 @@ $(document).ready(function () {
                                 flaghtml += "<span class='by_bgcolorpt by_width'>普通</span>";
                             }
                             var data = dateFormat(json.rows[ii].customerDemandDateBegin)
-
                             //判断保养类型是否为null
                             var bylx2 = "";
                             if(json.rows[ii].demandTypeName == null || json.rows[ii].demandTypeName == "" || json.rows[ii].demandTypeName == "null"){
@@ -155,7 +154,7 @@ $(document).ready(function () {
                                 "<div class='middle by_cenulcolor'>"+
                                 "<div class='left font_1 blue'>详<i style='visibility: hidden'>保养</i>情：</div>"+
                                 "<div class='right font_1'>"+
-                                "<span class='txt'>"+bylx2+"</span>"+
+                                "<span class='txt'>"+json.rows[ii].customerDemandMemo+"</span>"+
                                 "</div>"+
                                 "</div>"+
                                 "<div class='by_center font_1 by_cenulcolor' style='margin-top: 13px;margin-bottom: 43px;'> 状<i  style='visibility: hidden'>保养</i>态：" + flaghtml + " </div>" +
@@ -221,7 +220,6 @@ $(document).ready(function () {
                                 }else{
                                     bylx3 =  json.rows[ii].demandTypeName;
                                 }
-
 
                                 html += "<li>" +
                                     "<div class='by_center by_top'>" +
