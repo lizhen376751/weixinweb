@@ -55,7 +55,7 @@ $(document).ready(function () {
                     var data = dateFormat(json.rows[ii].customerDemandDateBegin);
                     //判断保养类型是否为null
                     var bylx = "";
-                    if(json.rows[ii].demandTypeName == null && json.rows[ii].demandTypeName == "" && json.rows[ii].demandTypeName == "null"){
+                    if(json.rows[ii].demandTypeName == null || json.rows[ii].demandTypeName == "" || json.rows[ii].demandTypeName == "null"){
                         bylx = "汽车保养";
                     }else{
                         bylx =  json.rows[ii].demandTypeName;
@@ -135,12 +135,12 @@ $(document).ready(function () {
 
                             //判断保养类型是否为null
                             var bylx2 = "";
-                            if(json.rows[ii].demandTypeName == null && json.rows[ii].demandTypeName == "" && json.rows[ii].demandTypeName == "null"){
+                            if(json.rows[ii].demandTypeName == null || json.rows[ii].demandTypeName == "" || json.rows[ii].demandTypeName == "null"){
                                 bylx2 = "汽车保养";
                             }else{
                                 bylx2 =  json.rows[ii].demandTypeName;
                             }
-                         alert(bylx2)
+
                             html += "<li>" +
                                 "<div class='by_center by_top'>" +
                                 "<span class='by_date font_2'>" + data + "</span>" +
@@ -149,7 +149,7 @@ $(document).ready(function () {
                                 "<div class='middle by_cenulcolor'>"+
                                 "<div class='left font_1 blue'>保养类型：</div>"+
                                 "<div class='right font_1'>"+
-                                "<span class='txt'>"+json.rows[ii].demandTypeName+"</span>"+
+                                "<span class='txt'>"+bylx2+"</span>"+
                                 "</div>"+
                                 "</div>"+
                                 "<div class='middle by_cenulcolor'>"+
@@ -216,7 +216,7 @@ $(document).ready(function () {
                                 var data = dateFormat(json.rows[ii].customerDemandDateBegin)
                                 //判断保养类型是否为null
                                 var bylx3 = "";
-                                if(json.rows[ii].demandTypeName == null && json.rows[ii].demandTypeName == "" && json.rows[ii].demandTypeName == "null"){
+                                if(json.rows[ii].demandTypeName == null || json.rows[ii].demandTypeName == "" || json.rows[ii].demandTypeName == "null"){
                                     bylx3 = "汽车保养";
                                 }else{
                                     bylx3 =  json.rows[ii].demandTypeName;
