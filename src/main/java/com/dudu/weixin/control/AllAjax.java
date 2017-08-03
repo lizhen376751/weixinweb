@@ -57,7 +57,7 @@ public class AllAjax {
     /**
      * logprint 日志打印
      */
-    private static Logger logger = LoggerFactory.getLogger(AllAjax.class);
+    private static Logger logprint = LoggerFactory.getLogger(AllAjax.class);
     /**
      * session
      */
@@ -385,7 +385,6 @@ public class AllAjax {
         if ("baoYangList".equals(fromflag)) {
             String top = request.getParameter("top");
             ArrayList baoYangListByLmcodeAndCarNo = baoYangTiXingService.getBaoYangListByLmcodeAndCarNo(lmcode, platenumber, top);
-            logger.info("===========baoYangListByLmcodeAndCarNo==========" + baoYangListByLmcodeAndCarNo.toString());
             return baoYangListByLmcodeAndCarNo;
 
         }
