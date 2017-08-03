@@ -7,7 +7,6 @@ import com.dudu.soa.ahi.module.ResultAHIChildClassPoint;
 import com.dudu.soa.ahi.module.ResultAHIClassPoint;
 import com.dudu.soa.ahi.module.ResultAHISubClassPoint;
 import com.dudu.soa.ahi.module.ResultTotalAHIPoint;
-import com.dudu.soa.framework.util.DuduTestUtil;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
@@ -69,7 +68,6 @@ public class AHIService {
         point.setPlateNumber(plateNumbers);
         point.setRatio("100");
         List<ResultAHIClassPoint> list = apiAHIPoint.queryClassPointOne(point);
-        DuduTestUtil.printResponseForTest("===========================queryClassPointOne=======================" + list);
         return list;
     }
 
