@@ -149,7 +149,7 @@ public class ShopXiaoFeiJiLuService {
      * @return 评价的实体类
      */
     public List<EvaluateParam> getEvaluateParam(HttpServletRequest request) {
-        String shopcode = request.getParameter("shopcode");
+        String shopcode = request.getParameter("shopCode");
         String wxpingzheng = request.getParameter("wxpingzheng");
         String plateNumber = request.getParameter("plateNumber");
         logger.info("===================shopcode===============" + shopcode);
@@ -160,6 +160,7 @@ public class ShopXiaoFeiJiLuService {
         evaluateParam.setShopCode(shopcode);
         evaluateParam.setWxPingZheng(wxpingzheng);
         List<EvaluateParam> list = apiEvaluate.queryListEvaluateParam(evaluateParam);
+        logger.info("===================plateNumber===============" + list.toString());
         return list;
     }
 

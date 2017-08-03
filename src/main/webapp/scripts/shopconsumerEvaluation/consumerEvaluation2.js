@@ -16,6 +16,9 @@ $(function(){
     var wxpingzheng = $("#wxpingzheng").val();//维修凭证
     var shopCode = $("#shopCode").val();//店铺编码
     var project = $(".project");//获取评价的容器
+    alert(wxpingzheng);
+    alert(shopCode);
+    alert(plateNumber);
     //初始加载页面
     $.ajax({
         type    : 'post',
