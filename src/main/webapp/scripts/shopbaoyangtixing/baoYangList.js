@@ -140,7 +140,7 @@ $(document).ready(function () {
                             }else{
                                 bylx2 =  json.rows[ii].demandTypeName;
                             }
-
+                         alert(bylx2)
                             html += "<li>" +
                                 "<div class='by_center by_top'>" +
                                 "<span class='by_date font_2'>" + data + "</span>" +
