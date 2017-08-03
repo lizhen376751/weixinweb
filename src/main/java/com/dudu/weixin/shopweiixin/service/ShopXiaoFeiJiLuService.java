@@ -152,15 +152,12 @@ public class ShopXiaoFeiJiLuService {
         String shopcode = request.getParameter("shopCode");
         String wxpingzheng = request.getParameter("wxpingzheng");
         String plateNumber = request.getParameter("plateNumber");
-        logger.info("===================shopcode===============" + shopcode);
-        logger.info("===================wxpingzheng===============" + wxpingzheng);
-        logger.info("===================plateNumber===============" + plateNumber);
         EvaluateParam evaluateParam = new EvaluateParam();
         evaluateParam.setPlatenumber(plateNumber);
         evaluateParam.setShopCode(shopcode);
         evaluateParam.setWxPingZheng(wxpingzheng);
         List<EvaluateParam> list = apiEvaluate.queryListEvaluateParam(evaluateParam);
-        logger.info("===================plateNumber===============" + list.toString());
+        logger.info("返回评价信息：" + list.toString());
         return list;
     }
 
