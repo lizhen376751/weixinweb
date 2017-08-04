@@ -56,6 +56,7 @@ public class ThirdService {
     private ApiThird apiThird;
 
     /**
+     * 用于接收取消授权通知、授权成功通知、授权更新通知，也用于接收ticket
      * 每十分钟推送 授权事件接收url
      *
      * @param request  请求
@@ -64,7 +65,7 @@ public class ThirdService {
      * @throws AesException      异常
      * @throws DocumentException 异常
      */
-    @RequestMapping(value = "/event/authorize")
+    @RequestMapping(value = "/third/event/authorize")
     public void acceptAuthorizeEvent(HttpServletRequest request, HttpServletResponse response)
             throws IOException, AesException, DocumentException {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //设置日期格式
@@ -183,7 +184,7 @@ public class ThirdService {
      * @throws AesException      加密或者解密异常
      * @throws DocumentException 解析xml
      */
-    @RequestMapping(value = "{appid}/callback")
+    @RequestMapping(value = "/third/{appid}/callback")
     public void acceptMessageAndEvent(HttpServletRequest request, HttpServletResponse response) throws IOException, AesException, DocumentException {
         String msgSignature = request.getParameter("msg_signature");
         //LogUtil.info(第三方平台全网发布-------------{appid}/callback-----------验证开始。。。。msg_signature=+msgSignature);
