@@ -72,7 +72,7 @@ public class ThirdService {
         log.info("微信第三方平台---------微信推送Ticket消息10分钟一次-----------" + df.format(new Date()));
         //在第三方平台创建审核通过后，微信服务器会向其“授权事件接收URL”每隔10分钟定时推送component_verify_ticket。
         // 第三方平台方在收到ticket推送后也需进行解密（详细请见【消息加解密接入指引】），接收到后必须直接返回字符串success。
-        processAuthorizeEvent(request);
+//        processAuthorizeEvent(request); //TODO 一会打开
         output(response, "success"); // 工具类：回复微信服务器"文本消息"
     }
 
