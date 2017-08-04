@@ -84,7 +84,9 @@
                                 <!--虚线-->
                             } else if (subDescribeList[bb].point < 34) {
                            // <a href='thirlyIndex.jsp?inspectionDetailedDescription=" + encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription))) + "'>" +
-                                html_2 += "<a  class='a_hover' href='/lmInternalJump?business=thirlyIndex&id=" +translate_id+"&inspectionDetailedDescription=" + encodeURI(encodeURI(JSON.stringify(inspectionDetailedDescription)))+ "'>" +
+                                var str = JSON.stringify(inspectionDetailedDescription);
+                                str = str.replace("%","%25");
+                                html_2 += "<a  class='a_hover' href='/lmInternalJump?business=thirlyIndex&id=" +translate_id+"&inspectionDetailedDescription=" + encodeURI(encodeURI(str))+ "'>" +
                                     "<div class='lianghao '>" +
                                     "<span class='subxitong title_color font_1'>" + subDescribeList[bb].name + "</span>" +
                                     "<span class='radius radiuscoloe_2'></span>" +

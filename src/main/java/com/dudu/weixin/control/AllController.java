@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.UnsupportedEncodingException;
 
 /**
  * 所有微信菜单入口
@@ -152,17 +151,16 @@ public class AllController {
      * @param request 请求
      * @param model   返回页面的数据
      * @return 路径
-     * @throws UnsupportedEncodingException UnsupportedEncodingExceptions
      */
     @RequestMapping(value = "lmInternalJump", method = RequestMethod.GET)
-    public String lmInternalJump(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+    public String lmInternalJump(HttpServletRequest request, Model model) {
         String business = request.getParameter("business");
         if ("AHIInfoxiangqing".equals(business)) {
             String id = request.getParameter("id");
             model.addAttribute("id", id);
             return "/ahi/subxiangqing.jsp"; //ahi详情
         } else if ("thirlyIndex".equals(business)) {
-            String inspectionDetailedDescription = java.net.URLDecoder.decode(request.getParameter("inspectionDetailedDescription"), "UTF-8");
+            String inspectionDetailedDescription = request.getParameter("inspectionDetailedDescription");
             model.addAttribute("inspectionDetailedDescription", inspectionDetailedDescription);
             return "/ahi/thirlyIndex.jsp"; //ahi三级页面
         } else {
