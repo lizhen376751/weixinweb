@@ -3,6 +3,9 @@ package com.dudu.weixin.third.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.weixindubbo.third.api.ApiThird;
+import com.dudu.soa.weixindubbo.third.module.ComponentAccessToken;
+import com.dudu.soa.weixindubbo.third.module.ComponentVerifyTicket;
+import com.dudu.soa.weixindubbo.third.module.PreAuthCode;
 import com.dudu.soa.weixindubbo.thirdmessage.module.CustomerText;
 import com.dudu.soa.weixindubbo.thirdmessage.module.TextContent;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
@@ -72,7 +75,7 @@ public class ThirdService {
         log.info("微信第三方平台---------微信推送Ticket消息10分钟一次-----------" + df.format(new Date()));
         //在第三方平台创建审核通过后，微信服务器会向其“授权事件接收URL”每隔10分钟定时推送component_verify_ticket。
         // 第三方平台方在收到ticket推送后也需进行解密（详细请见【消息加解密接入指引】），接收到后必须直接返回字符串success。
-//        processAuthorizeEvent(request); //TODO 一会打开
+        processAuthorizeEvent(request);
         output(response, "success"); // 工具类：回复微信服务器"文本消息"
     }
 
@@ -86,8 +89,8 @@ public class ThirdService {
         try {
             PrintWriter pw = response.getWriter();
             pw.write(returnvaleue);
-            System.out.println("****************returnvaleue***************=" + returnvaleue);
             pw.flush();
+            log.info("回复微信服务器的消息为=============" + returnvaleue);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,11 +111,13 @@ public class ThirdService {
         String timestamp = request.getParameter("timestamp"); //URL上原有参数,时间戳
         String signature = request.getParameter("signature");
         String msgSignature = request.getParameter("msg_signature"); //前文描述密文消息体
-
+        log.info("处理十分钟推送过来的授权事件的,nonce=" + nonce + ",timestamp=" + timestamp + ",signature=" + signature + ",msgSignature=" + msgSignature);
         if (!StringUtils.isNotBlank(msgSignature)) {
+            log.info("没有加密直接返回了.....");
             return; // 微信推送给第三方开放平台的消息一定是加过密的，无消息加密无法解密消息
         }
         boolean isValid = apiThird.checkSignature(ThirdUtil.TOKEN, signature, timestamp, nonce);
+        log.info("处理十分钟推送过来的授权事件的====是否加密" + isValid);
         if (isValid) {
             StringBuilder sb = new StringBuilder();
             BufferedReader in = request.getReader();
@@ -122,16 +127,25 @@ public class ThirdService {
             }
             String xml = sb.toString();
             log.info("第三方平台全网发布-----------------------原始 Xml=" + xml);
-            String encodingAesKey = ""; //TODO 调用dubbo的工具类 第三方平台组件加密密钥
-            // TODO 后期调用接口获取appid
-//            String appId = getAuthorizerAppidFromXml(xml); // 获取授权的Appid 此时加密的xml数据中ToUserName是非加密的，解析xml获取即可
-//            log.info("第三方平台全网发布-------appid------getAuthorizerAppidFromXml(xml)-------appId=" + appId);
             WXBizMsgCrypt pc = new WXBizMsgCrypt(ThirdUtil.TOKEN, ThirdUtil.ENDCODINGAESKEY, ThirdUtil.APPID);
             //解密
             xml = pc.decryptMsg(msgSignature, timestamp, nonce, xml);
             log.info("第三方平台全网发布-----------------------解密后 Xml=" + xml);
-            //TODO 调用redis接口解析
-//            processAuthorizationEvent(xml); //在解密后的xml中获取ticket 并保存Ticket
+            /**
+             *  在解密后的xml中获取ticket 并保存Ticket
+             */
+            ComponentVerifyTicket componentVerifyTicket = apiThird.processAuthorizationEvent(xml);
+            log.info("在解密后的xml中获取ticket 并保存返回的实体类componentVerifyTicket=" + componentVerifyTicket.toString());
+            /**
+             * 保存token
+             */
+            ComponentAccessToken componentAccessToken = apiThird.getComponentAccessToken(componentVerifyTicket);
+            log.info("保存第三方的开发平台的token=" + componentAccessToken.toString());
+            /**
+             * 保存预授权码
+             */
+            PreAuthCode preAuthCode = apiThird.getPreAuthCode(componentAccessToken);
+            log.info("保存预授权码preAuthCode=" + preAuthCode.toString());
         }
     }
 
