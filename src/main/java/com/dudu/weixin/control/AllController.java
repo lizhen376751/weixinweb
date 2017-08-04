@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.net.URLDecoder;
 
 /**
  * 所有微信菜单入口
@@ -160,7 +161,7 @@ public class AllController {
             model.addAttribute("id", id);
             return "/ahi/subxiangqing.jsp"; //ahi详情
         } else if ("thirlyIndex".equals(business)) {
-            String inspectionDetailedDescription = request.getParameter("inspectionDetailedDescription");
+            String inspectionDetailedDescription = URLDecoder.decode(request.getParameter("inspectionDetailedDescription"));
             model.addAttribute("inspectionDetailedDescription", inspectionDetailedDescription);
             return "/ahi/thirlyIndex.jsp"; //ahi三级页面
         } else {
