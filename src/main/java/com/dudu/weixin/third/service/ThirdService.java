@@ -3,6 +3,7 @@ package com.dudu.weixin.third.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.weixindubbo.third.api.ApiThird;
+import com.dudu.soa.weixindubbo.third.module.AESParams;
 import com.dudu.soa.weixindubbo.third.module.ComponentAccessToken;
 import com.dudu.soa.weixindubbo.third.module.ComponentVerifyTicket;
 import com.dudu.soa.weixindubbo.third.module.PreAuthCode;
@@ -112,16 +113,10 @@ public class ThirdService {
         String signature = request.getParameter("signature");
         String msgSignature = request.getParameter("msg_signature"); //前文描述密文消息体
         log.info("处理十分钟推送过来的授权事件的,nonce=" + nonce + ",timestamp=" + timestamp + ",signature=" + signature + ",msgSignature=" + msgSignature);
-//        if (!StringUtils.isNotBlank(msgSignature)) {
-//            log.info("没有加密直接返回了.....");
-//            return; // 微信推送给第三方开放平台的消息一定是加过密的，无消息加密无法解密消息
-//        }
         if (msgSignature == null || "".equals(msgSignature) || "null".equals(msgSignature)) {
             log.info("没有加密直接返回了.....");
             return; // 微信推送给第三方开放平台的消息一定是加过密的，无消息加密无法解密消息
         }
-        log.info("是否加密");
-//        boolean isValid = apiThird.checkSignature(ThirdUtil.TOKEN, signature, timestamp, nonce);
         boolean isValid = apiAllWeiXiRequest.checkSignature(signature, timestamp, nonce, ThirdUtil.TOKEN);
         log.info("处理十分钟推送过来的授权事件的====是否加密" + isValid);
         if (isValid) {
@@ -133,10 +128,14 @@ public class ThirdService {
             }
             String xml = sb.toString();
             log.info("第三方平台全网发布-----------------------原始 Xml=" + xml);
-            WXBizMsgCrypt pc = new WXBizMsgCrypt(ThirdUtil.TOKEN, ThirdUtil.ENDCODINGAESKEY, ThirdUtil.APPID);
-            //解密
-            xml = pc.decryptMsg(msgSignature, timestamp, nonce, xml);
+            AESParams aesParams = new AESParams();
+            aesParams.setToken(ThirdUtil.TOKEN).setAppId(ThirdUtil.APPID).setEncodingAesKey(ThirdUtil.ENDCODINGAESKEY).
+                    setMsgSignature(msgSignature).setNonce(nonce).setTimestamp(timestamp).setXml(xml);
+            xml = apiThird.decrypt(aesParams);
             log.info("第三方平台全网发布-----------------------解密后 Xml=" + xml);
+//            WXBizMsgCrypt pc = new WXBizMsgCrypt(ThirdUtil.TOKEN, ThirdUtil.ENDCODINGAESKEY, ThirdUtil.APPID);
+//            //解密
+//            xml = pc.decryptMsg(msgSignature, timestamp, nonce, xml);
             /**
              *  在解密后的xml中获取ticket 并保存Ticket
              */

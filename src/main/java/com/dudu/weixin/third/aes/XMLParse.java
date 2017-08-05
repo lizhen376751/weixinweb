@@ -8,6 +8,9 @@
 
 package com.dudu.weixin.third.aes;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -23,6 +26,11 @@ import java.io.StringReader;
  * 提供提取消息格式中的密文及生成回复消息格式的接口.
  */
 final class XMLParse {
+    /**
+     * 日志打印
+     */
+    private static Logger log = LoggerFactory.getLogger(XMLParse.class);
+
     private XMLParse() {
     }
 
@@ -45,6 +53,7 @@ final class XMLParse {
             Element root = document.getDocumentElement();
             NodeList nodelist1 = root.getElementsByTagName("Encrypt");
             NodeList nodelist2 = root.getElementsByTagName("ToUserName");
+            log.info("获取原xml文件的nodelist1=" + nodelist1 + ",nodelist2=" + nodelist2);
             result[0] = 0;
             result[1] = nodelist1.item(0).getTextContent();
             result[2] = nodelist2.item(0).getTextContent();
