@@ -11,7 +11,6 @@ import com.dudu.soa.weixindubbo.thirdmessage.module.TextContent;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.weixin.third.aes.AesException;
 import com.dudu.weixin.third.aes.WXBizMsgCrypt;
-import com.dudu.weixin.util.Constant;
 import com.dudu.weixin.util.ThirdUtil;
 import com.dudu.weixin.util.XMLUtil;
 import org.apache.commons.lang.StringUtils;
@@ -123,7 +122,7 @@ public class ThirdService {
         }
         log.info("是否加密");
 //        boolean isValid = apiThird.checkSignature(ThirdUtil.TOKEN, signature, timestamp, nonce);
-        boolean isValid = apiAllWeiXiRequest.checkSignature(signature, timestamp, nonce, Constant.TOKEN);
+        boolean isValid = apiAllWeiXiRequest.checkSignature(signature, timestamp, nonce, ThirdUtil.TOKEN);
         log.info("处理十分钟推送过来的授权事件的====是否加密" + isValid);
         if (isValid) {
             StringBuilder sb = new StringBuilder();
