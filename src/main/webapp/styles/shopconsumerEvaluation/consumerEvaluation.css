@@ -141,7 +141,23 @@ body{
 .btn{
 	width: 6.4rem;
 	height: 1rem;
-	background: url(/files/shopconsumerEvaluation/btn.png) no-repeat;
+	border-radius: 0.15rem;
+	-webkit-border-radius: 0.15rem;
+	background:linear-gradient(top, #3ed8ff, rgb(88, 181, 255));
+	background:-webkit-linear-gradient(top, #3ed8ff, rgb(88, 181, 255));
+	background-size: 100% 100%;
+	text-align: center;
+	line-height: 1rem;
+	margin: 0.24rem auto;
+	color: #fff;
+}
+.btnnot{
+	width: 6.4rem;
+	height: 1rem;
+	border-radius: 0.2rem;
+	-webkit-border-radius: 0.2rem;
+	background:-webkit-linear-gradient(top, #dddada, rgba(117, 117, 119, 0.5));
+	background:linear-gradient(top, #dddada, rgba(117, 117, 119, 0.5));
 	background-size: 100% 100%;
 	text-align: center;
 	line-height: 1rem;

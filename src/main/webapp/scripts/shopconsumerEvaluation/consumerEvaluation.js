@@ -154,6 +154,14 @@ $(function(){
 	//图片上传
 	function tpsc() {
         $(".project_file").on("change",function(){
+
+            //在图片没有在前段显示出来的时候，是不允许点击提交按钮的
+            $('.btn').unbind("click"); //移除click
+            $("#buttonsubmit").click(function(){
+                alert("图片上传中........")
+            })
+            $('.btn').css("background","-webkit-linear-gradient(top, #dddada, rgba(117, 117, 119, 0.5))");
+            $('.btn').css("background","linear-gradient(top, #dddada, rgba(117, 117, 119, 0.5))");
             var photoExt=this.value.substr(this.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
             var tp =".jpg,.gif,.bmp,.JPG,.GIF,.BMP,.ico,.png";
             var rs=tp.indexOf(photoExt);
@@ -198,10 +206,19 @@ $(function(){
                 $(this).next(".add_img").hide();
                 var state = false;
                 function a(){
-                    // console.log(srcs)
+                     console.log(srcs)
                     if(srcs == "" && state == false){
                         setTimeout(function() { a();},2000);
                     }else{
+                        //$('.btn').unbind("click"); //移除click
+                        $("#buttonsubmit").unbind("click"); //移除click
+                        //在图片在前段显示出来的时候，提交按钮回复到原来的提交函数
+                        $('.btn').css("background","-webkit-linear-gradient(top, #3ed8ff, rgb(88, 181, 255))");
+                        $('.btn').css("background","linear-gradient(top, #3ed8ff, rgb(88, 181, 255))");
+                        $('.btn').on("click",function(){
+                            assss();   //提交函数
+                        })
+
                         $(onself).nextAll(".file_img").attr("src",srcs);
                         $(onself).nextAll(".uuid").val(projectId);
                         if($(onself).parent().next()){
@@ -249,9 +266,12 @@ $(function(){
     }
 	//---------------------------------------------------------------------------提交评价
 	btn.on("click",function(){
+        assss();
+	})
+    function  assss(){    //提交函数
         var dp_val = $(".dp_val").val();  //获取店铺的星级评价
-		//数据包
-		var data = {
+        //数据包
+        var data = {
             evaluateMain :{
                 shopStarlevel:dp_val,//店铺评价星级
                 wxPingZheng:wxpingzheng,//维修凭证
@@ -260,15 +280,15 @@ $(function(){
                 shopIdentification:"SHOPCODE"
             },
             evaluateBill:{
-			    OrderType:$(".shop_num").attr("OrderType"),  //单据类型
+                OrderType:$(".shop_num").attr("OrderType"),  //单据类型
                 CreateDate:$(".shop_num").attr("CreateDate") //开票日期
             },
             evaluateCommodities:[]
-		};
-		var projects = $(".box_l");
-		for(var j = 0; j < projects.length;j++){
-			var obj = {};
-			//获取每一个商品或项目的销售或技师ID
+        };
+        var projects = $(".box_l");
+        for(var j = 0; j < projects.length;j++){
+            var obj = {};
+            //获取每一个商品或项目的销售或技师ID
             var ServiceStaff = $(projects[j]).attr("ServiceStaff");
             obj.serviceStaff = ServiceStaff;
             //获取每一个商品或项目的编码
@@ -277,40 +297,40 @@ $(function(){
             //获取每一个商品或项目的区分
             var ComIdentifica = $(projects[j]).attr("ComIdentifica");
             obj.comIdentifica = ComIdentifica;
-			//获取每一个商品或项目的星级
-			var project_xj = $(projects[j]).find(".project_num input").val();
-			obj.commodityStarlevel = project_xj;
-			//获取用户的评价文字
-			var project_pj = $(projects[j]).find(".project_text textarea").val();
-			obj.commodityContent = project_pj;
-			//获取用户上传图片的uuid
-			obj.evaluateImgs = [];
-			var projrct_uuid = $(projects[j]).find(".project_text li");
-			for(var g = 0;g < projrct_uuid.length;g++){
-				var uuid_val = $(projrct_uuid[g]).find(".uuid").val();
+            //获取每一个商品或项目的星级
+            var project_xj = $(projects[j]).find(".project_num input").val();
+            obj.commodityStarlevel = project_xj;
+            //获取用户的评价文字
+            var project_pj = $(projects[j]).find(".project_text textarea").val();
+            obj.commodityContent = project_pj;
+            //获取用户上传图片的uuid
+            obj.evaluateImgs = [];
+            var projrct_uuid = $(projects[j]).find(".project_text li");
+            for(var g = 0;g < projrct_uuid.length;g++){
+                var uuid_val = $(projrct_uuid[g]).find(".uuid").val();
                 var mxid_val = $(projrct_uuid[g]).find(".mxid").val();
                 var images = {
                     orderCode:uuid_val,
                     mxId:mxid_val
                 };
-				obj.evaluateImgs.push(images);
-			};
-			data.evaluateCommodities.push(obj);
-		}
+                obj.evaluateImgs.push(images);
+            };
+            data.evaluateCommodities.push(obj);
+        }
 
-		//获取
+        //获取
         var img_val = $(".project_num input");
         var arr = [];
         for(var i = 0; i < img_val.length;i++){
             var val = $(img_val[i]).val();
             arr.push(val);
         }
-		var dj_val = $.inArray("0",arr);   //判断arr数组中是否包含值为0的元素  有则返回其索引值，没有则返回-1
+        var dj_val = $.inArray("0",arr);   //判断arr数组中是否包含值为0的元素  有则返回其索引值，没有则返回-1
         //  console.log(dj_val)
-		//-1 可以提交证明里面没有值为0的评价
-		if(dj_val != "-1" || dp_val == "0"){   //判断商品，项目，店铺的星级评价是否为空
-              alert("请进行星级评价")
-		}else{
+        //-1 可以提交证明里面没有值为0的评价
+        if(dj_val != "-1" || dp_val == "0"){   //判断商品，项目，店铺的星级评价是否为空
+            alert("请进行星级评价")
+        }else{
             var json_data = JSON.stringify(data);
             $.ajax({
                 type    : 'POST',
@@ -328,7 +348,6 @@ $(function(){
                 }
 
             });
-		}
-		
-	})
+        }
+    }
 })

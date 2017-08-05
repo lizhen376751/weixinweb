@@ -131,7 +131,7 @@
 			<input type="hidden" class="dp_val" value="0" />
 		</div>
 		<!--提交按钮-->
-		<div class="btn font_3">
+		<div id="buttonsubmit" class="btn  font_3">
 			提交评价
 		</div>
 	</body>
