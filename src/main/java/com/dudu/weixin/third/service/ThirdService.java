@@ -128,7 +128,7 @@ public class ThirdService {
             }
             String xml = sb.toString();
             if (xml.indexOf("AppId") != -1) {
-                xml.replace("AppId", "ToUserName");
+                xml = xml.replace("AppId", "ToUserName");
             }
             log.info("第三方平台全网发布-----------------------原始 Xml=" + xml);
             AESParams aesParams = new AESParams();
