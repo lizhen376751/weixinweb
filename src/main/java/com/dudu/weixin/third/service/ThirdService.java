@@ -116,6 +116,7 @@ public class ThirdService {
             log.info("没有加密直接返回了.....");
             return; // 微信推送给第三方开放平台的消息一定是加过密的，无消息加密无法解密消息
         }
+        log.info("是否加密" );
         boolean isValid = apiThird.checkSignature(ThirdUtil.TOKEN, signature, timestamp, nonce);
         log.info("处理十分钟推送过来的授权事件的====是否加密" + isValid);
         if (isValid) {
