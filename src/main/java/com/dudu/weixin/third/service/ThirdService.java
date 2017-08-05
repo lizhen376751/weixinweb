@@ -113,7 +113,11 @@ public class ThirdService {
         String signature = request.getParameter("signature");
         String msgSignature = request.getParameter("msg_signature"); //前文描述密文消息体
         log.info("处理十分钟推送过来的授权事件的,nonce=" + nonce + ",timestamp=" + timestamp + ",signature=" + signature + ",msgSignature=" + msgSignature);
-        if (!StringUtils.isNotBlank(msgSignature)) {
+//        if (!StringUtils.isNotBlank(msgSignature)) {
+//            log.info("没有加密直接返回了.....");
+//            return; // 微信推送给第三方开放平台的消息一定是加过密的，无消息加密无法解密消息
+//        }
+        if (msgSignature == null || "".equals(msgSignature) || "null".equals(msgSignature)) {
             log.info("没有加密直接返回了.....");
             return; // 微信推送给第三方开放平台的消息一定是加过密的，无消息加密无法解密消息
         }
