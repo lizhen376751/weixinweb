@@ -11,6 +11,7 @@ import com.dudu.soa.weixindubbo.thirdmessage.module.TextContent;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.weixin.third.aes.AesException;
 import com.dudu.weixin.third.aes.WXBizMsgCrypt;
+import com.dudu.weixin.util.Constant;
 import com.dudu.weixin.util.ThirdUtil;
 import com.dudu.weixin.util.XMLUtil;
 import org.apache.commons.lang.StringUtils;
@@ -116,8 +117,9 @@ public class ThirdService {
             log.info("没有加密直接返回了.....");
             return; // 微信推送给第三方开放平台的消息一定是加过密的，无消息加密无法解密消息
         }
-        log.info("是否加密" );
-        boolean isValid = apiThird.checkSignature(ThirdUtil.TOKEN, signature, timestamp, nonce);
+        log.info("是否加密");
+//        boolean isValid = apiThird.checkSignature(ThirdUtil.TOKEN, signature, timestamp, nonce);
+        boolean isValid = apiAllWeiXiRequest.checkSignature(signature, timestamp, nonce, Constant.TOKEN);
         log.info("处理十分钟推送过来的授权事件的====是否加密" + isValid);
         if (isValid) {
             StringBuilder sb = new StringBuilder();
