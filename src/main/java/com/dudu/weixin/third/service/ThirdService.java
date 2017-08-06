@@ -4,6 +4,7 @@ package com.dudu.weixin.third.service;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.weixindubbo.third.api.ApiThird;
 import com.dudu.soa.weixindubbo.third.module.AESParams;
+import com.dudu.soa.weixindubbo.third.module.AuthorizationInfo;
 import com.dudu.soa.weixindubbo.third.module.ComponentAccessToken;
 import com.dudu.soa.weixindubbo.third.module.ComponentVerifyTicket;
 import com.dudu.soa.weixindubbo.third.module.PreAuthCode;
@@ -11,10 +12,8 @@ import com.dudu.soa.weixindubbo.thirdmessage.module.CustomerText;
 import com.dudu.soa.weixindubbo.thirdmessage.module.TextContent;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.weixin.third.aes.AesException;
-import com.dudu.weixin.third.aes.WXBizMsgCrypt;
 import com.dudu.weixin.util.ThirdUtil;
 import com.dudu.weixin.util.XMLUtil;
-import org.apache.commons.lang.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
@@ -23,6 +22,7 @@ import org.jdom2.JDOMException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -117,6 +117,9 @@ public class ThirdService {
             log.info("没有加密直接返回了.....");
             return; // 微信推送给第三方开放平台的消息一定是加过密的，无消息加密无法解密消息
         }
+        /**
+         * 判断是否是授权的公众号发来的消息
+         */
         boolean isValid = apiAllWeiXiRequest.checkSignature(signature, timestamp, nonce, ThirdUtil.TOKEN);
         log.info("处理十分钟推送过来的授权事件的====是否加密" + isValid);
         if (isValid) {
@@ -131,14 +134,14 @@ public class ThirdService {
                 xml = xml.replace("AppId", "ToUserName");
             }
             log.info("第三方平台全网发布-----------------------原始 Xml=" + xml);
+            /**
+             * 解密
+             */
             AESParams aesParams = new AESParams();
             aesParams.setToken(ThirdUtil.TOKEN).setAppId(ThirdUtil.APPID).setEncodingAesKey(ThirdUtil.ENDCODINGAESKEY).
                     setMsgSignature(msgSignature).setNonce(nonce).setTimestamp(timestamp).setXml(xml);
             xml = apiThird.decrypt(aesParams);
             log.info("第三方平台全网发布-----------------------解密后 Xml=" + xml);
-//            WXBizMsgCrypt pc = new WXBizMsgCrypt(ThirdUtil.TOKEN, ThirdUtil.ENDCODINGAESKEY, ThirdUtil.APPID);
-//            //解密
-//            xml = pc.decryptMsg(msgSignature, timestamp, nonce, xml);
             /**
              *  在解密后的xml中获取ticket 并保存Ticket
              */
@@ -170,10 +173,14 @@ public class ThirdService {
     @RequestMapping(value = "/goAuthor")
     public void goAuthor(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //网页的一个按钮点击之后直接进行跳转至这个页面,然后客户进行授权
-        String preAuthCode = ""; //TODO 调用redis接口获取第三方的预授权码
+        ComponentAccessToken componentAccessToken = new ComponentAccessToken();
+        componentAccessToken.setAppid(ThirdUtil.APPID);
+        //TODO 需要修改 获取第三方的预授权码
+        PreAuthCode preAuthCode = apiThird.getPreAuthCode(componentAccessToken);
+
         String redirectUri = ""; //授权后的回调url
         // TODO 获取预授权码和获取第三方平台的token
-        String url = "https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=" + ThirdUtil.APPID + "&pre_auth_code=" + preAuthCode + "&redirect_uri=" + redirectUri;
+        String url = "https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=" + ThirdUtil.APPID + "&pre_auth_code=" + preAuthCode.getPreAuthCode() + "&redirect_uri=" + redirectUri;
         response.sendRedirect(url);
     }
 
@@ -200,6 +207,7 @@ public class ThirdService {
     /**
      * 事件以及文本消息接受url
      *
+     * @param appid    公众号的appid
      * @param request  请求
      * @param response 相应
      * @throws IOException       网络异常
@@ -207,10 +215,12 @@ public class ThirdService {
      * @throws DocumentException 解析xml
      */
     @RequestMapping(value = "/third/{appid}/callback")
-    public void acceptMessageAndEvent(HttpServletRequest request, HttpServletResponse response) throws IOException, AesException, DocumentException {
+    public void acceptMessageAndEvent(HttpServletRequest request, HttpServletResponse response, @PathVariable String appid
+    ) throws IOException, AesException, DocumentException {
         String msgSignature = request.getParameter("msg_signature");
-        //LogUtil.info(第三方平台全网发布-------------{appid}/callback-----------验证开始。。。。msg_signature=+msgSignature);
-        if (!StringUtils.isNotBlank(msgSignature)) {
+        log.info("第三方平台全网发布----事件以及文本消息接受---appid" + appid);
+        if (msgSignature == null || "".equals(msgSignature) || "null".equals(msgSignature)) {
+            log.info("没有加密直接返回了.....");
             return; // 微信推送给第三方开放平台的消息一定是加过密的，无消息加密无法解密消息
         }
         StringBuilder sb = new StringBuilder();
@@ -237,9 +247,14 @@ public class ThirdService {
         String nonce = request.getParameter("nonce");
         String timestamp = request.getParameter("timestamp");
         String msgSignature = request.getParameter("msg_signature");
-        WXBizMsgCrypt pc = new WXBizMsgCrypt(ThirdUtil.TOKEN, ThirdUtil.ENDCODINGAESKEY, ThirdUtil.APPID);
-        //解密
-        xml = pc.decryptMsg(msgSignature, timestamp, nonce, xml);
+        /**
+         * 解密
+         */
+        AESParams aesParams = new AESParams();
+        aesParams.setToken(ThirdUtil.TOKEN).setAppId(ThirdUtil.APPID).setEncodingAesKey(ThirdUtil.ENDCODINGAESKEY).
+                setMsgSignature(msgSignature).setNonce(nonce).setTimestamp(timestamp).setXml(xml);
+        xml = apiThird.decrypt(aesParams);
+
         Map map = null;
         try {
             map = XMLUtil.doXMLParse(xml);
@@ -266,11 +281,31 @@ public class ThirdService {
             TextContent textContent = new TextContent();
             textContent.setContent(content);
             customerText.setText(textContent);
-            //TODO 通过Redis获取第三方的token
-            String kefuxiaoxi = apiAllWeiXiRequest.customerSmsSend("token", customerText);
+            /**
+             * 获取第三方的token
+             */
+            ComponentVerifyTicket componentVerifyTicket = new ComponentVerifyTicket();
+            componentVerifyTicket.setAppId(ThirdUtil.APPID).setAppsecret(ThirdUtil.APPSECRET);
+            ComponentAccessToken componentAccessToken = apiThird.getComponentAccessToken(componentVerifyTicket);
+            log.info("获取第三方的开发平台的token=" + componentAccessToken.toString());
+            /**
+             * 获取授权公众号的token
+             */
+
+            AuthorizationInfo authorizationInfo = apiThird.getAuthorizationInfo(componentAccessToken, content.substring(0, content.length() - 9));
+            log.info("获取授权公众号的授权信息" + authorizationInfo.toString());
+            //发送客服消息
+            String kefuxiaoxi = apiAllWeiXiRequest.customerSmsSend(authorizationInfo.getAuthorizerAccessToken(), customerText);
+            log.info("发送客服消息" + kefuxiaoxi);
         } else {
-            WXBizMsgCrypt pc1 = new WXBizMsgCrypt(ThirdUtil.TOKEN, ThirdUtil.ENDCODINGAESKEY, ThirdUtil.APPID);
-            receivemessage = pc1.encryptMsg(receivemessage, createTime.toString(), "easemob");
+            /**
+             * 加密
+             */
+            AESParams aesParams1 = new AESParams();
+            aesParams1.setToken(ThirdUtil.TOKEN).setAppId(ThirdUtil.APPID).setEncodingAesKey(ThirdUtil.ENDCODINGAESKEY).
+                    setMsgSignature(msgSignature).setNonce(nonce).setTimestamp(timestamp).setXml(xml);
+            receivemessage = apiThird.encrypt(aesParams);
+            log.info("加密后的xml的文件为===" + receivemessage);
             output(response, receivemessage);
         }
 
