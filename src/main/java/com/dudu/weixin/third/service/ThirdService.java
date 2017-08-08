@@ -214,7 +214,7 @@ public class ThirdService {
      * @throws AesException      加密或者解密异常
      * @throws DocumentException 解析xml
      */
-    @RequestMapping(value = "/third/{appid}/callback")
+    @RequestMapping(value = "/thirdMessage/{appid}/callback")
     public void acceptMessageAndEvent(HttpServletRequest request, HttpServletResponse response, @PathVariable String appid
     ) throws IOException, AesException, DocumentException {
         String msgSignature = request.getParameter("msg_signature");
