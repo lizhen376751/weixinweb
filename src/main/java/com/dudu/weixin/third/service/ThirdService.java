@@ -285,13 +285,12 @@ public class ThirdService {
              * 获取第三方的token
              */
             ComponentVerifyTicket componentVerifyTicket = new ComponentVerifyTicket();
-            componentVerifyTicket.setAppId(ThirdUtil.APPID).setAppsecret(ThirdUtil.APPSECRET);
+            componentVerifyTicket.setAppId(ThirdUtil.APPID);
             ComponentAccessToken componentAccessToken = apiThird.getComponentAccessToken(componentVerifyTicket);
             log.info("获取第三方的开发平台的token=" + componentAccessToken.toString());
             /**
              * 获取授权公众号的token
              */
-
             AuthorizationInfo authorizationInfo = apiThird.getAuthorizationInfo(componentAccessToken, content.substring(0, content.length() - 9));
             log.info("获取授权公众号的授权信息" + authorizationInfo.toString());
             //发送客服消息
