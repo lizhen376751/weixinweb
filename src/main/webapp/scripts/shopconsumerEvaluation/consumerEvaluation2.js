@@ -151,11 +151,11 @@ $(function(){
             //'<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '</li>'+
-            '<li class="margin_r hide">'+
+            '<li class="margin_r">'+
            // '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '</li>'+
-            '<li class="hide">'+
+            '<li class="margin_r">'+
            // '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '</li>'+
