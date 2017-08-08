@@ -147,15 +147,15 @@ $(function(){
             '<div class="project_text">'+
             '<textarea class="font_4" rows="4" maxlength="110" disabled="disabled"></textarea>'+
             '<ul>'+
-            '<li class="margin_r">'+
+            '<li class="">'+
             //'<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '</li>'+
-            '<li class="margin_r">'+
+            '<li class="">'+
            // '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '</li>'+
-            '<li class="margin_r">'+
+            '<li class="">'+
            // '<img src="/files/shopconsumerEvaluation/add_img.png" class="add_img"/>'+
             '<img src="" class="file_img"/>'+
             '</li>'+
