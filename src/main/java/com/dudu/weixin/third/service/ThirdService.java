@@ -281,7 +281,7 @@ public class ThirdService {
             customerText.setTouser(toUserName);
             customerText.setMsgtype(msgType);
             TextContent textContent = new TextContent();
-            
+
             textContent.setContent(content);
             customerText.setText(textContent);
             /**
