@@ -73,7 +73,7 @@ public class ThirdService {
     public void acceptAuthorizeEvent(HttpServletRequest request, HttpServletResponse response)
             throws IOException, AesException, DocumentException {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //设置日期格式
-        log.info("微信第三方平台---------微信推送Ticket消息10分钟一次-----------" + df.format(new Date()));
+        log.debug("微信推送Ticket消息10分钟一次-----------" + df.format(new Date()));
         //在第三方平台创建审核通过后，微信服务器会向其“授权事件接收URL”每隔10分钟定时推送component_verify_ticket。
         // 第三方平台方在收到ticket推送后也需进行解密（详细请见【消息加解密接入指引】），接收到后必须直接返回字符串success。
         processAuthorizeEvent(request);
@@ -91,7 +91,7 @@ public class ThirdService {
             PrintWriter pw = response.getWriter();
             pw.write(returnvaleue);
             pw.flush();
-            log.info("回复微信服务器的消息为=============" + returnvaleue);
+            log.debug("回复微信服务器的消息为=============" + returnvaleue);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -112,16 +112,16 @@ public class ThirdService {
         String timestamp = request.getParameter("timestamp"); //URL上原有参数,时间戳
         String signature = request.getParameter("signature");
         String msgSignature = request.getParameter("msg_signature"); //前文描述密文消息体
-        log.info("处理十分钟推送过来的授权事件的,nonce=" + nonce + ",timestamp=" + timestamp + ",signature=" + signature + ",msgSignature=" + msgSignature);
+        log.debug("处理十分钟推送过来的授权事件的,nonce=" + nonce + ",timestamp=" + timestamp + ",signature=" + signature + ",msgSignature=" + msgSignature);
         if (msgSignature == null || "".equals(msgSignature) || "null".equals(msgSignature)) {
-            log.info("没有加密直接返回了.....");
+            log.debug("没有加密直接返回了.....");
             return; // 微信推送给第三方开放平台的消息一定是加过密的，无消息加密无法解密消息
         }
         /**
          * 判断是否是授权的公众号发来的消息
          */
         boolean isValid = apiAllWeiXiRequest.checkSignature(signature, timestamp, nonce, ThirdUtil.TOKEN);
-        log.info("处理十分钟推送过来的授权事件的====是否加密" + isValid);
+        log.debug("处理十分钟推送过来的授权事件的====是否加密" + isValid);
         if (isValid) {
             StringBuilder sb = new StringBuilder();
             BufferedReader in = request.getReader();
@@ -133,7 +133,7 @@ public class ThirdService {
             if (xml.indexOf("AppId") != -1) {
                 xml = xml.replace("AppId", "ToUserName");
             }
-            log.info("第三方平台全网发布-----------------------原始 Xml=" + xml);
+            log.debug("授权事件原始 Xml=====================\r\n" + xml);
             /**
              * 解密
              */
@@ -141,22 +141,22 @@ public class ThirdService {
             aesParams.setToken(ThirdUtil.TOKEN).setAppId(ThirdUtil.APPID).setEncodingAesKey(ThirdUtil.ENDCODINGAESKEY).
                     setMsgSignature(msgSignature).setNonce(nonce).setTimestamp(timestamp).setXml(xml);
             xml = apiThird.decrypt(aesParams);
-            log.info("第三方平台全网发布-----------------------解密后 Xml=" + xml);
+            log.debug("授权事件解密后 Xml==========================\r\n" + xml);
             /**
              *  在解密后的xml中获取ticket 并保存Ticket
              */
             ComponentVerifyTicket componentVerifyTicket = apiThird.processAuthorizationEvent(xml);
-            log.info("在解密后的xml中获取ticket 并保存返回的实体类componentVerifyTicket=" + componentVerifyTicket.toString());
+            log.debug("在解密后的xml中获取ticket 并保存返回的实体类componentVerifyTicket=" + componentVerifyTicket.toString());
             /**
              * 保存token
              */
             ComponentAccessToken componentAccessToken = apiThird.getComponentAccessToken(componentVerifyTicket);
-            log.info("保存第三方的开发平台的token=" + componentAccessToken.toString());
+            log.debug("保存第三方的开发平台的token=" + componentAccessToken.toString());
             /**
              * 保存预授权码
              */
             PreAuthCode preAuthCode = apiThird.getPreAuthCode(componentAccessToken);
-            log.info("保存预授权码preAuthCode=" + preAuthCode.toString());
+            log.debug("保存预授权码preAuthCode=" + preAuthCode.toString());
         }
     }
 
@@ -218,9 +218,9 @@ public class ThirdService {
     public void acceptMessageAndEvent(HttpServletRequest request, HttpServletResponse response, @PathVariable String appid
     ) throws IOException, AesException, DocumentException {
         String msgSignature = request.getParameter("msg_signature");
-        log.info("第三方平台全网发布----事件以及文本消息接受---appid" + appid);
+        log.debug("第三方平台全网发布----事件以及文本消息接受---appid" + appid);
         if (msgSignature == null || "".equals(msgSignature) || "null".equals(msgSignature)) {
-            log.info("没有加密直接返回了.....");
+            log.debug("没有加密直接返回了.....");
             return; // 微信推送给第三方开放平台的消息一定是加过密的，无消息加密无法解密消息
         }
         StringBuilder sb = new StringBuilder();
@@ -231,6 +231,7 @@ public class ThirdService {
         }
         in.close();
         String xml = sb.toString();
+        log.debug("第三方平台全网发布----事件以及文本消息接受原始xml====\r\n" + xml);
         checkWeixinAllNetworkCheck(request, response, xml);
     }
 
@@ -254,7 +255,7 @@ public class ThirdService {
         aesParams.setToken(ThirdUtil.TOKEN).setAppId(ThirdUtil.APPID).setEncodingAesKey(ThirdUtil.ENDCODINGAESKEY).
                 setMsgSignature(msgSignature).setNonce(nonce).setTimestamp(timestamp).setXml(xml);
         xml = apiThird.decrypt(aesParams);
-
+        log.debug("第三方平台全网发布----事件以及文本消息解密后的xml====\r\n" + xml);
         Map map = null;
         try {
             map = XMLUtil.doXMLParse(xml);
@@ -264,6 +265,7 @@ public class ThirdService {
             e.printStackTrace();
         }
         String receivemessage = apiAllWeiXiRequest.receivemessage(map);
+        log.debug("消息分发返回结果" + receivemessage);
         if ("".equals(receivemessage) || null == receivemessage) {
             output(response, receivemessage);
             map.put("test", "businessType");
@@ -279,6 +281,7 @@ public class ThirdService {
             customerText.setTouser(toUserName);
             customerText.setMsgtype(msgType);
             TextContent textContent = new TextContent();
+            
             textContent.setContent(content);
             customerText.setText(textContent);
             /**
@@ -287,15 +290,15 @@ public class ThirdService {
             ComponentVerifyTicket componentVerifyTicket = new ComponentVerifyTicket();
             componentVerifyTicket.setAppId(ThirdUtil.APPID);
             ComponentAccessToken componentAccessToken = apiThird.getComponentAccessToken(componentVerifyTicket);
-            log.info("获取第三方的开发平台的token=" + componentAccessToken.toString());
+            log.debug("获取第三方的开发平台的token=" + componentAccessToken.toString());
             /**
              * 获取授权公众号的token
              */
             AuthorizationInfo authorizationInfo = apiThird.getAuthorizationInfo(componentAccessToken, content.substring(0, content.length() - 9));
-            log.info("获取授权公众号的授权信息" + authorizationInfo.toString());
+            log.debug("获取授权公众号的授权信息" + authorizationInfo.toString());
             //发送客服消息
             String kefuxiaoxi = apiAllWeiXiRequest.customerSmsSend(authorizationInfo.getAuthorizerAccessToken(), customerText);
-            log.info("发送客服消息" + kefuxiaoxi);
+            log.debug("发送客服消息" + kefuxiaoxi);
         } else {
             /**
              * 加密
@@ -304,7 +307,7 @@ public class ThirdService {
             aesParams1.setToken(ThirdUtil.TOKEN).setAppId(ThirdUtil.APPID).setEncodingAesKey(ThirdUtil.ENDCODINGAESKEY).
                     setMsgSignature(msgSignature).setNonce(nonce).setTimestamp(timestamp).setXml(xml);
             receivemessage = apiThird.encrypt(aesParams);
-            log.info("加密后的xml的文件为===" + receivemessage);
+            log.debug("加密后的xml的文件为===" + receivemessage);
             output(response, receivemessage);
         }
 
