@@ -265,25 +265,21 @@ public class ThirdService {
             e.printStackTrace();
         }
         String receivemessage = apiAllWeiXiRequest.receivemessage(map);
-        log.debug("消息分发返回结果" + receivemessage);
-        if ("".equals(receivemessage) || null == receivemessage) {
-            log.debug("直接返回空字符串");
-            output(response, receivemessage);
-            map.put("test", "businessType");
-            log.debug("返回空字符串接着发送客服消息");
-            receivemessage = apiAllWeiXiRequest.receivemessage(map);
-            Document doc = DocumentHelper.parseText(receivemessage);
-            Element rootElt = doc.getRootElement();
-            String msgType = rootElt.elementText("MsgType");
-            String toUserName = rootElt.elementText("ToUserName");
-            String fromUserName = rootElt.elementText("FromUserName");
-            String content = rootElt.elementText("Content");
+        Document doc = DocumentHelper.parseText(receivemessage);
+        Element rootElt = doc.getRootElement();
+        String msgType = rootElt.elementText("MsgType");
+        String toUserName = rootElt.elementText("ToUserName");
+        String content = rootElt.elementText("Content");
 
+        log.debug("消息分发返回结果" + receivemessage);
+        if (content.indexOf("_from_api") != -1) {
+            log.debug("直接返回空字符串");
+            output(response, "");
+            log.debug("返回空字符串接着发送客服消息");
             CustomerText customerText = new CustomerText();
             customerText.setTouser(toUserName);
             customerText.setMsgtype(msgType);
             TextContent textContent = new TextContent();
-
             textContent.setContent(content);
             customerText.setText(textContent);
             /**
