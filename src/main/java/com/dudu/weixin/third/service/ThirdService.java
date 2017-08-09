@@ -267,8 +267,10 @@ public class ThirdService {
         String receivemessage = apiAllWeiXiRequest.receivemessage(map);
         log.debug("消息分发返回结果" + receivemessage);
         if ("".equals(receivemessage) || null == receivemessage) {
+            log.debug("直接返回空字符串");
             output(response, receivemessage);
             map.put("test", "businessType");
+            log.debug("返回空字符串接着发送客服消息");
             receivemessage = apiAllWeiXiRequest.receivemessage(map);
             Document doc = DocumentHelper.parseText(receivemessage);
             Element rootElt = doc.getRootElement();
@@ -307,7 +309,7 @@ public class ThirdService {
             aesParams1.setToken(ThirdUtil.TOKEN).setAppId(ThirdUtil.APPID).setEncodingAesKey(ThirdUtil.ENDCODINGAESKEY).
                     setMsgSignature(msgSignature).setNonce(nonce).setTimestamp(timestamp).setXml(xml);
             receivemessage = apiThird.encrypt(aesParams);
-            log.debug("加密后的xml的文件为===" + receivemessage);
+            log.debug("加密后的xml的文件为===\r\n" + receivemessage);
             output(response, receivemessage);
         }
 
