@@ -147,16 +147,22 @@ public class ThirdService {
              */
             ComponentVerifyTicket componentVerifyTicket = apiThird.processAuthorizationEvent(xml);
             log.debug("在解密后的xml中获取ticket 并保存返回的实体类componentVerifyTicket=" + componentVerifyTicket.toString());
-            /**
-             * 保存token
-             */
-            ComponentAccessToken componentAccessToken = apiThird.getComponentAccessToken(componentVerifyTicket);
-            log.debug("保存第三方的开发平台的token=" + componentAccessToken.toString());
-            /**
-             * 保存预授权码
-             */
-            PreAuthCode preAuthCode = apiThird.getPreAuthCode(componentAccessToken);
-            log.debug("保存预授权码preAuthCode=" + preAuthCode.toString());
+            if (null != componentVerifyTicket) {
+                String componentVerifyTicket1 = componentVerifyTicket.getComponentVerifyTicket();
+                if (null != componentVerifyTicket1 && !"".equals(componentVerifyTicket1) && !"null".equals(componentVerifyTicket1)) {
+                    /**
+                     * 保存token
+                     */
+                    ComponentAccessToken componentAccessToken = apiThird.getComponentAccessToken(componentVerifyTicket);
+                    log.debug("保存第三方的开发平台的token=" + componentAccessToken.toString());
+                    /**
+                     * 保存预授权码
+                     */
+                    PreAuthCode preAuthCode = apiThird.getPreAuthCode(componentAccessToken);
+                    log.debug("保存预授权码preAuthCode=" + preAuthCode.toString());
+                }
+            }
+
         }
     }
 
