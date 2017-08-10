@@ -184,7 +184,7 @@ public class ThirdService {
         ComponentAccessToken componentAccessToken = new ComponentAccessToken();
         componentAccessToken.setAppid(ThirdUtil.APPID);
         PreAuthCode preAuthCode = apiThird.getPreAuthCode(componentAccessToken);
-        String redirectUri = tempContextUrl + "/authorCallback"; //授权后的回调url
+        String redirectUri = tempContextUrl + "authorCallback"; //授权后的回调url
         log.debug("从request中获取的域名为=====" + tempContextUrl + ",预授权码=" + preAuthCode);
         String url = "https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=" + ThirdUtil.APPID + "&pre_auth_code=" + preAuthCode.getPreAuthCode() + "&redirect_uri=" + redirectUri;
         response.sendRedirect(url);
