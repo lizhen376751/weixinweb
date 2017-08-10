@@ -15,6 +15,14 @@
 <script language="JavaScript">
 
     //创建菜单
+    function weixin() {
+        $.ajax({
+            type    : 'GET',
+            url     : '/goAuthor'
+        });
+    }
+
+    //验证appsecret
     function getToken() {
         var appid = $(".appid").val();
         var appsecret = $(".appsecret").val();
@@ -30,6 +38,7 @@
             }
         });
     }
+
 
         //创建菜单
         function creatMenu() {
@@ -103,8 +112,10 @@
 
             <li class="btnli">appid:<input name="type" class="appid" value=""/></li>
             <li class="btnli">appsecret:<input name="type" class="appsecret" value=""/></li>
-            <li class="btnli"><input type="button" class="regbtns" value="创建菜单" onclick="getToken()"/></li>
+            <li class="btnli"><input type="button" class="regbtns" value="验证appsecret" onclick="getToken()"/></li>
         </ul>
+
+        <input type="button"  value="微信授权页面" onclick="getToken()"/>
     </div>
 </form>
 </body>

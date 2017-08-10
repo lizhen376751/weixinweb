@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -176,7 +177,7 @@ public class ThirdService {
      * @param response 相应
      * @throws IOException 网络异常
      */
-    @RequestMapping(value = "/goAuthor")
+    @RequestMapping(value = "/goAuthor", method = {RequestMethod.GET, RequestMethod.POST})
     public void goAuthor(HttpServletRequest request, HttpServletResponse response) throws IOException {
         StringBuffer requestUrl = request.getRequestURL();
         String tempContextUrl = requestUrl.delete(requestUrl.length() - request.getRequestURI().length(), requestUrl.length()).append("/").toString();
