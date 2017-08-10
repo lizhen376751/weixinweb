@@ -16,10 +16,7 @@
 
     //创建菜单
     function weixin() {
-        $.ajax({
-            type    : 'GET',
-            url     : '/goAuthor'
-        });
+        window.location.href = "/goAuthor" ;
     }
 
     //验证appsecret
