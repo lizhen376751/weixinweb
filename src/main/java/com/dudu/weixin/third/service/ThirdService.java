@@ -304,7 +304,7 @@ public class ThirdService {
              */
             AESParams aesParams1 = new AESParams();
             aesParams1.setToken(ThirdUtil.TOKEN).setAppId(ThirdUtil.APPID).setEncodingAesKey(ThirdUtil.ENDCODINGAESKEY).
-                    setMsgSignature(msgSignature).setNonce(nonce).setTimestamp(timestamp).setXml(xml);
+                    setMsgSignature(msgSignature).setNonce(nonce).setTimestamp(timestamp).setXml(receivemessage);
             receivemessage = apiThird.encrypt(aesParams);
             log.debug("加密后的xml的文件为===\r\n" + receivemessage);
             output(response, receivemessage);
