@@ -115,7 +115,7 @@
             <li class="btnli"><input type="button" class="regbtns" value="验证appsecret" onclick="getToken()"/></li>
         </ul>
 
-        <input type="button"  value="微信授权页面" onclick="getToken()"/>
+        <input type="button"  value="微信授权页面" onclick="weixin()"/>
     </div>
 </form>
 </body>
