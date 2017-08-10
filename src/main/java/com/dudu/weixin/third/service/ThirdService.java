@@ -182,13 +182,12 @@ public class ThirdService {
         StringBuffer requestUrl = request.getRequestURL();
         String tempContextUrl = requestUrl.delete(requestUrl.length() - request.getRequestURI().length(), requestUrl.length()).append("/").toString();
         //网页的一个按钮点击之后直接进行跳转至这个页面,然后客户进行授权
-//        ComponentAccessToken componentAccessToken = new ComponentAccessToken();
-//        componentAccessToken.setAppid(ThirdUtil.APPID);
-//        PreAuthCode preAuthCode = apiThird.getPreAuthCode(componentAccessToken);
+        ComponentAccessToken componentAccessToken = new ComponentAccessToken();
+        componentAccessToken.setAppid(ThirdUtil.APPID);
+        PreAuthCode preAuthCode = apiThird.getPreAuthCode(componentAccessToken);
         String redirectUri = tempContextUrl + "authorCallback"; //授权后的回调url
-//        log.debug("从request中获取的域名为=====" + tempContextUrl + ",预授权码=" + preAuthCode);
-//        String url = "https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=" + ThirdUtil.APPID + "&pre_auth_code=" + preAuthCode.getPreAuthCode() + "&redirect_uri=" + redirectUri;
-        String url = "https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=" + ThirdUtil.APPID + "&pre_auth_code=preauthcode@@@y3T1ZMl1LCxs9a-DGDKXskzipPngOb3sxACf-iFahUhbg24_GNdv0oUW1Pm1dgZR&redirect_uri=" + redirectUri;
+        log.debug("从request中获取的域名为=====" + tempContextUrl + ",预授权码=" + preAuthCode);
+        String url = "https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=" + ThirdUtil.APPID + "&pre_auth_code=" + preAuthCode.getPreAuthCode() + "&redirect_uri=" + redirectUri;
         response.sendRedirect(url);
     }
 
