@@ -178,14 +178,14 @@ public class ThirdService {
      */
     @RequestMapping(value = "/goAuthor")
     public void goAuthor(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        StringBuffer requestUrl = request.getRequestURL();
+        String tempContextUrl = requestUrl.delete(requestUrl.length() - request.getRequestURI().length(), requestUrl.length()).append("/").toString();
         //网页的一个按钮点击之后直接进行跳转至这个页面,然后客户进行授权
         ComponentAccessToken componentAccessToken = new ComponentAccessToken();
         componentAccessToken.setAppid(ThirdUtil.APPID);
-        //TODO 需要修改 获取第三方的预授权码
         PreAuthCode preAuthCode = apiThird.getPreAuthCode(componentAccessToken);
-
-        String redirectUri = ""; //授权后的回调url
-        // TODO 获取预授权码和获取第三方平台的token
+        String redirectUri = tempContextUrl + "/authorCallback"; //授权后的回调url
+        log.debug("从request中获取的域名为=====" + tempContextUrl + ",预授权码=" + preAuthCode);
         String url = "https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=" + ThirdUtil.APPID + "&pre_auth_code=" + preAuthCode.getPreAuthCode() + "&redirect_uri=" + redirectUri;
         response.sendRedirect(url);
     }
@@ -200,10 +200,12 @@ public class ThirdService {
     public void authorCallback(HttpServletRequest request, HttpServletResponse response) {
         String authCode = request.getParameter("auth_code"); //授权码
         String expiresIn = request.getParameter("expires_in"); //有效期
-        // TODO 1.调用redis接口 获取第三方开发平台的token
-        // TODO 调用redis接口 获取公众号凭据和授权信息接口(保存或者刷新)
-
-
+        log.debug("再回调url中获取授权码" + authCode + ",有效期=" + expiresIn);
+        ComponentVerifyTicket componentVerifyTicket = new ComponentVerifyTicket();
+        componentVerifyTicket.setAppId(ThirdUtil.APPID);
+        //保存授权信息
+        AuthorizationInfo authorizationInfo = apiThird.getAuthorizationInfo(componentVerifyTicket, authCode);
+        log.debug("保存的授权信息=" + authorizationInfo.toString());
     }
 
 
