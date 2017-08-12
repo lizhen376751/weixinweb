@@ -2,14 +2,14 @@ package com.dudu.weixin.third.service;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.dudu.soa.weixindubbo.third.api.ApiThird;
-import com.dudu.soa.weixindubbo.third.module.AESParams;
-import com.dudu.soa.weixindubbo.third.module.AuthorizationInfo;
-import com.dudu.soa.weixindubbo.third.module.ComponentAccessToken;
-import com.dudu.soa.weixindubbo.third.module.ComponentVerifyTicket;
-import com.dudu.soa.weixindubbo.third.module.PreAuthCode;
-import com.dudu.soa.weixindubbo.thirdmessage.module.CustomerText;
-import com.dudu.soa.weixindubbo.thirdmessage.module.TextContent;
+import com.dudu.soa.weixindubbo.third.authorizationinfo.module.AuthorizationInfo;
+import com.dudu.soa.weixindubbo.third.commonwx.api.ApiThird;
+import com.dudu.soa.weixindubbo.third.commonwx.module.AESParams;
+import com.dudu.soa.weixindubbo.third.commonwx.module.ComponentAccessToken;
+import com.dudu.soa.weixindubbo.third.commonwx.module.ComponentVerifyTicket;
+import com.dudu.soa.weixindubbo.third.commonwx.module.PreAuthCode;
+import com.dudu.soa.weixindubbo.third.message.module.CustomerText;
+import com.dudu.soa.weixindubbo.third.message.module.TextContent;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.weixin.third.aes.AesException;
 import com.dudu.weixin.util.ThirdUtil;
