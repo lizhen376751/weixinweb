@@ -32,6 +32,7 @@ public class ShopXiaoFeiJiLuService {
     /**
      * 日志打印
      */
+
     private static Logger logger = LoggerFactory.getLogger(ShopXiaoFeiJiLuService.class);
     /**
      * 引入消费记录接口
