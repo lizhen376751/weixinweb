@@ -119,7 +119,7 @@ public class FileUploadServlet {
                     //item.write(new File(uploadPath, itemNo + ".gif"));
                     //将文件保存到目录下，不修改文件名
                     item.write(new File(uploadPath, fileName));
-                    imagePath = uploadPath.toString() + "\\" + fileName;
+                    imagePath = uploadPath.toString() + "/" + fileName;
                 }
             }
         } catch (Exception e) {
