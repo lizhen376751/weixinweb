@@ -38,15 +38,14 @@ public class FileUploadServlet {
     private File tempPath;
 
     /**
-     *
-     * @param request 请求
+     * @param request  请求
      * @param response 相应
      * @return 上传文件的路径
      */
     @ResponseBody
     @RequestMapping("/upload/UpLoad")
     public String ss(HttpServletRequest request, HttpServletResponse response) {
-
+        String imagePath = "";
         /**
          * 获取上下文环境,添加自己的制定路径
          */
@@ -120,13 +119,15 @@ public class FileUploadServlet {
                     //item.write(new File(uploadPath, itemNo + ".gif"));
                     //将文件保存到目录下，不修改文件名
                     item.write(new File(uploadPath, fileName));
+                    imagePath = uploadPath.toString() + "\\" + fileName;
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
 
         }
-        return uploadPath.toString();
+        //TODO 用完之后要记得删除
+        return imagePath;
 
     }
 
