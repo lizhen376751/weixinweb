@@ -2,6 +2,7 @@ package com.dudu.weixin.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.lmk.special.elb.api.ApiElbSpecialCustomerIntf;
+import com.dudu.soa.lmk.special.elb.module.CustomerSpecialSaveModule;
 import com.dudu.soa.lmk.special.elb.module.ElbCheckCustomerResult;
 import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
 import com.dudu.soa.ordercenter.shoporder.api.ApiShopOrderIntf;
@@ -48,7 +49,8 @@ public class SelfBilling {
         if (wxCustomer != null) {
             Integer id = wxCustomer.getId();
             long customerId = (long) id;
-            ElbCheckCustomerResult elbCheckCustomerResult = apiElbSpecialCustomerIntf.checkCustomerIsActive(customerId);
+            CustomerSpecialSaveModule customerSpecialSaveModule = new CustomerSpecialSaveModule().setCardId(1l).setBrandCode("CS000");
+            ElbCheckCustomerResult elbCheckCustomerResult = apiElbSpecialCustomerIntf.checkCardOrderIsCreate(customerSpecialSaveModule);
             log.debug("联盟客户是否已经激活" + elbCheckCustomerResult.toString());
             return elbCheckCustomerResult;
         }
