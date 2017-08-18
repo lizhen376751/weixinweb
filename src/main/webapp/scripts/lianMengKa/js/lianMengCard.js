@@ -71,6 +71,7 @@ $(document).ready(function () {
     var body = $("body");
 	//向html中添加数据
 	function appenging (arr) {
+		//console.log(arr)
 		if(arr!=null && arr.length>0){
 			for (var i = 0; i < arr.length;i++) {
 				obj_append("div1","lianMeng",body,"div","");
@@ -133,6 +134,21 @@ $(document).ready(function () {
                 }
 				//添加明细
 				obj_append("div19","card_detailed font_3",$($(".card_surplus")[i]),"a","明细");
+                //判断是否要开工单
+                $.ajax({
+                    type: 'POST',
+                    url: '/getCommonAjax?fromflag=selfbilling&cardNo='+arr[i].cardId,
+                    data: {
+
+                    },
+                    success: function (jsonData) {
+                       // var arr = JSON.parse(jsonData);
+                        console.log(jsonData)
+                        //obj_append("div21","card_detailed font_3",$($(".card_surplus")[i]),"a","明细");
+                       // $($("a")[i]).attr("href","/getCommonAjax?fromflag=billing"+arr[i].cardName+"&cardNo="+arr[i].cardNumber)
+                    }
+                });
+                obj_append("div19","card_detailed font_3",$($(".card_surplus")[i]),"a","自助开单");
 				$($("a")[i]).attr("href","/oauthLoginServlet?flagStr=lianMengDetails&cardName="+arr[i].cardName+"&cardNo="+arr[i].cardNumber)
                 //添加每一张卡与卡之间的分界条
                 obj_append("div20","fjt",$($(".lianMeng")[i]),"span");
