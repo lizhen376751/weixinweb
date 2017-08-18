@@ -1,0 +1,93 @@
+body{
+	background: #e8e8e8;
+}
+.step_color1{
+	color: #9d9d9d;   /*灰色*/
+}
+.step_color2{
+	color: #31a3ff;  /*蓝色*/
+}
+
+/*----------------------------------------------------主体样式*/
+.title{
+	margin-top: 0.4rem;
+	overflow: hidden;
+	text-align: center;
+}
+.title span{
+	display: inline;
+}
+ul{
+	margin: 0 0.48rem 0.2rem 0.64rem;
+}
+li{
+	width: 100%;
+	margin-top: 0.48rem;
+	height: 3.05rem;
+	background: #fff;
+	border-radius: 0 0.1rem 0.1rem 0;
+	box-shadow: 0px 0px 0.04rem rgba(0,0,0,0.4);
+	position: relative;
+}
+.step_left{
+	width: 1.9rem;
+	height: 3.16rem;
+	background: #E8E8E8;
+	position: relative;
+	top: -0.06rem;
+	left: -0.05rem;
+	z-index: 1;
+}
+.img{
+	width: 3.01rem;
+	height: 3.01rem;
+	border: 0.07rem #31a3ff solid;
+	border-radius: 50%;
+	background: #fff;
+}
+.image{
+	width: 2.93rem;
+	height: 2.93rem;
+	border: none;
+	border-radius: 50%;
+	margin: 0.04rem auto;
+}
+.step_num{
+	width: 0.53rem;
+	height: 0.53rem;
+	line-height: 0.55rem;
+	text-align: center;
+	background: #31a3ff;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.26rem;
+	left: -0.2rem;
+}
+.step_text{
+	height: 100%;
+	width: 68.5%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	overflow: hidden;
+}
+.step_title{
+	margin: 0.24rem 0.24rem 0rem 0.24rem;
+}
+.step_detail{
+	color: #4d4d4d;
+	/*height: 1.25rem;*/
+	margin: 0.15rem 0.24rem 0rem 0.24rem;
+	/*overflow: hidden;*/
+}
+#step_note{
+	margin: 0.1rem 0.24rem 0rem 0.24rem;
+	color: #ff083d;
+	/*overflow: hidden;*/
+}
+
+
+
+
+
