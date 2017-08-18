@@ -54,8 +54,14 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
-
         HttpSession session = request.getSession();
+//=========================================================================================================
+        //TODO 测试之后删除
+        session.setAttribute("plateNumber", "鲁A2032");
+        session.setAttribute("openId", "oSsYXwMun4NrZE8b_OQi6kMaPyg4");
+        session.setAttribute("shopcode", "0533001");
+//=========================================================================================================
+
         String shopcode = (String) session.getAttribute("shopcode");
 
         //参数中获取shopcode

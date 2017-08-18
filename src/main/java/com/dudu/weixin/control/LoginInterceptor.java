@@ -59,6 +59,12 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
+//=========================================================================================================
+        //TODO 测试之后删除
+        httpSession.setAttribute("plateNumber", "鲁A2032");
+        httpSession.setAttribute("lmcode", "CS000");
+        httpSession.setAttribute("openId", "ok3G6w71F2c1sUhn4AutIM4AVTQU");
+//=========================================================================================================
         //无论点击那个页面都要进行拦截
         String lmcode = (String) httpSession.getAttribute("lmcode");
         //防止同一部手机,更换公众号session缓存的问题
