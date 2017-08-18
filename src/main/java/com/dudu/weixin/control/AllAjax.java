@@ -10,7 +10,9 @@ import com.dudu.soa.lmbasedata.basedata.shop.module.ShopQueryFruit;
 import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
+import com.dudu.soa.lmk.special.elb.module.ElbCheckCustomerResult;
 import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
+import com.dudu.soa.salescenter.shoporder.module.ShopOrderParam;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.soa.weixindubbo.weixin.weixinconfig.api.ApiWeiXinConfig;
 import com.dudu.soa.weixindubbo.weixin.weixinconfig.module.WeiXinConfig;
@@ -26,6 +28,7 @@ import com.dudu.weixin.service.LianMengActivityService;
 import com.dudu.weixin.service.LianMengKaService;
 import com.dudu.weixin.service.LianmengIntroducedService;
 import com.dudu.weixin.service.PersoncenterService;
+import com.dudu.weixin.service.SelfBillingService;
 import com.dudu.weixin.service.ShopInfoService;
 import com.dudu.weixin.service.ValidateService;
 import com.dudu.weixin.service.WxCustomerService;
@@ -154,6 +157,12 @@ public class AllAjax {
     @Autowired
     private DrivingLicenseService drivingLicenseService;
     /**
+     * 联盟卡自助开单
+     */
+    @Autowired
+    private SelfBillingService selfBillingService;
+
+    /**
      * 需要分页查询的数据
      *
      * @param request  请求
@@ -230,6 +239,8 @@ public class AllAjax {
             String active = lianMengKa.active(lmcode, cardnum, activecode, platenumber);
             return active;
         }
+
+
         //点击登录按钮
         if ("checklogin".equals(fromflag)) {
             String password = request.getParameter("password"); //密码
@@ -315,6 +326,19 @@ public class AllAjax {
             List<LianmengKaResultModule> xmkCardInfo = lianMengKa.getXmkCardInfo(lmcode, cardNo, platenumber);
             return xmkCardInfo;
         }
+
+        //该联盟卡是否已经自助开单,或者是否具有自助开单的权限
+        if ("selfbilling".equals(fromflag)) {
+            ElbCheckCustomerResult elbCheckCustomerResult = selfBillingService.checkCustomerIsActive(cardNo, lmcode);
+            return elbCheckCustomerResult;
+        }
+
+        //联盟开单,创建工单
+        if ("billing".equals(fromflag)) {
+            ShopOrderParam defaultShopOrder = selfBillingService.createDefaultShopOrder(platenumber, lmcode);
+            return defaultShopOrder;
+        }
+
         //获取联盟卡二维码
         if ("getXmkQRCode".equals(fromflag)) {
 
@@ -445,7 +469,6 @@ public class AllAjax {
     public PageResult queryInsurance(HttpServletRequest request) {
         return cheXianService.queryBaoXianList(request);
     }
-
 
 
     /**

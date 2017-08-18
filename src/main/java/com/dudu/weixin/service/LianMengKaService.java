@@ -101,6 +101,7 @@ public class LianMengKaService {
     }
 
     /**
+     * 联盟卡列表
      * 查询联盟卡剩余次数  queryXmkLeftCount   查询联盟卡消费明细 queryXiangmukaCustRecords
      *
      * @param shopcode  shopcode
