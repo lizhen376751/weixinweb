@@ -12,14 +12,13 @@
 })(document, window);
 
 $(function () {
-
     var shopCode = $("#shopCode").val();
     var wxpingzheng = $("#wxpingzheng").val();
     var xunumber = $("#xunumber").val();
     var car_num = $(".car_num")//------------------------------------------------获取车牌号里的内容
     var project_name = $(".project_name");//-----------------------------------获取项目的名称
     var ul = $("ul");//-----------------------------------------------------获取步骤容器
-    var btn = $(".btn");//---------------------------------------------------获取标准流程按钮
+    //var btn = $(".btn");//---------------------------------------------------获取标准流程按钮
     var plateNumber = $("#plateNumber").val()//----------------------------获取车牌号
 
     $.ajax({
@@ -71,7 +70,7 @@ $(function () {
 
                 }
                 title+="</ul>"+
-                    "<div class='btn  font_3 color_3' itemCode='"+itemCode+"' shopCodeLm='"+shopCodeLm+"'>标准流程</div>"+
+                    "<div class=' btn font_3 color_3' itemCode='"+itemCode+"' shopCodeLm='"+shopCodeLm+"'>激活</div>"+
                     "<span class='fgx'></span>"
 
 
@@ -79,12 +78,12 @@ $(function () {
             $(".wrap").append(title);
             var nn = $(".fgx").length;
             $($(".fgx")[nn - 1]).hide();
-            $(".btn").on("click", function () {
-                var codes = $(this).attr("itemCode");
-                var codelm = $(this).attr("shopCodeLm");
-                //TODO 获取参数进行替换
-                window.location.href = "/shopweixinServlet?serviceType=biaozhunliucheng&itemCode="+codes+"&shopCodeLm="+codelm;
-            });
+            // $(".btn").on("click", function () {
+            //     var codes = $(this).attr("itemCode");
+            //     var codelm = $(this).attr("shopCodeLm");
+            //     //TODO 获取参数进行替换
+            //     window.location.href = "/shopweixinServlet?serviceType=biaozhunliucheng&itemCode="+codes+"&shopCodeLm="+codelm;
+            // });
 
             var images = $(".images"); //--------------------------------------获取页面中的每一步的图片
             images.on("click", function () {
