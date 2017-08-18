@@ -163,6 +163,8 @@ public class AllController {
             String inspectionDetailedDescription = request.getParameter("inspectionDetailedDescription");
             model.addAttribute("inspectionDetailedDescription", inspectionDetailedDescription);
             return "/ahi/thirlyIndex.jsp"; //ahi三级页面
+        } else if ("selfbilling".equals(business)) { //联盟卡自助开单
+            return "/shigongbuzhou/stepPhoto.jsp.jsp";
         } else {
             return "/login/login.jsp";
         }

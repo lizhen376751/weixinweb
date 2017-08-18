@@ -69,7 +69,9 @@ public class SelfBillingService {
     public ShopOrderParam createDefaultShopOrder(String plateNumber, String lmcode) {
         WxCustomer wxCustomer = wxCustomerService.getWxCustomer(plateNumber, lmcode);
         if (wxCustomer != null) {
-            Integer id = wxCustomer.getId();
+            // TODO 测试之后进行删除
+            Integer id = 556;
+//            Integer id = wxCustomer.getId();
             long customerId = (long) id;
             String brandCode = wxCustomer.getBrandCode();
             SpecialOrderQueryParam specialOrderQueryParam = new SpecialOrderQueryParam();
