@@ -134,6 +134,7 @@ $(document).ready(function () {
                 }
 				//添加明细
 				obj_append("div19","card_detailed font_3",$($(".card_surplus")[i]),"a","明细");
+                $($("a")[i]).attr("href","/oauthLoginServlet?flagStr=lianMengDetails&cardName="+arr[i].cardName+"&cardNo="+arr[i].cardNumber)
                 //判断是否要开工单
                 $.ajax({
                     type: 'POST',
@@ -142,14 +143,27 @@ $(document).ready(function () {
 
                     },
                     success: function (jsonData) {
-                       // var arr = JSON.parse(jsonData);
-                        console.log(jsonData)
+                        var arr = JSON.parse(jsonData);
+                        console.log(arr)
+						if(arr.statusEnum=="BLANK"){
+                            //允许开单
+                            $.ajax({
+                                type: 'POST',
+                                url: '/getCommonAjax?fromflag=billing',
+                                data: {},
+                                success: function (jsonData2) {
+                                    var arr2 = JSON.parse(jsonData2);
+                                    console.log(arr2)
+                                }
+                            })
+						}else{
+
+						}
                         //obj_append("div21","card_detailed font_3",$($(".card_surplus")[i]),"a","明细");
                        // $($("a")[i]).attr("href","/getCommonAjax?fromflag=billing"+arr[i].cardName+"&cardNo="+arr[i].cardNumber)
                     }
                 });
-                obj_append("div19","card_detailed font_3",$($(".card_surplus")[i]),"a","自助开单");
-				$($("a")[i]).attr("href","/oauthLoginServlet?flagStr=lianMengDetails&cardName="+arr[i].cardName+"&cardNo="+arr[i].cardNumber)
+
                 //添加每一张卡与卡之间的分界条
                 obj_append("div20","fjt",$($(".lianMeng")[i]),"span");
 			}
