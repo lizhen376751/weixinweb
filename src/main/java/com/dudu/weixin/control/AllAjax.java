@@ -298,7 +298,7 @@ public class AllAjax {
      * @return Object 返回路径
      */
     @ResponseBody
-    @RequestMapping(value = "getCommonAjax", method = RequestMethod.POST)
+    @RequestMapping(value = "getCommonAjax", method = {RequestMethod.POST, RequestMethod.GET})
     public Object commonAjax(HttpServletRequest request, HttpServletResponse response,
                              @RequestParam(name = "fromflag", required = false) String fromflag,
                              @RequestParam(name = "cardNo", required = false) String cardNo, Model model

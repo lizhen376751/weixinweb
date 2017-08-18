@@ -8,7 +8,6 @@ import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
 import com.dudu.soa.ordercenter.shoporder.api.ApiShopOrderIntf;
 import com.dudu.soa.ordercenter.shoporder.module.SpecialOrderQueryParam;
 import com.dudu.soa.salescenter.shoporder.module.ShopOrderParam;
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +48,8 @@ public class SelfBillingService {
      * @return 是否已经激活
      */
     public ElbCheckCustomerResult checkCustomerIsActive(String cardId, String lmcode) {
-        if (!StringUtils.isEmpty(cardId)) {
-            long parseLong = Long.parseLong(cardId);
+        if (null != cardId && !"".equals(cardId) && !"null".equals(cardId)) {
+            Long parseLong = new Long((long) Integer.parseInt(cardId));
             CustomerSpecialSaveModule customerSpecialSaveModule = new CustomerSpecialSaveModule().setCardId(parseLong).setBrandCode(lmcode);
             ElbCheckCustomerResult elbCheckCustomerResult = apiElbSpecialCustomerIntf.checkCardOrderIsCreate(customerSpecialSaveModule);
             log.debug("联盟客户是否已经激活" + elbCheckCustomerResult.toString());
