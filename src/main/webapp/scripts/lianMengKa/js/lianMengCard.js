@@ -146,16 +146,10 @@ $(document).ready(function () {
                         var arr = JSON.parse(jsonData);
                         console.log(arr)
 						if(arr.statusEnum=="BLANK"){
+                        	alert(11)
                             //允许开单
-                            $.ajax({
-                                type: 'POST',
-                                url: '/getCommonAjax?fromflag=billing',
-                                data: {},
-                                success: function (jsonData2) {
-                                    var arr2 = JSON.parse(jsonData2);
-                                    console.log(arr2)
-                                }
-                            })
+                            obj_append("div21","card_detailed font_3",$($(".card_surplus")[i]),"a","开单激活");
+                            $($("a")[i]).attr("href","/lmInternalJump?business=selfbilling")
 						}else{
 
 						}
