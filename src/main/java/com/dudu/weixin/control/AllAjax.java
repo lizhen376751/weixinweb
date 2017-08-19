@@ -346,6 +346,12 @@ public class AllAjax {
             return defaultShopOrder;
         }
 
+        //联盟开单,再次进入页面查询数据
+        if ("twobilling".equals(fromflag)) {
+            List<EdbWorkComplateMessage> billsDetail = selfBillingService.getBillsDetail(platenumber, request);
+            return billsDetail;
+        }
+
         //联盟卡自助激活 标准流程查看
         if ("biaozhunliucheng".equals(fromflag)) {
             return shopShiGongBuZhou.queryProjectProcess(request);
