@@ -334,25 +334,25 @@ public class AllAjax {
             return xmkCardInfo;
         }
 
-        //该联盟卡是否已经自助开单,或者是否具有自助开单的权限
+        //1.该联盟卡是否已经自助开单,或者是否具有自助开单的权限
         if ("selfbilling".equals(fromflag)) {
             ElbCheckCustomerResult elbCheckCustomerResult = selfBillingService.checkCustomerIsActive(cardNo, lmcode);
             return elbCheckCustomerResult;
         }
 
-        //联盟开单,创建工单之后查询施工步骤
+        //2.联盟开单,创建工单之后查询施工步骤
         if ("billing".equals(fromflag)) {
             List<EdbWorkComplateMessage> defaultShopOrder = selfBillingService.createDefaultShopOrder(platenumber, lmcode, request);
             return defaultShopOrder;
         }
 
-        //联盟开单,再次进入页面查询数据
+        //3.联盟开单,再次进入页面查询施工步骤
         if ("twobilling".equals(fromflag)) {
             List<EdbWorkComplateMessage> billsDetail = selfBillingService.getBillsDetail(platenumber, request);
             return billsDetail;
         }
 
-        //联盟卡自助激活 标准流程查看
+        //4.联盟卡自助激活 标准流程查看
         if ("biaozhunliucheng".equals(fromflag)) {
             return shopShiGongBuZhou.queryProjectProcess(request);
         }

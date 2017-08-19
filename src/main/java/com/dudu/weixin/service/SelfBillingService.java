@@ -102,8 +102,8 @@ public class SelfBillingService {
         WxCustomer wxCustomer = wxCustomerService.getWxCustomer(plateNumber, lmcode);
         if (wxCustomer != null) {
             // TODO 测试之后进行删除
-            Integer id = 566;
-//            Integer id = wxCustomer.getId();
+//            Integer id = 566;
+            Integer id = wxCustomer.getId();
             long customerId = (long) id;
             Long parseLong = new Long((long) Integer.parseInt(cardId));
             String brandCode = wxCustomer.getBrandCode();

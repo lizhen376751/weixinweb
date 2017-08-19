@@ -169,6 +169,12 @@ public class AllController {
             model.addAttribute("cardId", cardId);
             model.addAttribute("cardNumber", cardNumber);
             return "/shigongbuzhou/stepPhoto.jsp";
+        } else if ("twoselfbilling".equals(business)) { //联盟卡开单之后再次进入
+            String cardId = request.getParameter("cardId");
+            String cardNumber = request.getParameter("cardNumber");
+            model.addAttribute("cardId", cardId);
+            model.addAttribute("cardNumber", cardNumber);
+            return "/shigongbuzhou/stepPhoto2.jsp";
         } else {
             return "/login/login.jsp";
         }
