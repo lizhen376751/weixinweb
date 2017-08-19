@@ -35,56 +35,57 @@ $(function () {
             var arr = JSON.parse(jsonData);
             console.log(arr);
             var title = '';//单个项目中的title
-            for (var i = 0; i < arr.length; i++) {        //循环的项目个数
-                var arr2 = arr[i];
-                //循环每个项目并写出相应的车牌号码和项目名称
-                title+="<div class='title font_1'>" +
-                    "<div class='title_left'>"+
-                    "<span class='step_color1'>车牌号：</span>"+
-                    "<span class='step_color2 car_num'>"+plateNumber+"</span>"+
-                    "</div>"+
-                    "<div class='title_right'>"+
-                    "<span class='step_color2 project_name'>"+arr2[0].projectName+"</span>"+
-                    "<span class='step_color1'>项目：</span>"+
-                    "</div>"+
-                    "</div>"+
-                    "<ul >"
+            //写出相应的车牌号码和项目名称
+            title+="<div class='title font_1'>" +
+                "<div class='title_left'>"+
+                "<span class='step_color1'>车牌号：</span>"+
+                // "<span class='step_color2 car_num'>"+plateNumber+"</span>"+
+                "</div>"+
+                "<div class='title_right'>"+
+                "<span class='step_color2 project_name'>"+arr[0].projectName+"</span>"+
+                "<span class='step_color1'>项目：</span>"+
+                "</div>"+
+                "</div>"+
+                "<ul >"
 
                 var itemCode = ""; //记录数据中的itemCode
                 var shopCodeLm = "";//记录数据中的shopCodeLm
-                for(var j = 0; j < arr2.length; j++){
-                    itemCode = arr2[j].itemCode;
-                    shopCodeLm = arr2[j].shopCodeLm;
-                    if(arr2[j].images.length != 0){
-                        var srcs = arr2[j].images[0].fileUrl;
+                for(var j = 0; j < arr.length; j++){
+                    itemCode = arr[j].itemCode;
+                    shopCodeLm = arr[j].shopCodeLm;
+                    if(arr[j].commonImages.length != 0){
+                        var srcs = arr[j].commonImages[0].fileUrl;
                     }else{
                         // var srcs = arr2[j].commonImages[0].fileUrl;
                         srcs = "";
                     }
                     title+= "<li>" +
                         "<div class='photo'>" +
-                        "<img src=' "+srcs+" ' class='images'/>" +
+                            "<input type='file' name='driving ' class='filepath'/>"+
+                            "<img src=' "+srcs+" ' class='images' onclick='filefun(this)'/>" +
+                            "<div class='imgs'>"+
+                               "<img src='' class='img2 xing_shi'/>"+
+                            "</div>"+
                         "</div>" +
-                        "<span class='step_num font_4 color_3'>"+arr2[j].stepNumber+"</span>" +
-                        "<p class='step_name font_3'>"+arr2[j].projectStepName+"</p>" +
+                        "<div style='display: none;' class='filebag font_3'>"+
+                           "<ul>"+
+                               "<li><input  type='button'  onclick='das(this,1)'  value='上传视频'></li>"+
+                               "<li><input  type='button' onclick='das(this,2)' value='上传图片'></li>"+
+                            "</ul>"+
+                        "</div>"+
+                        "<span class='step_num font_4 color_3'>"+arr[j].stepNumber+"</span>" +
+                        "<p class='step_name font_3'>"+arr[j].projectStepName+"</p>" +
                         "</li>";
 
                 }
-                title+="</ul>"+
-                    "<div class='btn  font_3 color_3' itemCode='"+itemCode+"' shopCodeLm='"+shopCodeLm+"'>标准流程</div>"+
-                    "<span class='fgx'></span>"
+                 title+="</ul>"
+                    "<div class='btn  font_3 color_3' itemCode='"+itemCode+"' shopCodeLm='"+shopCodeLm+"'>激活</div>"
+                //     "<span class='fgx'></span>"
 
 
-            }
+
             $(".wrap").append(title);
-            var nn = $(".fgx").length;
-            $($(".fgx")[nn - 1]).hide();
-            $(".btn").on("click", function () {
-                var codes = $(this).attr("itemCode");
-                var codelm = $(this).attr("shopCodeLm");
-                //TODO 获取参数进行替换
-                window.location.href = "/shopweixinServlet?serviceType=biaozhunliucheng&itemCode="+codes+"&shopCodeLm="+codelm;
-            });
+
 
             var images = $(".images"); //--------------------------------------获取页面中的每一步的图片
             images.on("click", function () {
@@ -117,6 +118,7 @@ $(function () {
     });
 
 
+
     $(".box").on("click", function () {
         $(this).hide()
     });
@@ -128,6 +130,117 @@ $(function () {
     //--------------------------------------------------点击标准流程跳转的页面
 
 })
+
+//显示选择图片或者视频
+
+function filefun(obj){
+
+    $(obj).parent().next().show();
+
+
+
+}
+//显示选择图片或者视频
+function das(obj,elem){
+    $(".filebag").hide();
+    if(elem==1){
+        $(obj).parent().parent().parent().prev().find(".filepath").attr({accept:"video/*",capture:"camcorder"});
+        $(obj).parent().parent().parent().prev().find(".filepath").click();
+    }else{
+        $(obj).parent().parent().parent().prev().find(".filepath").attr({accept:"image/*",capture:"camera"});
+        $(obj).parent().parent().parent().prev().find(".filepath").click();
+    }
+}
+
+//上传阿里
+
+$(".filepath").on("change",function() {
+    var that = this;
+    var photoExt=this.value.substr(this.value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
+    var tp =".jpg,.gif,.bmp,.JPG,.GIF,.BMP,.ico,.png";
+    var rs=tp.indexOf(photoExt);
+    var onself = this;
+    if(this.value == ""){
+        return false
+    }else if(rs < 0){            //如果返回的结果大于或等于0，说明包含允许上传的文件类型
+        alert("您选择的上传文件不是有效的图片文件！");
+        return false;
+    }else{
+        //var shopcode=mineShopCode;
+        var i = $(this).index()+1;
+        var srcd =this.files[0];
+        var projectId = uuid(16,16);
+        var DuduOssCallbackVarData1 = {
+            "shopCode" :"YLB0002",
+            "orderCode" : projectId,
+            "imageType" : "6"
+        }
+        console.log(this.files[0]);
+        $.ajax({
+            type    : 'GET',
+            url     : '/ossconfig/YLB0002/8',
+            data    : {},
+            success:function(jsondata){
+                var json = JSON.parse(jsondata);
+                Duducreds=json;
+                // console.log(json)
+                new applyTokenDoNew(srcd,DuduOssCallbackVarData1);
+            },
+            error:function(data){
+
+            }
+
+        });
+        // console.log(srcd)
+        //setTimeout(function() { new applyTokenDoNew(srcd,DuduOssCallbackVarData1);},2000);
+        $(this).nextAll(".images").hide();   //this指的是input
+        $(this).nextAll("p").hide();
+        $(this).nextAll(".imgs").show();  //fireBUg查看第二次换图片不起做用
+        // $(this).nextAll('.close').show();   //this指的是input
+        var state = false;
+        var imgage = $(this).nextAll(".imgs").children(".img2");
+        function a(){
+            // console.log(srcs)
+            if(srcs == "" && state == false){
+                setTimeout(function() { a();},2000);
+            }else{
+                console.log(projectId);
+                imgage.attr("src",srcs);
+                $(onself).nextAll(".tupian").val(projectId);
+                srcs = "";
+                state = true;
+            }
+        }
+        a();
+
+    }
+
+    // var srcs = getObjectURL(this.files[0]);   //获取路径
+    // if(srcs){
+    //     $(this).nextAll(".imgs").children(".img2")[0].src = srcs;
+    //     $(this).nextAll(".img1").hide();   //this指的是input
+    //     $(this).nextAll("p").hide();
+    //     $(this).nextAll(".imgs").show();  //fireBUg查看第二次换图片不起做用
+    //     $(this).nextAll('.close').show();   //this指的是input
+    //     $(this).nextAll(".imgs").children(".img2").attr("src",srcs);    //this指的是input
+    //     $(this).val('');    //必须制空
+    // }
+
+
+})
+
+
+$(".btn").on("click", function () {
+
+    var nn = $(".img2");
+    for(var aa=0;aa<nn.length;aa++){
+        if(nn.eq(aa).attr("src")==""||nn.eq(aa).attr("src")==null){
+             alert("请等图片或者视频上传中.....")
+        }else{
+
+        }
+    }
+});
 
 
 

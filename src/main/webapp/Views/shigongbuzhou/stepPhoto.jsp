@@ -15,6 +15,13 @@
     <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/main.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/shigongbuzhou/js/stepPhoto.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- oss -->
+    <script src="https://www.promisejs.org/polyfills/promise-6.1.0.js"></script>
+    <script type="text/javascript" src="/scripts/shigongbuzhou/oss/aliyun-oss-sdk.js"></script>
+    <script type="text/javascript" src="/scripts/shigongbuzhou/oss/base64.js"></script>
+    <script type="text/javascript" src="/scripts/shigongbuzhou/oss/app.js"></script>
+
 </head>
 <body>
 <div id="loading">
@@ -56,11 +63,11 @@
        </ul>-->
 </div>
 <!--图片点击放大效果-->
-<div class="box">
+<!--<div class="box">
     <div class="img_bg">
         <img src="" class="img"/>
     </div>
-</div>
+</div>-->
 <!-----------------------------------------------底部标准流程按钮------>
 <%--<div class="btn font_3 color_3">标准流程</div>--%>
 </body>

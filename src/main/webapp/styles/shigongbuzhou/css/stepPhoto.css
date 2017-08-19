@@ -115,3 +115,40 @@ li{
 	max-width: 100%;
 	/*border: 0.03rem #fff solid;*/
 }
+
+
+.filepath{
+	position: absolute;
+	width: 2.1rem;
+	height: 2.1rem;
+	/* top: 20px; */
+	/* left: 50%; */
+	/* margin-left: -100px; */
+	opacity: 0;
+	/*    z-index: 9999;*/
+}
+.filebag ul li{float: left;text-align: center;}
+.filebag ul li input{
+	background: #c8c5c5;
+	width: 1.8rem;
+
+}
+.filebag{
+	position: fixed;
+	z-index: 999;
+	top: 40%;
+	left: 10%;
+	background: #fff;
+	width: 8rem;
+	height: 2rem;
+	border-radius: 0.5rem;
+	-webkit-border-radius: 0.5rem;
+	border: 0.01rem solid #c8c5c5;
+	box-shadow: 8px 5px 8px #c8c5c5;
+	-webkit-box-shadow: 8px 5px 8px #c8c5c5;
+}
+.imgs{
+	width: 2.1rem;
+	height: 2.1rem;
+}
+

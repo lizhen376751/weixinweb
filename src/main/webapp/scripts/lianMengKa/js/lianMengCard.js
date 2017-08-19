@@ -186,7 +186,11 @@ $(document).ready(function () {
                                 var htmllll = '&nbsp;&nbsp;&nbsp;&nbsp;<a class="card_detailed font_2" href="/lmInternalJump?business=selfbilling&cardId=' + json[i].cardId + '&cardNumber='+json[i].cardNumber+'">自助激活</a>'
                                 $(".card_surplus").eq(i).find(".cardiv").append(htmllll)
 
-                            } else {
+                            } else if(arr2.statusEnum == "REJECT" || arr2.statusEnum == "CREATE"){
+                                //允许开单
+                                var htmllll = '&nbsp;&nbsp;&nbsp;&nbsp;<a class="card_detailed font_2" href="/lmInternalJump?business=selfbilling&cardId=' + json[i].cardId + '&cardNumber='+json[i].cardNumber+'">自助激活</a>'
+                                $(".card_surplus").eq(i).find(".cardiv").append(htmllll)
+                            }else{
 
                             }
 
