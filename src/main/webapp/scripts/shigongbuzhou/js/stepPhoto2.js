@@ -30,7 +30,7 @@ $(function () {
         url: '/getCommonAjax?fromflag=twobilling&cardId='+cardId+'&cardNumber='+cardNumber,
         async: false,
         data: {
-        },
+            },
         success: function (jsonData) {
             var arr2 = JSON.parse(jsonData);
             var arr = arr2.edbWorkComplateMessageList;
@@ -49,42 +49,42 @@ $(function () {
                 "</div>"+
                 "<ul >"
 
-            var itemCode = ""; //记录数据中的itemCode
-            var shopCodeLm = "";//记录数据中的shopCodeLm
-            for(var j = 0; j < arr.length; j++){
-                itemCode = arr[j].itemCode;
-                shopCodeLm = arr[j].shopCodeLm;
-                if(arr[j].commonImages.length != 0){
-                    var srcs = arr[j].commonImages[0].fileUrl;
-                }else{
-                    // var srcs = arr2[j].commonImages[0].fileUrl;
-                    srcs = "";
-                }
-                title+= "<li>" +
-                    "<div class='photo'>" +
-                    "<input type='file' name='driving ' class='filepath'/>"+
-                    "<img src=' "+srcs+" ' class='images' onclick='filefun(this)'/>" +
-                    "<div class='imgs'>"+
-                    "<img src='' class='img2 xing_shi'/>"+
-                    "</div>"+
-                    "<input type='hidden'  class='itemMxId' value="+arr[j].itemMxId+"/>"+
-                    "<input type='hidden'  class='projectStepId' value="+arr[j].projectStepId+"/>"+
-                    "<input type='hidden'  class='orderCode' value="+arr2.resultBillsDetail.wxpingzheng+"/>"+
-                    "</div>" +
-                    "<div style='display: none;' class='filebag font_3'>"+
-                    "<ul>"+
-                    "<li><input  type='button'  onclick='das(this,1)'  value='上传视频'></li>"+
-                    "<li><input  type='button' onclick='das(this,2)' value='上传图片'></li>"+
-                    "</ul>"+
-                    "</div>"+
-                    "<span class='step_num font_4 color_3'>"+arr[j].stepNumber+"</span>" +
-                    "<p class='step_name font_3'>"+arr[j].projectStepName+"</p>" +
-                    "</li>";
+                var itemCode = ""; //记录数据中的itemCode
+                var shopCodeLm = "";//记录数据中的shopCodeLm
+                for(var j = 0; j < arr.length; j++){
+                    itemCode = arr[j].itemCode;
+                    shopCodeLm = arr[j].shopCodeLm;
+                    if(arr[j].commonImages.length != 0){
+                        var srcs = arr[j].commonImages[0].fileUrl;
+                    }else{
+                        // var srcs = arr2[j].commonImages[0].fileUrl;
+                        srcs = "";
+                    }
+                    title+= "<li>" +
+                        "<div class='photo'>" +
+                            "<input type='file' name='driving ' class='filepath'/>"+
+                            "<img src=' "+srcs+" ' class='images' onclick='filefun(this)'/>" +
+                            "<div class='imgs'>"+
+                               "<img src='' class='img2 xing_shi'/>"+
+                            "</div>"+
+                            "<input type='hidden'  class='itemMxId' value="+arr[j].itemMxId+"/>"+
+                            "<input type='hidden'  class='projectStepId' value="+arr[j].projectStepId+"/>"+
+                            "<input type='hidden'  class='orderCode' value="+arr2.resultBillsDetail.wxpingzheng+"/>"+
+                        "</div>" +
+                        "<div style='display: none;' class='filebag font_3'>"+
+                           "<ul>"+
+                               "<li><input  type='button'  onclick='das(this,1)'  value='上传视频'></li>"+
+                               "<li><input  type='button' onclick='das(this,2)' value='上传图片'></li>"+
+                            "</ul>"+
+                        "</div>"+
+                        "<span class='step_num font_4 color_3'>"+arr[j].stepNumber+"</span>" +
+                        "<p class='step_name font_3'>"+arr[j].projectStepName+"</p>" +
+                        "</li>";
 
-            }
-            title+="</ul>"+
-                "<div class='btn  font_3 color_3' >激活</div>"
-            //     "<span class='fgx'></span>"
+                }
+                 title+="</ul>"+
+                    "<div class='btn  font_3 color_3' >激活</div>"
+                //     "<span class='fgx'></span>"
 
 
 
@@ -192,7 +192,7 @@ $(function () {
                 }else{
                     console.log(srcs);
                     imgage.attr("src",srcs);
-                    // $(onself).nextAll(".tupian").val(projectId);
+                   // $(onself).nextAll(".tupian").val(projectId);
                     srcs = "";
                     state = true;
                 }
