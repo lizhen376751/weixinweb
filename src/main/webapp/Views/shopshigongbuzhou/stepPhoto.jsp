@@ -62,7 +62,7 @@
     </div>
 </div>
 <!-----------------------------------------------底部标准流程按钮------>
-<%--<div class="btn font_3 color_3">激活</div>--%>
+<%--<div class="btn font_3 color_3">标准流程</div>--%>
 </body>
 </html>
 
