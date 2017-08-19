@@ -114,6 +114,7 @@ public class LianMengKaService {
                         log.debug("插入客户信息的id=" + i);
                         if (0 != i) {
                             //TODO 维护联盟信息表
+                            log.debug("开始保存维护联盟客户信息与店管家客户信息");
                             CustomerParam customerParam = new CustomerParam();
                             long customerId = (long) i;
                             String customerMobile = wxCustomer.getCustomerMobile(); //获取用户的手机号
@@ -121,7 +122,6 @@ public class LianMengKaService {
                                     .setDpCustomerId(customerId) //店管家客户id
                                     .setMainShopCode("0533001") //TODO 主店铺编码
                                     .setCustomerMobile(customerMobile); //手机号码
-//                                    .setUid(); //E代泊UID
                             Long aLong = apiCustomerIntf.addLmCustomer(customerParam);
                             log.debug("维护联盟客户信息与店管家客户信息的id=" + aLong);
                         }
