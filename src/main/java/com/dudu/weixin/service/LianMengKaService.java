@@ -109,7 +109,8 @@ public class LianMengKaService {
 //                    if ("FL000".equals(lmcode)){
                         //查询店铺信息是否有客户信息,没有的话在添加
                         CustomerInfoParam customerInfoParam = new CustomerInfoParam();
-                        customerInfoParam.setShopCode("CS000").setPlateNumber(platenumber);
+                        //TODO 0533001暂时写死后期换掉
+                        customerInfoParam.setShopCode("0533001").setPlateNumber(platenumber);
                         CustomerInfo customerInfoByPlateNumber = apiCustomerInfo.getCustomerInfoByPlateNumber(customerInfoParam);
                         log.debug("查询客户信息=" + customerInfoByPlateNumber.toString());
                         int i = 0;
