@@ -320,6 +320,7 @@ public class AllAjax {
 
         //联盟卡主页信息列表
         if ("queryLmkInfoList".equals(fromflag)) {
+            logprint.debug("联盟卡相关信息" + lmcode + ",platenumber" + platenumber);
             List<LianmengkaXmLeftResultModule> lianmengkaXmLeftResultModules = lianMengKa.queryLmkInfo(lmcode, platenumber);
             return lianmengkaXmLeftResultModules;
         }
