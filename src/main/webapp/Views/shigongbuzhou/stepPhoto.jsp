@@ -14,46 +14,46 @@
     <!--引入JS-->
     <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/main.js" type="text/javascript" charset="utf-8"></script>
-    <%--<script src="/scripts/shigongbuzhou/js/stepPhoto.js" type="text/javascript" charset="utf-8"></script>--%>
+    <script src="/scripts/shigongbuzhou/js/stepPhoto.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 <div id="loading">
     <img src="/files/loading2.gif"  alt="loading.." />
 </div>
-<!--<input type="hidden" name="plateNumber" id="plateNumber" value=${plateNumber} >
-    <input type="hidden" name="shopCode" id="shopCode" value=${shopCode} >
-    <input type="hidden" name="wxpingzheng"   id="wxpingzheng" value=${wxpingzheng} />
-    <input type="hidden" name="xunumber"  id="xunumber" value=${xunumber} />-->
+    <input type="hidden" name="cardNumber" id="cardNumber" value=${cardNumber} >
+    <input type="hidden" name="cardId" id="cardId" value=${cardId} >
+    <%--<input type="hidden" name="wxpingzheng"   id="wxpingzheng" value=${wxpingzheng} />--%>
+    <%--<input type="hidden" name="xunumber"  id="xunumber" value=${xunumber} />--%>
 <div class="wrap">
     <!--------------------------------title:车牌号和项目-------->
-    <div class="title font_1">
-        <div class="title_left">
-            <span class="step_color1">车牌号：</span>
-            <span class="step_color2 car_num">鲁B00006</span>
-        </div>
-        <div class="title_right">
-            <span class="step_color2 project_name">怡人怡车换油</span>
-            <span class="step_color1">项目：</span>
-        </div>
-    </div>  <!--title结束-->
+    <!--   <div class="title font_1">
+           <div class="title_left">
+               <span class="step_color1">车牌号：</span>
+               <span class="step_color2 car_num">鲁B00006</span>
+           </div>
+           <div class="title_right">
+               <span class="step_color2 project_name">怡人怡车换油</span>
+               <span class="step_color1">项目：</span>
+           </div>
+       </div>  <!--title结束-->
     <!------------------------------------步骤展示-------->
-    <ul>
-        <!-----------------每一条步骤-->
-        <li>
-            <div class="photo">
-                <img src="/files/shopshigongbuzhou/stepPhoto/300414.jpg" class="images"/>
-            </div>
-            <span class="step_num font_4 color_3">6</span>
-            <p class="step_name font_3">电器元件检查</p>
-        </li>
-        <li>
-            <div class="photo">
-                <img src="/files/shopshigongbuzhou/stepPhoto/123.jpg" class="images"/>
-            </div>
-            <span class="step_num font_4 color_3">6</span>
-            <p class="step_name font_3">电器元件检查</p>
-        </li>
-    </ul>
+<!--  <ul>
+            <!-----------------每一条步骤-->
+    <!--  <li>
+               <div class="photo">
+                   <img src="/files/shopshigongbuzhou/stepPhoto/300414.jpg" class="images"/>
+               </div>
+               <span class="step_num font_4 color_3">6</span>
+               <p class="step_name font_3">电器元件检查</p>
+           </li>
+           <li>
+               <div class="photo">
+                   <img src="/files/shopshigongbuzhou/stepPhoto/123.jpg" class="images"/>
+               </div>
+               <span class="step_num font_4 color_3">6</span>
+               <p class="step_name font_3">电器元件检查</p>
+           </li>
+       </ul>-->
 </div>
 <!--图片点击放大效果-->
 <div class="box">

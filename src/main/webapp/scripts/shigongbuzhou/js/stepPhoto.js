@@ -13,7 +13,8 @@
 
 $(function () {
 
-    var shopCode = $("#shopCode").val();
+    var cardNumber = $("#cardNumber").val();
+    var cardId = $("#cardId").val();
     var wxpingzheng = $("#wxpingzheng").val();
     var xunumber = $("#xunumber").val();
     var car_num = $(".car_num")//------------------------------------------------获取车牌号里的内容
@@ -21,16 +22,15 @@ $(function () {
     var ul = $("ul");//-----------------------------------------------------获取步骤容器
     var btn = $(".btn");//---------------------------------------------------获取标准流程按钮
     var plateNumber = $("#plateNumber").val()//----------------------------获取车牌号
-
+    //页面发送请求且查看施工步骤
+    //alert(cardNumber)
+    //alert(cardId)
     $.ajax({
         type: 'POST',
-        url: '/shopAjax',
+        url: '/getCommonAjax?fromflag=billing&cardId='+cardId+'&cardNumber='+cardNumber,
+        async: false,
         data: {
-            businessType: "shigongbuzhou",
-            shopCode: shopCode,
-            wxpingzheng: wxpingzheng,
-            xunumber: xunumber
-        },
+            },
         success: function (jsonData) {
             var arr = JSON.parse(jsonData);
             console.log(arr);

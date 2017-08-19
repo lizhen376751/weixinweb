@@ -137,8 +137,9 @@ img{
 	border-bottom: 1px solid #E1E1E1;
 }
 /*明细*/
+.cardiv{text-align: center}
 .card_detailed{
-	display: block;
+	display: inline-block;
 	width: 219px;
 	height: 98px;
 	margin: 48px auto;
