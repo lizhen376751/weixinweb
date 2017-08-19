@@ -223,16 +223,16 @@ $(function () {
         for(var aa=0;aa<nn.length;aa++){
             if(nn.eq(aa).attr("src")==""||nn.eq(aa).attr("src")==null){
                 mm=1;
-               // alert("请等图片或者视频上传中.....")
+                alert("请等图片或者视频上传中.....")
             }else{
-
+                window.location.href = "lmInternalJump?business=lmkInfo";
             }
         }
-        if(mm!=0){
-            alert("请等图片上传中.....")
-        }else{
-            window.location.href = "lmInternalJump?business=lmkInfo";
-        }
+        // if(mm!=0){
+        //     alert("请等图片上传中.....")
+        // }else{
+        //     window.location.href = "lmInternalJump?business=lmkInfo";
+        // }
     });
 
 })
