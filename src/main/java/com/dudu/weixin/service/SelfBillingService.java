@@ -15,6 +15,7 @@ import com.dudu.soa.salescenter.bills.module.ResultProjectMX;
 import com.dudu.soa.salescenter.shoporder.module.ShopOrderParam;
 import com.dudu.soa.salescenter.shoporder.module.ShopOrderProjectDetail;
 import com.dudu.soa.salescenter.workcomplate.module.EdbWorkComplateMessage;
+import com.dudu.weixin.mould.BillsDetail;
 import com.dudu.weixin.shopweiixin.service.ShopCustomInfoService;
 import com.dudu.weixin.shopweiixin.service.ShopShiGongBuZhouService;
 import org.slf4j.Logger;
@@ -96,7 +97,8 @@ public class SelfBillingService {
      * @param request     请求
      * @return 店铺的开单信息
      */
-    public List<EdbWorkComplateMessage> createDefaultShopOrder(String plateNumber, String lmcode, HttpServletRequest request) {
+    public BillsDetail createDefaultShopOrder(String plateNumber, String lmcode, HttpServletRequest request) {
+        BillsDetail billsDetail2 = new BillsDetail();
         String cardId = request.getParameter("cardId"); //联盟卡id
         String cardNumber = request.getParameter("cardNumber"); //联盟卡的卡号
         WxCustomer wxCustomer = wxCustomerService.getWxCustomer(plateNumber, lmcode);
@@ -114,6 +116,7 @@ public class SelfBillingService {
             specialOrderQueryParam.setBrandCardNumber(cardNumber);
             ShopOrderParam defaultShopOrder4Elb = apiShopOrderIntf.createDefaultShopOrder4Elb(specialOrderQueryParam);
             if (null != defaultShopOrder4Elb) {
+                billsDetail2.setShopOrderParam(defaultShopOrder4Elb);
                 log.debug("开单信息" + defaultShopOrder4Elb.toString());
                 //联盟卡自助激活 施工步骤
                 List<ShopOrderProjectDetail> projectDetails = defaultShopOrder4Elb.getProjectDetails();
@@ -124,11 +127,12 @@ public class SelfBillingService {
                     String shopcode = shopOrderProjectDetail.getShopcode();
                     String wxpingzheng = shopOrderProjectDetail.getWxpingzheng();
                     List<EdbWorkComplateMessage> edbWorkComplateMessages = shopShiGongBuZhou.queryShiGongBuZhou(shopcode, wxpingzheng, itemCode, itemId);
-                    return edbWorkComplateMessages;
+                    billsDetail2.setEdbWorkComplateMessageList(edbWorkComplateMessages);
+
                 }
             }
         }
-        return null;
+        return billsDetail2;
     }
 
     /**
@@ -138,7 +142,8 @@ public class SelfBillingService {
      * @param request     请求
      * @return 开单信息
      */
-    public List<EdbWorkComplateMessage> getBillsDetail(String plateNumber, HttpServletRequest request) {
+    public BillsDetail getBillsDetail(String plateNumber, HttpServletRequest request) {
+        BillsDetail billsDetail2 = new BillsDetail();
         String cardId = request.getParameter("cardId"); //联盟卡id
         Long parseLong = 1L;
         if (null != cardId && !"".equals(cardId) && !"null".equals(cardId)) {
@@ -146,6 +151,7 @@ public class SelfBillingService {
         }
         CustomerSpecialSaveModule customerSpecialSaveModule = new CustomerSpecialSaveModule();
         customerSpecialSaveModule.setCardId(parseLong);
+        //目的查询维修凭证
         CustomerSpecialSaveModule specialCustomerInfo = apiElbSpecialCustomerIntf.getSpecialCustomerInfo(customerSpecialSaveModule);
         String orderCode = "";
         if (specialCustomerInfo != null) {
@@ -160,6 +166,7 @@ public class SelfBillingService {
                     .setPingZheng(orderCode);
             ResultBillsDetail billsDetail = apiBills.getBillsDetail(billsDetailParam);
             if (null != billsDetail) {
+                billsDetail2.setResultBillsDetail(billsDetail);
                 ArrayList<ResultProjectMX> projectMx = billsDetail.getProjectMx();
                 if (null != projectMx && projectMx.size() > 0) {
                     ResultProjectMX resultProjectMX = projectMx.get(0);
@@ -169,12 +176,12 @@ public class SelfBillingService {
                         String shopcode = resultProjectMX.getShopCode();
                         String wxpingzheng = billsDetail.getWxpingzheng();
                         List<EdbWorkComplateMessage> edbWorkComplateMessages = shopShiGongBuZhou.queryShiGongBuZhou(shopcode, wxpingzheng, itemCode, itemId);
-                        return edbWorkComplateMessages;
+                        billsDetail2.setEdbWorkComplateMessageList(edbWorkComplateMessages);
                     }
                 }
 
             }
         }
-        return null;
+        return billsDetail2;
     }
 }

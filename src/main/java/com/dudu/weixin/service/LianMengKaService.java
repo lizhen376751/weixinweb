@@ -3,6 +3,7 @@ package com.dudu.weixin.service;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.customercenter.customer.api.ApiCustomerInfo;
 import com.dudu.soa.customercenter.customer.module.CustomerInfo;
+import com.dudu.soa.customercenter.customer.module.CustomerInfoParam;
 import com.dudu.soa.lmk.api.ApiLianmengkaOperateIntf;
 import com.dudu.soa.lmk.customer.api.ApiCustomerIntf;
 import com.dudu.soa.lmk.customer.module.CustomerParam;
@@ -106,27 +107,23 @@ public class LianMengKaService {
                     //TODO 易璐邦的联盟编码
                     if ("CS000".equals(lmcode)) {
 //                    if ("FL000".equals(lmcode)){
-                        CustomerInfo customerInfo = new CustomerInfo();
-                        //TODO 插入店铺客户信息
-                        customerInfo.setPlateNumber(platenumber).setMainShopcode("0533001").setShopCode("0533001").setCustomerName(platenumber).setCreateUserId(44);
+                        //查询店铺信息是否有客户信息,没有的话在添加
+                        CustomerInfoParam customerInfoParam = new CustomerInfoParam();
+                        customerInfoParam.setShopCode("CS000").setPlateNumber(platenumber);
+                        CustomerInfo customerInfoByPlateNumber = apiCustomerInfo.getCustomerInfoByPlateNumber(customerInfoParam);
+                        int i = 0;
+                        if (null == customerInfoByPlateNumber) {
+                            CustomerInfo customerInfo = new CustomerInfo();
+                            //TODO 插入店铺客户信息
+                            customerInfo.setPlateNumber(platenumber).setMainShopcode("0533001").setShopCode("0533001").setCustomerName(platenumber).setCreateUserId(44);
 //                        customerInfo.setPlateNumber(platenumber).setMainShopcode("YLB0002").setShopCode("YLB0002").setCustomerName(platenumber).setCreateUserId(3782);
-                        int i = apiCustomerInfo.addCustomer(customerInfo);
-                        log.debug("插入客户信息的id=" + i);
-                        if (0 != i) {
-                            //TODO 维护联盟信息表
-                            log.debug("开始保存维护联盟客户信息与店管家客户信息");
-                            CustomerParam customerParam = new CustomerParam();
-                            long customerId = (long) i;
-                            String customerMobile = wxCustomer.getCustomerMobile(); //获取用户的手机号
-                            customerParam.setBrandCode(lmcode) //联盟编码
-                                    .setDpCustomerId(customerId) //店管家客户id
-                                    .setMainShopCode("0533001") //TODO 主店铺编码
-                                    .setCustomerMobile(customerMobile) //手机号码
-                                    .setCarHaopai(platenumber);
-                            Long aLong = apiCustomerIntf.addLmCustomer(customerParam);
-                            log.debug("维护联盟客户信息与店管家客户信息的id=" + aLong);
+                            i = apiCustomerInfo.addCustomer(customerInfo);
+                            log.debug("插入客户信息的id=" + i);
+                        } else {
+                            i = customerInfoByPlateNumber.getId();
                         }
-
+                        String customerMobile = wxCustomer.getCustomerMobile(); //获取用户的手机号
+                        addLmCustomer(lmcode, customerMobile, platenumber, i);
                     }
 
                     //激活成功
@@ -138,6 +135,28 @@ public class LianMengKaService {
             }
         }
         return "0";
+    }
+
+    /**
+     * 保存维护联盟客户信息与店管家客户信息(如果有的话就是更新)
+     *
+     * @param lmcode         联盟编码
+     * @param customerMobile 手机号
+     * @param platenumber    车牌号
+     * @param i              客户id
+     */
+    public void addLmCustomer(String lmcode, String customerMobile, String platenumber, int i) {
+        //TODO 维护联盟信息表
+        log.debug("开始保存维护联盟客户信息与店管家客户信息");
+        CustomerParam customerParam = new CustomerParam();
+        long customerId = (long) i;
+        customerParam.setBrandCode(lmcode) //联盟编码
+                .setDpCustomerId(customerId) //店管家客户id
+                .setMainShopCode("0533001") //TODO 主店铺编码
+                .setCustomerMobile(customerMobile) //手机号码
+                .setCarHaopai(platenumber);
+        Long aLong = apiCustomerIntf.addLmCustomer(customerParam);
+        log.debug("维护联盟客户信息与店管家客户信息的id=" + aLong);
     }
 
     /**

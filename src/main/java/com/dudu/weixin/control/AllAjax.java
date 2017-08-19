@@ -12,10 +12,10 @@ import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.soa.lmk.special.elb.module.ElbCheckCustomerResult;
 import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
-import com.dudu.soa.salescenter.workcomplate.module.EdbWorkComplateMessage;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.soa.weixindubbo.weixin.weixinconfig.api.ApiWeiXinConfig;
 import com.dudu.soa.weixindubbo.weixin.weixinconfig.module.WeiXinConfig;
+import com.dudu.weixin.mould.BillsDetail;
 import com.dudu.weixin.mould.PageResult;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.AutoLoginService;
@@ -342,13 +342,13 @@ public class AllAjax {
 
         //2.联盟开单,创建工单之后查询施工步骤
         if ("billing".equals(fromflag)) {
-            List<EdbWorkComplateMessage> defaultShopOrder = selfBillingService.createDefaultShopOrder(platenumber, lmcode, request);
+            BillsDetail defaultShopOrder = selfBillingService.createDefaultShopOrder(platenumber, lmcode, request);
             return defaultShopOrder;
         }
 
         //3.联盟开单,再次进入页面查询施工步骤
         if ("twobilling".equals(fromflag)) {
-            List<EdbWorkComplateMessage> billsDetail = selfBillingService.getBillsDetail(platenumber, request);
+            BillsDetail billsDetail = selfBillingService.getBillsDetail(platenumber, request);
             return billsDetail;
         }
 
