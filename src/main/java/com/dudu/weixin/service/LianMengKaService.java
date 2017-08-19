@@ -111,6 +111,7 @@ public class LianMengKaService {
                         CustomerInfoParam customerInfoParam = new CustomerInfoParam();
                         customerInfoParam.setShopCode("CS000").setPlateNumber(platenumber);
                         CustomerInfo customerInfoByPlateNumber = apiCustomerInfo.getCustomerInfoByPlateNumber(customerInfoParam);
+                        log.debug("查询客户信息=" + customerInfoByPlateNumber.toString());
                         int i = 0;
                         if (null == customerInfoByPlateNumber) {
                             CustomerInfo customerInfo = new CustomerInfo();
