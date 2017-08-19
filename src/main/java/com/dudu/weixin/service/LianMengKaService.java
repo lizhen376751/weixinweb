@@ -103,16 +103,31 @@ public class LianMengKaService {
                     saveModule.setProductCode(noActive1.getCardcode());
                     saveModule.setProductShopCode(lmcode);
                     apiLianmengkaOperateIntf.addLianmengKa(saveModule);
-                    //TODO 插入店铺客户信息
-                    CustomerInfo customerInfo = new CustomerInfo();
-                    customerInfo.setPlateNumber(platenumber).setMainShopcode("YLB0002").setShopCode("YLB0002").setCustomerName(platenumber).setCreateUserId(3782);
-                    int i = apiCustomerInfo.addCustomer(customerInfo);
-                    log.debug("插入客户信息的id=" + i);
-                    //TODO 维护联盟信息表
-                    CustomerParam customerParam = new CustomerParam();
-//                    customerParam
-                    Long aLong = apiCustomerIntf.addLmCustomer(customerParam);
-                    log.debug("维护联盟客户信息与店管家客户信息的id=" + aLong);
+                    //TODO 易璐邦的联盟编码
+                    if ("CS000".equals(lmcode)) {
+//                    if ("FL000".equals(lmcode)){
+                        CustomerInfo customerInfo = new CustomerInfo();
+                        //TODO 插入店铺客户信息
+                        customerInfo.setPlateNumber(platenumber).setMainShopcode("0533001").setShopCode("0533001").setCustomerName(platenumber).setCreateUserId(44);
+//                        customerInfo.setPlateNumber(platenumber).setMainShopcode("YLB0002").setShopCode("YLB0002").setCustomerName(platenumber).setCreateUserId(3782);
+                        int i = apiCustomerInfo.addCustomer(customerInfo);
+                        log.debug("插入客户信息的id=" + i);
+                        if (0 != i) {
+                            //TODO 维护联盟信息表
+                            CustomerParam customerParam = new CustomerParam();
+                            long customerId = (long) i;
+                            String customerMobile = wxCustomer.getCustomerMobile(); //获取用户的手机号
+                            customerParam.setBrandCode(lmcode) //联盟编码
+                                    .setDpCustomerId(customerId) //店管家客户id
+                                    .setMainShopCode("0533001") //TODO 主店铺编码
+                                    .setCustomerMobile(customerMobile); //手机号码
+//                                    .setUid(); //E代泊UID
+                            Long aLong = apiCustomerIntf.addLmCustomer(customerParam);
+                            log.debug("维护联盟客户信息与店管家客户信息的id=" + aLong);
+                        }
+
+                    }
+
                     //激活成功
                     return "2";
                 } else {

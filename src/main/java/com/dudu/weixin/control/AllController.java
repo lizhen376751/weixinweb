@@ -168,7 +168,7 @@ public class AllController {
             String cardNumber = request.getParameter("cardNumber");
             model.addAttribute("cardId", cardId);
             model.addAttribute("cardNumber", cardNumber);
-            return "/shigongbuzhou/stepPhoto.jsp.jsp";
+            return "/shigongbuzhou/stepPhoto.jsp";
         } else {
             return "/login/login.jsp";
         }
