@@ -35,6 +35,7 @@ public class ShopShiGongBuZhouService {
      * @param request 请求
      * @return 施工步骤的集合
      */
+
     public List<List<EdbWorkComplateMessage>> queryListShiGongBuZhou(HttpServletRequest request) {
         String shopCode = request.getParameter("shopCode"); //店铺编码
         String wxpingzheng = request.getParameter("wxpingzheng"); //维修单号
@@ -65,6 +66,7 @@ public class ShopShiGongBuZhouService {
      * @param wxpingzheng 工单号
      * @return 施工步骤的集合
      */
+    //   {"itemCode":"CSXM0001000600010002","projectId":"4782","shopCode":"0533001","orderCode":"XS20170818009"}
     public List<EdbWorkComplateMessage> queryShiGongBuZhou(String shopCode, String wxpingzheng, String projectCode, String projectId) {
         EdbWorkComplateQueryModule edbWorkComplateQueryModule = new EdbWorkComplateQueryModule();
         edbWorkComplateQueryModule.setShopCode(shopCode);

@@ -164,6 +164,10 @@ public class AllController {
             model.addAttribute("inspectionDetailedDescription", inspectionDetailedDescription);
             return "/ahi/thirlyIndex.jsp"; //ahi三级页面
         } else if ("selfbilling".equals(business)) { //联盟卡自助开单
+            String cardId = request.getParameter("cardId");
+            String cardNumber = request.getParameter("cardNumber");
+            model.addAttribute("cardId", cardId);
+            model.addAttribute("cardNumber", cardNumber);
             return "/shigongbuzhou/stepPhoto.jsp.jsp";
         } else {
             return "/login/login.jsp";

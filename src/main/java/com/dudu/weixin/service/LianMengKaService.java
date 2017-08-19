@@ -1,7 +1,11 @@
 package com.dudu.weixin.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.dudu.soa.customercenter.customer.api.ApiCustomerInfo;
+import com.dudu.soa.customercenter.customer.module.CustomerInfo;
 import com.dudu.soa.lmk.api.ApiLianmengkaOperateIntf;
+import com.dudu.soa.lmk.customer.api.ApiCustomerIntf;
+import com.dudu.soa.lmk.customer.module.CustomerParam;
 import com.dudu.soa.lmk.operate.module.LianMengKaFaKaSaveModule;
 import com.dudu.soa.lmk.operate.module.LiangmengKaQueryModule;
 import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
@@ -13,6 +17,8 @@ import com.dudu.soa.lmk.operate.module.LmkCardGenParam;
 import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
 import com.dudu.soa.lmk.wxlmknoactive.api.ApiNoActive;
 import com.dudu.soa.lmk.wxlmknoactive.module.NoActive;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +31,10 @@ import java.util.List;
  */
 @Service
 public class LianMengKaService {
+    /**
+     *
+     */
+    private static Logger log = LoggerFactory.getLogger(LianMengKaService.class);
     /**
      * 引入联盟卡激活的接口
      */
@@ -45,7 +55,16 @@ public class LianMengKaService {
      */
     @Reference
     private ApiLianmengkaOperateIntf apiLianmengkaOperateIntf;
-
+    /**
+     * 店管家客户信息
+     */
+    @Reference
+    private ApiCustomerInfo apiCustomerInfo;
+    /**
+     * 联盟客户与店管家客户信息绑定关系
+     */
+    @Reference
+    private ApiCustomerIntf apiCustomerIntf;
 
     /**
      * 联盟卡的激活
@@ -83,12 +102,17 @@ public class LianMengKaService {
                     saveModule.setCustId(wxCustomer.getId());
                     saveModule.setProductCode(noActive1.getCardcode());
                     saveModule.setProductShopCode(lmcode);
-//                    saveModule.setCard_number();
-//                    saveModule.setCard_type(2);
-//                    saveModule.setCust_id(wxCustomer.getId());
-//                    saveModule.setProduct_code(noActive1.getCardcode());
-//                    saveModule.setProduct_shopcode(lmcode);
                     apiLianmengkaOperateIntf.addLianmengKa(saveModule);
+                    //TODO 插入店铺客户信息
+                    CustomerInfo customerInfo = new CustomerInfo();
+                    customerInfo.setPlateNumber(platenumber).setMainShopcode("YLB0002").setShopCode("YLB0002").setCustomerName(platenumber).setCreateUserId(3782);
+                    int i = apiCustomerInfo.addCustomer(customerInfo);
+                    log.debug("插入客户信息的id=" + i);
+                    //TODO 维护联盟信息表
+                    CustomerParam customerParam = new CustomerParam();
+//                    customerParam
+                    Long aLong = apiCustomerIntf.addLmCustomer(customerParam);
+                    log.debug("维护联盟客户信息与店管家客户信息的id=" + aLong);
                     //激活成功
                     return "2";
                 } else {

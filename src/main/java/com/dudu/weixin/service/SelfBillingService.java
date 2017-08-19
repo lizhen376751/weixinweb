@@ -8,10 +8,16 @@ import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
 import com.dudu.soa.ordercenter.shoporder.api.ApiShopOrderIntf;
 import com.dudu.soa.ordercenter.shoporder.module.SpecialOrderQueryParam;
 import com.dudu.soa.salescenter.shoporder.module.ShopOrderParam;
+import com.dudu.soa.salescenter.shoporder.module.ShopOrderProjectDetail;
+import com.dudu.soa.salescenter.workcomplate.module.EdbWorkComplateMessage;
+import com.dudu.weixin.shopweiixin.service.ShopShiGongBuZhouService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 
 /**
@@ -37,8 +43,13 @@ public class SelfBillingService {
     /**
      * 联盟微信开单接口
      */
+    @Reference
     private ApiShopOrderIntf apiShopOrderIntf;
-
+    /**
+     * 查看施工步骤
+     */
+    @Autowired
+    private ShopShiGongBuZhouService shopShiGongBuZhou;
 
     /**
      * 判断盟客户是否已经激活
@@ -64,22 +75,42 @@ public class SelfBillingService {
      *
      * @param plateNumber 车牌号
      * @param lmcode      联盟编码
+     * @param request     请求
      * @return 店铺的开单信息
      */
-    public ShopOrderParam createDefaultShopOrder(String plateNumber, String lmcode) {
+    public List<EdbWorkComplateMessage> createDefaultShopOrder(String plateNumber, String lmcode, HttpServletRequest request) {
+        String cardId = request.getParameter("cardId"); //联盟卡id
+        String cardNumber = request.getParameter("cardNumber"); //联盟卡的卡号
         WxCustomer wxCustomer = wxCustomerService.getWxCustomer(plateNumber, lmcode);
         if (wxCustomer != null) {
             // TODO 测试之后进行删除
-            Integer id = 556;
+            Integer id = 566;
 //            Integer id = wxCustomer.getId();
             long customerId = (long) id;
+            Long parseLong = new Long((long) Integer.parseInt(cardId));
             String brandCode = wxCustomer.getBrandCode();
             SpecialOrderQueryParam specialOrderQueryParam = new SpecialOrderQueryParam();
             specialOrderQueryParam.setBrandCode(brandCode);
             specialOrderQueryParam.setBrandCustomerId(customerId);
+            specialOrderQueryParam.setBrandCardId(parseLong);
+            specialOrderQueryParam.setBrandCardNumber(cardNumber);
             ShopOrderParam defaultShopOrder4Elb = apiShopOrderIntf.createDefaultShopOrder4Elb(specialOrderQueryParam);
-            log.debug("开单信息" + defaultShopOrder4Elb.toString());
-            return defaultShopOrder4Elb;
+            if (null != defaultShopOrder4Elb) {
+                log.debug("开单信息" + defaultShopOrder4Elb.toString());
+                //联盟卡自助激活 施工步骤
+                List<ShopOrderProjectDetail> projectDetails = defaultShopOrder4Elb.getProjectDetails();
+                if (projectDetails != null) {
+                    ShopOrderProjectDetail shopOrderProjectDetail = projectDetails.get(0);
+                    String itemCode = shopOrderProjectDetail.getItemCode();
+                    String itemId = shopOrderProjectDetail.getItemId().toString();
+                    String shopcode = shopOrderProjectDetail.getShopcode();
+                    String wxpingzheng = shopOrderProjectDetail.getWxpingzheng();
+                    List<EdbWorkComplateMessage> edbWorkComplateMessages = shopShiGongBuZhou.queryShiGongBuZhou(shopcode, wxpingzheng, itemCode, itemId);
+                    return edbWorkComplateMessages;
+                }
+            }
+
+
         }
         return null;
     }

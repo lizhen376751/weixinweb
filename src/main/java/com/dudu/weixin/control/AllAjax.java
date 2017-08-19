@@ -12,7 +12,7 @@ import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmLeftResultModule;
 import com.dudu.soa.lmk.special.elb.module.ElbCheckCustomerResult;
 import com.dudu.soa.lmk.wxcustomer.module.WxCustomer;
-import com.dudu.soa.salescenter.shoporder.module.ShopOrderParam;
+import com.dudu.soa.salescenter.workcomplate.module.EdbWorkComplateMessage;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.soa.weixindubbo.weixin.weixinconfig.api.ApiWeiXinConfig;
 import com.dudu.soa.weixindubbo.weixin.weixinconfig.module.WeiXinConfig;
@@ -33,6 +33,7 @@ import com.dudu.weixin.service.ShopInfoService;
 import com.dudu.weixin.service.ValidateService;
 import com.dudu.weixin.service.WxCustomerService;
 import com.dudu.weixin.service.YangCheInfoService;
+import com.dudu.weixin.shopweiixin.service.ShopShiGongBuZhouService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -161,6 +162,12 @@ public class AllAjax {
      */
     @Autowired
     private SelfBillingService selfBillingService;
+
+    /**
+     * 查看施工步骤
+     */
+    @Autowired
+    private ShopShiGongBuZhouService shopShiGongBuZhou;
 
     /**
      * 需要分页查询的数据
@@ -333,10 +340,15 @@ public class AllAjax {
             return elbCheckCustomerResult;
         }
 
-        //联盟开单,创建工单
+        //联盟开单,创建工单之后查询施工步骤
         if ("billing".equals(fromflag)) {
-            ShopOrderParam defaultShopOrder = selfBillingService.createDefaultShopOrder(platenumber, lmcode);
+            List<EdbWorkComplateMessage> defaultShopOrder = selfBillingService.createDefaultShopOrder(platenumber, lmcode, request);
             return defaultShopOrder;
+        }
+
+        //联盟卡自助激活 标准流程查看
+        if ("biaozhunliucheng".equals(fromflag)) {
+            return shopShiGongBuZhou.queryProjectProcess(request);
         }
 
         //获取联盟卡二维码
