@@ -121,7 +121,8 @@ public class LianMengKaService {
                             customerParam.setBrandCode(lmcode) //联盟编码
                                     .setDpCustomerId(customerId) //店管家客户id
                                     .setMainShopCode("0533001") //TODO 主店铺编码
-                                    .setCustomerMobile(customerMobile); //手机号码
+                                    .setCustomerMobile(customerMobile) //手机号码
+                                    .setCarHaopai(platenumber);
                             Long aLong = apiCustomerIntf.addLmCustomer(customerParam);
                             log.debug("维护联盟客户信息与店管家客户信息的id=" + aLong);
                         }
