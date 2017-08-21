@@ -55,15 +55,15 @@ $(function () {
                     itemCode = arr[j].itemCode;
                     shopCodeLm = arr[j].shopCodeLm;
                     if(arr[j].commonImages.length != 0){
-                        var srcs = arr[j].commonImages[0].fileUrl;
+                        var srcsd = arr[j].commonImages[0].fileUrl;
                     }else{
-                        // var srcs = arr2[j].commonImages[0].fileUrl;
-                        srcs = "";
+                        // var srcsd = arr2[j].commonImages[0].fileUrl;
+                        srcsd = "";
                     }
                     title+= "<li>" +
                         "<div class='photo'>" +
                             "<input type='file' name='driving ' class='filepath'/>"+
-                            "<img src='/files/shopshigongbuzhou/stepPhoto/123.jpg' class='images' onclick='filefun(this)'/>" +
+                            "<img src=' "+srcsd+" ' class='images' onclick='filefun(this)'/>" +
                             "<div class='imgs'>"+
                                "<img src='' class='img2 xing_shi' onclick='filefun2(this)'/>"+
                             "</div>"+

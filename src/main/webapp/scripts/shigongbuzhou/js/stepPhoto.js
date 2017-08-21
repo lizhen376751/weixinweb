@@ -55,17 +55,17 @@ $(function () {
                 itemCode = arr[j].itemCode;
                 shopCodeLm = arr[j].shopCodeLm;
                 if(arr[j].commonImages.length != 0){
-                    var srcs = arr[j].commonImages[0].fileUrl;
+                    var srcsd = arr[j].commonImages[0].fileUrl;
                 }else{
-                    // var srcs = arr2[j].commonImages[0].fileUrl;
-                    srcs = "";
+                    // var srcsd = arr2[j].commonImages[0].fileUrl;
+                    srcsd = "";
                 }
                 title+= "<li>" +
                     "<div class='photo'>" +
                     "<input type='file' name='driving ' class='filepath'/>"+
-                    "<img src=' "+srcs+" ' class='images' onclick='filefun(this)'/>" +
+                    "<img src=' "+srcsd+" ' class='images' onclick='filefun(this)'/>" +
                     "<div class='imgs'>"+
-                    "<img src='' class='img2 xing_shi'/>"+
+                    "<img src='' class='img2 xing_shi' onclick='filefun2(this)'/>"+
                     "</div>"+
                     "<input type='hidden'  class='itemMxId' value="+arr[j].itemMxId+"/>"+
                     "<input type='hidden'  class='projectStepId' value="+arr[j].projectStepId+"/>"+
@@ -191,7 +191,14 @@ $(function () {
                     setTimeout(function() { a();},2000);
                 }else{
                     console.log(srcs);
-                    imgage.attr("src",srcs);
+                    if(photoExt==".mp4"||photoExt==".MP4"){
+                        imgage.attr("src","/files/shigongbuzhou/stepPhoto/vedio.png");  //如果是视频则选择默认的视屏图片
+                        imgage.attr("vediosrc",srcs);        //视屏添加在自定义的属性中
+                        imgage.addClass("vedioClass");        //为视频添加相应的class  ，为以后查看视屏时作为查找视屏地址的标志
+                    }else{
+                        imgage.attr("src",srcs);
+                    }
+
                     // $(onself).nextAll(".tupian").val(projectId);
                     srcs = "";
                     state = true;
@@ -216,7 +223,6 @@ $(function () {
     })
 
 
-
     $(".btn").on("click", function () {
 
         var nn = $(".img2");
@@ -226,11 +232,11 @@ $(function () {
                 mm=1;
                 // alert("请等图片或者视频上传中.....")
             }else{
-                 
+
             }
         }
         if(mm!=0){
-            alert("请等图片上传中.....")
+            alert("图片上传中或是未上传全部的图片")
         }else{
             window.location.href = "lmInternalJump?business=lmkInfo";
         }
@@ -270,6 +276,13 @@ function uuid(len, radix) {
 function filefun(obj){
 
     $(obj).parent().next().show();
+
+
+
+}
+function filefun2(obj){
+
+    $(obj).parent().parent().next().show();
 
 
 
