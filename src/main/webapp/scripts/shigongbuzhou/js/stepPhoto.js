@@ -27,7 +27,7 @@ $(function () {
     //alert(cardId)
     $.ajax({
         type: 'POST',
-        url: '/getCommonAjax?fromflag=twobilling&cardId='+cardId+'&cardNumber='+cardNumber,
+        url: '/getCommonAjax?fromflag=billing&cardId='+cardId+'&cardNumber='+cardNumber,
         async: false,
         data: {
         },
