@@ -58,13 +58,12 @@ $(function () {
                         var srcsd = arr[j].commonImages[0].fileUrl;
                     }else{
                         // var srcsd = arr2[j].commonImages[0].fileUrl;
-                        srcsd = "";
+                        srcsd = "/files/shigongbuzhou/stepPhoto/add_picture.png";
                     }
                     title+= "<li>" +
                         "<div class='photo'>" +
                             "<input type='file' name='driving ' class='filepath'/>"+
-                            // "<img src=' "+srcsd+" ' class='images' onclick='filefun(this)'/>" +
-                              "<img src='/files/shopshigongbuzhou/stepPhoto/photo.png' class='images' onclick='filefun(this)'/>" +
+                             "<img src=' "+srcsd+" ' class='images' onclick='filefun(this)'/>" +
                             "<div class='imgs'>"+
                                "<img src='' class='img2 xing_shi' onclick='filefun2(this)'/>"+
                             "</div>"+
