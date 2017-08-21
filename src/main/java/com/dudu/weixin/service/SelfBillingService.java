@@ -99,6 +99,7 @@ public class SelfBillingService {
      */
     public BillsDetail createDefaultShopOrder(String plateNumber, String lmcode, HttpServletRequest request) {
         BillsDetail billsDetail2 = new BillsDetail();
+        billsDetail2.setPlateNumber(plateNumber);
         String cardId = request.getParameter("cardId"); //联盟卡id
         String cardNumber = request.getParameter("cardNumber"); //联盟卡的卡号
         WxCustomer wxCustomer = wxCustomerService.getWxCustomer(plateNumber, lmcode);
@@ -144,6 +145,7 @@ public class SelfBillingService {
      */
     public BillsDetail getBillsDetail(String plateNumber, HttpServletRequest request) {
         BillsDetail billsDetail2 = new BillsDetail();
+        billsDetail2.setPlateNumber(plateNumber);
         String cardId = request.getParameter("cardId"); //联盟卡id
         Long parseLong = 1L;
         if (null != cardId && !"".equals(cardId) && !"null".equals(cardId)) {
