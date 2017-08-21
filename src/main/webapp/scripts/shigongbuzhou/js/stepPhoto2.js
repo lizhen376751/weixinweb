@@ -67,9 +67,9 @@ $(function () {
                             "<div class='imgs'>"+
                                "<img src='' class='img2 xing_shi' onclick='filefun2(this)'/>"+
                             "</div>"+
-                            "<input type='hidden'  class='itemMxId' value="+arr[j].itemMxId+"/>"+
-                            "<input type='hidden'  class='projectStepId' value="+arr[j].projectStepId+"/>"+
-                            "<input type='hidden'  class='orderCode' value="+arr2.resultBillsDetail.wxpingzheng+"/>"+
+                            "<input type='hidden'  class='itemMxId' value="+arr[j].itemMxId+">"+
+                            "<input type='hidden'  class='projectStepId' value="+arr[j].projectStepId+">"+
+                            "<input type='hidden'  class='orderCode' value="+arr2.resultBillsDetail.wxpingzheng+">"+
                         "</div>" +
                         "<div style='display: none;' class='filebag font_3'>"+
                            "<ul>"+
@@ -153,18 +153,20 @@ $(function () {
             var projectStepId = $(this).nextAll(".projectStepId").val();
             var itemMxId = $(this).nextAll(".itemMxId").val();
             var orderCode=$(this).nextAll(".orderCode").val();
+            //TODO 后期换成YLB0002
             var shopCode ="YLB0002";
             var paramMap = {
                 "orderCode":orderCode,
-                "shopCode" :"YLB0002",
+                "shopCode" :"0533001",
                 "itemMxId" :itemMxId,
                 "projectStepId" :projectStepId,
                 "workType" : "shigong"
             }
             console.log(this.files[0]);
+            //TODO 后期换成YLB0002
             $.ajax({
                 type    : 'GET',
-                url     : '/ossconfig/YLB0002/8',
+                url     : '/ossconfig/0533001/8',
                 data    : {},
                 success:function(jsondata){
                     var json = JSON.parse(jsondata);
