@@ -171,6 +171,7 @@ public class SelfBillingService {
                 billsDetail2.setResultBillsDetail(billsDetail);
                 ArrayList<ResultProjectMX> projectMx = billsDetail.getProjectMx();
                 if (null != projectMx && projectMx.size() > 0) {
+                    //在工单里面把项目取出来,继续查询施工步骤
                     ResultProjectMX resultProjectMX = projectMx.get(0);
                     if (resultProjectMX != null) {
                         String itemCode = resultProjectMX.getItemcode();
