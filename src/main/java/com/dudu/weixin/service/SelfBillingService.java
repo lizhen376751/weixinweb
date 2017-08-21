@@ -165,6 +165,7 @@ public class SelfBillingService {
                     .setCustomId(id)
                     .setPingZheng(orderCode);
             ResultBillsDetail billsDetail = apiBills.getBillsDetail(billsDetailParam);
+            log.debug("施工步骤相关的billsDetail=" + billsDetail.toString());
             if (null != billsDetail) {
                 billsDetail2.setResultBillsDetail(billsDetail);
                 ArrayList<ResultProjectMX> projectMx = billsDetail.getProjectMx();
