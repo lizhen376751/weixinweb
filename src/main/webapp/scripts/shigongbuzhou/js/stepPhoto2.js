@@ -59,7 +59,7 @@ $(function () {
                     if(arr[j].images.length != 0){   //如果实际流程有图片则为此图片
                         var photoExt2=arr[j].images[0].fileUrl.substr(arr[j].images[0].fileUrl.lastIndexOf(".")).toLowerCase();//获得文件后缀名.判断是否为视屏
                         if(photoExt2==".mp4"||photoExt2==".MP4"){
-                            srcsd = "/files/shigongbuzhou/stepPhoto/vedio.png";
+                            srcsd = "/files/shigongbuzhou/stepPhoto/vedio.png";    //若为视频怎显示的为默认的视屏背景图片
                         }else{
                             srcsd = arr[j].images[0].fileUrl;
                         }
