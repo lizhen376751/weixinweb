@@ -54,10 +54,19 @@ $(function () {
                 for(var j = 0; j < arr.length; j++){
                     itemCode = arr[j].itemCode;
                     shopCodeLm = arr[j].shopCodeLm;
-                    if(arr[j].commonImages.length != 0){
-                        var srcsd = arr[j].commonImages[0].fileUrl;
+                    var srcsd = arr[j].images[0].fileUrl;
+                    var  srcxians='';//
+                    if(arr[j].images.length != 0){   //如果实际流程有图片则为此图片
+                        var photoExt2=arr[j].images[0].fileUrl.substr(arr[j].images[0].fileUrl.lastIndexOf(".")).toLowerCase();//获得文件后缀名.判断是否为视屏
+                        if(photoExt2==".mp4"||photoExt2==".MP4"){
+                            srcsd = "/files/shigongbuzhou/stepPhoto/vedio.png";
+                        }else{
+                            srcsd = arr[j].images[0].fileUrl;
+                        }
+                           srcxians=arr[j].images[0].fileUrl;//
+                    }else if(arr[j].commonImages.length != 0){
+                         srcsd = arr[j].commonImages[0].fileUrl;
                     }else{
-                        // var srcsd = arr2[j].commonImages[0].fileUrl;
                         srcsd = "/files/shigongbuzhou/stepPhoto/add_picture.png";
                     }
                     title+= "<li>" +
@@ -65,7 +74,7 @@ $(function () {
                             "<input type='file' name='driving ' class='filepath'/>"+
                              "<img src=' "+srcsd+" ' class='images' onclick='filefun(this)'/>" +
                             "<div class='imgs'>"+
-                               "<img src='' class='img2 xing_shi' onclick='filefun2(this)'/>"+
+                               "<img src=' "+srcxians+"' class='img2 xing_shi' onclick='filefun2(this)'/>"+
                             "</div>"+
                             "<input type='hidden'  class='itemMxId' value="+arr[j].itemMxId+">"+
                             "<input type='hidden'  class='projectStepId' value="+arr[j].projectStepId+">"+

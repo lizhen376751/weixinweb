@@ -54,8 +54,9 @@ $(function () {
             for(var j = 0; j < arr.length; j++){
                 itemCode = arr[j].itemCode;
                 shopCodeLm = arr[j].shopCodeLm;
+                var srcsd = arr[j].commonImages[0].fileUrl;
                 if(arr[j].commonImages.length != 0){
-                    var srcsd = arr[j].commonImages[0].fileUrl;
+                    srcsd = arr[j].commonImages[0].fileUrl;
                 }else{
                     // var srcsd = arr2[j].commonImages[0].fileUrl;
                     srcsd = "/files/shigongbuzhou/stepPhoto/add_picture.png";
