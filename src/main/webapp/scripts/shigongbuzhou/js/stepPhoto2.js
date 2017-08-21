@@ -40,7 +40,7 @@ $(function () {
             title+="<div class='title font_1'>" +
                 "<div class='title_left'>"+
                 "<span class='step_color1'>车牌号：</span>"+
-                // "<span class='step_color2 car_num'>"+plateNumber+"</span>"+
+                "<span class='step_color2 car_num'>"+arr2.plateNumber+"</span>"+
                 "</div>"+
                 "<div class='title_right'>"+
                 "<span class='step_color2 project_name'>"+arr[0].projectName+"</span>"+
