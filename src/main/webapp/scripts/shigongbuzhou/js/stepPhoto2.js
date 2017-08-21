@@ -229,7 +229,7 @@ $(function () {
             }
         }
         if(mm!=0){
-            alert("请等图片上传中.....")
+            alert("图片上传中或是未上传全部的图片")
         }else{
             window.location.href = "lmInternalJump?business=lmkInfo";
         }
