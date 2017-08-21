@@ -192,7 +192,7 @@ $(function () {
                 }else{
                     console.log(srcs);
                     if(photoExt==".mp4"||photoExt==".MP4"){
-                        imgage.attr("src","/files/shopshigongbuzhou/stepPhoto/vedio.png");  //如果是视频则选择默认的视屏图片
+                        imgage.attr("src","/files/shigongbuzhou/stepPhoto/vedio.png");  //如果是视频则选择默认的视屏图片
                         imgage.attr("vediosrc",srcs);        //视屏添加在自定义的属性中
                         imgage.addClass("vedioClass");        //为视频添加相应的class  ，为以后查看视屏时作为查找视屏地址的标志
                     }else{
