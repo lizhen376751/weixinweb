@@ -65,7 +65,7 @@ $(function () {
                             "<input type='file' name='driving ' class='filepath'/>"+
                             "<img src='/files/shopshigongbuzhou/stepPhoto/123.jpg' class='images' onclick='filefun(this)'/>" +
                             "<div class='imgs'>"+
-                               "<img src='' class='img2 xing_shi' onclick='filefun(this)'/>"+
+                               "<img src='' class='img2 xing_shi' onclick='filefun2(this)'/>"+
                             "</div>"+
                             "<input type='hidden'  class='itemMxId' value="+arr[j].itemMxId+"/>"+
                             "<input type='hidden'  class='projectStepId' value="+arr[j].projectStepId+"/>"+
@@ -269,6 +269,13 @@ function uuid(len, radix) {
 function filefun(obj){
 
     $(obj).parent().next().show();
+
+
+
+}
+function filefun2(obj){
+
+    $(obj).parent().parent().next().show();
 
 
 
