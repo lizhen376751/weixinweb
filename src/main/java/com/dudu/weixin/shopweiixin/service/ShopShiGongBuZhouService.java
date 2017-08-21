@@ -6,6 +6,8 @@ import com.dudu.soa.lmk.basicdata.project.module.ProjectProcessConfigSaveModule;
 import com.dudu.soa.salescenter.workcomplate.api.ApiShopWorkComplateIntf;
 import com.dudu.soa.salescenter.workcomplate.module.EdbWorkComplateMessage;
 import com.dudu.soa.salescenter.workcomplate.module.EdbWorkComplateQueryModule;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,10 @@ import java.util.List;
  */
 @Service
 public class ShopShiGongBuZhouService {
+    /**
+     * 日志打印
+     */
+    private static Logger log = LoggerFactory.getLogger(ShopShiGongBuZhouService.class);
     /**
      * 施工步骤接口
      */
@@ -68,6 +74,7 @@ public class ShopShiGongBuZhouService {
      */
     //   {"itemCode":"CSXM0001000600010002","projectId":"4782","shopCode":"0533001","orderCode":"XS20170818009"}
     public List<EdbWorkComplateMessage> queryShiGongBuZhou(String shopCode, String wxpingzheng, String projectCode, String projectId) {
+        log.debug("查看施工步骤的入参shopCode=" + shopCode + ",wxpingzheng=" + wxpingzheng + ",projectCode=" + projectCode + ",projectId=" + projectId);
         EdbWorkComplateQueryModule edbWorkComplateQueryModule = new EdbWorkComplateQueryModule();
         edbWorkComplateQueryModule.setShopCode(shopCode);
         Long projectid = null;

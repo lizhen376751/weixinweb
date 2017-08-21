@@ -164,12 +164,14 @@ public class SelfBillingService {
                     .setShopCode("0533001") //TODO 0533001暂时写死
                     .setCustomId(id)
                     .setPingZheng(orderCode);
+            //工单查询
             ResultBillsDetail billsDetail = apiBills.getBillsDetail(billsDetailParam);
-            log.debug("施工步骤相关的billsDetail=" + billsDetail.toString());
+
             if (null != billsDetail) {
                 billsDetail2.setResultBillsDetail(billsDetail);
                 ArrayList<ResultProjectMX> projectMx = billsDetail.getProjectMx();
                 if (null != projectMx && projectMx.size() > 0) {
+                    //在工单里面把项目取出来,继续查询施工步骤
                     ResultProjectMX resultProjectMX = projectMx.get(0);
                     if (resultProjectMX != null) {
                         String itemCode = resultProjectMX.getItemcode();
@@ -177,6 +179,7 @@ public class SelfBillingService {
                         String shopcode = resultProjectMX.getShopCode();
                         String wxpingzheng = billsDetail.getWxpingzheng();
                         List<EdbWorkComplateMessage> edbWorkComplateMessages = shopShiGongBuZhou.queryShiGongBuZhou(shopcode, wxpingzheng, itemCode, itemId);
+                        log.debug("施工步骤相关的edbWorkComplateMessages=" + edbWorkComplateMessages.toString());
                         billsDetail2.setEdbWorkComplateMessageList(edbWorkComplateMessages);
                     }
                 }
