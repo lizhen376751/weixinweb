@@ -55,7 +55,7 @@ $(function () {
                     itemCode = arr[j].itemCode;
                     shopCodeLm = arr[j].shopCodeLm;
                     var srcsd = arr[j].images[0];
-                    var  srcxians='';//
+                    var  srcxians="";
                     if(arr[j].images.length != 0){   //如果实际流程有图片则为此图片
                         var photoExt2=arr[j].images[0].fileUrl.substr(arr[j].images[0].fileUrl.lastIndexOf(".")).toLowerCase();//获得文件后缀名.判断是否为视屏
                         if(photoExt2==".mp4"||photoExt2==".MP4"){
@@ -69,16 +69,17 @@ $(function () {
                     }else{
                         srcsd = "/files/shigongbuzhou/stepPhoto/add_picture.png";
                     }
+
                     title+= "<li>" +
                         "<div class='photo'>" +
                             "<input type='file' name='driving ' class='filepath'/>"+
                              "<img src=' "+srcsd+" ' class='images' onclick='filefun(this)'/>" +
                             "<div class='imgs'>"+
-                               "<img src=' "+srcxians+"' class='img2 xing_shi' onclick='filefun2(this)'/>"+
+                               "<img src='"+srcxians+"' class='img2 xing_shi' onclick='filefun2(this)'/>"+
                             "</div>"+
-                            "<input type='hidden'  class='itemMxId' value="+arr[j].itemMxId+">"+
-                            "<input type='hidden'  class='projectStepId' value="+arr[j].projectStepId+">"+
-                            "<input type='hidden'  class='orderCode' value="+arr2.resultBillsDetail.wxpingzheng+">"+
+                            "<input type='hidden'  class='itemMxId' value='"+arr[j].itemMxId+"'/>"+
+                            "<input type='hidden'  class='projectStepId' value='"+arr[j].projectStepId+"'/>"+
+                            "<input type='hidden'  class='orderCode' value='"+arr2.resultBillsDetail.wxpingzheng+"'/>"+
                         "</div>" +
                         "<div style='display: none;' class='filebag font_3'>"+
                            "<ul>"+
@@ -241,6 +242,7 @@ $(function () {
         for(var aa=0;aa<nn.length;aa++){
             if(nn.eq(aa).attr("src")==""||nn.eq(aa).attr("src")==null){
                 mm=1;
+
                // alert("请等图片或者视频上传中.....")
             }else{
 
@@ -248,6 +250,7 @@ $(function () {
         }
         if(mm!=0){
             alert("图片上传中或是未上传全部的图片")
+            return false;
         }else{
             window.location.href = "lmInternalJump?business=lmkInfo";
         }
