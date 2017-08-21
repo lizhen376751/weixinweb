@@ -63,7 +63,8 @@ $(function () {
                 title+= "<li>" +
                     "<div class='photo'>" +
                     "<input type='file' name='driving ' class='filepath'/>"+
-                    "<img src=' "+srcsd+" ' class='images' onclick='filefun(this)'/>" +
+                    // "<img src=' "+srcsd+" ' class='images' onclick='filefun(this)'/>" +
+                    "<img src='/files/shopshigongbuzhou/stepPhoto/photo.png' class='images' onclick='filefun(this)'/>" +
                     "<div class='imgs'>"+
                     "<img src='' class='img2 xing_shi' onclick='filefun2(this)'/>"+
                     "</div>"+
