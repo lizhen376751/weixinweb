@@ -54,7 +54,7 @@ $(function () {
             for(var j = 0; j < arr.length; j++){
                 itemCode = arr[j].itemCode;
                 shopCodeLm = arr[j].shopCodeLm;
-                var srcsd = arr[j].commonImages[0].fileUrl;
+                var srcsd = arr[j].commonImages[0];
                 if(arr[j].commonImages.length != 0){
                     srcsd = arr[j].commonImages[0].fileUrl;
                 }else{

@@ -54,7 +54,7 @@ $(function () {
                 for(var j = 0; j < arr.length; j++){
                     itemCode = arr[j].itemCode;
                     shopCodeLm = arr[j].shopCodeLm;
-                    var srcsd = arr[j].images[0].fileUrl;
+                    var srcsd = arr[j].images[0];
                     var  srcxians='';//
                     if(arr[j].images.length != 0){   //如果实际流程有图片则为此图片
                         var photoExt2=arr[j].images[0].fileUrl.substr(arr[j].images[0].fileUrl.lastIndexOf(".")).toLowerCase();//获得文件后缀名.判断是否为视屏
