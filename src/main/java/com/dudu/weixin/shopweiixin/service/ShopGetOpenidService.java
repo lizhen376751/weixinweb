@@ -50,14 +50,14 @@ public class ShopGetOpenidService {
         log.debug("页面内部跳转code" + code);
         String appid = "";
         String xAppSecret = "";
-        if (null != shopcode && "".equals(shopcode) && !"null".equals(shopcode)) {
+        if (null != shopcode && !"".equals(shopcode) && !"null".equals(shopcode)) {
             ShopInfo shopInfo = apishopInfo.getShopInfo(shopcode);
             log.debug("查询百度map的店管家信息=" + shopInfo.toString());
             if (null != shopInfo) {
                 appid = shopInfo.getwXAppId();
                 xAppSecret = shopInfo.getwXAppSecret();
             }
-        } else if (null != lmcode && "".equals(lmcode) && !"null".equals(lmcode)) {
+        } else if (null != lmcode && !"".equals(lmcode) && !"null".equals(lmcode)) {
             WeiXinConfig weiXinConfig = apiWeiXinConfig.getWeiXinConfig(lmcode);
             if (null != weiXinConfig) {
                 appid = weiXinConfig.getAppid();
