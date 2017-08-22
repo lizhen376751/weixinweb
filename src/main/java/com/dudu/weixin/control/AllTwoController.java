@@ -68,10 +68,12 @@ public class AllTwoController {
      * @param request 请求
      * @return 跳转页面
      */
+    @ResponseBody
     @RequestMapping(value = "/testjump", method = {RequestMethod.GET, RequestMethod.POST})
-    public void testjump(HttpServletRequest request) {
+    public String testjump(HttpServletRequest request) {
         String code = request.getParameter("code");
         log.debug("页面内部跳转code" + code);
+        return code;
     }
 
     /**
