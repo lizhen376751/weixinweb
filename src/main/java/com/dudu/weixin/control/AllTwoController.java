@@ -61,6 +61,19 @@ public class AllTwoController {
     @Autowired
     private HttpSession httpSession;
 
+
+
+    /**
+     * 微信内部跳转测试(没用)
+     * @param request 请求
+     * @return 跳转页面
+     */
+    @RequestMapping(value = "/testjump", method = {RequestMethod.GET, RequestMethod.POST})
+    public void testjump(HttpServletRequest request) {
+        String code = request.getParameter("code");
+        log.debug("页面内部跳转code" + code);
+    }
+
     /**
      * 微信网页授权回调页面
      *

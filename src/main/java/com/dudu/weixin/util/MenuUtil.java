@@ -202,6 +202,7 @@ public class MenuUtil {
         btn23.setType("view");
         btn23.setUrl("https://gst.u-road.com/gst_wechat/HighSpeedTraffic/trafficOfNear?wxid=gh_f8c30bae42ad");
 
+
         //高速路况        https://gst.u-road.com/gst_wechat/HighSpeedTraffic/expresswayGlance?wxid=gh_f8c30bae42ad
         //违章查询   http://sd.122.gov.cn/views/inquiry.html?q=j
         //附近路况  https://gst.u-road.com/gst_wechat/HighSpeedTraffic/trafficOfNear?wxid=gh_f8c30bae42ad

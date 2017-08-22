@@ -14,7 +14,12 @@
 <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script language="JavaScript">
 
-    //创建菜单
+    //微信内部页面跳转
+    function testjump() {
+        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxac57fd22a1194510&redirect_uri=http://lm.wx.dev.duduchewang.cn/testjump&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+    }
+
+    //微信授权方法请求
     function weixin() {
         window.location.href = "/goAuthor" ;
     }
@@ -111,8 +116,8 @@
             <li class="btnli">appsecret:<input name="type" class="appsecret" value=""/></li>
             <li class="btnli"><input type="button" class="regbtns" value="验证appsecret" onclick="getToken()"/></li>
         </ul>
-
         <input type="button"  value="微信授权页面" onclick="weixin()"/>
+        <input type="button"  value="微信内部页面跳转获取授权code" onclick="testjump()"/>
     </div>
 </form>
 </body>
