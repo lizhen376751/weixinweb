@@ -52,6 +52,7 @@ public class ShopGetOpenidService {
         String xAppSecret = "";
         if (null != shopcode && "".equals(shopcode) && !"null".equals(shopcode)) {
             ShopInfo shopInfo = apishopInfo.getShopInfo(shopcode);
+            log.debug("查询百度map的店管家信息=" + shopInfo.toString());
             if (null != shopInfo) {
                 appid = shopInfo.getwXAppId();
                 xAppSecret = shopInfo.getwXAppSecret();
