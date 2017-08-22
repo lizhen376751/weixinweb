@@ -180,15 +180,18 @@ $(document).ready(function () {
                         success: function (jsonData) {
                             var arr2 = JSON.parse(jsonData);
                             console.log(arr2)
-                            if (arr2.statusEnum == "BLANK") {
+                            if (arr2.statusEnum == "BLANK") {   // 空白(第一次进入开单)
                                 // alert(arr2.statusEnum)
                                 //允许开单
                                 var htmllll = '&nbsp;&nbsp;&nbsp;&nbsp;<a class="card_detailed font_2" href="/lmInternalJump?business=selfbilling&cardId=' + json[i].cardId + '&cardNumber='+json[i].cardNumber+'">自助激活</a>'
                                 $(".card_surplus").eq(i).find(".cardiv").append(htmllll)
 
-                            } else if(arr2.statusEnum == "REJECT" || arr2.statusEnum == "CREATE"){
+                            } else if(arr2.statusEnum == "CREATE" ){     //创建订单后
                                 //允许开单
                                 var htmllll = '&nbsp;&nbsp;&nbsp;&nbsp;<a class="card_detailed font_2" href="/lmInternalJump?business=twoselfbilling&cardId=' + json[i].cardId + '&cardNumber='+json[i].cardNumber+'">自助激活</a>'
+                                $(".card_surplus").eq(i).find(".cardiv").append(htmllll)
+                            }else if(arr2.statusEnum == "REJECT"){
+                                var htmllll = '&nbsp;&nbsp;&nbsp;&nbsp;<a class="card_detailed font_2" href="/lmInternalJump?business=twoselfbilling&cardId=' + json[i].cardId + '&cardNumber='+json[i].cardNumber+'">审核未通过</a>'
                                 $(".card_surplus").eq(i).find(".cardiv").append(htmllll)
                             }else{
 
