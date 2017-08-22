@@ -7,7 +7,9 @@ import com.dudu.soa.trainingclassroom.api.ApiCourseTrain;
 import com.dudu.soa.trainingclassroom.module.Course;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.soa.weixindubbo.weixin.http.module.parammodule.AccessToken;
+import com.dudu.soa.weixindubbo.weixin.http.module.parammodule.WeiXinUserInfo;
 import com.dudu.weixin.service.CreateMenuService;
+import com.dudu.weixin.shopweiixin.service.ShopGetOpenidService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +51,11 @@ public class AllTwoController {
      */
     @Reference
     private ApiCourseTrain apiCourseTrain;
-
+    /**
+     * 获取微信用户的信息
+     */
+    @Autowired
+    private ShopGetOpenidService shopGetOpenidService;
     /**
      * 引入微信通讯相关接口
      */
@@ -62,18 +68,20 @@ public class AllTwoController {
     private HttpSession httpSession;
 
 
-
     /**
      * 微信内部跳转测试(没用)
+     *
      * @param request 请求
      * @return 跳转页面
      */
     @ResponseBody
     @RequestMapping(value = "/testjump", method = {RequestMethod.GET, RequestMethod.POST})
-    public String testjump(HttpServletRequest request) {
+    public WeiXinUserInfo testjump(HttpServletRequest request) {
         String code = request.getParameter("code");
+        String shopcode = request.getParameter("shopcode");
         log.debug("页面内部跳转code" + code);
-        return code;
+        WeiXinUserInfo weiXinUserInfo = shopGetOpenidService.getOpenid(code, shopcode, null);
+        return weiXinUserInfo;
     }
 
     /**

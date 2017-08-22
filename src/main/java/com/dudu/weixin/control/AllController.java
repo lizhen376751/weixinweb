@@ -175,7 +175,7 @@ public class AllController {
             model.addAttribute("cardId", cardId);
             model.addAttribute("cardNumber", cardNumber);
             return "/shigongbuzhou/stepPhoto2.jsp";
-        } if ("lmkInfo".equals(business)) {
+        } else if ("lmkInfo".equals(business)) {
             return "/lianMengKa/lianMengCard/homePage.jsp"; //联盟卡包
         } else {
             return "/login/login.jsp";

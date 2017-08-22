@@ -16,7 +16,7 @@
 
     //微信内部页面跳转
     function testjump() {
-        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxac57fd22a1194510&redirect_uri=http://lm.wx.dev.duduchewang.cn/testjump&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxac57fd22a1194510&redirect_uri=http://lm.wx.dev.duduchewang.cn/testjump?shopcode=0533001&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
     }
 
     //微信授权方法请求
