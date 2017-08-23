@@ -2,6 +2,7 @@ package com.dudu.weixin.third.service;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.alibaba.fastjson.JSONObject;
 import com.dudu.soa.weixindubbo.third.authorizationinfo.module.AuthorizationInfo;
 import com.dudu.soa.weixindubbo.third.commonwx.api.ApiThird;
 import com.dudu.soa.weixindubbo.third.commonwx.module.AESParams;
@@ -299,7 +300,8 @@ public class ThirdService {
             AuthorizationInfo authorizationInfo = apiThird.getAuthorizationInfo(componentVerifyTicket, content.substring(0, content.length() - 9));
             log.debug("获取授权公众号的授权信息" + authorizationInfo.toString());
             //发送客服消息
-            String kefuxiaoxi = apiAllWeiXiRequest.customerSmsSend(authorizationInfo.getAuthorizerAccessToken(), customerText);
+            String json = JSONObject.toJSONString(customerText);
+            String kefuxiaoxi = apiAllWeiXiRequest.customerSmsSend(authorizationInfo.getAuthorizerAccessToken(), json);
             log.debug("发送客服消息" + kefuxiaoxi);
         } else {
             /**
