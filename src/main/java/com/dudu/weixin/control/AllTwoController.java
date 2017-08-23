@@ -67,6 +67,15 @@ public class AllTwoController {
     @Autowired
     private HttpSession httpSession;
 
+    /**
+     * index页面
+     *
+     * @return index页面
+     */
+    @RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
+    public String ss() {
+        return "/index.jsp";
+    }
 
     /**
      * 微信内部跳转测试(没用)
