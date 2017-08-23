@@ -70,6 +70,9 @@ public class ShopPersonCenterService {
             //查询车辆品牌车型车系
             case "carType":
                 return carTypeService.queryAllCar(request.getParameter("type"), Integer.parseInt(request.getParameter("num")));
+            //查询个人财务信息
+            case "getCheGuanJiaFinance":
+                return this.getCheGuanJiaFinance(request);
             //查询个人权益
             case "personalRightsAndInterests":
                 return this.getShopPersonalRightsAndInterests(request);
@@ -131,6 +134,27 @@ public class ShopPersonCenterService {
             shopPersonCenter.setPoint(resultTotalAHIPoints.get(0).getPoint());
         }
         return shopPersonCenter;
+    }
+
+    /**
+     * 获取用户个人财务信息
+     *
+     * @param request 请求
+     * @return InviolableRights 用户个人权益
+     */
+    public InviolableRights getCheGuanJiaFinance(HttpServletRequest request) {
+        EquityParam param = new EquityParam();
+        String shopCode = (String) httpSession.getAttribute("shopcode");
+        Integer customerId = Integer.parseInt(request.getParameter("customerId"));
+        String plateNumb = (String) httpSession.getAttribute("plateNumber");
+            param.setShopCode(shopCode)
+            .setCustomerId(customerId)
+            .setPlateNumb(plateNumb);
+        InviolableRights inviolableRights = apiUserEquity.getCheGuanJiaFinance(param);
+        if (null != inviolableRights && !"".equals(inviolableRights)) {
+            return inviolableRights;
+        }
+        return null;
     }
 
     /**
