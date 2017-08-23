@@ -8,6 +8,7 @@ import com.dudu.soa.finace.userequity.api.ApiUserEquity;
 import com.dudu.soa.finace.userequity.module.EquityParam;
 import com.dudu.soa.finace.userequity.module.InviolableRights;
 import com.dudu.soa.finace.userequity.module.ProjectCardMX;
+import com.dudu.soa.finace.userequity.module.RechargeableCard;
 import com.dudu.soa.finace.userequity.module.RechargeableCardMX;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.CarTypeService;
@@ -76,6 +77,9 @@ public class ShopPersonCenterService {
             //查询项目卡明细
             case "projectCardMX":
                 return this.queryProjectCardMX(request);
+            //查询充值卡
+            case "queryUserRechargeableCardList":
+                return this.queryUserRechargeableCardList(request);
             //查询充值卡明细
             case "rechargeableCardMX":
                 return this.queryRechargeableCardMX(request);
@@ -179,6 +183,22 @@ public class ShopPersonCenterService {
             return projectCardMXES;
         }
         return null;
+    }
+
+    /**
+     * 冯广祥
+     * 获取充值卡
+     *
+     * @param request 传参
+     * @return List<RechargeableCard>
+     */
+    public List<RechargeableCard> queryUserRechargeableCardList(HttpServletRequest request) {
+        String customerId = request.getParameter("customerId");
+        String shopCode = (String) httpSession.getAttribute("shopcode");
+        EquityParam param = new EquityParam();
+        param.setCustomerId(Integer.getInteger(customerId))
+                .setShopCode(shopCode);
+        return apiUserEquity.queryUserRechargeableCardList(param);
     }
 
     /**
