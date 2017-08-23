@@ -9,6 +9,7 @@ import com.dudu.soa.lmk.customer.api.ApiCustomerIntf;
 import com.dudu.soa.lmk.customer.module.CustomerParam;
 import com.dudu.soa.lmk.operate.module.LianMengKaFaKaSaveModule;
 import com.dudu.soa.lmk.operate.module.LiangmengKaQueryModule;
+import com.dudu.soa.lmk.operate.module.LianmengKaBaseMessage;
 import com.dudu.soa.lmk.operate.module.LianmengKaResultModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustQueryModule;
 import com.dudu.soa.lmk.operate.module.LianmengkaXmCustResultModule;
@@ -103,7 +104,8 @@ public class LianMengKaService {
                     saveModule.setCustId(wxCustomer.getId());
                     saveModule.setProductCode(noActive1.getCardcode());
                     saveModule.setProductShopCode(lmcode);
-                    apiLianmengkaOperateIntf.addLianmengKa(saveModule);
+                    LianmengKaBaseMessage lianmengKaBaseMessage = apiLianmengkaOperateIntf.addLianmengKa(saveModule);
+                    log.debug("联盟卡激活返回的================================lianmengKaBaseMessage" + lianmengKaBaseMessage.toString());
                     //TODO 易璐邦的联盟编码
                     if ("CS000".equals(lmcode)) {
 //                    if ("FL000".equals(lmcode)){
