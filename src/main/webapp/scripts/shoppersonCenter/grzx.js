@@ -106,7 +106,7 @@ $(function () {
         url: '/shopAjax',
         data: {
             businessType: "shoppersoncenter",
-            servicetype: "getCheGuanJiaFinance",
+            servicetype: "personalRightsAndInterests",
             shopCode: shopCode.val(),
             customerId: khID,
             plateNumb: car_num.text()

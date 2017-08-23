@@ -71,8 +71,8 @@ public class ShopPersonCenterService {
             case "carType":
                 return carTypeService.queryAllCar(request.getParameter("type"), Integer.parseInt(request.getParameter("num")));
             //查询个人权益
-            case "getCheGuanJiaFinance":
-                return this.getCheGuanJiaFinance(request);
+            case "personalRightsAndInterests":
+                return this.getShopPersonalRightsAndInterests(request);
             //查询项目卡明细
             case "projectCardMX":
                 return this.queryProjectCardMX(request);
@@ -139,7 +139,7 @@ public class ShopPersonCenterService {
      * @param request 请求
      * @return InviolableRights 用户个人权益
      */
-    public InviolableRights getCheGuanJiaFinance(HttpServletRequest request) {
+    public InviolableRights getShopPersonalRightsAndInterests(HttpServletRequest request) {
         EquityParam equityParam = new EquityParam();
         String shopCode = (String) httpSession.getAttribute("shopcode");
         String customerId = request.getParameter("customerId");
@@ -150,7 +150,7 @@ public class ShopPersonCenterService {
             equityParam.setCustomerId(keHuId);
             equityParam.setPlateNumb(plateNumb);
         }
-        InviolableRights inviolableRights = apiUserEquity.getCheGuanJiaFinance(equityParam);
+        InviolableRights inviolableRights = apiUserEquity.getInviolableRights(equityParam);
         if (null != inviolableRights && !"".equals(inviolableRights)) {
             return inviolableRights;
         }
