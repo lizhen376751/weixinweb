@@ -34,7 +34,7 @@ $(function(){
         url: '/shopAjax',
         data: {
             businessType: "shoppersoncenter",
-            servicetype: "queryUserRechargeableCardList",
+            servicetype: "personalRightsAndInterests",
             customerId: customerId
             // plateNumb: car_num.text()
             /*shopCode: "0533001",
