@@ -114,7 +114,6 @@ public class LianMengKaService {
                         //TODO 0533001暂时写死后期换掉
                         customerInfoParam.setShopCode("0533001").setPlateNumber(platenumber);
                         CustomerInfo customerInfoByPlateNumber = apiCustomerInfo.getCustomerInfoByPlateNumber(customerInfoParam);
-                        log.debug("查询客户信息=" + customerInfoByPlateNumber.toString());
                         int i = 0;
                         if (null == customerInfoByPlateNumber) {
                             CustomerInfo customerInfo = new CustomerInfo();
