@@ -8,7 +8,9 @@ import com.dudu.soa.finace.userequity.api.ApiUserEquity;
 import com.dudu.soa.finace.userequity.module.EquityParam;
 import com.dudu.soa.finace.userequity.module.InviolableRights;
 import com.dudu.soa.finace.userequity.module.ProjectCardMX;
+import com.dudu.soa.finace.userequity.module.RechargeableCard;
 import com.dudu.soa.finace.userequity.module.RechargeableCardMX;
+import com.dudu.soa.framework.util.DuduTestUtil;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.CarTypeService;
 import com.dudu.weixin.shopweiixin.mould.ShopPersonCenter;
@@ -79,6 +81,9 @@ public class ShopPersonCenterService {
             //查询项目卡明细
             case "projectCardMX":
                 return this.queryProjectCardMX(request);
+            //查询充值卡
+            case "queryUserRechargeableCardList":
+                return this.queryUserRechargeableCardList(request);
             //查询充值卡明细
             case "rechargeableCardMX":
                 return this.queryRechargeableCardMX(request);
@@ -206,6 +211,25 @@ public class ShopPersonCenterService {
     }
 
     /**
+     * 获取充值卡
+     *
+     * @param request 请求
+     * @return List<RechargeableCardMX> 充值卡明细集合
+     */
+    public List<RechargeableCard> queryUserRechargeableCardList(HttpServletRequest request) {
+        String shopCode = (String) httpSession.getAttribute("shopcode");
+        Integer customerId = Integer.parseInt(request.getParameter("customerId"));
+        EquityParam param = new EquityParam();
+        param.setCustomerId(customerId)
+                .setShopCode(shopCode);
+        List<RechargeableCard> result = apiUserEquity.queryUserRechargeableCardList(param);
+        if (null != result && result.size() > 0) {
+            return result;
+        }
+        return null;
+    }
+
+    /**
      * 获取充值卡明细
      *
      * @param request 请求
@@ -222,7 +246,9 @@ public class ShopPersonCenterService {
         equityParam.setCustomerId(customerId);
         equityParam.setShopCode(shopCode);
         equityParam.setPlateNumb(plateNumber);
+        DuduTestUtil.printRequestForTest(equityParam);
         List<RechargeableCardMX> rechargeableCardMXES = apiUserEquity.queryUserRechargeableCardMX(equityParam);
+        DuduTestUtil.printResponseForTest(rechargeableCardMXES);
         if (null != rechargeableCardMXES && rechargeableCardMXES.size() > 0) {
             return rechargeableCardMXES;
         }

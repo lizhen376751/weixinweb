@@ -34,7 +34,7 @@ $(function(){
         url: '/shopAjax',
         data: {
             businessType: "shoppersoncenter",
-            servicetype: "personalRightsAndInterests",
+            servicetype: "queryUserRechargeableCardList",
             customerId: customerId
             // plateNumb: car_num.text()
             /*shopCode: "0533001",
@@ -48,18 +48,18 @@ $(function(){
             var czkhtnl="";
             var czkview="";
             var  czkmingxi="";//充值卡明细跳转
-            var czklist=json.rechargeableCardList;
+          //  var czklist=json.rechargeableCardList;
             // if(json.projectCardList.length==0||json.projectCardList.length==null||xmklist==null){
-            if(czklist==null||czklist.length==0||czklist.length==""){
+            if(json==null||json.length==0||json.length==""){
                 $("#wrap").hide();    //项目卡列表隐藏
                 $(".n-card").show();    //没有项目卡的提示显示
             }else{
-                for(var i=0;i<czklist.length;i++){
+                for(var i=0;i<json.length;i++){
                     czkhtnl+='<div class="swiper-slide">'+
-                                    '<p class="c-zong c-title">'+czklist[i].cardName+'</p>'+
-                                    '<p class="c-zong c-num">NO·'+czklist[i].cardNumb+'</p>'+
-                                    '<p class=" c-zong c-money">剩余金额:'+czklist[i].residualAmount+'</p>'+
-                                    '<p class="c-zong  c-time">'+dateFormat(czklist[i].validDate)+'&nbsp;&nbsp;</p>'+
+                                    '<p class="c-zong c-title">'+json[i].cardName+'</p>'+
+                                    '<p class="c-zong c-num">NO·'+json[i].cardNumb+'</p>'+
+                                    '<p class=" c-zong c-money">剩余金额:'+json[i].residualAmount+'</p>'+
+                                    '<p class="c-zong  c-time">'+dateFormat(json[i].validDate)+'&nbsp;&nbsp;</p>'+
                               '</div>'
                 }
                 //列表默认显示第一个的明细列表
@@ -70,7 +70,7 @@ $(function(){
                         businessType   : "shoppersoncenter",
                         shopCode   : shopCode.val(),
                         customerId : customerId,
-                        cardNumb   : czklist[0].cardNumb,
+                        cardNumb   : json[0].cardNumb,
                         plateNumber: plateNumber,
                         servicetype:"rechargeableCardMX"
 
@@ -127,7 +127,7 @@ $(function(){
         url: '/shopAjax',
         data: {
             businessType: "shoppersoncenter",
-            servicetype: "personalRightsAndInterests",
+            servicetype: "queryUserRechargeableCardList",
             customerId: customerId
 
         },
@@ -136,7 +136,7 @@ $(function(){
             $(".listbody").remove();  //去掉原来的项目卡内容
             var json = JSON.parse(jsonData);
             var czkview2="";
-            var czklist2=json.rechargeableCardList;
+            //var czklist2=json.rechargeableCardList;
             //轮播滑动时调用相应的详情请求
             $.ajax({
                 type    : 'POST',
@@ -145,7 +145,7 @@ $(function(){
                     businessType   : "shoppersoncenter",
                     shopCode   : shopCode.val(),
                     customerId : customerId,
-                    cardNumb   : czklist2[index].cardNumb,
+                    cardNumb   : json[index].cardNumb,
                     plateNumber: plateNumber,
                     servicetype:"rechargeableCardMX"
 
