@@ -249,7 +249,12 @@ $(document).ready(function () {
     })
     //------------------------------------------------------------------------------------提交信息的判断
     tjxx.on("click", function () {
-        alert(123);
+        var Num="";
+        for(var i=0;i<6;i++)
+        {
+            Num+=Math.floor(Math.random()*10);
+        }
+        alert(Num);
         if(!$(".xy").is(':checked')){
             alert('请选中协议')
             return false;
