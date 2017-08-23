@@ -34,7 +34,7 @@ $(function(){
         url: '/shopAjax',
         data: {
             businessType: "shoppersoncenter",
-            servicetype: "personalRightsAndInterests",
+            servicetype: "queryUserProjectCardList",
             customerId: customerId
             // plateNumb: car_num.text()
             /*shopCode: "0533001",
@@ -48,29 +48,29 @@ $(function(){
             var xmkhtnl="";
             var xmkview="";
             var  xmkmingxi="";//项目卡明细跳转
-            var xmklist=json.projectCardList;
+          //  var xmklist=json.projectCardList;
             // if(json.projectCardList.length==0||json.projectCardList.length==null||xmklist==null){
-            if(xmklist==null){
+            if(json==null){
                 $("#wrap").hide();    //项目卡列表隐藏
                 $(".n-card").show();    //没有项目卡的提示显示
             }else{
-                for(var i=0;i<xmklist.length;i++){
+                for(var i=0;i<json.length;i++){
                     xmkhtnl+='<div class="swiper-slide">'+
-                                    '<p class="c-title">'+xmklist[i].cardName+'</p>'+
-                                    '<p class="c-num">NO·'+xmklist[i].cardNumb+'</p>'+
+                                    '<p class="c-title">'+json[i].cardName+'</p>'+
+                                    '<p class="c-num">NO·'+json[i].cardNumb+'</p>'+
                               '</div>'
 
                 }
                 //列表默认显示第一个的
-                for(var j=0;j<xmklist[0].list.length;j++){
-                    var time=dateFormat(xmklist[0].list[j].validDate)
+                for(var j=0;j<json[0].list.length;j++){
+                    var time=dateFormat(json[0].list[j].validDate)
                     xmkview+='<tr>'+
-                                '<td class="td1">'+xmklist[0].list[j].projectName+'</td>'+
+                                '<td class="td1">'+json[0].list[j].projectName+'</td>'+
                                 '<td class="td2">'+time+'</td>'+
-                                '<td class="td3">'+xmklist[0].list[j].currentTimes+'</td>'+
+                                '<td class="td3">'+json[0].list[j].currentTimes+'</td>'+
                             ' </tr>'
                 }
-                xmkmingxi+='<div class="details" id="details" onclick="tCardMX('+xmklist[0].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'   //默认显示第一张项目卡的明细
+                xmkmingxi+='<div class="details" id="details" onclick="tCardMX('+json[0].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'   //默认显示第一张项目卡的明细
 
                 $("#listbody").append(xmkview);
                 $(".swiper-wrapper").append(xmkhtnl);
@@ -105,7 +105,7 @@ $(function(){
             url: '/shopAjax',
             data: {
                 businessType: "shoppersoncenter",
-                servicetype: "personalRightsAndInterests",
+                servicetype: "queryUserProjectCardList",
                 customerId: customerId
 
             },
@@ -115,16 +115,16 @@ $(function(){
                 var json = JSON.parse(jsonData);
                 var xmkview2="";
                 var xmkmingxi2="";    //项目明细跳转
-                var xmklist2=json.projectCardList;
+                //var xmklist2=json.projectCardList;
 
-                xmkmingxi2+='<div class="details" id="details" onclick="tCardMX('+xmklist2[index].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'
+                xmkmingxi2+='<div class="details" id="details" onclick="tCardMX('+json[index].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'
 
-                for(var j=0;j<xmklist2[index].list.length;j++){
-                    var time=dateFormat(xmklist2[index].list[j].validDate)
+                for(var j=0;j<json[index].list.length;j++){
+                    var time=dateFormat(json[index].list[j].validDate)
                     xmkview2+='<tr>'+
-                                    '<td class="td1">'+xmklist2[index].list[j].projectName+'</td>'+
+                                    '<td class="td1">'+json[index].list[j].projectName+'</td>'+
                                     '<td class="td2">'+time+'</td>'+
-                                    '<td class="td3">'+xmklist2[index].list[j].currentTimes+'</td>'+
+                                    '<td class="td3">'+json[index].list[j].currentTimes+'</td>'+
                               ' </tr>'
                 }
                 $("#listbody").html("");

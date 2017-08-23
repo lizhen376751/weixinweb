@@ -7,10 +7,10 @@ import com.dudu.soa.customercenter.customer.module.UpdateCustomerInfoParam;
 import com.dudu.soa.finace.userequity.api.ApiUserEquity;
 import com.dudu.soa.finace.userequity.module.EquityParam;
 import com.dudu.soa.finace.userequity.module.InviolableRights;
+import com.dudu.soa.finace.userequity.module.ProjectCard;
 import com.dudu.soa.finace.userequity.module.ProjectCardMX;
 import com.dudu.soa.finace.userequity.module.RechargeableCard;
 import com.dudu.soa.finace.userequity.module.RechargeableCardMX;
-import com.dudu.soa.framework.util.DuduTestUtil;
 import com.dudu.weixin.service.AHIService;
 import com.dudu.weixin.service.CarTypeService;
 import com.dudu.weixin.shopweiixin.mould.ShopPersonCenter;
@@ -76,8 +76,11 @@ public class ShopPersonCenterService {
             case "getCheGuanJiaFinance":
                 return this.getCheGuanJiaFinance(request);
             //查询个人权益
-            case "personalRightsAndInterests":
-                return this.getShopPersonalRightsAndInterests(request);
+          /*  case "personalRightsAndInterests":
+                return this.getShopPersonalRightsAndInterests(request);*/
+            //查询项目卡
+            case "queryUserProjectCardList":
+                return this.queryUserProjectCardList(request);
             //查询项目卡明细
             case "projectCardMX":
                 return this.queryProjectCardMX(request);
@@ -152,9 +155,9 @@ public class ShopPersonCenterService {
         String shopCode = (String) httpSession.getAttribute("shopcode");
         Integer customerId = Integer.parseInt(request.getParameter("customerId"));
         String plateNumb = (String) httpSession.getAttribute("plateNumber");
-            param.setShopCode(shopCode)
-            .setCustomerId(customerId)
-            .setPlateNumb(plateNumb);
+        param.setShopCode(shopCode)
+                .setCustomerId(customerId)
+                .setPlateNumb(plateNumb);
         InviolableRights inviolableRights = apiUserEquity.getCheGuanJiaFinance(param);
         if (null != inviolableRights && !"".equals(inviolableRights)) {
             return inviolableRights;
@@ -168,7 +171,7 @@ public class ShopPersonCenterService {
      * @param request 请求
      * @return InviolableRights 用户个人权益
      */
-    public InviolableRights getShopPersonalRightsAndInterests(HttpServletRequest request) {
+    /*public InviolableRights getShopPersonalRightsAndInterests(HttpServletRequest request) {
         EquityParam equityParam = new EquityParam();
         String shopCode = (String) httpSession.getAttribute("shopcode");
         String customerId = request.getParameter("customerId");
@@ -182,6 +185,25 @@ public class ShopPersonCenterService {
         InviolableRights inviolableRights = apiUserEquity.getInviolableRights(equityParam);
         if (null != inviolableRights && !"".equals(inviolableRights)) {
             return inviolableRights;
+        }
+        return null;
+    }*/
+
+    /**
+     * 获取项目卡
+     *
+     * @param request 请求
+     * @return List<ProjectCardMX> 项目卡集合
+     */
+    public List<ProjectCard> queryUserProjectCardList(HttpServletRequest request) {
+        String shopCode = (String) httpSession.getAttribute("shopcode");
+        String customerId = request.getParameter("customerId");
+        EquityParam param = new EquityParam();
+        param.setShopCode("0533001")
+                .setCustomerId(29628);
+        List<ProjectCard> projectCardMXES = apiUserEquity.queryUserProjectCardList(param);
+        if (null != projectCardMXES && projectCardMXES.size() > 0) {
+            return projectCardMXES;
         }
         return null;
     }
@@ -246,9 +268,7 @@ public class ShopPersonCenterService {
         equityParam.setCustomerId(customerId);
         equityParam.setShopCode(shopCode);
         equityParam.setPlateNumb(plateNumber);
-        DuduTestUtil.printRequestForTest(equityParam);
         List<RechargeableCardMX> rechargeableCardMXES = apiUserEquity.queryUserRechargeableCardMX(equityParam);
-        DuduTestUtil.printResponseForTest(rechargeableCardMXES);
         if (null != rechargeableCardMXES && rechargeableCardMXES.size() > 0) {
             return rechargeableCardMXES;
         }
