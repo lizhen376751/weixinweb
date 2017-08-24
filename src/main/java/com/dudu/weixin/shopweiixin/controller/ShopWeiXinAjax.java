@@ -6,6 +6,7 @@ import com.dudu.soa.weixindubbo.shopinfo.module.ShopInfo;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import com.dudu.weixin.shopweiixin.service.ShopBaoYangTiXingService;
 import com.dudu.weixin.shopweiixin.service.ShopPersonCenterService;
+import com.dudu.weixin.shopweiixin.service.ShopRegisterService;
 import com.dudu.weixin.shopweiixin.service.ShopShiGongBuZhouService;
 import com.dudu.weixin.shopweiixin.service.ShopWeixinLoginService;
 import com.dudu.weixin.shopweiixin.service.ShopXiaoFeiJiLuService;
@@ -58,6 +59,11 @@ public class ShopWeiXinAjax {
     @Autowired
     private ShopShiGongBuZhouService shopShiGongBuZhou;
     /**
+     * 车管家注册
+     */
+    @Autowired
+    private ShopRegisterService shopRegisterService;
+    /**
      * 个人中心服务
      */
     @Autowired
@@ -87,6 +93,8 @@ public class ShopWeiXinAjax {
         String businessType = request.getParameter("businessType");
         if ("login".equals(businessType)) { //登录页面
             return shopWeixinLogin.checklogin(shopcode, request);
+        } if ("register".equals(businessType)) { //注册页面
+            return shopRegisterService.register(shopcode, request);
         } else if ("xiaofeijilu".equals(businessType)) { //消费记录页面
             return shopXiaoFeiJiLu.queryXiaoFeiJiLu(shopcode, plateNumber);
         } else if ("goevaluation".equals(businessType)) { //去评价
