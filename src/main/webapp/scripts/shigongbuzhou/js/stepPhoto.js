@@ -157,7 +157,7 @@ $(function () {
             var shopCode ="YLB0002";
             var paramMap = {
                 "orderCode":orderCode,
-                "shopCode" :"0533001",
+                "shopCode" :"YLB0002",
                 "itemMxId" :itemMxId,
                 "projectStepId" :projectStepId,
                 "workType" : "shigong"
@@ -165,7 +165,7 @@ $(function () {
             console.log(this.files[0]);
             $.ajax({
                 type    : 'GET',
-                url     : '/ossconfig/0533001/8',
+                url     : '/ossconfig/YLB0002/8',
                 data    : {},
                 success:function(jsondata){
                     var json = JSON.parse(jsondata);
