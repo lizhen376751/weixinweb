@@ -126,7 +126,6 @@ public class FileUploadServlet {
             e.printStackTrace();
 
         }
-        //TODO 用完之后要记得删除
         return imagePath;
 
     }
