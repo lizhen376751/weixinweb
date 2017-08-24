@@ -163,11 +163,10 @@ $(function () {
             var projectStepId = $(this).nextAll(".projectStepId").val();
             var itemMxId = $(this).nextAll(".itemMxId").val();
             var orderCode=$(this).nextAll(".orderCode").val();
-            //TODO 后期换成YLB0002
             var shopCode ="YLB0002";
             var paramMap = {
                 "orderCode":orderCode,
-                "shopCode" :"0533001",
+                "shopCode" :"YLB0002",
                 "itemMxId" :itemMxId,
                 "projectStepId" :projectStepId,
                 "workType" : "shigong"
@@ -176,7 +175,7 @@ $(function () {
             //TODO 后期换成YLB0002
             $.ajax({
                 type    : 'GET',
-                url     : '/ossconfig/0533001/8',
+                url     : '/ossconfig/YLB0002/8',
                 data    : {},
                 success:function(jsondata){
                     var json = JSON.parse(jsondata);

@@ -106,20 +106,15 @@ public class LianMengKaService {
                     saveModule.setProductShopCode(lmcode);
                     LianmengKaBaseMessage lianmengKaBaseMessage = apiLianmengkaOperateIntf.addLianmengKa(saveModule);
                     log.debug("联盟卡激活返回的================================lianmengKaBaseMessage" + lianmengKaBaseMessage.toString());
-                    //TODO 易璐邦的联盟编码
-                    if ("CS000".equals(lmcode)) {
-//                    if ("FL000".equals(lmcode)){
+                    if ("FL000".equals(lmcode)) {
                         //查询店铺信息是否有客户信息,没有的话在添加
                         CustomerInfoParam customerInfoParam = new CustomerInfoParam();
-                        //TODO 0533001暂时写死后期换掉
-                        customerInfoParam.setShopCode("0533001").setPlateNumber(platenumber);
+                        customerInfoParam.setShopCode("YLB0002").setPlateNumber(platenumber);
                         CustomerInfo customerInfoByPlateNumber = apiCustomerInfo.getCustomerInfoByPlateNumber(customerInfoParam);
                         int i = 0;
                         if (null == customerInfoByPlateNumber) {
                             CustomerInfo customerInfo = new CustomerInfo();
-                            //TODO 插入店铺客户信息
-                            customerInfo.setPlateNumber(platenumber).setMainShopcode("0533001").setShopCode("0533001").setCustomerName(platenumber).setCreateUserId(44);
-//                        customerInfo.setPlateNumber(platenumber).setMainShopcode("YLB0002").setShopCode("YLB0002").setCustomerName(platenumber).setCreateUserId(3782);
+                            customerInfo.setPlateNumber(platenumber).setMainShopcode("YLB0002").setShopCode("YLB0002").setCustomerName(platenumber).setCreateUserId(3782);
                             i = apiCustomerInfo.addCustomer(customerInfo);
                             log.debug("插入客户信息的id=" + i);
                         } else {
@@ -150,13 +145,12 @@ public class LianMengKaService {
      * @param i              客户id
      */
     public void addLmCustomer(String lmcode, String customerMobile, String platenumber, int i) {
-        //TODO 维护联盟信息表
         log.debug("开始保存维护联盟客户信息与店管家客户信息");
         CustomerParam customerParam = new CustomerParam();
         long customerId = (long) i;
         customerParam.setBrandCode(lmcode) //联盟编码
                 .setDpCustomerId(customerId) //店管家客户id
-                .setMainShopCode("0533001") //TODO 主店铺编码
+                .setMainShopCode("YLB0002")
                 .setCustomerMobile(customerMobile) //手机号码
                 .setCarHaopai(platenumber);
         Long aLong = apiCustomerIntf.addLmCustomer(customerParam);

@@ -104,8 +104,6 @@ public class SelfBillingService {
         String cardNumber = request.getParameter("cardNumber"); //联盟卡的卡号
         WxCustomer wxCustomer = wxCustomerService.getWxCustomer(plateNumber, lmcode);
         if (wxCustomer != null) {
-            // TODO 测试之后进行删除
-//            Integer id = 566;
             Integer id = wxCustomer.getId();
             long customerId = (long) id;
             Long parseLong = new Long((long) Integer.parseInt(cardId));
@@ -158,12 +156,11 @@ public class SelfBillingService {
         String orderCode = "";
         if (specialCustomerInfo != null) {
             orderCode = specialCustomerInfo.getOrderCode();
-            //TODO  0533001暂时写死
-            CustomerInfo customerInfo = shopCustomInfo.queryCustomerList("0533001", plateNumber);
+            CustomerInfo customerInfo = shopCustomInfo.queryCustomerList("YLB0002", plateNumber);
             Integer id = customerInfo.getId();
             customerInfo.getId();
             BillsDetailParam billsDetailParam = new BillsDetailParam()
-                    .setShopCode("0533001") //TODO 0533001暂时写死
+                    .setShopCode("YLB0002")
                     .setCustomId(id)
                     .setPingZheng(orderCode);
             //工单查询
