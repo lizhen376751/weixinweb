@@ -123,6 +123,7 @@ public class LianMengKaService {
                             i = apiCustomerInfo.addCustomer(customerInfo);
                             log.debug("插入客户信息的id=" + i);
                         } else {
+                            log.debug("查询客户信息=" + customerInfoByPlateNumber.toString());
                             i = customerInfoByPlateNumber.getId();
                         }
                         String customerMobile = wxCustomer.getCustomerMobile(); //获取用户的手机号

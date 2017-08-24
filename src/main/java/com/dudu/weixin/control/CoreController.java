@@ -125,6 +125,14 @@ public class CoreController extends HttpServlet {
         String receivemessage = apiAllWeiXiRequest.receivemessage(map);
         log.info("发送消息为==========================" + receivemessage);
         out.println(receivemessage);
+        if (map.get("Event").equals("SCAN")) {
+            //如果通过二维码的事件关注之后,需要重新发送一条数据
+            String receivemessage1 = apiAllWeiXiRequest.receivemessage(map);
+            log.info("二维码关注事件发送消息为==========================" + receivemessage);
+            if (!"".equals(receivemessage1) && !"null".equals(receivemessage1) && null != receivemessage1) {
+                out.println(receivemessage);
+            }
+        }
         out.close();
         // 释放资源
         try {
