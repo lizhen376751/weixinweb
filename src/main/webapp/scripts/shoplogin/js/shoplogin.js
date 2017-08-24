@@ -157,7 +157,7 @@ $(document).ready(function () {
     })
     //--------------------------------------------------------------------------------------点击注册按钮跳转
     register.on("click", function () {
-        window.location.href = "/oauthLoginServlet?flagStr=register";
+        window.location.href = "/shopweixinServlet?serviceType=register";
     });
 
     //------------------------------------------------------------------------------------获取遮罩层中用户注册，且没密码的确定按钮的点击

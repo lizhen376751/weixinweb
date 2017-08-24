@@ -87,6 +87,8 @@ public class ShopWeiXinControl {
         String serviceType = request.getParameter("serviceType");
         if ("login".equals(serviceType)) { //登录页面
             return "/shoplogin/shoplogin.jsp";
+        } if ("register".equals(serviceType)) { //注册页面
+            return "/shopregister/register.jsp";
         } else if ("signout".equals(serviceType)) { //退出账号
             logInLogService.deleLogInLog(openId);
             httpSession.setAttribute("plateNumber", null);
