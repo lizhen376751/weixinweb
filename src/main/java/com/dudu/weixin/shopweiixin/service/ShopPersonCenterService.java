@@ -199,8 +199,8 @@ public class ShopPersonCenterService {
         String shopCode = (String) httpSession.getAttribute("shopcode");
         String customerId = request.getParameter("customerId");
         EquityParam param = new EquityParam();
-        param.setShopCode("0533001")
-                .setCustomerId(29628);
+        param.setShopCode(shopCode)
+                .setCustomerId(Integer.parseInt(customerId));
         List<ProjectCard> projectCardMXES = apiUserEquity.queryUserProjectCardList(param);
         if (null != projectCardMXES && projectCardMXES.size() > 0) {
             return projectCardMXES;

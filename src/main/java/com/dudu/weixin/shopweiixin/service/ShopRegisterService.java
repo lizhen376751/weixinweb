@@ -45,6 +45,7 @@ public class ShopRegisterService {
     public String register(String shopCode, HttpServletRequest request) {
         String customerName = request.getParameter("customerName");
         String plateNumber = request.getParameter("plateNumber");
+        String mobilePhone = request.getParameter("mobilePhone");
         try {
             ShopInfoParam shopInfoParam = new ShopInfoParam();
             shopInfoParam.setShopCode(shopCode);
@@ -55,7 +56,8 @@ public class ShopRegisterService {
                     .setCustomerName(customerName)
                     .setPlateNumber(plateNumber)
                     .setMainShopcode(mianShopCode)
-                    .setShopCode(shopCode);
+                    .setShopCode(shopCode)
+                    .setMobilePhone(mobilePhone);
             apiCustomerInfo.addCustomer(param);
             return "注册成功！";
         } catch (Exception e) {
