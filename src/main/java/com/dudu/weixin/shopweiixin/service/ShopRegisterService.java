@@ -5,6 +5,7 @@ import com.dudu.soa.basedata.shopinfo.api.ApiBaseDataShopInfo;
 import com.dudu.soa.basedata.shopinfo.module.ShopInfoParam;
 import com.dudu.soa.customercenter.customer.api.ApiCustomerInfo;
 import com.dudu.soa.customercenter.customer.module.CustomerInfo;
+import com.dudu.soa.framework.util.DuduTestUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -58,8 +59,9 @@ public class ShopRegisterService {
                     .setMainShopcode(mianShopCode)
                     .setShopCode(shopCode)
                     .setMobilePhone(mobilePhone);
+            DuduTestUtil.printRequestForTest(param);
             apiCustomerInfo.addCustomer(param);
-            return "注册成功！";
+            return "result";
         } catch (Exception e) {
             e.printStackTrace();
             return e.getMessage();

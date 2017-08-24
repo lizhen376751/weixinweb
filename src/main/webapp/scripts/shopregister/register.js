@@ -229,9 +229,35 @@ $(document).ready(function () {
                     success: function (jsonData) {
                         var backdata = JSON.parse(jsonData);
                         console.log(backdata)
-                        
-                    }
+                        if (backdata == "result") {
+                            alert("注册成功！");
+                            $.ajax({
+                                type: 'POST',
+                                url: '/shopAjax',            //望后台传输数据的地址
+                                data: {
+                                    businessType: "login",
+                                    platenumber: $(".car_num").val(),
+                                    password:  $(".count_phone").val()
+                                },
+                                success: function (jsonData) {
+                                    var jsonData = JSON.parse(jsonData);
+                                    if (jsonData == "0") {
+                                        tc_ceng.show();
+                                        ty.show();
+                                        tyt.show();
+                                    }else if (jsonData == "1"){
+                                        window.location.href = "/shopweixinServlet?serviceType=shoppersoncenter";
+                                    }else if (jsonData == "2"){
+                                        window.location.href = "/shopweixinServlet?serviceType=login";  //网络错误
+                                    }
 
+
+                                }
+                            });
+                        } else {
+                         alert(backdata);
+                        }
+                    }
                 });
             }
         }
