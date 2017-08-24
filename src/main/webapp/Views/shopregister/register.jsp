@@ -11,7 +11,17 @@
 	<link rel="stylesheet" type="text/css" href="/styles/register/register.css"/>
 	<script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script  type="text/javascript"  src="/scripts/main.js"></script>
-	<script src="/scripts/register/register.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/scripts/shopregister/register.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+		.yamnum{
+			display: none;
+			color: red;
+			text-align: center;
+		}
+		.nunhd{
+
+		}
+	</style>
 	<body>
 		<%--网页加载效果--%>
 		<div id="loading">
@@ -33,13 +43,13 @@
 					<img src="/files/register/big_line.png" alt="" class="big_line"/>
 				</li>
 				<!---------------------------------------------------------------------------账户密码-->
-				<li class="margin_top_1">
+		<!--	<li class="margin_top_1">
 					<img src="/files/register/password.png" class="logo"/>
 					<span class="tsk font_4">密码不能包含空格</span>
 					<input type="password" placeholder="请输入6-10的密码" class="input_css_1 font_1 count_password"/>
 					<img src="/files/register/big_line.png" alt="" class="big_line"/>
 					<img src="/files/register/gbmm.png" class="eye"/>
-				</li>
+				</li>-->
 				<!---------------------------------------------------------------------------手机号-->
 				<li class="margin_top_1">
 					<img src="/files/register/phone.png" class="logo"/>
@@ -55,15 +65,19 @@
 					<img src="/files/register/little_line.png" alt="" class="little_line"/>
 					<span class="yzm font_1 color_3">发送验证码</span>
 				</li>
+				<li class="margin_top_1 yamnum" style="margin-top: 0rem;" >
+					<span class="font_1 "  style="display: inline" >验证码：</span>
+					<span class="nunhd font_1" style="display: inline" ></span>
+				</li>
 			</ul>
 		</div>
 		<!--------------------------------------------------------------------------------------底部提交按钮-->
 		<div class="footer_button">
 			<span class="tjxx font_3 color_3">提交信息</span>
-			<div class="ht">
+		<!--<div class="ht">
 				<a href="/Views/register/chuangkexieyi.jsp" class="font_5">我已阅读并接受会员协议</a>
 				<input type="checkbox" name="" id="" checked="checked" class="xy"/>
-			</div>
+			</div>-->
 		</div>
 		<!-------------------------------------------------------------------------------弹出层-->
 		<div class="tcc">
