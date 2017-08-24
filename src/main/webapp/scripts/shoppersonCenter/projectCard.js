@@ -70,11 +70,14 @@ $(function(){
                                 '<td class="td3">'+json[0].list[j].currentTimes+'</td>'+
                             ' </tr>'
                 }
-                xmkmingxi+='<div class="details" id="details" onclick="tCardMX('+json[0].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'   //默认显示第一张项目卡的明细
+                xmkmingxi+='<div class="details" id="details">明细</div>'   //默认显示第一张项目卡的明细
 
                 $("#listbody").append(xmkview);
                 $(".swiper-wrapper").append(xmkhtnl);
                 $(".listtable").after(xmkmingxi);
+                $("#details").on("click",function(){
+                    window.location.href="/shopweixinServlet?serviceType=projectCardMX&cardNumb="+json[0].cardNumb+"&shopCode="+shopCode.val()+"&customerId="+customerId
+                })
 
             }
 
@@ -117,7 +120,7 @@ $(function(){
                 var xmkmingxi2="";    //项目明细跳转
                 //var xmklist2=json.projectCardList;
 
-                xmkmingxi2+='<div class="details" id="details" onclick="tCardMX('+json[index].cardNumb+',\''+shopCode.val()+'\','+customerId+')">明细</div>'
+                xmkmingxi2+='<div class="details" id="details" >明细</div>'
 
                 for(var j=0;j<json[index].list.length;j++){
                     var time=dateFormat(json[index].list[j].validDate)
@@ -131,6 +134,9 @@ $(function(){
                 $("#listbody").append(xmkview2);
                 $("#details").remove();
                 $(".listtable").after(xmkmingxi2);
+                $("#details").on("click",function(){
+                    window.location.href="/shopweixinServlet?serviceType=projectCardMX&cardNumb="+json[index].cardNumb+"&shopCode="+shopCode.val()+"&customerId="+customerId
+                })
 
 
             }
