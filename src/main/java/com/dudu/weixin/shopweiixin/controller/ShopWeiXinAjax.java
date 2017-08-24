@@ -93,7 +93,7 @@ public class ShopWeiXinAjax {
         String businessType = request.getParameter("businessType");
         if ("login".equals(businessType)) { //登录页面
             return shopWeixinLogin.checklogin(shopcode, request);
-        } if ("register".equals(businessType)) { //注册页面
+        } else if ("register".equals(businessType)) { //注册页面
             return shopRegisterService.register(shopcode, request);
         } else if ("xiaofeijilu".equals(businessType)) { //消费记录页面
             return shopXiaoFeiJiLu.queryXiaoFeiJiLu(shopcode, plateNumber);

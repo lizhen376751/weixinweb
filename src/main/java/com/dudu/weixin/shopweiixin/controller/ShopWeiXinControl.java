@@ -65,8 +65,7 @@ public class ShopWeiXinControl {
         } else if ("shoppersoncenter".equals(flagStr)) {
             return "/shoppersonCenter/grzx.jsp"; //个人中心
         } else if ("weixinshangcheng".equals(flagStr)) { //微信商城
-            return "/index.jsp"; //内部跳转测试
-//            return "redirect:http://www.duduchewang.cn/weixincore_cn/zy.jsp?shopcode=" + shopcode + "&openid=" + openId;
+            return "redirect:http://www.duduchewang.cn/weixincore_cn/zy.jsp?shopcode=" + shopcode + "&openid=" + openId;
         } else if ("myOrder".equals(flagStr)) { //微信商城里面我的订单
             return "redirect:http://www.duduchewang.cn/weixincore_cn/evaluateList.jsp?shopcode=" + shopcode + "&openId=" + openId;
         }
@@ -87,7 +86,7 @@ public class ShopWeiXinControl {
         String serviceType = request.getParameter("serviceType");
         if ("login".equals(serviceType)) { //登录页面
             return "/shoplogin/shoplogin.jsp";
-        } if ("register".equals(serviceType)) { //注册页面
+        } else if ("register".equals(serviceType)) { //注册页面
             return "/shopregister/register.jsp";
         } else if ("signout".equals(serviceType)) { //退出账号
             logInLogService.deleLogInLog(openId);
