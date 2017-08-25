@@ -141,7 +141,7 @@ public class ShopWeiXinControl {
         } else if ("projectCard".equals(serviceType)) { //跳转项目卡页面
             model.addAttribute("customerId", request.getParameter("customerId")); //客户ID
             return "/shoppersonCenter/projectCard.jsp";
-        } else if ("shopyouhuiquan".equals(serviceType)){
+        } else if ("shopyouhuiquan".equals(serviceType)) {
             return "电子优惠券页面"; //TODO 电子优惠券
         }
         return null;
