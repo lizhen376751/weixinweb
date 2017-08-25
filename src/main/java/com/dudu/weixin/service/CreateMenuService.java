@@ -37,7 +37,7 @@ public class CreateMenuService {
                 menu = menuUtil.getShopMenu(appid, code, url);
                 break;
             case "yilubang": //易璐邦
-                menu = menuUtil.getYiLuBangmenu(appid, code);
+                menu = menuUtil.getYiLuBangmenu(appid, code, url);
                 break;
             case "oldShop": //老版店管家
                 menu = menuUtil.getOldShopMenu(appid, code, url);

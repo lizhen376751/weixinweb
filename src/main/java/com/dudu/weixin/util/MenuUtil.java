@@ -258,11 +258,12 @@ public class MenuUtil {
      *
      * @param appid 微信的appid
      * @param code  联盟编码或者店铺编码
+     * @param url   服务器地址
      * @return yiLuBangmenu 易璐邦菜单微信
      */
-    public Menu getYiLuBangmenu(String appid, String code) {
+    public Menu getYiLuBangmenu(String appid, String code, String url) {
         String commonUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?"
-                + "appid=wxd42683342ffb5ae9&redirect_uri=http://wx.pre.duduchewang.cn/oauthLoginServlet?lmcode=FL000";
+                + "appid=" + appid + "&redirect_uri=http://" + url + "oauthLoginServlet?lmcode=" + code;
 
 //        1、我的卡包  2、爱车健康指数 3、添加卡券 4、个人中心 5、退出账号
 
