@@ -217,6 +217,7 @@
             <version>${dudu.soa.OrderCenter.version}</version>
         </dependency>
 
+
     </dependencies>
 
     <build>
