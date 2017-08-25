@@ -1,0 +1,72 @@
+/*-----------------------------------------公共样式-------------------------*/
+ul{list-style: none;}
+body{width:100%;background:#f3f3f3;font-family: "微软雅黑" ;height:auto;overflow:auto;font-size: 16px;font-size: 100%;}
+.wrap{
+	width: 100%;
+	height: 100%;
+}
+.xiangq_div{
+	height: 3.4rem;
+	margin: 0.44rem 0.44rem;
+	background: #FFFFFF;
+}
+.foncolor{
+	color: #313131;
+}
+.xqleft{
+	float: left;
+	margin-left: 0.5rem;
+	width: 60%;
+}
+.xqimg{
+	display: inline-block;
+	background: url(/files/shopyouhuiquan/usebg.png) no-repeat;
+	background-size: 100% 100%;
+	height: 3.4rem;
+	width: 30%;
+	float: right;
+	color: #fff;
+	text-align: center;
+}
+.noxqimg{
+	display: inline-block;
+	background: url(/files/shopyouhuiquan/nouse.png) no-repeat;
+	background-size: 100% 100%;
+	height: 3.4rem;
+	width: 30%;
+	float: right;
+	color: #fff;
+	text-align: center;
+}
+.titlexq{
+    font-size: 0.8rem;
+    height: 2rem;
+    line-height: 2.3rem;
+
+}
+.ptile{
+	color: red;
+}
+.ptile2{
+	color: #7b7b7b;
+}
+.titlespan{
+	margin-top: 0.8rem;
+    margin-bottom: 0.4rem;
+}
+
+.tablediv{
+	margin: 0rem 0.44rem;
+}
+.ZStable{
+	width:100%;
+}
+.twotd{
+	padding-top:0.6rem;
+	text-align: center;
+}
+.ZSline{
+	width:100%;
+	display: inline-block;
+	border-bottom: 1px solid #bfbfbf;
+}
