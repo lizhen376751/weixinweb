@@ -167,6 +167,11 @@ public class MenuUtil {
         String commonUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?"
                 + "appid=" + appid + "&redirect_uri=http://" + url + "/shopweixinMenuServlet?shopcode=" + code;
 
+        CommonButton btn15 = new CommonButton();
+        btn15.setName("电子卡券");
+        btn15.setType("view");
+        btn15.setUrl(commonUrl + "_shopyouhuiquan" + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+
         CommonButton btn11 = new CommonButton();
         btn11.setName("消费记录");
         btn11.setType("view");

@@ -54,7 +54,9 @@ public class ShopWeiXinControl {
         String strWxShopcode = request.getParameter("shopcode");
         String flagStr = strWxShopcode.split("_")[1]; //页面跳转判断
         String shopcode = strWxShopcode.split("_")[0]; //联盟code
-        if ("AHIInfo".equals(flagStr)) {
+        if ("shopyouhuiquan".equals(flagStr)) {
+            return "电子优惠券页面"; //TODO 电子优惠券
+        } else if ("AHIInfo".equals(flagStr)) {
             return "/ahi/AHIxiangqing.jsp"; //AHI指数
         } else if ("xiaofeijilu".equals(flagStr)) {
             return "/shopxiaofeijilu/xiaofeijilu.jsp"; //消费记录
@@ -139,6 +141,8 @@ public class ShopWeiXinControl {
         } else if ("projectCard".equals(serviceType)) { //跳转项目卡页面
             model.addAttribute("customerId", request.getParameter("customerId")); //客户ID
             return "/shoppersonCenter/projectCard.jsp";
+        } else if ("shopyouhuiquan".equals(serviceType)){
+            return "电子优惠券页面"; //TODO 电子优惠券
         }
         return null;
     }

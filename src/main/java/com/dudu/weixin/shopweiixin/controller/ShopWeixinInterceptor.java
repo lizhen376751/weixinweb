@@ -101,6 +101,7 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
             session.setAttribute("openId", openId);
             session.setAttribute("nickname", nickname);
         }
+
         String plateNumber = (String) session.getAttribute("plateNumber");
         //判断session里面有没有plateNumber
         if ("".equals(plateNumber) || null == plateNumber) {
@@ -108,6 +109,10 @@ public class ShopWeixinInterceptor implements HandlerInterceptor {
             if (null != openId && !"".equals(openId)) {
                 LogInLog logInLog = logInLogService.getLogInLog(shopcode, openId);
                 if (logInLog == null) {
+                    if ("shopyouhuiquan".equals(flagStr)) {
+                        //如果是电子优惠券,不需要判断车牌号
+                        return true;
+                    }
                     //如果为空的话直接跳转至登录页面
                     request.getRequestDispatcher("/Views/shoplogin/shoplogin.jsp?shopcode=" + shopcode).forward(request, response);
                 } else {
