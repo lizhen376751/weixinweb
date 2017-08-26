@@ -1,10 +1,17 @@
 package com.dudu.weixin.shopweiixin.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.dudu.soa.weixindubbo.electroniccoupon.api.ApiElectronicCoupon;
+import com.dudu.soa.weixindubbo.electroniccoupon.module.CouponCountResult;
+import com.dudu.soa.weixindubbo.electroniccoupon.module.ElectronicCouponParam;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -23,23 +30,46 @@ public class ShopCouponController {
      */
     @Autowired
     private HttpSession httpSession;
+    /**
+     * 电子优惠券接口
+     */
+    @Autowired
+    private ApiElectronicCoupon apiElectronicCoupon;
 
-//    //1.跳转优惠券的数量页面
-//    @RequestMapping(value = "numcoupon", method = {RequestMethod.GET, RequestMethod.POST})
-//    public String hhh(HttpServletRequest request, Model model) {
-//        //调用接口查询可用电子优惠券的数量,以及可转发的数量
-//        String openid = request.getParameter("openid");
-//        String shopCode = request.getParameter("shopCode");
-//        //分享连接取消掉
-//        //获取卡的类型
-//        //查询根据openid,shopcode.模板id,查询相应的数量
-//        model.addAttribute("openid", openid);
-//        model.addAttribute("shopCode", shopCode);
-//        model.addAttribute("num", "1");
-//        model.addAttribute("num2", "2");
-//        model.addAttribute("num2", "卡券的id");
-//        return "使用数量页面";
-//    }
+    /**
+     * 冯广祥
+     * 跳转优惠券的数量页面
+     *
+     * @param request 请求
+     * @param model   模板
+     * @return 返回页面
+     */
+    @RequestMapping(value = "numcoupon", method = {RequestMethod.GET, RequestMethod.POST})
+    public String hhh(HttpServletRequest request, Model model) {
+        //调用接口查询可用电子优惠券的数量,以及可转发的数量
+        String openid = request.getParameter("openid"); //微信openid
+        String shopCode = request.getParameter("shopCode"); // 店铺编码
+        String id = request.getParameter("id"); //优惠券唯一标识ID
+        String identifying = request.getParameter("identifying"); //标识   单一：only  更多：more
+        httpSession.setAttribute("shopcode", shopCode); // 存储店铺编码 到session
+        ElectronicCouponParam electronicCouponParam = new ElectronicCouponParam();
+        electronicCouponParam.setOpenId(openid)
+                .setShopCode(shopCode);
+        if ("only".equals(identifying)) { // 如果是微信模板消息推送点击进入  需通过优惠券ID查询数据
+            electronicCouponParam.setCouponId(Integer.getInteger(id));
+        }
+        CouponCountResult result = apiElectronicCoupon.getWeiXinConponCount(electronicCouponParam);
+        model.addAttribute("openid", openid);
+        model.addAttribute("shopCode", shopCode);
+        model.addAttribute("userNum", result.getUserNum());
+        model.addAttribute("forwardNum", result.getForwardNum());
+        model.addAttribute("id", id);
+        model.addAttribute("identifying", identifying);
+        //分享连接取消掉
+        //获取卡的类型
+        //查询根据openid,shopcode.模板id,查询相应的数量
+        return "/shopyouhuiquan/quanindex.jsp";
+    }
 //
 //
 //    //2.列表的优惠券查看详情页面
