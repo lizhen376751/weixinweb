@@ -77,11 +77,10 @@ public class ShopCouponController {
         CouponCountResult result = apiElectronicCoupon.getWeiXinConponCount(electronicCouponParam);
         logger.info("==============查询数量=============" + result.toString());
         if (null != result) {
-            String userNum = result.getForwardNum().toString();
             model.addAttribute("openid", openid);
             model.addAttribute("shopCode", shopCode);
-            model.addAttribute("userNum", userNum); // 可使用数量
-            model.addAttribute("forwardNum", result.getForwardNum().toString()); // 可转发数量
+            model.addAttribute("userNum", result.getUserNum()); // 可使用数量
+            model.addAttribute("forwardNum", result.getForwardNum()); // 可转发数量
             model.addAttribute("id", id);
             model.addAttribute("identifying", identifying);
         }
@@ -100,6 +99,7 @@ public class ShopCouponController {
      */
     @RequestMapping(value = "/coupondetails", method = RequestMethod.GET)
     public String couponDetails(HttpServletRequest request, Model model) {
+        logger.info("=========================================跳转成功");
         String businessLogo = request.getParameter("businessLogo");  //获取业务标识 use(使用),give(赠送),get(获取领取)
         String identifying = request.getParameter("identifying");  //标识   单一：only  更多：more
         String id = request.getParameter("id"); // 券的ID
