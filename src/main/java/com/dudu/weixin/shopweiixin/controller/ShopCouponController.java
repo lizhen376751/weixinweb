@@ -111,11 +111,8 @@ public class ShopCouponController {
         } else if ("give".equals(businessLogo)) {
             state = 0;
         }
-        logger.info("===========================" + id);
-        logger.info("===========================" + Integer.getInteger(id));
-        logger.info("===========================" + Integer.valueOf(id));
         ElectronicCouponParam param = new ElectronicCouponParam();
-        param.setCouponId(Integer.getInteger(id))
+        param.setCouponId(Integer.valueOf(id))
                 .setShopCode(shopCode)
                 .setOpenId(openid)
                 .setCouponFlag(state); // 0：可转发  1：可使用
