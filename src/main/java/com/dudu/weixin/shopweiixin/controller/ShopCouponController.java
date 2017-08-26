@@ -78,13 +78,15 @@ public class ShopCouponController {
         logger.info("==============查询数量=============" + result.toString());
         logger.debug("=================:::::::::::::::" + result.getUserNum().toString());
         logger.debug("=================:::::::::::::::" + result.getForwardNum().toString());
-        String userNum = result.getForwardNum().toString();
-        model.addAttribute("openid", openid);
-        model.addAttribute("shopCode", shopCode);
-        model.addAttribute("userNum", userNum); // 可使用数量
-        model.addAttribute("forwardNum", result.getForwardNum().toString()); // 可转发数量
-        model.addAttribute("id", id);
-        model.addAttribute("identifying", identifying);
+        if (null != result) {
+            String userNum = result.getForwardNum().toString();
+            model.addAttribute("openid", openid);
+            model.addAttribute("shopCode", shopCode);
+            model.addAttribute("userNum", userNum); // 可使用数量
+            model.addAttribute("forwardNum", result.getForwardNum().toString()); // 可转发数量
+            model.addAttribute("id", id);
+            model.addAttribute("identifying", identifying);
+        }
         //分享连接取消掉
         //获取卡的类型
         //查询根据openid,shopcode.模板id,查询相应的数量
@@ -116,15 +118,17 @@ public class ShopCouponController {
                 .setShopCode(shopCode)
                 .setOpenId(openid)
                 .setCouponFlag(state); // 0：可转发  1：可使用
-        logger.debug("=============查询微信优惠券详情传参===============" + param.toString());
         WeiXinCouponInfo wxWeiXinCouponInfo = apiElectronicCoupon.getWXElectronicCouponInfo(param);
         logger.debug("=============查询微信优惠券详情===============" + wxWeiXinCouponInfo.toString());
         ShopInfoParam shopInfoParam = new ShopInfoParam();
         shopInfoParam.setShopCode(shopCode);
-        logger.debug("=============查询店铺信息 传参===============" + shopInfoParam.toString());
         ShopInfo shopInfo = apiBaseDataShopInfo.getByCode(shopInfoParam);
         logger.debug("=============查询店铺信息 返回===============" + shopInfo.toString());
-        model.addAttribute("openid", openid); // 微信openid
+        model.addAttribute("wxWeiXinCouponInfo", wxWeiXinCouponInfo); // 优惠券返回详情
+        model.addAttribute("shopInfo", shopInfo); // 店铺信息返回详情
+
+
+       /* model.addAttribute("openid", openid); // 微信openid
         model.addAttribute("shopCode", shopCode); // 店铺编码
         model.addAttribute("diXiaoJinE", wxWeiXinCouponInfo.getDiXiaoJinE()); // 可抵消金额
         model.addAttribute("forwardNum", wxWeiXinCouponInfo.getAnotherJinE()); // 另付费
@@ -135,8 +139,8 @@ public class ShopCouponController {
         model.addAttribute("lingOpenid", wxWeiXinCouponInfo.getOpenId()); //  领取人openid
         model.addAttribute("couponState", wxWeiXinCouponInfo.getCouponState()); //  优惠券状态   0：已失效   1：已领取   2：未领取
         model.addAttribute("couponFlag", wxWeiXinCouponInfo.getCouponFlag()); // 优惠券标识(1可使用,0:可转发)
-        model.addAttribute("couponName", wxWeiXinCouponInfo.getCouponName()); // 优惠券标识(1可使用,0:可转发)
-
+        model.addAttribute("couponName", wxWeiXinCouponInfo.getCouponName()); // 优惠券名称
+*/
 
         //5.立即使用时,需要屏蔽连接发送以及分享
         model.addAttribute("详情信息", "详情信息");
