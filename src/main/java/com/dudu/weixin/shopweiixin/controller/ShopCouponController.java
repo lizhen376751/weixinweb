@@ -16,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -77,12 +76,14 @@ public class ShopCouponController {
         }
         CouponCountResult result = apiElectronicCoupon.getWeiXinConponCount(electronicCouponParam);
         logger.info("==============查询数量=============" + result.toString());
+        logger.debug("=================:::::::::::::::" + result.getUserNum().toString());
+        logger.debug("=================:::::::::::::::" + result.getForwardNum().toString());
         if (null != result) {
             String userNum = result.getForwardNum().toString();
             model.addAttribute("openid", openid);
             model.addAttribute("shopCode", shopCode);
-            request.setAttribute("userNum", userNum); // 可使用数量
-            request.setAttribute("forwardNum", result.getForwardNum().toString()); // 可转发数量
+            model.addAttribute("userNum", userNum); // 可使用数量
+            model.addAttribute("forwardNum", result.getForwardNum().toString()); // 可转发数量
             model.addAttribute("id", id);
             model.addAttribute("identifying", identifying);
         }
@@ -153,15 +154,13 @@ public class ShopCouponController {
         return null;
     }
 
-    /**
-     * 点击立即使用
-     * @param request 相应
-     */
-    @ResponseBody
-    @RequestMapping(value = "/immediateUse", method = RequestMethod.POST)
-    public void immediateUse(HttpServletRequest request) {
-        //立即使用,判断该客户有没有客户id,如果有的话,弹出二维码来,并且提示到店即可使用,如果没有提示注册
-    }
+//
+//    //3.点击立即使用
+//    @ResponseBody
+//    @RequestMapping(value = "immediateUse", method = RequestMethod.POST)
+//    public void oo(HttpServletRequest request) {
+//        //立即使用,判断该客户有没有客户id,如果有的话,弹出二维码来,并且提示到店即可使用,如果没有提示注册
+//    }
 //
 //    //4.点击赠送给朋友,这边不需要调用请求
 //    public void dd() {
