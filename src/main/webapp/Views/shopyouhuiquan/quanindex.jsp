@@ -1,11 +1,11 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%
-	String openid = request.getParameter("openid");  //微信openid
-	String shopCode = request.getParameter("shopCode"); // 店铺编码
-	String userNum = request.getParameter("userNum");  //本人可使用数目
-	String forwardNum = request.getParameter("forwardNum");  //可分享数目
-	String id = request.getParameter("id");  //优惠券唯一标识ID
-	String identifying = request.getParameter("identifying");  //标识   单一：only  更多：more
+	String openid = (String)request.getAttribute("openid");  //微信openid
+	String shopCode = (String)request.getAttribute("shopCode"); // 店铺编码
+	String userNum = (String)request.getAttribute("userNum");  //本人可使用数目
+	String forwardNum = (String)request.getAttribute("forwardNum");  //可分享数目
+	String id = (String)request.getAttribute("id");  //优惠券唯一标识ID
+	String identifying = (String)request.getAttribute("identifying");  //标识   单一：only  更多：more
 %>
 <!DOCTYPE html>
 <html>
@@ -30,7 +30,7 @@
      	<ul>
      		<li class="use_li">
      			<div class="use_div">
-     				<span class="usenum font_3"><%=forwardNum%></span>
+     				<span class="usenum font_3"><%=userNum%></span>
      			</div>
      			<span class="font_6 miaoshu"> 本人可使用数量</span>
      		</li>

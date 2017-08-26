@@ -38,38 +38,12 @@ $(function(){
 
     // 点击可用事件
     $(".use_div").click(function(){
-        $.ajax({
-            type: 'POST',
-            url: '/getCommonAjax?fromflag=selfbilling&cardNo=' + json[i].cardId,
-            async: false,
-            data: {
-                openid:openid,
-                openid:shopCode,
-                openid:userNum,
-                openid:forwardNum,
-                openid:wyid,
-                openid:identifying,
-
-            },
-            success: function (jsonData) {
-                var arr2 = JSON.parse(jsonData);
-                console.log(arr2)
-            }
-        });
+        window.location.href="/coupondetails?businessLogo=use&identifying="+identifying+"&id="+wyid+"&shopCode="+shopCode+"&openid="+openid;
     })
 
 // 点击可分享事件
     $(".zsongnum_div").click(function(){
-        $.ajax({
-            type: 'POST',
-            url: '/getCommonAjax?fromflag=selfbilling&cardNo=' + json[i].cardId,
-            async: false,
-            data: {},
-            success: function (jsonData) {
-                var arr2 = JSON.parse(jsonData);
-                console.log(arr2)
-            }
-        });
+        window.location.href="/coupondetails?businessLogo=give&identifying="+identifying+"&id="+wyid+"&shopCode="+shopCode+"&openid="+openid;
     })
 
 });
