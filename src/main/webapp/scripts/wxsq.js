@@ -32,7 +32,7 @@ function lmwxsq() {
                 timestamp: data.timestamp, //生成签名的时间戳，必填
                 nonceStr: data.nonceStr,   //生成签名的随机串，必填
                 signature: data.signature,  // 签名，必填
-                jsApiList: ['checkJsApi', 'getNetworkType', 'openLocation', 'getLocation', 'scanQRCode']    //--------------------------------- // 所有要调用的 API 都要加到这个列表中
+                jsApiList: ['checkJsApi', 'getNetworkType', 'openLocation', 'getLocation', 'scanQRCode','onMenuShareAppMessage','hideMenuItems']    //--------------------------------- // 所有要调用的 API 都要加到这个列表中
             });
         },
         dataType: 'json',
@@ -55,7 +55,7 @@ function lmwxsq() {
                     timestamp: data.timestamp, //生成签名的时间戳，必填
                     nonceStr: data.nonceStr,   //生成签名的随机串，必填
                     signature: data.signature,  // 签名，必填
-                    jsApiList: ['checkJsApi','getNetworkType','openLocation','getLocation','scanQRCode']    //--------------------------------- // 所有要调用的 API 都要加到这个列表中
+                    jsApiList: ['checkJsApi','getNetworkType','openLocation','getLocation','scanQRCode','onMenuShareAppMessage','hideMenuItems']    //--------------------------------- // 所有要调用的 API 都要加到这个列表中
                 });
             },
             dataType: 'json',
