@@ -16,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -77,8 +76,6 @@ public class ShopCouponController {
         }
         CouponCountResult result = apiElectronicCoupon.getWeiXinConponCount(electronicCouponParam);
         logger.info("==============查询数量=============" + result.toString());
-        logger.debug("=================:::::::::::::::" + result.getUserNum().toString());
-        logger.debug("=================:::::::::::::::" + result.getForwardNum().toString());
         if (null != result) {
             String userNum = result.getForwardNum().toString();
             model.addAttribute("openid", openid);
@@ -101,7 +98,7 @@ public class ShopCouponController {
      * @param model   模板
      * @return 返回页面
      */
-    @RequestMapping(value = "/coupondetails", method = RequestMethod.POST)
+    @RequestMapping(value = "/coupondetails", method = RequestMethod.GET)
     public String couponDetails(HttpServletRequest request, Model model) {
         String businessLogo = request.getParameter("businessLogo");  //获取业务标识 use(使用),give(赠送),get(获取领取)
         String identifying = request.getParameter("identifying");  //标识   单一：only  更多：more
@@ -155,13 +152,16 @@ public class ShopCouponController {
         return null;
     }
 
-//
-//    //3.点击立即使用
-//    @ResponseBody
-//    @RequestMapping(value = "immediateUse", method = RequestMethod.POST)
-//    public void oo(HttpServletRequest request) {
-//        //立即使用,判断该客户有没有客户id,如果有的话,弹出二维码来,并且提示到店即可使用,如果没有提示注册
-//    }
+    /**
+     * 点击立即使用
+     *
+     * @param request 相应
+     * @return 返回客户ID
+     *//*
+  /*  @RequestMapping(value = "immediateUse", method = RequestMethod.POST)
+    public String oo(HttpServletRequest request) {
+        //立即使用,判断该客户有没有客户id,如果有的话,弹出二维码来,并且提示到店即可使用,如果没有提示注册
+    }*/
 //
 //    //4.点击赠送给朋友,这边不需要调用请求
 //    public void dd() {
