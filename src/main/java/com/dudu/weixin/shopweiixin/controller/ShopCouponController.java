@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -60,6 +61,7 @@ public class ShopCouponController {
      * @param model   模板
      * @return 返回页面
      */
+    @ResponseBody
     @RequestMapping(value = "/numcoupon", method = {RequestMethod.GET, RequestMethod.POST})
     public String numCoupon(HttpServletRequest request, Model model) {
         //调用接口查询可用电子优惠券的数量,以及可转发的数量
