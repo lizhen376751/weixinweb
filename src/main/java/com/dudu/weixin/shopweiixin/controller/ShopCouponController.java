@@ -76,6 +76,8 @@ public class ShopCouponController {
         }
         CouponCountResult result = apiElectronicCoupon.getWeiXinConponCount(electronicCouponParam);
         logger.info("==============查询数量=============" + result.toString());
+        logger.debug("=================:::::::::::::::" + result.getUserNum().toString());
+        logger.debug("=================:::::::::::::::" + result.getForwardNum().toString());
         model.addAttribute("openid", openid);
         model.addAttribute("shopCode", shopCode);
         model.addAttribute("userNum", result.getUserNum().toString()); // 可使用数量
@@ -130,7 +132,8 @@ public class ShopCouponController {
         model.addAttribute("couponCode", wxWeiXinCouponInfo.getCouponCode()); // 优惠券编码
         model.addAttribute("details", wxWeiXinCouponInfo.getDetails()); // 使用详情
         model.addAttribute("lingOpenid", wxWeiXinCouponInfo.getOpenId()); //  领取人openid
-        model.addAttribute("lingOpenid", wxWeiXinCouponInfo.getOpenId()); //  领取人openid
+        model.addAttribute("couponState", wxWeiXinCouponInfo.getCouponState()); //  优惠券状态   0：已失效   1：已领取   2：未领取
+        model.addAttribute("couponFlag", wxWeiXinCouponInfo.getCouponFlag()); // 优惠券标识(1可使用,0:可转发)
 
 
         //5.立即使用时,需要屏蔽连接发送以及分享
