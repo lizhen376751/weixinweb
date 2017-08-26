@@ -1,9 +1,13 @@
 package com.dudu.weixin.shopweiixin.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.dudu.soa.basedata.shopinfo.api.ApiBaseDataShopInfo;
+import com.dudu.soa.basedata.shopinfo.module.ShopInfo;
+import com.dudu.soa.basedata.shopinfo.module.ShopInfoParam;
 import com.dudu.soa.weixindubbo.electroniccoupon.api.ApiElectronicCoupon;
 import com.dudu.soa.weixindubbo.electroniccoupon.module.CouponCountResult;
 import com.dudu.soa.weixindubbo.electroniccoupon.module.ElectronicCouponParam;
+import com.dudu.soa.weixindubbo.electroniccoupon.module.WeiXinCouponInfo;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +47,12 @@ public class ShopCouponController {
     private ApiElectronicCoupon apiElectronicCoupon;
 
     /**
+     * 店铺信息接口
+     */
+    @Reference
+    private ApiBaseDataShopInfo apiBaseDataShopInfo;
+
+    /**
      * 冯广祥
      * 跳转优惠券的数量页面
      *
@@ -51,7 +61,7 @@ public class ShopCouponController {
      * @return 返回页面
      */
     @RequestMapping(value = "/numcoupon", method = {RequestMethod.GET, RequestMethod.POST})
-    public String hhh(HttpServletRequest request, Model model) {
+    public String numCoupon(HttpServletRequest request, Model model) {
         //调用接口查询可用电子优惠券的数量,以及可转发的数量
         String openid = request.getParameter("openid"); //微信openid
         String shopCode = request.getParameter("shopCode"); // 店铺编码
@@ -68,8 +78,8 @@ public class ShopCouponController {
         logger.info("==============查询数量=============" + result.toString());
         model.addAttribute("openid", openid);
         model.addAttribute("shopCode", shopCode);
-        model.addAttribute("userNum", result.getUserNum());
-        model.addAttribute("forwardNum", result.getForwardNum());
+        model.addAttribute("userNum", result.getUserNum().toString()); // 可使用数量
+        model.addAttribute("forwardNum", result.getForwardNum().toString()); // 可转发数量
         model.addAttribute("id", id);
         model.addAttribute("identifying", identifying);
         //分享连接取消掉
@@ -85,21 +95,56 @@ public class ShopCouponController {
      * @param model   模板
      * @return 返回页面
      */
-   /* @RequestMapping(value = "/coupondetails", method = RequestMethod.POST)
-    public String pp(HttpServletRequest request, Model model) {
-      //  String
-        //request获取业务标识 use(使用),give(赠送),get(获取领取)
+    @RequestMapping(value = "/coupondetails", method = RequestMethod.POST)
+    public String couponDetails(HttpServletRequest request, Model model) {
+        String businessLogo = request.getParameter("businessLogo");  //获取业务标识 use(使用),give(赠送),get(获取领取)
+        String identifying = request.getParameter("identifying");  //标识   单一：only  更多：more
+        String id = request.getParameter("id"); // 券的ID
+        String shopCode = request.getParameter("shopCode"); // 店铺编码
+        String openid = request.getParameter("openid"); //微信openid
+        Integer state = 0;
+        if ("use".equals(businessLogo)) {
+            state = 1;
+        } else if ("give".equals(businessLogo)) {
+            state = 0;
+        }
+        ElectronicCouponParam param = new ElectronicCouponParam();
+        param.setCouponId(Integer.getInteger(id))
+                .setShopCode(shopCode)
+                .setOpenId(openid)
+                .setCouponFlag(state); // 0：可转发  1：可使用
+        logger.debug("=============查询微信优惠券详情传参===============" + param.toString());
+        WeiXinCouponInfo wxWeiXinCouponInfo = apiElectronicCoupon.getWXElectronicCouponInfo(param);
+        logger.debug("=============查询微信优惠券详情===============" + wxWeiXinCouponInfo.toString());
+        ShopInfoParam shopInfoParam = new ShopInfoParam();
+        shopInfoParam.setShopCode(shopCode);
+        logger.debug("=============查询店铺信息 传参===============" + shopInfoParam.toString());
+        ShopInfo shopInfo = apiBaseDataShopInfo.getByCode(shopInfoParam);
+        logger.debug("=============查询店铺信息 返回===============" + shopInfo.toString());
+        model.addAttribute("openid", openid); // 微信openid
+        model.addAttribute("shopCode", shopCode); // 店铺编码
+        model.addAttribute("diXiaoJinE", wxWeiXinCouponInfo.getDiXiaoJinE()); // 可抵消金额
+        model.addAttribute("forwardNum", wxWeiXinCouponInfo.getAnotherJinE()); // 另付费
+        model.addAttribute("couponStartTime", wxWeiXinCouponInfo.getCouponStartTime()); // 领取优惠券有效日期
+        model.addAttribute("couponEndTime", wxWeiXinCouponInfo.getCouponEndTime()); // 领取优惠券失效日期
+        model.addAttribute("couponCode", wxWeiXinCouponInfo.getCouponCode()); // 优惠券编码
+        model.addAttribute("details", wxWeiXinCouponInfo.getDetails()); // 使用详情
+        model.addAttribute("lingOpenid", wxWeiXinCouponInfo.getOpenId()); //  领取人openid
+        model.addAttribute("lingOpenid", wxWeiXinCouponInfo.getOpenId()); //  领取人openid
 
-        //1.查看详情接口.根据openid,shopcode,卡券id(不传的话查多种卡),查询,只返回一条
-        //2.店管家的需要查询店铺信息
-        //3.需要写一个实体类  详情的实体类,店铺信息的,本人或者赠送,领取 的标识
-        //4.根据不同情况if跳转不同的页面
+
         //5.立即使用时,需要屏蔽连接发送以及分享
         model.addAttribute("详情信息", "详情信息");
-        return "优惠券立即使用详情页面";
-//return "优惠券赠送给朋友的详情页面";
-//return "优惠券立即领取的详情页面";
-    }*/
+        if ("use".equals(businessLogo)) { // 使用页面
+            return "/shopyouhuiquan/quandiyong.jsp";
+        } else if ("give".equals(businessLogo)) { //赠送页面
+            return "/shopyouhuiquan/quanZengS.jsp";
+        } else if ("get".equals(businessLogo)) { //领取页面
+            return "/shopyouhuiquan/quanlingqu.jsp";
+        }
+        return null;
+    }
+
 //
 //    //3.点击立即使用
 //    @ResponseBody
