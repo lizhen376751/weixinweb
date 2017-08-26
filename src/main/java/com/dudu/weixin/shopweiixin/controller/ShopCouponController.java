@@ -61,7 +61,6 @@ public class ShopCouponController {
      * @param model   模板
      * @return 返回页面
      */
-    @ResponseBody
     @RequestMapping(value = "/numcoupon", method = {RequestMethod.GET, RequestMethod.POST})
     public String numCoupon(HttpServletRequest request, Model model) {
         //调用接口查询可用电子优惠券的数量,以及可转发的数量
