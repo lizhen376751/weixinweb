@@ -111,6 +111,9 @@ public class ShopCouponController {
         } else if ("give".equals(businessLogo)) {
             state = 0;
         }
+        logger.info("===========================" + id);
+        logger.info("===========================" + Integer.getInteger(id));
+        logger.info("===========================" + Integer.valueOf(id));
         ElectronicCouponParam param = new ElectronicCouponParam();
         param.setCouponId(Integer.getInteger(id))
                 .setShopCode(shopCode)
