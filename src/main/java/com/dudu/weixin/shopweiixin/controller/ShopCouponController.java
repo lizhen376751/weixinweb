@@ -79,8 +79,8 @@ public class ShopCouponController {
         if (null != result) {
             model.addAttribute("openid", openid);
             model.addAttribute("shopCode", shopCode);
-            model.addAttribute("userNum", result.getUserNum()); // 可使用数量
-            model.addAttribute("forwardNum", result.getForwardNum()); // 可转发数量
+            model.addAttribute("userNum", result.getUserNum().toString()); // 可使用数量
+            model.addAttribute("forwardNum", result.getForwardNum().toString()); // 可转发数量
             model.addAttribute("id", id);
             model.addAttribute("identifying", identifying);
         }
