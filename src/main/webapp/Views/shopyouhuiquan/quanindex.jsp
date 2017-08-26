@@ -1,4 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%
+	String openid = request.getParameter("openid");  //微信openid
+	String shopCode = request.getParameter("shopCode"); // 店铺编码
+	String userNum = request.getParameter("userNum");  //本人可使用数目
+	String forwardNum = request.getParameter("forwardNum");  //可分享数目
+	String id = request.getParameter("id");  //优惠券唯一标识ID
+	String identifying = request.getParameter("identifying");  //标识   单一：only  更多：more
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +18,7 @@
     <!--引入JS-->
     <script  type="text/javascript" charset="utf-8" src="/scripts/jquery-1.12.1.min.js"></script>
     <script  type="text/javascript" charset="utf-8" src="/scripts/layout.js"></script>
+	<script src="/scripts/wxsq.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/shopyouhuiquan/quanindex.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
@@ -21,18 +30,25 @@
      	<ul>
      		<li class="use_li">
      			<div class="use_div">
-     				<span class="usenum font_3">1</span>
+     				<span class="usenum font_3"><%=forwardNum%></span>
      			</div>
      			<span class="font_6 miaoshu"> 本人可使用数量</span>
      		</li>
      		<li class="line"></li>
      		<li class="zs_li">
      			<div class="zsongnum_div">
-     				<span class="usenum font_3">1</span>
+     				<span class="usenum font_3"><%=forwardNum%></span>
      			</div>
      			<span class="font_6 miaoshu"> 可赠送好友数量</span>
      		</li>
      	</ul>
      </div>
+	 <input name="openid" id="openid" type="hidden" value="<%=openid%>">
+	 <input name="shopCode" id="shopCode" type="hidden" value="<%=shopCode%>">
+	 <input name="userNum" id="userNum" type="hidden" value="<%=userNum%>">
+	 <input name="forwardNum" id="forwardNum" type="hidden" value="<%=forwardNum%>">
+	 <input name="id" id="wyid" type="hidden" value="<%=id%>">
+	 <input name="identifying" id="identifying" type="hidden" value="<%=identifying%>">
+
 </body>
 </html>

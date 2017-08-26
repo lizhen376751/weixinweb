@@ -11,6 +11,7 @@
     <script  type="text/javascript" charset="utf-8" src="/scripts/jquery-1.12.1.min.js"></script>
     <script  type="text/javascript" charset="utf-8" src="/scripts/layout.js"></script>
     <script src="/scripts/shopyouhuiquan/jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/scripts/wxsq.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/shopyouhuiquan/quanZengS.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
