@@ -117,11 +117,9 @@ public class ShopCouponController {
                 .setOpenId(openid)
                 .setCouponFlag(state); // 0：可转发  1：可使用
         WeiXinCouponInfo wxWeiXinCouponInfo = apiElectronicCoupon.getWXElectronicCouponInfo(param);
-        logger.debug("=============查询微信优惠券详情===============" + wxWeiXinCouponInfo.toString());
         ShopInfoParam shopInfoParam = new ShopInfoParam();
         shopInfoParam.setShopCode(shopCode);
         ShopInfo shopInfo = apiBaseDataShopInfo.getByCode(shopInfoParam);
-        logger.debug("=============查询店铺信息 返回===============" + shopInfo.toString());
         model.addAttribute("wxWeiXinCouponInfo", wxWeiXinCouponInfo); // 优惠券返回详情
         model.addAttribute("shopInfo", shopInfo); // 店铺信息返回详情
 
