@@ -4,7 +4,6 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.dudu.soa.basedata.shopinfo.api.ApiBaseDataShopInfo;
 import com.dudu.soa.basedata.shopinfo.module.ShopInfo;
 import com.dudu.soa.basedata.shopinfo.module.ShopInfoParam;
-import com.dudu.soa.framework.util.DuduTestUtil;
 import com.dudu.soa.weixindubbo.electroniccoupon.api.ApiElectronicCoupon;
 import com.dudu.soa.weixindubbo.electroniccoupon.module.CouponCountResult;
 import com.dudu.soa.weixindubbo.electroniccoupon.module.ElectronicCouponParam;
@@ -112,13 +111,11 @@ public class ShopCouponController {
         } else if ("give".equals(businessLogo)) {
             state = 0;
         }
-        logger.info("========================" + id);
         ElectronicCouponParam param = new ElectronicCouponParam();
-        param.setCouponId(Integer.valueOf(id))
+        param.setCouponId(Integer.getInteger(id))
                 .setShopCode(shopCode)
                 .setOpenId(openid)
                 .setCouponFlag(state); // 0：可转发  1：可使用
-        DuduTestUtil.printRequestForTest(param);
         WeiXinCouponInfo wxWeiXinCouponInfo = apiElectronicCoupon.getWXElectronicCouponInfo(param);
         logger.debug("=============查询微信优惠券详情===============" + wxWeiXinCouponInfo.toString());
         ShopInfoParam shopInfoParam = new ShopInfoParam();
