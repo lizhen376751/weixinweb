@@ -5,6 +5,8 @@ import com.dudu.soa.weixindubbo.electroniccoupon.api.ApiElectronicCoupon;
 import com.dudu.soa.weixindubbo.electroniccoupon.module.CouponCountResult;
 import com.dudu.soa.weixindubbo.electroniccoupon.module.ElectronicCouponParam;
 import com.dudu.soa.weixindubbo.weixin.http.api.ApiAllWeiXiRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,10 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class ShopCouponController {
+    /**
+     * 日志打印
+     */
+    private static Logger logger = LoggerFactory.getLogger(ShopCouponController.class);
     /**
      * 微信相关接口
      */
@@ -59,6 +65,7 @@ public class ShopCouponController {
             electronicCouponParam.setCouponId(Integer.getInteger(id));
         }
         CouponCountResult result = apiElectronicCoupon.getWeiXinConponCount(electronicCouponParam);
+        logger.info("==============查询数量=============" + result.toString());
         model.addAttribute("openid", openid);
         model.addAttribute("shopCode", shopCode);
         model.addAttribute("userNum", result.getUserNum());
@@ -70,23 +77,29 @@ public class ShopCouponController {
         //查询根据openid,shopcode.模板id,查询相应的数量
         return "/shopyouhuiquan/quanindex.jsp";
     }
-//
-//
-//    //2.列表的优惠券查看详情页面
-//    @RequestMapping(value = "coupondetails", method = RequestMethod.POST)
-//    public String pp(HttpServletRequest request, Model model) {
-//        //request获取业务标识 use(使用),give(赠送),get(获取)
-//
-//        //1.查看详情接口.根据openid,shopcode,卡券id(不传的话查多种卡),查询,只返回一条
-//        //2.店管家的需要查询店铺信息
-//        //3.需要写一个实体类  详情的实体类,店铺信息的,本人或者赠送,领取 的标识
-//        //4.根据不同情况if跳转不同的页面
-//        //5.立即使用时,需要屏蔽连接发送以及分享
-//        model.addAttribute("详情信息", "详情信息");
-//        return "优惠券立即使用详情页面";
-////        return "优惠券赠送给朋友的详情页面";
-////        return "优惠券立即领取的详情页面";
-//    }
+
+    /**
+     * 列表的优惠券查看详情页面
+     *
+     * @param request 请求
+     * @param model   模板
+     * @return 返回页面
+     */
+   /* @RequestMapping(value = "/coupondetails", method = RequestMethod.POST)
+    public String pp(HttpServletRequest request, Model model) {
+      //  String
+        //request获取业务标识 use(使用),give(赠送),get(获取领取)
+
+        //1.查看详情接口.根据openid,shopcode,卡券id(不传的话查多种卡),查询,只返回一条
+        //2.店管家的需要查询店铺信息
+        //3.需要写一个实体类  详情的实体类,店铺信息的,本人或者赠送,领取 的标识
+        //4.根据不同情况if跳转不同的页面
+        //5.立即使用时,需要屏蔽连接发送以及分享
+        model.addAttribute("详情信息", "详情信息");
+        return "优惠券立即使用详情页面";
+//return "优惠券赠送给朋友的详情页面";
+//return "优惠券立即领取的详情页面";
+    }*/
 //
 //    //3.点击立即使用
 //    @ResponseBody
