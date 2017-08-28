@@ -14,6 +14,12 @@
 <script src="/scripts/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script language="JavaScript">
 
+
+    //百度地图
+    function baiduMap() {
+        window.location.href = "/baiduMap";
+    }
+
     //微信内部页面跳转
     function testjump() {
         window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd4e76e01e4a6e3b7&redirect_uri=http://lm.wx.dev.duduchewang.cn/testjump?shopcode=0533001&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
@@ -118,6 +124,8 @@
         </ul>
         <input type="button"  value="微信授权页面" onclick="weixin()"/>
         <input type="button"  value="微信内部页面跳转获取授权code" onclick="testjump()"/>
+        <input type="button"  value="百度地图" onclick="baiduMap()"/>
+
     </div>
 </form>
 </body>
