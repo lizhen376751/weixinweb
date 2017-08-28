@@ -1,4 +1,5 @@
 <%--Wqzl6x04tQFhlUGPrEjoflsi1a9HcCg8--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,7 @@
             line-height:28px;
         }
     </style>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Wqzl6x04tQFhlUGPrEjoflsi1a9HcCg8"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
     <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
     <title>带检索功能的信息窗口</title>
@@ -37,7 +38,7 @@
 <div id="allmap">
 </div>
 <div id="result">
-    <input type="button" value="样式1" onclick="openInfoWindow1()"/>
+    <%--<input type="button" value="样式1" onclick="openInfoWindow1()"/>--%>
 </div>
 <script type="text/javascript">
     // 百度地图API功能
@@ -76,9 +77,9 @@
             BMAPLIB_TAB_SEARCH   //周边检索
         ]
     });
-    function openInfoWindow1() {
+
         searchInfoWindow1.open(new BMap.Point(116.319852,40.057031));
-    }
+
 
 
 </script>
