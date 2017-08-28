@@ -68,6 +68,16 @@ public class AllTwoController {
     private HttpSession httpSession;
 
     /**
+     * 百度地图页面
+     *
+     * @return index页面
+     */
+    @RequestMapping(value = "/baiduMap", method = {RequestMethod.GET, RequestMethod.POST})
+    public String baiduMap() {
+        return "/baidumap.jsp";
+    }
+
+    /**
      * index页面
      *
      * @return index页面
