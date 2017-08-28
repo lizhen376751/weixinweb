@@ -1,3 +1,4 @@
+<%@ page import="com.dudu.soa.basedata.shopinfo.module.ShopInfo" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,10 @@
     <script  type="text/javascript" charset="utf-8" src="/scripts/layout.js"></script>
     <script src="/scripts/shopyouhuiquan/jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="/scripts/shopyouhuiquan/quanlingqu.js" type="text/javascript" charset="utf-8"></script>
-
+<%
+	ShopInfo shopInfo = (ShopInfo) request.getAttribute("shopInfo");
+	System.out.println("result===>>"+shopInfo.toString());
+%>
 </head>
 <body>
 	 <div id="loading">

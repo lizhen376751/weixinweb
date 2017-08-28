@@ -45,16 +45,6 @@ $(window).load(function(){
 	  	    $(".zsimg").hide();
 	        $("body").css("overflow","auto");
 	   });
+
 	   
-	   
-    //生成二维码
-  
-    $(".erWeiMa ,.erWeiMa2").qrcode("111");
-    $(".erWeiMa ,.erWeiMa2").children().css({
-        width: "100%",
-        height: "100%"
-    })
-    
-	   
-	   
-	});
+});
